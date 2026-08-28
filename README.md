@@ -77,11 +77,24 @@ ETF 动量轮动：牛市咬住最强指数，熊市撤到跨境/黄金/货币�
 market_data.py   行情（腾讯接口，纯标准库，data/ 本地缓存自动增量）
 strategy.py      策略核心（改参数在这里）
 backtest.py      回测 + 参数敏感性
-signal_daily.py  每日信号（14:20 cron 自动跑）
+signal_daily.py  每日信号（14:50 cron 自动跑，含 QDII 溢价提示）
 record.py        账本
 signals/         每日信号存档 + latest.txt + cron.log
 portfolio.json   当前持仓状态
 trades.csv       成交流水
+```
+
+## 运维监控（2026-08-29 上线）
+
+```
+live_track.py    实盘 vs 模型净值日报(15:10 cron, 含滑点核算) → signals/track.jsonl
+slippage.py      成交价 vs 收盘滑点, 验证"万二+贴价"假设
+premium.py       QDII 溢价(东财净值口径), 已接入 14:50 信号卡, >2% 告警
+watchdog.py      看门狗(15:20 cron): 数据/信号新鲜度 + 东财双源比对, 钉钉告警
+drift_guard.py   前复权漂移防护(周六 10:00 cron): 分红重定基检测, >0.05% 自动全量重拉
+live_utils.py    运维共享: 钉钉告警/原子写/日志
+git_autocommit.sh 每日 23:30 本地 git 快照
+v10/             v10 研究实验室(61 变体全证伪, 见 v10/README.md; 与实盘隔离)
 ```
 
 *风险提示：本系统为量化信号工具，不构成投资建议，盈亏自负。*
