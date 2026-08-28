@@ -27,8 +27,11 @@ def load():
 
 
 def save(pf):
-    with open(PORTFOLIO, "w", encoding="utf-8") as f:
+    """原子写(临时文件+rename): 防与信号/跟踪任务并发读到半截 JSON。"""
+    tmp = "%s.tmp.%d" % (PORTFOLIO, os.getpid())
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(pf, f, ensure_ascii=False, indent=2)
+    os.replace(tmp, PORTFOLIO)
 
 
 def log_trade(action, code, price, shares, amount):

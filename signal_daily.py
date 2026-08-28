@@ -24,6 +24,14 @@ CRASH_BELOW_MA = 0.20     # 且低于年线20%
 CRASH_LOCK_DAYS = 5       # 锁仓5个交易日
 
 
+def _atomic_write(path, text):
+    """原子写(临时文件+rename): 防钉钉机器人并发读到半截文件。"""
+    tmp = "%s.tmp.%d" % (path, os.getpid())
+    with open(tmp, "w", encoding="utf-8") as f:
+        f.write(text)
+    os.replace(tmp, path)
+
+
 def load_portfolio():
     if os.path.exists(PORTFOLIO):
         with open(PORTFOLIO, encoding="utf-8") as f:
@@ -75,8 +83,8 @@ def main():
             act = "买入 %s %s (抄底! 锁仓至%s)" % (cand[0], UNIVERSE[cand[0]][0], lock_until)
             if not os.path.isdir(SIGNAL_DIR):
                 os.makedirs(SIGNAL_DIR)
-            with open(CRASH_LOCK, "w", encoding="utf-8") as f:
-                json.dump({"code": cand[0], "lock_until": lock_until, "trigger_date": last_date}, f)
+            _atomic_write(CRASH_LOCK, json.dumps(
+                {"code": cand[0], "lock_until": lock_until, "trigger_date": last_date}))
 
     lines = [
         "=" * 56,
@@ -93,8 +101,13 @@ def main():
                         pf.get("entry_date") or "-", cur, pnl))
     else:
         lines.append("当前持仓: 空仓")
-    lines += ["★ 建议: %s" % act, "  依据: %s" % reason, "-" * 56,
-              "操作后请记账: python3.8 record.py buy|sell <代码> <价格> <金额元>"]
+    lines += ["★ 建议: %s" % act, "  依据: %s" % reason, "-" * 56]
+    try:                                # QDII 溢价提示(>2%勿追); 失败不影响信号主流程
+        import premium
+        lines += premium.signal_block()
+    except Exception:
+        pass
+    lines.append("操作后请记账: python3.8 record.py buy|sell <代码> <价格> <金额元>")
 
     text = "\n".join(lines)
     print(text)
@@ -102,8 +115,7 @@ def main():
         os.makedirs(SIGNAL_DIR)
     for path in (os.path.join(SIGNAL_DIR, "%s.txt" % last_date),
                  os.path.join(SIGNAL_DIR, "latest.txt")):
-        with open(path, "w", encoding="utf-8") as f:
-            f.write(text + "\n")
+        _atomic_write(path, text + "\n")
     return target
 
 

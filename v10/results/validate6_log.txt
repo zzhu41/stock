@@ -1,0 +1,10 @@
+共 6 个任务 (1 变体 × 6 起点), 2 进程并行
+耗时 111s, 写入 /root/stock/v10/results/validate6.jsonl
+Traceback (most recent call last):
+  File "run_screen.py", line 67, in <module>
+    main()
+  File "run_screen.py", line 57, in main
+    rows.sort(key=lambda r: -(r["nav"] / base[r["start"]]["nav"]))
+  File "run_screen.py", line 57, in <lambda>
+    rows.sort(key=lambda r: -(r["nav"] / base[r["start"]]["nav"]))
+KeyError: '2014-01-01'

@@ -59,6 +59,7 @@ def build_markdown(text):
             rank.append("%s %s(MOM20 %s%%)" % (m.group(1), m.group(2), m.group(3)))
         if len(rank) >= 3:
             break
+    prem = next((l.strip() for l in lines if "溢价" in l), "")
     md = ["### 📊 %s" % title,
           "",
           "**%s**" % regime,
@@ -68,11 +69,13 @@ def build_markdown(text):
           "## %s" % advice.replace("★ ", ""),
           "> %s" % reason.strip(),
           "",
-          "动量前三: " + " / ".join(rank),
-          "",
-          "---",
-          "⏰ 尾盘 14:30-14:50 限价贴价执行; 操作后回报 代码/价格/金额 记账",
-          "_信号 %s · v9_" % date]
+          "动量前三: " + " / ".join(rank)]
+    if prem:
+        md += ["", "QDII " + prem.strip()]
+    md += ["",
+           "---",
+           "⏰ 尾盘 14:30-14:50 限价贴价执行; 操作后回报 代码/价格/金额 记账",
+           "_信号 %s · v9_" % date]
     return "\n".join(md), date
 
 
