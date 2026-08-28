@@ -1,0 +1,14 @@
+# 密钥与本机配置（绝不入库）
+data/
+.claude/
+.qoder/
+
+# 个人账本（record.py 生成，含真实持仓/成交）
+portfolio.json
+trades.csv
+
+# 运行产物
+__pycache__/
+*.pyc
+signals/cron.log
+signals/crash_lock.json
