@@ -75,7 +75,7 @@ def build_markdown(text):
     md += ["",
            "---",
            "⏰ 尾盘 14:30-14:50 限价贴价执行; 操作后回报 代码/价格/金额 记账",
-           "_信号 %s · v9_" % date]
+           "_信号 %s · v9.1_" % date]
     return "\n".join(md), date
 
 

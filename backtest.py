@@ -334,10 +334,10 @@ if __name__ == "__main__":
     histories = {c: fetch_history(c) for c in codes}
     calendar = [r[0] for r in histories["510300"]]
     start = sys.argv[1] if len(sys.argv) > 1 else START
-    print("回测区间 %s ~ %s | v9 默认全组件 | 费用双边万二" % (start, calendar[-1]))
+    print("回测区间 %s ~ %s | v9.1 默认全组件 | 费用双边万二" % (start, calendar[-1]))
 
     res = backtest(histories, calendar, start=start)
-    report(res, "动量轮动策略 v9")
+    report(res, "动量轮动策略 v9.1")
     for y, r in yearly(res["daily"]):
         print("  %s: %+7.1f%%" % (y, r * 100))
 
@@ -348,7 +348,7 @@ if __name__ == "__main__":
 
     print("\n== 组件消融: 关闭后年化/回撤/夏普/年换手 (与基线差即该组件贡献) ==")
     variants = [
-        ("基线 v9          ", {}),
+        ("基线 v9.1        ", {}),
         ("去急跌离场panic  ", {"panic_drop": 0.0}),
         ("去永不空仓       ", {"never_empty": False}),
         ("去WLS25(回v7排名)", {"score_wls": False}),
