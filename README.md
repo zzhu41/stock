@@ -93,6 +93,8 @@ premium.py       QDII 溢价(东财净值口径), 已接入 14:50 信号卡, >2%
 watchdog.py      看门狗(15:20 cron): 数据/信号新鲜度 + 东财双源比对, 钉钉告警
 drift_guard.py   前复权漂移防护(周六 10:00 cron): 分红重定基检测, >0.05% 自动全量重拉
 live_utils.py    运维共享: 钉钉告警/原子写/日志
+web_app.py       策略跟踪看板(8081, systemd stock-web): 版本链净值/区间指标/换仓记录, 纯标准库
+web_build.py     看板缓存构建(15:25 cron): v7~v9.1 全量回测 → signals/web_cache.json(约3分钟)
 git_autocommit.sh 每日 23:30 本地 git 快照
 v10/             v10 研究实验室(61 变体全证伪, 见 v10/README.md; 与实盘隔离)
 ```

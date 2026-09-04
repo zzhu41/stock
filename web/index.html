@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>动量轮动策略跟踪</title>
+<style>
+  :root {
+    --bg: #0f1420; --card: #182032; --card2: #1e2840; --line: #2a3550;
+    --text: #d5dbe7; --dim: #8a94a8; --accent: #4f8cff;
+    --up: #e54545; --down: #2ebd6e;   /* A股习惯: 红涨绿跌 */
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; padding: 16px; max-width: 1280px; margin: 0 auto; }
+  header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+  h1 { font-size: 20px; font-weight: 600; }
+  header .meta { color: var(--dim); font-size: 12px; }
+  header .spacer { flex: 1; }
+  button, select, input[type=date] { background: var(--card2); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; font-size: 13px; cursor: pointer; }
+  button:hover, select:hover { border-color: var(--accent); }
+  button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  #controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; }
+  #controls .grp { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  #controls .lbl { color: var(--dim); font-size: 12px; }
+  #banner { display: none; background: #3a2f10; border: 1px solid #8a6d1f; color: #ffd97a; border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; font-size: 13px; }
+  #stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 12px; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+  .stat .k { color: var(--dim); font-size: 12px; margin-bottom: 4px; }
+  .stat .v { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .stat .s { font-size: 12px; color: var(--dim); margin-top: 2px; }
+  .up { color: var(--up); } .down { color: var(--down); }
+  #chart { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px; margin-bottom: 12px; }
+  #chartDiv { width: 100%; height: 480px; }
+  #tables { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; }
+  @media (max-width: 900px) { #tables { grid-template-columns: 1fr; } }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px; overflow-x: auto; }
+  .panel h2 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; white-space: nowrap; }
+  th { color: var(--dim); font-weight: 400; text-align: right; padding: 6px 10px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--card); }
+  th:first-child, td:first-child { text-align: left; }
+  td { padding: 6px 10px; text-align: right; border-bottom: 1px solid #1c2438; font-variant-numeric: tabular-nums; }
+  .scroll { max-height: 420px; overflow-y: auto; }
+  .badge { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 12px; }
+  .b-轮动 { background: #26314e; color: #9db2dd; }
+  .b-建仓 { background: #123a5e; color: #6db3ff; }
+  .b-恐慌抄底 { background: #4a1626; color: #ff7d9c; }
+  .b-避险停靠 { background: #3a3a10; color: #e6d97a; }
+  .legend-dot { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 5px; vertical-align: middle; }
+  #err { color: #ff7d7d; font-size: 13px; padding: 8px 0; display: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>动量轮动策略跟踪</h1>
+  <span class="meta" id="metaInfo">加载中…</span>
+  <span class="spacer"></span>
+  <button id="btnRefresh">⟳ 重建数据</button>
+</header>
+
+<div id="banner">⏳ 正在重建回测缓存（全量约 3 分钟），完成后自动刷新…</div>
+<div id="err"></div>
+
+<div id="controls">
+  <div class="grp"><span class="lbl">版本</span><select id="selVersion"></select></div>
+  <div class="grp"><span class="lbl">对比</span><select id="selCompare"></select></div>
+  <div class="grp" id="quickBtns">
+    <button data-q="3m">近3月</button><button data-q="6m">近6月</button>
+    <button data-q="ytd">今年</button><button data-q="1y">近1年</button>
+    <button data-q="3y">近3年</button><button data-q="all" class="active">全部</button>
+  </div>
+  <div class="grp">
+    <input type="date" id="inpStart"> <span class="lbl">~</span> <input type="date" id="inpEnd">
+  </div>
+  <div class="grp"><label class="lbl"><input type="checkbox" id="chkLog" checked> 对数轴</label></div>
+</div>
+
+<div id="stats"></div>
+
+<div id="chart"><div id="chartDiv"></div></div>
+
+<div id="tables">
+  <div class="panel"><h2>换仓记录 <span class="meta" id="tradeCount"></span></h2>
+    <div class="scroll"><table id="tblTrades">
+      <thead><tr><th>日期</th><th>类型</th><th>卖出</th><th>买入</th><th>当时净值</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+  <div class="panel"><h2>逐年收益</h2>
+    <div class="scroll"><table id="tblYearly">
+      <thead><tr><th>年份</th><th id="yh1">本版本</th><th id="yh2" style="display:none">对比</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+</div>
+
+<script src="/static/echarts.min.js"></script>
+<script>
+/* 标的色板(与策略池一致) */
+const POOL_COLORS = {
+  "159915": "#e54545", "588080": "#e67e22", "510300": "#3498db", "510500": "#9b59b6",
+  "563300": "#1abc9c", "512400": "#f1c40f", "512890": "#95a5a6", "513100": "#2ebd6e",
+  "513120": "#e91e63", "518880": "#ffd700", "511880": "#5d6b80"
+};
+const state = { version: "v9.1", compare: "", start: null, end: null, log: true,
+                quick: "all", range: null, meta: null, series: null };
+let chart = null, pollTimer = null;
+
+const $ = s => document.querySelector(s);
+const fmtPct = v => (v == null ? "—" : (v >= 0 ? "+" : "") + v.toFixed(2) + "%");
+const cls = v => v == null ? "" : (v >= 0 ? "up" : "down");
+
+function addMonths(d, m) {
+  const dt = new Date(d + "T00:00:00"); dt.setMonth(dt.getMonth() + m);
+  return dt.toISOString().slice(0, 10);
+}
+
+function applyQuick(q) {
+  state.quick = q;
+  const last = state.range[1], first = state.range[0];
+  if (q === "all") { state.start = null; state.end = null; }
+  else if (q === "ytd") { state.start = last.slice(0, 4) + "-01-01"; state.end = null; }
+  else { const m = {"3m": -3, "6m": -6, "1y": -12, "3y": -36}[q];
+         state.start = addMonths(last, m) < first ? first : addMonths(last, m); state.end = null; }
+  document.querySelectorAll("#quickBtns button").forEach(b =>
+    b.classList.toggle("active", b.dataset.q === q));
+  $("#inpStart").value = state.start || ""; $("#inpEnd").value = "";
+  loadSeries();
+}
+
+async function api(path, opts) {
+  const r = await fetch(path, opts);
+  if (r.status === 503) { showBuilding(); throw {building: true}; }
+  if (!r.ok) throw new Error((await r.json()).error || r.status);
+  return r.json();
+}
+
+function showBuilding() {
+  $("#banner").style.display = "block";
+  if (!pollTimer) pollTimer = setInterval(async () => {
+    try {
+      const m = await api("/api/meta");
+      if (m.ready && !m.building) { clearInterval(pollTimer); pollTimer = null;
+        $("#banner").style.display = "none"; await loadMeta(); loadSeries(); }
+    } catch (e) { /* 仍在构建 */ }
+  }, 5000);
+}
+
+async function loadMeta() {
+  const m = await api("/api/meta");
+  state.meta = m; state.range = m.data_range;
+  $("#metaInfo").textContent =
+    `数据 ${m.data_range[0]} ~ ${m.data_range[1]} · 构建于 ${m.built_at}` +
+    (m.building ? " · ⏳ 后台重建中" : "");
+  const sv = $("#selVersion");
+  if (!sv.options.length) {
+    m.versions.forEach(v => {
+      const o = document.createElement("option");
+      o.value = v.id;
+      o.textContent = `${v.label} (年化 ${v.metrics.ann >= 0 ? "+" : ""}${v.metrics.ann}%)`;
+      sv.appendChild(o);
+    });
+    sv.value = state.version;
+    const sc = $("#selCompare");
+    sc.appendChild(new Option("无", ""));
+    m.versions.forEach(v => sc.appendChild(new Option(v.label, v.id)));
+    m.benchmarks.forEach(b => sc.appendChild(new Option(b.label, b.id)));
+  }
+  if (m.building) showBuilding();
+}
+
+function segColor(code) { return POOL_COLORS[code] || "#888"; }
+
+function renderStats(s) {
+  const m = s.metrics, h = s.holding, names = s.names;
+  const cmp = s.compare ? ` <span class="s">vs ${s.compare.label} ${fmtPct(s.compare.metrics.total_ret)}</span>` : "";
+  $("#stats").innerHTML = `
+    <div class="stat"><div class="k">区间收益 ${s.range[0]}~${s.range[1]}</div>
+      <div class="v ${cls(m.total_ret)}">${fmtPct(m.total_ret)}</div>${cmp}</div>
+    <div class="stat"><div class="k">年化</div><div class="v ${cls(m.ann)}">${fmtPct(m.ann)}</div></div>
+    <div class="stat"><div class="k">最大回撤</div><div class="v down">${m.max_dd.toFixed(2)}%</div></div>
+    <div class="stat"><div class="k">夏普</div><div class="v">${m.sharpe.toFixed(2)}</div></div>
+    <div class="stat"><div class="k">区间换手</div><div class="v">${s.trades.filter(t=>t[4]!=="建仓").length} 次</div></div>
+    <div class="stat"><div class="k">当前持仓(模型)</div>
+      <div class="v"><span class="legend-dot" style="background:${segColor(h.code)}"></span>${names[h.code]} <span class="s">${h.code}</span></div>
+      <div class="s">${h.since} 起 ${h.days} 个交易日 · <span class="${cls(h.pnl)}">${fmtPct(h.pnl)}</span></div></div>`;
+}
+
+function renderChart(s) {
+  const daily = s.daily, n = daily.length;
+  const base = daily[0][1];
+  const dates = daily.map(r => r[0]);
+  const norm = daily.map(r => +(r[1] / base).toFixed(4));
+  const navIdx = {}; daily.forEach((r, i) => navIdx[r[0]] = i);
+
+  /* 回撤序列 */
+  let peak = -1e9;
+  const dd = norm.map(v => { peak = Math.max(peak, v); return +((v / peak - 1) * 100).toFixed(2); });
+
+  /* 持仓分段 -> markArea */
+  const areas = [];
+  let segStart = 0;
+  for (let i = 1; i <= n; i++) {
+    if (i === n || daily[i][2] !== daily[segStart][2]) {
+      const code = daily[segStart][2];
+      areas.push([{ xAxis: dates[segStart], itemStyle: { color: segColor(code) + "14" } },
+                  { xAxis: dates[i - 1] }]);
+      segStart = i;
+    }
+  }
+
+  /* 换仓点 */
+  const dots = s.trades.filter(t => navIdx[t[0]] != null).map(t => ({
+    coord: [t[0], +(daily[navIdx[t[0]]][1] / base).toFixed(4)],
+    itemStyle: { color: segColor(t[2]), borderColor: "#fff", borderWidth: 1 },
+    trade: t
+  }));
+
+  /* 对比序列(归一到各自区间首日) */
+  const series = [{
+    name: s.label, type: "line", data: norm, showSymbol: false,
+    lineStyle: { width: 2, color: "#4f8cff" }, itemStyle: { color: "#4f8cff" },
+    markArea: { silent: true, data: areas }, z: 3
+  }, {
+    name: "换仓点", type: "scatter", data: dots, symbolSize: 9, z: 5,
+    label: { show: false }
+  }, {
+    name: "回撤", type: "line", data: dd, xAxisIndex: 1, yAxisIndex: 1,
+    showSymbol: false, lineStyle: { width: 1, color: "#e54545" },
+    areaStyle: { color: "#e5454533" }, itemStyle: { color: "#e54545" }
+  }];
+  if (s.compare) {
+    const cb = s.compare.daily, cbase = cb[0][1];
+    const cmap = {}; cb.forEach(r => cmap[r[0]] = r[1] / cbase);
+    series.splice(1, 0, {
+      name: s.compare.label, type: "line", showSymbol: false,
+      data: dates.map(d => cmap[d] != null ? +cmap[d].toFixed(4) : null),
+      lineStyle: { width: 1.5, color: "#f1c40f", type: "dashed" }, itemStyle: { color: "#f1c40f" },
+      connectNulls: true, z: 2
+    });
+  }
+
+  const opt = {
+    backgroundColor: "transparent",
+    animation: false,
+    grid: [
+      { left: 60, right: 16, top: 30, height: "58%" },
+      { left: 60, right: 16, top: "72%", height: "18%" }
+    ],
+    axisPointer: { link: [{ xAxisIndex: "all" }] },
+    legend: { top: 4, textStyle: { color: "#8a94a8" },
+              data: series.filter(x => ["line"].includes(x.type) && x.name !== "回撤").map(x => x.name) },
+    tooltip: {
+      trigger: "axis", backgroundColor: "#1e2840", borderColor: "#2a3550",
+      textStyle: { color: "#d5dbe7", fontSize: 12 },
+      formatter: ps => {
+        const i = navIdx[ps[0].axisValue];
+        if (i == null) return "";
+        const code = daily[i][2];
+        let html = `<b>${dates[i]}</b> 持仓 ${s.names[code] || code}<br>`;
+        ps.forEach(p => {
+          if (p.seriesName === "换仓点" || p.seriesName === "回撤") return;
+          if (p.value == null) return;
+          const ret = (p.value - 1) * 100;
+          html += `${p.marker}${p.seriesName}: 净值 ${p.value.toFixed(3)} (${ret >= 0 ? "+" : ""}${ret.toFixed(1)}%)<br>`;
+        });
+        html += `<span style="color:#e54545">回撤 ${dd[i].toFixed(1)}%</span>`;
+        return html;
+      }
+    },
+    xAxis: [
+      { type: "category", data: dates, axisLine: { lineStyle: { color: "#2a3550" } },
+        axisLabel: { color: "#8a94a8" } },
+      { type: "category", data: dates, gridIndex: 1, show: false }
+    ],
+    yAxis: [
+      { type: state.log ? "log" : "value", scale: true, name: "净值(归一)",
+        nameTextStyle: { color: "#8a94a8" }, splitLine: { lineStyle: { color: "#1c2438" } },
+        axisLabel: { color: "#8a94a8" } },
+      { type: "value", gridIndex: 1, max: 0, name: "回撤%",
+        nameTextStyle: { color: "#8a94a8" }, splitLine: { show: false },
+        axisLabel: { color: "#8a94a8", formatter: "{value}" } }
+    ],
+    dataZoom: [{ type: "inside", xAxisIndex: [0, 1] }],
+    series
+  };
+  if (!chart) chart = echarts.init($("#chartDiv"));
+  chart.setOption(opt, true);
+}
+
+function renderTables(s) {
+  $("#tradeCount").textContent = `区间内 ${s.trades.length} 条`;
+  const tb = document.querySelector("#tblTrades tbody");
+  tb.innerHTML = s.trades.slice().reverse().map(t => {
+    const [d, frm, to, nav, kind, fname, tname] = t;
+    return `<tr><td>${d}</td><td><span class="badge b-${kind}">${kind}</span></td>
+      <td>${frm ? `<span class="legend-dot" style="background:${segColor(frm)}"></span>${fname}` : "—"}</td>
+      <td><span class="legend-dot" style="background:${segColor(to)}"></span>${tname}</td>
+      <td>${nav.toFixed(3)}</td></tr>`;
+  }).join("") || `<tr><td colspan="5" style="text-align:center;color:var(--dim)">区间内无换仓</td></tr>`;
+
+  const yb = document.querySelector("#tblYearly tbody");
+  const cmpYears = s.compare && s.compare.yearly ? Object.fromEntries(s.compare.yearly) : null;
+  $("#yh1").textContent = s.label.split(" ")[0];
+  $("#yh2").style.display = cmpYears ? "" : "none";
+  yb.innerHTML = s.yearly.map(([y, r]) => {
+    const c = cmpYears && cmpYears[y] != null ?
+      `<td class="${cls(cmpYears[y])}">${fmtPct(cmpYears[y])}</td>` :
+      (cmpYears ? "<td>—</td>" : "");
+    return `<tr><td>${y}</td><td class="${cls(r)}">${fmtPct(r)}</td>${c}</tr>`;
+  }).join("");
+}
+
+async function loadSeries() {
+  $("#err").style.display = "none";
+  try {
+    const p = new URLSearchParams({ version: state.version });
+    if (state.compare) p.set("compare", state.compare);
+    if (state.start) p.set("start", state.start);
+    if (state.end) p.set("end", state.end);
+    const s = await api("/api/series?" + p);
+    state.series = s;
+    renderStats(s); renderChart(s); renderTables(s);
+  } catch (e) {
+    if (e.building) return;
+    $("#err").textContent = "加载失败: " + e.message;
+    $("#err").style.display = "block";
+  }
+}
+
+$("#selVersion").addEventListener("change", e => { state.version = e.target.value; loadSeries(); });
+$("#selCompare").addEventListener("change", e => { state.compare = e.target.value; loadSeries(); });
+$("#chkLog").addEventListener("change", e => { state.log = e.target.checked;
+  if (state.series) renderChart(state.series); });
+document.querySelectorAll("#quickBtns button").forEach(b =>
+  b.addEventListener("click", () => applyQuick(b.dataset.q)));
+$("#inpStart").addEventListener("change", e => {
+  state.start = e.target.value || null; state.quick = "";
+  document.querySelectorAll("#quickBtns button").forEach(b => b.classList.remove("active"));
+  loadSeries(); });
+$("#inpEnd").addEventListener("change", e => {
+  state.end = e.target.value || null; state.quick = "";
+  document.querySelectorAll("#quickBtns button").forEach(b => b.classList.remove("active"));
+  loadSeries(); });
+$("#btnRefresh").addEventListener("click", async () => {
+  await api("/api/refresh", { method: "POST" }); showBuilding();
+});
+window.addEventListener("resize", () => chart && chart.resize());
+
+(async () => { try { await loadMeta(); applyQuick("all"); } catch (e) {
+  if (!e.building) { $("#err").textContent = "初始化失败: " + e.message;
+    $("#err").style.display = "block"; } } })();
+</script>
+</body>
+</html>

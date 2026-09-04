@@ -15,3 +15,8 @@ signals/crash_lock.json
 signals/watchdog.log
 signals/drift.log
 v10/data_extra/
+
+# 看板缓存(可由 web_build.py 重建, 每日 cron 刷新)
+signals/web_cache.json
+signals/web_build.lock
+signals/web_build.log
