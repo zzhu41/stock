@@ -41,7 +41,8 @@ def backtest(histories, calendar, buffer=0.02, overheat=0.40, bull_vote=False,
              lead_exit=False, zscore_crash=False, zscore_accel=False,
              bull_hyst=0.0, bull_confirm=1, wls_adaptive=False, resid_penalty=False,
              crash_dyn_unlock=False, crash_tp=0.0,
-             trend_buf_on=False, pool_buffer=None, slope_days_buf=0):
+             trend_buf_on=False, pool_buffer=None, slope_days_buf=0,
+             premium_guard=0.0, premium_data=None):
     """v9.1 默认: v9 + 分池缓冲(pool_buffer=None 时引擎内取 strategy.POOL_BUFFER)。"""
     """v9 默认: v8.1 + 深跌恐慌抄底(crash_mom5=-8%%, 低于年线20%%, 锁仓5天)。"""
     strategy.BUFFER = buffer
@@ -163,6 +164,18 @@ def backtest(histories, calendar, buffer=0.02, overheat=0.40, bull_vote=False,
             circuit_until = i + circuit_days   # 触发熔断
         table = strategy.rank(sig_histories, on_date=d)
         target, _ = strategy.decide(table, holding, holding_days)
+        # v10 溢价禁追(默认关): 切换目标为高溢价QDII(>premium_guard)时顺延下一名,
+        # 直至目标合规或回到持仓; 不强制卖出已有持仓(只挡买入侧)
+        if premium_guard > 0 and premium_data and target != holding:
+            banned = set()
+            while target != holding and target in premium_data \
+                    and premium_data[target].get(d, 0.0) > premium_guard:
+                banned.add(target)
+                t2 = [x for x in table if x[0] not in banned]
+                if not t2:
+                    target = holding
+                    break
+                target, _ = strategy.decide(t2, holding, holding_days)
         if i < circuit_until:
             target = CASH                       # 熔断冷却期强制空仓
         info = {c: ind for c, ind in table}
