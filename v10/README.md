@@ -227,3 +227,7 @@ python3.8 run_screen.py round7 baseline,fz20_m4,fz25_m4,fz20_d10,fabs35_m4,fr3_m
 python3.8 run_screen.py round7val baseline,fz20_m4,fz25_m4,fboth_m4,fz20_d10,fexit_z2 6
 python3.8 lab.py baseline,fz15_m4,...,fz25_m4_d15 2014-01-01   # 平台扫描(round7plat14/24)
 ```
+
+**2026-09-06 后记：fz25_m4 已按用户决定部署为实盘影子版本 v9.1-0906**（shadow_0906.py，随每日 14:50 信号并行计算与钉钉推送，
+虚拟记账不下单；QVIX 严格当日口径——当日数据缺失即报错并停用恐慌判定，绝不退回旧数据；watchdog 增设 QVIX 新鲜度告警）。
+前向验证协议不变：攒 2-3 次真实恐慌触发、复现 3/4 胜率画像后再议转正为 v10。

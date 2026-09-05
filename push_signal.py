@@ -72,10 +72,16 @@ def build_markdown(text):
           "动量前三: " + " / ".join(rank)]
     if prem:
         md += ["", "QDII " + prem.strip()]
+    # 影子 v9.1-0906(QVIX恐慌加宽抄底, 虚拟跟踪): QVIX状态行 + 影子持仓行 + 影子失败告警行
+    shadow = [l.strip() for l in lines
+              if l.strip().startswith("QVIX") or "影子持仓" in l or "计算失败" in l]
+    if shadow:
+        md += ["", "---", "**影子 v9.1-0906**(虚拟跟踪不下单)"]
+        md += ["- %s" % s for s in shadow]
     md += ["",
            "---",
            "⏰ 尾盘 14:30-14:50 限价贴价执行; 操作后回报 代码/价格/金额 记账",
-           "_信号 %s · v9.1_" % date]
+           "_信号 %s · v9.1 (+0906影子)_" % date]
     return "\n".join(md), date
 
 

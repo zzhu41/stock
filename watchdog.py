@@ -58,6 +58,7 @@ def main():
         if not (os.path.exists(sig) and
                 time.strftime("%Y-%m-%d", time.localtime(os.path.getmtime(sig))) == today):
             alerts.append("交易日 %s 信号文件缺失或非今日生成(cron 异常?)" % today)
+        _qvix_fresh(alerts, today)
     else:
         try:
             em = em_last_klines("510300", 1)
@@ -73,6 +74,22 @@ def main():
             return
     _dual_source(alerts)
     _finish(alerts)
+
+
+def _qvix_fresh(alerts, today):
+    """4: QVIX 当日新鲜度(影子 v9.1-0906 依赖): 交易日 data/qvix50.csv 须含今日行。
+    严格当日口径——缺当日数据时影子已自动停用恐慌判定, 这里补钉钉告警提醒查数据源。"""
+    import csv
+    path = os.path.join(BASE, "data", "qvix50.csv")
+    last = ""
+    if os.path.exists(path):
+        with open(path, newline="", encoding="utf-8") as f:
+            for r in csv.reader(f):
+                if r:
+                    last = r[0]
+    if last != today:
+        alerts.append("QVIX 缓存缺今日行(最新 %s) —— 影子v9.1-0906恐慌判定已停用, 查 1.optbbs.com"
+                      % (last or "无文件"))
 
 
 def _dual_source(alerts):

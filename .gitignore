@@ -12,6 +12,7 @@ __pycache__/
 *.pyc
 signals/cron.log
 signals/crash_lock.json
+signals/shadow_0906.json
 signals/watchdog.log
 signals/drift.log
 v10/data_extra/

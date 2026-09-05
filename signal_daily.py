@@ -107,6 +107,11 @@ def main():
         lines += premium.signal_block()
     except Exception:
         pass
+    try:                                # v9.1-0906 影子版本(QVIX恐慌加宽抄底, 虚拟跟踪不下单)
+        import shadow_0906
+        lines += shadow_0906.block(table, histories, live_prices)
+    except Exception as e:              # 及时报错进信号卡(钉钉可见), 不阻断主信号
+        lines += ["-" * 56, "⚠️ 影子 v9.1-0906 计算失败: %r" % e]
     lines.append("操作后请记账: python3.8 record.py buy|sell <代码> <价格> <金额元>")
 
     text = "\n".join(lines)
