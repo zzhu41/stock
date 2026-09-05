@@ -14,6 +14,7 @@
   合一簇:   enter_slope/exit_slope(进出场合一于WLS斜率符号)
   其他:     gold_exempt(黄金豁免熊门) / wls2030(双窗集成)
 """
+import bisect
 import csv
 import json
 import os
@@ -49,6 +50,7 @@ TRACE = []                                  # trace 开关时的逐日状态记�
 
 H = None                                    # 快照行情
 CAL = None                                  # 交易日历(510300)
+IDX = None                                  # {code: (dates, opens, closes)} 第六轮 rank 钩子索引
 
 
 def _cfg(k, d=None):
@@ -73,10 +75,13 @@ def load_histories():
 
 
 def init_data():
-    global H, CAL
+    global H, CAL, IDX
     if H is None:
         H = load_histories()
         CAL = [r[0] for r in H["510300"]]
+        IDX = {c: ([r[0] for r in rows], [r[1] for r in rows], [r[2] for r in rows])
+               for c, rows in H.items()}
+        _load_fear()
 
 
 # ---------------------------------------------------------------- WLS 斜率(wls2030/r2full 用)
@@ -127,6 +132,223 @@ def _cifang_score(closes, n=25):
     return (math.exp(sl * 250) - 1.0) * r2
 
 
+# ---------------------------------------------------------------- 第六轮: 新信息维度(2026-09-05)
+# 空白点: open 列(隔夜/日内分解, 全库从未用过)、相对300强弱排名、USDCNY剥离黄金信号。
+# 机制A(信号序列构造器): 走引擎原生 signal_histories(v8 QQQ混合同一通道) —— 排名/门槛/离场/抄底
+#   全部读合成序列, 收益仍按真实收盘计。日收益分解 c/cp = on*id, on=o/cp(隔夜), id=c/o(日内);
+#   合成因子 = on^(2w)*id^(2-2w): w=1 纯隔夜, w=0 纯日内, w=0.5 恒等(保真检查)。
+#   510300 永不合成(保护牛熊体制层不受混杂)。
+# 机制B(rank 层重打分): 只换 score 重排, 门槛/离场/缓冲仍用真实价 —— 外科式排名假设。
+_SIG_CACHE = {}
+_SCOPES = {
+    "all10": [c for c in UNIVERSE if c not in (CASH, "510300")
+              and c not in EXTRA_UNIVERSE],
+    "st6":   [c for c in strategy.STOCK_POOL if c != "510300"],
+    "qd2":   list(strategy.GLOBAL_POOL),
+    "gd1":   [GOLD],
+}
+
+
+def _build_ov(w, scope_key):
+    """隔夜/日内加权合成序列: 保留 (date, open, close, volume) 四列格式。
+    w=0.5 直接透传原行(位级恒等, 供 ovchk 保真)。"""
+    out = {c: rows for c, rows in H.items()}
+    if w == 0.5:
+        return dict(out)
+    for code in _SCOPES[scope_key]:
+        rows = H[code]
+        syn = [rows[0]]
+        p = rows[0][2]
+        for k in range(1, len(rows)):
+            d, o, c, v = rows[k]
+            cp = rows[k - 1][2]
+            if o > 0 and cp > 0:
+                on, iday = o / cp, c / o
+            else:
+                on = iday = (c / cp) ** 0.5
+            p *= (on ** (2.0 * w)) * (iday ** (2.0 - 2.0 * w))
+            syn.append((d, p, p, v))
+        out[code] = syn
+    return out
+
+
+def _build_gold_usd():
+    """518880 信号序列 = 收盘/USDCNY(剥离汇率, 逼近美元金价); 覆盖前(2015-03前)用首日汇率定基。"""
+    fx_path = os.path.join(DATA_DIR, "whUSDCNY.csv")
+    with open(fx_path, newline="", encoding="utf-8") as f:
+        fx = [(r[0], float(r[1])) for r in csv.reader(f) if r]
+    fx_dates = [d for d, _ in fx]
+    fx_vals = [v for _, v in fx]
+    out = dict(H)
+    syn = []
+    for d, o, c, v in H[GOLD]:
+        j = bisect.bisect_right(fx_dates, d) - 1
+        r = fx_vals[j] if j >= 0 else fx_vals[0]
+        syn.append((d, o / r, c / r, v))
+    out[GOLD] = syn
+    return out
+
+
+def build_sig(name):
+    """sig_build 分发+缓存: 'ov:<w>:<scope>' 或 'gold_usd'。"""
+    if name in _SIG_CACHE:
+        return _SIG_CACHE[name]
+    if name.startswith("ov:"):
+        _, w, scope = name.split(":")
+        sig = _build_ov(float(w), scope)
+    elif name == "gold_usd":
+        sig = _build_gold_usd()
+    else:
+        raise KeyError(name)
+    _SIG_CACHE[name] = sig
+    return sig
+
+
+def _wls_ext(seg):
+    """复刻 strategy._wls 公式: 返回 (年化斜率, 残差相对离散 res_std/wmy)。"""
+    n = len(seg)
+    xs = list(range(n))
+    wts = [i + 1 for i in xs]
+    wsum = sum(wts)
+    wmx = sum(wts[i] * xs[i] for i in xs) / wsum
+    wmy = sum(wts[i] * seg[i] for i in xs) / wsum
+    wsxy = sum(wts[i] * (xs[i] - wmx) * (seg[i] - wmy) for i in xs)
+    wsxx = sum(wts[i] * (xs[i] - wmx) ** 2 for i in xs)
+    sl = (wsxy / wsxx) / wmy if wsxx > 0 and wmy > 0 else 0.0
+    fitted = [wmy + (wsxy / wsxx) * (xs[i] - wmx) if wsxx > 0 else wmy for i in xs]
+    resid = [seg[i] - fitted[i] for i in xs]
+    res_std = (sum(r ** 2 for r in resid) / max(n - 2, 1)) ** 0.5
+    return sl * 250, (res_std / wmy if wmy > 0 else 0.0)
+
+
+def _std(vals):
+    m = sum(vals) / len(vals)
+    return (sum((x - m) ** 2 for x in vals) / len(vals)) ** 0.5
+
+
+_BMAP = None                                # 510300 收盘 by date(rel300 用)
+
+
+def _rescore(table, d, mode):
+    """rank 层重打分(只动 score, 不动门槛/离场指标), 调用方负责重排。"""
+    global _BMAP
+    if _BMAP is None:
+        bd, _, bc = IDX["510300"]
+        _BMAP = dict(zip(bd, bc))
+    for code, ind in table:
+        if code not in IDX:
+            continue
+        dates, opens, closes = IDX[code]
+        i = bisect.bisect_right(dates, d)
+        if mode == "rel300":
+            # 相对强弱: score = WLS25(价格/沪深300)/vol20(比值日收益) —— 信息比率式排名
+            if code == "510300":
+                ind["score"] = 0.0
+                continue
+            if i < 25:
+                continue
+            try:
+                ratio = [closes[k] / _BMAP[dates[k]] for k in range(i - 25, i)]
+            except KeyError:
+                continue
+            slope, _ = _wls_ext(ratio)
+            rets = [ratio[k] / ratio[k - 1] - 1.0 for k in range(5, 25)]
+            vol = _std(rets)
+            ind["score"] = slope / vol if vol > 0 else 0.0
+        elif mode == "ovvol":
+            # 分母改隔夜+日内分量方差和: sqrt(var(on)+var(id)), 捕捉跳空风险(close-close vol 低估)
+            if i < 21:
+                continue
+            o_t = opens[i - 21:i]
+            c_t = closes[i - 21:i]
+            ons = [o_t[k] / c_t[k - 1] - 1.0 for k in range(1, 21)]
+            ids = [c_t[k] / o_t[k] - 1.0 for k in range(1, 21)]
+            vol_oi = (_std(ons) ** 2 + _std(ids) ** 2) ** 0.5
+            if vol_oi > 0:
+                ind["score"] = ind["score"] * ind["vol"] / vol_oi   # score*vol=原年化斜率
+        elif mode == "residvol":
+            # 分母改回归残差离散(纯趋势平滑度; 与已证伪的t统计量不同, 保留斜率量纲)
+            if i < 25:
+                continue
+            slope, resid_rel = _wls_ext(closes[i - 25:i])
+            if resid_rel > 0:
+                ind["score"] = slope / resid_rel
+
+
+# ---------------------------------------------------------------- 第七轮: 恐慌情绪层(2026-09-05)
+# 外部新数据: 50ETF期权QVIX(2015-02起) + 沪深融资余额(2010-03起), ext_fear.py 拉取。
+# 无前视: QVIX z 用截至前一日的250日滚动窗(当日QVIX值14:50盘中可见, 同日可用);
+#         两融 T+1 早晨发布 → 取日期严格 < d 的最后一根。
+FEAR = {"qd": [], "qz": [], "qv": [], "rd": [], "r5": []}
+
+
+def _load_fear():
+    qp = os.path.join(EXTRA_DIR, "qvix50.csv")
+    rp = os.path.join(EXTRA_DIR, "rzrq.csv")
+    if os.path.exists(qp):
+        with open(qp, newline="", encoding="utf-8") as f:
+            q = [(r[0], float(r[4])) for r in csv.reader(f) if r]
+        for i, (d, v) in enumerate(q):
+            if i < 120:
+                continue
+            win = [x for _, x in q[max(0, i - 250):i]]   # 严格截至前一日
+            m = sum(win) / len(win)
+            s = (sum((x - m) ** 2 for x in win) / len(win)) ** 0.5
+            if s > 0:
+                FEAR["qd"].append(d)
+                FEAR["qz"].append((v - m) / s)
+                FEAR["qv"].append(v)
+    if os.path.exists(rp):
+        with open(rp, newline="", encoding="utf-8") as f:
+            r = [(x[0], float(x[1])) for x in csv.reader(f) if x]
+        for i in range(5, len(r)):
+            FEAR["rd"].append(r[i][0])
+            FEAR["r5"].append(r[i][1] / r[i - 5][1] - 1.0)
+
+
+def _fear_active(d):
+    """按 CFG 恐慌源判定 d 日是否恐慌活跃: fear_qz(QVIX z阈) / fear_qabs(QVIX绝对阈) /
+    fear_rz(两融5日变化率阈, 负数)。任一配置源命中即活跃; 无数据覆盖=不活跃。
+    平台检查参数: fear_lag=1 用前一交易日QVIX(实盘更保守口径); fear_zwin 换z滚动窗(默认250)。"""
+    qz_thr, qabs_thr, rz_thr = _cfg("fear_qz"), _cfg("fear_qabs"), _cfg("fear_rz")
+    lag = _cfg("fear_lag", 0)
+    zwin = _cfg("fear_zwin", 250)
+    if (qz_thr or qabs_thr) and FEAR["qd"]:
+        i = bisect.bisect_right(FEAR["qd"], d) - 1
+        if i >= 0 and (lag == 0 and FEAR["qd"][i] == d or lag > 0):
+            if lag > 0:                                  # 前一交易日口径: 严格 < d
+                if FEAR["qd"][i] == d:
+                    i -= 1
+                if i < 0:
+                    return _rz_hit(d, rz_thr)
+            if qz_thr:
+                z = FEAR["qz"][i] if zwin == 250 else _qz_at(i, zwin)
+                if z is not None and z >= qz_thr:
+                    return True
+            if qabs_thr and FEAR["qv"][i] >= qabs_thr:
+                return True
+    return _rz_hit(d, rz_thr)
+
+
+def _rz_hit(d, rz_thr):
+    if rz_thr and FEAR["rd"]:
+        j = bisect.bisect_left(FEAR["rd"], d) - 1        # 严格 < d(T+1发布)
+        if j >= 0 and FEAR["r5"][j] <= rz_thr:
+            return True
+    return False
+
+
+def _qz_at(i, win):
+    """FEAR['qv'][i] 相对其前 win 日(严格不含当日)的 z; 样本<120 返回 None。"""
+    lo = max(0, i - win)
+    seg = FEAR["qv"][lo:i]
+    if len(seg) < 120:
+        return None
+    m = sum(seg) / len(seg)
+    s = (sum((x - m) ** 2 for x in seg) / len(seg)) ** 0.5
+    return (FEAR["qv"][i] - m) / s if s > 0 else None
+
+
 # ---------------------------------------------------------------- indicators 包装
 _orig_indicators = strategy.indicators
 
@@ -144,6 +366,10 @@ def indicators_v10(closes, volumes=None):
     if out is not None and _cfg("score_cifang"):
         # v10(次方量化原式): 对数价 WLS(权重1→2) × R², 不除 vol
         out["score"] = _cifang_score(closes)
+    if out is not None and _cfg("wls_win"):
+        # 第六轮联合网格: WLS窗口替换(同 v9_robustness 补丁语义, 只动score)
+        s = _wls_slope_ann(closes[-_cfg("wls_win"):])
+        out["score"] = s / out["vol"] if out["vol"] > 0 else 0.0
     return out
 
 
@@ -158,7 +384,12 @@ def rank_v10(histories, on_date=None, live_prices=None):
         if STATE["last_date"] is not None and on_date < STATE["last_date"]:
             STATE["pending"], STATE["count"] = None, 0   # 新回测开始, 重置确认状态
         STATE["last_date"] = on_date
-    return _orig_rank(histories, on_date=on_date, live_prices=live_prices)
+    table = _orig_rank(histories, on_date=on_date, live_prices=live_prices)
+    mode = _cfg("score_mode")
+    if mode and on_date is not None:
+        _rescore(table, on_date, mode)
+        table.sort(key=lambda t: t[1]["score"], reverse=True)
+    return table
 
 
 strategy.rank = rank_v10
@@ -230,13 +461,17 @@ def _enter_ok_v10(ind, code=None, bull=True):
 
 
 # ---------------------------------------------------------------- _exit_hit 副本 + 钩子
-def _exit_hit_v10(ind):
-    """逐行复刻 strategy._exit_hit; 钩子: exit_slope(score转负替代mom20转负)。"""
+def _exit_hit_v10(ind, code=None):
+    """逐行复刻 strategy._exit_hit; 钩子: exit_slope(score转负替代mom20转负);
+    fear_exit(第七轮): A股持仓且恐慌活跃时, 离场收紧为 MOM5<=0(过热快离场的恐慌镜像)。"""
     if _cfg("exit_slope"):
         if ind["score"] <= 0:
             return "WLS score 转负"
     elif ind["mom20"] <= strategy.EXIT_MOM_FLOOR:
         return "MOM20 低于阈值 %.1f%%" % (strategy.EXIT_MOM_FLOOR * 100) if strategy.EXIT_MOM_FLOOR > 0 else "MOM20 转负"
+    if _cfg("fear_exit") and code in strategy.STOCK_POOL and ind["mom5"] <= 0 \
+            and STATE.get("last_date") and _fear_active(STATE["last_date"]):
+        return "恐慌收紧离场(QVIX高位且MOM5转负)"
     if strategy.PANIC_DROP > 0 and ind["ret1"] <= -strategy._panic_thr(ind):
         return "单日急跌 %.1f%% 紧急离场" % (ind["ret1"] * 100)
     if ind["mom20_max"] > strategy.OVERHEAT and ind["mom5"] <= 0:
@@ -337,7 +572,7 @@ def _decide_v10_impl(table, holding, holding_days=99):
                 and holding in (set(strategy.STOCK_POOL) | _STX) and holding not in (_DEF | _BEX):
             # 制度性离场(A股池及stock_extra; defensive/bear_extra 豁免), 优先于滞回缓冲
             return target, "熊市体制确立, A股持仓无条件离场 -> %s" % UNIVERSE[target][0]
-        exit_why = _exit_hit_v10(h)
+        exit_why = _exit_hit_v10(h, holding)
         if exit_why:
             return target, "%s, 离场 -> %s" % (exit_why, UNIVERSE[target][0])
         if strategy.MIN_HOLD and holding_days < strategy.MIN_HOLD and holding != CASH:
@@ -479,9 +714,14 @@ def backtest_v10(histories, calendar, start, end="9999",
             target = holding
         else:
             crash_pool = backtest.STOCK_POOL + backtest.GLOBAL_POOL + [backtest.GOLD]
-            cands = [x for x in table if x[0] in crash_pool
-                     and x[1]["mom5"] <= -0.08 and x[0] != holding
-                     and x[1]["dist_ma250"] < -0.20]
+            # 第七轮钩子: 恐慌活跃日放宽触发口(与基线口 union); CFG 全空时 fear 恒 False = 原样
+            fear = (_cfg("fear_qz") or _cfg("fear_qabs") or _cfg("fear_rz")) and _fear_active(d)
+            f_m5 = _cfg("fear_m5", -0.08)
+            f_dep = _cfg("fear_depth", 0.20)
+            cands = [x for x in table if x[0] in crash_pool and x[0] != holding
+                     and ((x[1]["mom5"] <= -0.08 and x[1]["dist_ma250"] < -0.20)
+                          or (fear and x[1]["mom5"] <= f_m5
+                              and x[1]["dist_ma250"] < -f_dep))]
             if crash_pick == "lowest":
                 cand = min(cands, key=lambda x: x[1]["mom5"]) if cands else None
             else:
@@ -604,9 +844,62 @@ VARIANTS = {
     "gx_jp":          ({"use_copies": True, "global_extra": ["513520"]}, {}),
     "gx_dp":          ({"use_copies": True, "global_extra": ["159985"]}, {}),
     "gx_all3":        ({"use_copies": True, "global_extra": ["513030", "513520", "159985"]}, {}),
+    # ---- 第六轮: 新信息维度 —— open列隔夜/日内分解 + 相对强弱 + FX剥离黄金(2026-09-05) ----
+    # 机制A: signal_histories 合成序列(510300永不合成, 保护体制层)
+    "ovchk":          ({}, {"sig_build": "ov:0.5:all10"}),   # w=0.5恒等透传, 必须==baseline
+    "ov_all":         ({}, {"sig_build": "ov:1.0:all10"}),   # 纯隔夜路径(除300/货币外9标的)
+    "ov75":           ({}, {"sig_build": "ov:0.75:all10"}),  # 隔夜加权75%
+    "ov25":           ({}, {"sig_build": "ov:0.25:all10"}),  # 日内加权75%
+    "id_all":         ({}, {"sig_build": "ov:0.0:all10"}),   # 纯日内路径
+    "ov_st":          ({}, {"sig_build": "ov:1.0:st6"}),     # 仅A股池(除300)纯隔夜
+    "id_st":          ({}, {"sig_build": "ov:0.0:st6"}),     # 仅A股池(除300)纯日内
+    "ov_gd":          ({}, {"sig_build": "ov:1.0:gd1"}),     # 仅黄金纯隔夜(伦敦金时段=隔夜)
+    "ov_qd":          ({}, {"sig_build": "ov:1.0:qd2"}),     # 仅QDII纯隔夜(开盘含隔夜NAV, 剔日内溢价漂移)
+    "gold_usd":       ({}, {"sig_build": "gold_usd"}),       # 黄金信号剥离USDCNY(美元金价口径)
+    # 机制B: rank层重打分(门槛/离场/缓冲仍用真实价)
+    "rel300":         ({"score_mode": "rel300"}, {}),        # 相对沪深300强弱IR排名(残差动量思路)
+    "ovvol":          ({"score_mode": "ovvol"}, {}),         # 分母=sqrt(var隔夜+var日内)(跳空风险入分母)
+    "residvol":       ({"score_mode": "residvol"}, {}),      # 分母=WLS残差相对离散(趋势平滑度)
+    # ---- 第七轮: 恐慌情绪层 —— QVIX期权隐波 + 两融去杠杆(2026-09-05, ext_fear.py) ----
+    # 恐慌活跃时放宽深跌抄底触发口(引擎钩子, 与基线-8%/-20% union)
+    "fz20_m4":        ({"fear_qz": 2.0, "fear_m5": -0.04}, {"engine": True}),
+    "fz25_m4":        ({"fear_qz": 2.5, "fear_m5": -0.04}, {"engine": True}),
+    "fz20_d10":       ({"fear_qz": 2.0, "fear_depth": 0.10}, {"engine": True}),
+    "fabs35_m4":      ({"fear_qabs": 35.0, "fear_m5": -0.04}, {"engine": True}),
+    "fr3_m4":         ({"fear_rz": -0.03, "fear_m5": -0.04}, {"engine": True}),
+    "fr3_d10":        ({"fear_rz": -0.03, "fear_depth": 0.10}, {"engine": True}),
+    "fboth_m4":       ({"fear_qz": 2.0, "fear_rz": -0.03, "fear_m5": -0.04}, {"engine": True}),
+    # 恐慌收紧离场(decide副本): A股持仓+QVIX z>=2 时离场敏感化为MOM5<=0
+    "fexit_z2":       ({"use_copies": True, "fear_exit": True, "fear_qz": 2.0}, {}),
+    # 平台检查(邻域扫描, 孤峰即处决): z阈 × MOM5阈 × z窗 × 滞后 × 深度
+    "fz15_m4":        ({"fear_qz": 1.5, "fear_m5": -0.04}, {"engine": True}),
+    "fz175_m4":       ({"fear_qz": 1.75, "fear_m5": -0.04}, {"engine": True}),
+    "fz225_m4":       ({"fear_qz": 2.25, "fear_m5": -0.04}, {"engine": True}),
+    "fz275_m4":       ({"fear_qz": 2.75, "fear_m5": -0.04}, {"engine": True}),
+    "fz30_m4":        ({"fear_qz": 3.0, "fear_m5": -0.04}, {"engine": True}),
+    "fz25_m3":        ({"fear_qz": 2.5, "fear_m5": -0.03}, {"engine": True}),
+    "fz25_m5":        ({"fear_qz": 2.5, "fear_m5": -0.05}, {"engine": True}),
+    "fz25_m6":        ({"fear_qz": 2.5, "fear_m5": -0.06}, {"engine": True}),
+    "fz25_m4_lag1":   ({"fear_qz": 2.5, "fear_m5": -0.04, "fear_lag": 1}, {"engine": True}),
+    "fz25_m4_w150":   ({"fear_qz": 2.5, "fear_m5": -0.04, "fear_zwin": 150}, {"engine": True}),
+    "fz25_m4_w350":   ({"fear_qz": 2.5, "fear_m5": -0.04, "fear_zwin": 350}, {"engine": True}),
+    "fz25_m4_d15":    ({"fear_qz": 2.5, "fear_m5": -0.04, "fear_depth": 0.15}, {"engine": True}),
 }
 
 STARTS = ("2014-01-01", "2016-01-01", "2018-01-01", "2020-01-01", "2022-01-01", "2024-01-01")
+
+# 第六轮联合网格(用户点名"参数枚举"): WLS窗口 × A股缓冲 × 跨境/黄金缓冲 交互面。
+# 此前只做过单参数敏感性与±20%联合随机扰动, 网格交互从未系统映射。
+# 默认不注册(保持既有 screen 全量口径可复现), STOCK_V10_GRID=1 时生成 45 项;
+# 中心点 grid_w25b20g30 == baseline(锚点自检)。
+if os.environ.get("STOCK_V10_GRID") == "1":
+    for _wn in (22, 24, 25, 26, 28):
+        for _bs in (15, 20, 25):
+            for _gs in (25, 30, 35):
+                _cfgd = {} if _wn == 25 else {"wls_win": _wn}
+                VARIANTS["grid_w%db%dg%d" % (_wn, _bs, _gs)] = (_cfgd, {
+                    "pool_buffer": {"stock": _bs / 1000.0,
+                                    "global": _gs / 1000.0, "gold": _gs / 1000.0}})
 
 
 def run_variant(name, start):
@@ -619,6 +912,9 @@ def run_variant(name, start):
                  ne_fb=False, ne_fb_bull=True, ne_fb_raw=False, ne_fb_cand=None)
     STATE.pop("_keep", None)
     kw = dict(kw)
+    sb = kw.pop("sig_build", None)
+    if sb:
+        kw["signal_histories"] = build_sig(sb)
     if kw.pop("engine", False):
         r = backtest_v10(H, CAL, start=start, **kw)
     else:

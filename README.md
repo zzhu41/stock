@@ -96,7 +96,7 @@ live_utils.py    运维共享: 钉钉告警/原子写/日志
 web_app.py       策略跟踪看板(8081, systemd stock-web): 版本链净值/区间指标/换仓记录, 纯标准库
 web_build.py     看板缓存构建(15:25 cron): v7~v9.1 全量回测 → signals/web_cache.json(约3分钟)
 git_autocommit.sh 每日 23:30 本地 git 快照
-v10/             v10 研究实验室(61 变体全证伪, 见 v10/README.md; 与实盘隔离)
+v10/             v10 研究实验室(七轮154变体: 153灭, 首个6/6候选fz25_m4存档待前向验证, 见 v10/README.md)
 ```
 
 *风险提示：本系统为量化信号工具，不构成投资建议，盈亏自负。*

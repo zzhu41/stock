@@ -1,0 +1,5 @@
+{"ts": "2026-09-05 04:01:06", "batch": "round6.jsonl", "n_variants": 16, "n_jobs": 32, "starts": ["2014-01-01", "2016-01-01"], "winners_any_start": []}
+{"ts": "2026-09-05 04:34:04", "batch": "grid6.jsonl", "n_variants": 46, "n_jobs": 46, "starts": ["2014-01-01"], "winners_any_start": ["grid_w25b20g25", "grid_w26b20g25", "grid_w26b20g30", "grid_w28b20g25"]}
+{"ts": "2026-09-05 05:02:51", "batch": "grid6val.jsonl", "n_variants": 5, "n_jobs": 30, "starts": ["2014-01-01", "2016-01-01", "2018-01-01", "2020-01-01", "2022-01-01", "2024-01-01"], "winners_any_start": ["grid_w25b20g25", "grid_w26b20g25", "grid_w26b20g30", "grid_w28b20g25"]}
+{"ts": "2026-09-05 22:19:53", "batch": "round7.jsonl", "n_variants": 9, "n_jobs": 18, "starts": ["2014-01-01", "2016-01-01"], "winners_any_start": ["fboth_m4", "fexit_z2", "fz20_d10", "fz20_m4", "fz25_m4"]}
+{"ts": "2026-09-05 22:42:00", "batch": "round7val.jsonl", "n_variants": 6, "n_jobs": 36, "starts": ["2014-01-01", "2016-01-01", "2018-01-01", "2020-01-01", "2022-01-01", "2024-01-01"], "winners_any_start": ["fboth_m4", "fexit_z2", "fz20_d10", "fz20_m4", "fz25_m4"]}
