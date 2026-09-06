@@ -39,6 +39,13 @@ EXTRA_UNIVERSE = {
     "513030": ("德国ETF", "sh", "global"),
     "513520": ("日经ETF", "sh", "global"),
     "159985": ("豆粕ETF", "sz", "global"),
+    # 第八轮: 行业ETF池扩容候选(ext_sector.py, 预注册规则: 上市<=2017-09 且 均量>=100万手)
+    "159928": ("消费ETF", "sz", "stock"),
+    "512010": ("医药ETF", "sh", "stock"),
+    "512070": ("非银ETF", "sh", "stock"),
+    "512880": ("证券ETF", "sh", "stock"),
+    "512800": ("银行ETF", "sh", "stock"),
+    "512200": ("房地产ETF", "sh", "stock"),
 }
 for _c, _v in EXTRA_UNIVERSE.items():
     market_data.UNIVERSE.setdefault(_c, _v)
@@ -47,6 +54,8 @@ BASE_CODES = ["159915", "588080", "510300", "510500", "563300", "512400", "51289
 CFG = {}                                    # 变体开关(每 run 重置)
 STATE = {"last_date": None, "holding": None, "pending": None, "count": 0}  # rankconfirm 状态
 TRACE = []                                  # trace 开关时的逐日状态记录
+# 第八轮: 预注册行业ETF集合(ext_sector.py 规则: 上市<=2017-09 且 均量>=100万手, 每行业最老)
+SECTOR6 = ["159928", "512010", "512070", "512880", "512800", "512200"]
 
 H = None                                    # 快照行情
 CAL = None                                  # 交易日历(510300)
@@ -349,6 +358,39 @@ def _qz_at(i, win):
     return (FEAR["qv"][i] - m) / s if s > 0 else None
 
 
+# ---------------------------------------------------------------- 第八轮: 行业宽度体制(2026-09-06)
+def _sector_breadth(info):
+    """行业宽度: 有数据的行业ETF(SECTOR6)中收盘>各自MA250的比例; 可用<3只 -> None(回退单基准)。
+    信息源与单基准300正交: 6只独立行业指数的内部广泛度, 而非大盘权重指数 alone。"""
+    xs = [info[c]["above_ma"] for c in SECTOR6 if c in info]
+    if len(xs) < 3:
+        return None
+    return sum(1 for x in xs if x) / float(len(xs))
+
+
+def _bull_breadth_override(bull, info):
+    """行业宽度对牛熊体制的覆盖钩子(默认全 None=惰性, 逐位不影响基线):
+    br_and: 牛市须 单基准牛市 且 宽度>=阈(双确认防假突破);
+    br_or:  单基准牛市 或 宽度>=阈 即牛(结构牛豁免);
+    br_mid: 纯宽度体制(300仅在宽度不可用时用)。"""
+    thr_and, thr_or, thr_mid = _cfg("br_and"), _cfg("br_or"), _cfg("br_mid")
+    if thr_and is None and thr_or is None and thr_mid is None:
+        return bull
+    br = _sector_breadth(info)
+    if br is None:
+        return bull
+    if thr_mid is not None:
+        return br >= thr_mid
+    if thr_and is not None:
+        return bull and br >= thr_and
+    return bull or br >= thr_or
+
+
+def _bull_v10(info):
+    """v10 体制判定 = strategy._is_bull + 宽度覆盖钩子(默认惰性)。"""
+    return _bull_breadth_override(strategy._is_bull(info), info)
+
+
 # ---------------------------------------------------------------- indicators 包装
 _orig_indicators = strategy.indicators
 
@@ -370,6 +412,13 @@ def indicators_v10(closes, volumes=None):
         # 第六轮联合网格: WLS窗口替换(同 v9_robustness 补丁语义, 只动score)
         s = _wls_slope_ann(closes[-_cfg("wls_win"):])
         out["score"] = s / out["vol"] if out["vol"] > 0 else 0.0
+    if out is not None and _cfg("crash_volu"):
+        # 第八轮: 量能恐慌(抄底并集)用 量比=当日量/前20日均量(14:50盘中量≈收盘量, 同 vol_in_ratio 口径近似)
+        if volumes and len(volumes) == len(closes):
+            avg20 = sum(volumes[-21:-1]) / 20.0
+            out["vol_ratio20"] = volumes[-1] / avg20 if avg20 > 0 else 0.0
+        else:
+            out["vol_ratio20"] = 0.0
     return out
 
 
@@ -497,7 +546,7 @@ def _decide_v10_impl(table, holding, holding_days=99):
     """逐行复刻 strategy.decide; 钩子: ne_score0 / ne_gold_first / ne_buf2 /
     scorebuf / bearbuf / crosspool / rankconfirm。"""
     info = {c: ind for c, ind in table}
-    bull = strategy._is_bull(info)
+    bull = _bull_v10(info)      # 第八轮: 宽度覆盖钩子(默认惰性); 原 strategy._is_bull(info)
     # v10 池子钩子(默认全空=原样):
     #   defensive: 防御角色(牛熊竞赛池均可参赛 + 熊市不制度性离场), 如红利低波防御化
     #   bear_extra: 仅熊市竞赛池(不牛市参赛) + 不制度性离场, 如国债防御层
@@ -718,10 +767,17 @@ def backtest_v10(histories, calendar, start, end="9999",
             fear = (_cfg("fear_qz") or _cfg("fear_qabs") or _cfg("fear_rz")) and _fear_active(d)
             f_m5 = _cfg("fear_m5", -0.08)
             f_dep = _cfg("fear_depth", 0.20)
+            # 第八轮钩子: 量能恐慌并集(默认 None=惰性) —— 深跌不必达标但须放量出清确认
+            cv = _cfg("crash_volu")
+            cv_m5 = _cfg("cv_m5", -0.05)
+            cv_dep = _cfg("cv_dep", 0.15)
             cands = [x for x in table if x[0] in crash_pool and x[0] != holding
                      and ((x[1]["mom5"] <= -0.08 and x[1]["dist_ma250"] < -0.20)
                           or (fear and x[1]["mom5"] <= f_m5
-                              and x[1]["dist_ma250"] < -f_dep))]
+                              and x[1]["dist_ma250"] < -f_dep)
+                          or (cv and x[1].get("vol_ratio20", 0.0) >= cv
+                              and x[1]["mom5"] <= cv_m5
+                              and x[1]["dist_ma250"] < -cv_dep))]
             if crash_pick == "lowest":
                 cand = min(cands, key=lambda x: x[1]["mom5"]) if cands else None
             else:
@@ -750,6 +806,178 @@ def backtest_v10(histories, calendar, start, end="9999",
         daily.append((d, nav, holding))
         if _cfg("trace"):
             TRACE.append((d, holding, pos, ne_fb, ne_fb_bull))
+
+    n = len(daily)
+    rets = [daily[i][1] / daily[i - 1][1] - 1 for i in range(1, n)]
+    mean = sum(rets) / len(rets)
+    std = (sum((r - mean) ** 2 for r in rets) / len(rets)) ** 0.5
+    years = n / backtest.TRADING_DAYS
+    ann = nav ** (1 / years) - 1
+    return {
+        "nav": nav, "ann": ann, "max_dd": max_dd,
+        "sharpe": mean / std * backtest.TRADING_DAYS ** 0.5 if std else 0,
+        "calmar": ann / abs(max_dd) if max_dd else 0,
+        "switches": switches, "sw_per_year": switches / years,
+        "daily": daily, "trades": trades, "crash_buys": crash_buys,
+    }
+
+
+# ---------------------------------------------------------------- 第八轮: 双持仓引擎(组合构造, 2026-09-06)
+def _comp_pool_v10(bull):
+    """复刻 _decide_v10_impl 的竞赛池构造(池钩子同义), 返回 (竞赛池set, _DEF, _BEX, _STX)。"""
+    _DEF = set(_cfg("defensive", ()))
+    _BEX = set(_cfg("bear_extra", ()))
+    _STX = set(_cfg("stock_extra", ()))
+    _GLX = set(_cfg("global_extra", ()))
+    _BASE = set(strategy.STOCK_POOL) | set(strategy.GLOBAL_POOL)
+    if bull or strategy.BEAR_OPEN_STOCK:
+        return set(strategy.STOCK_POOL + strategy.GLOBAL_POOL
+                   + sorted((_DEF | _STX | _GLX) - _BASE)), _DEF, _BEX, _STX
+    return set(strategy.GLOBAL_POOL + [GOLD]
+               + sorted((_DEF | _BEX | _GLX) - set(strategy.GLOBAL_POOL) - {GOLD})), _DEF, _BEX, _STX
+
+
+def _buf_of(code):
+    """挑战者所在池决定缓冲(分池缓冲, 同 _decide_v10_impl; 默认池外=BUFFER)。"""
+    if strategy.POOL_BUFFER:
+        role = UNIVERSE.get(code, ("", "", ""))[2]
+        return strategy.POOL_BUFFER.get("gold" if code == GOLD else role, strategy.BUFFER)
+    return strategy.BUFFER
+
+
+def backtest_top2(histories, calendar, start, end="9999", max_legs=2):
+    """组合构造实验引擎: 竞赛池合格前 max_legs 名等权持仓(第八轮 top2)。
+
+    max_legs=1 直接委托 backtest_v10(已验证副本) —— top1_check 保真锚, 逐位=baseline。
+    规则(v9.1 单持仓语义的自然推广, 预注册):
+      - desired = 竞赛池合格列表(过 _enter_ok_v10 含熊门)前 max_legs 名(score 序);
+      - 每腿独立强制离场: MOM20转负/急跌/过热(同 _exit_hit_v10) + 熊市制度性离场;
+      - 空位自由补入(同基线"空手买第一"); 无空位时挑战者须 MOM20 超最弱腿 分池缓冲 才替换;
+      - 竞赛池无人达标时退回基线防御链(单腿): 牛市备胎黄金(MOM20>0) -> 避险池最强 -> 货币;
+        防御腿与竞赛腿的互相替换同样过缓冲(与基线单持仓语义一致);
+      - 抄底模块逐字继承 backtest_v10(触发即切该单腿满仓锁5日, 含第七轮 fear 钩子);
+      - 费用: 换仓按变更腿重收双边万二(换一条50%腿=全仓万二的一半); 腿间每日等权再平衡不另收费(近似);
+      - 不实现: LEAD_EXIT/波动目标/熔断等默认关闭组件(与 backtest_v10 口径对齐)。
+    """
+    if max_legs == 1:
+        return backtest_v10(histories, calendar, start, end)
+    backtest.backtest(histories, calendar, start="2024-01-02", end="2024-01-04")  # 重置 strategy 全局(同 backtest_v10)
+    strategy._state_bull = None
+    strategy.BULL_HYST_PENDING = None
+    days = [d for d in calendar if start <= d <= end]
+    close_of = {c: {r[0]: r[2] for r in rows} for c, rows in histories.items()}
+
+    nav, peak, max_dd = 1.0, 1.0, 0.0
+    legs = []                                   # 当前持仓(等权)
+    switches = 0.0
+    daily, trades = [], []
+    lock_until = -1
+    crash_buys = []
+    for i, d in enumerate(days):
+        if i > 0 and legs:                      # 当日收益: 昨日腿等权混合
+            r_blend = 0.0
+            for leg in legs:
+                prev, cur = close_of[leg].get(days[i - 1]), close_of[leg].get(d)
+                if prev and cur:
+                    r_blend += cur / prev - 1.0
+            nav *= 1.0 + r_blend / len(legs)
+        table = strategy.rank(histories, on_date=d)
+        info = {c: ind for c, ind in table}
+        bull = _bull_v10(info)
+        comp, _DEF, _BEX, _STX = _comp_pool_v10(bull)
+        safe_pool = set(strategy.GLOBAL_POOL) | {GOLD} \
+            | set(_cfg("fb_extra", ())) | set(_cfg("global_extra", ()))
+        new_legs = list(legs)
+
+        if i < lock_until:
+            pass                                # 抄底锁仓期不操作
+        else:
+            # 抄底模块(逐字继承 backtest_v10 口径, 含第七轮 fear 钩子)
+            crash_pool = backtest.STOCK_POOL + backtest.GLOBAL_POOL + [backtest.GOLD]
+            fear = (_cfg("fear_qz") or _cfg("fear_qabs") or _cfg("fear_rz")) and _fear_active(d)
+            f_m5 = _cfg("fear_m5", -0.08)
+            f_dep = _cfg("fear_depth", 0.20)
+            cands = [x for x in table if x[0] in crash_pool and x[0] not in legs
+                     and ((x[1]["mom5"] <= -0.08 and x[1]["dist_ma250"] < -0.20)
+                          or (fear and x[1]["mom5"] <= f_m5
+                              and x[1]["dist_ma250"] < -f_dep))]
+            cand = cands[0] if cands else None
+            if cand:
+                new_legs = [cand[0]]
+                lock_until = i + 5
+                crash_buys.append((d, cand[0]))
+            else:
+                eligible = [c for c, ind in table if c in comp
+                            and _enter_ok_v10(ind, c, bull)]
+                if eligible:
+                    desired = eligible[:max_legs]
+                    held_def = [L for L in new_legs if L not in comp]
+                    if held_def and len(new_legs) == len(held_def):
+                        # 全防御持仓遇竞赛池复苏: 最强挑战者过缓冲才整体切换(基线单持仓语义)
+                        c0 = desired[0]
+                        w = min(held_def, key=lambda L: info[L]["mom20"] if L in info else -9)
+                        if w in info and info[c0]["mom20"] - info[w]["mom20"] >= _buf_of(c0):
+                            new_legs = list(desired)
+                    else:
+                        # 1) 每腿强制离场(敏感离场 + 熊市制度性离场)
+                        kept = []
+                        for L in new_legs:
+                            if L not in info:
+                                kept.append(L)
+                                continue
+                            if not bull and not strategy.BEAR_OPEN_STOCK \
+                                    and L in (set(strategy.STOCK_POOL) | _STX) and L not in (_DEF | _BEX):
+                                continue
+                            if _exit_hit_v10(info[L], L):
+                                continue
+                            kept.append(L)
+                        new_legs = kept
+                        # 2) 空位自由补入
+                        for c in desired:
+                            if len(new_legs) >= max_legs:
+                                break
+                            if c not in new_legs:
+                                new_legs.append(c)
+                        # 3) 无空位: 挑战者过缓冲替换最弱腿(最弱=当日 mom20 最低)
+                        for c in desired:
+                            if c in new_legs or len(new_legs) < max_legs:
+                                continue
+                            w = min(new_legs, key=lambda L: info[L]["mom20"] if L in info else -9)
+                            if w in info and info[c]["mom20"] - info[w]["mom20"] >= _buf_of(c):
+                                new_legs = [c if L == w else L for L in new_legs]
+                else:
+                    # 防御链(同基线): 牛市备胎黄金 -> 避险池最强 -> 货币
+                    if bull and GOLD in info and info[GOLD]["mom20"] > 0:
+                        def_t = GOLD
+                    else:
+                        cand0 = next((x for x in table if x[0] in safe_pool), None)
+                        def_t = cand0[0] if cand0 else CASH
+                    if not new_legs:
+                        new_legs = [def_t]
+                    elif new_legs != [def_t]:
+                        # 防御目标对每条健康持仓腿也须过缓冲(基线缓冲语义), 通过则换该腿
+                        out, replaced = [], False
+                        for L in new_legs:
+                            if L == def_t or L not in info:
+                                out.append(L) if L == def_t else None
+                                continue
+                            if not replaced and info[def_t]["mom20"] - info[L]["mom20"] >= _buf_of(def_t):
+                                out.append(def_t)
+                                replaced = True
+                            else:
+                                out.append(L)
+                        new_legs = out or [def_t]
+        if new_legs != legs:
+            if legs:                            # 首日建仓不计换手/费用(同基线 i>0 语义)
+                ov = sum(1 for L in new_legs if L in legs)
+                changed_w = 1.0 - ov / float(max(len(legs), len(new_legs)))
+                switches += changed_w
+                nav *= 1.0 - backtest.FEE * 2 * changed_w
+                trades.append((d, "+".join(legs), "+".join(new_legs), nav))
+            legs = new_legs
+        peak = max(peak, nav)
+        max_dd = min(max_dd, nav / peak - 1)
+        daily.append((d, nav, "+".join(legs) if legs else CASH))
 
     n = len(daily)
     rets = [daily[i][1] / daily[i - 1][1] - 1 for i in range(1, n)]
@@ -860,6 +1088,53 @@ VARIANTS = {
     "rel300":         ({"score_mode": "rel300"}, {}),        # 相对沪深300强弱IR排名(残差动量思路)
     "ovvol":          ({"score_mode": "ovvol"}, {}),         # 分母=sqrt(var隔夜+var日内)(跳空风险入分母)
     "residvol":       ({"score_mode": "residvol"}, {}),      # 分母=WLS残差相对离散(趋势平滑度)
+    # ---- 第八轮: 行业ETF扩容(预注册集合) + 行业宽度体制 + 双持仓组合构造(2026-09-06) ----
+    # 预注册假设/处决标准见 v10/README.md 第八轮; 全部默认惰性, 保真锚=top1_check
+    "sec_all":      ({"use_copies": True, "stock_extra": SECTOR6}, {}),
+    "br_and50":     ({"use_copies": True, "br_and": 0.5}, {}),
+    "br_or50":      ({"use_copies": True, "br_or": 0.5}, {}),
+    "br_mid50":     ({"use_copies": True, "br_mid": 0.5}, {}),
+    "top2":         ({"use_copies": True}, {"engine_top2": 2}),
+    "top1_check":   ({"use_copies": True}, {"engine_top2": 1}),
+    # 第八轮补选(机制审稿人第7候选): 量能恐慌抄底并集 —— volume 列全库七轮零使用;
+    # 只许并集(放松)方向, 附着于唯一被多轮验证的阿尔法层(深跌抄底), 预注册见 README 第八轮
+    "cv20_m5d15":   ({"crash_volu": 2.0, "cv_m5": -0.05, "cv_dep": 0.15}, {"engine": True}),
+    "cv20_m4d10":   ({"crash_volu": 2.0, "cv_m5": -0.04, "cv_dep": 0.10}, {"engine": True}),
+    "cv30_m5d15":   ({"crash_volu": 3.0, "cv_m5": -0.05, "cv_dep": 0.15}, {"engine": True}),
+    # 第八轮平台扫描(预注册单轴邻域, 孤峰即处决): 量比轴 1.5/1.75/2.5, m5轴 -6%, 深度轴 20%
+    "cv15_m5d15":   ({"crash_volu": 1.5, "cv_m5": -0.05, "cv_dep": 0.15}, {"engine": True}),
+    "cv175_m5d15":  ({"crash_volu": 1.75, "cv_m5": -0.05, "cv_dep": 0.15}, {"engine": True}),
+    "cv25_m5d15":   ({"crash_volu": 2.5, "cv_m5": -0.05, "cv_dep": 0.15}, {"engine": True}),
+    "cv20_m6d15":   ({"crash_volu": 2.0, "cv_m5": -0.06, "cv_dep": 0.15}, {"engine": True}),
+    "cv20_m5d20":   ({"crash_volu": 2.0, "cv_m5": -0.05, "cv_dep": 0.20}, {"engine": True}),
+    # 第八轮合取假设(预注册): QVIX恐慌定价 ∪ 成交量恐慌成交, 两个独立6/6通道的并集
+    "fz25_cv":      ({"fear_qz": 2.5, "fear_m5": -0.04, "crash_volu": 2.0,
+                      "cv_m5": -0.04, "cv_dep": 0.10}, {"engine": True}),
+    # 并集上下文的平台扫描(预注册, 2014起点): z轴/量比轴/双m5轴/深度轴/QVIX滞后口径
+    "fz20_cv":      ({"fear_qz": 2.0, "fear_m5": -0.04, "crash_volu": 2.0,
+                      "cv_m5": -0.04, "cv_dep": 0.10}, {"engine": True}),
+    "fz30_cv":      ({"fear_qz": 3.0, "fear_m5": -0.04, "crash_volu": 2.0,
+                      "cv_m5": -0.04, "cv_dep": 0.10}, {"engine": True}),
+    "fz25_cv15":    ({"fear_qz": 2.5, "fear_m5": -0.04, "crash_volu": 1.5,
+                      "cv_m5": -0.04, "cv_dep": 0.10}, {"engine": True}),
+    "fz25_cv25":    ({"fear_qz": 2.5, "fear_m5": -0.04, "crash_volu": 2.5,
+                      "cv_m5": -0.04, "cv_dep": 0.10}, {"engine": True}),
+    "fz25_cv30":    ({"fear_qz": 2.5, "fear_m5": -0.04, "crash_volu": 3.0,
+                      "cv_m5": -0.04, "cv_dep": 0.10}, {"engine": True}),
+    "fz25_cv_fm3":  ({"fear_qz": 2.5, "fear_m5": -0.03, "crash_volu": 2.0,
+                      "cv_m5": -0.04, "cv_dep": 0.10}, {"engine": True}),
+    "fz25_cv_fm5":  ({"fear_qz": 2.5, "fear_m5": -0.05, "crash_volu": 2.0,
+                      "cv_m5": -0.04, "cv_dep": 0.10}, {"engine": True}),
+    "fz25_cv_cm5":  ({"fear_qz": 2.5, "fear_m5": -0.04, "crash_volu": 2.0,
+                      "cv_m5": -0.05, "cv_dep": 0.10}, {"engine": True}),
+    "fz25_cv_cm6":  ({"fear_qz": 2.5, "fear_m5": -0.04, "crash_volu": 2.0,
+                      "cv_m5": -0.06, "cv_dep": 0.10}, {"engine": True}),
+    "fz25_cv_d15":  ({"fear_qz": 2.5, "fear_m5": -0.04, "crash_volu": 2.0,
+                      "cv_m5": -0.04, "cv_dep": 0.15}, {"engine": True}),
+    "fz25_cv_d20":  ({"fear_qz": 2.5, "fear_m5": -0.04, "crash_volu": 2.0,
+                      "cv_m5": -0.04, "cv_dep": 0.20}, {"engine": True}),
+    "fz25_cv_lag1": ({"fear_qz": 2.5, "fear_m5": -0.04, "fear_lag": 1, "crash_volu": 2.0,
+                      "cv_m5": -0.04, "cv_dep": 0.10}, {"engine": True}),
     # ---- 第七轮: 恐慌情绪层 —— QVIX期权隐波 + 两融去杠杆(2026-09-05, ext_fear.py) ----
     # 恐慌活跃时放宽深跌抄底触发口(引擎钩子, 与基线-8%/-20% union)
     "fz20_m4":        ({"fear_qz": 2.0, "fear_m5": -0.04}, {"engine": True}),
@@ -915,7 +1190,10 @@ def run_variant(name, start):
     sb = kw.pop("sig_build", None)
     if sb:
         kw["signal_histories"] = build_sig(sb)
-    if kw.pop("engine", False):
+    et2 = kw.pop("engine_top2", None)
+    if et2:
+        r = backtest_top2(H, CAL, start=start, max_legs=et2)
+    elif kw.pop("engine", False):
         r = backtest_v10(H, CAL, start=start, **kw)
     else:
         r = backtest.backtest(H, CAL, start=start, **kw)
