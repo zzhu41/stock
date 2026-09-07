@@ -79,6 +79,21 @@ def build():
               % (vid, res["ann"] * 100, res["max_dd"] * 100, res["sharpe"],
                  res["switches"], time.time() - t1), flush=True)
 
+    # 影子版本曲线(v9.1-0906 / v9.2): v10/lab 钩子引擎, 独立子进程跑(monkey-patch 隔离);
+    # 失败仅跳过影子曲线, 主版本链照常
+    try:
+        import subprocess
+        out = subprocess.check_output(
+            [sys.executable, os.path.join(BASE, "v10", "web_shadows.py")],
+            cwd=BASE, timeout=900)
+        for k, v in json.loads(out.decode("utf-8")).items():
+            versions[k] = v
+            print("%-9s 年化 %+5.1f%% 回撤 %6.1f%% 夏普 %4.2f 换手 %3d (影子)"
+                  % (k, v["metrics"]["ann"], v["metrics"]["max_dd"],
+                     v["metrics"]["sharpe"], v["metrics"]["switches"]), flush=True)
+    except Exception as e:
+        print("影子曲线构建失败(跳过, 不影响主版本链): %r" % e, flush=True)
+
     benchmarks = {}
     for code, label in BENCHMARKS:
         nav, ann, dd = buy_and_hold(histories, calendar, code, start=START)
