@@ -11,3 +11,7 @@
 {"ts": "2026-09-06 04:27:34", "batch": "round8union.jsonl", "n_variants": 4, "n_jobs": 24, "starts": ["2014-01-01", "2016-01-01", "2018-01-01", "2020-01-01", "2022-01-01", "2024-01-01"], "winners_any_start": ["cv20_m4d10", "fz25_cv", "fz25_m4"]}
 {"ts": "2026-09-06 04:41:26", "batch": "round8uplat.jsonl", "n_variants": 14, "n_jobs": 14, "starts": ["2014-01-01"], "winners_any_start": ["fz20_cv", "fz25_cv", "fz25_cv25", "fz25_cv30", "fz25_cv_cm5", "fz25_cv_cm6", "fz25_cv_d15", "fz25_cv_d20", "fz25_cv_fm3", "fz25_cv_fm5", "fz25_cv_lag1", "fz30_cv"]}
 {"ts": "2026-09-06 04:52:26", "batch": "fidelity8final.jsonl", "n_variants": 4, "n_jobs": 8, "starts": ["2014-01-01", "2016-01-01"], "winners_any_start": []}
+{"ts": "2026-09-12 15:47:06", "batch": "fidelity9.jsonl", "n_variants": 5, "n_jobs": 10, "starts": ["2014-01-01", "2016-01-01"], "winners_any_start": ["fz25_cv", "v92_base"]}
+{"ts": "2026-09-12 16:17:38", "batch": "round9.jsonl", "n_variants": 14, "n_jobs": 28, "starts": ["2014-01-01", "2016-01-01"], "winners_any_start": ["fz25_cv", "v92_base", "v92_cs5", "v92_cs8", "v92_cs8_cash5", "v92_ne_score0"]}
+{"ts": "2026-09-12 22:18:11", "batch": "round9b.jsonl", "n_variants": 8, "n_jobs": 16, "starts": ["2014-01-01", "2016-01-01"], "winners_any_start": ["v92_base", "v92_holiday_qd"]}
+{"ts": "2026-09-12 22:28:52", "batch": "round9bval.jsonl", "n_variants": 3, "n_jobs": 18, "starts": ["2014-01-01", "2016-01-01", "2018-01-01", "2020-01-01", "2022-01-01", "2024-01-01"], "winners_any_start": ["v92_base", "v92_holiday_qd"]}

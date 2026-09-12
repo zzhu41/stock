@@ -16,6 +16,7 @@
 """
 import bisect
 import csv
+import datetime
 import json
 import os
 import sys
@@ -721,14 +722,30 @@ strategy.decide = decide_dispatch
 
 # ---------------------------------------------------------------- 引擎副本(仓位类钩子)
 def backtest_v10(histories, calendar, start, end="9999",
-                 ne_pos=1.0, ne_pos_bear_only=False, crash_alloc=1.0, crash_pick="score"):
+                 ne_pos=1.0, ne_pos_bear_only=False, crash_alloc=1.0, crash_pick="score",
+                 crash_stop=0.0, crash_stop_cash_days=0, circuit_dd=0.0, circuit_days=10,
+                 panic_cool=0, rzrq_exit=None, rzrq_cool=5, climax_exit=0.0,
+                 holiday_qd=False):
     """复刻 backtest.backtest 主循环(v9.1 默认口径: 费用双边万二/深跌抄底-8%+低年线20%锁5天/
     无熔断无止损无波动目标)。新增钩子:
       ne_pos: 不空仓兜底态(decide 标记 STATE['ne_fb'])期间仓位降为 ne_pos, 余仓货币ETF;
               抄底锁仓期不参与(crash_alloc 管辖)。ne_pos_bear_only: 仅熊市兜底才降仓。
       crash_alloc: 抄底锁仓期仓位(v9.1 引擎原有参数, 默认1.0 从未测过)。
+      ---- 第九轮: 空仓家族 × v9.2基座(全部默认惰性) ----
+      crash_stop: 锁仓期成本再跌超阈值提前解锁(backtest.py 原参数移植); 解锁后去避险池最强,
+                  crash_stop_cash_days>0 时改为强制纯空仓 N 日(屏蔽抄底)。
+      circuit_dd/circuit_days: 组合净值回撤超阈值熔断, 强制空仓 N 日(backtest.py 原参数移植,
+                  锁仓优先于熔断, 同原版优先级)。
+      panic_cool: 急跌离场(decide reason 含"急跌", 非锁仓期)后纯空仓冷却 N 日(屏蔽一切买入)。
+      ---- 第九轮b: 组合 + 新空格(全部默认惰性) ----
+      rzrq_exit: 两融去杠杆离场 —— 持仓风险资产(非CASH)且非锁仓期, 两融5日变化率<=阈值
+                 (T+1口径, 同第七轮_rz_hit) → 当日强制空仓并冷却 rzrq_cool 日(cash_until 通道);
+      climax_exit: 天量滞涨离场 —— 持仓量比(vol_ratio20)>=阈 且当日收益<=0 → 当日去货币,
+                 次日恢复信号(无冷却, 沿用急跌语义); 锁仓期不触发;
+      holiday_qd: 长假前清 QDII —— 持仓为跨境池且下一交易日距今>4自然日(交易日历先验可知,
+                 无前视) → 当日去货币, 节后按信号自然重进; 锁仓期不触发。
     策略全局参数先经一次极短原始回测调用重置为 v9.1 默认(防抄漏 60 个赋值)。
-    保真校验: 变体 engine_check(ne_pos=1.0) 必须逐位等于 baseline。
+    保真校验: 变体 engine_check(新钩子全默认) 必须逐位等于 baseline。
     """
     backtest.backtest(histories, calendar, start="2024-01-02", end="2024-01-04")
     strategy._state_bull = None
@@ -743,6 +760,9 @@ def backtest_v10(histories, calendar, start, end="9999",
     pos = 1.0
     lock_until = -1
     crash_buys = []
+    cost_price = None          # 第九轮: 锁仓止损成本价(仅 crash_stop>0 时使用)
+    circuit_until = -1         # 第九轮: 熔断冷却截止下标
+    cash_until = -1            # 第九轮: 纯空仓冷却截止(crash_stop_cash / panic_cool)
     for i, d in enumerate(days):
         if i > 0:  # 当日收益按"昨日定下的持仓与仓位"计算
             prev, cur = close_of[holding].get(days[i - 1]), close_of[holding].get(d)
@@ -755,12 +775,52 @@ def backtest_v10(histories, calendar, start, end="9999",
                 else:
                     nav *= cur / prev
             holding_days += 1
+        # 第九轮: 组合回撤熔断触发(peak 为历史最高净值; 已在冷却期内不重复触发)
+        if circuit_dd > 0 and nav / peak - 1 <= -circuit_dd and i > circuit_until:
+            circuit_until = i + circuit_days
         table = strategy.rank(histories, on_date=d)
-        target, _ = strategy.decide(table, holding, holding_days)
+        target, reason = strategy.decide(table, holding, holding_days)
+        # 第九轮 D族: 急跌离场(非锁仓期) -> 纯空仓冷却 N 日
+        if panic_cool > 0 and i >= lock_until and holding and holding != CASH \
+                and target != holding and "急跌" in reason:
+            cash_until = max(cash_until, i + panic_cool)
+        # 第九轮b E族: 两融去杠杆离场(非锁仓期, 风险持仓) -> 强制空仓冷却
+        if rzrq_exit is not None and i >= lock_until and holding and holding != CASH \
+                and _rz_hit(d, rzrq_exit):
+            cash_until = max(cash_until, i + rzrq_cool)
+            target = CASH
+        # 第九轮b F族: 天量滞涨离场(非锁仓期) -> 当日去货币, 无冷却
+        if climax_exit > 0 and i >= lock_until and holding and holding != CASH:
+            _hind = {c: ind for c, ind in table}.get(holding)
+            if _hind and _hind.get("vol_ratio20", 0.0) >= climax_exit \
+                    and _hind["ret1"] <= 0:
+                target = CASH
+        # 第九轮b G族: 长假前清 QDII(下一交易日距今>4自然日, 锁仓期不触发)
+        if holiday_qd and i >= lock_until and holding in strategy.GLOBAL_POOL \
+                and i + 1 < len(days):
+            _gap = (datetime.date(*map(int, days[i + 1].split("-")))
+                    - datetime.date(*map(int, d.split("-")))).days
+            if _gap > 4:
+                target = CASH
         ne_fb, ne_fb_bull = STATE.get("ne_fb", False), STATE.get("ne_fb_bull", True)
+        # 第九轮: 熔断冷却期强制空仓(锁仓块在后, 可覆盖 —— 锁仓优先, 同 backtest.py 原版优先级)
+        if i < circuit_until:
+            target = CASH
         # 恐慌抄底(v9 默认口径): 全池 MOM5<=-8% 且低于年线20% -> 买入锁仓5天
         if i < lock_until:
             target = holding
+            # 第九轮 B族: 锁仓期止损补丁(crash_stop>0): 抄底成本再跌超X%提前解锁
+            if crash_stop > 0 and holding and holding != CASH and cost_price:
+                cur = close_of[holding].get(d)
+                if cur and cur / cost_price - 1.0 <= -crash_stop:
+                    if crash_stop_cash_days > 0:    # 纯空仓版: 解锁后强制空仓 N 日
+                        target = CASH
+                        cash_until = max(cash_until, i + crash_stop_cash_days)
+                    else:                           # 原版口径: 解锁去避险池最强
+                        cand = next((x for x in table if x[0] in strategy.GLOBAL_POOL + [GOLD]
+                                     and x[0] != holding), None)
+                        target = cand[0] if cand else CASH
+                    lock_until = i                  # 提前解锁
         else:
             crash_pool = backtest.STOCK_POOL + backtest.GLOBAL_POOL + [backtest.GOLD]
             # 第七轮钩子: 恐慌活跃日放宽触发口(与基线口 union); CFG 全空时 fear 恒 False = 原样
@@ -782,10 +842,15 @@ def backtest_v10(histories, calendar, start, end="9999",
                 cand = min(cands, key=lambda x: x[1]["mom5"]) if cands else None
             else:
                 cand = cands[0] if cands else None
-            if cand:
+            # 第九轮: 纯空仓冷却期不提交抄底(否则 lock_until 延长超出现金冷却期,
+            # 空仓抑制被静默拉长且 crash_buys 记幽灵事件 —— 审计(e)修复)
+            if cand and i >= cash_until:
                 target = cand[0]
                 lock_until = i + 5
                 crash_buys.append((d, cand[0]))
+        # 第九轮: 纯空仓冷却(crash_stop_cash / panic_cool), 优先级高于抄底(冷却期屏蔽一切买入)
+        if i < cash_until:
+            target = CASH
         if target != holding:
             if i > 0:                # 首日建仓不计换手
                 switches += 1
@@ -793,6 +858,7 @@ def backtest_v10(histories, calendar, start, end="9999",
                 trades.append((d, holding, target, nav))
             holding = target
             holding_days = 0
+            cost_price = close_of[holding].get(d) if holding != CASH else None  # 第九轮
         pos = 1.0
         # v10 钩子: 抄底锁仓期仓位(crash_alloc), 优先于兜底仓位
         if crash_alloc < 1.0 and i < lock_until and holding != CASH:
@@ -1159,7 +1225,62 @@ VARIANTS = {
     "fz25_m4_w150":   ({"fear_qz": 2.5, "fear_m5": -0.04, "fear_zwin": 150}, {"engine": True}),
     "fz25_m4_w350":   ({"fear_qz": 2.5, "fear_m5": -0.04, "fear_zwin": 350}, {"engine": True}),
     "fz25_m4_d15":    ({"fear_qz": 2.5, "fear_m5": -0.04, "fear_depth": 0.15}, {"engine": True}),
+    # ---- 第九轮: 空仓家族 × v9.2基座(fz25_cv) (2026-09-12) ----
+    # 背景: 用户提问"加空仓能否迭代出更高收益v10"。坟场侦察: 兜底换空仓5种死法(v10第1-2轮)、
+    #   离场冷却/绝对止损/trailing止盈/dd_guard/高波半仓/vol目标(v9时代)全部证伪存档;
+    #   真正空白点仅二: ①锁仓止损crash_stop从未在v9.2基座测过(抄底密度15→31, 接飞刀暴露翻倍);
+    #   ②组合回撤熔断circuit_dd全库从未单测。
+    # 预注册假设: H1 砍兜底在v9.2基座仍是砍阿尔法(A族<1.0x); H2 锁仓尾部保险边际价值上升(B族待测);
+    #   H3 熔断空仓按dd_guard同族死因先验<1(C族); H4 空仓类只可能赢卡玛不赢年化。
+    # 预注册处决条款: 六起点终值比任一<1.0 / 单年单事件依赖(±5pp单笔可解释) /
+    #   平台孤峰(邻域翻负或单调断裂) / 2022或2024近端起点被基座支配。
 }
+
+# 第九轮变体注册: 全部叠加在 v9.2 基座(_FZ92 = fz25_cv 的 CFG)之上
+_FZ92 = {"fear_qz": 2.5, "fear_m5": -0.04, "crash_volu": 2.0, "cv_m5": -0.04, "cv_dep": 0.10}
+VARIANTS.update({
+    "v92_base":      (dict(_FZ92), {"engine": True}),   # v9.2基座锚(应逐位=fz25_cv)
+    # A族 坟场交互确认(H1: 砍兜底在v9.2上仍是砍阿尔法)
+    "v92_ne_score0": (dict(_FZ92, use_copies=True, ne_score0=True), {"engine": True}),
+    "v92_ne_half50": (dict(_FZ92, use_copies=True), {"engine": True, "ne_pos": 0.5}),
+    # B族 锁仓尾部保险(H2: 抄底密度翻倍后重测)
+    "v92_cs5":       (dict(_FZ92), {"engine": True, "crash_stop": 0.05}),
+    "v92_cs8":       (dict(_FZ92), {"engine": True, "crash_stop": 0.08}),
+    "v92_cs5_cash5": (dict(_FZ92), {"engine": True, "crash_stop": 0.05, "crash_stop_cash_days": 5}),
+    "v92_cs8_cash5": (dict(_FZ92), {"engine": True, "crash_stop": 0.08, "crash_stop_cash_days": 5}),
+    # C族 组合回撤熔断空仓(H3: 全库从未单测; 10%档与dd_guard实测档对齐, 剂量-反应可读)
+    "v92_ckt10_10":  (dict(_FZ92), {"engine": True, "circuit_dd": 0.10, "circuit_days": 10}),
+    "v92_ckt12_10":  (dict(_FZ92), {"engine": True, "circuit_dd": 0.12, "circuit_days": 10}),
+    "v92_ckt12_20":  (dict(_FZ92), {"engine": True, "circuit_dd": 0.12, "circuit_days": 20}),
+    "v92_ckt16_10":  (dict(_FZ92), {"engine": True, "circuit_dd": 0.16, "circuit_days": 10}),
+    "v92_ckt20_20":  (dict(_FZ92), {"engine": True, "circuit_dd": 0.20, "circuit_days": 20}),
+    # D族 急跌离场后纯空仓冷却 —— 坟场对照评审处决(未跑, 永久封案): exit_cooldown 家族
+    # (v9时代死因"破坏panic次日买回的卖飞保护, 2020年+38%→-5%")的严格劣化换皮:
+    # 目的地纯空仓<避险兜底 + 触发器收窄至急跌-only=浓缩死因 + cash_until切除危机阿尔法入场窗。
+    # 保留注册仅作封案记录, 任何 screen 不得包含。
+    "v92_pc3":       (dict(_FZ92), {"engine": True, "panic_cool": 3}),
+    "v92_pc5":       (dict(_FZ92), {"engine": True, "panic_cool": 5}),
+    # ---- 第九轮b: 组合 + 新空格(2026-09-12, 应用户要求探索组合空间) ----
+    # 解剖前提(第九轮): cs5 五笔止损全卖飞(后5日均+4.6%/后20日+13.2%) —— 止损方向本身错,
+    # 组合不改变卖飞结构; C族熔断单调毒性(0.09~0.52x)。组合先验=成分乘积<1, 属确认性实验。
+    # 预注册处决条款(第九轮收紧版, 统计守门员): 相对v9.2基座任一≤1.000处决(平局不算胜);
+    #   ≤1.01x不计胜(fee-noise带宽); 优势可归因≤1笔边际交易或≤2个躲避日→该起点不计胜;
+    #   任一年度≤-5pp处决; 平台孤峰/单调断裂处决; 扫描最优不追。
+    # A×B / B×C / A×C 组合:
+    "v92_ne_s0_cs5":   (dict(_FZ92, use_copies=True, ne_score0=True),
+                        {"engine": True, "crash_stop": 0.05}),
+    "v92_cs5_ckt20":   (dict(_FZ92), {"engine": True, "crash_stop": 0.05,
+                                      "circuit_dd": 0.20, "circuit_days": 20}),
+    "v92_ne_s0_ckt20": (dict(_FZ92, use_copies=True, ne_score0=True),
+                        {"engine": True, "circuit_dd": 0.20, "circuit_days": 20}),
+    # E族 两融去杠杆离场(机制审稿人认证空白: rzrq×离场侧首次落子; H6: 与抄底窗重叠处正面冲突, 先验负)
+    "v92_rzrq_exit":   (dict(_FZ92), {"engine": True, "rzrq_exit": -0.03, "rzrq_cool": 5}),
+    # F族 天量滞涨离场(与cv事件集互斥: cv要求大跌本条要求不跌; H7: 靶向2021-02/2024-10-08型顶)
+    "v92_climax25":    (dict(_FZ92), {"engine": True, "climax_exit": 2.5}),
+    # G族 长假前清QDII(全库唯一零邻居候选; H8: 先验最强负——第六轮"主升浪在隔夜跳空"的镜像,
+    #   2024-09-30→10-08 一单即可处决)
+    "v92_holiday_qd":  (dict(_FZ92), {"engine": True, "holiday_qd": True}),
+})
 
 STARTS = ("2014-01-01", "2016-01-01", "2018-01-01", "2020-01-01", "2022-01-01", "2024-01-01")
 
