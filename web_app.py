@@ -3,6 +3,7 @@
 
 只读 signals/web_cache.json(由 web_build.py 构建, cron 交易日15:25 刷新),
 本进程从不 import strategy/backtest —— 回测在子进程跑, 避免 strategy 全局状态污染。
+(market_data 是无全局状态的纯数据模块, /api/portfolio 拉实时价用, 允许 import。)
 
 路由:
   GET  /               看板页面 (web/index.html)
@@ -11,9 +12,13 @@
   GET  /api/series?version=v9.1&start=2024-01-01&end=2026-09-04&compare=v7
                        区间净值(原始)+对比序列+区间指标+逐年+换仓记录+当前持仓
   POST /api/refresh    后台子进程重建缓存(幂等, 构建中重复调用直接返回)
+  GET  /api/portfolio  实盘账本状态(portfolio.json)+全池实时价+最近记账记录
+  POST /api/record     记账 buy/sell: 子进程调 record.py(复用其校验/原子写/日志);
+                       设了 STOCK_WEB_TOKEN 环境变量时要求 X-Token 头匹配, 否则 403
 
 运行: python3.8 web_app.py   (或 systemd: stock-web.service)
 """
+import csv
 import json
 import os
 import subprocess
@@ -23,12 +28,19 @@ import time
 import urllib.parse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
+from market_data import UNIVERSE, fetch_realtime
+
 BASE = os.path.dirname(os.path.abspath(__file__))
 CACHE = os.path.join(BASE, "signals", "web_cache.json")
 LOCK = os.path.join(BASE, "signals", "web_build.lock")
 STATIC_DIR = os.path.join(BASE, "web")
 PORT = int(os.environ.get("PORT", 8081))  # 测试可 PORT=18081 起临时实例
 TRADING_DAYS = 244
+
+PORTFOLIO = os.path.join(BASE, "portfolio.json")
+TRADES = os.path.join(BASE, "trades.csv")
+RECORD_TOKEN = os.environ.get("STOCK_WEB_TOKEN", "")  # 空 = 不启用令牌校验
+_record_lock = threading.Lock()  # 串行化记账请求: 防多线程并发写 portfolio.json
 
 _cache = {"mtime": 0, "data": None}
 _cache_lock = threading.Lock()
@@ -156,6 +168,84 @@ def holding_info(ver):
     }
 
 
+# ---------- 实盘账本(record.py 的网页入口) ----------
+
+def portfolio_state():
+    """读 portfolio.json + 全池实时价 + trades.csv 尾部, 组装账本状态 dict。"""
+    pf = {"holding": None, "shares": 0, "cost": 0.0, "entry_date": None,
+          "cash": 0.0, "realized": 0.0}
+    if os.path.exists(PORTFOLIO):
+        try:
+            with open(PORTFOLIO, encoding="utf-8") as f:
+                pf.update(json.load(f))
+        except Exception:
+            pass
+    names = {c: UNIVERSE[c][0] for c in UNIVERSE}
+    quotes = {}
+    try:                                # 行情接口失败仅降级, 不影响账本本体
+        quotes = {c: p for c, (n, p) in fetch_realtime().items() if p}
+    except Exception:
+        pass
+    resp = {"ok": True, "portfolio": pf, "names": names, "quotes": quotes,
+            "token_required": bool(RECORD_TOKEN)}
+    h = pf.get("holding")
+    if h and quotes.get(h) and pf.get("cost"):
+        cur = quotes[h]
+        resp["position"] = {"code": h, "name": names.get(h, h), "cur": cur,
+                            "mv": round(pf["shares"] * cur, 2),
+                            "pnl": round((cur / pf["cost"] - 1.0) * 100, 2)}
+    recent = []
+    if os.path.exists(TRADES):
+        try:
+            with open(TRADES, encoding="utf-8") as f:
+                rows = [r for r in csv.reader(f) if r]
+            if rows and rows[0][0] == "date":
+                rows = rows[1:]
+            recent = rows[-15:][::-1]     # 尾部15条, 最新在前
+        except Exception:
+            pass
+    resp["recent_trades"] = recent
+    return resp
+
+
+def run_record(body):
+    """子进程调 record.py 记账: 复用其全部校验/原子写/trades.csv 日志。
+    record.py 的 sys.exit(消息) 只终止子进程, 消息在 stderr。返回 (ok, 消息)。"""
+    action = body.get("action")
+    code = str(body.get("code") or "").strip()
+    try:
+        price = float(body.get("price"))
+    except (TypeError, ValueError):
+        return False, "价格无效"
+    if price <= 0:
+        return False, "价格须为正数"
+    if action == "buy":
+        try:
+            amount = float(body.get("amount"))
+        except (TypeError, ValueError):
+            return False, "金额无效"
+        if amount <= 0:
+            return False, "金额须为正数"
+        argv = [sys.executable, os.path.join(BASE, "record.py"), "buy", code,
+                "%.3f" % price, "%.2f" % amount]
+    elif action == "sell":
+        argv = [sys.executable, os.path.join(BASE, "record.py"), "sell", code,
+                "%.3f" % price]
+    else:
+        return False, "action 须为 buy/sell"
+    with _record_lock:
+        try:
+            p = subprocess.run(argv, cwd=BASE, capture_output=True, text=True,
+                               encoding="utf-8", errors="replace", timeout=30)
+        except subprocess.TimeoutExpired:
+            return False, "记账子进程超时"
+    out = (p.stdout or "").strip()
+    err = (p.stderr or "").strip()
+    if p.returncode == 0:
+        return True, out or "已记账"
+    return False, err or out or ("record.py 退出码 %d" % p.returncode)
+
+
 # ---------- HTTP ----------
 
 class Handler(BaseHTTPRequestHandler):
@@ -186,8 +276,22 @@ class Handler(BaseHTTPRequestHandler):
         if self.path == "/api/refresh":
             triggered = maybe_trigger_build(force=True)
             self._json({"ok": True, "triggered": triggered, "building": is_building()})
+        elif self.path == "/api/record":
+            self.api_record()
         else:
             self._json({"error": "unknown"}, 404)
+
+    def api_record(self):
+        if RECORD_TOKEN and self.headers.get("X-Token", "") != RECORD_TOKEN:
+            return self._json({"ok": False, "error": "访问令牌无效或未提供",
+                               "need_token": True}, 403)
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+            body = json.loads(self.rfile.read(n).decode("utf-8") or "{}")
+        except Exception:
+            return self._json({"ok": False, "error": "请求体不是合法 JSON"}, 400)
+        ok, msg = run_record(body)
+        self._json({"ok": ok, "out" if ok else "error": msg}, 200 if ok else 400)
 
     def do_GET(self):
         path, _, qs = self.path.partition("?")
@@ -201,6 +305,8 @@ class Handler(BaseHTTPRequestHandler):
             return self.api_meta()
         if path == "/api/series":
             return self.api_series(urllib.parse.parse_qs(qs))
+        if path == "/api/portfolio":
+            return self._json(portfolio_state())
         self._json({"error": "unknown"}, 404)
 
     def api_meta(self):
@@ -225,7 +331,7 @@ class Handler(BaseHTTPRequestHandler):
         if data is None:
             maybe_trigger_build()
             return self._json({"ready": False, "building": True}, 503)
-        vid = qs.get("version", ["v9.1"])[0]
+        vid = qs.get("version", ["v9.2"])[0]
         ver = data["versions"].get(vid)
         if ver is None:
             return self._json({"error": "unknown version"}, 400)

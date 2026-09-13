@@ -16,9 +16,10 @@
   h1 { font-size: 20px; font-weight: 600; }
   header .meta { color: var(--dim); font-size: 12px; }
   header .spacer { flex: 1; }
-  button, select, input[type=date] { background: var(--card2); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; font-size: 13px; cursor: pointer; }
+  button, select, input[type=date], input[type=number] { background: var(--card2); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; font-size: 13px; cursor: pointer; }
   button:hover, select:hover { border-color: var(--accent); }
   button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  input[type=number] { cursor: text; width: 110px; }
   #controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; }
   #controls .grp { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
   #controls .lbl { color: var(--dim); font-size: 12px; }
@@ -45,6 +46,15 @@
   .b-建仓 { background: #123a5e; color: #6db3ff; }
   .b-恐慌抄底 { background: #4a1626; color: #ff7d9c; }
   .b-避险停靠 { background: #3a3a10; color: #e6d97a; }
+  .b-一致 { background: #123a2a; color: #5fd99a; }
+  .b-偏离 { background: #3a2f10; color: #ffd97a; }
+  #ledger { margin-bottom: 12px; }
+  #ledgerGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 900px) { #ledgerGrid { grid-template-columns: 1fr; } }
+  #ledgerStatus .big { font-size: 17px; font-weight: 600; }
+  #ledgerStatus .s { color: var(--dim); font-size: 12px; }
+  #ledgerForm { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  #ledgerMsg { font-size: 12px; margin-top: 8px; display: none; }
   .legend-dot { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 5px; vertical-align: middle; }
   #err { color: #ff7d7d; font-size: 13px; padding: 8px 0; display: none; }
 </style>
@@ -78,6 +88,25 @@
 
 <div id="chart"><div id="chartDiv"></div></div>
 
+<div class="panel" id="ledger">
+  <h2>实盘账本 <span class="meta">记账自下一信号周期(交易日14:50)起生效 · 同 <code>record.py</code></span>
+    <button id="btnLedgerReload" style="float:right" title="刷新账本">⟳</button></h2>
+  <div id="ledgerGrid">
+    <div>
+      <div id="ledgerStatus">加载中…</div>
+      <div id="ledgerForm"></div>
+      <div id="ledgerMsg"></div>
+    </div>
+    <div>
+      <div class="lbl" style="margin-bottom:6px">最近记账</div>
+      <div class="scroll" style="max-height:170px"><table id="tblLedger">
+        <thead><tr><th>时间</th><th>动作</th><th>标的</th><th>价格</th><th>份数</th><th>金额</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+    </div>
+  </div>
+</div>
+
 <div id="tables">
   <div class="panel"><h2>换仓记录 <span class="meta" id="tradeCount"></span></h2>
     <div class="scroll"><table id="tblTrades">
@@ -101,7 +130,7 @@ const POOL_COLORS = {
   "563300": "#1abc9c", "512400": "#f1c40f", "512890": "#95a5a6", "513100": "#2ebd6e",
   "513120": "#e91e63", "518880": "#ffd700", "511880": "#5d6b80"
 };
-const state = { version: "v9.1", compare: "", start: null, end: null, log: true,
+const state = { version: "v9.2", compare: "", start: null, end: null, log: true,
                 quick: "all", range: null, meta: null, series: null };
 let chart = null, pollTimer = null;
 
@@ -320,10 +349,134 @@ async function loadSeries() {
     const s = await api("/api/series?" + p);
     state.series = s;
     renderStats(s); renderChart(s); renderTables(s);
+    loadLedger();
   } catch (e) {
     if (e.building) return;
     $("#err").textContent = "加载失败: " + e.message;
     $("#err").style.display = "block";
+  }
+}
+
+/* ---- 实盘账本(record.py 网页入口) ---- */
+const LEDGER = { data: null, fetched: 0 };
+
+function ledgerMsg(text, isErr) {
+  const el = $("#ledgerMsg");
+  el.textContent = text;
+  el.style.color = isErr ? "#ff7d7d" : "#5fd99a";
+  el.style.display = "block";
+}
+
+async function recordApi(body) {
+  const r = await fetch("/api/record", {
+    method: "POST",
+    headers: { "Content-Type": "application/json",
+               "X-Token": localStorage.getItem("stock_web_token") || "" },
+    body: JSON.stringify(body)
+  });
+  const j = await r.json().catch(() => ({}));
+  if (r.status === 403) throw { needToken: true, message: j.error || "需要访问令牌" };
+  if (!r.ok || !j.ok) throw new Error(j.error || ("HTTP " + r.status));
+  return j;
+}
+
+async function doRecord(action, code, price, amount) {
+  price = parseFloat(price);
+  if (!(price > 0)) return ledgerMsg("请填写有效价格", true);
+  if (action === "buy" && !(parseFloat(amount) > 0)) return ledgerMsg("请填写有效金额", true);
+  const nm = ((LEDGER.data || {}).names || {})[code] || code;
+  const msg = action === "buy"
+    ? `确认买入 ${code} ${nm}?\n价格 ${price} × 金额 ${amount} 元\n(record.py 规则: 按100份取整, 全仓语义)`
+    : `确认卖出全部 ${code} ${nm}?\n价格 ${price}`;
+  if (!confirm(msg)) return;
+  const body = { action, code, price };
+  if (action === "buy") body.amount = parseFloat(amount);
+  try {
+    const r = await recordApi(body);
+    ledgerMsg("✓ " + (r.out || "已记账") + " · 自下一信号周期(交易日14:50)起生效");
+    loadLedger(true);
+  } catch (e) {
+    if (e.needToken) {
+      const t = prompt("服务端要求访问令牌, 请输入(将保存在本浏览器):",
+                       localStorage.getItem("stock_web_token") || "");
+      if (t != null) { localStorage.setItem("stock_web_token", t.trim());
+                       return doRecord(action, code, price, amount); }
+      return;
+    }
+    ledgerMsg("✗ 记账失败: " + e.message, true);
+  }
+}
+
+function modelBadge(pf, names) {
+  const m = state.series && state.series.holding;
+  if (!m) return "";
+  if (pf.holding === m.code) return `<span class="badge b-一致">与模型一致 ✓</span>`;
+  if (!pf.holding && m.code === "511880")
+    return `<span class="badge b-一致">模型停靠货币ETF · 空仓近似 ✓</span>`;
+  return `<span class="badge b-偏离">模型持仓 ${names[m.code] || m.code} ⚠ 实盘偏离</span>`;
+}
+
+function renderLedger(d) {
+  const pf = d.portfolio || {}, names = d.names || {}, q = d.quotes || {};
+  let html;
+  if (pf.holding) {
+    const cur = q[pf.holding];
+    const pnl = cur && pf.cost ? (cur / pf.cost - 1) * 100 : null;
+    const mv = cur ? pf.shares * cur : null;
+    html = `<div class="big">${names[pf.holding] || pf.holding} <span class="meta">${pf.holding}</span> ${modelBadge(pf, names)}</div>
+      <div class="s" style="margin-top:6px">${pf.shares} 份 · 成本 ${(+pf.cost).toFixed(3)} (${pf.entry_date || "-"}) · 现价 ${cur ? cur.toFixed(3) : "—"} · 市值 ${mv != null ? mv.toFixed(0) : "—"} 元 · 浮盈 <span class="${cls(pnl)}">${fmtPct(pnl)}</span></div>
+      <div class="s" style="margin-top:4px">现金 ${(pf.cash || 0).toFixed(0)} 元 · 累计已实现盈亏 ${(pf.realized || 0).toFixed(0)} 元</div>`;
+  } else {
+    html = `<div class="big">空仓 ${modelBadge(pf, names)}</div>
+      <div class="s" style="margin-top:6px">现金 ${(pf.cash || 0).toFixed(0)} 元 · 累计已实现盈亏 ${(pf.realized || 0).toFixed(0)} 元</div>`;
+  }
+  $("#ledgerStatus").innerHTML = html;
+
+  const f = $("#ledgerForm");
+  if (pf.holding) {
+    f.innerHTML = `
+      <span class="lbl">卖出 ${names[pf.holding] || pf.holding}(全部)</span>
+      <input type="number" id="sellPrice" step="0.001" min="0" placeholder="卖出价">
+      <button type="button" id="btnFillPrice">取现价</button>
+      <button type="button" id="btnDoSell" style="border-color:var(--down);color:var(--down)">确认卖出</button>`;
+    if (q[pf.holding]) $("#sellPrice").value = q[pf.holding].toFixed(3);
+    $("#btnFillPrice").onclick = () => { if (q[pf.holding]) $("#sellPrice").value = q[pf.holding].toFixed(3); };
+    $("#btnDoSell").onclick = () => doRecord("sell", pf.holding, $("#sellPrice").value);
+  } else {
+    const opts = Object.keys(names).map(c => `<option value="${c}">${c} ${names[c]}</option>`).join("");
+    f.innerHTML = `
+      <span class="lbl">买入(全仓语义)</span>
+      <select id="buyCode">${opts}</select>
+      <input type="number" id="buyPrice" step="0.001" min="0" placeholder="买入价">
+      <input type="number" id="buyAmount" step="1000" min="0" placeholder="金额(元)" style="width:130px">
+      <button type="button" id="btnFillPrice">取现价</button>
+      <button type="button" id="btnDoBuy" style="border-color:var(--up);color:var(--up)">确认买入</button>`;
+    const fill = () => { const p = q[$("#buyCode").value]; if (p) $("#buyPrice").value = p.toFixed(3); };
+    const m = state.series && state.series.holding;
+    if (m && names[m.code]) $("#buyCode").value = m.code;   // 默认选模型当前持仓
+    fill();
+    $("#btnFillPrice").onclick = fill;
+    $("#buyCode").onchange = fill;
+    $("#btnDoBuy").onclick = () => doRecord("buy", $("#buyCode").value, $("#buyPrice").value, $("#buyAmount").value);
+  }
+
+  const tb = document.querySelector("#tblLedger tbody");
+  tb.innerHTML = (d.recent_trades || []).map(r =>
+    `<tr><td>${r[0]}</td><td>${r[1] === "buy" ? '<span class="up">买入</span>' : '<span class="down">卖出</span>'}</td>
+     <td>${r[3] || r[2]}</td><td>${(+r[4]).toFixed(3)}</td><td>${r[5]}</td><td>${(+r[6]).toFixed(0)}</td></tr>`
+  ).join("") || `<tr><td colspan="6" style="text-align:center;color:var(--dim)">暂无记账记录</td></tr>`;
+}
+
+async function loadLedger(force) {
+  if (!force && LEDGER.data && Date.now() - LEDGER.fetched < 15000)
+    return renderLedger(LEDGER.data);   // 15s 内重渲染即可, 不重复拉行情
+  try {
+    const d = await api("/api/portfolio");
+    LEDGER.data = d; LEDGER.fetched = Date.now();
+    renderLedger(d);
+  } catch (e) {
+    if (e.building) return;
+    $("#ledgerStatus").innerHTML = `<span style="color:#ff7d7d">账本加载失败: ${e.message}</span>`;
   }
 }
 
@@ -344,6 +497,7 @@ $("#inpEnd").addEventListener("change", e => {
 $("#btnRefresh").addEventListener("click", async () => {
   await api("/api/refresh", { method: "POST" }); showBuilding();
 });
+$("#btnLedgerReload").addEventListener("click", () => loadLedger(true));
 window.addEventListener("resize", () => chart && chart.resize());
 
 (async () => { try { await loadMeta(); applyQuick("all"); } catch (e) {
