@@ -98,7 +98,7 @@ def build_markdown(text, query=False):
           "动量前三: " + " / ".join(rank)]
     if prem:
         md += ["", "QDII " + prem.strip()]
-    # 影子区块(0906/v9.2...): 按【影子 标题行分块, 块内收 QVIX/影子持仓行; 影子计算失败行单列
+    # 查询与推送只排版保存的文本，不在这里计算或推进任何影子账户。
     sections, cur = [], None
     for l in lines:
         s = l.strip()
@@ -109,7 +109,9 @@ def build_markdown(text, query=False):
         elif "影子" in s and "计算失败" in s:
             sections.append((None, [s]))
             cur = None
-        elif cur and (s.startswith("QVIX") or "影子持仓" in s or "旧口径净值" in s):
+        elif cur and (s.startswith(("QVIX", "信号状态:", "数据截止:", "策略规则:",
+                                   "数据说明:", "跟踪说明:"))
+                      or "影子持仓" in s or "旧口径净值" in s):
             cur[1].append(s)
     for label, slines in sections:
         md += ["", "---"]
@@ -119,13 +121,14 @@ def build_markdown(text, query=False):
         for s in slines:
             md += shadow_markdown(s) + [""]
     md += ["", "---"]
+    versions = "v9.1 (+0906/v9.2%s影子)" % ("/V10-H" if "【影子 V10-H】" in text else "")
     if query:
         md += ["最近保存信号 · 以每日 14:50 正式推送为准",
-               "_信号 %s · v9.1 (+0906/v9.2影子)_" % date,
+               "_信号 %s · %s_" % (date, versions),
                "", "📈 动量跟踪网页: http://120.26.67.168:8081/"]
     else:
         md += ["⏰ 尾盘 14:30-14:50 限价贴价执行; 操作后回报 代码/价格/金额 记账",
-               "_信号 %s · v9.1 (+0906/v9.2影子)_" % date]
+               "_信号 %s · %s_" % (date, versions)]
     return "\n".join(md), date
 
 

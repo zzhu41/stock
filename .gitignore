@@ -21,3 +21,8 @@ v10/data_extra/
 signals/web_cache.json
 signals/web_build.lock
 signals/web_build.log
+
+# V10-H独立前向账户；不把本机虚拟持仓或临时事务文件提交到研究档案
+signals/shadow_v10.json
+signals/shadow_v10.json.tmp.*
+signals/shadow_v10.lock

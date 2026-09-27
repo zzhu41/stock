@@ -4,6 +4,32 @@ from push_signal import build_markdown, is_current_signal
 
 
 class PushSignalTests(unittest.TestCase):
+    def test_v10_saved_preview_keeps_date_status_and_bold_target_in_both_modes(self):
+        signal = "\n".join([
+            "动量轮动信号 | 生成 2026-09-25 14:50 | 数据截止 2026-09-24",
+            "【影子 V10-H】研究观察 · 虚拟跟踪不下单",
+            "信号状态: 历史预览；前向跟踪尚未启动",
+            "数据截止: 2026-09-24",
+            "影子持仓: 未启动 | 建议: 513100 纳指ETF | 冻结研究历史收盘目标，非今日买入指令",
+            "策略规则: WLS20评分取3日均值 / MA180 / 波动急跌退出",
+        ])
+        for query in (False, True):
+            card, _ = build_markdown(signal, query=query)
+            self.assertIn("**影子 V10-H**", card)
+            self.assertIn("影子建议标的: **513100 纳指ETF**", card)
+            self.assertIn("历史预览；前向跟踪尚未启动", card)
+            self.assertIn("非今日买入指令", card)
+            self.assertIn("数据截止: 2026-09-24", card)
+            self.assertIn("MA180", card)
+        self.assertFalse(is_current_signal(signal, "2026-09-27"))
+
+    def test_v10_failure_is_visible_without_inventing_a_target(self):
+        signal = "【影子 V10-H】\n信号状态: 计算失败，本次无有效建议\n数据说明: 缺当日报价"
+        card, _ = build_markdown(signal, query=True)
+        self.assertIn("本次无有效建议", card)
+        self.assertIn("缺当日报价", card)
+        self.assertNotIn("影子建议标的:", card)
+
     def test_old_or_misaligned_signal_is_not_current(self):
         header = "动量轮动信号 | 生成 2026-09-24 14:50 | 数据截止 "
         self.assertTrue(is_current_signal(header + "2026-09-24", "2026-09-24"))

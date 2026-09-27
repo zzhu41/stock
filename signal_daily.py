@@ -129,6 +129,11 @@ def main():
         lines += shadow_v92.block(table, histories, live_prices, signal_date=signal_date)
     except Exception as e:              # 不阻断主信号
         lines += ["-" * 56, "⚠️ 影子 v9.2 计算失败: %r" % e]
+    try:                                # V10-H: 独立数据、配置和虚拟账户，最多等待60秒
+        import shadow_v10
+        lines += shadow_v10.block(quotes, signal_date=signal_date)
+    except Exception as e:
+        lines += ["-" * 56, "⚠️ 影子 V10-H 计算失败: %r" % e]
     lines.append("操作后请记账: python3.8 record.py buy|sell <代码> <价格> <金额元>")
 
     text = "\n".join(lines)
