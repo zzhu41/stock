@@ -1,0 +1,278 @@
+{
+  "checks": {
+    "top1_blend_20_40_60_broad_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": false,
+      "recent_cagr_25": false
+    },
+    "top1_blend_20_40_60_broad_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": false,
+      "recent_cagr_25": false
+    },
+    "top1_blend_20_40_60_macro_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": false,
+      "recent_cagr_25": false
+    },
+    "top1_blend_20_40_60_macro_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": false,
+      "recent_cagr_25": false
+    },
+    "top1_blend_20_40_60_original_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": false,
+      "recent_cagr_25": false
+    },
+    "top1_blend_20_40_60_original_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": true,
+      "multiple_members": false,
+      "recent_cagr_25": true
+    },
+    "top1_wls25_v20_broad_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": false,
+      "recent_cagr_25": false
+    },
+    "top1_wls25_v20_broad_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": false,
+      "recent_cagr_25": false
+    },
+    "top1_wls25_v20_macro_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": false,
+      "recent_cagr_25": false
+    },
+    "top1_wls25_v20_macro_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": false,
+      "recent_cagr_25": false
+    },
+    "top1_wls25_v20_original_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": true,
+      "fee5_cagr_25": false,
+      "multiple_members": false,
+      "recent_cagr_25": false
+    },
+    "top1_wls25_v20_original_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": true,
+      "multiple_members": false,
+      "recent_cagr_25": false
+    },
+    "top2_blend_20_40_60_broad_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top2_blend_20_40_60_broad_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top2_blend_20_40_60_macro_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": true,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top2_blend_20_40_60_macro_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top2_blend_20_40_60_original_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": true,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top2_blend_20_40_60_original_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top2_wls25_v20_broad_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top2_wls25_v20_broad_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top2_wls25_v20_macro_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top2_wls25_v20_macro_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top2_wls25_v20_original_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": true,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top2_wls25_v20_original_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": true,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top3_blend_20_40_60_broad_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top3_blend_20_40_60_broad_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top3_blend_20_40_60_macro_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": true,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top3_blend_20_40_60_macro_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top3_blend_20_40_60_original_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": true,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top3_blend_20_40_60_original_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top3_wls25_v20_broad_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top3_wls25_v20_broad_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top3_wls25_v20_macro_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": true,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top3_wls25_v20_macro_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top3_wls25_v20_original_all_assets": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": true,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    },
+    "top3_wls25_v20_original_legacy_gate": {
+      "cagr_30": false,
+      "drawdown_at_most_v92": false,
+      "fee5_cagr_25": false,
+      "multiple_members": true,
+      "recent_cagr_25": false
+    }
+  },
+  "clean_oos": false,
+  "development_sha256": "0b5c2b64e87801fbe0a4dc0e970c0be398611e6522a9cc4afed279b9e8c56672",
+  "primary": "top1_wls25_v20_original_legacy_gate",
+  "primary_role": "portfolio return champion; does not replace single-ETF H",
+  "qualified_count": 0,
+  "qualified_ids": [],
+  "registration_sha256": "34c454dab8d67f5e6a5712d9575bbd548db8293064d05b8ef58df31b7f36b96a",
+  "s_drawdown_limit": 0.24164829045993053,
+  "selected_at": "2026-09-27T11:03:55.494010+00:00",
+  "selected_s": null,
+  "selection_fee5_sha256": "d8928d148917ee7427e65c49ae606fc56ae2a7a22aab548376fa4d01e6e2bdef",
+  "selection_period": [
+    "2014-01-02",
+    "2025-12-31"
+  ],
+  "selection_returns_sha256": "9bfb1b4240847a26b6e376ed9fe4d5f718ca6b3928518472b7d3b4d0a5aadfeb",
+  "tie_break": [
+    "minimum abs selection drawdown",
+    "maximum selection CAGR",
+    "fewer selection rebalances after first evaluation day",
+    "ascending fixed ID"
+  ]
+}

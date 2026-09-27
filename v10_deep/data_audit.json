@@ -1,0 +1,1096 @@
+{
+  "checked_at_utc": "2026-09-27T10:08:50.148213Z",
+  "scope": "Read-only local-data and saved-path audit; no strategy matrix or new market-price download. Primary corporate-action announcements additionally checked online.",
+  "source_manifest_sha256": "1498be16c517288a1829aca04201dea12de6b63dc3e2d8f5056a3d189a914fee",
+  "calendar": {
+    "sessions": 3097,
+    "first": "2014-01-02",
+    "last": "2026-09-24",
+    "extra_dates_in_asset_union": []
+  },
+  "assets": {
+    "159915": {
+      "rows": 3593,
+      "first": "2011-12-09",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2014-01-02",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 2.220446049250313e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 2.220446049250313e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [
+        "2021-02-08"
+      ],
+      "split_count": 0,
+      "cash_count": 0,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0
+    },
+    "588080": {
+      "rows": 1424,
+      "first": "2020-11-16",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2021-12-22",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 0,
+      "cash_count": 1,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        -0.0007132667617684163,
+        0.0007132667617706367
+      ],
+      "max_inferred_cash_yield": 0.009621993127147774
+    },
+    "510300": {
+      "rows": 3485,
+      "first": "2012-05-28",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2014-01-02",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 2.220446049250313e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 2.220446049250313e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 0,
+      "cash_count": 14,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        -0.003924312546192077,
+        0.003938587338826238
+      ],
+      "max_inferred_cash_yield": 0.025313850586540485
+    },
+    "510500": {
+      "rows": 3288,
+      "first": "2013-03-15",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2014-04-28",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [
+        "2015-04-13",
+        "2015-04-14"
+      ],
+      "split_count": 2,
+      "cash_count": 4,
+      "method": "raw_prices_plus_caller_verified_split_and_cash_events",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0.01771068584333769
+    },
+    "563300": {
+      "rows": 734,
+      "first": "2023-09-14",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2024-10-31",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 0,
+      "cash_count": 0,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0
+    },
+    "512400": {
+      "rows": 2201,
+      "first": "2017-09-01",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2018-10-15",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 2.220446049250313e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 2.220446049250313e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 0,
+      "cash_count": 3,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        -0.0023102475763430164,
+        0.0023135874947608492
+      ],
+      "max_inferred_cash_yield": 0.04208311415044717
+    },
+    "512890": {
+      "rows": 1864,
+      "first": "2019-01-18",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2020-03-03",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [
+        "2021-10-22"
+      ],
+      "split_count": 1,
+      "cash_count": 0,
+      "method": "official_splits_with_affine_rounding_intervals",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0
+    },
+    "513100": {
+      "rows": 3251,
+      "first": "2013-05-15",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2014-06-24",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [
+        "2022-01-13"
+      ],
+      "split_count": 1,
+      "cash_count": 0,
+      "method": "official_splits_with_affine_rounding_intervals",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0
+    },
+    "513120": {
+      "rows": 1023,
+      "first": "2022-07-12",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2023-08-17",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 0,
+      "cash_count": 0,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0
+    },
+    "518880": {
+      "rows": 3202,
+      "first": "2013-07-29",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2014-09-02",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 0,
+      "cash_count": 0,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0
+    },
+    "511880": {
+      "rows": 3213,
+      "first": "2013-07-12",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": null,
+      "cash_note": "Cash fallback exempt from risky-asset 270-bar ranking warmup",
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 0,
+      "cash_count": 13,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        -0.00012657536657612045,
+        0.00012659015711369292
+      ],
+      "max_inferred_cash_yield": 0.040496532699896504
+    },
+    "159928": {
+      "rows": 3167,
+      "first": "2013-09-16",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2014-10-29",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 1,
+      "cash_count": 0,
+      "method": "official_splits_with_affine_rounding_intervals",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0
+    },
+    "159985": {
+      "rows": 1652,
+      "first": "2019-12-05",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2021-01-13",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 0,
+      "cash_count": 0,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0
+    },
+    "510880": {
+      "rows": 4064,
+      "first": "2010-01-04",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2014-01-02",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [
+        "2010-01-12",
+        "2010-02-12",
+        "2010-02-23",
+        "2010-03-01",
+        "2010-03-25",
+        "2010-03-26",
+        "2010-03-31",
+        "2010-04-16",
+        "2010-04-22",
+        "2010-04-26",
+        "2010-04-29",
+        "2010-05-20",
+        "2010-05-21",
+        "2010-05-24",
+        "2010-06-08",
+        "2010-07-13",
+        "2010-07-14",
+        "2010-07-16"
+      ],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 0,
+      "cash_count": 17,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        -0.006767902169295792,
+        0.006811159458321336
+      ],
+      "max_inferred_cash_yield": 0.05155393053016446
+    },
+    "511010": {
+      "rows": 3284,
+      "first": "2013-03-25",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2014-05-08",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 0,
+      "cash_count": 7,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        -5.4554079101043484e-05,
+        5.455662108944104e-05
+      ],
+      "max_inferred_cash_yield": 0.010247567086228097
+    },
+    "512010": {
+      "rows": 3142,
+      "first": "2013-10-28",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2014-12-01",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 2.220446049250313e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 2.220446049250313e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [
+        "2017-01-12",
+        "2021-06-25"
+      ],
+      "split_count": 1,
+      "cash_count": 0,
+      "method": "official_splits_with_affine_rounding_intervals",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0
+    },
+    "512070": {
+      "rows": 2964,
+      "first": "2014-07-18",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2015-08-21",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [
+        "2021-09-10"
+      ],
+      "split_count": 1,
+      "cash_count": 0,
+      "method": "official_splits_with_affine_rounding_intervals",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0
+    },
+    "512200": {
+      "rows": 2185,
+      "first": "2017-09-25",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2018-11-06",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 1,
+      "cash_count": 0,
+      "method": "official_splits_with_affine_rounding_intervals",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0
+    },
+    "512800": {
+      "rows": 2222,
+      "first": "2017-08-03",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2018-09-06",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 1,
+      "cash_count": 0,
+      "method": "official_splits_with_affine_rounding_intervals",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0
+    },
+    "512880": {
+      "rows": 2462,
+      "first": "2016-08-08",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2017-09-13",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 2.220446049250313e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 2.220446049250313e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 0,
+      "cash_count": 0,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0
+    },
+    "513030": {
+      "rows": 2929,
+      "first": "2014-09-05",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2015-10-20",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [
+        "2025-01-23"
+      ],
+      "split_count": 0,
+      "cash_count": 0,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0
+    },
+    "513520": {
+      "rows": 1763,
+      "first": "2019-06-25",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2020-07-31",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 0,
+      "cash_count": 0,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        0.0,
+        0.0
+      ],
+      "max_inferred_cash_yield": 0
+    },
+    "515080": {
+      "rows": 1636,
+      "first": "2019-12-27",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2021-02-04",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 0,
+      "cash_count": 18,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        -0.01196779601589748,
+        0.012104593275609421
+      ],
+      "max_inferred_cash_yield": 0.04405286343612347
+    },
+    "515100": {
+      "rows": 1514,
+      "first": "2020-07-03",
+      "last": "2026-09-24",
+      "first_270_bar_ranking_date": "2021-08-09",
+      "cash_note": null,
+      "hashes_match": true,
+      "raw_qfq_corrected_dates_equal": true,
+      "full_reconstruction_exactly_matches": true,
+      "gross_formula_max_absolute_error": 1.1102230246251565e-16,
+      "non_event_gross_vs_raw_max_absolute_error": 1.1102230246251565e-16,
+      "volume_transform_max_relative_error": 0.0,
+      "zero_or_negative_volume_dates": [],
+      "raw_ohlc_envelope_bad_dates": [],
+      "post_start_raw_ohlc_envelope_bad_dates": [],
+      "post_listing_missing_calendar_dates": [],
+      "split_count": 0,
+      "cash_count": 2,
+      "method": "additive_exact_observed_offset",
+      "conditional_final_index_interval_relative_to_point": [
+        -0.0012329245075498596,
+        0.0012336829969450402
+      ],
+      "max_inferred_cash_yield": 0.25525700934579443
+    }
+  },
+  "split_volume_diagnostics": [
+    {
+      "code": "510500",
+      "date": "2015-04-15",
+      "new_shares_per_old_share": 0.28032483,
+      "raw_ratio20_at_event": 0.40560166138063214,
+      "normalized_ratio20_at_event": 1.4468988044356685,
+      "two_times_threshold_changes_within_20_quotes": [
+        {
+          "date": "2015-04-21",
+          "raw_ratio20": 1.574346882586153,
+          "normalized_ratio20": 4.638106115930616
+        }
+      ]
+    },
+    {
+      "code": "510500",
+      "date": "2022-08-29",
+      "new_shares_per_old_share": 1.14539,
+      "raw_ratio20_at_event": 1.6655250770951435,
+      "normalized_ratio20_at_event": 1.4541117672540735,
+      "two_times_threshold_changes_within_20_quotes": []
+    },
+    {
+      "code": "512890",
+      "date": "2021-10-25",
+      "new_shares_per_old_share": 2,
+      "raw_ratio20_at_event": 2.8262095862051195,
+      "normalized_ratio20_at_event": 1.4131047931025598,
+      "two_times_threshold_changes_within_20_quotes": [
+        {
+          "date": "2021-10-25",
+          "raw_ratio20": 2.8262095862051195,
+          "normalized_ratio20": 1.4131047931025598
+        }
+      ]
+    },
+    {
+      "code": "513100",
+      "date": "2022-01-14",
+      "new_shares_per_old_share": 5,
+      "raw_ratio20_at_event": 5.912164125430346,
+      "normalized_ratio20_at_event": 1.1824328250860692,
+      "two_times_threshold_changes_within_20_quotes": [
+        {
+          "date": "2022-01-14",
+          "raw_ratio20": 5.912164125430346,
+          "normalized_ratio20": 1.1824328250860692
+        },
+        {
+          "date": "2022-01-17",
+          "raw_ratio20": 3.211670897180646,
+          "normalized_ratio20": 0.7940141791401025
+        },
+        {
+          "date": "2022-01-18",
+          "raw_ratio20": 4.161528115128878,
+          "normalized_ratio20": 1.1641740209518858
+        },
+        {
+          "date": "2022-01-19",
+          "raw_ratio20": 4.818197973948745,
+          "normalized_ratio20": 1.5876307532601743
+        },
+        {
+          "date": "2022-01-20",
+          "raw_ratio20": 3.1143576959978914,
+          "normalized_ratio20": 1.2163127146538708
+        },
+        {
+          "date": "2022-01-24",
+          "raw_ratio20": 2.578136935539461,
+          "normalized_ratio20": 1.2907953929578762
+        },
+        {
+          "date": "2022-01-26",
+          "raw_ratio20": 2.8664932453875873,
+          "normalized_ratio20": 1.7349776664776175
+        },
+        {
+          "date": "2022-01-27",
+          "raw_ratio20": 2.993302600425349,
+          "normalized_ratio20": 1.9372806504285758
+        },
+        {
+          "date": "2022-01-28",
+          "raw_ratio20": 2.5264440072369716,
+          "normalized_ratio20": 1.7476951799220906
+        }
+      ]
+    },
+    {
+      "code": "159928",
+      "date": "2021-06-25",
+      "new_shares_per_old_share": 4,
+      "raw_ratio20_at_event": 7.169615830867967,
+      "normalized_ratio20_at_event": 1.7924039577169917,
+      "two_times_threshold_changes_within_20_quotes": [
+        {
+          "date": "2021-06-25",
+          "raw_ratio20": 7.169615830867967,
+          "normalized_ratio20": 1.7924039577169917
+        },
+        {
+          "date": "2021-06-28",
+          "raw_ratio20": 2.8589020942556274,
+          "normalized_ratio20": 0.897625958940501
+        },
+        {
+          "date": "2021-06-29",
+          "raw_ratio20": 2.7910001175072336,
+          "normalized_ratio20": 0.9700637874903315
+        },
+        {
+          "date": "2021-07-01",
+          "raw_ratio20": 2.789812932402087,
+          "normalized_ratio20": 1.147577393613511
+        },
+        {
+          "date": "2021-07-02",
+          "raw_ratio20": 2.9002795292235395,
+          "normalized_ratio20": 1.3084930236555186
+        },
+        {
+          "date": "2021-07-08",
+          "raw_ratio20": 2.782020325487047,
+          "normalized_ratio20": 1.6763129328981312
+        },
+        {
+          "date": "2021-07-13",
+          "raw_ratio20": 2.0799797972146967,
+          "normalized_ratio20": 1.4846112114517775
+        }
+      ]
+    },
+    {
+      "code": "512010",
+      "date": "2021-06-28",
+      "new_shares_per_old_share": 4,
+      "raw_ratio20_at_event": 4.064842484885292,
+      "normalized_ratio20_at_event": 1.016210621221323,
+      "two_times_threshold_changes_within_20_quotes": [
+        {
+          "date": "2021-06-28",
+          "raw_ratio20": 4.064842484885292,
+          "normalized_ratio20": 1.016210621221323
+        },
+        {
+          "date": "2021-06-29",
+          "raw_ratio20": 3.521533301418133,
+          "normalized_ratio20": 1.0148579620020053
+        },
+        {
+          "date": "2021-06-30",
+          "raw_ratio20": 2.607379376547775,
+          "normalized_ratio20": 0.8567628852742535
+        },
+        {
+          "date": "2021-07-01",
+          "raw_ratio20": 4.521255441367651,
+          "normalized_ratio20": 1.6357018979648397
+        },
+        {
+          "date": "2021-07-05",
+          "raw_ratio20": 2.4803385445178714,
+          "normalized_ratio20": 1.2089754733778568
+        },
+        {
+          "date": "2021-07-07",
+          "raw_ratio20": 2.0337660140409746,
+          "normalized_ratio20": 1.191116239639776
+        }
+      ]
+    },
+    {
+      "code": "512070",
+      "date": "2021-09-13",
+      "new_shares_per_old_share": 3,
+      "raw_ratio20_at_event": 2.0679257153467177,
+      "normalized_ratio20_at_event": 0.6893085717822391,
+      "two_times_threshold_changes_within_20_quotes": [
+        {
+          "date": "2021-09-13",
+          "raw_ratio20": 2.0679257153467177,
+          "normalized_ratio20": 0.6893085717822391
+        },
+        {
+          "date": "2021-09-14",
+          "raw_ratio20": 3.290133311233022,
+          "normalized_ratio20": 1.1722694530502948
+        },
+        {
+          "date": "2021-09-15",
+          "raw_ratio20": 2.279725200545067,
+          "normalized_ratio20": 0.9004126168579766
+        },
+        {
+          "date": "2021-09-22",
+          "raw_ratio20": 2.303879440112377,
+          "normalized_ratio20": 1.1123311497710955
+        }
+      ]
+    },
+    {
+      "code": "512200",
+      "date": "2024-08-12",
+      "new_shares_per_old_share": 0.3580626,
+      "raw_ratio20_at_event": 0.36007878167054974,
+      "normalized_ratio20_at_event": 1.0056308077709029,
+      "two_times_threshold_changes_within_20_quotes": [
+        {
+          "date": "2024-08-30",
+          "raw_ratio20": 1.3512013779203904,
+          "normalized_ratio20": 2.258443583266484
+        }
+      ]
+    },
+    {
+      "code": "512800",
+      "date": "2025-07-07",
+      "new_shares_per_old_share": 2,
+      "raw_ratio20_at_event": 1.568981351237703,
+      "normalized_ratio20_at_event": 0.7844906756188516,
+      "two_times_threshold_changes_within_20_quotes": [
+        {
+          "date": "2025-07-11",
+          "raw_ratio20": 3.097221982132863,
+          "normalized_ratio20": 1.7979426710768527
+        },
+        {
+          "date": "2025-07-22",
+          "raw_ratio20": 2.427509194516424,
+          "normalized_ratio20": 1.830862861443473
+        }
+      ]
+    }
+  ],
+  "existing_saved_path_cash_timing_exposure": {
+    "c_v9": {
+      "cash_entitlement_event_count": 2,
+      "same_close_switch_away_count": 0,
+      "events": [
+        {
+          "date": "2018-01-23",
+          "code": "510300",
+          "cash_yield": 0.010478359908883685,
+          "same_close_switch_away": false
+        },
+        {
+          "date": "2014-01-17",
+          "code": "511880",
+          "cash_yield": 0.030996666505628413,
+          "same_close_switch_away": false
+        }
+      ],
+      "missing_held_days": 2,
+      "blocked_switch_days": 2
+    },
+    "c_v91": {
+      "cash_entitlement_event_count": 2,
+      "same_close_switch_away_count": 0,
+      "events": [
+        {
+          "date": "2018-01-23",
+          "code": "510300",
+          "cash_yield": 0.010478359908883685,
+          "same_close_switch_away": false
+        },
+        {
+          "date": "2014-01-17",
+          "code": "511880",
+          "cash_yield": 0.030996666505628413,
+          "same_close_switch_away": false
+        }
+      ],
+      "missing_held_days": 2,
+      "blocked_switch_days": 2
+    },
+    "c_v92": {
+      "cash_entitlement_event_count": 2,
+      "same_close_switch_away_count": 0,
+      "events": [
+        {
+          "date": "2018-01-23",
+          "code": "510300",
+          "cash_yield": 0.010478359908883685,
+          "same_close_switch_away": false
+        },
+        {
+          "date": "2014-01-17",
+          "code": "511880",
+          "cash_yield": 0.030996666505628413,
+          "same_close_switch_away": false
+        }
+      ],
+      "missing_held_days": 2,
+      "blocked_switch_days": 2
+    },
+    "hc_860b99cc69a73b916e8b": {
+      "cash_entitlement_event_count": 2,
+      "same_close_switch_away_count": 0,
+      "events": [
+        {
+          "date": "2018-01-23",
+          "code": "510300",
+          "cash_yield": 0.010478359908883685,
+          "same_close_switch_away": false
+        },
+        {
+          "date": "2014-01-17",
+          "code": "511880",
+          "cash_yield": 0.030996666505628413,
+          "same_close_switch_away": false
+        }
+      ],
+      "missing_held_days": 2,
+      "blocked_switch_days": 2
+    },
+    "hc_b1de2482d3ca7393718b": {
+      "cash_entitlement_event_count": 2,
+      "same_close_switch_away_count": 0,
+      "events": [
+        {
+          "date": "2018-01-23",
+          "code": "510300",
+          "cash_yield": 0.010478359908883685,
+          "same_close_switch_away": false
+        },
+        {
+          "date": "2014-01-17",
+          "code": "511880",
+          "cash_yield": 0.030996666505628413,
+          "same_close_switch_away": false
+        }
+      ],
+      "missing_held_days": 2,
+      "blocked_switch_days": 2
+    },
+    "hc_9dd904b5d548af3bd2f4": {
+      "cash_entitlement_event_count": 3,
+      "same_close_switch_away_count": 0,
+      "events": [
+        {
+          "date": "2014-01-17",
+          "code": "511880",
+          "cash_yield": 0.030996666505628413,
+          "same_close_switch_away": false
+        },
+        {
+          "date": "2017-01-23",
+          "code": "510880",
+          "cash_yield": 0.033163265306122514,
+          "same_close_switch_away": false
+        },
+        {
+          "date": "2018-01-23",
+          "code": "510880",
+          "cash_yield": 0.03284121723410679,
+          "same_close_switch_away": false
+        }
+      ],
+      "missing_held_days": 0,
+      "blocked_switch_days": 0
+    }
+  },
+  "new_primary_precision_check": {
+    "code": "515100",
+    "ex_date": "2025-12-23",
+    "record_date": "2025-12-22",
+    "payment_date": "2025-12-26",
+    "inferred_cash": 0.10499999999999998,
+    "official_cash": 0.1053,
+    "previous_raw_close": 1.543,
+    "raw_close": 1.437,
+    "single_event_return_difference_pp": 0.019442644199611704,
+    "same_raw_buy_and_hold_final_wealth_ratio": 1.0001945525291829,
+    "source": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2025-12-18/515100_20251218_0CQV.pdf",
+    "action": "Do not rewrite frozen data; assess final candidates against exact-official-cash scenario if exposed or near ranking boundaries."
+  },
+  "limits": [
+    "This is conditional verification of frozen observed prices/actions, not a complete independent audit of all dividends or omitted observations.",
+    "Cash intervals bound already-detected event amounts, not entire strategy NAV or missed events.",
+    "Listed first dates are first cached market bars, not independently verified listing dates for all 24 ETFs.",
+    "All same-close decisions remain idealized and not proven executable at 14:50 or next open."
+  ],
+  "qvix": {
+    "first_date": "2015-02-09",
+    "last_date": "2026-09-24",
+    "rows": 2820,
+    "available_research_sessions": 2697,
+    "unavailable_by_reason": {
+      "missing_same_day_qvix": 280,
+      "fewer_than_120_previous_qvix_rows": 120
+    },
+    "first_available_date": "2015-08-06",
+    "active_sessions": 62,
+    "publication_timestamps_verified": false,
+    "note": "Missing same-day QVIX or fewer than 120 strictly previous rows disables the channel; historical dates do not establish intraday availability.",
+    "nontrading_rows": [
+      {
+        "date": "2026-08-22",
+        "value": 16.53,
+        "weekday": "Saturday"
+      },
+      {
+        "date": "2026-09-12",
+        "value": 15.67,
+        "weekday": "Saturday"
+      },
+      {
+        "date": "2026-09-13",
+        "value": 15.92,
+        "weekday": "Sunday"
+      }
+    ],
+    "missing_trading_dates_after_first": [
+      "2024-05-22",
+      "2024-05-23",
+      "2024-05-24",
+      "2024-05-27",
+      "2024-05-29",
+      "2024-05-30",
+      "2024-05-31",
+      "2025-11-10",
+      "2026-09-10",
+      "2026-09-11"
+    ],
+    "nontrading_row_filter_sensitivity": {
+      "changed_z_count": 22,
+      "active_flag_changed_dates": [],
+      "max_absolute_z_difference": 0.01672514357821031,
+      "largest_change": {
+        "date": "2026-09-16",
+        "original_z": -0.7058491879411662,
+        "calendar_filtered_z": -0.7225743315193766,
+        "absolute_z_difference": 0.01672514357821031
+      },
+      "scope": "No strategy rerun; existing z>=2.5 channel flags compared on the same actual trading calendar. No new QVIX prices fetched."
+    }
+  },
+  "cashless_512890_primary_check": {
+    "code": "512890",
+    "local_cash_events": 0,
+    "split": "2021-10-25 1:2, effective first new-unit quote",
+    "primary_report": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-03-31/512890_20260331_5BME.pdf",
+    "section": "3.3, page 8",
+    "finding": "The 2025 annual report states no distributions over its preceding three years (2023-2025). This supports the zero-cash reconstruction in that period, not full proof over 2019-2026."
+  }
+}

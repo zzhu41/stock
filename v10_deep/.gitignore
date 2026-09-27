@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.so
+cache/
+results/*.npy
+results/*.npz
+results/**/*.npy
+results/**/*.npz

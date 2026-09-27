@@ -1,0 +1,41 @@
+{
+  "candidate_count": 1355,
+  "clean_oos": false,
+  "end": "2026-09-24",
+  "fee": 0.0001,
+  "fingerprints": {
+    "corrected_data_sha256": "1498be16c517288a1829aca04201dea12de6b63dc3e2d8f5056a3d189a914fee",
+    "feature_cache_sha256": "ce00a551d84ac04119b5922a42f55cbaed27b324fadd95abc7f7ca45ea28f598",
+    "features": {
+      "data": "1498be16c517288a1829aca04201dea12de6b63dc3e2d8f5056a3d189a914fee",
+      "legacy_features": "0219602910a9c856b769a6d506bee5b906711ba9cccb94f517765ede663abc87",
+      "legacy_strategy": "06c166a6bb5479a3c01e210bed1c8c3d6df7567e61d8b61eb1e0985694c2a807",
+      "source": "388224e2a6f1cd85dc9c79bc7b5825fe329e312dfaaca75e0f1d19bdbd3fc6b0",
+      "v10_deep/data.py": "6b5f4146ba9d9998caad539ff5fd5f604618440a25f3e0fcb52f4904f7430c9c",
+      "v10_h_close/corrected_scan.py": "c3bb76c96fdb247830b9c86c802872f4b3bff976322eef84ec3a40b8a5be152a",
+      "v10_h_close/data.py": "d1f2bf10266e26e100973b8fea0cca5cf1108d67d1342e7548e2de7397310bf6",
+      "v10_h_close/qvix_manifest.json": "87045736b27dfeed55bce3b098001bc6c5817c65f1fc831493dbbf96466f4257",
+      "v10_h_close/snapshots/qvix50.csv": "d528c5e040dc587e8d07ccacf67f25f87574e2134cdc60bec6358a266fd4e4f4",
+      "v10_next/data.py": "52005b1bf77dff9bf9b451956af274b6e77333f6868168c53d1bf1a6b698dfba",
+      "v10_next/frozen/presets.json": "73ee89e963ff0bb5e438a41169e2229113af486c8251ecfef399bdc6dc818a4c",
+      "v10_search/data.py": "2aa7da794c82b92c63d192df1c7d230925676000fd734f17d2375229c8d5b64b"
+    },
+    "protected_manifest_sha256": "e03e1aba1cb7b9c3239bb1119753ec518f9fe347307c00458bcde8efb3e2222e",
+    "qvix_manifest_sha256": "87045736b27dfeed55bce3b098001bc6c5817c65f1fc831493dbbf96466f4257",
+    "sources": {
+      "PROTOCOL.md": "2bd7ef94133b7c6046c29f18f886515b39578f2e0832b0559cf679f4c2159089",
+      "data.py": "6b5f4146ba9d9998caad539ff5fd5f604618440a25f3e0fcb52f4904f7430c9c",
+      "features.py": "388224e2a6f1cd85dc9c79bc7b5825fe329e312dfaaca75e0f1d19bdbd3fc6b0",
+      "native.cpp": "e11d8a21b710857505e187b1953de66ee8eb396732c2f0759a1089756836f893",
+      "native.py": "fc7f1c745873f03620649140ead8a9370256eaf4f9a51376cc3f7b100540c4ad",
+      "registry.py": "f20ac4a38a6e08696f7c7a2d09f828e354c9fdc1c107e307ec347c785b8533d4",
+      "scan.py": "372b1ef8950cc3ad394a7fd97d09f0b96db6ebdf1d96a8026ca2298bdd751478",
+      "schema.py": "b91d01a1ade064e29cd9e9f107be44d68c6748dbcd159e96b8d630c839320b90"
+    }
+  },
+  "registered_at": "2026-09-27T10:39:28.915262+00:00",
+  "registry_sha256": "bcc850995cf17b8ba42f71a58940c257d9cb1bc77bb622fafb2c025a2e0b93d9",
+  "start": "2014-01-02",
+  "stress_fee": 0.0005,
+  "train_end": "2025-12-31"
+}

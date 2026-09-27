@@ -1,0 +1,246 @@
+{
+  "cases": [
+    {
+      "families": [
+        "absolute_entry",
+        "baseline",
+        "crash_channels_lock",
+        "crash_choice_scope",
+        "crash_deep_threshold",
+        "crash_override_guard",
+        "crash_volume_threshold",
+        "defensive_fallback",
+        "exit_hysteresis",
+        "momentum_horizon",
+        "overheat_exit",
+        "panic_threshold",
+        "rank_estimator",
+        "regime_trend"
+      ],
+      "id": "vd_368146734e874b98662b",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "rank_estimator"
+      ],
+      "id": "vd_d14910c7fefc0c857e1e",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "rank_estimator"
+      ],
+      "id": "vd_692e074e60b2de208914",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "rank_consensus"
+      ],
+      "id": "vd_be0628625fe7c20502ee",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "exit_hysteresis"
+      ],
+      "id": "vd_c32eb77812b66b6191c8",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "panic_reentry_cooldown"
+      ],
+      "id": "vd_cc5f03087966626e1e61",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "rotation_relative_score"
+      ],
+      "id": "vd_58bf66141ad09317f544",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "absolute_entry"
+      ],
+      "id": "vd_a32cd82005c43f9e1e99",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "momentum_horizon"
+      ],
+      "id": "vd_d13db1b8926cf44433c7",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "exit_hysteresis"
+      ],
+      "id": "vd_f04ced5ce1e0f57e826a",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "overheat_exit"
+      ],
+      "id": "vd_aae74930a9c53c199d75",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "healthy_rotation_confirmation"
+      ],
+      "id": "vd_0b24f4bb00c3d2154fff",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "panic_volatility_scaled"
+      ],
+      "id": "vd_3d252ce6f43a1e48337c",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "rotation_score"
+      ],
+      "id": "vd_919ba0ed7c60685bbc2b",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "absolute_entry"
+      ],
+      "id": "vd_48dac6bff288e39014b6",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "defensive_fallback"
+      ],
+      "id": "vd_638e3c86604f491a986c",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "regime_trend"
+      ],
+      "id": "vd_2b71ec7ad56f0df562a4",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "regime_trend"
+      ],
+      "id": "vd_ab5fa3a55905494dfd57",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "regime_trend"
+      ],
+      "id": "vd_a69b046472e3c5d6e967",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "regime_breadth"
+      ],
+      "id": "vd_2eab61e19503dad3a766",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "crash_channels_lock"
+      ],
+      "id": "vd_66bb5273602a315e4926",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "crash_override_guard"
+      ],
+      "id": "vd_ee3c023fb35e6b976568",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "crash_deep_threshold"
+      ],
+      "id": "vd_dc1641d054dffb131dde",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "crash_volume_threshold"
+      ],
+      "id": "vd_3b292c56265648a5ac57",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "crash_choice_scope"
+      ],
+      "id": "vd_9b2c9cfd7e1f6ec02d91",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "economic_pool_broad_plus_small"
+      ],
+      "id": "vd_8dd8449dbb63579c189e",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "economic_pool_global_extended"
+      ],
+      "id": "vd_d9bea5d62b0d66730782",
+      "max_return_error": 0.0
+    },
+    {
+      "families": [
+        "economic_pool_macro_balanced"
+      ],
+      "id": "vd_62db166391c33afd0e03",
+      "max_return_error": 0.0
+    }
+  ],
+  "cpp_sha256": "e11d8a21b710857505e187b1953de66ee8eb396732c2f0759a1089756836f893",
+  "indices": [
+    0,
+    50,
+    100,
+    150,
+    200,
+    250,
+    300,
+    351,
+    401,
+    451,
+    501,
+    551,
+    601,
+    651,
+    702,
+    752,
+    802,
+    852,
+    902,
+    952,
+    1002,
+    1053,
+    1103,
+    1153,
+    1203,
+    1253,
+    1303,
+    1354
+  ],
+  "reference_sha256": "307165e11b4e52345d5e0168c3fb36ac661baf214dbc58dbebc7cf5ce2b0f9e5",
+  "scope": "28 evenly spaced registered configs, full 3097 days, independent Python policy and accounting"
+}

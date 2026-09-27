@@ -1,0 +1,170 @@
+{
+  "actual_member_count_sessions": {
+    "top1_blend_20_40_60_broad_all_assets": {
+      "1": 3097
+    },
+    "top1_blend_20_40_60_broad_legacy_gate": {
+      "1": 3097
+    },
+    "top1_blend_20_40_60_macro_all_assets": {
+      "1": 3097
+    },
+    "top1_blend_20_40_60_macro_legacy_gate": {
+      "1": 3097
+    },
+    "top1_blend_20_40_60_original_all_assets": {
+      "1": 3097
+    },
+    "top1_blend_20_40_60_original_legacy_gate": {
+      "1": 3097
+    },
+    "top1_wls25_v20_broad_all_assets": {
+      "1": 3097
+    },
+    "top1_wls25_v20_broad_legacy_gate": {
+      "1": 3097
+    },
+    "top1_wls25_v20_macro_all_assets": {
+      "1": 3097
+    },
+    "top1_wls25_v20_macro_legacy_gate": {
+      "1": 3097
+    },
+    "top1_wls25_v20_original_all_assets": {
+      "1": 3097
+    },
+    "top1_wls25_v20_original_legacy_gate": {
+      "1": 3097
+    },
+    "top2_blend_20_40_60_broad_all_assets": {
+      "1": 153,
+      "2": 2944
+    },
+    "top2_blend_20_40_60_broad_legacy_gate": {
+      "1": 1237,
+      "2": 1860
+    },
+    "top2_blend_20_40_60_macro_all_assets": {
+      "1": 429,
+      "2": 2668
+    },
+    "top2_blend_20_40_60_macro_legacy_gate": {
+      "1": 1544,
+      "2": 1553
+    },
+    "top2_blend_20_40_60_original_all_assets": {
+      "1": 618,
+      "2": 2479
+    },
+    "top2_blend_20_40_60_original_legacy_gate": {
+      "1": 1581,
+      "2": 1516
+    },
+    "top2_wls25_v20_broad_all_assets": {
+      "1": 153,
+      "2": 2944
+    },
+    "top2_wls25_v20_broad_legacy_gate": {
+      "1": 1237,
+      "2": 1860
+    },
+    "top2_wls25_v20_macro_all_assets": {
+      "1": 429,
+      "2": 2668
+    },
+    "top2_wls25_v20_macro_legacy_gate": {
+      "1": 1544,
+      "2": 1553
+    },
+    "top2_wls25_v20_original_all_assets": {
+      "1": 619,
+      "2": 2478
+    },
+    "top2_wls25_v20_original_legacy_gate": {
+      "1": 1581,
+      "2": 1516
+    },
+    "top3_blend_20_40_60_broad_all_assets": {
+      "1": 153,
+      "2": 143,
+      "3": 2801
+    },
+    "top3_blend_20_40_60_broad_legacy_gate": {
+      "1": 1237,
+      "2": 161,
+      "3": 1699
+    },
+    "top3_blend_20_40_60_macro_all_assets": {
+      "1": 429,
+      "2": 824,
+      "3": 1844
+    },
+    "top3_blend_20_40_60_macro_legacy_gate": {
+      "1": 1544,
+      "2": 717,
+      "3": 836
+    },
+    "top3_blend_20_40_60_original_all_assets": {
+      "1": 621,
+      "2": 427,
+      "3": 2049
+    },
+    "top3_blend_20_40_60_original_legacy_gate": {
+      "1": 1582,
+      "2": 260,
+      "3": 1255
+    },
+    "top3_wls25_v20_broad_all_assets": {
+      "1": 153,
+      "2": 143,
+      "3": 2801
+    },
+    "top3_wls25_v20_broad_legacy_gate": {
+      "1": 1237,
+      "2": 161,
+      "3": 1699
+    },
+    "top3_wls25_v20_macro_all_assets": {
+      "1": 429,
+      "2": 825,
+      "3": 1843
+    },
+    "top3_wls25_v20_macro_legacy_gate": {
+      "1": 1544,
+      "2": 717,
+      "3": 836
+    },
+    "top3_wls25_v20_original_all_assets": {
+      "1": 622,
+      "2": 427,
+      "3": 2048
+    },
+    "top3_wls25_v20_original_legacy_gate": {
+      "1": 1582,
+      "2": 260,
+      "3": 1255
+    }
+  },
+  "actual_rebalances_reconstructed": 48422,
+  "all_72_training_prefixes_exact": true,
+  "all_daily_nav_and_weights_reconstructed": true,
+  "all_paths_sha256_verified": true,
+  "blocked_rebalances_without_fill": 128,
+  "checked_at": "2026-09-27T11:06:05.112229+00:00",
+  "chosen_s": null,
+  "evaluation_sha256": "399fb1629600f88c863f7b41c210f6f03dd11d0c01f080ca1185636b1426acc8",
+  "fee_paths_checked": 72,
+  "initial_day_free_and_weight_turnover_costs_verified": true,
+  "max_independent_nav_abs_error": 1.2079226507921703e-13,
+  "no_open_column_access": true,
+  "protected_files_verified": 535,
+  "registration_and_selection_immutable": true,
+  "selection_reason_counts": {
+    "cagr_30": 24,
+    "drawdown_at_most_v92": 17,
+    "fee5_cagr_25": 23,
+    "multiple_members": 0,
+    "recent_cagr_25": 24
+  },
+  "source_and_archived_controls_unchanged": true
+}

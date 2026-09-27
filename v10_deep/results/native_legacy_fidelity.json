@@ -1,0 +1,27 @@
+{
+  "checks": [
+    {
+      "cagr": 0.43239838602768454,
+      "control": "c_v9",
+      "daily_holdings_equal": true,
+      "max_daily_return_error": 0.0,
+      "sessions": 3097
+    },
+    {
+      "cagr": 0.43805843540364564,
+      "control": "c_v91",
+      "daily_holdings_equal": true,
+      "max_daily_return_error": 0.0,
+      "sessions": 3097
+    },
+    {
+      "cagr": 0.46317489386091726,
+      "control": "c_v92",
+      "daily_holdings_equal": true,
+      "max_daily_return_error": 0.0,
+      "sessions": 3097
+    }
+  ],
+  "cpp_sha256": "e11d8a21b710857505e187b1953de66ee8eb396732c2f0759a1089756836f893",
+  "feature_source_sha256": "388224e2a6f1cd85dc9c79bc7b5825fe329e312dfaaca75e0f1d19bdbd3fc6b0"
+}
