@@ -1,5 +1,5 @@
 from copy import deepcopy
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
 from pathlib import Path
 import subprocess
@@ -10,8 +10,10 @@ from unittest.mock import Mock, patch
 import shadow_v10
 from v10_live.ledger import advance, CANDIDATE_ID
 from v10_live.runtime import run, locked
+from v10_live.data import CODES
+from v10_live import runtime
 
-DAYS = ["2026-09-24", "2026-09-25", "2026-09-28"]
+DAYS = ["2026-09-24", "2026-09-28", "2026-09-29"]
 A, B = "513100", "518880"
 
 
@@ -24,7 +26,7 @@ def decision(target=A, **kwargs):
 
 
 def fixtures(day, price=10):
-    quotes = {code: dict(price=price, date=day, timestamp=day + " 14:50:00") for code in (A, B)}
+    quotes = {code: dict(price=price, open=price, volume=1000., date=day, timestamp=day + " 14:50:00") for code in CODES}
     view = dict(calendar=DAYS, histories={}, metadata={},
                 raw_histories={code: [(d, 10, 10, 100) for d in DAYS] for code in (A, B)},
                 actions={code: {d: dict(split_ratio=1, cash_per_old_share=0) for d in DAYS}
@@ -149,7 +151,7 @@ class RuntimeTests(unittest.TestCase):
                 run({}, DAYS[0], path, now=datetime(2026, 9, 27))
             self.assertFalse(path.exists())
             with self.assertRaisesRegex(ValueError, "missing data"):
-                run({}, DAYS[0], path, now=datetime(2026, 9, 24),
+                run(fixtures(DAYS[0])[0], DAYS[0], path, now=datetime(2026, 9, 24, 14, 50),
                     build_view=Mock(side_effect=ValueError("missing data")))
             self.assertFalse(path.exists())
 
@@ -157,12 +159,12 @@ class RuntimeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "shadow.json"
             quotes, view = fixtures(DAYS[0])
-            run(quotes, DAYS[0], path, datetime(2026, 9, 24), lambda *a, **k: view, lambda *a, **k: decision())
+            run(quotes, DAYS[0], path, datetime(2026, 9, 24, 14, 50), lambda *a, **k: view, lambda *a, **k: decision())
             before = path.read_bytes()
             quotes, view = fixtures(DAYS[1])
             with patch("v10_live.runtime.atomic_json", side_effect=OSError("disk full")):
                 with self.assertRaises(OSError):
-                    run(quotes, DAYS[1], path, datetime(2026, 9, 25), lambda *a, **k: view, lambda *a, **k: decision(B))
+                    run(quotes, DAYS[1], path, datetime(2026, 9, 28, 14, 50), lambda *a, **k: view, lambda *a, **k: decision(B))
             self.assertEqual(path.read_bytes(), before)
 
     def test_concurrent_account_lock_fails_without_waiting(self):
@@ -186,7 +188,7 @@ class RuntimeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "shadow.json"
             quotes, view = fixtures(DAYS[0])
-            expected = run(quotes, DAYS[0], path, datetime(2026, 9, 24),
+            expected = run(quotes, DAYS[0], path, datetime(2026, 9, 24, 14, 50),
                            lambda *a, **k: view, lambda *a, **k: decision())
             before = path.read_bytes()
             with patch.object(shadow_v10, "STATE_FILE", str(path)), \
@@ -195,3 +197,113 @@ class RuntimeTests(unittest.TestCase):
                 self.assertEqual(expected, actual)
                 self.assertEqual(path.read_bytes(), before)
                 self.assertIsNone(shadow_v10.saved_block(DAYS[1]))
+
+
+class RuntimeFreshnessTests(unittest.TestCase):
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory(prefix="runtime_guard_")
+        self.addCleanup(self.temporary.cleanup)
+        self.path = Path(self.temporary.name) / "shadow.json"
+        self.date = DAYS[1]
+        self.now = datetime(2026, 9, 28, 14, 50, 5)
+        self.clock = patch.object(runtime, "runtime_clock", return_value=lambda: self.now)
+        self.clock.start()
+        self.addCleanup(self.clock.stop)
+
+    def test_cached_view_cannot_book_quote_that_expired_after_validation(self):
+        quotes, view = fixtures(self.date)
+        for quote in quotes.values():
+            quote["timestamp"] = self.date + " 14:47:10"  # 175 seconds at first guard.
+        def cached_view(*args, **kwargs):
+            self.now = datetime(2026, 9, 28, 14, 50, 31)  # 201 seconds before valuation.
+            return view
+        with patch.object(runtime, "advance") as account, patch.object(runtime, "atomic_json") as commit:
+            with self.assertRaisesRegex(ValueError, "陈旧"):
+                run(quotes, self.date, self.path, self.now, cached_view, lambda *a, **k: decision())
+            account.assert_not_called()
+            commit.assert_not_called()
+        self.assertFalse(self.path.exists())
+
+    def test_clock_past_window_after_policy_stops_before_valuation(self):
+        quotes, view = fixtures(self.date)
+        def slow_policy(*args, **kwargs):
+            self.now = datetime(2026, 9, 28, 14, 55)
+            return decision()
+        with patch.object(runtime, "advance") as account:
+            with self.assertRaisesRegex(ValueError, "14:50"):
+                run(quotes, self.date, self.path, self.now, lambda *a, **k: view, slow_policy)
+            account.assert_not_called()
+        self.assertFalse(self.path.exists())
+
+    def test_render_crossing_deadline_does_not_replace_previous_account(self):
+        first_quotes, first_view = fixtures(DAYS[0])
+        self.now = datetime(2026, 9, 24, 14, 50)
+        run(first_quotes, DAYS[0], self.path, self.now, lambda *a, **k: first_view, lambda *a, **k: decision())
+        before = self.path.read_bytes()
+        quotes, view = fixtures(self.date)
+        for quote in quotes.values():
+            quote["timestamp"] = self.date + " 14:54:50"
+        self.now = datetime(2026, 9, 28, 14, 54, 58)
+        def slow_render(*args):
+            self.now = datetime(2026, 9, 28, 14, 55)
+            return ["prepared but expired card"]
+        with patch.object(runtime, "render", side_effect=slow_render), patch.object(runtime, "atomic_json") as commit:
+            with self.assertRaisesRegex(ValueError, "14:50"):
+                run(quotes, self.date, self.path, self.now, lambda *a, **k: view, lambda *a, **k: decision(B))
+            commit.assert_not_called()
+        self.assertEqual(self.path.read_bytes(), before)
+
+    def test_fsync_delay_is_rechecked_before_atomic_replace_and_temp_removed(self):
+        self.path.write_text('{"previous":"account"}')
+        before = self.path.read_bytes()
+        quotes, unused = fixtures(self.date)
+        self.now = datetime(2026, 9, 28, 14, 50)
+        def slow_sync(unused_fd):
+            self.now = datetime(2026, 9, 28, 14, 55)
+        with patch.object(runtime.os, "fsync", side_effect=slow_sync):
+            with self.assertRaisesRegex(ValueError, "14:50"):
+                runtime.atomic_json(self.path, {"new":"expired"},
+                    validator=lambda: runtime.validate_snapshot(quotes, self.date, self.now))
+        self.assertEqual(self.path.read_bytes(), before)
+        self.assertEqual(list(self.path.parent.glob("shadow.json.tmp.*")), [])
+
+    def test_same_day_saved_card_is_readonly_even_after_execution_window(self):
+        quotes, view = fixtures(self.date)
+        first = run(quotes, self.date, self.path, self.now, lambda *a, **k: view, lambda *a, **k: decision())
+        before = self.path.read_bytes()
+        self.now = datetime(2026, 9, 28, 16)
+        with patch.object(runtime, "validate_snapshot", side_effect=AssertionError("No new transaction")), \
+                patch.object(runtime, "advance", side_effect=AssertionError("No new valuation")):
+            self.assertEqual(run({}, self.date, self.path, self.now), first)
+        self.assertEqual(self.path.read_bytes(), before)
+
+    def test_closed_day_or_outside_window_never_starts_data_or_policy_work(self):
+        for day, now in (("2026-09-25", datetime(2026, 9, 25, 14, 50)),
+                         (self.date, datetime(2026, 9, 28, 14, 49, 59))):
+            self.now = now
+            quotes, view = fixtures(day)
+            never = Mock(side_effect=AssertionError("Outside-window work"))
+            with self.assertRaisesRegex(ValueError, "14:50"):
+                run(quotes, day, self.path, now, never, never)
+            never.assert_not_called()
+        self.assertFalse(self.path.exists())
+
+    def test_explicit_staging_path_does_not_write_default_production_account(self):
+        quotes, view = fixtures(self.date)
+        production = self.path.parent / "production.json"
+        production.write_text('{"unrelated":"unchanged"}')
+        before = production.read_bytes()
+        with patch.object(runtime, "STATE", production):
+            run(quotes, self.date, self.path, self.now, lambda *a, **k: view, lambda *a, **k: decision())
+        self.assertEqual(production.read_bytes(), before)
+        self.assertEqual(json.loads(self.path.read_text())["nav"], 1.)
+
+
+class RuntimeClockTests(unittest.TestCase):
+    def test_injected_clock_still_advances_by_monotonic_elapsed_work(self):
+        now = datetime(2026, 9, 28, 14, 50)
+        with patch.object(runtime.time, "monotonic", side_effect=[100., 160.]):
+            clock = runtime.runtime_clock(now)
+            current = clock()
+        self.assertIsNone(current.tzinfo)
+        self.assertEqual(current, now + timedelta(seconds=60))

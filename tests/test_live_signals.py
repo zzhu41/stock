@@ -227,7 +227,7 @@ class LiveSignalTests(unittest.TestCase):
                 patch.object(signal_daily, "SIGNAL_DIR", directory), \
                 patch.object(signal_daily, "fetch_histories", return_value=history(20)), \
                 patch.object(signal_daily, "fetch_realtime", return_value={}), \
-                patch.object(signal_daily, "prepare_live_histories", side_effect=ValueError("stale quote")), \
+                patch("v10_live.runtime.validate_snapshot", side_effect=ValueError("stale quote")), \
                 patch.object(signal_daily.signal_store, "publish") as write:
             with self.assertRaisesRegex(ValueError, "stale quote"):
                 signal_daily.main(now=datetime(2026, 9, 24, 14, 50))

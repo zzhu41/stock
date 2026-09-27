@@ -2,7 +2,7 @@
 
 No real-time requests or production state writes. Frozen September 24 data is
 copied into a temporary seed and extended with explicitly artificial September
-25/28 observations, each using an injected matching clock.
+28/29 observations, each using an injected matching clock.
 """
 from copy import deepcopy
 import csv
@@ -18,7 +18,7 @@ import strategy
 from v10_live import data, policy, runtime
 
 ROOT = Path(__file__).resolve().parent.parent
-FIRST, SECOND = "2026-09-25", "2026-09-28"
+FIRST, SECOND = "2026-09-28", "2026-09-29"
 
 
 class LiveHEndToEndTests(unittest.TestCase):

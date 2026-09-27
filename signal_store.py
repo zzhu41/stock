@@ -1,13 +1,15 @@
 """Small standard-library signal journal shared by generation, query and push.
 
-The journal is the commit point for the signal AND its primary crash lock.
-Text/legacy lock files are replaceable projections, never the source of truth
-once a journal exists. Compatible with the bot's Python 3.6 interpreter.
+Schema 2 commits the three-version signal AND successful virtual accounts.
+Schema 1 retains compatibility with old primary-lock journals. Account/text
+files are recoverable projections. Compatible with the bot's Python 3.6.
 """
-from contextlib import contextmanager
+from contextlib import contextmanager, ExitStack
+import csv
 from datetime import datetime, timezone, timedelta
 import fcntl
 import hashlib
+import io
 import json
 import os
 from pathlib import Path
@@ -18,13 +20,14 @@ ROOT = Path(__file__).resolve().parent
 SIGNALS = ROOT / "signals"
 TZ = timezone(timedelta(hours=8))
 START_TIME, END_TIME = "14:50:00", "14:55:00"
+ACCOUNT_FILES = ("shadow_v92.json", "shadow_v92_plus.json", "shadow_v10.json")
 
 
 def now_local():
     return datetime.now(TZ).replace(tzinfo=None)
 
 
-def atomic_text(path, text):
+def atomic_text(path, text, validator=None):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     fd, name = tempfile.mkstemp(prefix="." + path.name + ".", dir=str(path.parent))
@@ -33,14 +36,20 @@ def atomic_text(path, text):
             stream.write(text)
             stream.flush()
             os.fsync(stream.fileno())
+        if validator is not None:
+            validator()
         os.replace(name, str(path))
     finally:
         if os.path.exists(name):
             os.unlink(name)
 
 
-def atomic_json(path, value):
-    atomic_text(path, json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n")
+def atomic_json(path, value, validator=None):
+    text = json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
+    if validator is None:
+        atomic_text(path, text)
+    else:
+        atomic_text(path, text, validator=validator)
 
 
 @contextmanager
@@ -74,10 +83,20 @@ def record_digest(record):
 def load_journal(directory=SIGNALS):
     value = read_json(Path(directory) / "daily_state.json")
     if value is not None:
-        if (value.get("schema") != 1 or not isinstance(value.get("text"), str)
+        if (value.get("schema") not in (1, 2) or not isinstance(value.get("text"), str)
                 or value.get("signal_id") != digest(value["text"])
                 or value.get("checksum") != record_digest(value)):
             raise ValueError("信号记录校验失败，停止使用旧建议")
+        if value["schema"] == 2:
+            accounts = value.get("account_states")
+            updated = value.get('updated_accounts', list(accounts) if isinstance(accounts, dict) else [])
+            if (not isinstance(accounts, dict) or not accounts or not isinstance(updated, list) or not updated or
+                    set(accounts) - set(ACCOUNT_FILES) or
+                    set(updated) - set(accounts) or len(set(updated)) != len(updated) or
+                    any(not isinstance(state, dict) or not isinstance(state.get('last_date'), str)
+                        or state['last_date'] > value['date'] for state in accounts.values()) or
+                    any(accounts[name]['last_date'] != value['date'] for name in updated)):
+                raise ValueError("三版本账户提交记录不完整")
     return value
 
 
@@ -89,24 +108,73 @@ def load_saved(directory=SIGNALS):
     return path.read_text(encoding="utf-8"), None
 
 
-def publish(text, date, target, crash_lock, directory=SIGNALS):
+def publish(text, date, target, crash_lock, directory=SIGNALS, account_states=None, accounts_locked=False, validator=None, updated_accounts=None):
     """One atomic commit; failed compatibility projections cannot orphan a lock."""
     directory = Path(directory)
-    record = dict(schema=1, date=date, signal_id=digest(text), text=text,
+    if account_states is not None:
+        updated_accounts = list(account_states) if updated_accounts is None else list(updated_accounts)
+        if (not account_states or set(account_states) - set(ACCOUNT_FILES) or not updated_accounts or
+                len(set(updated_accounts)) != len(updated_accounts) or set(updated_accounts) - set(account_states) or
+                any(not isinstance(s, dict) or not isinstance(s.get('last_date'), str) or s['last_date'] > date
+                    for s in account_states.values()) or
+                any(account_states[name]['last_date'] != date for name in updated_accounts)):
+            raise ValueError("拒绝提交不完整或跨日的策略账户")
+    record = dict(schema=2 if account_states is not None else 1, date=date, signal_id=digest(text), text=text,
                   target=target, crash_lock=crash_lock,
                   committed_at=now_local().isoformat())
+    if account_states is not None:
+        record["account_states"] = account_states
+        record['updated_accounts'] = updated_accounts
     record["checksum"] = record_digest(record)
-    atomic_json(directory / "daily_state.json", record)
-    errors = repair_projections(record, directory)
+    if validator is None:
+        atomic_json(directory / "daily_state.json", record)
+    else:
+        atomic_json(directory / "daily_state.json", record, validator=validator)
+    errors = repair_projections(record, directory, accounts_locked=accounts_locked)
     return record, errors
 
 
-def repair_projections(record, directory=SIGNALS):
+def repair_projections(record, directory=SIGNALS, accounts_locked=False):
     directory = Path(directory)
     errors = []
-    for path, text in ((directory / (record["date"] + ".txt"), record["text"]),
-                       (directory / "latest.txt", record["text"]),
-                       (directory / "crash_lock.json", json.dumps(record["crash_lock"]))):
+    accounts = record.get("account_states", {})
+    if set(accounts) - set(ACCOUNT_FILES):
+        raise ValueError("未知策略账户投影")
+    with ExitStack() as stack:
+        if not accounts_locked:
+            for name in sorted(accounts):
+                stack.enter_context(file_lock((directory / name).with_suffix(".lock")))
+        for name, state in accounts.items():
+            try:
+                path = directory / name
+                try:
+                    existing = read_json(path)
+                except (ValueError, UnicodeError):
+                    existing = None  # A verified canonical copy repairs its damaged projection.
+                if not isinstance(existing, dict):
+                    existing = None
+                if existing and (existing.get("last_date") or "") > state["last_date"]:
+                    raise ValueError("账户比主提交更新，拒绝倒退覆盖: " + name)
+                atomic_json(path, state)
+            except OSError as exc:
+                errors.append(name + ": " + type(exc).__name__)
+            if name == "shadow_v92.json":
+                try:
+                    output = io.StringIO(newline="")
+                    writer = csv.writer(output)
+                    writer.writerow(["date", "from", "to", "price", "nav"])
+                    for event in state["events"]:
+                        if event["trade"]:
+                            writer.writerow([event["date"], event["from"] or "", event["to"] or "",
+                                             "%.4f" % (event["price"] or 0.), "%.6f" % event["nav"]])
+                    atomic_text(directory / "shadow_v92_trades.csv", output.getvalue())
+                except OSError as exc:
+                    errors.append("shadow_v92_trades.csv: " + type(exc).__name__)
+    projections = [(directory / (record["date"] + ".txt"), record["text"]),
+                   (directory / "latest.txt", record["text"])]
+    if record.get("schema") == 1:
+        projections.append((directory / "crash_lock.json", json.dumps(record["crash_lock"])))
+    for path, text in projections:
         try:
             atomic_text(path, text)
         except OSError as exc:
@@ -136,7 +204,9 @@ def signal_info(text, now=None):
     result = dict(valid=False, actionable=False, date="", generated="", quote_time="",
                   note="信号格式缺失或损坏，仅供检查，不作为操作指令")
     header = re.search(r"^动量轮动信号\s*\|\s*生成 (\d{4}-\d{2}-\d{2} \d{2}:\d{2}(?::\d{2})?)\s*\|\s*数据截止 (\d{4}-\d{2}-\d{2})", text, re.M)
-    if not header or not re.search(r"^★ 建议:\s*\S", text, re.M):
+    legacy = re.search(r"^★ 建议:\s*\S", text, re.M)
+    bundle = re.search(r"^策略版本:\s*V9\.2\s*\|\s*V9\.2\+\s*\|\s*V10-H\s*$", text, re.M)
+    if not header or not (legacy or bundle):
         return result
     generated, date = header.groups()
     result.update(generated=generated, date=date)

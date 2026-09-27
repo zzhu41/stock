@@ -1,17 +1,37 @@
 """Single daily transaction for the V10-H shadow account; no outbound messages."""
 from contextlib import contextmanager
-from datetime import datetime
+from datetime import timedelta
 import fcntl
 import json
 import os
 from pathlib import Path
 import sys
 import tempfile
+import time
 
 from .ledger import advance, validate_state
 
 ROOT = Path(__file__).resolve().parents[1]
 STATE = ROOT / "signals/shadow_v10.json"
+
+
+def runtime_clock(now=None):
+    """Naive Asia/Shanghai clock plus elapsed work, matching signal_store clocks."""
+    from .data import _clock
+    started = time.monotonic()
+    reference = _clock(now).replace(tzinfo=None)
+    return lambda: reference + timedelta(seconds=max(0., time.monotonic() - started))
+
+
+def validate_snapshot(quotes, signal_date, now):
+    """A cached/injected data view cannot bypass the independent commit guard."""
+    from .data import _clock, _quotes
+    import signal_store
+    moment = _clock(now)
+    if not signal_store.execution_window(moment):
+        raise ValueError("影子更新须在交易日14:50–14:55窗口内，停止本次记账")
+    _quotes(quotes, signal_date, moment)
+    return moment
 
 
 @contextmanager
@@ -26,7 +46,7 @@ def locked(path):
             fcntl.flock(lock.fileno(), fcntl.LOCK_UN)
 
 
-def atomic_json(path, state):
+def atomic_json(path, state, validator=None):
     encoded = json.dumps(state, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
     fd, tmp = tempfile.mkstemp(prefix=path.name + ".tmp.", dir=str(path.parent))
     try:
@@ -34,6 +54,10 @@ def atomic_json(path, state):
             file.write(encoded)
             file.flush()
             os.fsync(file.fileno())
+        # Encoding/fsync can also cross a freshness/window boundary. Leave the
+        # old account intact if the final check fails before atomic replace.
+        if validator is not None:
+            validator()
         os.replace(tmp, str(path))
     finally:
         if os.path.exists(tmp):
@@ -68,12 +92,18 @@ def render(state, view):
     return lines
 
 
-def run(quotes, signal_date, state_path=STATE, now=None, build_view=None, decide=None):
-    """Call only from signal generation. Queries use the saved text, never this."""
-    now = now or datetime.now()
-    if signal_date != now.strftime("%Y-%m-%d"):
+def run(quotes, signal_date, state_path=None, now=None, build_view=None, decide=None):
+    """Compute one dated account update at the explicitly supplied state path.
+
+    The daily worker supplies an isolated staging path. Only the main daily
+    journal transaction promotes that prepared state to production. Queries
+    use saved text, and same-day calls return the existing card without trades.
+    """
+    clock = runtime_clock(now)
+    started_at = clock()
+    if signal_date != started_at.strftime("%Y-%m-%d"):
         raise ValueError("V10-H cannot start/update a forward account with historical quotes")
-    state_path = Path(state_path)
+    state_path = Path(STATE if state_path is None else state_path)
     with locked(state_path):
         state = json.loads(state_path.read_text(encoding="utf-8")) if state_path.exists() else None
         validate_state(state)
@@ -83,19 +113,23 @@ def run(quotes, signal_date, state_path=STATE, now=None, build_view=None, decide
             return state["saved_lines"]
         if state and signal_date < state["last_date"]:
             raise ValueError("V10-H refuses backdated forward updates")
+        validated_at = validate_snapshot(quotes, signal_date, clock())
         if build_view is None:
             from .data import build_live_view
             build_view = build_live_view
         if decide is None:
             from .policy import decide as policy_decide
             decide = policy_decide
-        view = build_view(quotes, signal_date, now=now)
+        view = build_view(quotes, signal_date, now=validated_at)
         decision = decide(view["histories"], view["calendar"], signal_date, state=state)
+        validate_snapshot(quotes, signal_date, clock())
         updated = advance(state, decision, view, quotes, signal_date)
         updated["data_metadata"] = view["metadata"]
         updated["saved_lines"] = render(updated, view)
         # State, mark, action entitlement, virtual fill and card commit together.
-        atomic_json(state_path, updated)
+        validator = lambda: validate_snapshot(quotes, signal_date, clock())
+        validator()
+        atomic_json(state_path, updated, validator=validator)
         return updated["saved_lines"]
 
 

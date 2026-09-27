@@ -124,7 +124,12 @@ class ShadowAccountTests(unittest.TestCase):
                     lines = call(module, [], history(21), {A: 100., B: 100.}, DATES[21])
                 self.assertIn("JSON已入账", "\n".join(lines))
                 from push_signal import build_markdown
-                self.assertIn("CSV导出失败", build_markdown("\n".join(lines), query=True)[0])
+                card = build_markdown("\n".join(lines), query=True)[0]
+                if module is shadow_v92:
+                    self.assertIn("CSV导出失败", card)
+                else:
+                    self.assertNotIn("0906", card)
+                    self.assertNotIn("CSV导出失败", card)
                 saved = (root / "state.json").read_bytes()
                 with patch.object(module.strategy, "decide", side_effect=AssertionError("duplicate decide")), \
                         patch.object(shadow_0906, "qvix_state", side_effect=AssertionError("duplicate QVIX")):

@@ -26,6 +26,10 @@ signals/web_build.log
 signals/shadow_v10.json
 signals/shadow_v10.json.tmp.*
 signals/shadow_v10.lock
+signals/shadow_v92_plus.json
+signals/shadow_v92_plus.json.tmp.*
+signals/shadow_v92_plus.lock
+signals/.signal-stage-*/
 signals/daily_state.json
 signals/generation_status.json
 signals/delivery.json
