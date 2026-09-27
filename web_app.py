@@ -20,6 +20,7 @@
 """
 import csv
 import json
+import math
 import os
 import subprocess
 import sys
@@ -29,6 +30,7 @@ import urllib.parse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 from market_data import UNIVERSE, fetch_realtime
+from web_signals import v10_signal
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 CACHE = os.path.join(BASE, "signals", "web_cache.json")
@@ -168,6 +170,110 @@ def holding_info(ver):
     }
 
 
+def version_info(vid, ver):
+    metadata = dict(ver.get("metadata", {}))
+    daily = ver.get("daily", [])
+    convention = ver.get("metrics_convention")
+    note = ("收益包含所选首日，基期为前一观察日净值；全程从1起算，按每年244个交易日年化"
+            if isinstance(convention, dict) else convention or "以区间首个显示净值为基期，沿用旧网页统计口径")
+    return dict(id=vid, label=ver["label"], metrics=ver.get("metrics", {}),
+                data_range=[daily[0][0], daily[-1][0]] if daily else None,
+                basis=metadata.get("basis", "legacy_qfq_same_close"),
+                kind=metadata.get("kind", "historical"),
+                warnings=metadata.get("warnings", ["旧行情回测口径；与修正总回报研究曲线不可直接比较"]),
+                default_compare="v9.2-tr" if vid == "v10-h" else "",
+                metrics_note=note,
+                metadata=metadata)
+
+
+def _corrected(ver):
+    return ver.get("metadata", {}).get("basis") == "corrected_tr_same_close"
+
+
+def range_summary(ver, daily):
+    """Corrected research includes first selected day's return, with n/244.
+
+    Keep legacy series conventions intact; never round a new NAV before metrics.
+    """
+    if not _corrected(ver):
+        metrics = range_metrics(daily)
+        if metrics is None:
+            metrics = dict(total_ret=0., ann=0., max_dd=0., sharpe=0., calmar=None, days=len(daily))
+        return metrics, yearly(daily), daily[0][1]
+    dates = [row[0] for row in ver["daily"]]
+    begin = dates.index(daily[0][0])
+    base = ver["daily"][begin - 1][1] if begin else 1.0
+    previous, peak, drawdown = base, base, 0.
+    returns, annual = [], []
+    annual_base, current_year = base, daily[0][0][:4]
+    for date, nav, *rest in daily:
+        year = date[:4]
+        if year != current_year:
+            annual.append([current_year, (previous / annual_base - 1) * 100])
+            current_year, annual_base = year, previous
+        returns.append(nav / previous - 1)
+        peak = max(peak, nav)
+        drawdown = min(drawdown, nav / peak - 1)
+        previous = nav
+    annual.append([current_year, (previous / annual_base - 1) * 100])
+    total = daily[-1][1] / base - 1
+    ann = math.expm1(math.log1p(total) * TRADING_DAYS / len(daily))
+    mean = sum(returns) / len(returns)
+    deviation = (sum((r - mean) ** 2 for r in returns) / len(returns)) ** .5
+    metrics = dict(nav=daily[-1][1] / base, total_ret=total * 100, ann=ann * 100,
+                   max_dd=drawdown * 100, sharpe=mean / deviation * TRADING_DAYS ** .5 if deviation else 0.,
+                   calmar=ann / abs(drawdown) if drawdown else None, days=len(daily))
+    if begin == 0 and len(daily) == len(ver["daily"]):
+        # Match the pinned full-path published statistics exactly.
+        metrics.update(ver.get("metrics", {}))
+    return metrics, annual, base
+
+
+def series_response(data, qs, now=None):
+    vid = qs.get("version", ["v10-h" if "v10-h" in data["versions"] else "v9.2"])[0]
+    ver = data["versions"].get(vid)
+    if ver is None:
+        raise ValueError("unknown version")
+    start = qs.get("start", [data["start"]])[0] or data["start"]
+    end = qs.get("end", ["9999"])[0] or "9999"
+    daily = slice_daily(ver["daily"], start, end)
+    if not daily:
+        raise ValueError("empty range")
+    trades = [t for t in ver["trades"] if daily[0][0] <= t[0] <= daily[-1][0]]
+    crash_set = {(d, c) for d, c in ver["crash_buys"]}
+    metrics, years, base = range_summary(ver, daily)
+    names = data["names"]
+    # Holding belongs to the displayed historical endpoint, not a future/current day.
+    held_prefix = [row for row in ver["daily"] if row[0] <= daily[-1][0]]
+    held_trades = [row for row in ver["trades"] if row[0] <= daily[-1][0]]
+    resp = dict(version=vid, label=ver["label"], range=[daily[0][0], daily[-1][0]],
+                daily=daily, trades=[t + [trade_kind(t, crash_set), names.get(t[1] or "", ""),
+                                         names.get(t[2], "")] for t in trades],
+                metrics=metrics, yearly=years, normalization_base=base,
+                holding=holding_info(dict(daily=held_prefix, trades=held_trades)), names=names,
+                version_meta=version_info(vid, ver), comparison_warning=None,
+                signal=v10_signal(data["versions"].get("v10-h"), now=now))
+    cmp_id = qs.get("compare", [""])[0]
+    other = data["versions"].get(cmp_id)
+    if other is None:
+        other = ver.get("benchmarks", data["benchmarks"]).get(cmp_id)
+    if other is not None:
+        # A longer comparison may not leak beyond the displayed main range.
+        compared = slice_daily(other["daily"], daily[0][0], daily[-1][0])
+        if compared:
+            cmp_metrics, cmp_years, cmp_base = range_summary(other, compared)
+            resp["compare"] = dict(id=cmp_id, label=other["label"], daily=[[r[0], r[1]] for r in compared],
+                                   metrics=cmp_metrics, yearly=cmp_years, normalization_base=cmp_base,
+                                   range=[compared[0][0], compared[-1][0]])
+            warnings = []
+            if version_info(vid, ver)["basis"] != other.get("metadata", {}).get("basis", "legacy_qfq_same_close"):
+                warnings.append("两条曲线的数据口径不同，收益数字不能当作同口径优劣比较；V10请优先选择v9.2同口径对照")
+            if [r[0] for r in daily] != [r[0] for r in compared]:
+                warnings.append("两条曲线可用日期不同；对比曲线仅覆盖%s至%s" % (compared[0][0], compared[-1][0]))
+            resp["comparison_warning"] = "；".join(warnings) or None
+    return resp
+
+
 # ---------- 实盘账本(record.py 的网页入口) ----------
 
 def portfolio_state():
@@ -259,6 +365,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(code)
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(data)))
+        self.send_header("Cache-Control", "public, max-age=86400" if ctype.startswith("application/javascript") else "no-store")
         self.end_headers()
         self.wfile.write(data)
 
@@ -319,9 +426,11 @@ class Handler(BaseHTTPRequestHandler):
             "ready": True,
             "building": building,
             "built_at": data["built_at"],
+            "v10_updated_at": data.get("v10_updated_at"),
+            "v10_error": data.get("v10_error"),
             "data_range": data["data_range"],
-            "versions": [{"id": k, "label": v["label"], "metrics": v["metrics"]}
-                         for k, v in data["versions"].items()],
+            "versions": [version_info(k, v) for k, v in data["versions"].items()],
+            "signal": v10_signal(data["versions"].get("v10-h")),
             "benchmarks": [{"id": k, "label": v["label"]}
                            for k, v in data["benchmarks"].items()],
         })
@@ -331,44 +440,12 @@ class Handler(BaseHTTPRequestHandler):
         if data is None:
             maybe_trigger_build()
             return self._json({"ready": False, "building": True}, 503)
-        vid = qs.get("version", ["v9.2"])[0]
-        ver = data["versions"].get(vid)
-        if ver is None:
-            return self._json({"error": "unknown version"}, 400)
-        start = qs.get("start", [data["start"]])[0] or data["start"]
-        end = qs.get("end", ["9999"])[0] or "9999"
-        daily = slice_daily(ver["daily"], start, end)
-        if not daily:
-            return self._json({"error": "empty range"}, 400)
-        trades = [t for t in ver["trades"] if daily[0][0] <= t[0] <= daily[-1][0]]
-        crash_set = {(d, c) for d, c in ver["crash_buys"]}
-        names = data["names"]
-        resp = {
-            "version": vid,
-            "label": ver["label"],
-            "range": [daily[0][0], daily[-1][0]],
-            "daily": daily,
-            "trades": [t + [trade_kind(t, crash_set), names.get(t[1] or "", ""),
-                            names.get(t[2], "")] for t in trades],
-            "metrics": range_metrics(daily),
-            "yearly": yearly(daily),
-            "holding": holding_info(ver),
-            "names": names,
-        }
-        cmp_id = qs.get("compare", [""])[0]
-        cmp_daily, cmp_label = None, None
-        if cmp_id in data["versions"]:
-            cmp_label = data["versions"][cmp_id]["label"]
-            cmp_daily = slice_daily(data["versions"][cmp_id]["daily"], start, end)
-        elif cmp_id in data["benchmarks"]:
-            cmp_label = data["benchmarks"][cmp_id]["label"]
-            cmp_daily = slice_daily(data["benchmarks"][cmp_id]["daily"], start, end)
-        if cmp_daily:
-            resp["compare"] = {"id": cmp_id, "label": cmp_label,
-                               "daily": [[r[0], r[1]] for r in cmp_daily],
-                               "metrics": range_metrics(cmp_daily),
-                               "yearly": yearly(cmp_daily)}
-        self._json(resp)
+        try:
+            response = series_response(data, qs)
+        except ValueError as exc:
+            return self._json({"error": str(exc)}, 400)
+        self._json(response)
+
 
 
 if __name__ == "__main__":

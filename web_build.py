@@ -15,6 +15,7 @@
 全量约 3 分钟(单版本约 30s)。用法: python3.8 web_build.py
 """
 import json
+import argparse
 import os
 import sys
 import time
@@ -41,6 +42,25 @@ VERSIONS = [
 ]
 
 BENCHMARKS = [("510300", "沪深300ETF 买入持有"), ("518880", "黄金ETF 买入持有")]
+
+
+def append_v10(payload):
+    """Read frozen research only; preserve all legacy curves and live accounts."""
+    from web_v10 import export_versions
+    exported = export_versions()
+    payload["versions"].update(exported)
+    payload["v10_updated_at"] = time.strftime("%Y-%m-%d %H:%M:%S")
+    payload.pop("v10_error", None)
+    return payload
+
+
+def build_v10_only():
+    """Fast initial rollout: do not refetch/recalculate any old strategy path."""
+    with open(CACHE, encoding="utf-8") as stream:
+        payload = json.load(stream)
+    append_v10(payload)
+    atomic_write(CACHE, json.dumps(payload, ensure_ascii=False, separators=(",", ":"), allow_nan=False))
+    print("V10-H及同口径v9.2已追加，旧版本曲线保持不变", flush=True)
 
 
 def metrics(res):
@@ -114,12 +134,35 @@ def build():
         "versions": versions,
         "benchmarks": benchmarks,
     }
-    atomic_write(CACHE, json.dumps(payload, ensure_ascii=False, separators=(",", ":")))
+    try:
+        append_v10(payload)
+    except Exception as exc:
+        # Keep a previously verified frozen snapshot visibly dated if a rebuild
+        # fails; never replace it with an unverified variant or live NAV.
+        payload["v10_error"] = type(exc).__name__
+        try:
+            with open(CACHE, encoding="utf-8") as stream:
+                previous = json.load(stream)
+            for vid in ("v10-h", "v9.2-tr"):
+                if vid in previous.get("versions", {}):
+                    payload["versions"][vid] = previous["versions"][vid]
+                    warnings = payload["versions"][vid].setdefault("metadata", {}).setdefault("warnings", [])
+                    note = "本次研究快照核验未完成，显示上一次已保存的历史数据"
+                    if note not in warnings:
+                        warnings.append(note)
+            payload["v10_updated_at"] = previous.get("v10_updated_at")
+        except (OSError, ValueError):
+            pass
+        print("V10研究曲线更新失败: %s" % type(exc).__name__, flush=True)
+    atomic_write(CACHE, json.dumps(payload, ensure_ascii=False, separators=(",", ":"), allow_nan=False))
     print("缓存写入 %s (%.1f KB), 总耗时 %ds"
           % (CACHE, os.path.getsize(CACHE) / 1024, time.time() - t0), flush=True)
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--v10-only", action="store_true", help="Append frozen V10 curves without rebuilding legacy versions")
+    args = parser.parse_args()
     import fcntl
     lock_fd = os.open(LOCK, os.O_CREAT | os.O_WRONLY)
     try:
@@ -128,6 +171,6 @@ if __name__ == "__main__":
         print("已有构建在进行, 退出")
         sys.exit(0)
     try:
-        build()
+        build_v10_only() if args.v10_only else build()
     finally:
         os.close(lock_fd)
