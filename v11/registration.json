@@ -1,0 +1,16 @@
+{
+  "amendments": [
+    {
+      "at": "2026-09-27T15:03:39.658333+00:00",
+      "previous_protocol_sha256": "cee07912d8ee339db76f0910794014305fdbebaad8906ff7f464140faad5a30b",
+      "reason": "Clarify all_assets retains the original rank fallback; no candidate/selector changes, no new performance observed"
+    }
+  ],
+  "new_candidate_performance_observed": false,
+  "protocol_sha256": "86c5d62b28f4866d820a12f2a2a06d51f30e6ed96fec12422f8f7b249af48c8a",
+  "raw_count": 593,
+  "registered_for_development_only": true,
+  "registry_count": 586,
+  "registry_sha256": "df2cd9d66761b23c61459f14c269b492d68e15e9a8180216acebdb089d16ab71",
+  "selection_preference": "balanced_assumption_pending_optional_user_reply"
+}

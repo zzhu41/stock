@@ -1,0 +1,1183 @@
+{
+  "a_evaluation_sha256": "e2c136c65b6b2cc0652e5f65aa678535b905c2fefb43c1a0be19aeac7389b53e",
+  "a_selection_sha256": "468fc698edf9c7a141a4ee433d1df179d93988cb95451748377996898cfc062d",
+  "feature_array_sha256": "60ed2188c0baf2305d72559802c0517875626bcf28808bc0ad2e467daa992e51",
+  "feature_fingerprints": {
+    "data_source_sha256": "71d72afd8c11d1e7bacb27260dc9c903a1b29ee6877f2d7b0e782e2d33eea6bc",
+    "histories_sha256": "8993cb0f3d42c7b649def56c3c7e61ad5f922a8a16c9f6becbf2b19c8ac913b8",
+    "input_array_sha256": {
+      "fear": "2940cc780f6202581b907340f3c49df8ff1fe70162deaa8da0636b15ac4750e0",
+      "features": "8208659f0575cad06c61e76263f88f24d6d5851dbbe420416b8c745b61a4a13a",
+      "orders": "573f3d3ae8918595fd9229a5b3eb699ae800f543ea218521029b2b2f6bf71b7c",
+      "scores": "eb5c310f4bdb077fb79c449ad79376248b9a55ab5dc90e76cc1fe938068347fb"
+    },
+    "input_fingerprints": {
+      "corrected": "1498be16c517288a1829aca04201dea12de6b63dc3e2d8f5056a3d189a914fee",
+      "frozen_profiles": "14082b92db8386c2abd51f52d6267015d2b5f2abfa069f033115cc68ec9cfe19",
+      "qvix": "87045736b27dfeed55bce3b098001bc6c5817c65f1fc831493dbbf96466f4257"
+    },
+    "input_metadata_sha256": "f0a788a330c01de3617a0adb3a42bb853acf65f274c74335fc94d37527ff31fb",
+    "source_sha256": "d7411bb3d855bd64467c33fba9b35acc579b02fac5ed74107efbd9dbb099b56f",
+    "specifications": [
+      {
+        "aggregate": "mean",
+        "estimator": "huberlog",
+        "name": "v11_huberlog_15_mean_s1",
+        "smooth": 1,
+        "windows": [
+          15
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "huberlog",
+        "name": "v11_huberlog_15_mean_s3",
+        "smooth": 3,
+        "windows": [
+          15
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "huberlog",
+        "name": "v11_huberlog_15_mean_s5",
+        "smooth": 5,
+        "windows": [
+          15
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "huberlog",
+        "name": "v11_huberlog_20_mean_s1",
+        "smooth": 1,
+        "windows": [
+          20
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "huberlog",
+        "name": "v11_huberlog_20_mean_s3",
+        "smooth": 3,
+        "windows": [
+          20
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "huberlog",
+        "name": "v11_huberlog_20_mean_s5",
+        "smooth": 5,
+        "windows": [
+          20
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "huberlog",
+        "name": "v11_huberlog_30_mean_s1",
+        "smooth": 1,
+        "windows": [
+          30
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "huberlog",
+        "name": "v11_huberlog_30_mean_s3",
+        "smooth": 3,
+        "windows": [
+          30
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "huberlog",
+        "name": "v11_huberlog_30_mean_s5",
+        "smooth": 5,
+        "windows": [
+          30
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "huberlog",
+        "name": "v11_huberlog_40_mean_s1",
+        "smooth": 1,
+        "windows": [
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "huberlog",
+        "name": "v11_huberlog_40_mean_s3",
+        "smooth": 3,
+        "windows": [
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "huberlog",
+        "name": "v11_huberlog_40_mean_s5",
+        "smooth": 5,
+        "windows": [
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "huberlog",
+        "name": "v11_huberlog_60_mean_s1",
+        "smooth": 1,
+        "windows": [
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "huberlog",
+        "name": "v11_huberlog_60_mean_s3",
+        "smooth": 3,
+        "windows": [
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "huberlog",
+        "name": "v11_huberlog_60_mean_s5",
+        "smooth": 5,
+        "windows": [
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logmom",
+        "name": "v11_logmom_10_20_40_mean_s1",
+        "smooth": 1,
+        "windows": [
+          10,
+          20,
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logmom",
+        "name": "v11_logmom_10_20_40_mean_s3",
+        "smooth": 3,
+        "windows": [
+          10,
+          20,
+          40
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "logmom",
+        "name": "v11_logmom_10_20_40_rank_s1",
+        "smooth": 1,
+        "windows": [
+          10,
+          20,
+          40
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "logmom",
+        "name": "v11_logmom_10_20_40_rank_s3",
+        "smooth": 3,
+        "windows": [
+          10,
+          20,
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_40_60_mean_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          40,
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_40_60_mean_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          40,
+          60
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_40_60_rank_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          40,
+          60
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_40_60_rank_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          40,
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_60_120_mean_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          60,
+          120
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_60_120_mean_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          60,
+          120
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_60_120_rank_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          60,
+          120
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_60_120_rank_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          60,
+          120
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_61_122_mean_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          61,
+          122
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_61_122_mean_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          61,
+          122
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_61_122_rank_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          61,
+          122
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_61_122_rank_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          61,
+          122
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_61_244_mean_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          61,
+          244
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_61_244_mean_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          61,
+          244
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_61_244_rank_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          61,
+          244
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "logmom",
+        "name": "v11_logmom_20_61_244_rank_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          61,
+          244
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logmom",
+        "name": "v11_logmom_61_122_244_mean_s1",
+        "smooth": 1,
+        "windows": [
+          61,
+          122,
+          244
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logmom",
+        "name": "v11_logmom_61_122_244_mean_s3",
+        "smooth": 3,
+        "windows": [
+          61,
+          122,
+          244
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "logmom",
+        "name": "v11_logmom_61_122_244_rank_s1",
+        "smooth": 1,
+        "windows": [
+          61,
+          122,
+          244
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "logmom",
+        "name": "v11_logmom_61_122_244_rank_s3",
+        "smooth": 3,
+        "windows": [
+          61,
+          122,
+          244
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_120_mean_s1",
+        "smooth": 1,
+        "windows": [
+          120
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_120_mean_s3",
+        "smooth": 3,
+        "windows": [
+          120
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_120_mean_s5",
+        "smooth": 5,
+        "windows": [
+          120
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_15_mean_s1",
+        "smooth": 1,
+        "windows": [
+          15
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_15_mean_s3",
+        "smooth": 3,
+        "windows": [
+          15
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_15_mean_s5",
+        "smooth": 5,
+        "windows": [
+          15
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_20_mean_s1",
+        "smooth": 1,
+        "windows": [
+          20
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_20_mean_s3",
+        "smooth": 3,
+        "windows": [
+          20
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_20_mean_s5",
+        "smooth": 5,
+        "windows": [
+          20
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_30_mean_s1",
+        "smooth": 1,
+        "windows": [
+          30
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_30_mean_s3",
+        "smooth": 3,
+        "windows": [
+          30
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_30_mean_s5",
+        "smooth": 5,
+        "windows": [
+          30
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_40_mean_s1",
+        "smooth": 1,
+        "windows": [
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_40_mean_s3",
+        "smooth": 3,
+        "windows": [
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_40_mean_s5",
+        "smooth": 5,
+        "windows": [
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_60_mean_s1",
+        "smooth": 1,
+        "windows": [
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_60_mean_s3",
+        "smooth": 3,
+        "windows": [
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_60_mean_s5",
+        "smooth": 5,
+        "windows": [
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_90_mean_s1",
+        "smooth": 1,
+        "windows": [
+          90
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_90_mean_s3",
+        "smooth": 3,
+        "windows": [
+          90
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "logwls",
+        "name": "v11_logwls_90_mean_s5",
+        "smooth": 5,
+        "windows": [
+          90
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "olslog",
+        "name": "v11_olslog_15_mean_s1",
+        "smooth": 1,
+        "windows": [
+          15
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "olslog",
+        "name": "v11_olslog_15_mean_s3",
+        "smooth": 3,
+        "windows": [
+          15
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "olslog",
+        "name": "v11_olslog_15_mean_s5",
+        "smooth": 5,
+        "windows": [
+          15
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "olslog",
+        "name": "v11_olslog_20_mean_s1",
+        "smooth": 1,
+        "windows": [
+          20
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "olslog",
+        "name": "v11_olslog_20_mean_s3",
+        "smooth": 3,
+        "windows": [
+          20
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "olslog",
+        "name": "v11_olslog_20_mean_s5",
+        "smooth": 5,
+        "windows": [
+          20
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "olslog",
+        "name": "v11_olslog_30_mean_s1",
+        "smooth": 1,
+        "windows": [
+          30
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "olslog",
+        "name": "v11_olslog_30_mean_s3",
+        "smooth": 3,
+        "windows": [
+          30
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "olslog",
+        "name": "v11_olslog_30_mean_s5",
+        "smooth": 5,
+        "windows": [
+          30
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "olslog",
+        "name": "v11_olslog_40_mean_s1",
+        "smooth": 1,
+        "windows": [
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "olslog",
+        "name": "v11_olslog_40_mean_s3",
+        "smooth": 3,
+        "windows": [
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "olslog",
+        "name": "v11_olslog_40_mean_s5",
+        "smooth": 5,
+        "windows": [
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "olslog",
+        "name": "v11_olslog_60_mean_s1",
+        "smooth": 1,
+        "windows": [
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "olslog",
+        "name": "v11_olslog_60_mean_s3",
+        "smooth": 3,
+        "windows": [
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "olslog",
+        "name": "v11_olslog_60_mean_s5",
+        "smooth": 5,
+        "windows": [
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "theilsenlog",
+        "name": "v11_theilsenlog_15_mean_s1",
+        "smooth": 1,
+        "windows": [
+          15
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "theilsenlog",
+        "name": "v11_theilsenlog_15_mean_s3",
+        "smooth": 3,
+        "windows": [
+          15
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "theilsenlog",
+        "name": "v11_theilsenlog_15_mean_s5",
+        "smooth": 5,
+        "windows": [
+          15
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "theilsenlog",
+        "name": "v11_theilsenlog_20_mean_s1",
+        "smooth": 1,
+        "windows": [
+          20
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "theilsenlog",
+        "name": "v11_theilsenlog_20_mean_s3",
+        "smooth": 3,
+        "windows": [
+          20
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "theilsenlog",
+        "name": "v11_theilsenlog_20_mean_s5",
+        "smooth": 5,
+        "windows": [
+          20
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "theilsenlog",
+        "name": "v11_theilsenlog_30_mean_s1",
+        "smooth": 1,
+        "windows": [
+          30
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "theilsenlog",
+        "name": "v11_theilsenlog_30_mean_s3",
+        "smooth": 3,
+        "windows": [
+          30
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "theilsenlog",
+        "name": "v11_theilsenlog_30_mean_s5",
+        "smooth": 5,
+        "windows": [
+          30
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "theilsenlog",
+        "name": "v11_theilsenlog_40_mean_s1",
+        "smooth": 1,
+        "windows": [
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "theilsenlog",
+        "name": "v11_theilsenlog_40_mean_s3",
+        "smooth": 3,
+        "windows": [
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "theilsenlog",
+        "name": "v11_theilsenlog_40_mean_s5",
+        "smooth": 5,
+        "windows": [
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "theilsenlog",
+        "name": "v11_theilsenlog_60_mean_s1",
+        "smooth": 1,
+        "windows": [
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "theilsenlog",
+        "name": "v11_theilsenlog_60_mean_s3",
+        "smooth": 3,
+        "windows": [
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "theilsenlog",
+        "name": "v11_theilsenlog_60_mean_s5",
+        "smooth": 5,
+        "windows": [
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "wls",
+        "name": "v11_wls_10_20_40_mean_s1",
+        "smooth": 1,
+        "windows": [
+          10,
+          20,
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "wls",
+        "name": "v11_wls_10_20_40_mean_s3",
+        "smooth": 3,
+        "windows": [
+          10,
+          20,
+          40
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "wls",
+        "name": "v11_wls_10_20_40_rank_s1",
+        "smooth": 1,
+        "windows": [
+          10,
+          20,
+          40
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "wls",
+        "name": "v11_wls_10_20_40_rank_s3",
+        "smooth": 3,
+        "windows": [
+          10,
+          20,
+          40
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "wls",
+        "name": "v11_wls_20_40_60_mean_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          40,
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "wls",
+        "name": "v11_wls_20_40_60_mean_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          40,
+          60
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "wls",
+        "name": "v11_wls_20_40_60_rank_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          40,
+          60
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "wls",
+        "name": "v11_wls_20_40_60_rank_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          40,
+          60
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "wls",
+        "name": "v11_wls_20_60_120_mean_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          60,
+          120
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "wls",
+        "name": "v11_wls_20_60_120_mean_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          60,
+          120
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "wls",
+        "name": "v11_wls_20_60_120_rank_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          60,
+          120
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "wls",
+        "name": "v11_wls_20_60_120_rank_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          60,
+          120
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "wls",
+        "name": "v11_wls_20_61_122_mean_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          61,
+          122
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "wls",
+        "name": "v11_wls_20_61_122_mean_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          61,
+          122
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "wls",
+        "name": "v11_wls_20_61_122_rank_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          61,
+          122
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "wls",
+        "name": "v11_wls_20_61_122_rank_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          61,
+          122
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "wls",
+        "name": "v11_wls_20_61_244_mean_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          61,
+          244
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "wls",
+        "name": "v11_wls_20_61_244_mean_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          61,
+          244
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "wls",
+        "name": "v11_wls_20_61_244_rank_s1",
+        "smooth": 1,
+        "windows": [
+          20,
+          61,
+          244
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "wls",
+        "name": "v11_wls_20_61_244_rank_s3",
+        "smooth": 3,
+        "windows": [
+          20,
+          61,
+          244
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "wls",
+        "name": "v11_wls_61_122_244_mean_s1",
+        "smooth": 1,
+        "windows": [
+          61,
+          122,
+          244
+        ]
+      },
+      {
+        "aggregate": "mean",
+        "estimator": "wls",
+        "name": "v11_wls_61_122_244_mean_s3",
+        "smooth": 3,
+        "windows": [
+          61,
+          122,
+          244
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "wls",
+        "name": "v11_wls_61_122_244_rank_s1",
+        "smooth": 1,
+        "windows": [
+          61,
+          122,
+          244
+        ]
+      },
+      {
+        "aggregate": "rank",
+        "estimator": "wls",
+        "name": "v11_wls_61_122_244_rank_s3",
+        "smooth": 3,
+        "windows": [
+          61,
+          122,
+          244
+        ]
+      }
+    ]
+  },
+  "note": "One adaptive extension after seeing only development diagnostics; all confirmation remains undisclosed",
+  "period": [
+    "2014-01-02",
+    "2021-12-31"
+  ],
+  "registered_at": "2026-09-27T15:28:44.202478+00:00",
+  "registry_sha256": "bd08560fe7ad09374da968939a72d630b62d9f4598819493c3d77d8221157fbf",
+  "scenarios": [
+    [
+      "close_1bp",
+      0,
+      0.0001
+    ],
+    [
+      "close_11bp",
+      0,
+      0.0011
+    ],
+    [
+      "lag1_1bp",
+      1,
+      0.0001
+    ],
+    [
+      "lag1_11bp",
+      1,
+      0.0011
+    ]
+  ],
+  "sources": {
+    "COMBINATION_PROTOCOL.md": "fd4951cf3caeb10b0d0faa782e880380d5fea3312b70b1e6719bdf9e547e240c",
+    "combinations.py": "5e217dd48e97e51fe3e6f366b785217158e3d2a1064d98957827e92db8ccc4b4",
+    "data.py": "71d72afd8c11d1e7bacb27260dc9c903a1b29ee6877f2d7b0e782e2d33eea6bc",
+    "features.py": "d7411bb3d855bd64467c33fba9b35acc579b02fac5ed74107efbd9dbb099b56f",
+    "registry.py": "17e6b11ecb6ee4b558067b9df94625401c861dd1b31e272d9461d989bcf5757b",
+    "scan.py": "a43612a8d0d4e745ea69f72469a7b6d871c815ae526fd884fa3eae0df127af1c"
+  }
+}

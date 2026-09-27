@@ -1,0 +1,26 @@
+{
+  "artifacts_sha256": {
+    "close_11bp.json": "a7b19639fa8b6f7ca59dd23d5a261268bfc3508687c5dba15ae18306fc3982ba",
+    "close_1bp.json": "fce79c1fbd9c164f695083f67dd66b96571cc299c8cb418a32777331a0a0994c",
+    "concentration.json": "fd1601c0a95a54db7f4bbf35232fc67245f9f00ecc86c48db5a1e329dfb2ba3f",
+    "diagnostics.json": "3cf1fe214b3fbf3f5649645e0301ac2ce9f87723e6346696961eb0427ad1079d",
+    "lag1_11bp.json": "3133086453af2a59d1881fde78afecb28e78c3ad27d8e9a1aeca326d68c5e6e2",
+    "lag1_1bp.json": "cd70b4a7a497691be0ec4c4073ce683887c5a2436e519433ecac517d6ca9cebf",
+    "registration.json": "d64f99cc8437e4f0f838e6ed73f4f53cb52561a80a2b272ccc4a036597219bd1"
+  },
+  "completed_at": "2026-09-27T15:12:47.067326+00:00",
+  "diagnostic_source_sha256": {
+    "development_diagnostics.py": "301f381d0da11b8d4fd56791e641c92c4a30a2764452514d2cf0bd37f1b38fd6",
+    "diagnostics.py": "6cdb31c0b1e2a3be62bbb32bd5d5f6f49f83c01ccd1734a4d6896d9dc2c12a13"
+  },
+  "input_sha256": {
+    "control_fidelity": "a02d86a11c0bdf40eee63466f9b9ad49249e591c543d5327b77292cac2c3c57f",
+    "evaluation": "e2c136c65b6b2cc0652e5f65aa678535b905c2fefb43c1a0be19aeac7389b53e",
+    "path_metadata": "8b2f40c59945973b874741a3cf073c4993f66c45fc79c668ce7dff63cd91461a",
+    "paths": "505fbefa34ae9796edd5e6ff39fd5eabfad17555748874ebf71c1bc6bd70efa7",
+    "registration": "d33a6ad8fc071dfea61ec6e91ca0458a0d0c995c3f8835041a7377843a89b103",
+    "registry": "df2cd9d66761b23c61459f14c269b492d68e15e9a8180216acebdb089d16ab71",
+    "selection": "468fc698edf9c7a141a4ee433d1df179d93988cb95451748377996898cfc062d"
+  },
+  "result": "completed_development_only_no_reselection"
+}

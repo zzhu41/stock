@@ -1,0 +1,1504 @@
+{
+  "paths_sha256": "f61f810d97cb4c3293b24b786dc5ffc1b386d863afdabaa6b49def90af2ddc5a",
+  "period": [
+    "2014-01-02",
+    "2021-12-31"
+  ],
+  "registration_sha256": "b4ba221e885be6b5ec80db66499795def79e4edcd9a2d6e67b488ec354a796d4",
+  "rows": [
+    {
+      "config": {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "weekly",
+        "hash": "6dbf7e344aa89848eb0607a8946556dbfa96abbaaedeb21a790a959775497c27",
+        "horizons": [
+          244
+        ],
+        "id": "pc_6dbf7e344aa89848eb06",
+        "label": "244-day log trend / top1 / weekly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 1
+      },
+      "id": "pc_6dbf7e344aa89848eb06",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": -0.05289684012210405,
+              "calmar": -0.08258355507142508,
+              "max_dd": -0.6405251030469019,
+              "nav": 0.8044376893423529,
+              "sessions": 977,
+              "sharpe": 0.008289798019636205,
+              "total_return": -0.19556231065764706,
+              "volatility": 0.33571672087656035
+            },
+            "late": {
+              "cagr": 0.0974286178223657,
+              "calmar": 0.31047318567218124,
+              "max_dd": -0.31380686744792663,
+              "nav": 1.448800859704427,
+              "sessions": 973,
+              "sharpe": 0.46911008425696255,
+              "total_return": 0.44880085970442707,
+              "volatility": 0.28584004930945905
+            }
+          },
+          "full": {
+            "cagr": 0.01934492230029295,
+            "calmar": 0.030201661431021907,
+            "max_dd": -0.6405251030469019,
+            "nav": 1.16547001589784,
+            "sessions": 1950,
+            "sharpe": 0.2190174766562887,
+            "total_return": 0.16547001589783994,
+            "volatility": 0.31185667678948265
+          },
+          "switches": 56,
+          "total_model_fee": 0.10825613930089106,
+          "total_turnover": 113.0
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": -0.039061330795563606,
+              "calmar": -0.06219188562931117,
+              "max_dd": -0.6280776085225163,
+              "nav": 0.852534104644345,
+              "sessions": 977,
+              "sharpe": 0.05111897271617074,
+              "total_return": -0.14746589535565502,
+              "volatility": 0.33531959086888796
+            },
+            "late": {
+              "cagr": 0.11240876308972153,
+              "calmar": 0.36299256736973784,
+              "max_dd": -0.30967235473784216,
+              "nav": 1.5292862402218967,
+              "sessions": 973,
+              "sharpe": 0.5169950925260525,
+              "total_return": 0.5292862402218967,
+              "volatility": 0.28526803725777555
+            }
+          },
+          "full": {
+            "cagr": 0.03374836841285535,
+            "calmar": 0.05373279982428395,
+            "max_dd": -0.6280776085225163,
+            "nav": 1.3037686755524855,
+            "sessions": 1950,
+            "sharpe": 0.2639150677391805,
+            "total_return": 0.30376867555248555,
+            "volatility": 0.31138048241058186
+          },
+          "switches": 56,
+          "total_model_fee": 0.010368411581361259,
+          "total_turnover": 113.0
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": -0.04157792669453025,
+              "calmar": -0.06507837547669051,
+              "max_dd": -0.6388900520330666,
+              "nav": 0.8436292762252167,
+              "sessions": 977,
+              "sharpe": 0.04624761536096278,
+              "total_return": -0.15637072377478334,
+              "volatility": 0.3386489342276691
+            },
+            "late": {
+              "cagr": 0.1178043681097515,
+              "calmar": 0.37663221185839757,
+              "max_dd": -0.3127835708169391,
+              "nav": 1.5590805301777522,
+              "sessions": 973,
+              "sharpe": 0.5332428903196603,
+              "total_return": 0.5590805301777522,
+              "volatility": 0.2860643430536489
+            }
+          },
+          "full": {
+            "cagr": 0.034886645776702,
+            "calmar": 0.052047098561154075,
+            "max_dd": -0.6702899247248344,
+            "nav": 1.3152859792506824,
+            "sessions": 1950,
+            "sharpe": 0.2677803524950037,
+            "total_return": 0.31528597925068236,
+            "volatility": 0.31354560101504003
+          },
+          "switches": 57,
+          "total_model_fee": 0.11452163828920692,
+          "total_turnover": 115.0
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": -0.027577067975307186,
+              "calmar": -0.04376815426301377,
+              "max_dd": -0.6300715312231285,
+              "nav": 0.894068911970558,
+              "sessions": 977,
+              "sharpe": 0.0890859466916987,
+              "total_return": -0.10593108802944196,
+              "volatility": 0.3387107481989395
+            },
+            "late": {
+              "cagr": 0.13363175080776094,
+              "calmar": 0.44090788150075516,
+              "max_dd": -0.3030831527731084,
+              "nav": 1.6489909299577477,
+              "sessions": 973,
+              "sharpe": 0.5819774687015252,
+              "total_return": 0.6489909299577477,
+              "volatility": 0.2864717367249186
+            }
+          },
+          "full": {
+            "cagr": 0.04977269312084924,
+            "calmar": 0.07642335851501078,
+            "max_dd": -0.651275919927977,
+            "nav": 1.4743115265966473,
+            "sessions": 1950,
+            "sharpe": 0.313315270753426,
+            "total_return": 0.4743115265966473,
+            "volatility": 0.31376442261612847
+          },
+          "switches": 57,
+          "total_model_fee": 0.010985227979581125,
+          "total_turnover": 115.0
+        }
+      }
+    },
+    {
+      "config": {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "monthly",
+        "hash": "5b405c0fff7ae73fb2d7f4c5140d4760f763b11c4e01e08b0875fea608887f7d",
+        "horizons": [
+          244
+        ],
+        "id": "pc_5b405c0fff7ae73fb2d7",
+        "label": "244-day log trend / top1 / monthly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 1
+      },
+      "id": "pc_5b405c0fff7ae73fb2d7",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.014445540416386798,
+              "calmar": 0.02451649758182876,
+              "max_dd": -0.5892171330008249,
+              "nav": 1.0591085566918887,
+              "sessions": 977,
+              "sharpe": 0.21057620357840645,
+              "total_return": 0.05910855669188875,
+              "volatility": 0.3301577460838126
+            },
+            "late": {
+              "cagr": 0.1183183408368601,
+              "calmar": 0.3704493353544225,
+              "max_dd": -0.3193914242649689,
+              "nav": 1.5619411762682756,
+              "sessions": 973,
+              "sharpe": 0.5320556614251816,
+              "total_return": 0.5619411762682756,
+              "volatility": 0.2893684711009955
+            }
+          },
+          "full": {
+            "cagr": 0.0650099620264614,
+            "calmar": 0.10499695440835054,
+            "max_dd": -0.6191604546321114,
+            "nav": 1.654265264835129,
+            "sessions": 1950,
+            "sharpe": 0.3596126361437949,
+            "total_return": 0.654265264835129,
+            "volatility": 0.31048727431606377
+          },
+          "switches": 27,
+          "total_model_fee": 0.060539763402454705,
+          "total_turnover": 55.0
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.02106208786145199,
+              "calmar": 0.03599841782238886,
+              "max_dd": -0.5850837102166371,
+              "nav": 1.0870404459454663,
+              "sessions": 977,
+              "sharpe": 0.23028258091195675,
+              "total_return": 0.08704044594546634,
+              "volatility": 0.33023348230855887
+            },
+            "late": {
+              "cagr": 0.12620784156133125,
+              "calmar": 0.3968460535656987,
+              "max_dd": -0.3180272058329472,
+              "nav": 1.6063476172573805,
+              "sessions": 973,
+              "sharpe": 0.5563891112957374,
+              "total_return": 0.6063476172573805,
+              "volatility": 0.28933568698529355
+            }
+          },
+          "full": {
+            "cagr": 0.07223922619866557,
+            "calmar": 0.11829331628424555,
+            "max_dd": -0.6106788487109688,
+            "nav": 1.7461648302069048,
+            "sessions": 1950,
+            "sharpe": 0.3813952725990927,
+            "total_return": 0.7461648302069048,
+            "volatility": 0.31051252238411164
+          },
+          "switches": 27,
+          "total_model_fee": 0.005652866601108419,
+          "total_turnover": 55.0
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.019333848082181308,
+              "calmar": 0.033493577227563937,
+              "max_dd": -0.57724046466647,
+              "nav": 1.0796919577355826,
+              "sessions": 977,
+              "sharpe": 0.22545146730776952,
+              "total_return": 0.07969195773558257,
+              "volatility": 0.3312318241960122
+            },
+            "late": {
+              "cagr": 0.08334505512188847,
+              "calmar": 0.24524791221656825,
+              "max_dd": -0.3398400188960219,
+              "nav": 1.3760675724972002,
+              "sessions": 973,
+              "sharpe": 0.4230697997668125,
+              "total_return": 0.37606757249720024,
+              "volatility": 0.28754415480124523
+            }
+          },
+          "full": {
+            "cagr": 0.050786529982603516,
+            "calmar": 0.08121784930426912,
+            "max_dd": -0.6253124210706473,
+            "nav": 1.4857290913259495,
+            "sessions": 1950,
+            "sharpe": 0.31629188204592795,
+            "total_return": 0.48572909132594955,
+            "volatility": 0.31020649259952104
+          },
+          "switches": 27,
+          "total_model_fee": 0.05959130051714512,
+          "total_turnover": 55.0
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.025982278677508318,
+              "calmar": 0.045345356938092156,
+              "max_dd": -0.5729865289842283,
+              "nav": 1.1081666933997474,
+              "sessions": 977,
+              "sharpe": 0.24509601992242294,
+              "total_return": 0.10816669339974738,
+              "volatility": 0.33129647886904384
+            },
+            "late": {
+              "cagr": 0.09098782667013845,
+              "calmar": 0.268783794312299,
+              "max_dd": -0.33851678782545946,
+              "nav": 1.415189572981937,
+              "sessions": 973,
+              "sharpe": 0.4475345480862065,
+              "total_return": 0.41518957298193704,
+              "volatility": 0.2875321729809753
+            }
+          },
+          "full": {
+            "cagr": 0.057919245811273466,
+            "calmar": 0.09387725504822654,
+            "max_dd": -0.6169678244375514,
+            "nav": 1.5682659496251898,
+            "sessions": 1950,
+            "sharpe": 0.33810210367751714,
+            "total_return": 0.5682659496251898,
+            "volatility": 0.310235621138267
+          },
+          "switches": 27,
+          "total_model_fee": 0.005560419401087091,
+          "total_turnover": 55.0
+        }
+      }
+    },
+    {
+      "config": {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "weekly",
+        "hash": "ce0172e5d18d7d752954d44ec902f6a9bb3bae9ea436cb561d68133e6ec3ba2e",
+        "horizons": [
+          244
+        ],
+        "id": "pc_ce0172e5d18d7d752954",
+        "label": "244-day log trend / top2 / weekly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 2
+      },
+      "id": "pc_ce0172e5d18d7d752954",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.05997210436603603,
+              "calmar": 0.09833415536362805,
+              "max_dd": -0.609880708735091,
+              "nav": 1.262645425074444,
+              "sessions": 977,
+              "sharpe": 0.3466435380415472,
+              "total_return": 0.2626454250744441,
+              "volatility": 0.2966581022672433
+            },
+            "late": {
+              "cagr": 0.17665336218772298,
+              "calmar": 0.8431022654435972,
+              "max_dd": -0.20952779921042797,
+              "nav": 1.9130465192839992,
+              "sessions": 973,
+              "sharpe": 0.8447290435760418,
+              "total_return": 0.9130465192839992,
+              "volatility": 0.2218945795498758
+            }
+          },
+          "full": {
+            "cagr": 0.1166703144069001,
+            "calmar": 0.19130022106926034,
+            "max_dd": -0.609880708735091,
+            "nav": 2.4154994355285093,
+            "sessions": 1950,
+            "sharpe": 0.5535298662118354,
+            "total_return": 1.4154994355285093,
+            "volatility": 0.2620471601285817
+          },
+          "switches": 409,
+          "total_model_fee": 0.12256518468377542,
+          "total_turnover": 71.8651305749329
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.06745952675831456,
+              "calmar": 0.11128911422300128,
+              "max_dd": -0.6061646480817438,
+              "nav": 1.298738946831178,
+              "sessions": 977,
+              "sharpe": 0.3704052215513171,
+              "total_return": 0.2987389468311781,
+              "volatility": 0.29648624077151203
+            },
+            "late": {
+              "cagr": 0.18932700115401102,
+              "calmar": 0.9108045249698172,
+              "max_dd": -0.20786787500894888,
+              "nav": 1.996545810769442,
+              "sessions": 973,
+              "sharpe": 0.8934126221500135,
+              "total_return": 0.996545810769442,
+              "volatility": 0.22176859948565034
+            }
+          },
+          "full": {
+            "cagr": 0.12662191387520785,
+            "calmar": 0.20889029783560123,
+            "max_dd": -0.6061646480817438,
+            "nav": 2.592991803578898,
+            "sessions": 1950,
+            "sharpe": 0.5875762982171217,
+            "total_return": 1.5929918035788981,
+            "volatility": 0.26189770436835424
+          },
+          "switches": 409,
+          "total_model_fee": 0.0116093022096182,
+          "total_turnover": 71.86513057493289
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.06802314656771954,
+              "calmar": 0.11207444516539236,
+              "max_dd": -0.6069460925488883,
+              "nav": 1.3014868779976039,
+              "sessions": 977,
+              "sharpe": 0.37166855697504586,
+              "total_return": 0.3014868779976039,
+              "volatility": 0.2984736511062378
+            },
+            "late": {
+              "cagr": 0.17806565746055694,
+              "calmar": 0.8648489472925235,
+              "max_dd": -0.20589220582161227,
+              "nav": 1.9222193658482212,
+              "sessions": 973,
+              "sharpe": 0.8480732562559097,
+              "total_return": 0.9222193658482212,
+              "volatility": 0.22263118831289816
+            }
+          },
+          "full": {
+            "cagr": 0.12158295227250968,
+            "calmar": 0.20031919434874096,
+            "max_dd": -0.6069460925488883,
+            "nav": 2.5017432812843485,
+            "sessions": 1950,
+            "sharpe": 0.5687105019870775,
+            "total_return": 1.5017432812843485,
+            "volatility": 0.26338627900073475
+          },
+          "switches": 410,
+          "total_model_fee": 0.13077109101224615,
+          "total_turnover": 73.9218522430532
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.07555936966827888,
+              "calmar": 0.12510065869679018,
+              "max_dd": -0.6039885837165266,
+              "nav": 1.3386504888915354,
+              "sessions": 977,
+              "sharpe": 0.39519022648881746,
+              "total_return": 0.3386504888915354,
+              "volatility": 0.29857381710284364
+            },
+            "late": {
+              "cagr": 0.191378173891322,
+              "calmar": 0.9371175943711204,
+              "max_dd": -0.2042200200282781,
+              "nav": 2.0103122617161926,
+              "sessions": 973,
+              "sharpe": 0.898776031915251,
+              "total_return": 1.0103122617161926,
+              "volatility": 0.22256452571055577
+            }
+          },
+          "full": {
+            "cagr": 0.1318697666414939,
+            "calmar": 0.21833155492784131,
+            "max_dd": -0.6039885837165266,
+            "nav": 2.691105491971037,
+            "sessions": 1950,
+            "sharpe": 0.6033430208874395,
+            "total_return": 1.691105491971037,
+            "volatility": 0.26341634274133785
+          },
+          "switches": 410,
+          "total_model_fee": 0.012405695020301089,
+          "total_turnover": 73.9218522430532
+        }
+      }
+    },
+    {
+      "config": {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "monthly",
+        "hash": "ae0c8357fa7a80dda5ab2941b2af3383adf026b681ee5617389c3ec973caa8b2",
+        "horizons": [
+          244
+        ],
+        "id": "pc_ae0c8357fa7a80dda5ab",
+        "label": "244-day log trend / top2 / monthly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 2
+      },
+      "id": "pc_ae0c8357fa7a80dda5ab",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.046123259108766176,
+              "calmar": 0.0805850354840951,
+              "max_dd": -0.5723551380438299,
+              "nav": 1.1978755213782917,
+              "sessions": 977,
+              "sharpe": 0.3023315091977499,
+              "total_return": 0.19787552137829167,
+              "volatility": 0.29003579557690384
+            },
+            "late": {
+              "cagr": 0.18777115660363905,
+              "calmar": 0.9294817036203348,
+              "max_dd": -0.20201705517415747,
+              "nav": 1.9861509561714656,
+              "sessions": 973,
+              "sharpe": 0.8828318934387471,
+              "total_return": 0.9861509561714656,
+              "volatility": 0.2233452648833024
+            }
+          },
+          "full": {
+            "cagr": 0.11455435319849488,
+            "calmar": 0.20014558371925112,
+            "max_dd": -0.5723551380438299,
+            "nav": 2.379161612159895,
+            "sessions": 1950,
+            "sharpe": 0.5496252847048548,
+            "total_return": 1.379161612159895,
+            "volatility": 0.25893886002057487
+          },
+          "switches": 95,
+          "total_model_fee": 0.04613127404466044,
+          "total_turnover": 34.20694085831448
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.05132040055733995,
+              "calmar": 0.09021072612902828,
+              "max_dd": -0.5688946620819396,
+              "nav": 1.2218825023369668,
+              "sessions": 977,
+              "sharpe": 0.31941451142175314,
+              "total_return": 0.22188250233696682,
+              "volatility": 0.28999890210223456
+            },
+            "late": {
+              "cagr": 0.19176438966725784,
+              "calmar": 0.949539793616611,
+              "max_dd": -0.20195508493315995,
+              "nav": 2.0129122848725802,
+              "sessions": 973,
+              "sharpe": 0.8978363740757401,
+              "total_return": 1.0129122848725802,
+              "volatility": 0.22335636567879955
+            }
+          },
+          "full": {
+            "cagr": 0.11919792559019685,
+            "calmar": 0.20952547727197413,
+            "max_dd": -0.5688946620819396,
+            "nav": 2.459542299624908,
+            "sessions": 1950,
+            "sharpe": 0.5657025881414909,
+            "total_return": 1.459542299624908,
+            "volatility": 0.25892225376821437
+          },
+          "switches": 95,
+          "total_model_fee": 0.0042684457873695125,
+          "total_turnover": 34.20694085831448
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.05331864769758111,
+              "calmar": 0.09132694536576645,
+              "max_dd": -0.5838216474233178,
+              "nav": 1.231208342841677,
+              "sessions": 977,
+              "sharpe": 0.3260799502966885,
+              "total_return": 0.2312083428416769,
+              "volatility": 0.2897920916365104
+            },
+            "late": {
+              "cagr": 0.1890093932800416,
+              "calmar": 0.9322272494944146,
+              "max_dd": -0.20275034159594585,
+              "nav": 1.9944205167602393,
+              "sessions": 973,
+              "sharpe": 0.8881505247669899,
+              "total_return": 0.9944205167602393,
+              "volatility": 0.22312770100305623
+            }
+          },
+          "full": {
+            "cagr": 0.11897028669967522,
+            "calmar": 0.2037784779388493,
+            "max_dd": -0.5838216474233178,
+            "nav": 2.455547179369804,
+            "sessions": 1950,
+            "sharpe": 0.5652240429765454,
+            "total_return": 1.455547179369804,
+            "volatility": 0.2587060045677661
+          },
+          "switches": 96,
+          "total_model_fee": 0.04720459716681058,
+          "total_turnover": 34.30768340358016
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.05857516281508297,
+              "calmar": 0.10069454012124102,
+              "max_dd": -0.5817114090253125,
+              "nav": 1.2559956012165043,
+              "sessions": 977,
+              "sharpe": 0.34322464921446466,
+              "total_return": 0.25599560121650433,
+              "volatility": 0.28995305703278595
+            },
+            "late": {
+              "cagr": 0.19301017844695045,
+              "calmar": 0.9521935384123077,
+              "max_dd": -0.2027005757346102,
+              "nav": 2.021316167858098,
+              "sessions": 973,
+              "sharpe": 0.9030749868595591,
+              "total_return": 1.0213161678580982,
+              "volatility": 0.2231741402179981
+            }
+          },
+          "full": {
+            "cagr": 0.1236464154588884,
+            "calmar": 0.21255628399323362,
+            "max_dd": -0.5817114090253125,
+            "nav": 2.538764215497564,
+            "sessions": 1950,
+            "sharpe": 0.5812104661783775,
+            "total_return": 1.5387642154975638,
+            "volatility": 0.2588156594283958
+          },
+          "switches": 96,
+          "total_model_fee": 0.004368630704678189,
+          "total_turnover": 34.307683403580164
+        }
+      }
+    },
+    {
+      "config": {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "weekly",
+        "hash": "9fd3741e24bac905f34dcfd33cf7697e611c6790eef04212fd7a53d3eaa77693",
+        "horizons": [
+          61,
+          122,
+          244
+        ],
+        "id": "pc_9fd3741e24bac905f34d",
+        "label": "61+122+244-day log trend / top1 / weekly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 1
+      },
+      "id": "pc_9fd3741e24bac905f34d",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.0858965206245149,
+              "calmar": 0.1386029315681917,
+              "max_dd": -0.6197309079444283,
+              "nav": 1.3909145182646798,
+              "sessions": 977,
+              "sharpe": 0.42081302039521534,
+              "total_return": 0.3909145182646798,
+              "volatility": 0.3157325093505069
+            },
+            "late": {
+              "cagr": -0.015575689858790286,
+              "calmar": -0.03902325808361391,
+              "max_dd": -0.3991386322847965,
+              "nav": 0.9393190791781093,
+              "sessions": 973,
+              "sharpe": 0.09812527644329633,
+              "total_return": -0.060680920821890694,
+              "volatility": 0.2993770596108726
+            }
+          },
+          "full": {
+            "cagr": 0.0340203461777448,
+            "calmar": 0.054403452468745915,
+            "max_dd": -0.6253343240907192,
+            "nav": 1.306512544511846,
+            "sessions": 1950,
+            "sharpe": 0.2639813147264101,
+            "total_return": 0.30651254451184595,
+            "volatility": 0.3076980858664758
+          },
+          "switches": 85,
+          "total_model_fee": 0.2337003253407497,
+          "total_turnover": 171.0
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.10451789006090977,
+              "calmar": 0.17174038689452453,
+              "max_dd": -0.6085807301988908,
+              "nav": 1.4889083171965773,
+              "sessions": 977,
+              "sharpe": 0.47492666028889646,
+              "total_return": 0.48890831719657735,
+              "volatility": 0.31517212882304746
+            },
+            "late": {
+              "cagr": 0.009960374804778255,
+              "calmar": 0.027232076265152526,
+              "max_dd": -0.36575892002491306,
+              "nav": 1.0403139380541506,
+              "sessions": 973,
+              "sharpe": 0.18340191821268623,
+              "total_return": 0.04031393805415062,
+              "volatility": 0.29876678401756207
+            }
+          },
+          "full": {
+            "cagr": 0.0562784263598578,
+            "calmar": 0.09247487402610563,
+            "max_dd": -0.6085807301988908,
+            "nav": 1.548932074864353,
+            "sessions": 1950,
+            "sharpe": 0.333222807191181,
+            "total_return": 0.5489320748643529,
+            "volatility": 0.30711087001524573
+          },
+          "switches": 85,
+          "total_model_fee": 0.02308762211394033,
+          "total_turnover": 171.0
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.14828068318666743,
+              "calmar": 0.2543252925363032,
+              "max_dd": -0.5830355357420904,
+              "nav": 1.7395556816113964,
+              "sessions": 977,
+              "sharpe": 0.5927492380755409,
+              "total_return": 0.7395556816113964,
+              "volatility": 0.32135905912930623
+            },
+            "late": {
+              "cagr": 0.003892527981308504,
+              "calmar": 0.010989898271838473,
+              "max_dd": -0.3541914479120408,
+              "nav": 1.0156127457509414,
+              "sessions": 973,
+              "sharpe": 0.16422299046257208,
+              "total_return": 0.015612745750941404,
+              "volatility": 0.3010395664022523
+            }
+          },
+          "full": {
+            "cagr": 0.07381013250864597,
+            "calmar": 0.1265962844180674,
+            "max_dd": -0.5830355357420904,
+            "nav": 1.766714922188001,
+            "sessions": 1950,
+            "sharpe": 0.3856741869787153,
+            "total_return": 0.766714922188001,
+            "volatility": 0.3114186689898444
+          },
+          "switches": 85,
+          "total_model_fee": 0.2754244572932065,
+          "total_turnover": 171.0
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.16797184013594937,
+              "calmar": 0.2936370813085872,
+              "max_dd": -0.5720389243326713,
+              "nav": 1.8621122208208278,
+              "sessions": 977,
+              "sharpe": 0.6454267289683581,
+              "total_return": 0.8621122208208278,
+              "volatility": 0.32155955893995813
+            },
+            "late": {
+              "cagr": 0.02993360015487817,
+              "calmar": 0.0956856131229581,
+              "max_dd": -0.3128328196676008,
+              "nav": 1.124810640485043,
+              "sessions": 973,
+              "sharpe": 0.24934298436771318,
+              "total_return": 0.12481064048504309,
+              "volatility": 0.3013470533609646
+            }
+          },
+          "full": {
+            "cagr": 0.09692471832709071,
+            "calmar": 0.16943727813655524,
+            "max_dd": -0.5720389243326713,
+            "nav": 2.0945236397565044,
+            "sessions": 1950,
+            "sharpe": 0.4539359610155906,
+            "total_return": 1.0945236397565044,
+            "volatility": 0.31166676679028316
+          },
+          "switches": 85,
+          "total_model_fee": 0.027304682265587243,
+          "total_turnover": 171.0
+        }
+      }
+    },
+    {
+      "config": {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "monthly",
+        "hash": "11b90b110bb5b7b729236c664914531eeea96abce8a5dd8ad1478d3e1c469080",
+        "horizons": [
+          61,
+          122,
+          244
+        ],
+        "id": "pc_11b90b110bb5b7b72923",
+        "label": "61+122+244-day log trend / top1 / monthly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 1
+      },
+      "id": "pc_11b90b110bb5b7b72923",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.07485305002809814,
+              "calmar": 0.12292733692747473,
+              "max_dd": -0.608921106557936,
+              "nav": 1.3351339904966089,
+              "sessions": 977,
+              "sharpe": 0.38794684598777107,
+              "total_return": 0.33513399049660886,
+              "volatility": 0.31696150421405306
+            },
+            "late": {
+              "cagr": 0.06639026574940732,
+              "calmar": 0.23860301643166068,
+              "max_dd": -0.27824571014349453,
+              "nav": 1.2921753639664773,
+              "sessions": 973,
+              "sharpe": 0.36560379433047185,
+              "total_return": 0.29217536396647725,
+              "volatility": 0.29806167575179726
+            }
+          },
+          "full": {
+            "cagr": 0.07062197583291892,
+            "calmar": 0.11597886010574601,
+            "max_dd": -0.608921106557936,
+            "nav": 1.7252272501139654,
+            "sessions": 1950,
+            "sharpe": 0.37696319015357194,
+            "total_return": 0.7252272501139654,
+            "volatility": 0.3076764555734114
+          },
+          "switches": 39,
+          "total_model_fee": 0.10789287272382164,
+          "total_turnover": 79.0
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.08348789588935897,
+              "calmar": 0.1378197171310427,
+              "max_dd": -0.6057761373140566,
+              "nav": 1.37860223278245,
+              "sessions": 977,
+              "sharpe": 0.4132425134881292,
+              "total_return": 0.3786022327824501,
+              "volatility": 0.3167812557000487
+            },
+            "late": {
+              "cagr": 0.07877774437258044,
+              "calmar": 0.28460268646142006,
+              "max_dd": -0.2767990188429206,
+              "nav": 1.3530785565047687,
+              "sessions": 973,
+              "sharpe": 0.4043683430192516,
+              "total_return": 0.3530785565047687,
+              "volatility": 0.29797305272525065
+            }
+          },
+          "full": {
+            "cagr": 0.08113508598069781,
+            "calmar": 0.13393575775441022,
+            "max_dd": -0.6057761373140566,
+            "nav": 1.865357119127535,
+            "sessions": 1950,
+            "sharpe": 0.40875879523668485,
+            "total_return": 0.8653571191275351,
+            "volatility": 0.30754043982279683
+          },
+          "switches": 39,
+          "total_model_fee": 0.010211383046246025,
+          "total_turnover": 79.0
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.07893304104785077,
+              "calmar": 0.13079696948827846,
+              "max_dd": -0.6034775985763529,
+              "nav": 1.355542678204519,
+              "sessions": 977,
+              "sharpe": 0.3998826974944428,
+              "total_return": 0.355542678204519,
+              "volatility": 0.3169417398017815
+            },
+            "late": {
+              "cagr": 0.06822313256402616,
+              "calmar": 0.2380821071251429,
+              "max_dd": -0.28655296018598364,
+              "nav": 1.3010545698581368,
+              "sessions": 973,
+              "sharpe": 0.3715856825482301,
+              "total_return": 0.30105456985813683,
+              "volatility": 0.29672370016977606
+            }
+          },
+          "full": {
+            "cagr": 0.07357571613197557,
+            "calmar": 0.12191954814154823,
+            "max_dd": -0.6034775985763529,
+            "nav": 1.7636349961157403,
+            "sessions": 1950,
+            "sharpe": 0.3860193319970779,
+            "total_return": 0.7636349961157403,
+            "volatility": 0.30702038024911477
+          },
+          "switches": 39,
+          "total_model_fee": 0.10643778414712002,
+          "total_turnover": 79.0
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.08760066356967015,
+              "calmar": 0.14593085146769882,
+              "max_dd": -0.6002888538552809,
+              "nav": 1.3996753704918508,
+              "sessions": 977,
+              "sharpe": 0.42514370483075514,
+              "total_return": 0.39967537049185076,
+              "volatility": 0.31691606185721616
+            },
+            "late": {
+              "cagr": 0.08063190226534735,
+              "calmar": 0.28279698545546894,
+              "max_dd": -0.28512292001798645,
+              "nav": 1.3623762597622475,
+              "sessions": 973,
+              "sharpe": 0.41052155585678934,
+              "total_return": 0.3623762597622475,
+              "volatility": 0.29670933530280763
+            }
+          },
+          "full": {
+            "cagr": 0.08411783091240033,
+            "calmar": 0.14012892355432552,
+            "max_dd": -0.6002888538552809,
+            "nav": 1.9068844961320244,
+            "sessions": 1950,
+            "sharpe": 0.41786151506251434,
+            "total_return": 0.9068844961320244,
+            "volatility": 0.30699999760404084
+          },
+          "switches": 39,
+          "total_model_fee": 0.010071648424481161,
+          "total_turnover": 79.0
+        }
+      }
+    },
+    {
+      "config": {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "weekly",
+        "hash": "57363905cc79b7941a9b0fb2a139774d2945f46b1f77b9c994c4734ef48535d9",
+        "horizons": [
+          61,
+          122,
+          244
+        ],
+        "id": "pc_57363905cc79b7941a9b",
+        "label": "61+122+244-day log trend / top2 / weekly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 2
+      },
+      "id": "pc_57363905cc79b7941a9b",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.11241061631884851,
+              "calmar": 0.20509728717451053,
+              "max_dd": -0.5480843645835355,
+              "nav": 1.5319694711041707,
+              "sessions": 977,
+              "sharpe": 0.5432121365728596,
+              "total_return": 0.5319694711041707,
+              "volatility": 0.25783419599152513
+            },
+            "late": {
+              "cagr": 0.034839724917072726,
+              "calmar": 0.1658287544408836,
+              "max_dd": -0.21009459447814138,
+              "nav": 1.1463295862677878,
+              "sessions": 973,
+              "sharpe": 0.26486839264465256,
+              "total_return": 0.1463295862677878,
+              "volatility": 0.22799492085963138
+            }
+          },
+          "full": {
+            "cagr": 0.07300391199948016,
+            "calmar": 0.13319831164122428,
+            "max_dd": -0.5480843645835355,
+            "nav": 1.7561419299857235,
+            "sessions": 1950,
+            "sharpe": 0.41207350224547534,
+            "total_return": 0.7561419299857235,
+            "volatility": 0.243416207650529
+          },
+          "switches": 405,
+          "total_model_fee": 0.1951682813132991,
+          "total_turnover": 123.11498628851606
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.12833341223400319,
+              "calmar": 0.23756640929426937,
+              "max_dd": -0.5402001596742527,
+              "nav": 1.6216782883884138,
+              "sessions": 977,
+              "sharpe": 0.598671059870024,
+              "total_return": 0.6216782883884138,
+              "volatility": 0.2575808846724087
+            },
+            "late": {
+              "cagr": 0.051921010708925346,
+              "calmar": 0.24821543326677184,
+              "max_dd": -0.20917720556530728,
+              "nav": 1.223664143276919,
+              "sessions": 973,
+              "sharpe": 0.33675024889357696,
+              "total_return": 0.22366414327691908,
+              "volatility": 0.2278296676513383
+            }
+          },
+          "full": {
+            "cagr": 0.08953584886806117,
+            "calmar": 0.16574569123054753,
+            "max_dd": -0.5402001596742527,
+            "nav": 1.984389573431596,
+            "sessions": 1950,
+            "sharpe": 0.47508888022770457,
+            "total_return": 0.9843895734315959,
+            "volatility": 0.24320382011306585
+          },
+          "switches": 405,
+          "total_model_fee": 0.01894053461785894,
+          "total_turnover": 123.11498628851604
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.12837336146780504,
+              "calmar": 0.240544594842247,
+              "max_dd": -0.5336780132265884,
+              "nav": 1.62190820139529,
+              "sessions": 977,
+              "sharpe": 0.5909046777631335,
+              "total_return": 0.6219082013952899,
+              "volatility": 0.2637787186331815
+            },
+            "late": {
+              "cagr": 0.06636775084818379,
+              "calmar": 0.3222279099612006,
+              "max_dd": -0.20596524632572988,
+              "nav": 1.2920665750510931,
+              "sessions": 973,
+              "sharpe": 0.39562512819854173,
+              "total_return": 0.2920665750510931,
+              "volatility": 0.2292353065790734
+            }
+          },
+          "full": {
+            "cagr": 0.0969961135047903,
+            "calmar": 0.1817502522136092,
+            "max_dd": -0.5336780132265884,
+            "nav": 2.095613374824104,
+            "sessions": 1950,
+            "sharpe": 0.4990644099117486,
+            "total_return": 1.095613374824104,
+            "volatility": 0.2471554948140626
+          },
+          "switches": 406,
+          "total_model_fee": 0.2197074553320183,
+          "total_turnover": 124.99811473343463
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.14450472141791287,
+              "calmar": 0.2747169864441749,
+              "max_dd": -0.5260130554296015,
+              "nav": 1.7167639713242124,
+              "sessions": 977,
+              "sharpe": 0.6447888539188675,
+              "total_return": 0.7167639713242124,
+              "volatility": 0.263741448203967
+            },
+            "late": {
+              "cagr": 0.08450077715462602,
+              "calmar": 0.41359409666136493,
+              "max_dd": -0.2043084701564588,
+              "nav": 1.3819308630395428,
+              "sessions": 973,
+              "sharpe": 0.4691800322785518,
+              "total_return": 0.3819308630395428,
+              "volatility": 0.22925094071347774
+            }
+          },
+          "full": {
+            "cagr": 0.11416039227423272,
+            "calmar": 0.21702957958143546,
+            "max_dd": -0.5260130554296015,
+            "nav": 2.3724491165272794,
+            "sessions": 1950,
+            "sharpe": 0.5619150233799742,
+            "total_return": 1.3724491165272794,
+            "volatility": 0.24714209310550245
+          },
+          "switches": 406,
+          "total_model_fee": 0.02139411468511998,
+          "total_turnover": 124.99811473343463
+        }
+      }
+    },
+    {
+      "config": {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "monthly",
+        "hash": "14d39ffcb94640b6f3ed8f723c72ab8104abe9b8ff4010a70ef6191838125749",
+        "horizons": [
+          61,
+          122,
+          244
+        ],
+        "id": "pc_14d39ffcb94640b6f3ed",
+        "label": "61+122+244-day log trend / top2 / monthly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 2
+      },
+      "id": "pc_14d39ffcb94640b6f3ed",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.13511034045528555,
+              "calmar": 0.24637270783298834,
+              "max_dd": -0.5483981632692629,
+              "nav": 1.6610315658184265,
+              "sessions": 977,
+              "sharpe": 0.621299333628817,
+              "total_return": 0.6610315658184265,
+              "volatility": 0.25800400169811133
+            },
+            "late": {
+              "cagr": 0.07982625757102087,
+              "calmar": 0.395146130123534,
+              "max_dd": -0.2020170551741577,
+              "nav": 1.3583304809295815,
+              "sessions": 973,
+              "sharpe": 0.4514428503318917,
+              "total_return": 0.35833048092958153,
+              "volatility": 0.22809250246235385
+            }
+          },
+          "full": {
+            "cagr": 0.10717997436137452,
+            "calmar": 0.19544189156729408,
+            "max_dd": -0.5483981632692629,
+            "nav": 2.2562298056373646,
+            "sessions": 1950,
+            "sharpe": 0.5407327279009033,
+            "total_return": 1.2562298056373646,
+            "volatility": 0.2435454929990353
+          },
+          "switches": 95,
+          "total_model_fee": 0.10825073716732303,
+          "total_turnover": 62.698073183645285
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.14301933925039972,
+              "calmar": 0.2621124999951313,
+              "max_dd": -0.5456410482256904,
+              "nav": 1.7078598876439726,
+              "sessions": 977,
+              "sharpe": 0.6483436812964367,
+              "total_return": 0.7078598876439726,
+              "volatility": 0.2579227521252239
+            },
+            "late": {
+              "cagr": 0.08905656974384539,
+              "calmar": 0.44097215860308736,
+              "max_dd": -0.20195508493315995,
+              "nav": 1.405226136368476,
+              "sessions": 973,
+              "sharpe": 0.48884353646999157,
+              "total_return": 0.40522613636847593,
+              "volatility": 0.22801467073299703
+            }
+          },
+          "full": {
+            "cagr": 0.11576709763799722,
+            "calmar": 0.21216713444570826,
+            "max_dd": -0.5456410482256904,
+            "nav": 2.399929351372647,
+            "sessions": 1950,
+            "sharpe": 0.5725663823494903,
+            "total_return": 1.3999293513726472,
+            "volatility": 0.2434656232214727
+          },
+          "switches": 95,
+          "total_model_fee": 0.010183954039131526,
+          "total_turnover": 62.698073183645285
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.14942374629992144,
+              "calmar": 0.2844131407238751,
+              "max_dd": -0.5253756768045776,
+              "nav": 1.746499758759921,
+              "sessions": 977,
+              "sharpe": 0.6668787315805227,
+              "total_return": 0.7464997587599209,
+              "volatility": 0.25981473836928776
+            },
+            "late": {
+              "cagr": 0.06034307070930745,
+              "calmar": 0.28787941231793496,
+              "max_dd": -0.20961231726659346,
+              "nav": 1.263201826399638,
+              "sessions": 973,
+              "sharpe": 0.3718067623362027,
+              "total_return": 0.2632018263996381,
+              "volatility": 0.22772764314290658
+            }
+          },
+          "full": {
+            "cagr": 0.10407662663286668,
+            "calmar": 0.198099438607204,
+            "max_dd": -0.5253756768045776,
+            "nav": 2.206181685072067,
+            "sessions": 1950,
+            "sharpe": 0.528175967531964,
+            "total_return": 1.206181685072067,
+            "volatility": 0.2443478580185777
+          },
+          "switches": 96,
+          "total_model_fee": 0.10969614432510877,
+          "total_turnover": 62.61541586271558
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.1574412632787059,
+              "calmar": 0.30133402814997257,
+              "max_dd": -0.522480863662527,
+              "nav": 1.7957922211810478,
+              "sessions": 977,
+              "sharpe": 0.6934709197721924,
+              "total_return": 0.7957922211810478,
+              "volatility": 0.25991816708658094
+            },
+            "late": {
+              "cagr": 0.06937652441324822,
+              "calmar": 0.3348163150123034,
+              "max_dd": -0.20720771749339295,
+              "nav": 1.3066654870609749,
+              "sessions": 973,
+              "sharpe": 0.409109590781882,
+              "total_return": 0.30666548706097485,
+              "volatility": 0.22767686860688705
+            }
+          },
+          "full": {
+            "cagr": 0.11262817432663155,
+            "calmar": 0.21556420944706342,
+            "max_dd": -0.522480863662527,
+            "nav": 2.346499717349834,
+            "sessions": 1950,
+            "sharpe": 0.5597235525748819,
+            "total_return": 1.3464997173498339,
+            "volatility": 0.24437880824856728
+          },
+          "switches": 96,
+          "total_model_fee": 0.010317150829113664,
+          "total_turnover": 62.61541586271558
+        }
+      }
+    }
+  ],
+  "source_sha256": {
+    "PROTOCOL.md": "86c5d62b28f4866d820a12f2a2a06d51f30e6ed96fec12422f8f7b249af48c8a",
+    "data.py": "71d72afd8c11d1e7bacb27260dc9c903a1b29ee6877f2d7b0e782e2d33eea6bc",
+    "long_trend_check.py": "5a09ddab39e7b97fe7b0d8e32e060a65c936aa18231302e1847fe174fbd0a44d",
+    "portfolio_controls.py": "cf59f7cd507baa00c084b2b809160e7b1d7ffbef88ed43ec4dfb62076a73a5d5"
+  }
+}

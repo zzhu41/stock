@@ -1,0 +1,201 @@
+{
+  "cases": [
+    {
+      "control": "h",
+      "exact_holdings": true,
+      "exact_returns": true,
+      "metrics": {
+        "cagr": 0.47282166793915803,
+        "calmar": 2.3366048002365623,
+        "max_dd": -0.20235414559248044,
+        "nav": 22.071052231309807,
+        "sessions": 1950,
+        "sharpe": 1.8033323907355423,
+        "total_return": 21.071052231309807,
+        "volatility": 0.2294595712298315
+      },
+      "scenario": "close_1bp"
+    },
+    {
+      "control": "h",
+      "exact_holdings": true,
+      "exact_returns": true,
+      "metrics": {
+        "cagr": 0.40540550038402656,
+        "calmar": 1.819186056035325,
+        "max_dd": -0.22284993832217148,
+        "nav": 15.177551053892872,
+        "sessions": 1950,
+        "sharpe": 1.5848538177741218,
+        "total_return": 14.177551053892872,
+        "volatility": 0.23184582935540243
+      },
+      "scenario": "close_11bp"
+    },
+    {
+      "control": "h",
+      "exact_holdings": true,
+      "exact_returns": true,
+      "metrics": {
+        "cagr": 0.37049273847913994,
+        "calmar": 1.2640453845686832,
+        "max_dd": -0.29310081979814295,
+        "nav": 12.413434865285243,
+        "sessions": 1950,
+        "sharpe": 1.479004386705679,
+        "total_return": 11.413434865285243,
+        "volatility": 0.23139256913696593
+      },
+      "scenario": "lag1_1bp"
+    },
+    {
+      "control": "h",
+      "exact_holdings": true,
+      "exact_returns": true,
+      "metrics": {
+        "cagr": 0.3071053483816345,
+        "calmar": 0.9954758202639689,
+        "max_dd": -0.30850106263776433,
+        "nav": 8.502201003324679,
+        "sessions": 1950,
+        "sharpe": 1.2727375033833,
+        "total_return": 7.502201003324679,
+        "volatility": 0.2317075852756265
+      },
+      "scenario": "lag1_11bp"
+    },
+    {
+      "control": "v92",
+      "exact_holdings": true,
+      "exact_returns": true,
+      "metrics": {
+        "cagr": 0.40344087364006637,
+        "calmar": 1.6695374623681183,
+        "max_dd": -0.24164829045993053,
+        "nav": 15.008816799167429,
+        "sessions": 1950,
+        "sharpe": 1.5648509248222977,
+        "total_return": 14.008816799167429,
+        "volatility": 0.23425573588362575
+      },
+      "scenario": "close_1bp"
+    },
+    {
+      "control": "v92",
+      "exact_holdings": true,
+      "exact_returns": true,
+      "metrics": {
+        "cagr": 0.3493048226431208,
+        "calmar": 1.3687889210895638,
+        "max_dd": -0.2551926138948233,
+        "nav": 10.960089606772025,
+        "sessions": 1950,
+        "sharpe": 1.3878541704944345,
+        "total_return": 9.960089606772025,
+        "volatility": 0.23607477341363806
+      },
+      "scenario": "close_11bp"
+    },
+    {
+      "control": "v92",
+      "exact_holdings": true,
+      "exact_returns": true,
+      "metrics": {
+        "cagr": 0.29999195670225764,
+        "calmar": 0.9513132894222481,
+        "max_dd": -0.31534507090135244,
+        "nav": 8.139381076751345,
+        "sessions": 1950,
+        "sharpe": 1.248363706121671,
+        "total_return": 7.139381076751345,
+        "volatility": 0.23186022462705688
+      },
+      "scenario": "lag1_1bp"
+    },
+    {
+      "control": "v92",
+      "exact_holdings": true,
+      "exact_returns": true,
+      "metrics": {
+        "cagr": 0.2498463237899709,
+        "calmar": 0.7415318481575389,
+        "max_dd": -0.3369326946789356,
+        "nav": 5.943729418418028,
+        "sessions": 1950,
+        "sharpe": 1.0778079189928216,
+        "total_return": 4.943729418418028,
+        "volatility": 0.2320709119115047
+      },
+      "scenario": "lag1_11bp"
+    },
+    {
+      "control": "simple",
+      "exact_holdings": true,
+      "exact_returns": true,
+      "metrics": {
+        "cagr": 0.4291378721919706,
+        "calmar": 1.9791973411157007,
+        "max_dd": -0.2168241959895013,
+        "nav": 17.35089677734645,
+        "sessions": 1950,
+        "sharpe": 1.64913012380757,
+        "total_return": 16.35089677734645,
+        "volatility": 0.23314129606419717
+      },
+      "scenario": "close_1bp"
+    },
+    {
+      "control": "simple",
+      "exact_holdings": true,
+      "exact_returns": true,
+      "metrics": {
+        "cagr": 0.374699299185505,
+        "calmar": 1.645400712224997,
+        "max_dd": -0.22772525646887376,
+        "nav": 12.721222246659627,
+        "sessions": 1950,
+        "sharpe": 1.4720665150104366,
+        "total_return": 11.721222246659627,
+        "volatility": 0.23508967963105476
+      },
+      "scenario": "close_11bp"
+    },
+    {
+      "control": "simple",
+      "exact_holdings": true,
+      "exact_returns": true,
+      "metrics": {
+        "cagr": 0.32065304281521034,
+        "calmar": 1.0168322653615154,
+        "max_dd": -0.3153450709013529,
+        "nav": 9.232510686172489,
+        "sessions": 1950,
+        "sharpe": 1.3193703499276477,
+        "total_return": 8.232510686172489,
+        "volatility": 0.2312307604465104
+      },
+      "scenario": "lag1_1bp"
+    },
+    {
+      "control": "simple",
+      "exact_holdings": true,
+      "exact_returns": true,
+      "metrics": {
+        "cagr": 0.270346862784282,
+        "calmar": 0.8023764599095894,
+        "max_dd": -0.3369326946789345,
+        "nav": 6.769034583088639,
+        "sessions": 1950,
+        "sharpe": 1.150861565235398,
+        "total_return": 5.769034583088639,
+        "volatility": 0.23133485520398214
+      },
+      "scenario": "lag1_11bp"
+    }
+  ],
+  "passed": true,
+  "period": [
+    "2014-01-02",
+    "2021-12-31"
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "clean_oos": false,
+  "controls": {
+    "allowed_lags": [
+      0,
+      1
+    ],
+    "candidates": [
+      {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "weekly",
+        "hash": "6dbf7e344aa89848eb0607a8946556dbfa96abbaaedeb21a790a959775497c27",
+        "horizons": [
+          244
+        ],
+        "id": "pc_6dbf7e344aa89848eb06",
+        "label": "244-day log trend / top1 / weekly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 1
+      },
+      {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "monthly",
+        "hash": "5b405c0fff7ae73fb2d7f4c5140d4760f763b11c4e01e08b0875fea608887f7d",
+        "horizons": [
+          244
+        ],
+        "id": "pc_5b405c0fff7ae73fb2d7",
+        "label": "244-day log trend / top1 / monthly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 1
+      },
+      {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "weekly",
+        "hash": "ce0172e5d18d7d752954d44ec902f6a9bb3bae9ea436cb561d68133e6ec3ba2e",
+        "horizons": [
+          244
+        ],
+        "id": "pc_ce0172e5d18d7d752954",
+        "label": "244-day log trend / top2 / weekly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 2
+      },
+      {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "monthly",
+        "hash": "ae0c8357fa7a80dda5ab2941b2af3383adf026b681ee5617389c3ec973caa8b2",
+        "horizons": [
+          244
+        ],
+        "id": "pc_ae0c8357fa7a80dda5ab",
+        "label": "244-day log trend / top2 / monthly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 2
+      },
+      {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "weekly",
+        "hash": "9fd3741e24bac905f34dcfd33cf7697e611c6790eef04212fd7a53d3eaa77693",
+        "horizons": [
+          61,
+          122,
+          244
+        ],
+        "id": "pc_9fd3741e24bac905f34d",
+        "label": "61+122+244-day log trend / top1 / weekly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 1
+      },
+      {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "monthly",
+        "hash": "11b90b110bb5b7b729236c664914531eeea96abce8a5dd8ad1478d3e1c469080",
+        "horizons": [
+          61,
+          122,
+          244
+        ],
+        "id": "pc_11b90b110bb5b7b72923",
+        "label": "61+122+244-day log trend / top1 / monthly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 1
+      },
+      {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "weekly",
+        "hash": "57363905cc79b7941a9b0fb2a139774d2945f46b1f77b9c994c4734ef48535d9",
+        "horizons": [
+          61,
+          122,
+          244
+        ],
+        "id": "pc_57363905cc79b7941a9b",
+        "label": "61+122+244-day log trend / top2 / weekly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 2
+      },
+      {
+        "allocation": "1/topk per selected risk asset; empty slots to cash ETF",
+        "annualization_sessions": 244,
+        "cash": "511880",
+        "crash_channels": [],
+        "frequency": "monthly",
+        "hash": "14d39ffcb94640b6f3ed8f723c72ab8104abe9b8ff4010a70ef6191838125749",
+        "horizons": [
+          61,
+          122,
+          244
+        ],
+        "id": "pc_14d39ffcb94640b6f3ed",
+        "label": "61+122+244-day log trend / top2 / monthly",
+        "leverage": false,
+        "minimum_observations": 270,
+        "positive_threshold": 0.0,
+        "rebalance": "initial allocation, then first observed week/month session; reset scheduled weights",
+        "risk_assets": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890",
+          "513100",
+          "513120",
+          "518880"
+        ],
+        "risk_exits": "clock only",
+        "score": "mean_annualized_log_momentum",
+        "topk": 2
+      }
+    ],
+    "clean_oos": false,
+    "count": 8,
+    "engine": "v10_deep.portfolios.run_weights",
+    "fee_convention": "preNAV * fee * L1(target security weights minus actual marked security weights)",
+    "first_evaluation_session_free": true,
+    "initial_exception": "First evaluation session allocates using q=t-lag if q exists; all later signals obey the clock",
+    "missing_quote_policy": "Atomic rejected rebalance is discarded, with no order carryover",
+    "schema": 1
+  },
+  "period": [
+    "2014-01-02",
+    "2021-12-31"
+  ],
+  "registered_at": "2026-09-27T15:12:04.018492+00:00",
+  "scenarios": [
+    [
+      "close_1bp",
+      0,
+      0.0001
+    ],
+    [
+      "close_11bp",
+      0,
+      0.0011
+    ],
+    [
+      "lag1_1bp",
+      1,
+      0.0001
+    ],
+    [
+      "lag1_11bp",
+      1,
+      0.0011
+    ]
+  ],
+  "scope": "Supplemental controls, not eligible to replace development-selected primary",
+  "source_sha256": {
+    "PROTOCOL.md": "86c5d62b28f4866d820a12f2a2a06d51f30e6ed96fec12422f8f7b249af48c8a",
+    "data.py": "71d72afd8c11d1e7bacb27260dc9c903a1b29ee6877f2d7b0e782e2d33eea6bc",
+    "long_trend_check.py": "5a09ddab39e7b97fe7b0d8e32e060a65c936aa18231302e1847fe174fbd0a44d",
+    "portfolio_controls.py": "cf59f7cd507baa00c084b2b809160e7b1d7ffbef88ed43ec4dfb62076a73a5d5"
+  }
+}

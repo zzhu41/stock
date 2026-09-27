@@ -1,0 +1,111 @@
+{
+  "design": {
+    "base_seed": 20260927,
+    "batch_size": 32,
+    "benchmark_id": "v11_85ae599b865950104870",
+    "block_lengths": [
+      20,
+      60
+    ],
+    "candidate_selection_performed": false,
+    "clean_oos": false,
+    "concentration_ids": [
+      "v11_eb861bbfca33954401fe",
+      "v11_25d374c948384c910235",
+      "v11_fb8f29176431d6164964",
+      "v11_41bf6ab92cce1bd2bfd6"
+    ],
+    "concentration_top_k": [
+      1,
+      5,
+      10,
+      20
+    ],
+    "confirmation_or_2026_returns_read": false,
+    "development_source_sha256": {
+      "PROTOCOL.md": "86c5d62b28f4866d820a12f2a2a06d51f30e6ed96fec12422f8f7b249af48c8a",
+      "data.py": "71d72afd8c11d1e7bacb27260dc9c903a1b29ee6877f2d7b0e782e2d33eea6bc",
+      "features.py": "d7411bb3d855bd64467c33fba9b35acc579b02fac5ed74107efbd9dbb099b56f",
+      "registry.py": "17e6b11ecb6ee4b558067b9df94625401c861dd1b31e272d9461d989bcf5757b",
+      "scan.py": "a43612a8d0d4e745ea69f72469a7b6d871c815ae526fd884fa3eae0df127af1c"
+    },
+    "diagnostic_source_sha256": {
+      "development_diagnostics.py": "301f381d0da11b8d4fd56791e641c92c4a30a2764452514d2cf0bd37f1b38fd6",
+      "diagnostics.py": "6cdb31c0b1e2a3be62bbb32bd5d5f6f49f83c01ccd1734a4d6896d9dc2c12a13"
+    },
+    "draws_per_test": 2000,
+    "expected_candidate_count": 586,
+    "family_memberships": {
+      "control_h": 1,
+      "control_simple": 1,
+      "control_v92": 1,
+      "fixed_risk_scale": 20,
+      "healthy_momentum_retention": 144,
+      "healthy_rank_retention": 144,
+      "multi_horizon_consensus": 48,
+      "prior_risk_scale": 96,
+      "robust_regression": 66,
+      "simplified_branches": 72
+    },
+    "frozen_primary": "v11_eb861bbfca33954401fe",
+    "includes_controls": true,
+    "input_sha256": {
+      "control_fidelity": "a02d86a11c0bdf40eee63466f9b9ad49249e591c543d5327b77292cac2c3c57f",
+      "evaluation": "e2c136c65b6b2cc0652e5f65aa678535b905c2fefb43c1a0be19aeac7389b53e",
+      "path_metadata": "8b2f40c59945973b874741a3cf073c4993f66c45fc79c668ce7dff63cd91461a",
+      "paths": "505fbefa34ae9796edd5e6ff39fd5eabfad17555748874ebf71c1bc6bd70efa7",
+      "registration": "d33a6ad8fc071dfea61ec6e91ca0458a0d0c995c3f8835041a7377843a89b103",
+      "registry": "df2cd9d66761b23c61459f14c269b492d68e15e9a8180216acebdb089d16ab71",
+      "selection": "468fc698edf9c7a141a4ee433d1df179d93988cb95451748377996898cfc062d"
+    },
+    "limitations": [
+      "The full tested family is exactly 586 registered configurations including three frozen controls; no TopK filter was used.",
+      "This conditional family count is not the entire research history: V10 had 9558 unique single-position configurations, and 17 V11 signatures match prior configurations.",
+      "All historical years were previously examined. Only 2014-2021 returns are used here; this is not clean out-of-sample evidence.",
+      "Four clock/cost scenarios and both mean block lengths are reported in full. Their p-values are not adjusted for choosing the smallest across these eight tests; none is used to reselect a model.",
+      "Stationary paired block resampling and least-favorable zero-centering test maximum mean net log excess versus the matching H path. This is White-style, not SPA, PBO or DSR.",
+      "Annual log excess is not a CAGR difference. A family p-value does not validate the particular multi-criterion finalist, show causality, or give the probability of future profit.",
+      "Concentration shares describe relative net/positive log excess along frozen paths, not shares of strategy profit or an executable strategy after excluding days."
+    ],
+    "method": "stationary",
+    "observations": 1950,
+    "period": [
+      "2014-01-02",
+      "2021-12-31"
+    ],
+    "previously_seen_signatures": 17,
+    "prior_v10_unique_count": 9558,
+    "scenario_seeds": {
+      "close_11bp": 20260928,
+      "close_1bp": 20260927,
+      "lag1_11bp": 20260930,
+      "lag1_1bp": 20260929
+    },
+    "scenarios": [
+      [
+        "close_1bp",
+        0,
+        0.0001
+      ],
+      [
+        "close_11bp",
+        0,
+        0.0011
+      ],
+      [
+        "lag1_1bp",
+        1,
+        0.0001
+      ],
+      [
+        "lag1_11bp",
+        1,
+        0.0011
+      ]
+    ],
+    "schema": 1,
+    "seed_rule": "Declared scenario order offset 0/1/2/3; same scenario seed for both block lengths; no seed selection",
+    "topk_filter": false
+  },
+  "registered_at": "2026-09-27T15:12:29.196863+00:00"
+}
