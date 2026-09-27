@@ -1,0 +1,9 @@
+{
+  "status": "invalidated_for_economic_return_claims",
+  "reason": "Additive QFQ prices create distorted percentage returns. Example: 510880 2014-01-22 raw +2.087% becomes QFQ +14.474%.",
+  "original_winner_annual_return": 0.5475006013857552,
+  "allow_claim_of_reliable_outperformance": false,
+  "retained_for": "Reproduction, data provenance, attribution and audit",
+  "replacement_research_directory": "../corrected_results",
+  "original_raw_matrices": "Losslessly archived as .npy.gz with SHA256 receipt; matrix_archive.restore recreates exact bytes."
+}

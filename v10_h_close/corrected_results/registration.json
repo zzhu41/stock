@@ -1,0 +1,48 @@
+{
+  "registered_at": "2026-09-27T08:26:38.663757+00:00",
+  "fingerprints": {
+    "source_sha256": {
+      "data.py": "d1f2bf10266e26e100973b8fea0cca5cf1108d67d1342e7548e2de7397310bf6",
+      "engine.py": "b6abec690fc72914d8ccd60df437d3bdb3c56785ed19cf29c5fd074e43944abe",
+      "policy.py": "7e6c6c36e11f4919b673e80ad94ff674f2d779a9c1ef86e416699cf684bd2341",
+      "registry.py": "c74518436cf60f44100963a27e3382d228dbc1f374b47104caff22db5593c6de",
+      "scan.py": "c58af90aeae54af0f38e652907724a8bb142cf11a03133d199bf1da86e1a2e98",
+      "refresh_snapshots.py": "56fbfa4cd5a980c037c2282c043f5a248e7b09d77b354a2bb9b8aeb79c171c4a",
+      "PROTOCOL.md": "893772f1ba82a8f57fc961de8fb8f938c5d948326c437755c8a96491a552d629",
+      "corrected_scan.py": "c3bb76c96fdb247830b9c86c802872f4b3bff976322eef84ec3a40b8a5be152a",
+      "build_corrected_data.py": "d6547a9cb888fb305ed3e86d369c318259ba9deaaed5503798ccaee088f514f7",
+      "total_return_audit.py": "23f8ec3c689ba9437db935d80350f019c3a3c28ab08a1815ec92e9be1e46f3d4",
+      "CORRECTION_PROTOCOL.md": "51e2193989602bcaadb50b1a0bc006ee64d7ba11b3e386a76d5fd4d42f0ef016"
+    },
+    "dependency_sha256": {
+      "v10_search/data.py": "2aa7da794c82b92c63d192df1c7d230925676000fd734f17d2375229c8d5b64b",
+      "v10_search/features.py": "0219602910a9c856b769a6d506bee5b906711ba9cccb94f517765ede663abc87",
+      "v10_search/policy.py": "e23d79384f9d9180e05e2b8a548d8c255bf978134aaedc74cb3d5e3c225b139f",
+      "v10_search/registry.py": "2d85f2f2166560942b42de804f607280736332b1e52218f257a3cceef2dd3a92",
+      "v10_search/fast_execution.py": "7a4c751bd35a0390e9190fdd8fab8830406c0790cae42b681e783f3e4c9a8b2d",
+      "v10_search/scan.py": "cf71ef7c554171604d5f22605bc284019866242f776070fabd61df4cd33ffbc6",
+      "v10_next/data.py": "52005b1bf77dff9bf9b451956af274b6e77333f6868168c53d1bf1a6b698dfba",
+      "v10_next/frozen/strategy.py": "06c166a6bb5479a3c01e210bed1c8c3d6df7567e61d8b61eb1e0985694c2a807",
+      "v10_next/frozen/metadata.py": "3e6d8c86637ff2833860fc89cb026c70f955ff249f3b5469dd0752b6e5321ca5",
+      "v10_next/frozen/presets.json": "73ee89e963ff0bb5e438a41169e2229113af486c8251ecfef399bdc6dc818a4c",
+      "v10_round2/v92.py": "134b7126a1c41d5ba4824e6e6b7a46507997d8f1e63dca1140b69f915a339bf1",
+      "v10_search/statistics.py": "228208949189efbaef79afb6dcabf6afc4d8ada49cf0fdb4ef7df6526bc10655"
+    },
+    "snapshot_manifest_sha256": "e3374bdf9c1050d40c08f495202527a739ec3822b9da4eb6ada31e0ec1e89b43",
+    "qvix_manifest_sha256": "87045736b27dfeed55bce3b098001bc6c5817c65f1fc831493dbbf96466f4257",
+    "protected_manifest_sha256": "06a8b8d46fd6746b11a9d647f61032ba42f660aa81d031157eb8b940a5d9cf4f",
+    "corrected_manifest_sha256": "1498be16c517288a1829aca04201dea12de6b63dc3e2d8f5056a3d189a914fee",
+    "action_manifest_sha256": "28afcf263e85b846832da127fcc23ce909f67195c6e35369ca594fe27a333ee1",
+    "verified_cash_510500_sha256": "cd661b72d20e75bfdc51b2656280794fe09e5bc60f76d426b252beafef04b331"
+  },
+  "registry_sha256": "2dd1e3a540270a31957d2935696678380287fa8d0abd5faa5edb5678c5afdaae",
+  "candidate_count": 6544,
+  "end": "2026-09-24",
+  "fee": 0.0001,
+  "stress_fee": 0.0005,
+  "primary_clock": "original_same_close_with_corrected_total_return_indices",
+  "parent_registration_sha256": "081d26942b7548e07e12891daa6b2c0a30ebf2309850dff55f8459e8348988b6",
+  "reason": "Additive adjusted price ratios exaggerated cash-dividend assets; same candidate family rerun",
+  "clean_oos": false,
+  "next_open_permitted": false
+}

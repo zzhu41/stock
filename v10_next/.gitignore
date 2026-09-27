@@ -1,0 +1,16 @@
+# The root data/ rule protects credentials and live caches. Only these frozen,
+# public market-history CSVs belong to this isolated, reproducible package.
+!data/
+data/*
+!data/159915.csv
+!data/588080.csv
+!data/510300.csv
+!data/510500.csv
+!data/563300.csv
+!data/512400.csv
+!data/512890.csv
+!data/513100.csv
+!data/513120.csv
+!data/518880.csv
+!data/511880.csv
+!data/511010.csv

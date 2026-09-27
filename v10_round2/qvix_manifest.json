@@ -1,0 +1,12 @@
+{
+  "source": "data/qvix50.csv",
+  "source_sha256": "d528c5e040dc587e8d07ccacf67f25f87574e2134cdc60bec6358a266fd4e4f4",
+  "snapshot": "data/qvix50.csv",
+  "snapshot_sha256": "7a33809f9e62a2252b3e1438ad274c916423e9ce6ab6c0800f762392ab9efecb",
+  "rows": 2809,
+  "first_date": "2015-02-09",
+  "last_date": "2026-09-09",
+  "cutoff": "2026-09-11",
+  "publication_timestamps_available": false,
+  "limitation": "Dated closes only; next-open availability is an assumption, not verified publication timing."
+}

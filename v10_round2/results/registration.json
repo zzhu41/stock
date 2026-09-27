@@ -1,0 +1,520 @@
+{
+  "registry": {
+    "protocol": {
+      "candidate_budget": 9,
+      "controls": 2,
+      "formal_candidates": 7,
+      "start": "2014-01-01",
+      "end": "2026-09-11",
+      "commission_per_side": 0.0001,
+      "main_slippage_per_side": 0.001,
+      "primary_execution": "causal next-open, costs on actual executed notional",
+      "high_return_reference": "c_v92",
+      "high_return_requirement": "strictly higher net CAGR than the same-clock c_v92",
+      "stability_minimum_net_cagr": 0.3,
+      "ideal_close_gate": "Defined by the round-two protocol before selection; not chosen after seeing results",
+      "account_policy": "equal initial capital; independently executed; no capital transfers or periodic resets",
+      "account_trade_netting": false,
+      "leverage": false,
+      "known_history": true,
+      "caveats": [
+        "All historical periods and several candidates were examined previously; this is not a fresh holdout.",
+        "All S candidates inherit the original universe and short-horizon momentum architecture; they do not eliminate selection bias.",
+        "WLS30's previously reported replay performance is not evidence for this revised causal execution engine.",
+        "Independent accounts diversify a parameter choice, not independent sources of alpha; their wealth shares drift.",
+        "Do not add candidates or tune weights after observing this bounded batch's outcomes.",
+        "If no fixed candidate satisfies a target, report that target as unmet."
+      ]
+    },
+    "candidates": [
+      {
+        "id": "c_v91",
+        "family": "control",
+        "kind": "legacy",
+        "base_version": "v9.1",
+        "hypothesis": "Same-clock v9.1 control; also eligible for H as removal of both external-event channels.",
+        "overrides": {},
+        "score_windows": [
+          25
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": [],
+        "previously_seen": true,
+        "prior_note": "Existing v9.1 and first-round growth reference."
+      },
+      {
+        "id": "c_v92",
+        "family": "control",
+        "kind": "v92",
+        "base_version": "v9.1",
+        "hypothesis": "Same-clock v9.2 benchmark with the original three-channel crash-entry union.",
+        "overrides": {},
+        "score_windows": [
+          25
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": [],
+        "previously_seen": true,
+        "prior_note": "Existing v9.2 research/shadow rules, reevaluated under identical causal execution.",
+        "channels": [
+          "deep",
+          "qvix",
+          "volume"
+        ]
+      },
+      {
+        "id": "h_qvix_only",
+        "family": "high_return",
+        "kind": "v92",
+        "base_version": "v9.1",
+        "hypothesis": "Remove volume-based entries from v9.2; retain deep-drop and dated QVIX entries.",
+        "overrides": {},
+        "score_windows": [
+          25
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": [],
+        "previously_seen": true,
+        "prior_note": "The QVIX-only fz25_m4 mechanism was examined in earlier research.",
+        "channels": [
+          "deep",
+          "qvix"
+        ]
+      },
+      {
+        "id": "h_v91_no_overheat",
+        "family": "high_return",
+        "kind": "legacy",
+        "base_version": "v9.1",
+        "hypothesis": "Raise the existing overheating threshold to 990%; changes both its entry veto and fast-exit condition.",
+        "overrides": {
+          "overheat": 9.9
+        },
+        "score_windows": [
+          25
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": [],
+        "previously_seen": false,
+        "prior_note": "Overheat ablation is a previously studied mechanism family; this exact causal v9.1 comparison is preregistered here."
+      },
+      {
+        "id": "h_qvix_score25_30",
+        "family": "high_return",
+        "kind": "v92",
+        "base_version": "v9.1",
+        "hypothesis": "Remove the volume channel, then average WLS25 and WLS30 scores at fixed equal weights.",
+        "overrides": {},
+        "score_windows": [
+          25,
+          30
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": [],
+        "previously_seen": false,
+        "prior_note": "Fixed combination of known QVIX-only and ranking-window ideas; no optimized ensemble weights.",
+        "channels": [
+          "deep",
+          "qvix"
+        ]
+      },
+      {
+        "id": "s_v91_wls30",
+        "family": "robust",
+        "kind": "legacy",
+        "base_version": "v9.1",
+        "hypothesis": "Recheck the publicly observed WLS30 neighborhood under the causal execution clock.",
+        "overrides": {},
+        "score_windows": [
+          30
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": [],
+        "previously_seen": true,
+        "prior_note": "Prior parameter_stability report used fixed-target replay; those numbers are not interchangeable with this engine."
+      },
+      {
+        "id": "s_v91_wls30_no_crash",
+        "family": "robust",
+        "kind": "legacy",
+        "base_version": "v9.1",
+        "hypothesis": "Use WLS30 and remove the rare crisis-entry/lock rule; no replacement event condition.",
+        "overrides": {
+          "crash_mom5": 0.0
+        },
+        "score_windows": [
+          30
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": [],
+        "previously_seen": false,
+        "prior_note": "A fixed simplification of the known WLS30 candidate; inherits the remaining original strategy choices."
+      },
+      {
+        "id": "s_accounts25_30",
+        "family": "robust",
+        "kind": "accounts",
+        "hypothesis": "Start equal independent v9.1 accounts at windows (25, 30); retain each account's own wealth and trades.",
+        "components": [
+          {
+            "id": "s_accounts25_30:book_wls25",
+            "family": "component",
+            "kind": "legacy",
+            "base_version": "v9.1",
+            "hypothesis": "Fixed v9.1 component account with WLS25; no independent candidate selection.",
+            "overrides": {},
+            "score_windows": [
+              25
+            ],
+            "score_combination": "arithmetic_mean",
+            "stock_pool": [
+              "159915",
+              "588080",
+              "510300",
+              "510500",
+              "563300",
+              "512400",
+              "512890"
+            ],
+            "global_pool": [
+              "513100",
+              "513120"
+            ],
+            "gold": "518880",
+            "cash": "511880",
+            "risk_weight": 1.0,
+            "rebalance": "daily_signal",
+            "added_rules": [],
+            "previously_seen": true,
+            "prior_note": "The ranking window was included in earlier public parameter sensitivity work."
+          },
+          {
+            "id": "s_accounts25_30:book_wls30",
+            "family": "component",
+            "kind": "legacy",
+            "base_version": "v9.1",
+            "hypothesis": "Fixed v9.1 component account with WLS30; no independent candidate selection.",
+            "overrides": {},
+            "score_windows": [
+              30
+            ],
+            "score_combination": "arithmetic_mean",
+            "stock_pool": [
+              "159915",
+              "588080",
+              "510300",
+              "510500",
+              "563300",
+              "512400",
+              "512890"
+            ],
+            "global_pool": [
+              "513100",
+              "513120"
+            ],
+            "gold": "518880",
+            "cash": "511880",
+            "risk_weight": 1.0,
+            "rebalance": "daily_signal",
+            "added_rules": [],
+            "previously_seen": true,
+            "prior_note": "The ranking window was included in earlier public parameter sensitivity work."
+          }
+        ],
+        "initial_weights": [
+          0.5,
+          0.5
+        ],
+        "rebalance": "never",
+        "netting": false,
+        "capital_transfers": false,
+        "previously_seen": false,
+        "prior_note": "New account construction using previously examined WLS windows.",
+        "inherited_selection_bias": true
+      },
+      {
+        "id": "s_accounts20_25_30",
+        "family": "robust",
+        "kind": "accounts",
+        "hypothesis": "Start equal independent v9.1 accounts at windows (20, 25, 30); retain each account's own wealth and trades.",
+        "components": [
+          {
+            "id": "s_accounts20_25_30:book_wls20",
+            "family": "component",
+            "kind": "legacy",
+            "base_version": "v9.1",
+            "hypothesis": "Fixed v9.1 component account with WLS20; no independent candidate selection.",
+            "overrides": {},
+            "score_windows": [
+              20
+            ],
+            "score_combination": "arithmetic_mean",
+            "stock_pool": [
+              "159915",
+              "588080",
+              "510300",
+              "510500",
+              "563300",
+              "512400",
+              "512890"
+            ],
+            "global_pool": [
+              "513100",
+              "513120"
+            ],
+            "gold": "518880",
+            "cash": "511880",
+            "risk_weight": 1.0,
+            "rebalance": "daily_signal",
+            "added_rules": [],
+            "previously_seen": true,
+            "prior_note": "The ranking window was included in earlier public parameter sensitivity work."
+          },
+          {
+            "id": "s_accounts20_25_30:book_wls25",
+            "family": "component",
+            "kind": "legacy",
+            "base_version": "v9.1",
+            "hypothesis": "Fixed v9.1 component account with WLS25; no independent candidate selection.",
+            "overrides": {},
+            "score_windows": [
+              25
+            ],
+            "score_combination": "arithmetic_mean",
+            "stock_pool": [
+              "159915",
+              "588080",
+              "510300",
+              "510500",
+              "563300",
+              "512400",
+              "512890"
+            ],
+            "global_pool": [
+              "513100",
+              "513120"
+            ],
+            "gold": "518880",
+            "cash": "511880",
+            "risk_weight": 1.0,
+            "rebalance": "daily_signal",
+            "added_rules": [],
+            "previously_seen": true,
+            "prior_note": "The ranking window was included in earlier public parameter sensitivity work."
+          },
+          {
+            "id": "s_accounts20_25_30:book_wls30",
+            "family": "component",
+            "kind": "legacy",
+            "base_version": "v9.1",
+            "hypothesis": "Fixed v9.1 component account with WLS30; no independent candidate selection.",
+            "overrides": {},
+            "score_windows": [
+              30
+            ],
+            "score_combination": "arithmetic_mean",
+            "stock_pool": [
+              "159915",
+              "588080",
+              "510300",
+              "510500",
+              "563300",
+              "512400",
+              "512890"
+            ],
+            "global_pool": [
+              "513100",
+              "513120"
+            ],
+            "gold": "518880",
+            "cash": "511880",
+            "risk_weight": 1.0,
+            "rebalance": "daily_signal",
+            "added_rules": [],
+            "previously_seen": true,
+            "prior_note": "The ranking window was included in earlier public parameter sensitivity work."
+          }
+        ],
+        "initial_weights": [
+          0.3333333333333333,
+          0.3333333333333333,
+          0.3333333333333333
+        ],
+        "rebalance": "never",
+        "netting": false,
+        "capital_transfers": false,
+        "previously_seen": false,
+        "prior_note": "New account construction using previously examined WLS windows.",
+        "inherited_selection_bias": true
+      }
+    ],
+    "high_return_ids": [
+      "c_v91",
+      "h_qvix_only",
+      "h_v91_no_overheat",
+      "h_qvix_score25_30"
+    ],
+    "stability_ids": [
+      "s_v91_wls30",
+      "s_v91_wls30_no_crash",
+      "s_accounts25_30",
+      "s_accounts20_25_30"
+    ]
+  },
+  "source_sha256": {
+    "registry.py": "5cbfcec1ff1046043ac60b5d190bfd275ef71eac775a922f42811f8d388974f8",
+    "research.py": "822c1a98572486bf23fe979aa921aea63774dd136b448a82d74c37b94fee7f6d",
+    "v92.py": "134b7126a1c41d5ba4824e6e6b7a46507997d8f1e63dca1140b69f915a339bf1",
+    "portfolios.py": "52c22419272abe57a7ac6af8ee9300c2d8b420987b06f77bda54ef032314af7c",
+    "timing.py": "d245caafef68c09bf4f88094335f855110e1a49cc2dd8bbdf4692c7688cd16f8",
+    "PROTOCOL.md": "d6700f3a08589f1b2a1bbcf99e97c5ccc33760f70ef18d057e70097ebcb15183"
+  },
+  "parent_source_sha256": {
+    "data.py": "52005b1bf77dff9bf9b451956af274b6e77333f6868168c53d1bf1a6b698dfba",
+    "execution.py": "3da265a119c0415dc573ff53601e4c061af21376546cbcefeadf0e42499c414d",
+    "legacy.py": "6e4d1d48366aaa4c921dad19e084aadebf5140abc96f2ffe11e473af7b7d3081",
+    "metrics.py": "361c82dc9dc8b065f0f05b44a547c34814f5e632abe8d0c0f2f4c47d6e279697",
+    "candidates.py": "8cb2165d54ccfb8d46277d52d5c83b21da21dd6a6d7f911bfc00a669e0d25cdf",
+    "frozen/strategy.py": "06c166a6bb5479a3c01e210bed1c8c3d6df7567e61d8b61eb1e0985694c2a807",
+    "frozen/metadata.py": "3e6d8c86637ff2833860fc89cb026c70f955ff249f3b5469dd0752b6e5321ca5",
+    "frozen/presets.json": "73ee89e963ff0bb5e438a41169e2229113af486c8251ecfef399bdc6dc818a4c"
+  },
+  "prices_manifest_sha256": "3bc1367247c19766500e4faff16a359a4a08953205dea07a377abcb82228d99b",
+  "qvix_manifest_sha256": "290ca1b2acdc6ea9a916f142ad6d9684f998d33cac05252c40d1bc883520a97f",
+  "bootstrap_source_sha256": "01a6f3d1ea6cc6b8cab3084a1a57b2ef1aa6eb6380c9d265f97c64b646ea3192",
+  "protocol_sha256": "d6700f3a08589f1b2a1bbcf99e97c5ccc33760f70ef18d057e70097ebcb15183",
+  "primary_clock": "next_open",
+  "primary_slippage_bps": 10,
+  "commission_bps": 1,
+  "costs_bps": [
+    10,
+    20,
+    50
+  ],
+  "ideal_close_selection": false,
+  "neighborhood_scales": [
+    0.9,
+    1.1
+  ],
+  "history_status": "Previously examined history, including first-round results; not clean OOS",
+  "registered_at": "2026-09-26T20:27:25.809052+00:00"
+}

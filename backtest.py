@@ -131,6 +131,8 @@ def backtest(histories, calendar, buffer=0.02, overheat=0.40, bull_vote=False,
     strategy.MIN_ROWS = max(strategy.MA_BULL, max(strategy.MOM_WINDOWS) + 1 + skip_days,
                             mom_main + 1 + skip_days) + strategy.VOL_DAYS
     days = [d for d in calendar if start <= d <= end]
+    if len(days) < 2:
+        raise ValueError("回测区间至少需要两个交易日")
     close_of = {c: {r[0]: r[2] for r in rows} for c, rows in histories.items()}
     cash_close = close_of[CASH]
 
@@ -145,9 +147,10 @@ def backtest(histories, calendar, buffer=0.02, overheat=0.40, bull_vote=False,
     guard_on = False    # 组合回撤风控状态(dd_guard): True=仅允许避险池
     lock_until = -1     # 抄底锁仓截止下标(crash_lock): 期内强制持有不操作
     crash_buys = []     # 抄底记录(分析用)
+    mark_close = None  # 最后一次实际估值价；停牌/缺行后恢复须补计整个区间涨跌
     for i, d in enumerate(days):
         if i > 0:  # 当日收益按"昨日定下的持仓与仓位"计算
-            prev, cur = close_of[holding].get(days[i - 1]), close_of[holding].get(d)
+            prev, cur = mark_close, close_of[holding].get(d)
             if prev and cur:
                 r_asset = cur / prev - 1.0
                 if holding != CASH and leverage > 1.0:
@@ -159,6 +162,7 @@ def backtest(histories, calendar, buffer=0.02, overheat=0.40, bull_vote=False,
                     nav *= 1.0 + pos * r_asset + (1.0 - pos) * r_cash
                 else:
                     nav *= cur / prev
+                mark_close = cur
             holding_days += 1
         if circuit_dd > 0 and nav / peak - 1 <= -circuit_dd and i > circuit_until:
             circuit_until = i + circuit_days   # 触发熔断
@@ -213,7 +217,8 @@ def backtest(histories, calendar, buffer=0.02, overheat=0.40, bull_vote=False,
                     target, _ = strategy.decide(table, holding, holding_days)
                     lock_until = i
         elif crash_mom5 < 0:
-            crash_pool = STOCK_POOL if crash_stock_only else (STOCK_POOL + GLOBAL_POOL + [GOLD])
+            crash_pool = strategy.STOCK_POOL if crash_stock_only else (
+                strategy.STOCK_POOL + strategy.GLOBAL_POOL + [GOLD])
             if zscore_crash:  # 平台版触发: mom10 z<-2.5 且价格低于年线
                 cands = [x for x in table if x[0] in crash_pool and x[0] != holding
                          and x[1]["mom10_z"] <= -2.5 and x[1]["dist_ma250"] < 0]
@@ -226,7 +231,7 @@ def backtest(histories, calendar, buffer=0.02, overheat=0.40, bull_vote=False,
                 cand = min(cands, key=lambda x: x[1]["mom5"]) if cands else None
             else:                               # 默认: score最强的深跌者
                 cand = cands[0] if cands else None
-            if cand:
+            if cand and (holding is None or d in close_of[holding]):
                 target = cand[0]
                 lock_until = i + crash_lock
                 crash_buys.append((d, cand[0]))
@@ -265,12 +270,17 @@ def backtest(histories, calendar, buffer=0.02, overheat=0.40, bull_vote=False,
                 cand = next((x for x in table if x[0] in strategy.GLOBAL_POOL + [GOLD]
                              and x[0] != holding), None)
                 target = cand[0] if cand else CASH
+        # 没有当日价格不能假设已卖出/买入；保留持仓到下一次有效报价。
+        if (target != holding and (d not in close_of.get(target, {})
+                or (holding is not None and d not in close_of[holding]))):
+            target = holding
         if target != holding:
             if i > 0:                # 首日建仓不计为换手
                 switches += 1
                 nav *= (1 - FEE * 2) # 双边费用
                 trades.append((d, holding, target, nav))
             holding = target
+            mark_close = close_of[holding][d]
             holding_days = 0
             cost_price = close_of[holding].get(d) if holding != CASH else None
             hold_peak = cost_price

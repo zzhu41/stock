@@ -1,27 +1,29 @@
 # -*- coding: utf-8 -*-
-"""v9.2 影子版本: v9.1 + 双通道恐慌抄底并集(v10 第八轮候选 fz25_cv, 六起点全赢且支配双亲本)。
+"""v9.2 影子版本: v9.1 + 双通道恐慌抄底并集(v10 第八轮候选 fz25_cv)。
 
-只跟踪不下单——每日与主信号一起计算/推送, 攒前向样本, 复现 ~69% 5日胜率画像再议转正。
+只跟踪不下单——每日与主信号一起计算/推送，积累按信号时价格记账的前向样本。
 与 v9.1 唯一差异: 深跌抄底触发口从 1 个变 3 个并集(其余规则全部不变):
   ① 原口径: MOM5<=-8% 且低于年线20%
   ② QVIX恐慌(0906同款): QVIX z>=2.5(相对前250日, 严格当日口径) 当日 MOM5<=-4% 且低于年线20%
   ③ 量能恐慌(本轮新增): 当日量>=2倍前20日均量 且 MOM5<=-4% 且低于年线10%
-     机制: 深跌+巨量=被迫卖盘(赎回/强平)出清的可观测签名。量比用 14:50 盘中量(约95%全日),
-     回测用全日量——口径差异正是前向验证的核心项之一。
+     量比用报价中的当日累计成交量；回测用全日量，两者的差异尚需前向验证。
 
 数据: QVIX 复用 shadow_0906.qvix_state(严格当日口径, 缺失即停用恐慌判定);
-      量比用 market_data 增量缓存的当日(盘中)量, 无前视。
+      价格、量比和信号日由 market_data 的带日期报价统一对齐。
 状态: signals/shadow_v92.json(幂等: 同一交易日重跑不重复记账)
 流水: signals/shadow_v92_trades.csv(date,from,to,price,nav)
-回测: 2014起终值 1.286x v9.1, 六起点 1.286/1.286/1.388/1.258/1.258/1.124 全赢,
-      回撤不变(-26.99%); 证据链 v10/README.md 第八轮
+旧研究结果归档于 v10/README.md；修复后的评估见 reports/correctness_review.md。
+历史扫描结果不代表独立样本外验证，也不是修复后前向业绩。
 """
 import csv
 import json
 import os
+from datetime import datetime
 
 import strategy
 from market_data import UNIVERSE, STOCK_POOL, GLOBAL_POOL, GOLD
+from live_state import (signal_calendar, lock_active, migrate_shadow_state,
+                        advance_shadow_nav, settle_shadow)
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 STATE_FILE = os.path.join(BASE, "signals", "shadow_v92.json")
@@ -46,8 +48,8 @@ def _load_state():
         try:
             with open(STATE_FILE, encoding="utf-8") as f:
                 return json.load(f)
-        except Exception:
-            pass
+        except Exception as exc:
+            raise ValueError("影子状态文件损坏，停止记账并保留原文件") from exc
     # 首次部署: 影子与实盘 v9.1 持仓对齐起步
     holding = None
     if os.path.exists(PORTFOLIO):
@@ -79,6 +81,8 @@ def _log_trade(date, frm, to, price, nav):
 def _vol_ratio20(histories, code, last_date):
     """当日(盘中)量 / 前20日均量。数据不足返回 0(不触发)。"""
     rows = [r for r in histories.get(code, []) if r[0] <= last_date and len(r) > 3]
+    if not rows or rows[-1][0] != last_date:
+        raise ValueError("%s 缺少 %s 当日成交量" % (code, last_date))
     if len(rows) < 21:
         return 0.0
     avg20 = sum(r[3] for r in rows[-21:-1]) / 20.0
@@ -97,30 +101,27 @@ def _trigger_channels(ind, vr, fear):
     return ch
 
 
-def block(table, histories, live_prices):
+def block(table, histories, live_prices, signal_date=None):
     """计算影子信号并推进状态(同日幂等), 返回信号文本行列表。异常由调用方兜底。"""
     import shadow_0906                       # 复用 QVIX 严格当日口径(同源同窗同阈值)
-    cal = [r[0] for r in histories["510300"]]
-    last_date = cal[-1]
-    close_of = {c: {r[0]: r[2] for r in rows} for c, rows in histories.items()}
+    last_date = signal_date or datetime.now().strftime("%Y-%m-%d")
+    cal = signal_calendar(histories, last_date)
     st = _load_state()
+    migrate_shadow_state(st, last_date)
     z, v, qd, fear, note = shadow_0906.qvix_state(last_date)
-    info = {c: ind for c, ind in table}
 
     rerun = st.get("last_date") == last_date     # 同日重跑: 只展示不推进
     if not rerun:
-        # 1) 净值推进: 昨日持仓吃 prev->last 收益(与回测 T 日收盘口径一致)
-        prev_date = st.get("last_date")
-        h = st.get("holding")
-        if prev_date and h and prev_date in close_of.get(h, {}) and last_date in close_of.get(h, {}):
-            st["nav"] *= close_of[h][last_date] / close_of[h][prev_date]
+        # 1) 上次实际信号价到本次报价的持仓收益，不回算入场前的历史收益。
+        advance_shadow_nav(st, live_prices, histories)
 
         # 2) 决策: 锁仓期 > 抄底检测(① ∪ ② ∪ ③, score 最强者, 排除当前持仓——同 lab 口径) > v9.1 常规信号
         target, reason = None, ""
-        if st.get("lock_until") and st["lock_until"] >= last_date and st.get("lock_code") in UNIVERSE:
+        if lock_active(st.get("lock_code"), st.get("lock_trigger_date"), cal, last_date, LOCK_DAYS):
             target = st["lock_code"]
-            reason = "抄底锁仓期(至%s)" % st["lock_until"]
+            reason = "抄底锁仓期(触发%s，满5个交易日恢复决策)" % st["lock_trigger_date"]
         else:
+            st["lock_code"] = st["lock_trigger_date"] = None
             cand, cand_ch, cand_vr = None, [], 0.0
             for x in table:
                 if x[0] not in CRASH_POOL or x[0] == st.get("holding"):
@@ -131,25 +132,16 @@ def block(table, histories, live_prices):
                     cand, cand_ch, cand_vr = x, ch, vr
                     break
             if cand:
-                idx = cal.index(last_date)
                 st["lock_code"] = cand[0]
-                st["lock_until"] = cal[min(idx + LOCK_DAYS, len(cal) - 1)]
+                st["lock_trigger_date"] = last_date
                 target = cand[0]
                 reason = "抄底(%s): %s MOM5 %.1f%% 低于年线 %.1f%% 量比 %.1f" % (
                     "∪".join(cand_ch), UNIVERSE[cand[0]][0], cand[1]["mom5"] * 100,
                     cand[1]["dist_ma250"] * 100, cand_vr)
             else:
                 target, reason = strategy.decide(table, st.get("holding"))
-        # 3) 换仓记账(虚拟); 首次部署仅对齐起步, 不计费不记流水
-        if target != st.get("holding"):
-            if prev_date:
-                st["nav"] *= 1 - FEE
-                price = live_prices.get(target) or close_of.get(target, {}).get(last_date, 0.0)
-                _log_trade(last_date, st.get("holding"), target, price, st["nav"])
-            st["holding"] = target
-        if not st.get("start_date"):
-            st["start_date"] = last_date
-        st["last_date"] = last_date
+        # 3) 换仓并保存本次执行/估值价，作为下一次收益的唯一分母。
+        settle_shadow(st, target, live_prices, last_date, FEE, _log_trade, histories)
         name = UNIVERSE[target][0] if target in UNIVERSE else "空仓"
         st["last_advice"] = "%s %s | %s" % (target, name, reason)
         _save_state(st)
@@ -157,7 +149,7 @@ def block(table, histories, live_prices):
     qvix_line = "QVIX %.2f (z=%+.2f, %s) 恐慌: %s%s" % (
         v or 0.0, z or 0.0, qd or "-", "激活" if fear else "未激活",
         " | " + note if note else "")
-    return [
+    lines = [
         "-" * 56,
         "【影子 v9.2】QVIX∪量能恐慌抄底 · 虚拟跟踪不下单 (v10第八轮候选 fz25_cv)",
         "  " + qvix_line,
@@ -166,11 +158,17 @@ def block(table, histories, live_prices):
             st.get("holding") or "空仓", st.get("nav", 1.0),
             st.get("start_date") or st.get("last_date"), st.get("last_advice", "")),
     ]
+    if st.get("valuation_note"):
+        lines.append("  " + st["valuation_note"])
+    return lines
 
 
 if __name__ == "__main__":
-    from market_data import fetch_history, fetch_realtime
+    from market_data import fetch_history, fetch_realtime, prepare_live_histories
+    sig_date = datetime.now().strftime("%Y-%m-%d")
     hs = {c: fetch_history(c) for c in UNIVERSE}
-    lv = {c: p for c, (n, p) in fetch_realtime().items()}
-    tbl = strategy.rank(hs, live_prices=lv)
-    print("\n".join(block(tbl, hs, lv)))
+    quotes = fetch_realtime(codes=list(UNIVERSE), detailed=True)
+    hs = prepare_live_histories(hs, quotes, sig_date)
+    lv = {c: q["price"] for c, q in quotes.items()}
+    tbl = strategy.rank(hs, on_date=sig_date)
+    print("\n".join(block(tbl, hs, lv, signal_date=sig_date)))

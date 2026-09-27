@@ -1,0 +1,406 @@
+{
+  "target_end": "2026-09-24",
+  "end": "2026-09-24",
+  "assets": {
+    "159915": {
+      "sha256": "f11779db295268ff79a0ba57e59d15a6f1e5caa04c92fa4dd2c2273fadae95f0",
+      "first": "2011-12-09",
+      "last": "2026-09-24",
+      "rows": 3593,
+      "seed": {
+        "sha256": "f11779db295268ff79a0ba57e59d15a6f1e5caa04c92fa4dd2c2273fadae95f0",
+        "first": "2011-12-09",
+        "last": "2026-09-24",
+        "rows": 3593
+      },
+      "update": {
+        "refreshed": false,
+        "last": "2026-09-24"
+      }
+    },
+    "588080": {
+      "sha256": "3c8432ab1ea67f2f4ecfe814eadecde915d973ef9479bd09a1fd830736daa8ea",
+      "first": "2020-11-16",
+      "last": "2026-09-24",
+      "rows": 1424,
+      "seed": {
+        "sha256": "3c8432ab1ea67f2f4ecfe814eadecde915d973ef9479bd09a1fd830736daa8ea",
+        "first": "2020-11-16",
+        "last": "2026-09-24",
+        "rows": 1424
+      },
+      "update": {
+        "refreshed": false,
+        "last": "2026-09-24"
+      }
+    },
+    "510300": {
+      "sha256": "44c767c8baf94483255247e5668c84fe09b5a2fe168d83792a8e20bc87220d2f",
+      "first": "2012-05-28",
+      "last": "2026-09-24",
+      "rows": 3485,
+      "seed": {
+        "sha256": "44c767c8baf94483255247e5668c84fe09b5a2fe168d83792a8e20bc87220d2f",
+        "first": "2012-05-28",
+        "last": "2026-09-24",
+        "rows": 3485
+      },
+      "update": {
+        "refreshed": false,
+        "last": "2026-09-24"
+      }
+    },
+    "510500": {
+      "sha256": "418418096c2cce54238d75d9b26172c479a4f4f5a9f10a021444d1bfc5db1149",
+      "first": "2013-03-15",
+      "last": "2026-09-24",
+      "rows": 3288,
+      "seed": {
+        "sha256": "418418096c2cce54238d75d9b26172c479a4f4f5a9f10a021444d1bfc5db1149",
+        "first": "2013-03-15",
+        "last": "2026-09-24",
+        "rows": 3288
+      },
+      "update": {
+        "refreshed": false,
+        "last": "2026-09-24"
+      }
+    },
+    "563300": {
+      "sha256": "f54d5c1af6d2d987bff62720a401586ca24024760f7d80b046dd791c8b6e1a0c",
+      "first": "2023-09-14",
+      "last": "2026-09-24",
+      "rows": 734,
+      "seed": {
+        "sha256": "f54d5c1af6d2d987bff62720a401586ca24024760f7d80b046dd791c8b6e1a0c",
+        "first": "2023-09-14",
+        "last": "2026-09-24",
+        "rows": 734
+      },
+      "update": {
+        "refreshed": false,
+        "last": "2026-09-24"
+      }
+    },
+    "512400": {
+      "sha256": "bf724ae322673894f3d12ac2ba075459f20fd1681ddc7bd3408e341f309aaf9c",
+      "first": "2017-09-01",
+      "last": "2026-09-24",
+      "rows": 2201,
+      "seed": {
+        "sha256": "bf724ae322673894f3d12ac2ba075459f20fd1681ddc7bd3408e341f309aaf9c",
+        "first": "2017-09-01",
+        "last": "2026-09-24",
+        "rows": 2201
+      },
+      "update": {
+        "refreshed": false,
+        "last": "2026-09-24"
+      }
+    },
+    "512890": {
+      "sha256": "64c8f04182dfd456f12097f81a3c438d2bda98c2fe4ea097db4e80fbaa412542",
+      "first": "2019-01-18",
+      "last": "2026-09-24",
+      "rows": 1864,
+      "seed": {
+        "sha256": "64c8f04182dfd456f12097f81a3c438d2bda98c2fe4ea097db4e80fbaa412542",
+        "first": "2019-01-18",
+        "last": "2026-09-24",
+        "rows": 1864
+      },
+      "update": {
+        "refreshed": false,
+        "last": "2026-09-24"
+      }
+    },
+    "513100": {
+      "sha256": "fadada03061ac88071c2224ce8dc9674d7fa788183f47dc19f8b47d65d7a0545",
+      "first": "2013-05-15",
+      "last": "2026-09-24",
+      "rows": 3251,
+      "seed": {
+        "sha256": "fadada03061ac88071c2224ce8dc9674d7fa788183f47dc19f8b47d65d7a0545",
+        "first": "2013-05-15",
+        "last": "2026-09-24",
+        "rows": 3251
+      },
+      "update": {
+        "refreshed": false,
+        "last": "2026-09-24"
+      }
+    },
+    "513120": {
+      "sha256": "dbaeaa03c3e89dc0775a824cbecdba36986c0f6ad7653e994afe61ca8be8f0e6",
+      "first": "2022-07-12",
+      "last": "2026-09-24",
+      "rows": 1023,
+      "seed": {
+        "sha256": "dbaeaa03c3e89dc0775a824cbecdba36986c0f6ad7653e994afe61ca8be8f0e6",
+        "first": "2022-07-12",
+        "last": "2026-09-24",
+        "rows": 1023
+      },
+      "update": {
+        "refreshed": false,
+        "last": "2026-09-24"
+      }
+    },
+    "518880": {
+      "sha256": "85ad857c8287859de8f819edc22d2b848bdd04532d4b26ab9d0e21dbac5de2a6",
+      "first": "2013-07-29",
+      "last": "2026-09-24",
+      "rows": 3202,
+      "seed": {
+        "sha256": "85ad857c8287859de8f819edc22d2b848bdd04532d4b26ab9d0e21dbac5de2a6",
+        "first": "2013-07-29",
+        "last": "2026-09-24",
+        "rows": 3202
+      },
+      "update": {
+        "refreshed": false,
+        "last": "2026-09-24"
+      }
+    },
+    "511880": {
+      "sha256": "cfe940a65875aa43edea0b8f6e234072911adb48ac86d960dc67f4c8682cd698",
+      "first": "2013-07-12",
+      "last": "2026-09-24",
+      "rows": 3213,
+      "seed": {
+        "sha256": "cfe940a65875aa43edea0b8f6e234072911adb48ac86d960dc67f4c8682cd698",
+        "first": "2013-07-12",
+        "last": "2026-09-24",
+        "rows": 3213
+      },
+      "update": {
+        "refreshed": false,
+        "last": "2026-09-24"
+      }
+    },
+    "510880": {
+      "sha256": "3bbe94997c99e0636a69a3c6b629c0e80d849c1741ddb05a1f5bc42b6e129fc5",
+      "first": "2010-01-04",
+      "last": "2026-09-24",
+      "rows": 4064,
+      "seed": {
+        "sha256": "5be6c52423d6dba5c677310287f323bb20a37b0499cab20a1e54957dc409293b",
+        "first": "2010-01-04",
+        "last": "2026-09-11",
+        "rows": 4055
+      },
+      "update": {
+        "refreshed": true,
+        "last": "2026-09-24",
+        "rows": 4064
+      }
+    },
+    "515080": {
+      "sha256": "2505bbce82c49bc74acaf0b973a6e8fcce33f6bba948a99d1b2d7e83ba9120bf",
+      "first": "2019-12-27",
+      "last": "2026-09-24",
+      "rows": 1636,
+      "seed": {
+        "sha256": "4ae1eba27c329a3d9eb531fc4c77c2c13ba52a0bf94d21cc97a38b9f19348db6",
+        "first": "2019-12-27",
+        "last": "2026-09-11",
+        "rows": 1627
+      },
+      "update": {
+        "refreshed": true,
+        "last": "2026-09-24",
+        "rows": 1636
+      }
+    },
+    "515100": {
+      "sha256": "cc83cd9b0bfdd7be13758e4cd90df68499e60122db4642f7032b54e1b6562fb7",
+      "first": "2020-07-03",
+      "last": "2026-09-24",
+      "rows": 1514,
+      "seed": {
+        "sha256": "3a74464ca7cbf86174c626e816711d3f5174af50944a2e91ea24656afad3babc",
+        "first": "2020-07-03",
+        "last": "2026-09-11",
+        "rows": 1505
+      },
+      "update": {
+        "refreshed": true,
+        "last": "2026-09-24",
+        "rows": 1514
+      }
+    },
+    "159928": {
+      "sha256": "71f780dabf8e539fd9b91dbc1c902f9cbfce3a2bd65d3eb36da58fabf55feb87",
+      "first": "2013-09-16",
+      "last": "2026-09-24",
+      "rows": 3167,
+      "seed": {
+        "sha256": "6c81e0e80a414b60844cba36b293a774e831b00030de0e3bc1dda3d5a45b722e",
+        "first": "2013-09-16",
+        "last": "2026-09-11",
+        "rows": 3158
+      },
+      "update": {
+        "refreshed": true,
+        "last": "2026-09-24",
+        "rows": 3167
+      }
+    },
+    "512010": {
+      "sha256": "6943dcf2b6c196196ac64a351df9ae97d59fdef160a7b01a104a06288b55f974",
+      "first": "2013-10-28",
+      "last": "2026-09-24",
+      "rows": 3142,
+      "seed": {
+        "sha256": "d0695ae63a5091bf1235ed83458542eb6953baee7b39b4a155934d1c26a83c4e",
+        "first": "2013-10-28",
+        "last": "2026-09-11",
+        "rows": 3133
+      },
+      "update": {
+        "refreshed": true,
+        "last": "2026-09-24",
+        "rows": 3142
+      }
+    },
+    "512070": {
+      "sha256": "4372a3e72c6bc5175b9e096a9cdc66787e924c85f8f7c04e6ac710eb53a564d4",
+      "first": "2014-07-18",
+      "last": "2026-09-24",
+      "rows": 2964,
+      "seed": {
+        "sha256": "7f5eea4589980d877993cf6387087b51b28cb5f5665dd9dd66a57de8ff8a39fe",
+        "first": "2014-07-18",
+        "last": "2026-09-11",
+        "rows": 2955
+      },
+      "update": {
+        "refreshed": true,
+        "last": "2026-09-24",
+        "rows": 2964
+      }
+    },
+    "512880": {
+      "sha256": "5bb99a5527c727fe42357d960bf4b9cb9fc5012c473733338d4e9254c4016a2f",
+      "first": "2016-08-08",
+      "last": "2026-09-24",
+      "rows": 2462,
+      "seed": {
+        "sha256": "ea5e0de485c879dd72f8f92b45602f50d12f05a04350251c38c9486e212f037c",
+        "first": "2016-08-08",
+        "last": "2026-09-11",
+        "rows": 2453
+      },
+      "update": {
+        "refreshed": true,
+        "last": "2026-09-24",
+        "rows": 2462
+      }
+    },
+    "512800": {
+      "sha256": "c19b903c14bc0149752e29a45eb8a81c227ff3d8c5cb526c7f850631a6e2f879",
+      "first": "2017-08-03",
+      "last": "2026-09-24",
+      "rows": 2222,
+      "seed": {
+        "sha256": "db3b98ba0df8837c12c06b99a840e8cc1700b539dedcbe09cf78880ad4ab1613",
+        "first": "2017-08-03",
+        "last": "2026-09-11",
+        "rows": 2213
+      },
+      "update": {
+        "refreshed": true,
+        "last": "2026-09-24",
+        "rows": 2222
+      }
+    },
+    "512200": {
+      "sha256": "c8920a2acb5e6e4ae536897b8212e21f180f7bab33a48c689afe0c7c06ebc5ff",
+      "first": "2017-09-25",
+      "last": "2026-09-24",
+      "rows": 2185,
+      "seed": {
+        "sha256": "cac7bd4641faae6f9a76bc35a96d6d112a62db9dd1e2c512947f9870dfd44825",
+        "first": "2017-09-25",
+        "last": "2026-09-11",
+        "rows": 2176
+      },
+      "update": {
+        "refreshed": true,
+        "last": "2026-09-24",
+        "rows": 2185
+      }
+    },
+    "513030": {
+      "sha256": "6bf43142922cd98e03983a11b59788761c693b4ec1e620e532816f1d072d8627",
+      "first": "2014-09-05",
+      "last": "2026-09-24",
+      "rows": 2929,
+      "seed": {
+        "sha256": "4748cae895fac34fef67e69bf4f8ea18a4682a487ca72088905db67388a6eda5",
+        "first": "2014-09-05",
+        "last": "2026-09-11",
+        "rows": 2920
+      },
+      "update": {
+        "refreshed": true,
+        "last": "2026-09-24",
+        "rows": 2929
+      }
+    },
+    "513520": {
+      "sha256": "9d86ddb5317fae799760155f4fc96a5b95b1cf45dede19bd60d6aa348a1ac1bb",
+      "first": "2019-06-25",
+      "last": "2026-09-24",
+      "rows": 1763,
+      "seed": {
+        "sha256": "efa10de3d8835986440dcbe1aede3149e74a755a1bb6f43cc6e40e16d5e00264",
+        "first": "2019-06-25",
+        "last": "2026-09-11",
+        "rows": 1754
+      },
+      "update": {
+        "refreshed": true,
+        "last": "2026-09-24",
+        "rows": 1763
+      }
+    },
+    "159985": {
+      "sha256": "2eda2235a28989c328a15c7f638fbf953a43bc56c99c738b5443b9f2ef19d8f5",
+      "first": "2019-12-05",
+      "last": "2026-09-24",
+      "rows": 1652,
+      "seed": {
+        "sha256": "435d45e34abf92f6c52f823be36b7676bc8928b82338e39d1016cf9fba86a14b",
+        "first": "2019-12-05",
+        "last": "2026-09-11",
+        "rows": 1643
+      },
+      "update": {
+        "refreshed": true,
+        "last": "2026-09-24",
+        "rows": 1652
+      }
+    },
+    "511010": {
+      "sha256": "c1845e631adb7728ac1c774cb2a75a5b9c2f153834550387bf2a1d3a0c4cb580",
+      "first": "2013-03-25",
+      "last": "2026-09-24",
+      "rows": 3284,
+      "seed": {
+        "sha256": "066734f92c56519c35d24b822ae80d0a7aa87da81418d2d2a3908b6d6d63ee2c",
+        "first": "2013-03-25",
+        "last": "2026-09-11",
+        "rows": 3275
+      },
+      "update": {
+        "refreshed": true,
+        "last": "2026-09-24",
+        "rows": 3284
+      }
+    }
+  },
+  "source": "Tencent public adjusted daily open/close/volume, overlap checked by existing loader",
+  "existing_cache_untouched": true,
+  "failed_updates": []
+}

@@ -1,0 +1,152 @@
+{
+  "variants": {
+    "growth": {
+      "name": "v10-H round2",
+      "selected_candidate": "h_qvix_score25_30",
+      "config": {
+        "id": "h_qvix_score25_30",
+        "family": "high_return",
+        "kind": "v92",
+        "base_version": "v9.1",
+        "hypothesis": "Remove the volume channel, then average WLS25 and WLS30 scores at fixed equal weights.",
+        "overrides": {},
+        "score_windows": [
+          25,
+          30
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": [],
+        "previously_seen": false,
+        "prior_note": "Fixed combination of known QVIX-only and ranking-window ideas; no optimized ensemble weights.",
+        "channels": [
+          "deep",
+          "qvix"
+        ]
+      },
+      "config_sha256": "9c1824d0887ab9c00c135fffdf9c052096e7eac4be749e0e01999a86f42fd636",
+      "scope": "Frozen research candidate, not deployed",
+      "selection_period": "2014-2021 only; later known history did not change selection",
+      "numerical_targets": {
+        "full": {
+          "v92_cagr": 0.37027038502164134,
+          "high_cagr": 0.37028573487095295,
+          "high_difference": 1.534984931161887e-05,
+          "high_pass": true,
+          "robust_cagr": 0.36107631331247747,
+          "robust_pass": true
+        },
+        "validation": {
+          "v92_cagr": 0.42198562923963046,
+          "high_cagr": 0.42517401794685816,
+          "high_difference": 0.0031883887072277073,
+          "high_pass": true,
+          "robust_cagr": 0.3761253082455518,
+          "robust_pass": true
+        }
+      },
+      "promotion_assessment": "Near-tie with v9.2; no demonstrated incremental-return advantage"
+    },
+    "robust": {
+      "name": "v10-S round2",
+      "selected_candidate": "s_v91_wls30",
+      "config": {
+        "id": "s_v91_wls30",
+        "family": "robust",
+        "kind": "legacy",
+        "base_version": "v9.1",
+        "hypothesis": "Recheck the publicly observed WLS30 neighborhood under the causal execution clock.",
+        "overrides": {},
+        "score_windows": [
+          30
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": [],
+        "previously_seen": true,
+        "prior_note": "Prior parameter_stability report used fixed-target replay; those numbers are not interchangeable with this engine."
+      },
+      "config_sha256": "9d72eac14530ae989b9acc2700df2599dcfa74bdecbf2185b02fb22d69d1f4c0",
+      "scope": "Frozen research candidate, not deployed",
+      "selection_period": "2014-2021 only; later known history did not change selection",
+      "numerical_targets": {
+        "full": {
+          "v92_cagr": 0.37027038502164134,
+          "high_cagr": 0.37028573487095295,
+          "high_difference": 1.534984931161887e-05,
+          "high_pass": true,
+          "robust_cagr": 0.36107631331247747,
+          "robust_pass": true
+        },
+        "validation": {
+          "v92_cagr": 0.42198562923963046,
+          "high_cagr": 0.42517401794685816,
+          "high_difference": 0.0031883887072277073,
+          "high_pass": true,
+          "robust_cagr": 0.3761253082455518,
+          "robust_pass": true
+        }
+      },
+      "promotion_assessment": "Historical 30% target met; lower overfitting is not established"
+    }
+  },
+  "own_source_sha256": {
+    "registry.py": "5cbfcec1ff1046043ac60b5d190bfd275ef71eac775a922f42811f8d388974f8",
+    "research.py": "822c1a98572486bf23fe979aa921aea63774dd136b448a82d74c37b94fee7f6d",
+    "v92.py": "134b7126a1c41d5ba4824e6e6b7a46507997d8f1e63dca1140b69f915a339bf1",
+    "portfolios.py": "52c22419272abe57a7ac6af8ee9300c2d8b420987b06f77bda54ef032314af7c",
+    "timing.py": "d245caafef68c09bf4f88094335f855110e1a49cc2dd8bbdf4692c7688cd16f8",
+    "PROTOCOL.md": "d6700f3a08589f1b2a1bbcf99e97c5ccc33760f70ef18d057e70097ebcb15183",
+    "cli.py": "763bc9ea3dd1e8749174ed6aba7c500a058e623dc1d12256c5fe0b53a63c5397",
+    "report.py": "b2db656caeb7ee1dbb5033de53917411169fb1ca546ea0056355985886f7db54"
+  },
+  "parent_source_sha256": {
+    "data.py": "52005b1bf77dff9bf9b451956af274b6e77333f6868168c53d1bf1a6b698dfba",
+    "execution.py": "3da265a119c0415dc573ff53601e4c061af21376546cbcefeadf0e42499c414d",
+    "legacy.py": "6e4d1d48366aaa4c921dad19e084aadebf5140abc96f2ffe11e473af7b7d3081",
+    "metrics.py": "361c82dc9dc8b065f0f05b44a547c34814f5e632abe8d0c0f2f4c47d6e279697",
+    "candidates.py": "8cb2165d54ccfb8d46277d52d5c83b21da21dd6a6d7f911bfc00a669e0d25cdf",
+    "frozen/strategy.py": "06c166a6bb5479a3c01e210bed1c8c3d6df7567e61d8b61eb1e0985694c2a807",
+    "frozen/metadata.py": "3e6d8c86637ff2833860fc89cb026c70f955ff249f3b5469dd0752b6e5321ca5",
+    "frozen/presets.json": "73ee89e963ff0bb5e438a41169e2229113af486c8251ecfef399bdc6dc818a4c",
+    "cli.py": "ea5c4184faabf69d26f8a534ef1298dd7b1c24fc3e3129feeae6791fead21cf5"
+  },
+  "prices_manifest_sha256": "3bc1367247c19766500e4faff16a359a4a08953205dea07a377abcb82228d99b",
+  "artifact_sha256": {
+    "results/evaluation.json": "3694cb678a8cc717edf1b6c1108b95f9f8c4dbf79973bcb6c3d43dccd9c60e0d",
+    "results/selection.json": "cc1d773391f89e844fb0f428ade78e499e91db56124078b349cb934349ec932d",
+    "qvix_manifest.json": "290ca1b2acdc6ea9a916f142ad6d9684f998d33cac05252c40d1bc883520a97f"
+  }
+}

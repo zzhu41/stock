@@ -28,6 +28,7 @@ import strategy
 import backtest
 import market_data
 from market_data import UNIVERSE, GOLD, CASH
+from strategy_versions import backtest_kwargs
 
 DATA_DIR = os.path.join(BASE, "data")
 EXTRA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data_extra")
@@ -287,7 +288,8 @@ def _rescore(table, d, mode):
 
 # ---------------------------------------------------------------- 第七轮: 恐慌情绪层(2026-09-05)
 # 外部新数据: 50ETF期权QVIX(2015-02起) + 沪深融资余额(2010-03起), ext_fear.py 拉取。
-# 无前视: QVIX z 用截至前一日的250日滚动窗(当日QVIX值14:50盘中可见, 同日可用);
+# QVIX z 用截至前一日的250日滚动窗；当日输入为日终值，不能视为14:50快照。
+# 当日全日数据回测须配合下一交易日成交评估，或仅标记为收盘理想情景。
 #         两融 T+1 早晨发布 → 取日期严格 < d 的最后一根。
 FEAR = {"qd": [], "qz": [], "qv": [], "rd": [], "r5": []}
 
@@ -548,6 +550,8 @@ def _decide_v10_impl(table, holding, holding_days=99):
     scorebuf / bearbuf / crosspool / rankconfirm。"""
     info = {c: ind for c, ind in table}
     bull = _bull_v10(info)      # 第八轮: 宽度覆盖钩子(默认惰性); 原 strategy._is_bull(info)
+    panic_why = strategy._panic_exit_reason(info, holding)
+    candidates = [x for x in table if not panic_why or x[0] != holding]
     # v10 池子钩子(默认全空=原样):
     #   defensive: 防御角色(牛熊竞赛池均可参赛 + 熊市不制度性离场), 如红利低波防御化
     #   bear_extra: 仅熊市竞赛池(不牛市参赛) + 不制度性离场, 如国债防御层
@@ -565,23 +569,24 @@ def _decide_v10_impl(table, holding, holding_days=99):
     else:
         comp_pool = strategy.GLOBAL_POOL + [GOLD] + sorted(
             (_DEF | _BEX | _GLX) - set(strategy.GLOBAL_POOL) - {GOLD})
-    best = next((t for t in table if t[0] in comp_pool and _enter_ok_v10(t[1], t[0], bull)), None)
+    best = next((t for t in candidates if t[0] in comp_pool and _enter_ok_v10(t[1], t[0], bull)), None)
 
     if best:
         target, reason = best[0], "竞赛池动量第一" if bull else "熊市体制, 跨境/黄金动量第一"
         STATE["ne_fb_raw"] = False
-    elif bull and GOLD in info and info[GOLD]["mom20"] > 0:
+    elif bull and GOLD in info and info[GOLD]["mom20"] > 0 and not (panic_why and holding == GOLD):
         target, reason = GOLD, "竞赛池无人达标, 黄金动量为正(备胎)"
         STATE["ne_fb_raw"] = False              # 备胎黄金 MOM20>0, 属合格信号, 不算兜底
     elif strategy.NEVER_EMPTY:
         # v10 钩子 ne_gold_first: 兜底时黄金 MOM20>0 则优先黄金(防御优先于 score 排名)
-        if _cfg("ne_gold_first") and GOLD in info and info[GOLD]["mom20"] > 0:
+        if (_cfg("ne_gold_first") and GOLD in info and info[GOLD]["mom20"] > 0
+                and not (panic_why and holding == GOLD)):
             cand = (GOLD, info[GOLD])
         elif strategy.SAFE_MIN_VOL:
-            cands = [x for x in table if x[0] in (set(strategy.GLOBAL_POOL) | {GOLD} | _FBX | _GLX)]
+            cands = [x for x in candidates if x[0] in (set(strategy.GLOBAL_POOL) | {GOLD} | _FBX | _GLX)]
             cand = min(cands, key=lambda x: x[1]["vol"]) if cands else None
         else:
-            cand = next((x for x in table
+            cand = next((x for x in candidates
                          if x[0] in (set(strategy.GLOBAL_POOL) | {GOLD} | _FBX | _GLX)), None)
         if strategy.NE_BULL_ONLY and not bull:
             target, reason = CASH, "熊市体制, 空仓避险"
@@ -606,6 +611,9 @@ def _decide_v10_impl(table, holding, holding_days=99):
     else:
         target, reason = CASH, "无人达标, 空仓避险" if bull else "熊市体制, 空仓避险"
         STATE["ne_fb_raw"] = False
+
+    if panic_why:
+        return target, "%s, 离场 -> %s" % (panic_why, UNIVERSE[target][0])
 
     if holding and holding != target and holding in info:
         h = info[holding]
@@ -721,6 +729,16 @@ strategy.decide = decide_dispatch
 
 
 # ---------------------------------------------------------------- 引擎副本(仓位类钩子)
+def _reset_strategy(histories, calendar):
+    """用实际存在的两天重置配置，避免硬编码2024窗口泄漏/短样本报错。"""
+    if len(calendar) < 2:
+        raise ValueError("回测至少需要两个交易日")
+    backtest.backtest(histories, calendar, start=calendar[-2], end=calendar[-1],
+                      **backtest_kwargs("v9.1"))
+    strategy._state_bull = None
+    strategy.BULL_HYST_PENDING = None
+
+
 def backtest_v10(histories, calendar, start, end="9999",
                  ne_pos=1.0, ne_pos_bear_only=False, crash_alloc=1.0, crash_pick="score",
                  crash_stop=0.0, crash_stop_cash_days=0, circuit_dd=0.0, circuit_days=10,
@@ -747,9 +765,7 @@ def backtest_v10(histories, calendar, start, end="9999",
     策略全局参数先经一次极短原始回测调用重置为 v9.1 默认(防抄漏 60 个赋值)。
     保真校验: 变体 engine_check(新钩子全默认) 必须逐位等于 baseline。
     """
-    backtest.backtest(histories, calendar, start="2024-01-02", end="2024-01-04")
-    strategy._state_bull = None
-    strategy.BULL_HYST_PENDING = None
+    _reset_strategy(histories, calendar)
     days = [d for d in calendar if start <= d <= end]
     close_of = {c: {r[0]: r[2] for r in rows} for c, rows in histories.items()}
     cash_close = close_of[CASH]
@@ -760,12 +776,13 @@ def backtest_v10(histories, calendar, start, end="9999",
     pos = 1.0
     lock_until = -1
     crash_buys = []
+    mark_close = None
     cost_price = None          # 第九轮: 锁仓止损成本价(仅 crash_stop>0 时使用)
     circuit_until = -1         # 第九轮: 熔断冷却截止下标
     cash_until = -1            # 第九轮: 纯空仓冷却截止(crash_stop_cash / panic_cool)
     for i, d in enumerate(days):
         if i > 0:  # 当日收益按"昨日定下的持仓与仓位"计算
-            prev, cur = close_of[holding].get(days[i - 1]), close_of[holding].get(d)
+            prev, cur = mark_close, close_of[holding].get(d)
             if prev and cur:
                 r_asset = cur / prev - 1.0
                 if pos < 1.0:
@@ -774,6 +791,7 @@ def backtest_v10(histories, calendar, start, end="9999",
                     nav *= 1.0 + pos * r_asset + (1.0 - pos) * r_cash
                 else:
                     nav *= cur / prev
+                mark_close = cur
             holding_days += 1
         # 第九轮: 组合回撤熔断触发(peak 为历史最高净值; 已在冷却期内不重复触发)
         if circuit_dd > 0 and nav / peak - 1 <= -circuit_dd and i > circuit_until:
@@ -822,7 +840,7 @@ def backtest_v10(histories, calendar, start, end="9999",
                         target = cand[0] if cand else CASH
                     lock_until = i                  # 提前解锁
         else:
-            crash_pool = backtest.STOCK_POOL + backtest.GLOBAL_POOL + [backtest.GOLD]
+            crash_pool = strategy.STOCK_POOL + strategy.GLOBAL_POOL + [GOLD]
             # 第七轮钩子: 恐慌活跃日放宽触发口(与基线口 union); CFG 全空时 fear 恒 False = 原样
             fear = (_cfg("fear_qz") or _cfg("fear_qabs") or _cfg("fear_rz")) and _fear_active(d)
             f_m5 = _cfg("fear_m5", -0.08)
@@ -844,19 +862,23 @@ def backtest_v10(histories, calendar, start, end="9999",
                 cand = cands[0] if cands else None
             # 第九轮: 纯空仓冷却期不提交抄底(否则 lock_until 延长超出现金冷却期,
             # 空仓抑制被静默拉长且 crash_buys 记幽灵事件 —— 审计(e)修复)
-            if cand and i >= cash_until:
+            if cand and i >= cash_until and (holding is None or d in close_of[holding]):
                 target = cand[0]
                 lock_until = i + 5
                 crash_buys.append((d, cand[0]))
         # 第九轮: 纯空仓冷却(crash_stop_cash / panic_cool), 优先级高于抄底(冷却期屏蔽一切买入)
         if i < cash_until:
             target = CASH
+        if (target != holding and (d not in close_of.get(target, {})
+                or (holding is not None and d not in close_of[holding]))):
+            target = holding
         if target != holding:
             if i > 0:                # 首日建仓不计换手
                 switches += 1
                 nav *= (1 - backtest.FEE * 2)
                 trades.append((d, holding, target, nav))
             holding = target
+            mark_close = close_of[holding][d]
             holding_days = 0
             cost_price = close_of[holding].get(d) if holding != CASH else None  # 第九轮
         pos = 1.0
@@ -927,9 +949,7 @@ def backtest_top2(histories, calendar, start, end="9999", max_legs=2):
     """
     if max_legs == 1:
         return backtest_v10(histories, calendar, start, end)
-    backtest.backtest(histories, calendar, start="2024-01-02", end="2024-01-04")  # 重置 strategy 全局(同 backtest_v10)
-    strategy._state_bull = None
-    strategy.BULL_HYST_PENDING = None
+    _reset_strategy(histories, calendar)
     days = [d for d in calendar if start <= d <= end]
     close_of = {c: {r[0]: r[2] for r in rows} for c, rows in histories.items()}
 

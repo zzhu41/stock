@@ -1,0 +1,320 @@
+{
+  "schema": 1,
+  "verified_on": "2026-09-27",
+  "kind": "primary-source corporate-action verification",
+  "scope": "Nine verified post-2010 split/consolidation events for eight ETFs; not a complete cash-dividend register.",
+  "field_definitions": {
+    "date": "First available raw-market bar using the new share unit. Apply the split once between the previous available bar and this bar.",
+    "record_date": "Issuer-announced entitlement registration date; may differ from price-unit effective date.",
+    "event_date": "Issuer-announced split/consolidation registration or processing date.",
+    "ratio": "New shares per old share, using the announced precision; not inferred from rounded before/after market prices.",
+    "raw_evidence": "Local raw Tencent O/C samples; split_only_close_return is a unit-consistency check, not proof that the interval contains no other corporate action."
+  },
+  "actions": [
+    {
+      "code": "159928",
+      "date": "2021-06-25",
+      "record_date": "2021-06-24",
+      "event_date": "2021-06-24",
+      "ratio": 4,
+      "ratio_exact": "4",
+      "ratio_semantics": "new_shares_per_old_share",
+      "sources": [
+        {
+          "url": "https://www.99fund.com/cgi-bin/news/Article?articleId=12680293&function=print",
+          "type": "issuer",
+          "title": "汇添富中证主要消费ETF基金份额拆分结果公告（2021-06-25）"
+        },
+        {
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN202106211499061442_1.pdf",
+          "type": "issuer_document_mirror",
+          "title": "中证主要消费ETF实施份额拆分公告（2021-06-21）"
+        }
+      ],
+      "raw_evidence": {
+        "file": "price_audit/159928_raw_2010-01-01_2026-09-24.json",
+        "previous_bar_date": "2021-06-24",
+        "previous_bar_close": 4.94,
+        "first_new_unit_bar_date": "2021-06-25",
+        "first_new_unit_bar_open": 1.233,
+        "first_new_unit_bar_close": 1.261,
+        "split_only_close_return": 0.021052631578947212
+      },
+      "note": "Issuer states record-date end-of-day split on June 24 and ex-date June 25; June 24 raw quote remains in old units."
+    },
+    {
+      "code": "510500",
+      "date": "2015-04-15",
+      "record_date": "2015-04-13",
+      "event_date": "2015-04-14",
+      "ratio": 0.28032483,
+      "ratio_exact": "0.28032483",
+      "ratio_semantics": "new_shares_per_old_share",
+      "sources": [
+        {
+          "url": "https://epaper.stcn.com/paper/zqsb/page/1/2015-04/15/B020/20150415B020_pdf.pdf",
+          "type": "issuer_announcement_in_designated_newspaper",
+          "title": "南方中证500ETF份额折算结果及恢复交易公告（2015-04-15）"
+        }
+      ],
+      "raw_evidence": {
+        "file": "price_audit/510500_raw_2010-01-01_2026-09-24.json",
+        "previous_bar_date": "2015-04-10",
+        "previous_bar_close": 2.243,
+        "first_new_unit_bar_date": "2015-04-15",
+        "first_new_unit_bar_open": 8.1,
+        "first_new_unit_bar_close": 7.818,
+        "split_only_close_return": -0.022924868060633097
+      },
+      "note": "The issuer gives the exact 8-decimal ratio and April 15 trading resumption. Raw bars are absent on April 13/14; do not treat the consolidation jump as return."
+    },
+    {
+      "code": "510500",
+      "date": "2022-08-29",
+      "record_date": "2022-08-26",
+      "event_date": "2022-08-26",
+      "ratio": 1.14539,
+      "ratio_exact": "1.14539",
+      "ratio_semantics": "new_shares_per_old_share",
+      "sources": [
+        {
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN202208291577764682_1.pdf",
+          "type": "issuer_document_mirror",
+          "title": "南方中证500ETF基金份额拆分结果公告（2022-08-29）"
+        }
+      ],
+      "raw_evidence": {
+        "file": "price_audit/510500_raw_2010-01-01_2026-09-24.json",
+        "previous_bar_date": "2022-08-26",
+        "previous_bar_close": 7.22,
+        "first_new_unit_bar_date": "2022-08-29",
+        "first_new_unit_bar_open": 6.2,
+        "first_new_unit_bar_close": 6.3,
+        "split_only_close_return": -0.0005599722991690426
+      },
+      "note": "Split occurs at August 26 end of day. That day's market close is still old-unit 7.220; August 29 is the first new-unit bar. Use 1.14539, not rounded 1.1454."
+    },
+    {
+      "code": "512010",
+      "date": "2021-06-28",
+      "record_date": "2021-06-24",
+      "event_date": "2021-06-25",
+      "ratio": 4,
+      "ratio_exact": "4",
+      "ratio_semantics": "new_shares_per_old_share",
+      "sources": [
+        {
+          "url": "https://static.cninfo.com.cn/finalpage/2021-06-16/1210241250.PDF",
+          "type": "issuer_document_on_disclosure_service",
+          "title": "易方达沪深300医药ETF份额拆分及相关安排公告"
+        },
+        {
+          "url": "https://www.cgbchina.com.cn/noticeNewDetail.gsp?id=2376911",
+          "type": "issuer_announcement_reproduced_by_distributor",
+          "title": "易方达沪深300医药ETF拆分结果及恢复交易公告（2021-06-28）"
+        }
+      ],
+      "raw_evidence": {
+        "file": "price_audit/512010_raw_2010-01-01_2026-09-24.json",
+        "previous_bar_date": "2021-06-24",
+        "previous_bar_close": 3.206,
+        "first_new_unit_bar_date": "2021-06-28",
+        "first_new_unit_bar_open": 0.821,
+        "first_new_unit_bar_close": 0.836,
+        "split_only_close_return": 0.04304429195258885
+      },
+      "note": "June 25 split day has no raw trading bar. The first post-split quote is June 28."
+    },
+    {
+      "code": "512070",
+      "date": "2021-09-13",
+      "record_date": "2021-09-09",
+      "event_date": "2021-09-10",
+      "ratio": 3,
+      "ratio_exact": "3",
+      "ratio_semantics": "new_shares_per_old_share",
+      "sources": [
+        {
+          "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2021-09-07/512070_20210907_1_lxvRtFA0.pdf",
+          "type": "issuer_document_on_exchange",
+          "title": "易方达沪深300非银行金融ETF拆分业务提示公告"
+        },
+        {
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN202109131515916840_1.pdf",
+          "type": "issuer_document_mirror",
+          "title": "易方达沪深300非银行金融ETF拆分结果及恢复交易公告（2021-09-13）"
+        }
+      ],
+      "raw_evidence": {
+        "file": "price_audit/512070_raw_2010-01-01_2026-09-24.json",
+        "previous_bar_date": "2021-09-09",
+        "previous_bar_close": 2.318,
+        "first_new_unit_bar_date": "2021-09-13",
+        "first_new_unit_bar_open": 0.782,
+        "first_new_unit_bar_close": 0.783,
+        "split_only_close_return": 0.013373597929249303
+      },
+      "note": "September 10 split day has no raw bar; apply once on the first new-unit quote September 13."
+    },
+    {
+      "code": "512200",
+      "date": "2024-08-12",
+      "record_date": "2024-08-09",
+      "event_date": "2024-08-09",
+      "ratio": 0.3580626,
+      "ratio_exact": "0.35806260",
+      "ratio_semantics": "new_shares_per_old_share",
+      "sources": [
+        {
+          "url": "https://www.nffund.com/main/files/2024/08/09/140900033748.pdf",
+          "type": "issuer",
+          "title": "南方中证全指房地产ETF基金份额合并结果公告（2024-08-12）"
+        },
+        {
+          "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2025-03-31/512200_20250331_5QM4.pdf",
+          "type": "issuer_annual_report_on_exchange",
+          "title": "南方中证全指房地产ETF2024年年度报告"
+        }
+      ],
+      "raw_evidence": {
+        "file": "price_audit/512200_raw_2010-01-01_2026-09-24.json",
+        "previous_bar_date": "2024-08-09",
+        "previous_bar_close": 0.441,
+        "first_new_unit_bar_date": "2024-08-12",
+        "first_new_unit_bar_open": 1.225,
+        "first_new_unit_bar_close": 1.191,
+        "split_only_close_return": -0.03298739999999989
+      },
+      "note": "Exact announced ratio is 0.35806260, not an inferred 0.358074 or rounded 0.3581. August 9 raw close is old-unit; August 12 first new-unit quote."
+    },
+    {
+      "code": "512800",
+      "date": "2025-07-07",
+      "record_date": "2025-07-04",
+      "event_date": "2025-07-04",
+      "ratio": 2,
+      "ratio_exact": "2",
+      "ratio_semantics": "new_shares_per_old_share",
+      "sources": [
+        {
+          "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2025-07-07/512800_20250707_PJ9L.pdf",
+          "type": "issuer_document_on_exchange",
+          "title": "华宝中证银行ETF基金份额拆分结果公告（2025-07-07）"
+        }
+      ],
+      "raw_evidence": {
+        "file": "price_audit/512800_raw_2010-01-01_2026-09-24.json",
+        "previous_bar_date": "2025-07-04",
+        "previous_bar_close": 1.777,
+        "first_new_unit_bar_date": "2025-07-07",
+        "first_new_unit_bar_open": 0.888,
+        "first_new_unit_bar_close": 0.894,
+        "split_only_close_return": 0.006190208216094506
+      },
+      "note": "Issuer says July 4 end-of-day processing. July 7 is the ex-date/first new-unit bar; July 4 quoted price remains old-unit."
+    },
+    {
+      "code": "512890",
+      "date": "2021-10-25",
+      "record_date": "2021-10-21",
+      "event_date": "2021-10-22",
+      "ratio": 2,
+      "ratio_exact": "2",
+      "ratio_semantics": "new_shares_per_old_share",
+      "sources": [
+        {
+          "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2021-10-25/512890_20211025_1_lJ5GeyLb.pdf",
+          "type": "issuer_document_on_exchange",
+          "title": "华泰柏瑞中证红利低波动ETF拆分结果及恢复交易公告（2021-10-25）"
+        }
+      ],
+      "raw_evidence": {
+        "file": "price_audit/512890_raw_2010-01-01_2026-09-24.json",
+        "previous_bar_date": "2021-10-21",
+        "previous_bar_close": 1.639,
+        "first_new_unit_bar_date": "2021-10-25",
+        "first_new_unit_bar_open": 0.87,
+        "first_new_unit_bar_close": 0.801,
+        "split_only_close_return": -0.02257474069554599
+      },
+      "note": "Official ratio is 1:2; October 22 split day has no raw bar. Trading resumes October 25."
+    },
+    {
+      "code": "513100",
+      "date": "2022-01-14",
+      "record_date": "2022-01-12",
+      "event_date": "2022-01-13",
+      "ratio": 5,
+      "ratio_exact": "5",
+      "ratio_semantics": "new_shares_per_old_share",
+      "sources": [
+        {
+          "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2022-01-04/513100_20220104_1_0U96WMU8.pdf",
+          "type": "issuer_document_on_exchange",
+          "title": "国泰纳斯达克100ETF份额拆分及相关安排公告"
+        },
+        {
+          "url": "https://static.cninfo.com.cn/finalpage/2022-01-14/1212179309.PDF",
+          "type": "issuer_document_on_disclosure_service",
+          "title": "国泰纳斯达克100ETF份额拆分结果及恢复交易公告（2022-01-14）"
+        }
+      ],
+      "raw_evidence": {
+        "file": "price_audit/513100_raw_2010-01-01_2026-09-24.json",
+        "previous_bar_date": "2022-01-12",
+        "previous_bar_close": 5.192,
+        "first_new_unit_bar_date": "2022-01-14",
+        "first_new_unit_bar_open": 1.01,
+        "first_new_unit_bar_close": 1.015,
+        "split_only_close_return": -0.02253466872110954
+      },
+      "note": "Official ratio is 1:5. January 13 split day has no raw trading bar; apply on January 14 first quote."
+    }
+  ],
+  "verified_cash_dividend_examples": [
+    {
+      "code": "510880",
+      "ex_date": "2014-01-21",
+      "record_date": "2014-01-20",
+      "payment_date": "2014-01-27",
+      "cash_per_share": 0.059,
+      "cash_per_share_exact": "0.059",
+      "distribution_type": "cash_only",
+      "sources": [
+        {
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201401140004972122_1.pdf",
+          "type": "issuer_document_mirror",
+          "title": "华泰柏瑞上证红利ETF收益分配公告（2014-01-15）"
+        }
+      ],
+      "note": "Example verified against the issuer announcement, not an exhaustive dividend schedule."
+    }
+  ],
+  "historical_references_not_post2010_events": [
+    {
+      "code": "510880",
+      "event_date": "2007-01-10",
+      "ratio": 0.65527799,
+      "ratio_exact": "0.65527799",
+      "sources": [
+        {
+          "url": "https://epaper.stcn.com/paper/zqsb/page/1/2013-01/21/D116/20130121D116_pdf.pdf",
+          "type": "issuer_periodic_report_in_designated_newspaper",
+          "title": "华泰柏瑞上证红利ETF2012年第4季度报告"
+        },
+        {
+          "url": "https://epaper.cs.com.cn/zgzqb/images/2014-01/20/B054/ZQBXP0540120C.pdf",
+          "type": "issuer_periodic_report_in_designated_newspaper",
+          "title": "华泰柏瑞上证红利ETF2013年第4季度报告"
+        }
+      ],
+      "note": "Before this raw snapshot starts. Do not apply again to post-2010 raw share prices; relevant to explaining provider historical HFQ base units."
+    }
+  ],
+  "limitations": [
+    "Verified split factors must be combined with a complete, separately audited cash-dividend schedule for economic total returns.",
+    "Market raw O/C are retained as evidence and execution prices; provider additive qfq/hfq ratios are not accepted as total-return ratios.",
+    "The issuer's fractional-share rounding differs by event. The nominal ratio is exact for a fractional-unit model, not a guarantee of lot-level brokerage holdings.",
+    "This file only adds audit evidence. No registered snapshot, old strategy, or old result has been overwritten."
+  ]
+}

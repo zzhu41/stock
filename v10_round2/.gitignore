@@ -1,0 +1,4 @@
+# Only the explicitly frozen public QVIX series is included here.
+!data/
+data/*
+!data/qvix50.csv

@@ -1,0 +1,14 @@
+{
+  "development_returns.npy": {
+    "raw_sha256": "a0b40ab8d8916dc1a005cac01c9bd8627cfe68634a5a4b7620c9f28c803924cc",
+    "archive_sha256": "5aa0b18658c4f9c69349ecb9bdca42af0169c6ccabd280d77919f4984866fe33",
+    "raw_bytes": 80433728,
+    "archive_bytes": 14305369
+  },
+  "full_returns.npy": {
+    "raw_sha256": "eecc3f8777dbc25b378d7f092f99121503465c049aa624c7df6d5809dc8d3f08",
+    "archive_sha256": "00c7a3ec107034dd1e7f30953ae51b582e24a866a5d1488c316ddb60eeb047a8",
+    "raw_bytes": 127373952,
+    "archive_bytes": 33126036
+  }
+}

@@ -1,0 +1,4 @@
+# Full float64 matrices are supplied as lossless .npy.gz archives. Keep the
+# locally usable raw copies out of Git's single-file size limit.
+results/*_returns.npy
+results/*.restore.tmp

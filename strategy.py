@@ -14,6 +14,8 @@
   深跌恐慌抄底(v9): MOM5≤-8% 且低于年线20% → 买入锁仓5交易日(危机Alpha, 信号端锁仓状态存 signals/crash_lock.json)。
 以下试验开关均为证伪存档, 默认关闭, 勿打开(打开即偏离论文口径)。
 """
+import math
+
 from market_data import UNIVERSE, STOCK_POOL, GLOBAL_POOL, GOLD, CASH
 
 MOM_WINDOWS = (5, 20, 60)
@@ -377,17 +379,31 @@ def indicators(closes, volumes=None):
 def rank(histories, on_date=None, live_prices=None):
     """返回 [(code, ind_dict), ...] 按 score 降序；含黄金，不含货币。
 
-    live_prices: 盘中实时价 {code: price}，有则替换最后一根收盘价(尾盘场景)。
+    live_prices: 兼容价格接口，必须显式指定报价日 on_date。
+    同日替换，历史只到前日则追加，绝不能覆盖昨日收盘。
+    正式信号使用 market_data.prepare_live_histories 对齐含时间戳/成交量的行情。
     """
+    if live_prices and on_date is None:
+        raise ValueError("live_prices 必须指定报价交易日 on_date")
     table = []
     for code, rows in histories.items():
         if code == CASH:
             continue
         rows = [r for r in rows if (on_date is None or r[0] <= on_date)]
+        if on_date is not None and not (live_prices and code in live_prices):
+            if not rows or rows[-1][0] != on_date:
+                continue  # 当日缺K线的标的不可用旧价格参加今日排名/买入
         closes = [r[2] for r in rows]
         volumes = [r[3] for r in rows] if rows and len(rows[0]) > 3 else None
-        if live_prices and code in live_prices and closes:
-            closes[-1] = live_prices[code]
+        if live_prices and code in live_prices:
+            price = float(live_prices[code])
+            if not math.isfinite(price) or price <= 0:
+                raise ValueError("%s 实时价格无效" % code)
+            if rows and rows[-1][0] == on_date:
+                closes[-1] = price
+            else:
+                closes.append(price)
+                volumes = None  # 只有价格的接口不能伪造当日成交量
         ind = indicators(closes, volumes)
         if ind:
             table.append((code, ind))
@@ -519,6 +535,14 @@ def _is_bull(info):
     return raw_bull
 
 
+def _panic_exit_reason(info, holding):
+    """急跌退出独立于排名；抄底锁仓由调用方在更高优先级处理。"""
+    ind = info.get(holding)
+    if holding != CASH and ind and PANIC_DROP > 0 and ind["ret1"] <= -_panic_thr(ind):
+        return "单日急跌 %.1f%% 紧急离场" % (ind["ret1"] * 100)
+    return None
+
+
 def decide(table, holding, holding_days=99):
     """返回 (target, reason)。target 为标的代码，CASH 表示空仓(停靠货币ETF)。
 
@@ -528,12 +552,14 @@ def decide(table, holding, holding_days=99):
     """
     info = {c: ind for c, ind in table}
     bull = _is_bull(info)
+    panic_why = _panic_exit_reason(info, holding)
+    candidates = [x for x in table if not panic_why or x[0] != holding]
     comp_pool = STOCK_POOL + GLOBAL_POOL if (bull or BEAR_OPEN_STOCK) else GLOBAL_POOL + [GOLD]
-    best = next((t for t in table if t[0] in comp_pool and _enter_ok(t[1], t[0], bull)), None)
+    best = next((t for t in candidates if t[0] in comp_pool and _enter_ok(t[1], t[0], bull)), None)
 
     if best:
         target, reason = best[0], "竞赛池动量第一" if bull else "熊市体制, 跨境/黄金动量第一"
-    elif bull and GOLD in info and info[GOLD]["mom20"] > 0:
+    elif bull and GOLD in info and info[GOLD]["mom20"] > 0 and not (panic_why and holding == GOLD):
         target, reason = GOLD, "竞赛池无人达标, 黄金动量为正(备胎)"
     elif NEVER_EMPTY:
         # v7 永不空仓: 避险池(跨境+黄金)score最强者接盘(即便动量为负, 选跌得最少的)
@@ -542,10 +568,10 @@ def decide(table, holding, holding_days=99):
             target, reason = CASH, "熊市体制, 空仓避险"
         else:
             if SAFE_MIN_VOL:
-                cands = [x for x in table if x[0] in GLOBAL_POOL + [GOLD]]
+                cands = [x for x in candidates if x[0] in GLOBAL_POOL + [GOLD]]
                 cand = min(cands, key=lambda x: x[1]["vol"]) if cands else None
             else:
-                cand = next((x for x in table if x[0] in GLOBAL_POOL + [GOLD]), None)
+                cand = next((x for x in candidates if x[0] in GLOBAL_POOL + [GOLD]), None)
             if cand and cand[1]["mom20"] >= NE_MIN_MOM:
                 target, reason = cand[0], "竞赛池无人达标, 避险池%s接盘(永不空仓)" % (
                     "最低波动" if SAFE_MIN_VOL else "最强")
@@ -556,6 +582,9 @@ def decide(table, holding, holding_days=99):
                 target, reason = CASH, "无人达标, 空仓避险" if bull else "熊市体制, 空仓避险"
     else:
         target, reason = CASH, "无人达标, 空仓避险" if bull else "熊市体制, 空仓避险"
+
+    if panic_why:
+        return target, "%s, 离场 -> %s" % (panic_why, UNIVERSE[target][0])
 
     if holding and holding != target and holding in info:
         h = info[holding]

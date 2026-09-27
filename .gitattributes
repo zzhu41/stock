@@ -1,0 +1,2 @@
+# CSV snapshots use CRLF and are hashed byte-for-byte by research manifests.
+*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

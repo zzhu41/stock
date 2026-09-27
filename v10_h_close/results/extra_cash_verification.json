@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "verified_on": "2026-09-27",
+  "scope": "Independent verification of a large inferred cash event flagged during total-return reconstruction; not a complete dividend register.",
+  "cash_events": [
+    {
+      "code": "515100",
+      "date": "2023-12-21",
+      "ex_date": "2023-12-21",
+      "record_date": "2023-12-20",
+      "payment_date": "2023-12-26",
+      "announcement_date": "2023-12-18",
+      "cash_per_old_share": 0.437,
+      "cash_exact": "0.437",
+      "announcement_amount_per_ten_shares": "4.37",
+      "distribution_form": "cash_only",
+      "sources": [
+        {
+          "type": "original_issuer_announcement_on_cninfo",
+          "url": "https://static.cninfo.com.cn/finalpage/2023-12-18/1218647381.PDF",
+          "title": "景顺长城中证红利低波动100交易型开放式指数证券投资基金分红公告",
+          "evidence": "Page 1: fund code 515100, cash distribution 4.37 yuan per ten shares, record date 2023-12-20, ex-date 2023-12-21, payment date 2023-12-26. Page 2 confirms cash-only distribution."
+        }
+      ],
+      "raw_evidence": {
+        "file": "results/price_audit/515100_raw_2010-01-01_2026-09-24.json",
+        "previous_date": "2023-12-20",
+        "previous_close": 1.712,
+        "ex_date_close": 1.273,
+        "cash_as_fraction_of_previous_close": 0.2552570093457944,
+        "cash_inclusive_close_return": -0.0011682242990656017
+      },
+      "interpretation": "The 25.53% figure is distribution size relative to the previous market close, not an investment return. Adding the verified cash dividend to the ex-date close gives a close-to-close holding return of about -0.1168%, before reinvestment timing and trading costs."
+    }
+  ],
+  "limitations": [
+    "Actual cash becomes available on the payment date, not on the ex-date; immediate ex-date reinvestment remains a research convention."
+  ]
+}

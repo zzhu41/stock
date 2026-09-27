@@ -1,0 +1,64 @@
+{
+  "white_style": [
+    {
+      "method": "white_style_zero_centered_circular_block_max_mean_log_difference",
+      "observations": 2919,
+      "tested_candidate_count": 6544,
+      "block_size": 20,
+      "full_blocks": 145,
+      "remainder_observations": 19,
+      "draws": 1000,
+      "seed": 20260927,
+      "batch_size": 4,
+      "null_hypothesis": "Every supplied candidate has expected net log-return difference <= 0 versus the benchmark",
+      "observed_statistic": 0.010616790049724587,
+      "best_candidate_id": "hc_9dd904b5d548af3bd2f4",
+      "best_candidate_index": 6362,
+      "best_mean_daily_log_difference": 0.0001965061657099292,
+      "bootstrap_95_critical": 0.04293011554999253,
+      "bootstrap_exceedances": 982,
+      "p_value": 0.9820179820179821,
+      "p_value_monte_carlo_se": 0.00420012190148393,
+      "scope": "All supplied columns; caller must supply the entire preregistered candidate family, not TopK",
+      "limitations": [
+        "Previously examined historical data; no clean OOS interpretation.",
+        "Conditional on this fixed supplied search family, not every earlier or unrecorded search.",
+        "Assumes the historical dependence and regime distribution support block resampling.",
+        "Unstudentized least-favorable zero-centering; not Hansen SPA and can be conservative with poor alternatives.",
+        "A p-value is not PBO or a posterior probability of future outperformance."
+      ]
+    },
+    {
+      "method": "white_style_zero_centered_circular_block_max_mean_log_difference",
+      "observations": 2919,
+      "tested_candidate_count": 6544,
+      "block_size": 60,
+      "full_blocks": 48,
+      "remainder_observations": 39,
+      "draws": 1000,
+      "seed": 20260927,
+      "batch_size": 4,
+      "null_hypothesis": "Every supplied candidate has expected net log-return difference <= 0 versus the benchmark",
+      "observed_statistic": 0.010616790049724587,
+      "best_candidate_id": "hc_9dd904b5d548af3bd2f4",
+      "best_candidate_index": 6362,
+      "best_mean_daily_log_difference": 0.0001965061657099292,
+      "bootstrap_95_critical": 0.04150393784820198,
+      "bootstrap_exceedances": 974,
+      "p_value": 0.974025974025974,
+      "p_value_monte_carlo_se": 0.005027335461940025,
+      "scope": "All supplied columns; caller must supply the entire preregistered candidate family, not TopK",
+      "limitations": [
+        "Previously examined historical data; no clean OOS interpretation.",
+        "Conditional on this fixed supplied search family, not every earlier or unrecorded search.",
+        "Assumes the historical dependence and regime distribution support block resampling.",
+        "Unstudentized least-favorable zero-centering; not Hansen SPA and can be conservative with poor alternatives.",
+        "A p-value is not PBO or a posterior probability of future outperformance."
+      ]
+    }
+  ],
+  "evaluation_sha256": "8fe37d9212aa2e7dd15b6ce85728baeccfc49dab48ce006aa292049df418010f",
+  "selection_matrix_sha256": "2532cf41a862121e6b1c8bbb788204d489d5fa3c3394b579369d1f4af163cf05",
+  "statistical_scope": "2014-2025 known-history close-clock family; not all historic searches or clean OOS",
+  "protected_files_verified": 289
+}

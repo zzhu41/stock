@@ -83,7 +83,7 @@ def build_markdown(text):
         elif "影子" in s and "计算失败" in s:
             sections.append((None, [s]))
             cur = None
-        elif cur and (s.startswith("QVIX") or "影子持仓" in s):
+        elif cur and (s.startswith("QVIX") or "影子持仓" in s or "旧口径净值" in s):
             cur[1].append(s)
     for label, slines in sections:
         md += ["", "---"]
@@ -97,6 +97,12 @@ def build_markdown(text):
     return "\n".join(md), date
 
 
+def is_current_signal(text, today):
+    """生成失败后不得把旧latest.txt重新当作当天信号推送。"""
+    dates = re.search(r"生成\s+(\d{4}-\d{2}-\d{2}).*数据截止\s+(\d{4}-\d{2}-\d{2})", text)
+    return bool(dates and dates.group(1) == dates.group(2) == today)
+
+
 def main():
     webhook = load_file(WEBHOOK_FILE)
     if not webhook:
@@ -104,6 +110,9 @@ def main():
         return
     with open(LATEST, encoding="utf-8") as f:
         text = f.read()
+    if not is_current_signal(text, time.strftime("%Y-%m-%d")):
+        print("钉钉推送跳过: 信号生成日/行情日期不是今天，请先检查行情与信号生成")
+        return
     md, date = build_markdown(text)
     secret = load_file(SECRET_FILE)
     url = signed_url(webhook, secret) if secret else webhook

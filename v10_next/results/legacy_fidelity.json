@@ -1,0 +1,792 @@
+{
+  "start": "2014-01-01",
+  "end": "2021-12-31",
+  "all_targets_equal": false,
+  "frozen_strategy_ast_equal_except_imports_and_module_docstring": true,
+  "same_state_features_and_decisions_equal": true,
+  "clean_period_all_targets_equal": true,
+  "all_full_period_differences_match_documented_missing_bar_episode": true,
+  "integration_checks_passed": true,
+  "protected_files_verified_before": 126,
+  "protected_files_verified_after": 126,
+  "source_sha256": {
+    "backtest.py": "a4397ae654c588ce07550300cae80f75467eca30e3e3030b96a409e4d76f2983",
+    "strategy.py": "eda905b79e6dfa01a3fba1ede4a96484ae7cb68cf531aab6e926bd2904f1caed",
+    "strategy_versions.py": "e204ae07f3f5ca1449d26823889afb4cc11d0393d049c403819b2f06addc8047",
+    "v10_next/data.py": "52005b1bf77dff9bf9b451956af274b6e77333f6868168c53d1bf1a6b698dfba",
+    "v10_next/legacy.py": "6e4d1d48366aaa4c921dad19e084aadebf5140abc96f2ffe11e473af7b7d3081",
+    "v10_next/execution.py": "3da265a119c0415dc573ff53601e4c061af21376546cbcefeadf0e42499c414d",
+    "v10_next/candidates.py": "8cb2165d54ccfb8d46277d52d5c83b21da21dd6a6d7f911bfc00a669e0d25cdf",
+    "v10_next/frozen/strategy.py": "06c166a6bb5479a3c01e210bed1c8c3d6df7567e61d8b61eb1e0985694c2a807",
+    "v10_next/frozen/presets.json": "73ee89e963ff0bb5e438a41169e2229113af486c8251ecfef399bdc6dc818a4c",
+    "v10_next/verify_legacy.py": "7a1f29064dcc31e0d924431358fe472305b225e658b99faf0ca370ceecbdad28"
+  },
+  "snapshot_manifest_sha256": "3bc1367247c19766500e4faff16a359a4a08953205dea07a377abcb82228d99b",
+  "validation_scope": [
+    "Compare every closing decision target between the isolated actual-fill policy and the original fixed v9/v9.1 presets.",
+    "Price indicators are calculated independently by original strategy.rank and isolated Features; their caches do not share values.",
+    "No return parity is expected: the original buys at same close, the isolated executor at the next open with explicit fills and costs.",
+    "No source parameters or registered candidate rules are changed to obtain fidelity.",
+    "The protected existing worktree is fingerprint-checked before and after the comparison.",
+    "Full 2014-2021 signal-path equality is intentionally NOT claimed: the missing-bar episode changes actual execution state."
+  ],
+  "results": {
+    "control_v9": {
+      "original_version": "v9",
+      "start": "2014-01-01",
+      "end": "2021-12-31",
+      "sessions": 1950,
+      "targets_equal": false,
+      "mismatch_count": 4,
+      "mismatches": [
+        {
+          "date": "2015-04-13",
+          "old_target": "510500",
+          "new_target": "510300",
+          "new_reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510500": 1.0
+          },
+          "original_raw_decision": {
+            "holding": "510500",
+            "age": 14,
+            "target": "510300",
+            "reason": "竞赛池动量第一"
+          },
+          "previous_old_target": "510500"
+        },
+        {
+          "date": "2015-04-14",
+          "old_target": "510500",
+          "new_target": "510300",
+          "new_reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510500": 1.0
+          },
+          "original_raw_decision": {
+            "holding": "510500",
+            "age": 15,
+            "target": "510300",
+            "reason": "竞赛池动量第一"
+          },
+          "previous_old_target": "510500"
+        },
+        {
+          "date": "2015-04-15",
+          "old_target": "510500",
+          "new_target": "510300",
+          "new_reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510300": 1.0
+          },
+          "original_raw_decision": {
+            "holding": "510500",
+            "age": 16,
+            "target": "510500",
+            "reason": "滞回缓冲: 挑战者(沪深300ETF +21.38%) 未超持仓(中证500ETF +25.01%) 2%, 继续持有"
+          },
+          "previous_old_target": "510500"
+        },
+        {
+          "date": "2015-04-16",
+          "old_target": "510500",
+          "new_target": "510300",
+          "new_reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510300": 1.0
+          },
+          "original_raw_decision": {
+            "holding": "510500",
+            "age": 17,
+            "target": "510500",
+            "reason": "滞回缓冲: 挑战者(沪深300ETF +22.12%) 未超持仓(中证500ETF +21.99%) 2%, 继续持有"
+          },
+          "previous_old_target": "510500"
+        }
+      ],
+      "first_mismatch_context": [
+        {
+          "date": "2015-04-08",
+          "old_target": "510500",
+          "new_target": "510500",
+          "reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510500": 1.0
+          }
+        },
+        {
+          "date": "2015-04-09",
+          "old_target": "510500",
+          "new_target": "510500",
+          "reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510500": 1.0
+          }
+        },
+        {
+          "date": "2015-04-10",
+          "old_target": "510500",
+          "new_target": "510500",
+          "reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510500": 1.0
+          }
+        },
+        {
+          "date": "2015-04-13",
+          "old_target": "510500",
+          "new_target": "510300",
+          "reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510500": 1.0
+          }
+        },
+        {
+          "date": "2015-04-14",
+          "old_target": "510500",
+          "new_target": "510300",
+          "reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510500": 1.0
+          }
+        },
+        {
+          "date": "2015-04-15",
+          "old_target": "510500",
+          "new_target": "510300",
+          "reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510300": 1.0
+          }
+        },
+        {
+          "date": "2015-04-16",
+          "old_target": "510500",
+          "new_target": "510300",
+          "reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510300": 1.0
+          }
+        }
+      ],
+      "indicator_tables_equal": true,
+      "indicator_table_mismatch_dates": [],
+      "same_state_raw_decisions_equal": true,
+      "same_state_raw_decision_mismatches": [],
+      "original_target_sha256": "630fdec3a5b17184e1000b2bc2b7ced2f2273d8b9d743aef7d65b23f763ed60a",
+      "isolated_target_sha256": "92249301c749994aeb0dedc5aa568c0c980161fc62f6ac6f842f6e9776c8e195",
+      "original_crash_signals": [
+        [
+          "2015-08-25",
+          "510300"
+        ],
+        [
+          "2015-09-15",
+          "159915"
+        ],
+        [
+          "2016-01-11",
+          "510300"
+        ],
+        [
+          "2016-01-26",
+          "159915"
+        ],
+        [
+          "2016-02-25",
+          "159915"
+        ],
+        [
+          "2016-05-12",
+          "510500"
+        ],
+        [
+          "2018-10-11",
+          "510300"
+        ],
+        [
+          "2018-10-18",
+          "512400"
+        ],
+        [
+          "2018-10-29",
+          "510300"
+        ],
+        [
+          "2018-11-26",
+          "512400"
+        ]
+      ],
+      "isolated_crash_entries": [
+        {
+          "signal_date": "2015-08-25",
+          "code": "510300",
+          "fill_date": "2015-08-26"
+        },
+        {
+          "signal_date": "2015-09-15",
+          "code": "159915",
+          "fill_date": "2015-09-16"
+        },
+        {
+          "signal_date": "2016-01-11",
+          "code": "510300",
+          "fill_date": "2016-01-12"
+        },
+        {
+          "signal_date": "2016-01-26",
+          "code": "159915",
+          "fill_date": "2016-01-27"
+        },
+        {
+          "signal_date": "2016-02-25",
+          "code": "159915",
+          "fill_date": "2016-02-26"
+        },
+        {
+          "signal_date": "2016-05-12",
+          "code": "510500",
+          "fill_date": "2016-05-13"
+        },
+        {
+          "signal_date": "2018-10-11",
+          "code": "510300",
+          "fill_date": "2018-10-12"
+        },
+        {
+          "signal_date": "2018-10-18",
+          "code": "512400",
+          "fill_date": "2018-10-19"
+        },
+        {
+          "signal_date": "2018-10-29",
+          "code": "510300",
+          "fill_date": "2018-10-30"
+        },
+        {
+          "signal_date": "2018-11-26",
+          "code": "512400",
+          "fill_date": "2018-11-27"
+        }
+      ],
+      "isolated_deferred_rebalances": [
+        {
+          "date": "2015-04-14",
+          "signal_date": "2015-04-13",
+          "target": {
+            "510300": 1.0
+          },
+          "missing_codes": [
+            "510500"
+          ]
+        }
+      ],
+      "isolated_trade_count": 158
+    },
+    "control_v91": {
+      "original_version": "v9.1",
+      "start": "2014-01-01",
+      "end": "2021-12-31",
+      "sessions": 1950,
+      "targets_equal": false,
+      "mismatch_count": 4,
+      "mismatches": [
+        {
+          "date": "2015-04-13",
+          "old_target": "510500",
+          "new_target": "510300",
+          "new_reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510500": 1.0
+          },
+          "original_raw_decision": {
+            "holding": "510500",
+            "age": 14,
+            "target": "510300",
+            "reason": "竞赛池动量第一"
+          },
+          "previous_old_target": "510500"
+        },
+        {
+          "date": "2015-04-14",
+          "old_target": "510500",
+          "new_target": "510300",
+          "new_reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510500": 1.0
+          },
+          "original_raw_decision": {
+            "holding": "510500",
+            "age": 15,
+            "target": "510300",
+            "reason": "竞赛池动量第一"
+          },
+          "previous_old_target": "510500"
+        },
+        {
+          "date": "2015-04-15",
+          "old_target": "510500",
+          "new_target": "510300",
+          "new_reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510300": 1.0
+          },
+          "original_raw_decision": {
+            "holding": "510500",
+            "age": 16,
+            "target": "510500",
+            "reason": "滞回缓冲: 挑战者(沪深300ETF +21.38%) 未超持仓(中证500ETF +25.01%) 2%, 继续持有"
+          },
+          "previous_old_target": "510500"
+        },
+        {
+          "date": "2015-04-16",
+          "old_target": "510500",
+          "new_target": "510300",
+          "new_reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510300": 1.0
+          },
+          "original_raw_decision": {
+            "holding": "510500",
+            "age": 17,
+            "target": "510500",
+            "reason": "滞回缓冲: 挑战者(沪深300ETF +22.12%) 未超持仓(中证500ETF +21.99%) 2%, 继续持有"
+          },
+          "previous_old_target": "510500"
+        }
+      ],
+      "first_mismatch_context": [
+        {
+          "date": "2015-04-08",
+          "old_target": "510500",
+          "new_target": "510500",
+          "reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510500": 1.0
+          }
+        },
+        {
+          "date": "2015-04-09",
+          "old_target": "510500",
+          "new_target": "510500",
+          "reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510500": 1.0
+          }
+        },
+        {
+          "date": "2015-04-10",
+          "old_target": "510500",
+          "new_target": "510500",
+          "reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510500": 1.0
+          }
+        },
+        {
+          "date": "2015-04-13",
+          "old_target": "510500",
+          "new_target": "510300",
+          "reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510500": 1.0
+          }
+        },
+        {
+          "date": "2015-04-14",
+          "old_target": "510500",
+          "new_target": "510300",
+          "reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510500": 1.0
+          }
+        },
+        {
+          "date": "2015-04-15",
+          "old_target": "510500",
+          "new_target": "510300",
+          "reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510300": 1.0
+          }
+        },
+        {
+          "date": "2015-04-16",
+          "old_target": "510500",
+          "new_target": "510300",
+          "reason": "竞赛池动量第一",
+          "new_actual_weights": {
+            "510300": 1.0
+          }
+        }
+      ],
+      "indicator_tables_equal": true,
+      "indicator_table_mismatch_dates": [],
+      "same_state_raw_decisions_equal": true,
+      "same_state_raw_decision_mismatches": [],
+      "original_target_sha256": "990ac39f7033aa52d5d1a3968de63d40e68ca6c1c22f457bae912b8f08a6ec57",
+      "isolated_target_sha256": "843ce8ea0360c22f7f7d46842a9943f1ba2c19353bc8841690493bbb205f6390",
+      "original_crash_signals": [
+        [
+          "2015-08-25",
+          "510300"
+        ],
+        [
+          "2015-09-15",
+          "159915"
+        ],
+        [
+          "2016-01-11",
+          "510300"
+        ],
+        [
+          "2016-01-26",
+          "159915"
+        ],
+        [
+          "2016-02-25",
+          "159915"
+        ],
+        [
+          "2016-05-12",
+          "510500"
+        ],
+        [
+          "2018-10-11",
+          "510300"
+        ],
+        [
+          "2018-10-18",
+          "512400"
+        ],
+        [
+          "2018-10-29",
+          "510300"
+        ],
+        [
+          "2018-11-26",
+          "512400"
+        ]
+      ],
+      "isolated_crash_entries": [
+        {
+          "signal_date": "2015-08-25",
+          "code": "510300",
+          "fill_date": "2015-08-26"
+        },
+        {
+          "signal_date": "2015-09-15",
+          "code": "159915",
+          "fill_date": "2015-09-16"
+        },
+        {
+          "signal_date": "2016-01-11",
+          "code": "510300",
+          "fill_date": "2016-01-12"
+        },
+        {
+          "signal_date": "2016-01-26",
+          "code": "159915",
+          "fill_date": "2016-01-27"
+        },
+        {
+          "signal_date": "2016-02-25",
+          "code": "159915",
+          "fill_date": "2016-02-26"
+        },
+        {
+          "signal_date": "2016-05-12",
+          "code": "510500",
+          "fill_date": "2016-05-13"
+        },
+        {
+          "signal_date": "2018-10-11",
+          "code": "510300",
+          "fill_date": "2018-10-12"
+        },
+        {
+          "signal_date": "2018-10-18",
+          "code": "512400",
+          "fill_date": "2018-10-19"
+        },
+        {
+          "signal_date": "2018-10-29",
+          "code": "510300",
+          "fill_date": "2018-10-30"
+        },
+        {
+          "signal_date": "2018-11-26",
+          "code": "512400",
+          "fill_date": "2018-11-27"
+        }
+      ],
+      "isolated_deferred_rebalances": [
+        {
+          "date": "2015-04-14",
+          "signal_date": "2015-04-13",
+          "target": {
+            "510300": 1.0
+          },
+          "missing_codes": [
+            "510500"
+          ]
+        }
+      ],
+      "isolated_trade_count": 158
+    }
+  },
+  "clean_period_results": {
+    "control_v9": {
+      "original_version": "v9",
+      "start": "2016-01-01",
+      "end": "2021-12-31",
+      "sessions": 1461,
+      "targets_equal": true,
+      "mismatch_count": 0,
+      "mismatches": [],
+      "first_mismatch_context": [],
+      "indicator_tables_equal": true,
+      "indicator_table_mismatch_dates": [],
+      "same_state_raw_decisions_equal": true,
+      "same_state_raw_decision_mismatches": [],
+      "original_target_sha256": "72c1f389af778e757a17ca0723f9c09436cc732fb96fbe68eccd096da1817cd6",
+      "isolated_target_sha256": "72c1f389af778e757a17ca0723f9c09436cc732fb96fbe68eccd096da1817cd6",
+      "original_crash_signals": [
+        [
+          "2016-01-11",
+          "510300"
+        ],
+        [
+          "2016-01-26",
+          "159915"
+        ],
+        [
+          "2016-02-25",
+          "159915"
+        ],
+        [
+          "2016-05-12",
+          "510500"
+        ],
+        [
+          "2018-10-11",
+          "510300"
+        ],
+        [
+          "2018-10-18",
+          "512400"
+        ],
+        [
+          "2018-10-29",
+          "510300"
+        ],
+        [
+          "2018-11-26",
+          "512400"
+        ]
+      ],
+      "isolated_crash_entries": [
+        {
+          "signal_date": "2016-01-11",
+          "code": "510300",
+          "fill_date": "2016-01-12"
+        },
+        {
+          "signal_date": "2016-01-26",
+          "code": "159915",
+          "fill_date": "2016-01-27"
+        },
+        {
+          "signal_date": "2016-02-25",
+          "code": "159915",
+          "fill_date": "2016-02-26"
+        },
+        {
+          "signal_date": "2016-05-12",
+          "code": "510500",
+          "fill_date": "2016-05-13"
+        },
+        {
+          "signal_date": "2018-10-11",
+          "code": "510300",
+          "fill_date": "2018-10-12"
+        },
+        {
+          "signal_date": "2018-10-18",
+          "code": "512400",
+          "fill_date": "2018-10-19"
+        },
+        {
+          "signal_date": "2018-10-29",
+          "code": "510300",
+          "fill_date": "2018-10-30"
+        },
+        {
+          "signal_date": "2018-11-26",
+          "code": "512400",
+          "fill_date": "2018-11-27"
+        }
+      ],
+      "isolated_deferred_rebalances": [],
+      "isolated_trade_count": 125
+    },
+    "control_v91": {
+      "original_version": "v9.1",
+      "start": "2016-01-01",
+      "end": "2021-12-31",
+      "sessions": 1461,
+      "targets_equal": true,
+      "mismatch_count": 0,
+      "mismatches": [],
+      "first_mismatch_context": [],
+      "indicator_tables_equal": true,
+      "indicator_table_mismatch_dates": [],
+      "same_state_raw_decisions_equal": true,
+      "same_state_raw_decision_mismatches": [],
+      "original_target_sha256": "1a610b6337d1af2ae07faaf3fa30ea58d9605417491bf2cbd4f04ff7665a9215",
+      "isolated_target_sha256": "1a610b6337d1af2ae07faaf3fa30ea58d9605417491bf2cbd4f04ff7665a9215",
+      "original_crash_signals": [
+        [
+          "2016-01-11",
+          "510300"
+        ],
+        [
+          "2016-01-26",
+          "159915"
+        ],
+        [
+          "2016-02-25",
+          "159915"
+        ],
+        [
+          "2016-05-12",
+          "510500"
+        ],
+        [
+          "2018-10-11",
+          "510300"
+        ],
+        [
+          "2018-10-18",
+          "512400"
+        ],
+        [
+          "2018-10-29",
+          "510300"
+        ],
+        [
+          "2018-11-26",
+          "512400"
+        ]
+      ],
+      "isolated_crash_entries": [
+        {
+          "signal_date": "2016-01-11",
+          "code": "510300",
+          "fill_date": "2016-01-12"
+        },
+        {
+          "signal_date": "2016-01-26",
+          "code": "159915",
+          "fill_date": "2016-01-27"
+        },
+        {
+          "signal_date": "2016-02-25",
+          "code": "159915",
+          "fill_date": "2016-02-26"
+        },
+        {
+          "signal_date": "2016-05-12",
+          "code": "510500",
+          "fill_date": "2016-05-13"
+        },
+        {
+          "signal_date": "2018-10-11",
+          "code": "510300",
+          "fill_date": "2018-10-12"
+        },
+        {
+          "signal_date": "2018-10-18",
+          "code": "512400",
+          "fill_date": "2018-10-19"
+        },
+        {
+          "signal_date": "2018-10-29",
+          "code": "510300",
+          "fill_date": "2018-10-30"
+        },
+        {
+          "signal_date": "2018-11-26",
+          "code": "512400",
+          "fill_date": "2018-11-27"
+        }
+      ],
+      "isolated_deferred_rebalances": [],
+      "isolated_trade_count": 125
+    }
+  },
+  "explained_difference": {
+    "missing_bar_asset": "510500",
+    "missing_bar_dates": [
+      "2015-04-13",
+      "2015-04-14"
+    ],
+    "daily_evidence": [
+      {
+        "date": "2015-04-13",
+        "held_510500_bar": null,
+        "desired_510300_bar": [
+          "2015-04-13",
+          3.593,
+          3.64,
+          8257742.0
+        ]
+      },
+      {
+        "date": "2015-04-14",
+        "held_510500_bar": null,
+        "desired_510300_bar": [
+          "2015-04-14",
+          3.631,
+          3.642,
+          9848463.0
+        ]
+      },
+      {
+        "date": "2015-04-15",
+        "held_510500_bar": [
+          "2015-04-15",
+          6.683,
+          6.437,
+          260645.0
+        ],
+        "desired_510300_bar": [
+          "2015-04-15",
+          3.642,
+          3.605,
+          11917793.0
+        ]
+      },
+      {
+        "date": "2015-04-16",
+        "held_510500_bar": [
+          "2015-04-16",
+          6.421,
+          6.497,
+          175806.0
+        ],
+        "desired_510300_bar": [
+          "2015-04-16",
+          3.605,
+          3.748,
+          10711659.0
+        ]
+      }
+    ],
+    "cause": "Original backtest.daily stores same-close executed holding after the missing-bar guard, not the unfilled desired instruction.",
+    "original_behavior": "2015-04-13/14 raw decision requests 510300 but missing 510500 bars force holding 510500; when data resumes, the strategy recomputes from that holding.",
+    "isolated_behavior": "2015-04-13 close queues 510300; 04-14 open atomically defers; 04-15 open fills on resumption. The changed actual holding affects buffer decisions through 04-16.",
+    "interpretation": "Execution timing and actual-state feedback deliberately differ. Do not remove deferred execution or change registered rules to force historical holding parity."
+  }
+}

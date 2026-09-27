@@ -1,0 +1,95 @@
+{
+  "variants": {
+    "growth": {
+      "name": "v10-H",
+      "status": "frozen_research_candidate_not_deployed",
+      "selected_candidate": "control_v91",
+      "config": {
+        "id": "control_v91",
+        "family": "control",
+        "kind": "legacy",
+        "base_version": "v9.1",
+        "hypothesis": "Full-exposure reference with the existing v9.1 parameters.",
+        "overrides": {},
+        "score_windows": [
+          25
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": []
+      },
+      "config_sha256": "3e50461e918873414bc8c63717a928529f19a53be2c443b40ecb107a86487d3f",
+      "selection_basis": "2014-2021 development only; later known history reported without re-selection",
+      "new_signal_alpha_claim": false
+    },
+    "robust": {
+      "name": "v10-S",
+      "status": "frozen_research_candidate_not_deployed",
+      "selected_candidate": "r_m12_broad",
+      "config": {
+        "id": "r_m12_broad",
+        "family": "robust",
+        "kind": "monthly_momentum",
+        "hypothesis": "Give each of five cross-asset sleeves a fixed fifth when its annual trend is positive; avoid winner ranking.",
+        "pool": [
+          "510300",
+          "510500",
+          "513100",
+          "518880",
+          "511010"
+        ],
+        "lookbacks": [
+          244
+        ],
+        "selection": "broad",
+        "slot_weight": 0.2,
+        "score_combination": "arithmetic_mean_cumulative_return",
+        "positive_gate": 0.0,
+        "tie_break": "ascending_asset_code",
+        "cash": "511880",
+        "rebalance": "first_trading_session_monthly_close",
+        "missing_slots": "cash",
+        "intra_month_rebalance": false,
+        "added_rules": []
+      },
+      "config_sha256": "55c1b6cd6a988dc1efc292bb63c34b4eb5a45f860f57afa29d47e4ffdb3cef6e",
+      "selection_basis": "2014-2021 development only; later known history reported without re-selection",
+      "new_signal_alpha_claim": null
+    }
+  },
+  "evaluation_sha256": "28721721f25851966bbbff9551238752e11221971a6b30682f2e26695cf5e11b",
+  "selection_sha256": "120c92c6a9128ca30c05f8a6c1575feb9f4fd80a6641c240a9c243192cbed977",
+  "implementation_sha256": {
+    "candidates.py": "8cb2165d54ccfb8d46277d52d5c83b21da21dd6a6d7f911bfc00a669e0d25cdf",
+    "data.py": "52005b1bf77dff9bf9b451956af274b6e77333f6868168c53d1bf1a6b698dfba",
+    "legacy.py": "6e4d1d48366aaa4c921dad19e084aadebf5140abc96f2ffe11e473af7b7d3081",
+    "execution.py": "3da265a119c0415dc573ff53601e4c061af21376546cbcefeadf0e42499c414d",
+    "metrics.py": "361c82dc9dc8b065f0f05b44a547c34814f5e632abe8d0c0f2f4c47d6e279697",
+    "research.py": "3d363cd954b0c6f66af30c335f6595cfe4f357f6d3afd2d3345e748c3c28b24b",
+    "frozen/strategy.py": "06c166a6bb5479a3c01e210bed1c8c3d6df7567e61d8b61eb1e0985694c2a807",
+    "frozen/metadata.py": "3e6d8c86637ff2833860fc89cb026c70f955ff249f3b5469dd0752b6e5321ca5",
+    "frozen/presets.json": "73ee89e963ff0bb5e438a41169e2229113af486c8251ecfef399bdc6dc818a4c",
+    "PROTOCOL.md": "489f9d21d93b9f97053aa2db370cf0ac059b7234db02ae9324680358b7b49079",
+    "strategy.py": "4ca746f0515c417ef3c35dc04f18681ed1a4fc39a8bdb1e3cb5f96f5f488324f",
+    "cli.py": "ea5c4184faabf69d26f8a534ef1298dd7b1c24fc3e3129feeae6791fead21cf5",
+    "report.py": "f83f0569039aa76553062c9202cbcee3cb016af7557166047c16e5d01b52bb07"
+  },
+  "data_manifest_sha256": "3bc1367247c19766500e4faff16a359a4a08953205dea07a377abcb82228d99b",
+  "user_scope": "Isolated research; existing production versions and jobs untouched"
+}

@@ -1,0 +1,194 @@
+{
+  "159915": {
+    "source": "data/159915.csv",
+    "source_sha256": "f11779db295268ff79a0ba57e59d15a6f1e5caa04c92fa4dd2c2273fadae95f0",
+    "sha256": "c0996eadd6057ccf9c53c1bac83669ff95481acebe4c97bd9d574d4b1dea7e5d",
+    "rows": 3584,
+    "first": "2011-12-09",
+    "last": "2026-09-11"
+  },
+  "159928": {
+    "source": "data/159928.csv",
+    "source_sha256": "6c81e0e80a414b60844cba36b293a774e831b00030de0e3bc1dda3d5a45b722e",
+    "sha256": "6c81e0e80a414b60844cba36b293a774e831b00030de0e3bc1dda3d5a45b722e",
+    "rows": 3158,
+    "first": "2013-09-16",
+    "last": "2026-09-11"
+  },
+  "159985": {
+    "source": "data/159985.csv",
+    "source_sha256": "435d45e34abf92f6c52f823be36b7676bc8928b82338e39d1016cf9fba86a14b",
+    "sha256": "435d45e34abf92f6c52f823be36b7676bc8928b82338e39d1016cf9fba86a14b",
+    "rows": 1643,
+    "first": "2019-12-05",
+    "last": "2026-09-11"
+  },
+  "510300": {
+    "source": "data/510300.csv",
+    "source_sha256": "44c767c8baf94483255247e5668c84fe09b5a2fe168d83792a8e20bc87220d2f",
+    "sha256": "f5acb9e9aaf7093a492bf3fe687f5094eade8074a8c228c8e00cdca05cebcd15",
+    "rows": 3476,
+    "first": "2012-05-28",
+    "last": "2026-09-11"
+  },
+  "510500": {
+    "source": "data/510500.csv",
+    "source_sha256": "418418096c2cce54238d75d9b26172c479a4f4f5a9f10a021444d1bfc5db1149",
+    "sha256": "a831543598c67b215806a98e8ff4147b77f0c3046bff7c7cf57390339382de34",
+    "rows": 3279,
+    "first": "2013-03-15",
+    "last": "2026-09-11"
+  },
+  "510880": {
+    "source": "data/510880.csv",
+    "source_sha256": "5be6c52423d6dba5c677310287f323bb20a37b0499cab20a1e54957dc409293b",
+    "sha256": "5be6c52423d6dba5c677310287f323bb20a37b0499cab20a1e54957dc409293b",
+    "rows": 4055,
+    "first": "2010-01-04",
+    "last": "2026-09-11"
+  },
+  "511010": {
+    "source": "data/511010.csv",
+    "source_sha256": "066734f92c56519c35d24b822ae80d0a7aa87da81418d2d2a3908b6d6d63ee2c",
+    "sha256": "066734f92c56519c35d24b822ae80d0a7aa87da81418d2d2a3908b6d6d63ee2c",
+    "rows": 3275,
+    "first": "2013-03-25",
+    "last": "2026-09-11"
+  },
+  "511880": {
+    "source": "data/511880.csv",
+    "source_sha256": "cfe940a65875aa43edea0b8f6e234072911adb48ac86d960dc67f4c8682cd698",
+    "sha256": "ee708a7644baa35648d9c719fb55aacfa0f2cdb2facd79d8d6ca5b05faecb610",
+    "rows": 3204,
+    "first": "2013-07-12",
+    "last": "2026-09-11"
+  },
+  "512010": {
+    "source": "data/512010.csv",
+    "source_sha256": "d0695ae63a5091bf1235ed83458542eb6953baee7b39b4a155934d1c26a83c4e",
+    "sha256": "d0695ae63a5091bf1235ed83458542eb6953baee7b39b4a155934d1c26a83c4e",
+    "rows": 3133,
+    "first": "2013-10-28",
+    "last": "2026-09-11"
+  },
+  "512070": {
+    "source": "data/512070.csv",
+    "source_sha256": "7f5eea4589980d877993cf6387087b51b28cb5f5665dd9dd66a57de8ff8a39fe",
+    "sha256": "7f5eea4589980d877993cf6387087b51b28cb5f5665dd9dd66a57de8ff8a39fe",
+    "rows": 2955,
+    "first": "2014-07-18",
+    "last": "2026-09-11"
+  },
+  "512200": {
+    "source": "data/512200.csv",
+    "source_sha256": "cac7bd4641faae6f9a76bc35a96d6d112a62db9dd1e2c512947f9870dfd44825",
+    "sha256": "cac7bd4641faae6f9a76bc35a96d6d112a62db9dd1e2c512947f9870dfd44825",
+    "rows": 2176,
+    "first": "2017-09-25",
+    "last": "2026-09-11"
+  },
+  "512400": {
+    "source": "data/512400.csv",
+    "source_sha256": "bf724ae322673894f3d12ac2ba075459f20fd1681ddc7bd3408e341f309aaf9c",
+    "sha256": "9ee75910b9fb80d089ec6cb26f0ccf815f3fbcd0b1b0357d0ae9c7374bab500e",
+    "rows": 2192,
+    "first": "2017-09-01",
+    "last": "2026-09-11"
+  },
+  "512800": {
+    "source": "data/512800.csv",
+    "source_sha256": "db3b98ba0df8837c12c06b99a840e8cc1700b539dedcbe09cf78880ad4ab1613",
+    "sha256": "db3b98ba0df8837c12c06b99a840e8cc1700b539dedcbe09cf78880ad4ab1613",
+    "rows": 2213,
+    "first": "2017-08-03",
+    "last": "2026-09-11"
+  },
+  "512880": {
+    "source": "data/512880.csv",
+    "source_sha256": "ea5e0de485c879dd72f8f92b45602f50d12f05a04350251c38c9486e212f037c",
+    "sha256": "ea5e0de485c879dd72f8f92b45602f50d12f05a04350251c38c9486e212f037c",
+    "rows": 2453,
+    "first": "2016-08-08",
+    "last": "2026-09-11"
+  },
+  "512890": {
+    "source": "data/512890.csv",
+    "source_sha256": "64c8f04182dfd456f12097f81a3c438d2bda98c2fe4ea097db4e80fbaa412542",
+    "sha256": "1ac93f61b4c0e2ae102c04963b180fff07ec9e3cda779ea465257ab893d46d8b",
+    "rows": 1855,
+    "first": "2019-01-18",
+    "last": "2026-09-11"
+  },
+  "513030": {
+    "source": "data/513030.csv",
+    "source_sha256": "4748cae895fac34fef67e69bf4f8ea18a4682a487ca72088905db67388a6eda5",
+    "sha256": "4748cae895fac34fef67e69bf4f8ea18a4682a487ca72088905db67388a6eda5",
+    "rows": 2920,
+    "first": "2014-09-05",
+    "last": "2026-09-11"
+  },
+  "513100": {
+    "source": "data/513100.csv",
+    "source_sha256": "fadada03061ac88071c2224ce8dc9674d7fa788183f47dc19f8b47d65d7a0545",
+    "sha256": "790b1fc0caba0d5de3d2dd566a3d4ace5a50ce96200c67a1d5f6b728a064d830",
+    "rows": 3242,
+    "first": "2013-05-15",
+    "last": "2026-09-11"
+  },
+  "513120": {
+    "source": "data/513120.csv",
+    "source_sha256": "dbaeaa03c3e89dc0775a824cbecdba36986c0f6ad7653e994afe61ca8be8f0e6",
+    "sha256": "5245a64dbaaa86d53b54f04b0a5b79bdd4258c0e91ad96a81cb7f63c23f1279a",
+    "rows": 1014,
+    "first": "2022-07-12",
+    "last": "2026-09-11"
+  },
+  "513520": {
+    "source": "data/513520.csv",
+    "source_sha256": "efa10de3d8835986440dcbe1aede3149e74a755a1bb6f43cc6e40e16d5e00264",
+    "sha256": "efa10de3d8835986440dcbe1aede3149e74a755a1bb6f43cc6e40e16d5e00264",
+    "rows": 1754,
+    "first": "2019-06-25",
+    "last": "2026-09-11"
+  },
+  "515080": {
+    "source": "data/515080.csv",
+    "source_sha256": "4ae1eba27c329a3d9eb531fc4c77c2c13ba52a0bf94d21cc97a38b9f19348db6",
+    "sha256": "4ae1eba27c329a3d9eb531fc4c77c2c13ba52a0bf94d21cc97a38b9f19348db6",
+    "rows": 1627,
+    "first": "2019-12-27",
+    "last": "2026-09-11"
+  },
+  "515100": {
+    "source": "data/515100.csv",
+    "source_sha256": "3a74464ca7cbf86174c626e816711d3f5174af50944a2e91ea24656afad3babc",
+    "sha256": "3a74464ca7cbf86174c626e816711d3f5174af50944a2e91ea24656afad3babc",
+    "rows": 1505,
+    "first": "2020-07-03",
+    "last": "2026-09-11"
+  },
+  "518880": {
+    "source": "data/518880.csv",
+    "source_sha256": "85ad857c8287859de8f819edc22d2b848bdd04532d4b26ab9d0e21dbac5de2a6",
+    "sha256": "12cefaab7389ea9eb6a6c2b533dc7a055584b43aa4047f051c21d22ab8d6a5f7",
+    "rows": 3193,
+    "first": "2013-07-29",
+    "last": "2026-09-11"
+  },
+  "563300": {
+    "source": "data/563300.csv",
+    "source_sha256": "f54d5c1af6d2d987bff62720a401586ca24024760f7d80b046dd791c8b6e1a0c",
+    "sha256": "500290315b82282bbce3ef59efdefba495a70c12b20dcd6ccb14bb2b1dbae2b3",
+    "rows": 725,
+    "first": "2023-09-14",
+    "last": "2026-09-11"
+  },
+  "588080": {
+    "source": "data/588080.csv",
+    "source_sha256": "3c8432ab1ea67f2f4ecfe814eadecde915d973ef9479bd09a1fd830736daa8ea",
+    "sha256": "cbc14eb9cf2464e30303eec859e89c7fc4f431dd54a09eaf7e05de143095a1a7",
+    "rows": 1415,
+    "first": "2020-11-16",
+    "last": "2026-09-11"
+  }
+}

@@ -1,0 +1,3628 @@
+{
+  "created_at": "2026-09-27T08:25:56.711625+00:00",
+  "end": "2026-09-24",
+  "assets": {
+    "159915": {
+      "sha256": "a56ef043802116f915adbedf1bd4841ed2ac68c76e17d3a8fbbffd4a9cd578db",
+      "raw_sha256": "5e0a75d78ea6f3a429d814f9e3d8641fc487ed2d378ac323735041cb7a1551cc",
+      "qfq_sha256": "f11779db295268ff79a0ba57e59d15a6f1e5caa04c92fa4dd2c2273fadae95f0",
+      "rows": 3593,
+      "first_date": "2011-12-09",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [],
+      "diagnostics": {
+        "code": "159915",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 0,
+        "actions": [],
+        "max_intraday_affine_residual": 0.0,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 4.155583437892077,
+        "conditional_lower_final_index": 4.155583437892077,
+        "conditional_upper_final_index": 4.155583437892077,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "588080": {
+      "sha256": "a7dc9e26b3f14c19cf1cd548976b83e418f18371b4dd4b73a0ef094b3224ddb7",
+      "raw_sha256": "6bcb5ad367dd47f2446bbcd1e0eb45e190b094fa464e8768a60d20023d321532",
+      "qfq_sha256": "3c8432ab1ea67f2f4ecfe814eadecde915d973ef9479bd09a1fd830736daa8ea",
+      "rows": 1424,
+      "first_date": "2020-11-16",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [
+        {
+          "date": "2025-10-17",
+          "previous_quote_date": "2025-10-16",
+          "cash_per_old_share": 0.014000000000000012,
+          "lower": 0.013000000000000012,
+          "upper": 0.015000000000000013,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.009621993127147774,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        }
+      ],
+      "diagnostics": {
+        "code": "588080",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 1,
+        "actions": [
+          {
+            "date": "2025-10-17",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.014000000000000012,
+            "gross": 0.9635738831615119
+          }
+        ],
+        "max_intraday_affine_residual": 2.220446049250313e-16,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 1.1585670729888262,
+        "conditional_lower_final_index": 1.157740705604384,
+        "conditional_upper_final_index": 1.159393440373271,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "510300": {
+      "sha256": "b22a36c1b699e94df21d379ee1165f820027e32f571e9abb4c4cea1474b594d8",
+      "raw_sha256": "316acc57ce944b77db8d53b58ba3a5f558392ac6a2aec9c9aeff07d5a0bbaece",
+      "qfq_sha256": "44c767c8baf94483255247e5668c84fe09b5a2fe168d83792a8e20bc87220d2f",
+      "rows": 3485,
+      "first_date": "2012-05-28",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [
+        {
+          "date": "2012-12-18",
+          "previous_quote_date": "2012-12-17",
+          "cash_per_old_share": 0.03299999999999992,
+          "lower": 0.03199999999999992,
+          "upper": 0.03399999999999992,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.013732833957553025,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2014-01-21",
+          "previous_quote_date": "2014-01-20",
+          "cash_per_old_share": 0.048000000000000265,
+          "lower": 0.047000000000000264,
+          "upper": 0.049000000000000266,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.021699819168173717,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2015-01-20",
+          "previous_quote_date": "2015-01-19",
+          "cash_per_old_share": 0.0349999999999997,
+          "lower": 0.0339999999999997,
+          "upper": 0.0359999999999997,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.01061893203883486,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2016-01-20",
+          "previous_quote_date": "2016-01-19",
+          "cash_per_old_share": 0.05099999999999971,
+          "lower": 0.04999999999999971,
+          "upper": 0.05199999999999971,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.01563458001226233,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2017-01-23",
+          "previous_quote_date": "2017-01-20",
+          "cash_per_old_share": 0.054999999999999716,
+          "lower": 0.053999999999999715,
+          "upper": 0.05599999999999972,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.01610541727672027,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2018-01-23",
+          "previous_quote_date": "2018-01-22",
+          "cash_per_old_share": 0.045999999999999375,
+          "lower": 0.044999999999999374,
+          "upper": 0.046999999999999376,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.010478359908883685,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2019-01-16",
+          "previous_quote_date": "2019-01-15",
+          "cash_per_old_share": 0.05900000000000016,
+          "lower": 0.05800000000000016,
+          "upper": 0.060000000000000164,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.018506900878293653,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2019-12-11",
+          "previous_quote_date": "2019-12-10",
+          "cash_per_old_share": 0.06199999999999983,
+          "lower": 0.06099999999999983,
+          "upper": 0.06299999999999983,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.015672396359959512,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2021-01-18",
+          "previous_quote_date": "2021-01-15",
+          "cash_per_old_share": 0.07200000000000006,
+          "lower": 0.07100000000000006,
+          "upper": 0.07300000000000006,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.013029315960912065,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2022-01-19",
+          "previous_quote_date": "2022-01-18",
+          "cash_per_old_share": 0.07500000000000018,
+          "lower": 0.07400000000000018,
+          "upper": 0.07600000000000018,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.015365703749231751,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2023-01-16",
+          "previous_quote_date": "2023-01-13",
+          "cash_per_old_share": 0.0640000000000005,
+          "lower": 0.0630000000000005,
+          "upper": 0.0650000000000005,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.015444015444015564,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2024-01-18",
+          "previous_quote_date": "2024-01-17",
+          "cash_per_old_share": 0.06899999999999995,
+          "lower": 0.06799999999999995,
+          "upper": 0.06999999999999995,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.020959902794653693,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2025-06-18",
+          "previous_quote_date": "2025-06-17",
+          "cash_per_old_share": 0.08800000000000008,
+          "lower": 0.08700000000000008,
+          "upper": 0.08900000000000008,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.02206066683379295,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2026-01-19",
+          "previous_quote_date": "2026-01-16",
+          "cash_per_old_share": 0.12300000000000022,
+          "lower": 0.12200000000000022,
+          "upper": 0.12400000000000022,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.025313850586540485,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        }
+      ],
+      "diagnostics": {
+        "code": "510300",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 14,
+        "actions": [
+          {
+            "date": "2012-12-18",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.03299999999999992,
+            "gross": 0.9983354140657511
+          },
+          {
+            "date": "2014-01-21",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.048000000000000265,
+            "gross": 1.0081374321880652
+          },
+          {
+            "date": "2015-01-20",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.0349999999999997,
+            "gross": 1.0367111650485437
+          },
+          {
+            "date": "2016-01-20",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.05099999999999971,
+            "gross": 0.9871244635193133
+          },
+          {
+            "date": "2017-01-23",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.054999999999999716,
+            "gross": 1.0002928257686676
+          },
+          {
+            "date": "2018-01-23",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.045999999999999375,
+            "gross": 1.01002277904328
+          },
+          {
+            "date": "2019-01-16",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.05900000000000016,
+            "gross": 1.0
+          },
+          {
+            "date": "2019-12-11",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.06199999999999983,
+            "gross": 1.0015166835187057
+          },
+          {
+            "date": "2021-01-18",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.07200000000000006,
+            "gross": 1.0106768005790807
+          },
+          {
+            "date": "2022-01-19",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.07500000000000018,
+            "gross": 0.9946732227002664
+          },
+          {
+            "date": "2023-01-16",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.0640000000000005,
+            "gross": 1.0152027027027029
+          },
+          {
+            "date": "2024-01-18",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.06899999999999995,
+            "gross": 1.0136695018226003
+          },
+          {
+            "date": "2025-06-18",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.08800000000000008,
+            "gross": 1.0007520681875157
+          },
+          {
+            "date": "2026-01-19",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.12300000000000022,
+            "gross": 1.0004116073266105
+          }
+        ],
+        "max_intraday_affine_residual": 8.881784197001252e-16,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 2.194663742697713,
+        "conditional_lower_final_index": 2.1860511962375715,
+        "conditional_upper_final_index": 2.203307617527683,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "510500": {
+      "sha256": "b5a2ea3dcfe3721caf7c15d097f3d14ae35b15fd8e2039524362f91336eb688f",
+      "raw_sha256": "f95913441bf26d65e4d3da5512043e42d8c9393cce6d98650298ed76f6221377",
+      "qfq_sha256": "418418096c2cce54238d75d9b26172c479a4f4f5a9f10a021444d1bfc5db1149",
+      "rows": 3288,
+      "first_date": "2013-03-15",
+      "last_date": "2026-09-24",
+      "split_events": [
+        {
+          "code": "510500",
+          "date": "2015-04-15",
+          "record_date": "2015-04-13",
+          "event_date": "2015-04-14",
+          "ratio": 0.28032483,
+          "ratio_exact": "0.28032483",
+          "ratio_semantics": "new_shares_per_old_share",
+          "sources": [
+            {
+              "url": "https://epaper.stcn.com/paper/zqsb/page/1/2015-04/15/B020/20150415B020_pdf.pdf",
+              "type": "issuer_announcement_in_designated_newspaper",
+              "title": "南方中证500ETF份额折算结果及恢复交易公告（2015-04-15）"
+            }
+          ],
+          "raw_evidence": {
+            "file": "price_audit/510500_raw_2010-01-01_2026-09-24.json",
+            "previous_bar_date": "2015-04-10",
+            "previous_bar_close": 2.243,
+            "first_new_unit_bar_date": "2015-04-15",
+            "first_new_unit_bar_open": 8.1,
+            "first_new_unit_bar_close": 7.818,
+            "split_only_close_return": -0.022924868060633097
+          },
+          "note": "The issuer gives the exact 8-decimal ratio and April 15 trading resumption. Raw bars are absent on April 13/14; do not treat the consolidation jump as return."
+        },
+        {
+          "code": "510500",
+          "date": "2022-08-29",
+          "record_date": "2022-08-26",
+          "event_date": "2022-08-26",
+          "ratio": 1.14539,
+          "ratio_exact": "1.14539",
+          "ratio_semantics": "new_shares_per_old_share",
+          "sources": [
+            {
+              "url": "https://pdf.dfcfw.com/pdf/H2_AN202208291577764682_1.pdf",
+              "type": "issuer_document_mirror",
+              "title": "南方中证500ETF基金份额拆分结果公告（2022-08-29）"
+            }
+          ],
+          "raw_evidence": {
+            "file": "price_audit/510500_raw_2010-01-01_2026-09-24.json",
+            "previous_bar_date": "2022-08-26",
+            "previous_bar_close": 7.22,
+            "first_new_unit_bar_date": "2022-08-29",
+            "first_new_unit_bar_open": 6.2,
+            "first_new_unit_bar_close": 6.3,
+            "split_only_close_return": -0.0005599722991690426
+          },
+          "note": "Split occurs at August 26 end of day. That day's market close is still old-unit 7.220; August 29 is the first new-unit bar. Use 1.14539, not rounded 1.1454."
+        }
+      ],
+      "cash_events": [
+        {
+          "date": "2024-05-17",
+          "ex_date": "2024-05-17",
+          "record_date": "2024-05-16",
+          "payment_date": "2024-05-22",
+          "cash_per_old_share": 0.087,
+          "cash_exact": "0.0870",
+          "sources": [
+            {
+              "type": "issuer_original_announcement",
+              "url": "https://www.nffund.com/main/files/2024/05/09/446881768060.pdf",
+              "title": "中证500交易型开放式指数证券投资基金分红公告（2024-05-09）"
+            }
+          ],
+          "previous_quote_date": "2024-05-16",
+          "lower": 0.087,
+          "upper": 0.087,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.015780881552693634,
+          "independently_verified": true,
+          "provenance": "caller_supplied_complete_official_cash_calendar"
+        },
+        {
+          "date": "2025-01-16",
+          "ex_date": "2025-01-16",
+          "record_date": "2025-01-15",
+          "payment_date": "2025-01-21",
+          "cash_per_old_share": 0.091,
+          "cash_exact": "0.0910",
+          "sources": [
+            {
+              "type": "issuer_original_announcement",
+              "url": "https://www.nffund.com/main/files/2025/01/08/255916276908.pdf",
+              "title": "中证500交易型开放式指数证券投资基金分红公告（2025-01-09）"
+            }
+          ],
+          "previous_quote_date": "2025-01-15",
+          "lower": 0.091,
+          "upper": 0.091,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.01622103386809269,
+          "independently_verified": true,
+          "provenance": "caller_supplied_complete_official_cash_calendar"
+        },
+        {
+          "date": "2026-01-16",
+          "ex_date": "2026-01-16",
+          "record_date": "2026-01-15",
+          "payment_date": "2026-01-21",
+          "cash_per_old_share": 0.062,
+          "cash_exact": "0.0620",
+          "sources": [
+            {
+              "type": "exchange_hosted_original_announcement",
+              "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-01-09/510500_20260109_5K7U.pdf",
+              "title": "中证500交易型开放式指数证券投资基金分红公告（2026-01-09）"
+            }
+          ],
+          "previous_quote_date": "2026-01-15",
+          "lower": 0.062,
+          "upper": 0.062,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.007434944237918215,
+          "independently_verified": true,
+          "provenance": "caller_supplied_complete_official_cash_calendar"
+        },
+        {
+          "date": "2026-07-15",
+          "ex_date": "2026-07-15",
+          "record_date": "2026-07-14",
+          "payment_date": "2026-07-20",
+          "cash_per_old_share": 0.149,
+          "cash_exact": "0.1490",
+          "sources": [
+            {
+              "type": "issuer_original_announcement_republished",
+              "url": "https://vip.stock.finance.sina.com.cn/fund/go.php/vAkFundInfo_JJGKXX/q/5355354.phtml",
+              "title": "中证500交易型开放式指数证券投资基金分红公告（2026-07-08）"
+            },
+            {
+              "type": "exchange_confirmation_of_ex_date",
+              "url": "https://www.sse.com.cn/assortment/options/disclo/update/c/c_20260708_10824766.shtml",
+              "title": "关于提醒中证500ETF期权合约即将调整的公告"
+            }
+          ],
+          "previous_quote_date": "2026-07-14",
+          "lower": 0.149,
+          "upper": 0.149,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.01771068584333769,
+          "independently_verified": true,
+          "provenance": "caller_supplied_complete_official_cash_calendar"
+        }
+      ],
+      "diagnostics": {
+        "code": "510500",
+        "method": "raw_prices_plus_caller_verified_split_and_cash_events",
+        "split_events": [
+          {
+            "date": "2015-04-15",
+            "ratio": 0.28032483,
+            "ratio_exact": "0.28032483"
+          },
+          {
+            "date": "2022-08-29",
+            "ratio": 1.14539,
+            "ratio_exact": "1.14539"
+          }
+        ],
+        "inferred_cash_event_count": 0,
+        "supplied_cash_event_count": 4,
+        "supplied_cash_sum": 0.389,
+        "actions": [
+          {
+            "date": "2015-04-15",
+            "split_ratio": 0.28032483,
+            "cash_per_old_share": 0.0,
+            "gross": 0.9770751319393669
+          },
+          {
+            "date": "2022-08-29",
+            "split_ratio": 1.14539,
+            "cash_per_old_share": 0.0,
+            "gross": 0.999440027700831
+          },
+          {
+            "date": "2024-05-17",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.087,
+            "gross": 1.0141483765644839
+          },
+          {
+            "date": "2025-01-16",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.091,
+            "gross": 1.0032085561497326
+          },
+          {
+            "date": "2026-01-16",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.062,
+            "gross": 1.0021585321981052
+          },
+          {
+            "date": "2026-07-15",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.149,
+            "gross": 0.9865684060382739
+          }
+        ],
+        "q_quantum": 0.001,
+        "max_vendor_quote_residual": 0.0005567186722412742,
+        "vendor_half_tick_residual_count": 264,
+        "vendor_half_tick_residuals": [
+          {
+            "date": "2013-04-11",
+            "maximum_quote_error": 0.0005302665277788776
+          },
+          {
+            "date": "2013-06-25",
+            "maximum_quote_error": 0.0005133274001161148
+          },
+          {
+            "date": "2013-08-13",
+            "maximum_quote_error": 0.0005169179857533734
+          },
+          {
+            "date": "2013-09-03",
+            "maximum_quote_error": 0.0005472056554416405
+          },
+          {
+            "date": "2013-09-12",
+            "maximum_quote_error": 0.0005235922567656814
+          },
+          {
+            "date": "2013-09-13",
+            "maximum_quote_error": 0.0005102437147392891
+          },
+          {
+            "date": "2013-09-23",
+            "maximum_quote_error": 0.0005102437147392891
+          },
+          {
+            "date": "2013-10-25",
+            "maximum_quote_error": 0.0005338571134152481
+          },
+          {
+            "date": "2013-10-28",
+            "maximum_quote_error": 0.0005102437147392891
+          },
+          {
+            "date": "2013-11-19",
+            "maximum_quote_error": 0.0005102437147392891
+          },
+          {
+            "date": "2013-12-09",
+            "maximum_quote_error": 0.0005035694437260929
+          },
+          {
+            "date": "2013-12-10",
+            "maximum_quote_error": 0.0005035694437260929
+          },
+          {
+            "date": "2013-12-11",
+            "maximum_quote_error": 0.0005035694437260929
+          },
+          {
+            "date": "2013-12-12",
+            "maximum_quote_error": 0.0005338571134152481
+          },
+          {
+            "date": "2013-12-18",
+            "maximum_quote_error": 0.0005102437147392891
+          },
+          {
+            "date": "2014-01-03",
+            "maximum_quote_error": 0.0005102437147392891
+          },
+          {
+            "date": "2014-01-06",
+            "maximum_quote_error": 0.0005405313844284443
+          },
+          {
+            "date": "2014-01-09",
+            "maximum_quote_error": 0.0005169179857533734
+          },
+          {
+            "date": "2014-01-17",
+            "maximum_quote_error": 0.0005472056554416405
+          },
+          {
+            "date": "2014-01-20",
+            "maximum_quote_error": 0.0005472056554416405
+          },
+          {
+            "date": "2014-01-23",
+            "maximum_quote_error": 0.0005102437147392891
+          },
+          {
+            "date": "2014-04-14",
+            "maximum_quote_error": 0.0005271828424020519
+          },
+          {
+            "date": "2014-04-15",
+            "maximum_quote_error": 0.0005271828424020519
+          },
+          {
+            "date": "2014-04-23",
+            "maximum_quote_error": 0.0005338571134152481
+          },
+          {
+            "date": "2014-04-24",
+            "maximum_quote_error": 0.0005338571134152481
+          },
+          {
+            "date": "2014-04-25",
+            "maximum_quote_error": 0.0005405313844284443
+          },
+          {
+            "date": "2014-05-07",
+            "maximum_quote_error": 0.0005405313844284443
+          },
+          {
+            "date": "2014-05-14",
+            "maximum_quote_error": 0.0005405313844284443
+          },
+          {
+            "date": "2014-05-15",
+            "maximum_quote_error": 0.0005405313844284443
+          },
+          {
+            "date": "2014-05-27",
+            "maximum_quote_error": 0.0005102437147392891
+          },
+          {
+            "date": "2014-06-09",
+            "maximum_quote_error": 0.0005405313844284443
+          },
+          {
+            "date": "2014-06-20",
+            "maximum_quote_error": 0.0005405313844284443
+          },
+          {
+            "date": "2014-06-25",
+            "maximum_quote_error": 0.0005102437147392891
+          },
+          {
+            "date": "2014-06-26",
+            "maximum_quote_error": 0.0005102437147392891
+          },
+          {
+            "date": "2014-07-09",
+            "maximum_quote_error": 0.0005271828424020519
+          },
+          {
+            "date": "2014-08-04",
+            "maximum_quote_error": 0.0005138343003756596
+          },
+          {
+            "date": "2014-08-08",
+            "maximum_quote_error": 0.0005138343003756596
+          },
+          {
+            "date": "2014-08-12",
+            "maximum_quote_error": 0.0005071600293624634
+          },
+          {
+            "date": "2014-08-13",
+            "maximum_quote_error": 0.0005071600293624634
+          },
+          {
+            "date": "2014-08-14",
+            "maximum_quote_error": 0.0005071600293624634
+          },
+          {
+            "date": "2014-08-21",
+            "maximum_quote_error": 0.0005307734280384224
+          },
+          {
+            "date": "2014-08-22",
+            "maximum_quote_error": 0.0005307734280384224
+          },
+          {
+            "date": "2014-09-03",
+            "maximum_quote_error": 0.0005240991570252262
+          },
+          {
+            "date": "2014-09-10",
+            "maximum_quote_error": 0.0005477125557016294
+          },
+          {
+            "date": "2014-10-10",
+            "maximum_quote_error": 0.0005040763439860818
+          },
+          {
+            "date": "2014-10-15",
+            "maximum_quote_error": 0.000534364013675237
+          },
+          {
+            "date": "2014-10-16",
+            "maximum_quote_error": 0.000534364013675237
+          },
+          {
+            "date": "2014-10-31",
+            "maximum_quote_error": 0.0005040763439860818
+          },
+          {
+            "date": "2014-11-12",
+            "maximum_quote_error": 0.000534364013675237
+          },
+          {
+            "date": "2014-11-17",
+            "maximum_quote_error": 0.000534364013675237
+          },
+          {
+            "date": "2014-12-05",
+            "maximum_quote_error": 0.0005076669296224523
+          },
+          {
+            "date": "2014-12-11",
+            "maximum_quote_error": 0.0005076669296224523
+          },
+          {
+            "date": "2014-12-22",
+            "maximum_quote_error": 0.0005446288703243596
+          },
+          {
+            "date": "2014-12-31",
+            "maximum_quote_error": 0.0005446288703243596
+          },
+          {
+            "date": "2015-01-15",
+            "maximum_quote_error": 0.0005076669296224523
+          },
+          {
+            "date": "2015-02-05",
+            "maximum_quote_error": 0.000548219455960286
+          },
+          {
+            "date": "2015-02-12",
+            "maximum_quote_error": 0.0005246060572847711
+          },
+          {
+            "date": "2015-02-17",
+            "maximum_quote_error": 0.000541545184947978
+          },
+          {
+            "date": "2015-02-25",
+            "maximum_quote_error": 0.000541545184947978
+          },
+          {
+            "date": "2015-05-13",
+            "maximum_quote_error": 0.0005258470913842572
+          },
+          {
+            "date": "2015-05-15",
+            "maximum_quote_error": 0.0005506072167564824
+          },
+          {
+            "date": "2015-05-27",
+            "maximum_quote_error": 0.0005288417045719029
+          },
+          {
+            "date": "2015-06-04",
+            "maximum_quote_error": 0.0005535843686423902
+          },
+          {
+            "date": "2015-06-08",
+            "maximum_quote_error": 0.0005442862256508363
+          },
+          {
+            "date": "2015-06-18",
+            "maximum_quote_error": 0.0005442862256508363
+          },
+          {
+            "date": "2015-06-25",
+            "maximum_quote_error": 0.0005567186722412742
+          },
+          {
+            "date": "2015-07-06",
+            "maximum_quote_error": 0.0005196832519924754
+          },
+          {
+            "date": "2015-07-16",
+            "maximum_quote_error": 0.0005073555732106882
+          },
+          {
+            "date": "2015-07-28",
+            "maximum_quote_error": 0.0005258994752885826
+          },
+          {
+            "date": "2015-08-07",
+            "maximum_quote_error": 0.0005537415203553664
+          },
+          {
+            "date": "2015-08-12",
+            "maximum_quote_error": 0.0005382446153721077
+          },
+          {
+            "date": "2015-08-14",
+            "maximum_quote_error": 0.0005072682667046635
+          },
+          {
+            "date": "2015-09-28",
+            "maximum_quote_error": 0.0005476475261696478
+          },
+          {
+            "date": "2015-10-22",
+            "maximum_quote_error": 0.0005073555732106882
+          },
+          {
+            "date": "2015-10-29",
+            "maximum_quote_error": 0.0005011568112180953
+          },
+          {
+            "date": "2015-10-30",
+            "maximum_quote_error": 0.0005011568112180953
+          },
+          {
+            "date": "2015-11-04",
+            "maximum_quote_error": 0.0005351976182792484
+          },
+          {
+            "date": "2015-11-09",
+            "maximum_quote_error": 0.0005135194126015818
+          },
+          {
+            "date": "2015-11-10",
+            "maximum_quote_error": 0.0005258994752885826
+          },
+          {
+            "date": "2015-12-04",
+            "maximum_quote_error": 0.0005228000942905098
+          },
+          {
+            "date": "2015-12-22",
+            "maximum_quote_error": 0.0005104025703035475
+          },
+          {
+            "date": "2016-01-15",
+            "maximum_quote_error": 0.0005166886388039416
+          },
+          {
+            "date": "2016-01-20",
+            "maximum_quote_error": 0.0005290687014900541
+          },
+          {
+            "date": "2016-02-03",
+            "maximum_quote_error": 0.0005291036240935298
+          },
+          {
+            "date": "2016-02-15",
+            "maximum_quote_error": 0.0005291036240935298
+          },
+          {
+            "date": "2016-03-08",
+            "maximum_quote_error": 0.0005476649874713857
+          },
+          {
+            "date": "2016-03-15",
+            "maximum_quote_error": 0.0005383843057824578
+          },
+          {
+            "date": "2016-04-19",
+            "maximum_quote_error": 0.0005352500021826856
+          },
+          {
+            "date": "2016-05-03",
+            "maximum_quote_error": 0.0005259693204937577
+          },
+          {
+            "date": "2016-05-04",
+            "maximum_quote_error": 0.0005259693204937577
+          },
+          {
+            "date": "2016-05-11",
+            "maximum_quote_error": 0.0005012266564232704
+          },
+          {
+            "date": "2016-05-23",
+            "maximum_quote_error": 0.0005445656064750892
+          },
+          {
+            "date": "2016-05-26",
+            "maximum_quote_error": 0.0005476649874713857
+          },
+          {
+            "date": "2016-06-15",
+            "maximum_quote_error": 0.0005012266564232704
+          },
+          {
+            "date": "2016-06-20",
+            "maximum_quote_error": 0.0005352674634844234
+          },
+          {
+            "date": "2016-07-26",
+            "maximum_quote_error": 0.0005228524781948352
+          },
+          {
+            "date": "2016-07-27",
+            "maximum_quote_error": 0.0005228524781948352
+          },
+          {
+            "date": "2016-07-29",
+            "maximum_quote_error": 0.0005383493831789821
+          },
+          {
+            "date": "2016-09-19",
+            "maximum_quote_error": 0.0005011917338206828
+          },
+          {
+            "date": "2016-09-26",
+            "maximum_quote_error": 0.0005352500021826856
+          },
+          {
+            "date": "2016-11-10",
+            "maximum_quote_error": 0.0005228524781948352
+          },
+          {
+            "date": "2016-11-15",
+            "maximum_quote_error": 0.0005321331598837631
+          },
+          {
+            "date": "2016-11-25",
+            "maximum_quote_error": 0.000516653716201354
+          },
+          {
+            "date": "2016-12-07",
+            "maximum_quote_error": 0.0005352325408818359
+          },
+          {
+            "date": "2016-12-19",
+            "maximum_quote_error": 0.0005321506211855009
+          },
+          {
+            "date": "2016-12-20",
+            "maximum_quote_error": 0.0005321506211855009
+          },
+          {
+            "date": "2016-12-29",
+            "maximum_quote_error": 0.0005197705585002765
+          },
+          {
+            "date": "2017-01-26",
+            "maximum_quote_error": 0.0005383493831789821
+          },
+          {
+            "date": "2017-02-15",
+            "maximum_quote_error": 0.0005166711775030919
+          },
+          {
+            "date": "2017-03-06",
+            "maximum_quote_error": 0.0005538113655614296
+          },
+          {
+            "date": "2017-03-24",
+            "maximum_quote_error": 0.0005538113655614296
+          },
+          {
+            "date": "2017-05-03",
+            "maximum_quote_error": 0.0005538288268622793
+          },
+          {
+            "date": "2017-05-25",
+            "maximum_quote_error": 0.0005105073381121983
+          },
+          {
+            "date": "2017-06-09",
+            "maximum_quote_error": 0.0005012091951215325
+          },
+          {
+            "date": "2017-07-04",
+            "maximum_quote_error": 0.0005538288268622793
+          },
+          {
+            "date": "2017-07-24",
+            "maximum_quote_error": 0.0005383493831789821
+          },
+          {
+            "date": "2017-07-28",
+            "maximum_quote_error": 0.0005352500021826856
+          },
+          {
+            "date": "2017-08-14",
+            "maximum_quote_error": 0.0005383493831789821
+          },
+          {
+            "date": "2017-08-22",
+            "maximum_quote_error": 0.000541431302875317
+          },
+          {
+            "date": "2017-08-30",
+            "maximum_quote_error": 0.000541431302875317
+          },
+          {
+            "date": "2017-09-12",
+            "maximum_quote_error": 0.0005290337788874666
+          },
+          {
+            "date": "2017-10-09",
+            "maximum_quote_error": 0.0005259343978911701
+          },
+          {
+            "date": "2017-10-13",
+            "maximum_quote_error": 0.0005445132225707638
+          },
+          {
+            "date": "2017-10-19",
+            "maximum_quote_error": 0.000501174272518945
+          },
+          {
+            "date": "2017-10-27",
+            "maximum_quote_error": 0.0005290337788874666
+          },
+          {
+            "date": "2017-12-06",
+            "maximum_quote_error": 0.0005538288268622793
+          },
+          {
+            "date": "2017-12-11",
+            "maximum_quote_error": 0.0005197705585002765
+          },
+          {
+            "date": "2017-12-14",
+            "maximum_quote_error": 0.0005476300648687982
+          },
+          {
+            "date": "2018-01-02",
+            "maximum_quote_error": 0.0005445306838725017
+          },
+          {
+            "date": "2018-01-19",
+            "maximum_quote_error": 0.0005011917338206828
+          },
+          {
+            "date": "2018-01-25",
+            "maximum_quote_error": 0.0005104724155096108
+          },
+          {
+            "date": "2018-02-05",
+            "maximum_quote_error": 0.0005507469071677207
+          },
+          {
+            "date": "2018-02-13",
+            "maximum_quote_error": 0.0005445656064750892
+          },
+          {
+            "date": "2018-02-26",
+            "maximum_quote_error": 0.0005352674634844234
+          },
+          {
+            "date": "2018-02-27",
+            "maximum_quote_error": 0.0005445481451733514
+          },
+          {
+            "date": "2018-02-28",
+            "maximum_quote_error": 0.0005166886388039416
+          },
+          {
+            "date": "2018-03-07",
+            "maximum_quote_error": 0.0005073904958132758
+          },
+          {
+            "date": "2018-03-13",
+            "maximum_quote_error": 0.0005476300648687982
+          },
+          {
+            "date": "2018-03-15",
+            "maximum_quote_error": 0.0005538288268622793
+          },
+          {
+            "date": "2018-03-20",
+            "maximum_quote_error": 0.0005383493831789821
+          },
+          {
+            "date": "2018-03-28",
+            "maximum_quote_error": 0.0005321680824872388
+          },
+          {
+            "date": "2018-04-17",
+            "maximum_quote_error": 0.000504308576117829
+          },
+          {
+            "date": "2018-05-15",
+            "maximum_quote_error": 0.0005290687014900541
+          },
+          {
+            "date": "2018-05-21",
+            "maximum_quote_error": 0.0005104898768113486
+          },
+          {
+            "date": "2018-05-31",
+            "maximum_quote_error": 0.0005105073381121983
+          },
+          {
+            "date": "2018-07-09",
+            "maximum_quote_error": 0.0005167410227082669
+          },
+          {
+            "date": "2018-07-25",
+            "maximum_quote_error": 0.0005167235614074173
+          },
+          {
+            "date": "2018-08-03",
+            "maximum_quote_error": 0.0005043609600221544
+          },
+          {
+            "date": "2018-08-06",
+            "maximum_quote_error": 0.00054151860938223
+          },
+          {
+            "date": "2018-08-21",
+            "maximum_quote_error": 0.0005229397847026362
+          },
+          {
+            "date": "2018-08-29",
+            "maximum_quote_error": 0.0005507992910711579
+          },
+          {
+            "date": "2018-08-30",
+            "maximum_quote_error": 0.0005229397847026362
+          },
+          {
+            "date": "2018-09-05",
+            "maximum_quote_error": 0.0005260391656989327
+          },
+          {
+            "date": "2018-11-12",
+            "maximum_quote_error": 0.0005012965016284454
+          },
+          {
+            "date": "2018-11-20",
+            "maximum_quote_error": 0.0005353373086900426
+          },
+          {
+            "date": "2018-12-14",
+            "maximum_quote_error": 0.0005167759453112986
+          },
+          {
+            "date": "2018-12-19",
+            "maximum_quote_error": 0.0005229747073047797
+          },
+          {
+            "date": "2019-01-08",
+            "maximum_quote_error": 0.000504395882625186
+          },
+          {
+            "date": "2019-01-21",
+            "maximum_quote_error": 0.0005477348326774489
+          },
+          {
+            "date": "2019-01-23",
+            "maximum_quote_error": 0.0005508342136733013
+          },
+          {
+            "date": "2019-03-01",
+            "maximum_quote_error": 0.0005105422607147858
+          },
+          {
+            "date": "2019-04-30",
+            "maximum_quote_error": 0.0005322030050907145
+          },
+          {
+            "date": "2019-07-03",
+            "maximum_quote_error": 0.0005415011480804921
+          },
+          {
+            "date": "2019-07-04",
+            "maximum_quote_error": 0.0005105422607147858
+          },
+          {
+            "date": "2019-07-12",
+            "maximum_quote_error": 0.0005198404037054516
+          },
+          {
+            "date": "2019-07-16",
+            "maximum_quote_error": 0.0005322204663915642
+          },
+          {
+            "date": "2019-07-22",
+            "maximum_quote_error": 0.0005507992910711579
+          },
+          {
+            "date": "2019-07-25",
+            "maximum_quote_error": 0.0005198404037054516
+          },
+          {
+            "date": "2019-07-31",
+            "maximum_quote_error": 0.0005012615790258579
+          },
+          {
+            "date": "2019-08-07",
+            "maximum_quote_error": 0.0005322379276928579
+          },
+          {
+            "date": "2019-08-12",
+            "maximum_quote_error": 0.0005446179903785264
+          },
+          {
+            "date": "2019-08-27",
+            "maximum_quote_error": 0.0005507992910711579
+          },
+          {
+            "date": "2019-08-28",
+            "maximum_quote_error": 0.0005322204663915642
+          },
+          {
+            "date": "2019-09-26",
+            "maximum_quote_error": 0.0005384017670841956
+          },
+          {
+            "date": "2019-09-27",
+            "maximum_quote_error": 0.0005446005290776768
+          },
+          {
+            "date": "2019-10-17",
+            "maximum_quote_error": 0.0005105422607147858
+          },
+          {
+            "date": "2019-11-14",
+            "maximum_quote_error": 0.0005507992910711579
+          },
+          {
+            "date": "2019-12-05",
+            "maximum_quote_error": 0.0005136416417119705
+          },
+          {
+            "date": "2019-12-24",
+            "maximum_quote_error": 0.0005507818297703082
+          },
+          {
+            "date": "2019-12-25",
+            "maximum_quote_error": 0.000535302386087011
+          },
+          {
+            "date": "2020-01-13",
+            "maximum_quote_error": 0.0005445656064750892
+          },
+          {
+            "date": "2020-01-22",
+            "maximum_quote_error": 0.0005321855437889766
+          },
+          {
+            "date": "2020-02-05",
+            "maximum_quote_error": 0.0005105422607147858
+          },
+          {
+            "date": "2020-02-13",
+            "maximum_quote_error": 0.0005507643684685704
+          },
+          {
+            "date": "2020-03-03",
+            "maximum_quote_error": 0.0005352674634844234
+          },
+          {
+            "date": "2020-03-12",
+            "maximum_quote_error": 0.0005476649874713857
+          },
+          {
+            "date": "2020-03-18",
+            "maximum_quote_error": 0.0005043434987213047
+          },
+          {
+            "date": "2020-03-20",
+            "maximum_quote_error": 0.0005322030050907145
+          },
+          {
+            "date": "2020-03-30",
+            "maximum_quote_error": 0.0005415011480804921
+          },
+          {
+            "date": "2020-03-31",
+            "maximum_quote_error": 0.0005415011480804921
+          },
+          {
+            "date": "2020-04-17",
+            "maximum_quote_error": 0.0005105247994139361
+          },
+          {
+            "date": "2020-04-20",
+            "maximum_quote_error": 0.0005105247994139361
+          },
+          {
+            "date": "2020-04-22",
+            "maximum_quote_error": 0.0005383843057824578
+          },
+          {
+            "date": "2020-05-06",
+            "maximum_quote_error": 0.0005352849247852731
+          },
+          {
+            "date": "2020-05-07",
+            "maximum_quote_error": 0.0005352849247852731
+          },
+          {
+            "date": "2020-05-15",
+            "maximum_quote_error": 0.0005476649874713857
+          },
+          {
+            "date": "2020-07-15",
+            "maximum_quote_error": 0.0005135368739024315
+          },
+          {
+            "date": "2020-08-11",
+            "maximum_quote_error": 0.0005321156985829134
+          },
+          {
+            "date": "2020-09-01",
+            "maximum_quote_error": 0.0005259169365894323
+          },
+          {
+            "date": "2020-09-04",
+            "maximum_quote_error": 0.0005321156985829134
+          },
+          {
+            "date": "2020-09-18",
+            "maximum_quote_error": 0.0005445132225707638
+          },
+          {
+            "date": "2020-09-25",
+            "maximum_quote_error": 0.0005507119845651332
+          },
+          {
+            "date": "2020-10-30",
+            "maximum_quote_error": 0.000541431302875317
+          },
+          {
+            "date": "2020-11-05",
+            "maximum_quote_error": 0.000516653716201354
+          },
+          {
+            "date": "2020-11-11",
+            "maximum_quote_error": 0.0005445132225707638
+          },
+          {
+            "date": "2020-11-17",
+            "maximum_quote_error": 0.0005290337788874666
+          },
+          {
+            "date": "2020-11-20",
+            "maximum_quote_error": 0.0005445132225707638
+          },
+          {
+            "date": "2020-11-26",
+            "maximum_quote_error": 0.0005445132225707638
+          },
+          {
+            "date": "2020-12-25",
+            "maximum_quote_error": 0.0005352325408818359
+          },
+          {
+            "date": "2020-12-30",
+            "maximum_quote_error": 0.0005476126035670603
+          },
+          {
+            "date": "2021-01-04",
+            "maximum_quote_error": 0.0005414138415735792
+          },
+          {
+            "date": "2021-03-01",
+            "maximum_quote_error": 0.0005197356358968008
+          },
+          {
+            "date": "2021-03-16",
+            "maximum_quote_error": 0.0005042736535152414
+          },
+          {
+            "date": "2021-03-24",
+            "maximum_quote_error": 0.0005042736535152414
+          },
+          {
+            "date": "2021-04-02",
+            "maximum_quote_error": 0.0005445132225707638
+          },
+          {
+            "date": "2021-04-26",
+            "maximum_quote_error": 0.0005042561922135036
+          },
+          {
+            "date": "2021-04-29",
+            "maximum_quote_error": 0.0005506945232625071
+          },
+          {
+            "date": "2021-04-30",
+            "maximum_quote_error": 0.0005506945232625071
+          },
+          {
+            "date": "2021-05-07",
+            "maximum_quote_error": 0.0005506945232625071
+          },
+          {
+            "date": "2021-05-13",
+            "maximum_quote_error": 0.0005506945232625071
+          },
+          {
+            "date": "2021-06-22",
+            "maximum_quote_error": 0.0005506770619616574
+          },
+          {
+            "date": "2021-07-02",
+            "maximum_quote_error": 0.0005382969992755449
+          },
+          {
+            "date": "2021-08-19",
+            "maximum_quote_error": 0.000538279537973807
+          },
+          {
+            "date": "2021-08-20",
+            "maximum_quote_error": 0.0005537589816571042
+          },
+          {
+            "date": "2021-08-26",
+            "maximum_quote_error": 0.0005258820139877329
+          },
+          {
+            "date": "2021-08-31",
+            "maximum_quote_error": 0.0005042038083100664
+          },
+          {
+            "date": "2021-09-01",
+            "maximum_quote_error": 0.0005196832519924754
+          },
+          {
+            "date": "2021-09-29",
+            "maximum_quote_error": 0.0005320807759803259
+          },
+          {
+            "date": "2021-09-30",
+            "maximum_quote_error": 0.0005444608386664385
+          },
+          {
+            "date": "2021-10-25",
+            "maximum_quote_error": 0.0005444608386664385
+          },
+          {
+            "date": "2021-11-03",
+            "maximum_quote_error": 0.0005351801569775105
+          },
+          {
+            "date": "2021-11-25",
+            "maximum_quote_error": 0.0005042038083100664
+          },
+          {
+            "date": "2021-12-10",
+            "maximum_quote_error": 0.000532063314678588
+          },
+          {
+            "date": "2021-12-16",
+            "maximum_quote_error": 0.0005289639336814034
+          },
+          {
+            "date": "2021-12-17",
+            "maximum_quote_error": 0.0005289639336814034
+          },
+          {
+            "date": "2021-12-21",
+            "maximum_quote_error": 0.0005351626956766609
+          },
+          {
+            "date": "2022-01-05",
+            "maximum_quote_error": 0.0005537415203553664
+          },
+          {
+            "date": "2022-01-14",
+            "maximum_quote_error": 0.000513501951299844
+          },
+          {
+            "date": "2022-01-17",
+            "maximum_quote_error": 0.0005413614576692538
+          },
+          {
+            "date": "2022-01-24",
+            "maximum_quote_error": 0.0005506596006599196
+          },
+          {
+            "date": "2022-03-03",
+            "maximum_quote_error": 0.0005413789189709917
+          },
+          {
+            "date": "2022-03-17",
+            "maximum_quote_error": 0.0005445132225707638
+          },
+          {
+            "date": "2022-03-23",
+            "maximum_quote_error": 0.0005197356358968008
+          },
+          {
+            "date": "2022-03-24",
+            "maximum_quote_error": 0.0005383144605763945
+          },
+          {
+            "date": "2022-03-30",
+            "maximum_quote_error": 0.0005042561922135036
+          },
+          {
+            "date": "2022-04-01",
+            "maximum_quote_error": 0.0005259343978911701
+          },
+          {
+            "date": "2022-04-07",
+            "maximum_quote_error": 0.0005228350168930973
+          },
+          {
+            "date": "2022-04-20",
+            "maximum_quote_error": 0.0005042736535152414
+          },
+          {
+            "date": "2022-05-10",
+            "maximum_quote_error": 0.0005259693204937577
+          },
+          {
+            "date": "2022-05-11",
+            "maximum_quote_error": 0.0005259693204937577
+          },
+          {
+            "date": "2022-05-18",
+            "maximum_quote_error": 0.0005352500021826856
+          },
+          {
+            "date": "2022-05-25",
+            "maximum_quote_error": 0.0005383493831789821
+          },
+          {
+            "date": "2022-06-01",
+            "maximum_quote_error": 0.0005228524781948352
+          },
+          {
+            "date": "2022-06-16",
+            "maximum_quote_error": 0.0005073555732106882
+          },
+          {
+            "date": "2022-06-21",
+            "maximum_quote_error": 0.0005383144605763945
+          },
+          {
+            "date": "2022-07-20",
+            "maximum_quote_error": 0.000544495761269026
+          },
+          {
+            "date": "2022-07-21",
+            "maximum_quote_error": 0.0005321156985829134
+          },
+          {
+            "date": "2022-07-28",
+            "maximum_quote_error": 0.0005321156985829134
+          },
+          {
+            "date": "2022-08-04",
+            "maximum_quote_error": 0.0005259343978911701
+          },
+          {
+            "date": "2022-08-05",
+            "maximum_quote_error": 0.0005104549542078729
+          },
+          {
+            "date": "2022-08-12",
+            "maximum_quote_error": 0.0005104374929070232
+          },
+          {
+            "date": "2022-08-19",
+            "maximum_quote_error": 0.0005290163175857288
+          },
+          {
+            "date": "2022-08-24",
+            "maximum_quote_error": 0.0005506945232625071
+          },
+          {
+            "date": "2022-08-25",
+            "maximum_quote_error": 0.0005011568112180953
+          }
+        ],
+        "vendor_model_validated_at_half_tick": false,
+        "suppressed_rounding_noise_days": null,
+        "initial_index": 1.0,
+        "final_index": 2.6822329837823116,
+        "conditional_lower_final_index": 2.6822329837823116,
+        "conditional_upper_final_index": 2.6822329837823116,
+        "cash_events_independently_verified": true,
+        "verification_responsibility": "Caller supplies a complete independently checked event table; this pure function does not verify issuers or source links.",
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Corporate actions determine returns. qfq disagreements remain diagnostic and are never converted into additional cash or fitted ratios."
+      }
+    },
+    "563300": {
+      "sha256": "36add1be3b95e871d3d017da42ebbc91b9fab2a5d343cdd5332f2ab0ea0581ba",
+      "raw_sha256": "302271f587b44a8cda07c82b1135302bbfae6d06051e5192410ba4582e34e7be",
+      "qfq_sha256": "f54d5c1af6d2d987bff62720a401586ca24024760f7d80b046dd791c8b6e1a0c",
+      "rows": 734,
+      "first_date": "2023-09-14",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [],
+      "diagnostics": {
+        "code": "563300",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 0,
+        "actions": [],
+        "max_intraday_affine_residual": 0.0,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 1.4868154158215015,
+        "conditional_lower_final_index": 1.4868154158215015,
+        "conditional_upper_final_index": 1.4868154158215015,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "512400": {
+      "sha256": "0d302aa2b35820cba84a177a402aebeea51bede67f42d699ed259b7134cd2933",
+      "raw_sha256": "be8df7ede11fd9aa0df6b400a9cf519538e10b3689face29831957de7c88d002",
+      "qfq_sha256": "bf724ae322673894f3d12ac2ba075459f20fd1681ddc7bd3408e341f309aaf9c",
+      "rows": 2201,
+      "first_date": "2017-09-01",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [
+        {
+          "date": "2024-09-18",
+          "previous_quote_date": "2024-09-13",
+          "cash_per_old_share": 0.010000000000000009,
+          "lower": 0.009000000000000008,
+          "upper": 0.01100000000000001,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.011587485515643117,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2025-09-15",
+          "previous_quote_date": "2025-09-12",
+          "cash_per_old_share": 0.015000000000000124,
+          "lower": 0.014000000000000123,
+          "upper": 0.016000000000000125,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.009603072983354752,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2026-09-09",
+          "previous_quote_date": "2026-09-08",
+          "cash_per_old_share": 0.08000000000000007,
+          "lower": 0.07900000000000007,
+          "upper": 0.08100000000000007,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.04208311415044717,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        }
+      ],
+      "diagnostics": {
+        "code": "512400",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 3,
+        "actions": [
+          {
+            "date": "2024-09-18",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.010000000000000009,
+            "gross": 1.0081112398609502
+          },
+          {
+            "date": "2025-09-15",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.015000000000000124,
+            "gross": 0.9923175416133162
+          },
+          {
+            "date": "2026-09-09",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.08000000000000007,
+            "gross": 1.016833245660179
+          }
+        ],
+        "max_intraday_affine_residual": 4.440892098500626e-16,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 1.7053963347003558,
+        "conditional_lower_final_index": 1.70145644695141,
+        "conditional_upper_final_index": 1.7093419183339296,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "512890": {
+      "sha256": "45479c6f7b6de3edf56d67cfeae029d2067709d6b0b9e923280b2d5ab79c7f82",
+      "raw_sha256": "a51ff2cae0aa61a92505d7225d2a5d44a3f1f0d90f6a72b4cded41fba2eb2da5",
+      "qfq_sha256": "64c8f04182dfd456f12097f81a3c438d2bda98c2fe4ea097db4e80fbaa412542",
+      "rows": 1864,
+      "first_date": "2019-01-18",
+      "last_date": "2026-09-24",
+      "split_events": [
+        {
+          "code": "512890",
+          "date": "2021-10-25",
+          "record_date": "2021-10-21",
+          "event_date": "2021-10-22",
+          "ratio": 2,
+          "ratio_exact": "2",
+          "ratio_semantics": "new_shares_per_old_share",
+          "sources": [
+            {
+              "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2021-10-25/512890_20211025_1_lJ5GeyLb.pdf",
+              "type": "issuer_document_on_exchange",
+              "title": "华泰柏瑞中证红利低波动ETF拆分结果及恢复交易公告（2021-10-25）"
+            }
+          ],
+          "raw_evidence": {
+            "file": "price_audit/512890_raw_2010-01-01_2026-09-24.json",
+            "previous_bar_date": "2021-10-21",
+            "previous_bar_close": 1.639,
+            "first_new_unit_bar_date": "2021-10-25",
+            "first_new_unit_bar_open": 0.87,
+            "first_new_unit_bar_close": 0.801,
+            "split_only_close_return": -0.02257474069554599
+          },
+          "note": "Official ratio is 1:2; October 22 split day has no raw bar. Trading resumes October 25."
+        }
+      ],
+      "cash_events": [],
+      "diagnostics": {
+        "code": "512890",
+        "method": "official_splits_with_affine_rounding_intervals",
+        "split_events": [
+          {
+            "date": "2021-10-25",
+            "ratio": 2.0,
+            "ratio_exact": "2"
+          }
+        ],
+        "inferred_cash_event_count": 0,
+        "actions": [
+          {
+            "date": "2021-10-25",
+            "split_ratio": 2.0,
+            "cash_per_old_share": 0.0,
+            "gross": 0.977425259304454
+          }
+        ],
+        "max_intraday_affine_residual": 0.000500000000000056,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 339,
+        "initial_index": 1.0,
+        "final_index": 2.3629112662014116,
+        "conditional_lower_final_index": 2.3629112662014116,
+        "conditional_upper_final_index": 2.3629112662014116,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "513100": {
+      "sha256": "1408165d0c16822ea76daff5bca5de6f0acbb26f741f11679d5150e86ec9a230",
+      "raw_sha256": "2d990634f964600d080b6bbbd681e956e408e3d91fab00ea333c018d906a6465",
+      "qfq_sha256": "fadada03061ac88071c2224ce8dc9674d7fa788183f47dc19f8b47d65d7a0545",
+      "rows": 3251,
+      "first_date": "2013-05-15",
+      "last_date": "2026-09-24",
+      "split_events": [
+        {
+          "code": "513100",
+          "date": "2022-01-14",
+          "record_date": "2022-01-12",
+          "event_date": "2022-01-13",
+          "ratio": 5,
+          "ratio_exact": "5",
+          "ratio_semantics": "new_shares_per_old_share",
+          "sources": [
+            {
+              "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2022-01-04/513100_20220104_1_0U96WMU8.pdf",
+              "type": "issuer_document_on_exchange",
+              "title": "国泰纳斯达克100ETF份额拆分及相关安排公告"
+            },
+            {
+              "url": "https://static.cninfo.com.cn/finalpage/2022-01-14/1212179309.PDF",
+              "type": "issuer_document_on_disclosure_service",
+              "title": "国泰纳斯达克100ETF份额拆分结果及恢复交易公告（2022-01-14）"
+            }
+          ],
+          "raw_evidence": {
+            "file": "price_audit/513100_raw_2010-01-01_2026-09-24.json",
+            "previous_bar_date": "2022-01-12",
+            "previous_bar_close": 5.192,
+            "first_new_unit_bar_date": "2022-01-14",
+            "first_new_unit_bar_open": 1.01,
+            "first_new_unit_bar_close": 1.015,
+            "split_only_close_return": -0.02253466872110954
+          },
+          "note": "Official ratio is 1:5. January 13 split day has no raw trading bar; apply on January 14 first quote."
+        }
+      ],
+      "cash_events": [],
+      "diagnostics": {
+        "code": "513100",
+        "method": "official_splits_with_affine_rounding_intervals",
+        "split_events": [
+          {
+            "date": "2022-01-14",
+            "ratio": 5.0,
+            "ratio_exact": "5"
+          }
+        ],
+        "inferred_cash_event_count": 0,
+        "actions": [
+          {
+            "date": "2022-01-14",
+            "split_ratio": 5.0,
+            "cash_per_old_share": 0.0,
+            "gross": 0.9774653312788905
+          }
+        ],
+        "max_intraday_affine_residual": 0.000800000000000245,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 1709,
+        "initial_index": 1.0,
+        "final_index": 11.594784353059204,
+        "conditional_lower_final_index": 11.594784353059204,
+        "conditional_upper_final_index": 11.594784353059204,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "513120": {
+      "sha256": "2fea85e9d8dfc53a79775a73d43709bb92c39a43bc8be2536ba122f249523660",
+      "raw_sha256": "6739839abcb69e71e4e07c83c8fb796a0a671827717f908392b054dff823c414",
+      "qfq_sha256": "dbaeaa03c3e89dc0775a824cbecdba36986c0f6ad7653e994afe61ca8be8f0e6",
+      "rows": 1023,
+      "first_date": "2022-07-12",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [],
+      "diagnostics": {
+        "code": "513120",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 0,
+        "actions": [],
+        "max_intraday_affine_residual": 0.0,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 1.3934252386002095,
+        "conditional_lower_final_index": 1.3934252386002095,
+        "conditional_upper_final_index": 1.3934252386002095,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "518880": {
+      "sha256": "3c8c0e60e5350b9d9e6b38e3d87a191c579f2967c76f5a777ef48e4d8bcaaa76",
+      "raw_sha256": "5dc9c80cdcf60558180ea9563447163ce2bf7f169ffecbe0ca0ee0adf3181408",
+      "qfq_sha256": "85ad857c8287859de8f819edc22d2b848bdd04532d4b26ab9d0e21dbac5de2a6",
+      "rows": 3202,
+      "first_date": "2013-07-29",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [],
+      "diagnostics": {
+        "code": "518880",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 0,
+        "actions": [],
+        "max_intraday_affine_residual": 0.0,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 3.3465346534653464,
+        "conditional_lower_final_index": 3.3465346534653464,
+        "conditional_upper_final_index": 3.3465346534653464,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "511880": {
+      "sha256": "06651ff73a9736af1cba221df23a626a73d9fd8c9ee47dfd1b4d9e36201cae46",
+      "raw_sha256": "dee75ec3677f8c3cd84d7493acd428264c7b0e8ae32eec3a628348ab55dcdd2f",
+      "qfq_sha256": "cfe940a65875aa43edea0b8f6e234072911adb48ac86d960dc67f4c8682cd698",
+      "rows": 3213,
+      "first_date": "2013-07-12",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [
+        {
+          "date": "2014-01-17",
+          "previous_quote_date": "2014-01-16",
+          "cash_per_old_share": 3.2080000000000126,
+          "lower": 3.2070000000000127,
+          "upper": 3.2090000000000125,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.030996666505628413,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2014-12-31",
+          "previous_quote_date": "2014-12-30",
+          "cash_per_old_share": 4.227999999999994,
+          "lower": 4.226999999999994,
+          "upper": 4.228999999999995,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.040496532699896504,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2015-12-31",
+          "previous_quote_date": "2015-12-30",
+          "cash_per_old_share": 3.3270000000000124,
+          "lower": 3.3260000000000125,
+          "upper": 3.3280000000000123,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.03216885992477507,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2016-12-30",
+          "previous_quote_date": "2016-12-29",
+          "cash_per_old_share": 2.539999999999992,
+          "lower": 2.538999999999992,
+          "upper": 2.540999999999992,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.02474548200107158,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2017-12-29",
+          "previous_quote_date": "2017-12-28",
+          "cash_per_old_share": 3.5779999999999887,
+          "lower": 3.576999999999989,
+          "upper": 3.5789999999999886,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.034579068935857556,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2018-12-28",
+          "previous_quote_date": "2018-12-27",
+          "cash_per_old_share": 3.503,
+          "lower": 3.5020000000000002,
+          "upper": 3.504,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.033838871715610515,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2019-12-31",
+          "previous_quote_date": "2019-12-30",
+          "cash_per_old_share": 2.5189999999999912,
+          "lower": 2.5179999999999914,
+          "upper": 2.519999999999991,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.024560274560274476,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2020-12-31",
+          "previous_quote_date": "2020-12-30",
+          "cash_per_old_share": 2.0150000000000006,
+          "lower": 2.0140000000000007,
+          "upper": 2.0160000000000005,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.01973593997923564,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2021-12-31",
+          "previous_quote_date": "2021-12-30",
+          "cash_per_old_share": 2.1419999999999817,
+          "lower": 2.140999999999982,
+          "upper": 2.1429999999999816,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.02095562338577113,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2022-12-30",
+          "previous_quote_date": "2022-12-29",
+          "cash_per_old_share": 1.7169999999999987,
+          "lower": 1.7159999999999989,
+          "upper": 1.7179999999999986,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.01687817633123297,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2023-12-29",
+          "previous_quote_date": "2023-12-28",
+          "cash_per_old_share": 1.7830000000000013,
+          "lower": 1.7820000000000014,
+          "upper": 1.7840000000000011,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.01751318645699301,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2024-12-31",
+          "previous_quote_date": "2024-12-30",
+          "cash_per_old_share": 1.5519999999999925,
+          "lower": 1.5509999999999926,
+          "upper": 1.5529999999999924,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.015273636247330484,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2025-12-31",
+          "previous_quote_date": "2025-12-30",
+          "cash_per_old_share": 1.154999999999987,
+          "lower": 1.153999999999987,
+          "upper": 1.1559999999999868,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.011413945766463623,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        }
+      ],
+      "diagnostics": {
+        "code": "511880",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 13,
+        "actions": [
+          {
+            "date": "2014-01-17",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 3.2080000000000126,
+            "gross": 0.9999613507898933
+          },
+          {
+            "date": "2014-12-31",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 4.227999999999994,
+            "gross": 1.0011398030726792
+          },
+          {
+            "date": "2015-12-31",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 3.3270000000000124,
+            "gross": 1.0003287469905147
+          },
+          {
+            "date": "2016-12-30",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 2.539999999999992,
+            "gross": 1.0011983048370596
+          },
+          {
+            "date": "2017-12-29",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 3.5779999999999887,
+            "gross": 1.0023484387231452
+          },
+          {
+            "date": "2018-12-28",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 3.503,
+            "gross": 1.0008404173106646
+          },
+          {
+            "date": "2019-12-31",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 2.5189999999999912,
+            "gross": 1.0005460005460005
+          },
+          {
+            "date": "2020-12-31",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 2.0150000000000006,
+            "gross": 1.0005093145801094
+          },
+          {
+            "date": "2021-12-31",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 2.1419999999999817,
+            "gross": 1.000479377005557
+          },
+          {
+            "date": "2022-12-30",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 1.7169999999999987,
+            "gross": 1.0013762054084872
+          },
+          {
+            "date": "2023-12-29",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 1.7830000000000013,
+            "gross": 1.000559871917021
+          },
+          {
+            "date": "2024-12-31",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 1.5519999999999925,
+            "gross": 1.0003149203349966
+          },
+          {
+            "date": "2025-12-31",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 1.154999999999987,
+            "gross": 1.0003755237568186
+          }
+        ],
+        "max_intraday_affine_residual": 1.4210854715202004e-14,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 1.385623442074697,
+        "conditional_lower_final_index": 1.38544805627958,
+        "conditional_upper_final_index": 1.3857988483639294,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "159928": {
+      "sha256": "eae69ba3e96c28d1cac2fdd833421233b6e5b35d08adc2affcb7251532e059fb",
+      "raw_sha256": "96ed1da1b3ef789d2e26bb1ea67edb857ca2d9d8648e404217e5fde601c0c69c",
+      "qfq_sha256": "71f780dabf8e539fd9b91dbc1c902f9cbfce3a2bd65d3eb36da58fabf55feb87",
+      "rows": 3167,
+      "first_date": "2013-09-16",
+      "last_date": "2026-09-24",
+      "split_events": [
+        {
+          "code": "159928",
+          "date": "2021-06-25",
+          "record_date": "2021-06-24",
+          "event_date": "2021-06-24",
+          "ratio": 4,
+          "ratio_exact": "4",
+          "ratio_semantics": "new_shares_per_old_share",
+          "sources": [
+            {
+              "url": "https://www.99fund.com/cgi-bin/news/Article?articleId=12680293&function=print",
+              "type": "issuer",
+              "title": "汇添富中证主要消费ETF基金份额拆分结果公告（2021-06-25）"
+            },
+            {
+              "url": "https://pdf.dfcfw.com/pdf/H2_AN202106211499061442_1.pdf",
+              "type": "issuer_document_mirror",
+              "title": "中证主要消费ETF实施份额拆分公告（2021-06-21）"
+            }
+          ],
+          "raw_evidence": {
+            "file": "price_audit/159928_raw_2010-01-01_2026-09-24.json",
+            "previous_bar_date": "2021-06-24",
+            "previous_bar_close": 4.94,
+            "first_new_unit_bar_date": "2021-06-25",
+            "first_new_unit_bar_open": 1.233,
+            "first_new_unit_bar_close": 1.261,
+            "split_only_close_return": 0.021052631578947212
+          },
+          "note": "Issuer states record-date end-of-day split on June 24 and ex-date June 25; June 24 raw quote remains in old units."
+        }
+      ],
+      "cash_events": [],
+      "diagnostics": {
+        "code": "159928",
+        "method": "official_splits_with_affine_rounding_intervals",
+        "split_events": [
+          {
+            "date": "2021-06-25",
+            "ratio": 4.0,
+            "ratio_exact": "4"
+          }
+        ],
+        "inferred_cash_event_count": 0,
+        "actions": [
+          {
+            "date": "2021-06-25",
+            "split_ratio": 4.0,
+            "cash_per_old_share": 0.0,
+            "gross": 1.0210526315789472
+          }
+        ],
+        "max_intraday_affine_residual": 0.0007500000000002505,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 1429,
+        "initial_index": 1.0,
+        "final_index": 2.618034447821672,
+        "conditional_lower_final_index": 2.618034447821672,
+        "conditional_upper_final_index": 2.618034447821672,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "159985": {
+      "sha256": "21c3f1376defb39fd50f06930a706a4d02bda188973854ea2a50659830d98f54",
+      "raw_sha256": "5135ea4c73ed9ce3739fdaadbfa105ddfb32c1b50f75451bf0f8313f3a254c52",
+      "qfq_sha256": "2eda2235a28989c328a15c7f638fbf953a43bc56c99c738b5443b9f2ef19d8f5",
+      "rows": 1652,
+      "first_date": "2019-12-05",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [],
+      "diagnostics": {
+        "code": "159985",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 0,
+        "actions": [],
+        "max_intraday_affine_residual": 0.0,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 2.351926977687638,
+        "conditional_lower_final_index": 2.351926977687638,
+        "conditional_upper_final_index": 2.351926977687638,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "510880": {
+      "sha256": "0700ff258d1448f95394e8a6e56d568b2ab1cbb38e5f764ca0d9dc919a4fd6fa",
+      "raw_sha256": "3aebf26d410b4463d0416338d74bc799bd9c1b0c7106a5a215a3850ac6bb283e",
+      "qfq_sha256": "3bbe94997c99e0636a69a3c6b629c0e80d849c1741ddb05a1f5bc42b6e129fc5",
+      "rows": 4064,
+      "first_date": "2010-01-04",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [
+        {
+          "date": "2010-07-15",
+          "previous_quote_date": "2010-07-14",
+          "cash_per_old_share": 0.020000000000000018,
+          "lower": 0.019000000000000017,
+          "upper": 0.02100000000000002,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.009666505558240704,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2010-10-22",
+          "previous_quote_date": "2010-10-21",
+          "cash_per_old_share": 0.02100000000000013,
+          "lower": 0.02000000000000013,
+          "upper": 0.02200000000000013,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.008670520231213926,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2011-10-24",
+          "previous_quote_date": "2011-10-21",
+          "cash_per_old_share": 0.03500000000000014,
+          "lower": 0.03400000000000014,
+          "upper": 0.03600000000000014,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.018401682439537406,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2012-12-18",
+          "previous_quote_date": "2012-12-17",
+          "cash_per_old_share": 0.04100000000000015,
+          "lower": 0.04000000000000015,
+          "upper": 0.04200000000000015,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.02233115468409594,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2014-01-21",
+          "previous_quote_date": "2014-01-20",
+          "cash_per_old_share": 0.05899999999999994,
+          "lower": 0.05799999999999994,
+          "upper": 0.05999999999999994,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.03599755948749234,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2015-01-20",
+          "previous_quote_date": "2015-01-19",
+          "cash_per_old_share": 0.08000000000000007,
+          "lower": 0.07900000000000007,
+          "upper": 0.08100000000000007,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.03270645952575636,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2016-01-20",
+          "previous_quote_date": "2016-01-19",
+          "cash_per_old_share": 0.04999999999999982,
+          "lower": 0.04899999999999982,
+          "upper": 0.05099999999999982,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.020185708518368924,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2017-01-23",
+          "previous_quote_date": "2017-01-20",
+          "cash_per_old_share": 0.09100000000000019,
+          "lower": 0.09000000000000019,
+          "upper": 0.09200000000000019,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.033163265306122514,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2018-01-23",
+          "previous_quote_date": "2018-01-22",
+          "cash_per_old_share": 0.10900000000000043,
+          "lower": 0.10800000000000043,
+          "upper": 0.11000000000000043,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.03284121723410679,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2019-01-16",
+          "previous_quote_date": "2019-01-15",
+          "cash_per_old_share": 0.09799999999999964,
+          "lower": 0.09699999999999964,
+          "upper": 0.09899999999999964,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.037248194602812486,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2020-01-17",
+          "previous_quote_date": "2020-01-16",
+          "cash_per_old_share": 0.14400000000000057,
+          "lower": 0.14300000000000057,
+          "upper": 0.14500000000000057,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.048863250763488485,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2021-01-18",
+          "previous_quote_date": "2021-01-15",
+          "cash_per_old_share": 0.1409999999999998,
+          "lower": 0.1399999999999998,
+          "upper": 0.1419999999999998,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.05155393053016446,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2022-01-17",
+          "previous_quote_date": "2022-01-14",
+          "cash_per_old_share": 0.0860000000000003,
+          "lower": 0.0850000000000003,
+          "upper": 0.0870000000000003,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.029543112332531877,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2023-01-16",
+          "previous_quote_date": "2023-01-13",
+          "cash_per_old_share": 0.1379999999999999,
+          "lower": 0.1369999999999999,
+          "upper": 0.1389999999999999,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.04747162022703815,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2024-01-23",
+          "previous_quote_date": "2024-01-22",
+          "cash_per_old_share": 0.13100000000000023,
+          "lower": 0.13000000000000023,
+          "upper": 0.13200000000000023,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.045470322804581825,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2025-01-21",
+          "previous_quote_date": "2025-01-20",
+          "cash_per_old_share": 0.1419999999999999,
+          "lower": 0.1409999999999999,
+          "upper": 0.1429999999999999,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.04458398744113027,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2026-01-21",
+          "previous_quote_date": "2026-01-20",
+          "cash_per_old_share": 0.14300000000000024,
+          "lower": 0.14200000000000024,
+          "upper": 0.14400000000000024,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.04445135219148282,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        }
+      ],
+      "diagnostics": {
+        "code": "510880",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 17,
+        "actions": [
+          {
+            "date": "2010-07-15",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.020000000000000018,
+            "gross": 0.9821169647172547
+          },
+          {
+            "date": "2010-10-22",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.02100000000000013,
+            "gross": 0.9979355904211394
+          },
+          {
+            "date": "2011-10-24",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.03500000000000014,
+            "gross": 1.0173501577287067
+          },
+          {
+            "date": "2012-12-18",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.04100000000000015,
+            "gross": 1.002723311546841
+          },
+          {
+            "date": "2014-01-21",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.05899999999999994,
+            "gross": 1.0006101281269066
+          },
+          {
+            "date": "2015-01-20",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.08000000000000007,
+            "gross": 1.0245298446443172
+          },
+          {
+            "date": "2016-01-20",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.04999999999999982,
+            "gross": 0.9838514331853048
+          },
+          {
+            "date": "2017-01-23",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.09100000000000019,
+            "gross": 0.9996355685131195
+          },
+          {
+            "date": "2018-01-23",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.10900000000000043,
+            "gross": 1.0147634829768004
+          },
+          {
+            "date": "2019-01-16",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.09799999999999964,
+            "gross": 1.0007601672367923
+          },
+          {
+            "date": "2020-01-17",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.14400000000000057,
+            "gross": 0.9935527655242621
+          },
+          {
+            "date": "2021-01-18",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.1409999999999998,
+            "gross": 1.0051188299817184
+          },
+          {
+            "date": "2022-01-17",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.0860000000000003,
+            "gross": 1.0010305736860186
+          },
+          {
+            "date": "2023-01-16",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.1379999999999999,
+            "gross": 1.0065359477124183
+          },
+          {
+            "date": "2024-01-23",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.13100000000000023,
+            "gross": 1.00624783061437
+          },
+          {
+            "date": "2025-01-21",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.1419999999999999,
+            "gross": 0.9949764521193093
+          },
+          {
+            "date": "2026-01-21",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.14300000000000024,
+            "gross": 0.9947155735156978
+          }
+        ],
+        "max_intraday_affine_residual": 4.440892098500626e-16,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 2.143853564395247,
+        "conditional_lower_final_index": 2.129344173206124,
+        "conditional_upper_final_index": 2.1584556928776335,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "511010": {
+      "sha256": "dbeed4c46bb42bc5333f802f7af63bc0860e98a0fac16f68437b072ac1f3d63b",
+      "raw_sha256": "50c08515eb565dee37af085ef4ad8191ab8a10a24e983ac10295f89d8f74f542",
+      "qfq_sha256": "c1845e631adb7728ac1c774cb2a75a5b9c2f153834550387bf2a1d3a0c4cb580",
+      "rows": 3284,
+      "first_date": "2013-03-25",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [
+        {
+          "date": "2013-06-03",
+          "previous_quote_date": "2013-05-31",
+          "cash_per_old_share": 0.28000000000000114,
+          "lower": 0.27900000000000114,
+          "upper": 0.28100000000000114,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.0027859864879655446,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2015-10-09",
+          "previous_quote_date": "2015-10-08",
+          "cash_per_old_share": 1.0,
+          "lower": 0.999,
+          "upper": 1.001,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.009209884047559841,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2025-09-23",
+          "previous_quote_date": "2025-09-22",
+          "cash_per_old_share": 1.450000000000017,
+          "lower": 1.4490000000000172,
+          "upper": 1.451000000000017,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.010247567086228097,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2025-12-26",
+          "previous_quote_date": "2025-12-25",
+          "cash_per_old_share": 0.6539999999999964,
+          "lower": 0.6529999999999964,
+          "upper": 0.6549999999999964,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.004643336386291482,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2026-03-25",
+          "previous_quote_date": "2026-03-24",
+          "cash_per_old_share": 0.570999999999998,
+          "lower": 0.569999999999998,
+          "upper": 0.571999999999998,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.004056434883919169,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2026-06-25",
+          "previous_quote_date": "2026-06-24",
+          "cash_per_old_share": 0.8149999999999977,
+          "lower": 0.8139999999999977,
+          "upper": 0.8159999999999977,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.005762445822403525,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2026-09-18",
+          "previous_quote_date": "2026-09-17",
+          "cash_per_old_share": 0.6200000000000045,
+          "lower": 0.6190000000000045,
+          "upper": 0.6210000000000045,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.004389380530973484,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        }
+      ],
+      "diagnostics": {
+        "code": "511010",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 7,
+        "actions": [
+          {
+            "date": "2013-06-03",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.28000000000000114,
+            "gross": 0.9998607006756017
+          },
+          {
+            "date": "2015-10-09",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 1.0,
+            "gross": 1.0025879774173643
+          },
+          {
+            "date": "2025-09-23",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 1.450000000000017,
+            "gross": 0.9991165890442907
+          },
+          {
+            "date": "2025-12-26",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.6539999999999964,
+            "gross": 1.0006531910512826
+          },
+          {
+            "date": "2026-03-25",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.570999999999998,
+            "gross": 1.0003125799210024
+          },
+          {
+            "date": "2026-06-25",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.8149999999999977,
+            "gross": 1.00012726874209
+          },
+          {
+            "date": "2026-09-18",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.6200000000000045,
+            "gross": 1.000283185840708
+          }
+        ],
+        "max_intraday_affine_residual": 2.842170943040401e-14,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 1.475096007421185,
+        "conditional_lower_final_index": 1.4750155349169145,
+        "conditional_upper_final_index": 1.4751764836751324,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "512010": {
+      "sha256": "0f3ddec0cbc31fbd715e3ef8678d10c5d1ece4609fc0b58f3dc30f7b182332a7",
+      "raw_sha256": "e4e05381478eceabfd5ebfb1641112e2930e2e278c2f6e0bbfefeaed07d4e61a",
+      "qfq_sha256": "6943dcf2b6c196196ac64a351df9ae97d59fdef160a7b01a104a06288b55f974",
+      "rows": 3142,
+      "first_date": "2013-10-28",
+      "last_date": "2026-09-24",
+      "split_events": [
+        {
+          "code": "512010",
+          "date": "2021-06-28",
+          "record_date": "2021-06-24",
+          "event_date": "2021-06-25",
+          "ratio": 4,
+          "ratio_exact": "4",
+          "ratio_semantics": "new_shares_per_old_share",
+          "sources": [
+            {
+              "url": "https://static.cninfo.com.cn/finalpage/2021-06-16/1210241250.PDF",
+              "type": "issuer_document_on_disclosure_service",
+              "title": "易方达沪深300医药ETF份额拆分及相关安排公告"
+            },
+            {
+              "url": "https://www.cgbchina.com.cn/noticeNewDetail.gsp?id=2376911",
+              "type": "issuer_announcement_reproduced_by_distributor",
+              "title": "易方达沪深300医药ETF拆分结果及恢复交易公告（2021-06-28）"
+            }
+          ],
+          "raw_evidence": {
+            "file": "price_audit/512010_raw_2010-01-01_2026-09-24.json",
+            "previous_bar_date": "2021-06-24",
+            "previous_bar_close": 3.206,
+            "first_new_unit_bar_date": "2021-06-28",
+            "first_new_unit_bar_open": 0.821,
+            "first_new_unit_bar_close": 0.836,
+            "split_only_close_return": 0.04304429195258885
+          },
+          "note": "June 25 split day has no raw trading bar. The first post-split quote is June 28."
+        }
+      ],
+      "cash_events": [],
+      "diagnostics": {
+        "code": "512010",
+        "method": "official_splits_with_affine_rounding_intervals",
+        "split_events": [
+          {
+            "date": "2021-06-28",
+            "ratio": 4.0,
+            "ratio_exact": "4"
+          }
+        ],
+        "inferred_cash_event_count": 0,
+        "actions": [
+          {
+            "date": "2021-06-28",
+            "split_ratio": 4.0,
+            "cash_per_old_share": 0.0,
+            "gross": 1.0430442919525889
+          }
+        ],
+        "max_intraday_affine_residual": 0.0007500000000001394,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 1370,
+        "initial_index": 1.0,
+        "final_index": 1.5641293013555868,
+        "conditional_lower_final_index": 1.5641293013555868,
+        "conditional_upper_final_index": 1.5641293013555868,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "512070": {
+      "sha256": "67943eea5111554c8cd71f9854c08691dd50ba614d37c0366d5e72258d09b90f",
+      "raw_sha256": "90cec2f9210d36c2e6263b86caa5d05af659cfb231e22867d881f57683e1951f",
+      "qfq_sha256": "4372a3e72c6bc5175b9e096a9cdc66787e924c85f8f7c04e6ac710eb53a564d4",
+      "rows": 2964,
+      "first_date": "2014-07-18",
+      "last_date": "2026-09-24",
+      "split_events": [
+        {
+          "code": "512070",
+          "date": "2021-09-13",
+          "record_date": "2021-09-09",
+          "event_date": "2021-09-10",
+          "ratio": 3,
+          "ratio_exact": "3",
+          "ratio_semantics": "new_shares_per_old_share",
+          "sources": [
+            {
+              "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2021-09-07/512070_20210907_1_lxvRtFA0.pdf",
+              "type": "issuer_document_on_exchange",
+              "title": "易方达沪深300非银行金融ETF拆分业务提示公告"
+            },
+            {
+              "url": "https://pdf.dfcfw.com/pdf/H2_AN202109131515916840_1.pdf",
+              "type": "issuer_document_mirror",
+              "title": "易方达沪深300非银行金融ETF拆分结果及恢复交易公告（2021-09-13）"
+            }
+          ],
+          "raw_evidence": {
+            "file": "price_audit/512070_raw_2010-01-01_2026-09-24.json",
+            "previous_bar_date": "2021-09-09",
+            "previous_bar_close": 2.318,
+            "first_new_unit_bar_date": "2021-09-13",
+            "first_new_unit_bar_open": 0.782,
+            "first_new_unit_bar_close": 0.783,
+            "split_only_close_return": 0.013373597929249303
+          },
+          "note": "September 10 split day has no raw bar; apply once on the first new-unit quote September 13."
+        }
+      ],
+      "cash_events": [],
+      "diagnostics": {
+        "code": "512070",
+        "method": "official_splits_with_affine_rounding_intervals",
+        "split_events": [
+          {
+            "date": "2021-09-13",
+            "ratio": 3.0,
+            "ratio_exact": "3"
+          }
+        ],
+        "inferred_cash_event_count": 0,
+        "actions": [
+          {
+            "date": "2021-09-13",
+            "split_ratio": 3.0,
+            "cash_per_old_share": 0.0,
+            "gross": 1.0133735979292493
+          }
+        ],
+        "max_intraday_affine_residual": 0.0006666666666668153,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 1153,
+        "initial_index": 1.0,
+        "final_index": 2.297619047619056,
+        "conditional_lower_final_index": 2.297619047619056,
+        "conditional_upper_final_index": 2.297619047619056,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "512200": {
+      "sha256": "1e0a1ced070d9c8265f5b53fa83e8c8d22c950e4581deaf29827a25b563a264a",
+      "raw_sha256": "424c8f4557c7635c2bb203cf4980fd8741af861b48d33e8e4ce7bb102c63de64",
+      "qfq_sha256": "c8920a2acb5e6e4ae536897b8212e21f180f7bab33a48c689afe0c7c06ebc5ff",
+      "rows": 2185,
+      "first_date": "2017-09-25",
+      "last_date": "2026-09-24",
+      "split_events": [
+        {
+          "code": "512200",
+          "date": "2024-08-12",
+          "record_date": "2024-08-09",
+          "event_date": "2024-08-09",
+          "ratio": 0.3580626,
+          "ratio_exact": "0.35806260",
+          "ratio_semantics": "new_shares_per_old_share",
+          "sources": [
+            {
+              "url": "https://www.nffund.com/main/files/2024/08/09/140900033748.pdf",
+              "type": "issuer",
+              "title": "南方中证全指房地产ETF基金份额合并结果公告（2024-08-12）"
+            },
+            {
+              "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2025-03-31/512200_20250331_5QM4.pdf",
+              "type": "issuer_annual_report_on_exchange",
+              "title": "南方中证全指房地产ETF2024年年度报告"
+            }
+          ],
+          "raw_evidence": {
+            "file": "price_audit/512200_raw_2010-01-01_2026-09-24.json",
+            "previous_bar_date": "2024-08-09",
+            "previous_bar_close": 0.441,
+            "first_new_unit_bar_date": "2024-08-12",
+            "first_new_unit_bar_open": 1.225,
+            "first_new_unit_bar_close": 1.191,
+            "split_only_close_return": -0.03298739999999989
+          },
+          "note": "Exact announced ratio is 0.35806260, not an inferred 0.358074 or rounded 0.3581. August 9 raw close is old-unit; August 12 first new-unit quote."
+        }
+      ],
+      "cash_events": [],
+      "diagnostics": {
+        "code": "512200",
+        "method": "official_splits_with_affine_rounding_intervals",
+        "split_events": [
+          {
+            "date": "2024-08-12",
+            "ratio": 0.3580626,
+            "ratio_exact": "0.35806260"
+          }
+        ],
+        "inferred_cash_event_count": 0,
+        "actions": [
+          {
+            "date": "2024-08-12",
+            "split_ratio": 0.3580626,
+            "cash_per_old_share": 0.0,
+            "gross": 0.9670126000000001
+          }
+        ],
+        "max_intraday_affine_residual": 0.0009640386904412601,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 1607,
+        "initial_index": 1.0,
+        "final_index": 0.4737733559999968,
+        "conditional_lower_final_index": 0.4737733559999968,
+        "conditional_upper_final_index": 0.4737733559999968,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "512800": {
+      "sha256": "ae34c78b484c0005220956b6cb2a4717a1fc712aed5952e97a01310003ba7f46",
+      "raw_sha256": "03f1725a555d5c7775436216bb65175886e9d6dd0b1f60293b924b65f6fc63a7",
+      "qfq_sha256": "c19b903c14bc0149752e29a45eb8a81c227ff3d8c5cb526c7f850631a6e2f879",
+      "rows": 2222,
+      "first_date": "2017-08-03",
+      "last_date": "2026-09-24",
+      "split_events": [
+        {
+          "code": "512800",
+          "date": "2025-07-07",
+          "record_date": "2025-07-04",
+          "event_date": "2025-07-04",
+          "ratio": 2,
+          "ratio_exact": "2",
+          "ratio_semantics": "new_shares_per_old_share",
+          "sources": [
+            {
+              "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2025-07-07/512800_20250707_PJ9L.pdf",
+              "type": "issuer_document_on_exchange",
+              "title": "华宝中证银行ETF基金份额拆分结果公告（2025-07-07）"
+            }
+          ],
+          "raw_evidence": {
+            "file": "price_audit/512800_raw_2010-01-01_2026-09-24.json",
+            "previous_bar_date": "2025-07-04",
+            "previous_bar_close": 1.777,
+            "first_new_unit_bar_date": "2025-07-07",
+            "first_new_unit_bar_open": 0.888,
+            "first_new_unit_bar_close": 0.894,
+            "split_only_close_return": 0.006190208216094506
+          },
+          "note": "Issuer says July 4 end-of-day processing. July 7 is the ex-date/first new-unit bar; July 4 quoted price remains old-unit."
+        }
+      ],
+      "cash_events": [],
+      "diagnostics": {
+        "code": "512800",
+        "method": "official_splits_with_affine_rounding_intervals",
+        "split_events": [
+          {
+            "date": "2025-07-07",
+            "ratio": 2.0,
+            "ratio_exact": "2"
+          }
+        ],
+        "inferred_cash_event_count": 0,
+        "actions": [
+          {
+            "date": "2025-07-07",
+            "split_ratio": 2.0,
+            "cash_per_old_share": 0.0,
+            "gross": 1.0061902082160945
+          }
+        ],
+        "max_intraday_affine_residual": 0.000500000000000056,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 933,
+        "initial_index": 1.0,
+        "final_index": 1.6796796796796896,
+        "conditional_lower_final_index": 1.6796796796796896,
+        "conditional_upper_final_index": 1.6796796796796896,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "512880": {
+      "sha256": "04f0b01bb1a1f377c149c077e0c1d3783c5d2319b309372732b1077eaed6993e",
+      "raw_sha256": "e604d7a722a490fcfdd956a684444a3c5482276aadabff46f2ff7a844420e838",
+      "qfq_sha256": "5bb99a5527c727fe42357d960bf4b9cb9fc5012c473733338d4e9254c4016a2f",
+      "rows": 2462,
+      "first_date": "2016-08-08",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [],
+      "diagnostics": {
+        "code": "512880",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 0,
+        "actions": [],
+        "max_intraday_affine_residual": 0.0,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 1.0418326693227178,
+        "conditional_lower_final_index": 1.0418326693227178,
+        "conditional_upper_final_index": 1.0418326693227178,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "513030": {
+      "sha256": "8c05d1f3ccd7ae01911956f554fa3421f42ee4e5d9d4e31d77cf467b655a2922",
+      "raw_sha256": "59189a103da2afe55cf0c541c6eedb7ce4e8fdcd3ba0a641ab232554816f9c09",
+      "qfq_sha256": "6bf43142922cd98e03983a11b59788761c693b4ec1e620e532816f1d072d8627",
+      "rows": 2929,
+      "first_date": "2014-09-05",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [],
+      "diagnostics": {
+        "code": "513030",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 0,
+        "actions": [],
+        "max_intraday_affine_residual": 0.0,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 1.7817460317460339,
+        "conditional_lower_final_index": 1.7817460317460339,
+        "conditional_upper_final_index": 1.7817460317460339,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "513520": {
+      "sha256": "8194544f18715b747dc23314f3ec18d279ecd2fc22e207aa8e429c55e89312cd",
+      "raw_sha256": "00c51df06c17f217973133afa189e42290e440a017fd7ddd7f6183868df104c8",
+      "qfq_sha256": "9d86ddb5317fae799760155f4fc96a5b95b1cf45dede19bd60d6aa348a1ac1bb",
+      "rows": 1763,
+      "first_date": "2019-06-25",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [],
+      "diagnostics": {
+        "code": "513520",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 0,
+        "actions": [],
+        "max_intraday_affine_residual": 0.0,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 2.2896064581231106,
+        "conditional_lower_final_index": 2.2896064581231106,
+        "conditional_upper_final_index": 2.2896064581231106,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "515080": {
+      "sha256": "21b35f2fe59aa2dc3d78df3d2a9906810eba49a7358464539e77fbc865bcd5a5",
+      "raw_sha256": "f567d0ede273d010eb4df53a7fb845f84c6af8d12749f5a80b97b874257df139",
+      "qfq_sha256": "2505bbce82c49bc74acaf0b973a6e8fcce33f6bba948a99d1b2d7e83ba9120bf",
+      "rows": 1636,
+      "first_date": "2019-12-27",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [
+        {
+          "date": "2020-11-30",
+          "previous_quote_date": "2020-11-27",
+          "cash_per_old_share": 0.060000000000000164,
+          "lower": 0.05900000000000016,
+          "upper": 0.061000000000000165,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.04405286343612347,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2021-06-18",
+          "previous_quote_date": "2021-06-17",
+          "cash_per_old_share": 0.030000000000000027,
+          "lower": 0.029000000000000026,
+          "upper": 0.031000000000000028,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.021337126600284514,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2021-12-09",
+          "previous_quote_date": "2021-12-08",
+          "cash_per_old_share": 0.030000000000000027,
+          "lower": 0.029000000000000026,
+          "upper": 0.031000000000000028,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.020533880903490776,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2022-06-27",
+          "previous_quote_date": "2022-06-24",
+          "cash_per_old_share": 0.030000000000000027,
+          "lower": 0.029000000000000026,
+          "upper": 0.031000000000000028,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.020804438280166454,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2022-11-29",
+          "previous_quote_date": "2022-11-28",
+          "cash_per_old_share": 0.03000000000000025,
+          "lower": 0.029000000000000248,
+          "upper": 0.03100000000000025,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.02079002079002096,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2023-06-16",
+          "previous_quote_date": "2023-06-15",
+          "cash_per_old_share": 0.03500000000000014,
+          "lower": 0.03400000000000014,
+          "upper": 0.03600000000000014,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.02344273275284671,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2023-12-01",
+          "previous_quote_date": "2023-11-30",
+          "cash_per_old_share": 0.03499999999999992,
+          "lower": 0.03399999999999992,
+          "upper": 0.03599999999999992,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.024121295658166727,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2024-03-28",
+          "previous_quote_date": "2024-03-27",
+          "cash_per_old_share": 0.015000000000000124,
+          "lower": 0.014000000000000123,
+          "upper": 0.016000000000000125,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.010060362173038313,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2024-07-01",
+          "previous_quote_date": "2024-06-28",
+          "cash_per_old_share": 0.019999999999999796,
+          "lower": 0.018999999999999795,
+          "upper": 0.020999999999999797,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.01312335958005236,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2024-09-20",
+          "previous_quote_date": "2024-09-19",
+          "cash_per_old_share": 0.014999999999999902,
+          "lower": 0.013999999999999901,
+          "upper": 0.015999999999999903,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.010972933430870448,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2024-12-02",
+          "previous_quote_date": "2024-11-29",
+          "cash_per_old_share": 0.020000000000000018,
+          "lower": 0.019000000000000017,
+          "upper": 0.02100000000000002,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.01303780964797915,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2025-03-19",
+          "previous_quote_date": "2025-03-18",
+          "cash_per_old_share": 0.015000000000000124,
+          "lower": 0.014000000000000123,
+          "upper": 0.016000000000000125,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.009803921568627532,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2025-06-17",
+          "previous_quote_date": "2025-06-16",
+          "cash_per_old_share": 0.015000000000000124,
+          "lower": 0.014000000000000123,
+          "upper": 0.016000000000000125,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.009803921568627532,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2025-09-17",
+          "previous_quote_date": "2025-09-16",
+          "cash_per_old_share": 0.014999999999999902,
+          "lower": 0.013999999999999901,
+          "upper": 0.015999999999999903,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.009517766497461867,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2025-12-18",
+          "previous_quote_date": "2025-12-17",
+          "cash_per_old_share": 0.020000000000000018,
+          "lower": 0.019000000000000017,
+          "upper": 0.02100000000000002,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.012919896640826885,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2026-03-18",
+          "previous_quote_date": "2026-03-17",
+          "cash_per_old_share": 0.015000000000000124,
+          "lower": 0.014000000000000123,
+          "upper": 0.016000000000000125,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.009063444108761405,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2026-06-18",
+          "previous_quote_date": "2026-06-17",
+          "cash_per_old_share": 0.020000000000000018,
+          "lower": 0.019000000000000017,
+          "upper": 0.02100000000000002,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.013012361743656485,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2026-09-16",
+          "previous_quote_date": "2026-09-15",
+          "cash_per_old_share": 0.015000000000000124,
+          "lower": 0.014000000000000123,
+          "upper": 0.016000000000000125,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.009541984732824506,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        }
+      ],
+      "diagnostics": {
+        "code": "515080",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 18,
+        "actions": [
+          {
+            "date": "2020-11-30",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.060000000000000164,
+            "gross": 0.9904552129221733
+          },
+          {
+            "date": "2021-06-18",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.030000000000000027,
+            "gross": 1.000711237553343
+          },
+          {
+            "date": "2021-12-09",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.030000000000000027,
+            "gross": 1.004106776180698
+          },
+          {
+            "date": "2022-06-27",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.030000000000000027,
+            "gross": 1.0097087378640777
+          },
+          {
+            "date": "2022-11-29",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.03000000000000025,
+            "gross": 1.0297990297990298
+          },
+          {
+            "date": "2023-06-16",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.03500000000000014,
+            "gross": 0.9986604152712659
+          },
+          {
+            "date": "2023-12-01",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.03499999999999992,
+            "gross": 1.0048242591316332
+          },
+          {
+            "date": "2024-03-28",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.015000000000000124,
+            "gross": 1.0
+          },
+          {
+            "date": "2024-07-01",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.019999999999999796,
+            "gross": 1.0209973753280839
+          },
+          {
+            "date": "2024-09-20",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.014999999999999902,
+            "gross": 0.9985369422092173
+          },
+          {
+            "date": "2024-12-02",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.020000000000000018,
+            "gross": 1.0039113428943938
+          },
+          {
+            "date": "2025-03-19",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.015000000000000124,
+            "gross": 1.0013071895424837
+          },
+          {
+            "date": "2025-06-17",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.015000000000000124,
+            "gross": 1.0006535947712418
+          },
+          {
+            "date": "2025-09-17",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.014999999999999902,
+            "gross": 1.0019035532994922
+          },
+          {
+            "date": "2025-12-18",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.020000000000000018,
+            "gross": 1.0077519379844961
+          },
+          {
+            "date": "2026-03-18",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.015000000000000124,
+            "gross": 0.9933534743202418
+          },
+          {
+            "date": "2026-06-18",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.020000000000000018,
+            "gross": 0.9811320754716981
+          },
+          {
+            "date": "2026-09-16",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.015000000000000124,
+            "gross": 0.9955470737913487
+          }
+        ],
+        "max_intraday_affine_residual": 2.220446049250313e-16,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 1.9950717313239175,
+        "conditional_lower_final_index": 1.9711951198063493,
+        "conditional_upper_final_index": 2.0192212631872595,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    },
+    "515100": {
+      "sha256": "3f2e924f2849af0d93f7a693622dd959a10e368b57b7795a32a50d69e45ba902",
+      "raw_sha256": "477fe88b118dcae7c935e52aebc5e41da9e4806298b654165924c235da635a93",
+      "qfq_sha256": "cc83cd9b0bfdd7be13758e4cd90df68499e60122db4642f7032b54e1b6562fb7",
+      "rows": 1514,
+      "first_date": "2020-07-03",
+      "last_date": "2026-09-24",
+      "split_events": [],
+      "cash_events": [
+        {
+          "date": "2023-12-21",
+          "previous_quote_date": "2023-12-20",
+          "cash_per_old_share": 0.43700000000000006,
+          "lower": 0.43600000000000005,
+          "upper": 0.43800000000000006,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.25525700934579443,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        },
+        {
+          "date": "2025-12-23",
+          "previous_quote_date": "2025-12-22",
+          "cash_per_old_share": 0.10499999999999998,
+          "lower": 0.10399999999999998,
+          "upper": 0.10599999999999998,
+          "old_unit_scale": 1.0,
+          "cash_yield": 0.06804925469863901,
+          "independently_verified": false,
+          "provenance": "inferred_from_vendor_affine_adjustment"
+        }
+      ],
+      "diagnostics": {
+        "code": "515100",
+        "method": "additive_exact_observed_offset",
+        "split_events": [],
+        "inferred_cash_event_count": 2,
+        "actions": [
+          {
+            "date": "2023-12-21",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.43700000000000006,
+            "gross": 0.9988317757009346
+          },
+          {
+            "date": "2025-12-23",
+            "split_ratio": 1.0,
+            "cash_per_old_share": 0.10499999999999998,
+            "gross": 0.999351911860013
+          }
+        ],
+        "max_intraday_affine_residual": 2.220446049250313e-16,
+        "q_quantum": 0.001,
+        "suppressed_rounding_noise_days": 0,
+        "initial_index": 1.0,
+        "final_index": 1.8799571491830762,
+        "conditional_lower_final_index": 1.8776393039407049,
+        "conditional_upper_final_index": 1.8822764203530087,
+        "cash_events_independently_verified": false,
+        "large_unverified_cash_events": [
+          {
+            "date": "2023-12-21",
+            "previous_quote_date": "2023-12-20",
+            "cash_per_old_share": 0.43700000000000006,
+            "lower": 0.43600000000000005,
+            "upper": 0.43800000000000006,
+            "old_unit_scale": 1.0,
+            "cash_yield": 0.25525700934579443,
+            "independently_verified": false,
+            "provenance": "inferred_from_vendor_affine_adjustment"
+          }
+        ],
+        "open_policy": "placeholder_equals_total_return_close",
+        "usable_for_next_open": false,
+        "volume_policy": "raw_volume_times_product_of_future_new_to_old_share_ratios",
+        "reinvestment_assumption": "ex-date accrual and immediate free reinvestment at each observed close",
+        "scope": "Conditional vendor reconstruction; verify inferred cash and complete action coverage independently before asserting validated market total returns."
+      }
+    }
+  },
+  "action_manifest_sha256": "28afcf263e85b846832da127fcc23ce909f67195c6e35369ca594fe27a333ee1",
+  "original_manifest_sha256": "e3374bdf9c1050d40c08f495202527a739ec3822b9da4eb6ada31e0ec1e89b43",
+  "verified_cash_510500_sha256": "cd661b72d20e75bfdc51b2656280794fe09e5bc60f76d426b252beafef04b331",
+  "method_source_sha256": "23f8ec3c689ba9437db935d80350f019c3a3c28ab08a1815ec92e9be1e46f3d4",
+  "builder_source_sha256": "d6547a9cb888fb305ed3e86d369c318259ba9deaaed5503798ccaee088f514f7",
+  "data_view": "raw_price_and_corporate_actions_reconstructed_close_total_return",
+  "cash_dividends": "Inferred from affine QFQ differences with explicit rounding bounds; not all independently verified",
+  "reinvestment": "Immediate free close reinvestment on the ex-date; payment-date delay not modeled",
+  "open_column": "close placeholder; prohibited for next-open or intraday execution",
+  "volume": "Raw volume expressed in final share units using verified future split products",
+  "clean_oos": false,
+  "protected_files_verified": 289
+}

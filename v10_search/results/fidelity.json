@@ -1,0 +1,997 @@
+{
+  "passed": true,
+  "start": "2014-01-01",
+  "end": "2026-09-11",
+  "nav_tolerance": 1e-09,
+  "protected_files_before": 209,
+  "protected_files_after": 209,
+  "source_sha256": {
+    "features.py": "0219602910a9c856b769a6d506bee5b906711ba9cccb94f517765ede663abc87",
+    "policy.py": "e23d79384f9d9180e05e2b8a548d8c255bf978134aaedc74cb3d5e3c225b139f",
+    "fast_execution.py": "7a4c751bd35a0390e9190fdd8fab8830406c0790cae42b681e783f3e4c9a8b2d",
+    "registry.py": "2d85f2f2166560942b42de804f607280736332b1e52218f257a3cceef2dd3a92",
+    "data.py": "2aa7da794c82b92c63d192df1c7d230925676000fd734f17d2375229c8d5b64b",
+    "same_close.py": "7de3348a65f8a858ba4fb6f3aadec13aa7e7c1a5fb4cf8b6aa81c924788f97dc",
+    "verify_fidelity.py": "517be380b9a09894ca409b4d42aa904b59d96a5fe721f60cec2322ee04829af7"
+  },
+  "data_manifest_sha256": "edf73ea2de970f86c280c90a02cae3e8e6153a733f6a4d1be71c5e4605231ed3",
+  "independent_feature_checks": {
+    "passed": true,
+    "dates": [
+      "2014-01-02",
+      "2014-03-05",
+      "2014-04-25",
+      "2014-04-28",
+      "2014-04-29",
+      "2014-05-07",
+      "2014-05-08",
+      "2014-05-09",
+      "2014-06-04",
+      "2014-06-23",
+      "2014-06-24",
+      "2014-06-25",
+      "2014-08-15",
+      "2014-08-18",
+      "2014-08-19",
+      "2014-08-28",
+      "2014-09-01",
+      "2014-09-02",
+      "2014-09-03",
+      "2014-10-28",
+      "2014-10-29",
+      "2014-10-30",
+      "2014-11-28",
+      "2014-12-01",
+      "2014-12-02",
+      "2015-03-05",
+      "2015-04-13",
+      "2015-04-14",
+      "2015-06-02",
+      "2015-08-20",
+      "2015-08-21",
+      "2015-08-24",
+      "2015-08-27",
+      "2015-10-19",
+      "2015-10-20",
+      "2015-10-21",
+      "2015-12-01",
+      "2016-03-03",
+      "2016-05-31",
+      "2016-08-26",
+      "2016-11-30",
+      "2017-03-03",
+      "2017-06-05",
+      "2017-08-29",
+      "2017-09-12",
+      "2017-09-13",
+      "2017-09-14",
+      "2017-11-29",
+      "2018-03-02",
+      "2018-06-01",
+      "2018-08-28",
+      "2018-09-05",
+      "2018-09-06",
+      "2018-09-07",
+      "2018-10-12",
+      "2018-10-15",
+      "2018-10-16",
+      "2018-11-05",
+      "2018-11-06",
+      "2018-11-07",
+      "2018-11-29",
+      "2019-03-05",
+      "2019-06-04",
+      "2019-08-29",
+      "2019-12-02",
+      "2020-03-02",
+      "2020-03-03",
+      "2020-03-04",
+      "2020-03-05",
+      "2020-06-04",
+      "2020-07-30",
+      "2020-07-31",
+      "2020-08-03",
+      "2020-09-01",
+      "2020-12-03",
+      "2021-01-12",
+      "2021-01-13",
+      "2021-01-14",
+      "2021-02-03",
+      "2021-02-04",
+      "2021-02-05",
+      "2021-03-08",
+      "2021-06-07",
+      "2021-08-06",
+      "2021-08-09",
+      "2021-08-10",
+      "2021-09-01",
+      "2021-12-06",
+      "2021-12-21",
+      "2021-12-22",
+      "2021-12-23",
+      "2022-03-09",
+      "2022-03-15",
+      "2022-06-10",
+      "2022-09-05",
+      "2022-12-07",
+      "2023-03-10",
+      "2023-06-09",
+      "2023-08-16",
+      "2023-08-17",
+      "2023-08-18",
+      "2023-09-06",
+      "2023-12-08",
+      "2024-01-31",
+      "2024-03-13",
+      "2024-06-14",
+      "2024-09-09",
+      "2024-10-30",
+      "2024-10-31",
+      "2024-11-01",
+      "2024-12-12",
+      "2025-03-18",
+      "2025-06-18",
+      "2025-09-11",
+      "2025-12-15",
+      "2026-03-20",
+      "2026-06-22",
+      "2026-09-11"
+    ],
+    "availability_checks": 2714,
+    "independent_dynamic_fields_checked": 21931,
+    "independent_scores_checked": 11809,
+    "maximum_absolute_difference": 8.526512829121202e-14,
+    "original_source_sha256": "eda905b79e6dfa01a3fba1ede4a96484ae7cb68cf531aab6e926bd2904f1caed",
+    "note": "Original source is independently imported; every reference slices raw rows by date. Non-25 WLS uses separate math.fsum regression."
+  },
+  "fixed_oracle_checks": [
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 31,
+      "deferred_count": 1,
+      "case_id": "c_v9",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 8,
+      "deferred_count": 0,
+      "case_id": "c_v9",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 16,
+      "deferred_count": 0,
+      "case_id": "c_v9",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 31,
+      "deferred_count": 1,
+      "case_id": "c_v91",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 8,
+      "deferred_count": 0,
+      "case_id": "c_v91",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 15,
+      "deferred_count": 0,
+      "case_id": "c_v91",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 32,
+      "deferred_count": 1,
+      "case_id": "c_v92",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 13,
+      "deferred_count": 0,
+      "case_id": "c_v92",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 15,
+      "deferred_count": 0,
+      "case_id": "c_v92",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 33,
+      "deferred_count": 1,
+      "case_id": "fixed_wls20",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "wls",
+      "windows": [
+        20
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 10,
+      "deferred_count": 0,
+      "case_id": "fixed_wls20",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "wls",
+      "windows": [
+        20
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 14,
+      "deferred_count": 0,
+      "case_id": "fixed_wls20",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "wls",
+      "windows": [
+        20
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 31,
+      "deferred_count": 1,
+      "case_id": "fixed_wls30",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "wls",
+      "windows": [
+        30
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 8,
+      "deferred_count": 0,
+      "case_id": "fixed_wls30",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "wls",
+      "windows": [
+        30
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 13,
+      "deferred_count": 0,
+      "case_id": "fixed_wls30",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "wls",
+      "windows": [
+        30
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 34,
+      "deferred_count": 1,
+      "case_id": "fixed_wls40",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "wls",
+      "windows": [
+        40
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 8,
+      "deferred_count": 0,
+      "case_id": "fixed_wls40",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "wls",
+      "windows": [
+        40
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 12,
+      "deferred_count": 0,
+      "case_id": "fixed_wls40",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "wls",
+      "windows": [
+        40
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 39,
+      "deferred_count": 1,
+      "case_id": "fixed_mom20_vol",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "mom20_vol",
+      "windows": [],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 15,
+      "deferred_count": 0,
+      "case_id": "fixed_mom20_vol",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "mom20_vol",
+      "windows": [],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 14,
+      "deferred_count": 0,
+      "case_id": "fixed_mom20_vol",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "mom20_vol",
+      "windows": [],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 40,
+      "deferred_count": 1,
+      "case_id": "fixed_mom60_vol",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "mom60_vol",
+      "windows": [],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 9,
+      "deferred_count": 0,
+      "case_id": "fixed_mom60_vol",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "mom60_vol",
+      "windows": [],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 19,
+      "deferred_count": 0,
+      "case_id": "fixed_mom60_vol",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "mom60_vol",
+      "windows": [],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 44,
+      "deferred_count": 1,
+      "case_id": "fixed_mom20",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "mom20",
+      "windows": [],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 11,
+      "deferred_count": 0,
+      "case_id": "fixed_mom20",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "mom20",
+      "windows": [],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 17,
+      "deferred_count": 0,
+      "case_id": "fixed_mom20",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "mom20",
+      "windows": [],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 30,
+      "deferred_count": 1,
+      "case_id": "fixed_benchmark_not_tradable",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 7,
+      "deferred_count": 0,
+      "case_id": "fixed_benchmark_not_tradable",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 10,
+      "deferred_count": 0,
+      "case_id": "fixed_benchmark_not_tradable",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 30,
+      "deferred_count": 1,
+      "case_id": "fixed_sector",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "wls",
+      "windows": [
+        30
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 9,
+      "deferred_count": 0,
+      "case_id": "fixed_sector",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "wls",
+      "windows": [
+        30
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 11,
+      "deferred_count": 0,
+      "case_id": "fixed_sector",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "wls",
+      "windows": [
+        30
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 35,
+      "deferred_count": 1,
+      "case_id": "fixed_bond_global",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "wls",
+      "windows": [
+        40
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 8,
+      "deferred_count": 0,
+      "case_id": "fixed_bond_global",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "wls",
+      "windows": [
+        40
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 12,
+      "deferred_count": 0,
+      "case_id": "fixed_bond_global",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "wls",
+      "windows": [
+        40
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 37,
+      "deferred_count": 1,
+      "case_id": "fixed_cash_no_panic_no_overheat",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 18,
+      "deferred_count": 0,
+      "case_id": "fixed_cash_no_panic_no_overheat",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 8,
+      "deferred_count": 0,
+      "case_id": "fixed_cash_no_panic_no_overheat",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 28,
+      "deferred_count": 1,
+      "case_id": "fixed_strict_bear_panic",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 8,
+      "deferred_count": 0,
+      "case_id": "fixed_strict_bear_panic",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 11,
+      "deferred_count": 0,
+      "case_id": "fixed_strict_bear_panic",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 25,
+      "deferred_count": 1,
+      "case_id": "fixed_no_crash_uniform",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 8,
+      "deferred_count": 0,
+      "case_id": "fixed_no_crash_uniform",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 10,
+      "deferred_count": 0,
+      "case_id": "fixed_no_crash_uniform",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "ma250"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 38,
+      "deferred_count": 1,
+      "case_id": "fixed_regime_open_stock",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "open_stock"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 7,
+      "deferred_count": 0,
+      "case_id": "fixed_regime_open_stock",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "open_stock"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 10,
+      "deferred_count": 0,
+      "case_id": "fixed_regime_open_stock",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "open_stock"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 39,
+      "deferred_count": 1,
+      "case_id": "fixed_regime_always_bull",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "always_bull"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 11,
+      "deferred_count": 0,
+      "case_id": "fixed_regime_always_bull",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "always_bull"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 13,
+      "deferred_count": 0,
+      "case_id": "fixed_regime_always_bull",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "always_bull"
+    },
+    {
+      "passed": true,
+      "sessions": 245,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 37,
+      "deferred_count": 1,
+      "case_id": "fixed_regime_all_assets",
+      "start": "2015-03-02",
+      "end": "2016-02-29",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "all_assets"
+    },
+    {
+      "passed": true,
+      "sessions": 117,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 10,
+      "deferred_count": 0,
+      "case_id": "fixed_regime_all_assets",
+      "start": "2022-01-04",
+      "end": "2022-06-30",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "all_assets"
+    },
+    {
+      "passed": true,
+      "sessions": 102,
+      "maximum_absolute_nav_error": 0.0,
+      "trade_count": 9,
+      "deferred_count": 0,
+      "case_id": "fixed_regime_all_assets",
+      "start": "2024-08-01",
+      "end": "2024-12-31",
+      "score_mode": "wls",
+      "windows": [
+        25
+      ],
+      "regime_mode": "all_assets"
+    }
+  ],
+  "archived_controls": {
+    "results": {
+      "c_v9": {
+        "passed": true,
+        "sessions": 3088,
+        "maximum_absolute_nav_error": 1.2221335055073723e-12,
+        "trade_count": 273,
+        "deferred_count": 1
+      },
+      "c_v91": {
+        "passed": true,
+        "sessions": 3088,
+        "maximum_absolute_nav_error": 1.3216094885137863e-12,
+        "trade_count": 268,
+        "deferred_count": 1
+      },
+      "c_v92": {
+        "passed": true,
+        "sessions": 3088,
+        "maximum_absolute_nav_error": 9.663381206337363e-13,
+        "trade_count": 291,
+        "deferred_count": 1
+      }
+    },
+    "archived_paths_sha256": {
+      "v10_next/results/paths.json": "18d1ab82a7bf49820e68a99c85bca13c70dd933cb8e2145574785817e39003da",
+      "v10_round2/results/paths.json": "38bf98e75b0cd2aad1f8343ea196f1efc2b4b023c8593db6ebfce321c682ad10"
+    }
+  },
+  "same_close_controls": {
+    "results": {
+      "c_v91": {
+        "passed": true,
+        "sessions": 3088,
+        "maximum_absolute_nav_error": 0.0,
+        "trade_count": 268,
+        "deferred_count": 2,
+        "final_nav": 148.506413525834,
+        "cagr": 0.484573244492984,
+        "archived_summary_nav_error": 0.0
+      },
+      "c_v92": {
+        "passed": true,
+        "sessions": 3088,
+        "maximum_absolute_nav_error": 0.0,
+        "trade_count": 291,
+        "deferred_count": 2,
+        "final_nav": 169.38820625370008,
+        "cagr": 0.5000868922420807,
+        "archived_summary_nav_error": 0.0
+      }
+    },
+    "archived_evaluation_sha256": "3694cb678a8cc717edf1b6c1108b95f9f8c4dbf79973bcb6c3d43dccd9c60e0d",
+    "note": "Ideal same-close diagnostic only, including initial commission. Five close-to-close crash return intervals; never a selection clock."
+  },
+  "scope": "No candidate screening or return selection. Fixed coverage cases and immutable prior actual-fill controls only."
+}

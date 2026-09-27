@@ -1,0 +1,34 @@
+{
+  "full_fee5_returns.npy": {
+    "archive_bytes": 41358350,
+    "archive_sha256": "530bf4f60760a56b50bcd6873c63ecca9d51aa574332184735b40f9271036a99",
+    "compression": "gzip",
+    "gzip_mtime": 0,
+    "raw_bytes": 162134272,
+    "raw_sha256": "b13efde74549fcbf3c8d2f2093fd47893a2da03f9f3c35244f7e8ec15e8c4f7d"
+  },
+  "full_returns.npy": {
+    "archive_bytes": 28080742,
+    "archive_sha256": "4d5d1db5542962b16365a94ab635af9a61e814dd6a425d803a97a007ed970e95",
+    "compression": "gzip",
+    "gzip_mtime": 0,
+    "raw_bytes": 162134272,
+    "raw_sha256": "2940d742df0ab7e63f825dd5ca21c20bb3c86b4a5dca520aac0a61a6a8a803dd"
+  },
+  "selection_fee5_returns.npy": {
+    "archive_bytes": 38493096,
+    "archive_sha256": "4012a4bc2d782a077b7f7be7c4c7843a59531f3028579110111ff87b1e0c69b7",
+    "compression": "gzip",
+    "gzip_mtime": 0,
+    "raw_bytes": 152815616,
+    "raw_sha256": "32b587de6b297fa207da8ebd53963f300ad3bc0f63fefcf89a63ba5ad52f0a7c"
+  },
+  "selection_returns.npy": {
+    "archive_bytes": 26092576,
+    "archive_sha256": "c5daba916106530542d0f07e5c7a93aca7175ba4b1e105fc7908d4fa718c9d79",
+    "compression": "gzip",
+    "gzip_mtime": 0,
+    "raw_bytes": 152815616,
+    "raw_sha256": "2532cf41a862121e6b1c8bbb788204d489d5fa3c3394b579369d1f4af163cf05"
+  }
+}

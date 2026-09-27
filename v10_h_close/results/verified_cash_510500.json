@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "code": "510500",
+  "verified_on": "2026-09-27",
+  "through_date": "2026-09-24",
+  "cash_events": [
+    {
+      "date": "2024-05-17",
+      "ex_date": "2024-05-17",
+      "record_date": "2024-05-16",
+      "payment_date": "2024-05-22",
+      "cash_per_old_share": 0.087,
+      "cash_exact": "0.0870",
+      "sources": [{"type": "issuer_original_announcement", "url": "https://www.nffund.com/main/files/2024/05/09/446881768060.pdf", "title": "中证500交易型开放式指数证券投资基金分红公告（2024-05-09）"}]
+    },
+    {
+      "date": "2025-01-16",
+      "ex_date": "2025-01-16",
+      "record_date": "2025-01-15",
+      "payment_date": "2025-01-21",
+      "cash_per_old_share": 0.091,
+      "cash_exact": "0.0910",
+      "sources": [{"type": "issuer_original_announcement", "url": "https://www.nffund.com/main/files/2025/01/08/255916276908.pdf", "title": "中证500交易型开放式指数证券投资基金分红公告（2025-01-09）"}]
+    },
+    {
+      "date": "2026-01-16",
+      "ex_date": "2026-01-16",
+      "record_date": "2026-01-15",
+      "payment_date": "2026-01-21",
+      "cash_per_old_share": 0.062,
+      "cash_exact": "0.0620",
+      "sources": [{"type": "exchange_hosted_original_announcement", "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-01-09/510500_20260109_5K7U.pdf", "title": "中证500交易型开放式指数证券投资基金分红公告（2026-01-09）"}]
+    },
+    {
+      "date": "2026-07-15",
+      "ex_date": "2026-07-15",
+      "record_date": "2026-07-14",
+      "payment_date": "2026-07-20",
+      "cash_per_old_share": 0.149,
+      "cash_exact": "0.1490",
+      "sources": [
+        {"type": "issuer_original_announcement_republished", "url": "https://vip.stock.finance.sina.com.cn/fund/go.php/vAkFundInfo_JJGKXX/q/5355354.phtml", "title": "中证500交易型开放式指数证券投资基金分红公告（2026-07-08）"},
+        {"type": "exchange_confirmation_of_ex_date", "url": "https://www.sse.com.cn/assortment/options/disclo/update/c/c_20260708_10824766.shtml", "title": "关于提醒中证500ETF期权合约即将调整的公告"}
+      ]
+    }
+  ],
+  "sum_cash_per_share": 0.389,
+  "completeness_evidence": [
+    {"type": "full_dividend_history_cross_check", "url": "https://fundf10.eastmoney.com/fhsp_510500.html", "finding": "Full history lists these four cash distributions and two separate share conversions; no earlier cash distribution is listed."},
+    {"type": "full_dividend_history_cross_check", "url": "https://basic.10jqka.com.cn/510500/bonus.html", "finding": "Lists four distributions since inception, with the same ex-dates and amounts."},
+    {"type": "exchange_hosted_original_annual_report", "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/2018-03-28/510500_2017_n.pdf", "finding": "2017 annual report section 3.3 states no profit distribution in the preceding three years (2015-2017)."},
+    {"type": "issuer_original_annual_report", "url": "https://www.nffund.com/main/files/2024/03/29/234344061328.pdf", "finding": "2023 annual report section 3.3 states no profit distribution in the preceding three years (2021-2023)."}
+  ],
+  "limitations": [
+    "Four positive cash events are verified against issuer announcement text; the July 2026 announcement is a full-text republication and the exchange separately confirms its ex-date.",
+    "Completeness is cross-checked against two full-history tables and sampled primary annual reports. Not every pre-2024 annual report has been independently inspected; this is not a claim that the entire corporate-action register has been independently audited.",
+    "All four distributions occur after the two verified 2015 and 2022 share conversions, so each announced per-share amount is also per immediately pre-event share. Sum 0.389 is a cash-schedule check, not a total-return percentage.",
+    "Ex-date is used for research return attribution; actual cash payment is later. Immediate free ex-date reinvestment is a research assumption, not an actual broker cash ledger."
+  ]
+}

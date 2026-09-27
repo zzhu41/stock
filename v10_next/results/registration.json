@@ -1,0 +1,351 @@
+{
+  "protocol_sha256": "489f9d21d93b9f97053aa2db370cf0ac059b7234db02ae9324680358b7b49079",
+  "registry": {
+    "protocol": {
+      "candidate_budget": 10,
+      "registered_before_evaluation": true,
+      "research_start": "2014-01-01",
+      "research_end": "2026-09-11",
+      "signal_timing": "observed trading-day close; fill at next available trading-day open",
+      "monthly_timing": "first trading session of the month, detected from the preceding calendar session",
+      "momentum_unit": "244 observed trading bars per year; 61/122/244 for multi-horizon",
+      "momentum_gate": "strictly positive mean cumulative return; all requested horizons required",
+      "cash_asset": "511880",
+      "missing_cash": "retain any selected risk weights; unassigned residual stays uninvested cash",
+      "unavailable_asset": "ineligible until all lookbacks and the current-day bar are available",
+      "monthly_between_rebalances": "return None; preserve units, with no daily equal-weight reset",
+      "monthly_start_between_rebalances": "wait until the next month; no special entry on a mid-month run start",
+      "limits": [
+        "All historical data were already inspected during earlier research; no historical slice is a clean holdout.",
+        "Do not expand the candidate list or tune thresholds after inspecting outcomes.",
+        "High-return and robust labels describe hypotheses, not established performance.",
+        "The half-exposure control tests exposure reduction, not reduced overfitting.",
+        "The robust policies have no crisis dip-buy, bull/bear gate, panic exit or overheat rule.",
+        "A score-window ensemble uses the fixed arithmetic mean of scores, not an average of ranks."
+      ]
+    },
+    "candidates": [
+      {
+        "id": "control_v91",
+        "family": "control",
+        "kind": "legacy",
+        "base_version": "v9.1",
+        "hypothesis": "Full-exposure reference with the existing v9.1 parameters.",
+        "overrides": {},
+        "score_windows": [
+          25
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": []
+      },
+      {
+        "id": "control_v9",
+        "family": "control",
+        "kind": "legacy",
+        "base_version": "v9",
+        "hypothesis": "Existing v9 reference with the uniform 2% rotation buffer.",
+        "overrides": {},
+        "score_windows": [
+          25
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": []
+      },
+      {
+        "id": "control_v91_half",
+        "family": "control",
+        "kind": "legacy",
+        "base_version": "v9.1",
+        "hypothesis": "Same v9.1 signal with half risk exposure and half money-market ETF; an exposure control only.",
+        "overrides": {},
+        "score_windows": [
+          25
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 0.5,
+        "rebalance": "daily_signal",
+        "added_rules": []
+      },
+      {
+        "id": "h_no_crash",
+        "family": "high_return",
+        "kind": "legacy",
+        "base_version": "v9.1",
+        "hypothesis": "Remove the rare crisis-event rule and its lock to test reliance on a small event sample.",
+        "overrides": {
+          "crash_mom5": 0.0
+        },
+        "score_windows": [
+          25
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": []
+      },
+      {
+        "id": "h_no_bear_gate",
+        "family": "high_return",
+        "kind": "legacy",
+        "base_version": "v9.1",
+        "hypothesis": "Remove only the extra 7% bearish-entry momentum threshold; retain the domestic-equity bear exclusion.",
+        "overrides": {
+          "bear_enter_mom": 0.0
+        },
+        "score_windows": [
+          25
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": []
+      },
+      {
+        "id": "h_ensemble",
+        "family": "high_return",
+        "kind": "legacy",
+        "base_version": "v9.1",
+        "hypothesis": "Average fixed WLS20/25/30 scores to reduce dependence on a single selected ranking window.",
+        "overrides": {},
+        "score_windows": [
+          20,
+          25,
+          30
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "588080",
+          "510300",
+          "510500",
+          "563300",
+          "512400",
+          "512890"
+        ],
+        "global_pool": [
+          "513100",
+          "513120"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": []
+      },
+      {
+        "id": "h_core_pool",
+        "family": "high_return",
+        "kind": "legacy",
+        "base_version": "v9.1",
+        "hypothesis": "Restrict the inherited strategy to older broad equity ETFs, Nasdaq and gold; no new thematic asset.",
+        "overrides": {},
+        "score_windows": [
+          25
+        ],
+        "score_combination": "arithmetic_mean",
+        "stock_pool": [
+          "159915",
+          "510300",
+          "510500"
+        ],
+        "global_pool": [
+          "513100"
+        ],
+        "gold": "518880",
+        "cash": "511880",
+        "risk_weight": 1.0,
+        "rebalance": "daily_signal",
+        "added_rules": []
+      },
+      {
+        "id": "r_m12_top2",
+        "family": "robust",
+        "kind": "monthly_momentum",
+        "hypothesis": "Use one annual trend horizon and monthly top-two diversification instead of daily short-term ranking.",
+        "pool": [
+          "510300",
+          "510500",
+          "513100",
+          "518880",
+          "511010"
+        ],
+        "lookbacks": [
+          244
+        ],
+        "selection": "top2",
+        "slot_weight": 0.5,
+        "score_combination": "arithmetic_mean_cumulative_return",
+        "positive_gate": 0.0,
+        "tie_break": "ascending_asset_code",
+        "cash": "511880",
+        "rebalance": "first_trading_session_monthly_close",
+        "missing_slots": "cash",
+        "intra_month_rebalance": false,
+        "added_rules": []
+      },
+      {
+        "id": "r_multi_top2",
+        "family": "robust",
+        "kind": "monthly_momentum",
+        "hypothesis": "Average fixed 3/6/12-month returns before the same positive-trend gate and monthly top-two allocation.",
+        "pool": [
+          "510300",
+          "510500",
+          "513100",
+          "518880",
+          "511010"
+        ],
+        "lookbacks": [
+          61,
+          122,
+          244
+        ],
+        "selection": "top2",
+        "slot_weight": 0.5,
+        "score_combination": "arithmetic_mean_cumulative_return",
+        "positive_gate": 0.0,
+        "tie_break": "ascending_asset_code",
+        "cash": "511880",
+        "rebalance": "first_trading_session_monthly_close",
+        "missing_slots": "cash",
+        "intra_month_rebalance": false,
+        "added_rules": []
+      },
+      {
+        "id": "r_m12_broad",
+        "family": "robust",
+        "kind": "monthly_momentum",
+        "hypothesis": "Give each of five cross-asset sleeves a fixed fifth when its annual trend is positive; avoid winner ranking.",
+        "pool": [
+          "510300",
+          "510500",
+          "513100",
+          "518880",
+          "511010"
+        ],
+        "lookbacks": [
+          244
+        ],
+        "selection": "broad",
+        "slot_weight": 0.2,
+        "score_combination": "arithmetic_mean_cumulative_return",
+        "positive_gate": 0.0,
+        "tie_break": "ascending_asset_code",
+        "cash": "511880",
+        "rebalance": "first_trading_session_monthly_close",
+        "missing_slots": "cash",
+        "intra_month_rebalance": false,
+        "added_rules": []
+      }
+    ]
+  },
+  "source_sha256": {
+    "candidates.py": "8cb2165d54ccfb8d46277d52d5c83b21da21dd6a6d7f911bfc00a669e0d25cdf",
+    "data.py": "52005b1bf77dff9bf9b451956af274b6e77333f6868168c53d1bf1a6b698dfba",
+    "legacy.py": "6e4d1d48366aaa4c921dad19e084aadebf5140abc96f2ffe11e473af7b7d3081",
+    "execution.py": "3da265a119c0415dc573ff53601e4c061af21376546cbcefeadf0e42499c414d",
+    "metrics.py": "361c82dc9dc8b065f0f05b44a547c34814f5e632abe8d0c0f2f4c47d6e279697",
+    "research.py": "3d363cd954b0c6f66af30c335f6595cfe4f357f6d3afd2d3345e748c3c28b24b",
+    "frozen/strategy.py": "06c166a6bb5479a3c01e210bed1c8c3d6df7567e61d8b61eb1e0985694c2a807",
+    "frozen/metadata.py": "3e6d8c86637ff2833860fc89cb026c70f955ff249f3b5469dd0752b6e5321ca5",
+    "frozen/presets.json": "73ee89e963ff0bb5e438a41169e2229113af486c8251ecfef399bdc6dc818a4c",
+    "PROTOCOL.md": "489f9d21d93b9f97053aa2db370cf0ac059b7234db02ae9324680358b7b49079"
+  },
+  "data_manifest_sha256": "3bc1367247c19766500e4faff16a359a4a08953205dea07a377abcb82228d99b",
+  "protected_manifest_sha256": "bcba8d967314d78c954830f6ef48c778a4d4dfcfae20ab6270a73688d7a2bb63",
+  "start": "2014-01-01",
+  "end": "2026-09-11",
+  "development_end": "2021-12-31",
+  "commission_per_side": 0.0001,
+  "main_slippage_per_side": 0.001,
+  "costs_to_report_bps": [
+    5,
+    10,
+    20,
+    50
+  ],
+  "neighborhood_scales": [
+    0.9,
+    1.1
+  ],
+  "registered_at": "2026-09-26T19:34:54.939074+00:00"
+}

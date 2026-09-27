@@ -1,0 +1,6 @@
+# Full float64 matrices are archived losslessly for transport and can be
+# restored locally. Keep raw >100MB generated arrays outside Git.
+results/*_returns.npy
+results/*.restore.tmp
+corrected_results/*_returns.npy
+corrected_results/*.restore.tmp

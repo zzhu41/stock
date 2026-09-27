@@ -1,0 +1,368 @@
+{
+  "high_return": "h_qvix_score25_30",
+  "robust": "s_v91_wls30",
+  "benchmark": {
+    "start": "2014-01-02",
+    "end": "2021-12-31",
+    "sessions": 1950,
+    "nav_factor": 12.566511884252082,
+    "total_return": 11.566511884252082,
+    "cagr": 0.3725961242467499,
+    "max_dd": -0.36270810584013424,
+    "volatility": 0.25774365596324966,
+    "sharpe": 1.3583613433034645,
+    "calmar": 1.0272616416545537,
+    "rebalance_days": 172,
+    "rebalances_per_year": 21.522051282051283,
+    "fill_legs": 343,
+    "turnover": 342.6231145117252,
+    "turnover_per_year": 42.87181535428767,
+    "average_nonmoney_exposure": 0.941025641025641,
+    "average_money_etf_weight": 0.05846153846153846,
+    "average_uninvested_cash_weight": 0.0005128205128205966,
+    "deferred_rebalances": 1,
+    "missing_held_sessions": 2,
+    "yearly": {
+      "2014": 0.9502511097129727,
+      "2015": 0.5628269152186454,
+      "2016": -0.10045269751428887,
+      "2017": 0.1931869227010523,
+      "2018": 0.5155850554923358,
+      "2019": 0.30742322259844523,
+      "2020": 0.7743112505147021,
+      "2021": 0.09258321634513345
+    }
+  },
+  "high_rows": [
+    {
+      "id": "c_v91",
+      "eligible": true,
+      "checks": {
+        "cagr_above_v92": true,
+        "drawdown": true
+      },
+      "metrics": {
+        "start": "2014-01-02",
+        "end": "2021-12-31",
+        "sessions": 1950,
+        "nav_factor": 12.779684437862112,
+        "total_return": 11.779684437862112,
+        "cagr": 0.3754882278557594,
+        "max_dd": -0.35488059571780384,
+        "volatility": 0.2550592515795957,
+        "sharpe": 1.3781642613552851,
+        "calmar": 1.0580691995747846,
+        "rebalance_days": 158,
+        "rebalances_per_year": 19.770256410256412,
+        "fill_legs": 315,
+        "turnover": 314.6538806658793,
+        "turnover_per_year": 39.37207532434592,
+        "average_nonmoney_exposure": 0.941025641025641,
+        "average_money_etf_weight": 0.05846153846153846,
+        "average_uninvested_cash_weight": 0.0005128205128206028,
+        "deferred_rebalances": 1,
+        "missing_held_sessions": 2,
+        "yearly": {
+          "2014": 0.9502511097129727,
+          "2015": 0.5628269152186454,
+          "2016": 0.00843414474196491,
+          "2017": 0.12372463546238066,
+          "2018": 0.45985843784046154,
+          "2019": 0.30742322259844634,
+          "2020": 0.7743112505147014,
+          "2021": 0.09258321634513322
+        }
+      },
+      "external_channels": 0
+    },
+    {
+      "id": "h_qvix_only",
+      "eligible": true,
+      "checks": {
+        "cagr_above_v92": true,
+        "drawdown": true
+      },
+      "metrics": {
+        "start": "2014-01-02",
+        "end": "2021-12-31",
+        "sessions": 1950,
+        "nav_factor": 12.779684437862112,
+        "total_return": 11.779684437862112,
+        "cagr": 0.3754882278557594,
+        "max_dd": -0.35488059571780384,
+        "volatility": 0.2550592515795957,
+        "sharpe": 1.3781642613552851,
+        "calmar": 1.0580691995747846,
+        "rebalance_days": 158,
+        "rebalances_per_year": 19.770256410256412,
+        "fill_legs": 315,
+        "turnover": 314.6538806658793,
+        "turnover_per_year": 39.37207532434592,
+        "average_nonmoney_exposure": 0.941025641025641,
+        "average_money_etf_weight": 0.05846153846153846,
+        "average_uninvested_cash_weight": 0.0005128205128206028,
+        "deferred_rebalances": 1,
+        "missing_held_sessions": 2,
+        "yearly": {
+          "2014": 0.9502511097129727,
+          "2015": 0.5628269152186454,
+          "2016": 0.00843414474196491,
+          "2017": 0.12372463546238066,
+          "2018": 0.45985843784046154,
+          "2019": 0.30742322259844634,
+          "2020": 0.7743112505147014,
+          "2021": 0.09258321634513322
+        }
+      },
+      "external_channels": 1
+    },
+    {
+      "id": "h_v91_no_overheat",
+      "eligible": true,
+      "checks": {
+        "cagr_above_v92": true,
+        "drawdown": true
+      },
+      "metrics": {
+        "start": "2014-01-02",
+        "end": "2021-12-31",
+        "sessions": 1950,
+        "nav_factor": 12.779684437862112,
+        "total_return": 11.779684437862112,
+        "cagr": 0.3754882278557594,
+        "max_dd": -0.35488059571780384,
+        "volatility": 0.2550592515795957,
+        "sharpe": 1.3781642613552851,
+        "calmar": 1.0580691995747846,
+        "rebalance_days": 158,
+        "rebalances_per_year": 19.770256410256412,
+        "fill_legs": 315,
+        "turnover": 314.6538806658793,
+        "turnover_per_year": 39.37207532434592,
+        "average_nonmoney_exposure": 0.941025641025641,
+        "average_money_etf_weight": 0.05846153846153846,
+        "average_uninvested_cash_weight": 0.0005128205128206028,
+        "deferred_rebalances": 1,
+        "missing_held_sessions": 2,
+        "yearly": {
+          "2014": 0.9502511097129727,
+          "2015": 0.5628269152186454,
+          "2016": 0.00843414474196491,
+          "2017": 0.12372463546238066,
+          "2018": 0.45985843784046154,
+          "2019": 0.30742322259844634,
+          "2020": 0.7743112505147014,
+          "2021": 0.09258321634513322
+        }
+      },
+      "external_channels": 0
+    },
+    {
+      "id": "h_qvix_score25_30",
+      "eligible": true,
+      "checks": {
+        "cagr_above_v92": true,
+        "drawdown": true
+      },
+      "metrics": {
+        "start": "2014-01-02",
+        "end": "2021-12-31",
+        "sessions": 1950,
+        "nav_factor": 14.097133594253243,
+        "total_return": 13.097133594253243,
+        "cagr": 0.39247907086205247,
+        "max_dd": -0.2604124526441146,
+        "volatility": 0.2508841987892306,
+        "sharpe": 1.4459059858257595,
+        "calmar": 1.5071440204836248,
+        "rebalance_days": 157,
+        "rebalances_per_year": 19.645128205128206,
+        "fill_legs": 313,
+        "turnover": 312.65607824831886,
+        "turnover_per_year": 39.1220938936358,
+        "average_nonmoney_exposure": 0.941025641025641,
+        "average_money_etf_weight": 0.05846153846153846,
+        "average_uninvested_cash_weight": 0.0005128205128206183,
+        "deferred_rebalances": 1,
+        "missing_held_sessions": 2,
+        "yearly": {
+          "2014": 0.9303957091176951,
+          "2015": 0.7450466410532617,
+          "2016": 0.05439451224903502,
+          "2017": 0.12372463546238066,
+          "2018": 0.4773996233220703,
+          "2019": 0.3557861594185987,
+          "2020": 0.5808653254378071,
+          "2021": 0.11539922908562716
+        }
+      },
+      "external_channels": 1
+    }
+  ],
+  "robust_rows": [
+    {
+      "id": "s_v91_wls30",
+      "eligible": true,
+      "checks": {
+        "cagr_at_least_30": true,
+        "drawdown": true
+      },
+      "metrics": {
+        "start": "2014-01-02",
+        "end": "2021-12-31",
+        "sessions": 1950,
+        "nav_factor": 12.904562172918794,
+        "total_return": 11.904562172918794,
+        "cagr": 0.37716289282830573,
+        "max_dd": -0.2604124526441143,
+        "volatility": 0.24822338107465952,
+        "sharpe": 1.4141762222431697,
+        "calmar": 1.4483289450975116,
+        "rebalance_days": 159,
+        "rebalances_per_year": 19.895384615384614,
+        "fill_legs": 317,
+        "turnover": 316.6516830834397,
+        "turnover_per_year": 39.62205675505604,
+        "average_nonmoney_exposure": 0.941025641025641,
+        "average_money_etf_weight": 0.05846153846153846,
+        "average_uninvested_cash_weight": 0.0005128205128205968,
+        "deferred_rebalances": 1,
+        "missing_held_sessions": 3,
+        "yearly": {
+          "2014": 0.8101686014723071,
+          "2015": 0.6548698814726377,
+          "2016": 0.05076764345996332,
+          "2017": 0.12100328482125255,
+          "2018": 0.4450867478185314,
+          "2019": 0.46777824619408315,
+          "2020": 0.5669175088875178,
+          "2021": 0.10038920239453697
+        }
+      }
+    },
+    {
+      "id": "s_v91_wls30_no_crash",
+      "eligible": true,
+      "checks": {
+        "cagr_at_least_30": true,
+        "drawdown": true
+      },
+      "metrics": {
+        "start": "2014-01-02",
+        "end": "2021-12-31",
+        "sessions": 1950,
+        "nav_factor": 10.000089034033595,
+        "total_return": 9.000089034033595,
+        "cagr": 0.333916636155549,
+        "max_dd": -0.3083739302809424,
+        "volatility": 0.23387769706641465,
+        "sharpe": 1.3498122362929525,
+        "calmar": 1.082830302325933,
+        "rebalance_days": 141,
+        "rebalances_per_year": 17.643076923076922,
+        "fill_legs": 281,
+        "turnover": 280.6912395673521,
+        "turnover_per_year": 35.1223910022738,
+        "average_nonmoney_exposure": 0.941025641025641,
+        "average_money_etf_weight": 0.05846153846153846,
+        "average_uninvested_cash_weight": 0.0005128205128206292,
+        "deferred_rebalances": 1,
+        "missing_held_sessions": 3,
+        "yearly": {
+          "2014": 0.8101686014723071,
+          "2015": 0.37973532894761775,
+          "2016": 0.11944180432379192,
+          "2017": 0.12100328482125211,
+          "2018": 0.26074643168064515,
+          "2019": 0.4677782461940829,
+          "2020": 0.5669175088875187,
+          "2021": 0.10038920239453697
+        }
+      }
+    },
+    {
+      "id": "s_accounts25_30",
+      "eligible": true,
+      "checks": {
+        "cagr_at_least_30": true,
+        "drawdown": true
+      },
+      "metrics": {
+        "start": "2014-01-02",
+        "end": "2021-12-31",
+        "sessions": 1950,
+        "nav_factor": 12.842123305390453,
+        "total_return": 11.842123305390453,
+        "cagr": 0.37632734121256384,
+        "max_dd": -0.31107426062810173,
+        "volatility": 0.24928051989210548,
+        "sharpe": 1.4067477618174526,
+        "calmar": 1.2097668912005357,
+        "rebalance_days": 194,
+        "rebalances_per_year": 24.274871794871796,
+        "fill_legs": 632,
+        "turnover": 315.46975834493315,
+        "turnover_per_year": 39.4741646339301,
+        "average_nonmoney_exposure": 0.941025641025641,
+        "average_money_etf_weight": 0.05846153846153846,
+        "average_uninvested_cash_weight": 0.0005128205128206112,
+        "deferred_rebalances": 2,
+        "missing_held_sessions": 3,
+        "yearly": {
+          "2014": 0.8802098555926399,
+          "2015": 0.6071340139724799,
+          "2016": 0.029417678555859084,
+          "2017": 0.12234776197199038,
+          "2018": 0.4523936209212833,
+          "2019": 0.38805033957521706,
+          "2020": 0.664043265718997,
+          "2021": 0.09649129306798887
+        }
+      }
+    },
+    {
+      "id": "s_accounts20_25_30",
+      "eligible": true,
+      "checks": {
+        "cagr_at_least_30": true,
+        "drawdown": true
+      },
+      "metrics": {
+        "start": "2014-01-02",
+        "end": "2021-12-31",
+        "sessions": 1950,
+        "nav_factor": 12.58474495855678,
+        "total_return": 11.58474495855678,
+        "cagr": 0.37284516341664187,
+        "max_dd": -0.324183317589401,
+        "volatility": 0.249320421063679,
+        "sharpe": 1.3964260701787534,
+        "calmar": 1.15010595298082,
+        "rebalance_days": 220,
+        "rebalances_per_year": 27.52820512820513,
+        "fill_legs": 959,
+        "turnover": 319.0535623620854,
+        "turnover_per_year": 39.92259959812761,
+        "average_nonmoney_exposure": 0.941025641025641,
+        "average_money_etf_weight": 0.05846153846153846,
+        "average_uninvested_cash_weight": 0.0005128205128206347,
+        "deferred_rebalances": 3,
+        "missing_held_sessions": 3,
+        "yearly": {
+          "2014": 0.9170263911619188,
+          "2015": 0.5978951776956718,
+          "2016": 0.024697452466882597,
+          "2017": 0.13754412170768182,
+          "2018": 0.4321815019419444,
+          "2019": 0.36933591680988576,
+          "2020": 0.6467143420895629,
+          "2021": 0.09138456152829955
+        }
+      }
+    }
+  ],
+  "selected_at": "2026-09-26T20:27:40.640475+00:00",
+  "development_sha256": "bde5c5c8f727af9a50dcdd3fedfad515ad1fa49e563bf883034c67a4d9c56709",
+  "registration_sha256": "bafb5f956af25c9063fbd1dcb5daf41f3750ebc81cdfa3db0bebd2841115c705",
+  "validation_not_yet_computed": true
+}

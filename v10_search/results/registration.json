@@ -1,0 +1,37 @@
+{
+  "registered_at": "2026-09-26T21:22:41.921221+00:00",
+  "fingerprints": {
+    "source_sha256": {
+      "data.py": "2aa7da794c82b92c63d192df1c7d230925676000fd734f17d2375229c8d5b64b",
+      "registry.py": "2d85f2f2166560942b42de804f607280736332b1e52218f257a3cceef2dd3a92",
+      "features.py": "0219602910a9c856b769a6d506bee5b906711ba9cccb94f517765ede663abc87",
+      "policy.py": "e23d79384f9d9180e05e2b8a548d8c255bf978134aaedc74cb3d5e3c225b139f",
+      "fast_execution.py": "7a4c751bd35a0390e9190fdd8fab8830406c0790cae42b681e783f3e4c9a8b2d",
+      "statistics.py": "228208949189efbaef79afb6dcabf6afc4d8ada49cf0fdb4ef7df6526bc10655",
+      "scan.py": "cf71ef7c554171604d5f22605bc284019866242f776070fabd61df4cd33ffbc6",
+      "same_close.py": "7de3348a65f8a858ba4fb6f3aadec13aa7e7c1a5fb4cf8b6aa81c924788f97dc",
+      "PROTOCOL.md": "652d05fe1e10a7e6db3cc2fa190a5dd75b0dff11eb172039b9227ab9a3880159"
+    },
+    "dependencies_sha256": {
+      "v10_next/data.py": "52005b1bf77dff9bf9b451956af274b6e77333f6868168c53d1bf1a6b698dfba",
+      "v10_next/frozen/strategy.py": "06c166a6bb5479a3c01e210bed1c8c3d6df7567e61d8b61eb1e0985694c2a807",
+      "v10_next/frozen/metadata.py": "3e6d8c86637ff2833860fc89cb026c70f955ff249f3b5469dd0752b6e5321ca5",
+      "v10_next/frozen/presets.json": "73ee89e963ff0bb5e438a41169e2229113af486c8251ecfef399bdc6dc818a4c",
+      "v10_round2/v92.py": "134b7126a1c41d5ba4824e6e6b7a46507997d8f1e63dca1140b69f915a339bf1",
+      "v10_round2/qvix_manifest.json": "290ca1b2acdc6ea9a916f142ad6d9684f998d33cac05252c40d1bc883520a97f",
+      "v10_round2/data/qvix50.csv": "7a33809f9e62a2252b3e1438ad274c916423e9ce6ab6c0800f762392ab9efecb",
+      "v10_round2/timing.py": "d245caafef68c09bf4f88094335f855110e1a49cc2dd8bbdf4692c7688cd16f8",
+      "v10_next/execution.py": "3da265a119c0415dc573ff53601e4c061af21376546cbcefeadf0e42499c414d",
+      "v10_next/metrics.py": "361c82dc9dc8b065f0f05b44a547c34814f5e632abe8d0c0f2f4c47d6e279697"
+    },
+    "prices_manifest_sha256": "edf73ea2de970f86c280c90a02cae3e8e6153a733f6a4d1be71c5e4605231ed3",
+    "protected_manifest_sha256": "bd693d1172920c9f5b2fd60af619c0b4314734f75271a3089b6014772c212b0e"
+  },
+  "registry_sha256": "cab2d2cb36924b3ec66feceb248a38b53991986c2699203c665a2a364e858e13",
+  "raw": 5164,
+  "unique": 5156,
+  "workers": 2,
+  "primary_clock": "next_open_actual_holdings",
+  "fee": 0.0001,
+  "slippage": 0.001
+}

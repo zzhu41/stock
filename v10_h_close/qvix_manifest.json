@@ -1,0 +1,8 @@
+{
+  "source": "data/qvix50.csv",
+  "source_sha256": "d528c5e040dc587e8d07ccacf67f25f87574e2134cdc60bec6358a266fd4e4f4",
+  "sha256": "d528c5e040dc587e8d07ccacf67f25f87574e2134cdc60bec6358a266fd4e4f4",
+  "last": "2026-09-24",
+  "rows": 2820,
+  "publication_timestamps_verified": false
+}

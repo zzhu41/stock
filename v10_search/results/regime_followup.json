@@ -1,0 +1,2430 @@
+{
+  "label": "Post-search, hindsight-selected regime candidate; not the development champion",
+  "rationale": "User explicitly asked to examine removal of the bull/bear restriction",
+  "computed_at": "2026-09-26T21:35:32.551638+00:00",
+  "registration_sha256": "3766aa495110c743c09315bd4c3f7fd908cb8b85ab2ce3de6ea1f562de6ff281",
+  "candidate": {
+    "kind": "legacy",
+    "family": "regime_ablation",
+    "families": [
+      "regime_ablation"
+    ],
+    "params": {
+      "buffer": 0.02,
+      "overheat": 0.4,
+      "bull_vote": false,
+      "circuit_dd": 0.0,
+      "circuit_days": 10,
+      "skip_days": 0,
+      "use_high52": false,
+      "min_hold": 0,
+      "overheat_lookback": 1,
+      "panic_drop": 0.04,
+      "global_ma_filter": false,
+      "global_mom60_filter": false,
+      "pos_frac_min": 0.0,
+      "max_cap": 9.9,
+      "use_downside_vol": false,
+      "vol_target": 0.0,
+      "vol_target_lock": false,
+      "mom_main": 20,
+      "ma_bull": 250,
+      "dual_mom": false,
+      "score_mom": 0,
+      "ma_slope": false,
+      "rank_exit_n": 0,
+      "score_plain_mom": false,
+      "leverage": 1.0,
+      "borrow_rate": 0.06,
+      "never_empty": true,
+      "exit_cooldown": 0,
+      "abs_stop": 0.0,
+      "macd_filter": false,
+      "macd_exit": false,
+      "kdj_nochase": false,
+      "kdj_dip_buy": false,
+      "rsi_nochase": false,
+      "ma_align": false,
+      "macd_dif_pos": false,
+      "kdj_golden": false,
+      "kdj_dead_exit": false,
+      "rsi_gt50": false,
+      "rsi_lt50_exit": false,
+      "above_ma20": false,
+      "ma20_rising": false,
+      "bias_nochase": 9.9,
+      "pctb_nochase": 9.9,
+      "cci_nochase": 9999.0,
+      "kdj_nc_thr": 100.0,
+      "rsi_nc_thr": 80.0,
+      "score_tech_mix": false,
+      "ne_min_mom": -9.9,
+      "ne_bull_only": false,
+      "exit_mom_floor": 0.0,
+      "mom_decay": 9.9,
+      "donchian_n": 0,
+      "er_buffer_on": false,
+      "kaufman_thr": 0.3,
+      "rel_buffer_on": false,
+      "vol_panic_on": false,
+      "signal_histories": null,
+      "w_mom": false,
+      "vol_ratio_max": 0.0,
+      "enter_mom_min": 0.0,
+      "score_square": false,
+      "score_wls": true,
+      "trail_stop": 0.0,
+      "trail_cool": 0,
+      "vol_in_min": 0.0,
+      "vol_in_max": 99.0,
+      "vol_score_mix": false,
+      "score_smooth": 1,
+      "enter_vol_max": 9.9,
+      "bear_enter_mom": 0.07,
+      "safe_min_vol": false,
+      "vol_buffer": 0.0,
+      "high_vol_half": 0.0,
+      "dd_guard": 0.0,
+      "score_r2": false,
+      "wls60_mix": 0.0,
+      "vol_ewm": false,
+      "bull_dual": false,
+      "vol_days": 20,
+      "bear_open_stock": true,
+      "crash_mom5": -0.08,
+      "crash_lock": 5,
+      "crash_stock_only": false,
+      "crash_below_ma": 0.2,
+      "crash_stop": 0.0,
+      "crash_pick": "score",
+      "crash_alloc": 1.0,
+      "score_tstat": false,
+      "lead_exit": false,
+      "zscore_crash": false,
+      "zscore_accel": false,
+      "bull_hyst": 0.0,
+      "bull_confirm": 1,
+      "wls_adaptive": false,
+      "resid_penalty": false,
+      "crash_dyn_unlock": false,
+      "crash_tp": 0.0,
+      "trend_buf_on": false,
+      "slope_days_buf": 0,
+      "premium_guard": 0.0,
+      "premium_data": null,
+      "pool_buffer": {
+        "stock": 0.02,
+        "global": 0.03,
+        "gold": 0.03
+      }
+    },
+    "stock_pool": [
+      "159915",
+      "510300",
+      "510500"
+    ],
+    "global_pool": [
+      "513100"
+    ],
+    "gold": "518880",
+    "cash": "511880",
+    "benchmark_code": "510300",
+    "score_mode": "wls",
+    "score_windows": [
+      30
+    ],
+    "channels": [
+      "deep"
+    ],
+    "risk_weight": 1.0,
+    "tie_break": "fixed_input_asset_order",
+    "input_asset_order": [
+      "159915",
+      "588080",
+      "510300",
+      "510500",
+      "563300",
+      "512400",
+      "512890",
+      "513100",
+      "513120",
+      "518880",
+      "511880",
+      "159928",
+      "159985",
+      "510880",
+      "511010",
+      "512010",
+      "512070",
+      "512200",
+      "512800",
+      "512880",
+      "513030",
+      "513520",
+      "515080",
+      "515100"
+    ],
+    "regime_mode": "open_stock",
+    "regime_uses_benchmark": true,
+    "benchmark_purpose": "regime_and_calendar",
+    "is_control": false,
+    "counts_as_independent_extra_control_trial": false,
+    "trade_pool_hash": "9cbbb97e11e1398b0f467f3f2939361ee51e45b026a60fd72909458682fcda35",
+    "asset_roles": {
+      "159915": "stock",
+      "510300": "stock",
+      "510500": "stock",
+      "511880": "cash",
+      "513100": "global",
+      "518880": "gold"
+    },
+    "complexity": {
+      "risk_assets": 5,
+      "score_inputs": 1,
+      "active_optional_rules": [
+        "crash_entry_lock",
+        "panic_exit",
+        "bear_entry_threshold",
+        "overheat_guard",
+        "never_empty_fallback",
+        "pool_specific_buffer"
+      ],
+      "active_optional_rule_count": 6,
+      "regime_mode": "open_stock",
+      "uses_regime_classifier": true,
+      "note": "Descriptive structural counts, not independent statistical degrees of freedom"
+    },
+    "candidate_hash": "0ed6bb4a28cd7b414fca361ea4d89ae2ac8b834b0d59fc2c26015ecc9f1f8c46",
+    "id": "search_0ed6bb4a28cd7b414fca",
+    "registration_sources": [
+      {
+        "family": "regime_ablation",
+        "raw_ordinal": 4936
+      }
+    ]
+  },
+  "selection_sha256": "4efa0afa1d9b68d77021ec3a0494b33159049f15c6e7e96771f40b545abd583a",
+  "evaluation_sha256": "c6d7d91abf3b3d750d655f05d13d31cf86855aae4851f37c53d032f353f05bbf",
+  "original_v91_anchor_ablation": {
+    "ma250": {
+      "full": {
+        "sessions": 3088,
+        "cagr": 0.3769046131945462,
+        "nav_factor": 57.270471034822535,
+        "total_return": 56.270471034822535,
+        "max_dd": -0.35488059571780406,
+        "volatility": 0.2681384989217198,
+        "sharpe": 1.3279508862514606,
+        "calmar": 1.0620603598576444
+      },
+      "trade_days": 268,
+      "fill_legs": 535,
+      "trade_days_per_year": 21.17616580310881,
+      "turnover": 534.4121465975263,
+      "turnover_per_year": 42.22686650576309,
+      "deferred_count": 1,
+      "missing_held_days": 2,
+      "nonmoney_exposure": 0.9627590673575129,
+      "yearly": {
+        "2014": 0.9502511097129707,
+        "2015": 0.5628269152186438,
+        "2016": 0.008434144741962912,
+        "2017": 0.12372463546237955,
+        "2018": 0.45985843784046,
+        "2019": 0.3074232225984459,
+        "2020": 0.7743112505146987,
+        "2021": 0.09258321634513167,
+        "2022": 0.08525560718743641,
+        "2023": 0.2751707481006578,
+        "2024": 0.775132587719265,
+        "2025": 0.7541878368448198,
+        "2026": 0.03992819401829295
+      },
+      "holdings_hash": "894b16d7d123f04dbe77707065de02de40aa24558a3ba453064b303ebeddf81b",
+      "return_path_hash": "0f607cb2ca7d708cda0a79426dbd2d956563f5ee34c64b33223d8b7596a73e71",
+      "development": {
+        "sessions": 1950,
+        "cagr": 0.375488227855758,
+        "nav_factor": 12.779684437862016,
+        "total_return": 11.779684437862016,
+        "max_dd": -0.35488059571780406,
+        "volatility": 0.2550592515795959,
+        "sharpe": 1.3781642613552803,
+        "calmar": 1.05806919957478
+      },
+      "early": {
+        "sessions": 977,
+        "cagr": 0.3628230476693946,
+        "nav_factor": 3.4538928466440453,
+        "total_return": 2.4538928466440453,
+        "max_dd": -0.35488059571780406,
+        "volatility": 0.2509554809521017,
+        "sharpe": 1.3597098463640318,
+        "calmar": 1.0223806318165287
+      },
+      "late": {
+        "sessions": 973,
+        "cagr": 0.3883239047125084,
+        "nav_factor": 3.70008133005033,
+        "total_return": 2.70008133005033,
+        "max_dd": -0.20656677568994708,
+        "volatility": 0.25911282145489395,
+        "sharpe": 1.3964679133594395,
+        "calmar": 1.8798952707446788
+      },
+      "validation": {
+        "sessions": 969,
+        "cagr": 0.4445997934136483,
+        "nav_factor": 4.309305386288106,
+        "total_return": 3.309305386288106,
+        "max_dd": -0.1973561184497069,
+        "volatility": 0.2543888870428795,
+        "sharpe": 1.574318565953661,
+        "calmar": 2.25277937621654
+      },
+      "report_only_2026": {
+        "sessions": 169,
+        "cagr": 0.05815483171778103,
+        "nav_factor": 1.0399281940182927,
+        "total_return": 0.03992819401829266,
+        "max_dd": -0.25555334287533293,
+        "volatility": 0.43799081421188496,
+        "sharpe": 0.3517062407737217,
+        "calmar": 0.22756435530624544
+      },
+      "index": 3043,
+      "id": "search_d59ee57935af98fb2ad2",
+      "candidate_hash": "d59ee57935af98fb2ad2ef95e6c3a8ea519c721f0421a297f64b5739b2e74d83",
+      "family": "pool_subsets",
+      "regime_mode": "ma250"
+    },
+    "open_stock": {
+      "full": {
+        "sessions": 3088,
+        "cagr": 0.3313576140283441,
+        "nav_factor": 37.4146300050841,
+        "total_return": 36.4146300050841,
+        "max_dd": -0.3548805957178047,
+        "volatility": 0.28814289548121574,
+        "sharpe": 1.1382527399973084,
+        "calmar": 0.9337157850462873
+      },
+      "trade_days": 293,
+      "fill_legs": 585,
+      "trade_days_per_year": 23.151554404145077,
+      "turnover": 584.3572070365383,
+      "turnover_per_year": 46.17330262853476,
+      "deferred_count": 1,
+      "missing_held_days": 2,
+      "nonmoney_exposure": 0.9838082901554405,
+      "yearly": {
+        "2014": 0.8647202451423872,
+        "2015": 0.8454601909189312,
+        "2016": -0.11835168808762675,
+        "2017": 0.12372463546237933,
+        "2018": 0.4594694233673857,
+        "2019": 0.4254105276528872,
+        "2020": 0.6788728203741972,
+        "2021": 0.01256958908674477,
+        "2022": -0.12078219999442596,
+        "2023": 0.10917332280326741,
+        "2024": 0.7724034042307273,
+        "2025": 0.7541878368448212,
+        "2026": 0.023424020218326236
+      },
+      "holdings_hash": "52848a97e26aae00fbe9560ba0588e1ed6af72bd14bc1d9aed65ebc310993447",
+      "return_path_hash": "7a1b5d61ffaac79caa78f161b38ea06fd18ebeb8f428cac0c5271f561d1d0591",
+      "development": {
+        "sessions": 1950,
+        "cagr": 0.36551046639757806,
+        "nav_factor": 12.057333974730922,
+        "total_return": 11.057333974730922,
+        "max_dd": -0.3548805957178047,
+        "volatility": 0.2802472044459941,
+        "sharpe": 1.2524574609619579,
+        "calmar": 1.0299533725090624
+      },
+      "early": {
+        "sessions": 977,
+        "cagr": 0.3584138754736774,
+        "nav_factor": 3.4093661866280898,
+        "total_return": 2.4093661866280898,
+        "max_dd": -0.3548805957178047,
+        "volatility": 0.28496261575741033,
+        "sharpe": 1.218080038362044,
+        "calmar": 1.0099562495061924
+      },
+      "late": {
+        "sessions": 973,
+        "cagr": 0.37267353440872647,
+        "nav_factor": 3.53653239772868,
+        "total_return": 2.53653239772868,
+        "max_dd": -0.2065667756899473,
+        "volatility": 0.2754309666278609,
+        "sharpe": 1.2885411113867344,
+        "calmar": 1.804131052362952
+      },
+      "validation": {
+        "sessions": 969,
+        "cagr": 0.3222197662235126,
+        "nav_factor": 3.0320374310020286,
+        "total_return": 2.0320374310020286,
+        "max_dd": -0.24684176417295867,
+        "volatility": 0.27042994557599065,
+        "sharpe": 1.1687452310836441,
+        "calmar": 1.305369726646977
+      },
+      "report_only_2026": {
+        "sessions": 169,
+        "cagr": 0.03399431938092255,
+        "nav_factor": 1.0234240202183267,
+        "total_return": 0.023424020218326607,
+        "max_dd": -0.25555334287533316,
+        "volatility": 0.43743624831231903,
+        "sharpe": 0.29879935771780125,
+        "calmar": 0.13302240150114583
+      },
+      "index": 4907,
+      "id": "search_546809c30432949457c8",
+      "candidate_hash": "546809c30432949457c8a8e9368563ff642a1cf395c18712b12964e3def19b3a",
+      "family": "regime_ablation",
+      "regime_mode": "open_stock"
+    },
+    "always_bull": {
+      "full": {
+        "sessions": 3088,
+        "cagr": 0.3294477187954314,
+        "nav_factor": 36.74100808247329,
+        "total_return": 35.7410080824733,
+        "max_dd": -0.3548805957178043,
+        "volatility": 0.29019794909756375,
+        "sharpe": 1.127354145783914,
+        "calmar": 0.9283339883068819
+      },
+      "trade_days": 305,
+      "fill_legs": 609,
+      "trade_days_per_year": 24.099740932642487,
+      "turnover": 608.330836047264,
+      "turnover_per_year": 48.06759196746517,
+      "deferred_count": 1,
+      "missing_held_days": 2,
+      "nonmoney_exposure": 0.9867227979274611,
+      "yearly": {
+        "2014": 0.7943350684569637,
+        "2015": 0.7885949587308654,
+        "2016": -0.13450503816537007,
+        "2017": 0.12372463546237955,
+        "2018": 0.3594358859953337,
+        "2019": 0.4596305036737105,
+        "2020": 0.6788728203741967,
+        "2021": 0.05810014572393163,
+        "2022": -0.011062634858673204,
+        "2023": 0.1854105976174767,
+        "2024": 0.514146371284415,
+        "2025": 0.7541878368448212,
+        "2026": 0.07246541029176323
+      },
+      "holdings_hash": "180e66bd0c222931353bdb79c8db01dc10f6ed5260097be31ee28f2480562fcd",
+      "return_path_hash": "02756fe1ff3b50875cad01d619e3e897923fe578714a975a9eb6d5c9b2858080",
+      "development": {
+        "sessions": 1950,
+        "cagr": 0.3499550325390871,
+        "nav_factor": 11.002369521481942,
+        "total_return": 10.002369521481942,
+        "max_dd": -0.3548805957178043,
+        "volatility": 0.2836272976918165,
+        "sharpe": 1.2005244148032186,
+        "calmar": 0.9861205057753174
+      },
+      "early": {
+        "sessions": 977,
+        "cagr": 0.3287965871640528,
+        "nav_factor": 3.121332206684995,
+        "total_return": 2.121332206684995,
+        "max_dd": -0.3548805957178043,
+        "volatility": 0.29240977197085954,
+        "sharpe": 1.1191177725211803,
+        "calmar": 0.9264991975653324
+      },
+      "late": {
+        "sessions": 973,
+        "cagr": 0.3715394541642048,
+        "nav_factor": 3.524895394959252,
+        "total_return": 2.5248953949592523,
+        "max_dd": -0.20656677568994708,
+        "volatility": 0.27452352424603943,
+        "sharpe": 1.2888386648701897,
+        "calmar": 1.7986409136863262
+      },
+      "validation": {
+        "sessions": 969,
+        "cagr": 0.3311017246919083,
+        "nav_factor": 3.1137342744495413,
+        "total_return": 2.1137342744495418,
+        "max_dd": -0.2265109220236895,
+        "volatility": 0.2702430696367723,
+        "sharpe": 1.194246843203189,
+        "calmar": 1.4617472823552422
+      },
+      "report_only_2026": {
+        "sessions": 169,
+        "cagr": 0.10628495023980652,
+        "nav_factor": 1.0724654102917632,
+        "total_return": 0.0724654102917634,
+        "max_dd": -0.25555334287533327,
+        "volatility": 0.4379111219190278,
+        "sharpe": 0.4532990632181905,
+        "calmar": 0.41590123237658283
+      },
+      "index": 5003,
+      "id": "search_31e6b6cae1bc637cd9a1",
+      "candidate_hash": "31e6b6cae1bc637cd9a134b52d3c120a058fda8a9390ae3c73fc6a59f6b152f2",
+      "family": "regime_ablation",
+      "regime_mode": "always_bull"
+    },
+    "all_assets": {
+      "full": {
+        "sessions": 3088,
+        "cagr": 0.28772028300466396,
+        "nav_factor": 24.53988699826601,
+        "total_return": 23.539886998266006,
+        "max_dd": -0.40270641309647603,
+        "volatility": 0.28064314308415106,
+        "sharpe": 1.041898544273613,
+        "calmar": 0.7144666030827154
+      },
+      "trade_days": 300,
+      "fill_legs": 599,
+      "trade_days_per_year": 23.704663212435232,
+      "turnover": 598.3418239594616,
+      "turnover_per_year": 47.278304742910834,
+      "deferred_count": 1,
+      "missing_held_days": 2,
+      "nonmoney_exposure": 0.9867227979274611,
+      "yearly": {
+        "2014": 0.7943350684569637,
+        "2015": 1.0053948598987033,
+        "2016": -0.2678371388214088,
+        "2017": 0.08754560284955848,
+        "2018": 0.3265826734587365,
+        "2019": 0.4241008943004667,
+        "2020": 0.48798668228300746,
+        "2021": 0.05810014572393185,
+        "2022": 0.00543504952040097,
+        "2023": 0.1007468282613575,
+        "2024": 0.503725485551189,
+        "2025": 0.46417393228278314,
+        "2026": 0.18170847738339235
+      },
+      "holdings_hash": "11889de8850f2dac0184dddbd5c148260c3b8aab7bb1dacb9dacf33d5748e545",
+      "return_path_hash": "c0b114ac877b17f2aaf9fb81cf86f5c20f43b7e996c7d7c7e0daf27e07e2d6ff",
+      "development": {
+        "sessions": 1950,
+        "cagr": 0.3074926062368653,
+        "nav_factor": 8.52235288686384,
+        "total_return": 7.522352886863841,
+        "max_dd": -0.40270641309647603,
+        "volatility": 0.2775936558035551,
+        "sharpe": 1.1051461599701646,
+        "calmar": 0.7635652083921484
+      },
+      "early": {
+        "sessions": 977,
+        "cagr": 0.30068662237924976,
+        "nav_factor": 2.865224228421886,
+        "total_return": 1.8652242284218858,
+        "max_dd": -0.40270641309647603,
+        "volatility": 0.28165926150767084,
+        "sharpe": 1.0746120689387724,
+        "calmar": 0.7466645988257816
+      },
+      "late": {
+        "sessions": 973,
+        "cagr": 0.31436240268726234,
+        "nav_factor": 2.9744104500881603,
+        "total_return": 1.97441045008816,
+        "max_dd": -0.2550796323622312,
+        "volatility": 0.2734502689534444,
+        "sharpe": 1.1369729834017017,
+        "calmar": 1.2324088747346373
+      },
+      "validation": {
+        "sessions": 969,
+        "cagr": 0.2514088835819126,
+        "nav_factor": 2.4367035403154955,
+        "total_return": 1.4367035403154953,
+        "max_dd": -0.22651092202369028,
+        "volatility": 0.2563441007597009,
+        "sharpe": 1.0032020505806274,
+        "calmar": 1.109919474680423
+      },
+      "report_only_2026": {
+        "sessions": 169,
+        "cagr": 0.27259291489915644,
+        "nav_factor": 1.1817084773833928,
+        "total_return": 0.18170847738339285,
+        "max_dd": -0.1966004391411953,
+        "volatility": 0.41614165006189396,
+        "sharpe": 0.7894377899253022,
+        "calmar": 1.386532584006003
+      },
+      "index": 5099,
+      "id": "search_efdd0563891eb8df202d",
+      "candidate_hash": "efdd0563891eb8df202df7b267d8a13a8c818d7808634ea073325cc0e5e29b39",
+      "family": "regime_ablation",
+      "regime_mode": "all_assets"
+    }
+  },
+  "matched_regime_pairs": {
+    "open_stock": {
+      "matched": 56,
+      "unmatched_ids": [
+        "search_3e552ed806b438f65f99",
+        "search_4196d34db4ad47937d1c",
+        "search_d041b453d463fc5a27a9",
+        "search_568985bf0b54d1da9515",
+        "search_874ec951a9d72d839cc4",
+        "search_0993aed983181a1b2cd9",
+        "search_99ad90e0c2e993697e87",
+        "search_4f533329d24c896f43db",
+        "search_0cf286811e942fc9fe0f",
+        "search_75909e1c50e35a0767ed",
+        "search_bb813045519ff525fea9",
+        "search_4dde1418278f369625fe",
+        "search_732d9dbde7fdc28aa653",
+        "search_8b21d16c8e720a5443fa",
+        "search_72c147d750838291a14d",
+        "search_d4c1c065427bb11eb957",
+        "search_6b3d8cf152b53e422947",
+        "search_29600dea0739942dfcb0",
+        "search_8b827d53b0b755906fe8",
+        "search_0b44abd04ba3f5a3564a",
+        "search_cf6541e505c14db6c4b7",
+        "search_16a1532eb64b3f4d655c",
+        "search_4071136590c64e4c6eef",
+        "search_9d8e3744a07f73923917",
+        "search_80c1662e408b636f5cfc",
+        "search_0ea198cf9ad964b4d265",
+        "search_69960570e259da85a13b",
+        "search_0109cb445fc530ac138a",
+        "search_e8409dda5d22f141b1c7",
+        "search_dc65736e17e4b933b052",
+        "search_9f2f28f570e79a6cb8fc",
+        "search_e2d5cd1f9fb9320c4fea",
+        "search_7edda34066c423175500",
+        "search_5361cbfca5b72b9ea131",
+        "search_880baa775e77e97ca4de",
+        "search_1bffebcb0381f4523fca",
+        "search_67b54f5854ec09fe6ff5",
+        "search_28bec2cbef23519047bb",
+        "search_6eaf5e5f02e6d1e5fee6",
+        "search_bce26e0c73f3d3e2b1db"
+      ],
+      "higher_full_cagr": 28,
+      "median_full_difference": -0.006059434114415493,
+      "comparisons": [
+        {
+          "candidate": "search_650cadc83d699b4167a3",
+          "baseline": "search_24d24e99a08d73e2a36c",
+          "full_cagr_difference": -0.050861826561412,
+          "validation_cagr_difference": -0.14794858101416458
+        },
+        {
+          "candidate": "search_d6e3318d3651e4931368",
+          "baseline": "search_a5c014f2d7cd9f96450e",
+          "full_cagr_difference": -0.04840886161144076,
+          "validation_cagr_difference": -0.14653508019146377
+        },
+        {
+          "candidate": "search_bfeed8f20b5695221894",
+          "baseline": "search_06da32cb6ca93c2f485e",
+          "full_cagr_difference": -0.05029396453290619,
+          "validation_cagr_difference": -0.12169170877231406
+        },
+        {
+          "candidate": "search_05a3f56d7c4d8530c29e",
+          "baseline": "search_e5eab61425e0e13dc910",
+          "full_cagr_difference": -0.04774123149074044,
+          "validation_cagr_difference": -0.11861159507506655
+        },
+        {
+          "candidate": "search_5264751aa64c00e1d62f",
+          "baseline": "search_a4d528f335473abefe5c",
+          "full_cagr_difference": -0.04659471675155891,
+          "validation_cagr_difference": -0.11532527568234568
+        },
+        {
+          "candidate": "search_2d1d534d40095893b889",
+          "baseline": "search_555a4ba4126a77de967f",
+          "full_cagr_difference": -0.043690402049779364,
+          "validation_cagr_difference": -0.11154288250355543
+        },
+        {
+          "candidate": "search_5cd73ab73547a5c40c8c",
+          "baseline": "search_c1234c8f5a777d18b990",
+          "full_cagr_difference": -0.05372934533508977,
+          "validation_cagr_difference": -0.1458903402417957
+        },
+        {
+          "candidate": "search_8bafc0a1b2fb94615084",
+          "baseline": "search_96340e2a4a1bf5100533",
+          "full_cagr_difference": -0.05574097460874705,
+          "validation_cagr_difference": -0.1435800095652431
+        },
+        {
+          "candidate": "search_1381e49f0181b0f6d814",
+          "baseline": "search_e0030308090195c98be3",
+          "full_cagr_difference": -0.05062833149899759,
+          "validation_cagr_difference": -0.1452784804521422
+        },
+        {
+          "candidate": "search_7c1c0f7619fce78bd180",
+          "baseline": "search_10f9d27f0bb99096a275",
+          "full_cagr_difference": -0.04947878150616286,
+          "validation_cagr_difference": -0.15151677728239554
+        },
+        {
+          "candidate": "search_8356444f3d9adc60cce8",
+          "baseline": "search_e5650b175033e55d995d",
+          "full_cagr_difference": -0.054153672901013916,
+          "validation_cagr_difference": -0.14172101456314412
+        },
+        {
+          "candidate": "search_eb9665a4f9c59007d1ca",
+          "baseline": "search_30c51fa42cdb615c8db2",
+          "full_cagr_difference": -0.0528336709149646,
+          "validation_cagr_difference": -0.14483288904853656
+        },
+        {
+          "candidate": "search_fe1e5ee9c9bf85f9437a",
+          "baseline": "search_7d86c251ceb45bdec1b7",
+          "full_cagr_difference": -0.055232810942068084,
+          "validation_cagr_difference": -0.15078908667366203
+        },
+        {
+          "candidate": "search_209f7bd4a29648d99576",
+          "baseline": "search_ca1e59ac8ac44dcc823e",
+          "full_cagr_difference": -0.05398058244965026,
+          "validation_cagr_difference": -0.15473233197873126
+        },
+        {
+          "candidate": "search_33affda3437d2ceb6829",
+          "baseline": "search_73fbc2a7dc438639542e",
+          "full_cagr_difference": -0.06423797246105004,
+          "validation_cagr_difference": -0.1625648209833816
+        },
+        {
+          "candidate": "search_edac0b078a6e402886c1",
+          "baseline": "search_d8b03bb3cbf7ef856748",
+          "full_cagr_difference": -0.06800422407301526,
+          "validation_cagr_difference": -0.16760346932090633
+        },
+        {
+          "candidate": "search_7df7ff3b55c412afdf68",
+          "baseline": "search_252c7e4f612ba9fd4656",
+          "full_cagr_difference": -0.0446621289334084,
+          "validation_cagr_difference": -0.137367743874196
+        },
+        {
+          "candidate": "search_7253e1440fea4e8f0432",
+          "baseline": "search_7908884fa37fe87dd152",
+          "full_cagr_difference": -0.04216038474158518,
+          "validation_cagr_difference": -0.13899729086101753
+        },
+        {
+          "candidate": "search_6d271e50f5ca7988f709",
+          "baseline": "search_19a598d2175d42c018cf",
+          "full_cagr_difference": -0.032134672724886015,
+          "validation_cagr_difference": -0.06629199812179336
+        },
+        {
+          "candidate": "search_7d8e83424a0ea91a4087",
+          "baseline": "search_e652e92fb837f2b02119",
+          "full_cagr_difference": -0.048213329784607406,
+          "validation_cagr_difference": -0.12478776653876567
+        },
+        {
+          "candidate": "search_d67db518a35d08546517",
+          "baseline": "search_849c95a05d25b9f9b0da",
+          "full_cagr_difference": -0.023242047968762142,
+          "validation_cagr_difference": -0.05336099171796624
+        },
+        {
+          "candidate": "search_546809c30432949457c8",
+          "baseline": "search_d59ee57935af98fb2ad2",
+          "full_cagr_difference": -0.045546999166202085,
+          "validation_cagr_difference": -0.12238002719013569
+        },
+        {
+          "candidate": "search_2cf7dbbf3875108af018",
+          "baseline": "search_2ca811e845cbc41584bb",
+          "full_cagr_difference": -0.03593760374714228,
+          "validation_cagr_difference": -0.06484603972329112
+        },
+        {
+          "candidate": "search_3b78054d8558d9fd9412",
+          "baseline": "search_b2582cb99b0c2f059db3",
+          "full_cagr_difference": -0.0456993867653252,
+          "validation_cagr_difference": -0.11376940047725334
+        },
+        {
+          "candidate": "search_58af8bfcba9b019414c6",
+          "baseline": "search_98c535ae3e2eb043932e",
+          "full_cagr_difference": -0.028208717699648167,
+          "validation_cagr_difference": -0.054940656694917656
+        },
+        {
+          "candidate": "search_8cecb8c96014f0f5a0e2",
+          "baseline": "search_5175f0b96f8bc820736e",
+          "full_cagr_difference": -0.042867772218310674,
+          "validation_cagr_difference": -0.11110939142118098
+        },
+        {
+          "candidate": "search_017d1d4a66740451de80",
+          "baseline": "search_393cc633f2d9adb6a5ed",
+          "full_cagr_difference": -0.05377151530722504,
+          "validation_cagr_difference": -0.1423051119228627
+        },
+        {
+          "candidate": "search_816164e232fbfbc33668",
+          "baseline": "search_8a89a5a86ef21b04e5ed",
+          "full_cagr_difference": -0.05588436895420573,
+          "validation_cagr_difference": -0.14120204427018299
+        },
+        {
+          "candidate": "search_287ea3ba3db5142fff23",
+          "baseline": "search_237ac1907ebf50afd2db",
+          "full_cagr_difference": 0.018708900055324162,
+          "validation_cagr_difference": 0.020196791154074356
+        },
+        {
+          "candidate": "search_eee9f488969246c6543d",
+          "baseline": "search_1322b7bc26ea9e0217bb",
+          "full_cagr_difference": 0.020635931570509802,
+          "validation_cagr_difference": 0.020830385572701615
+        },
+        {
+          "candidate": "search_be85e4aaa0d7708b5133",
+          "baseline": "search_5b58dee57d42397aa472",
+          "full_cagr_difference": 0.01752032078938734,
+          "validation_cagr_difference": 0.019257471852818064
+        },
+        {
+          "candidate": "search_738033a0c6b16ac613ba",
+          "baseline": "search_06c6b1bbde1dbe5fe32a",
+          "full_cagr_difference": 0.018969049878108102,
+          "validation_cagr_difference": 0.050410590613949036
+        },
+        {
+          "candidate": "search_8c9897a8c1e19391a1f5",
+          "baseline": "search_8c0797e008045ad75815",
+          "full_cagr_difference": 0.02431747168421694,
+          "validation_cagr_difference": 0.024988213373480728
+        },
+        {
+          "candidate": "search_5ad5ab0138510fa2b679",
+          "baseline": "search_ca10d4ef015a01f03344",
+          "full_cagr_difference": 0.020951919689962795,
+          "validation_cagr_difference": 0.051992023456868486
+        },
+        {
+          "candidate": "search_52d51a88bbea1e1fa0cd",
+          "baseline": "search_8336ef3933ad422f357b",
+          "full_cagr_difference": 0.01617450901473294,
+          "validation_cagr_difference": 0.010396741138851973
+        },
+        {
+          "candidate": "search_7a8499e38931d1fa6696",
+          "baseline": "search_19c92917dc2cb3b2ffb4",
+          "full_cagr_difference": 0.023320958155600036,
+          "validation_cagr_difference": 0.05153111278686906
+        },
+        {
+          "candidate": "search_2eec15efbe321cd58ac6",
+          "baseline": "search_ca0757c75f5527f49a73",
+          "full_cagr_difference": 0.02136887352883632,
+          "validation_cagr_difference": 0.010664834402872414
+        },
+        {
+          "candidate": "search_0ed6bb4a28cd7b414fca",
+          "baseline": "search_9f60cde21ebb3db785a1",
+          "full_cagr_difference": 0.02537057862780967,
+          "validation_cagr_difference": 0.05314769757988319
+        },
+        {
+          "candidate": "search_93e5e8d4ec2aeb62bbae",
+          "baseline": "search_1da43a592da419fb6b34",
+          "full_cagr_difference": 0.01777974864320314,
+          "validation_cagr_difference": 0.026119386492756247
+        },
+        {
+          "candidate": "search_d9cb54daf6da8f6f547e",
+          "baseline": "search_423b878b1ea10bd161c8",
+          "full_cagr_difference": 0.01477269421334565,
+          "validation_cagr_difference": 0.02693877890878371
+        },
+        {
+          "candidate": "search_ba3fb0c4bd30145412f4",
+          "baseline": "search_ccfe373a3aa501245234",
+          "full_cagr_difference": 0.0215281697009021,
+          "validation_cagr_difference": 0.047283069960081636
+        },
+        {
+          "candidate": "search_9ce71bd49975c7f04288",
+          "baseline": "search_e5735596c3b4ab3ec2e2",
+          "full_cagr_difference": 0.023500962578979545,
+          "validation_cagr_difference": 0.048860603700832894
+        },
+        {
+          "candidate": "search_72ca54281c2c15759f18",
+          "baseline": "search_b7f2cb953b362811765c",
+          "full_cagr_difference": 0.019884584364211866,
+          "validation_cagr_difference": 0.048527833140627794
+        },
+        {
+          "candidate": "search_cbda3129dbadff78e13b",
+          "baseline": "search_3b984cad53e71b0beaf2",
+          "full_cagr_difference": 0.02181446537206544,
+          "validation_cagr_difference": 0.050146896670333785
+        },
+        {
+          "candidate": "search_08d738e7cda1e26a435f",
+          "baseline": "search_4ca95da9a0490c7cdf7e",
+          "full_cagr_difference": 0.01717220040271042,
+          "validation_cagr_difference": 0.030971046211953374
+        },
+        {
+          "candidate": "search_5de032003b995e13c7d0",
+          "baseline": "search_c89a20f0a0f25878c4cc",
+          "full_cagr_difference": 0.01902219706150618,
+          "validation_cagr_difference": 0.03200435201098242
+        },
+        {
+          "candidate": "search_4865c346f75baa0825e3",
+          "baseline": "search_76a4e7873c8b5f80d87e",
+          "full_cagr_difference": 0.014012397090077955,
+          "validation_cagr_difference": 0.031479492320179214
+        },
+        {
+          "candidate": "search_0fdcc0fe26db622dbee4",
+          "baseline": "search_e1d27bec7ab627ca9c2d",
+          "full_cagr_difference": 0.011123179739931155,
+          "validation_cagr_difference": 0.03252976171509722
+        },
+        {
+          "candidate": "search_e20b7268b54564fadf3b",
+          "baseline": "search_c36e5b5adb3c74c69b50",
+          "full_cagr_difference": 0.020713196115529353,
+          "validation_cagr_difference": 0.026037767237363174
+        },
+        {
+          "candidate": "search_eb2a816d32b76a820390",
+          "baseline": "search_e482c22188a44126e44c",
+          "full_cagr_difference": 0.022662433310003227,
+          "validation_cagr_difference": 0.026641033624442367
+        },
+        {
+          "candidate": "search_5453ab54faa4d5817b48",
+          "baseline": "search_38f9ea175b0398b4a444",
+          "full_cagr_difference": 0.020355097673259326,
+          "validation_cagr_difference": 0.052711935552208766
+        },
+        {
+          "candidate": "search_32cbd9215e5dd680b4a5",
+          "baseline": "search_0c2753d1e6bc0985c712",
+          "full_cagr_difference": 0.022335538626161,
+          "validation_cagr_difference": 0.053933213038353744
+        },
+        {
+          "candidate": "search_930346e91667edf3f0db",
+          "baseline": "search_a1a29eb6dcbf2991d22d",
+          "full_cagr_difference": 0.024297192851217286,
+          "validation_cagr_difference": 0.05108367975543482
+        },
+        {
+          "candidate": "search_58d43d15626c93d59d4e",
+          "baseline": "search_61b71bef056db0ea330a",
+          "full_cagr_difference": 0.02629998107849052,
+          "validation_cagr_difference": 0.052267232348242876
+        },
+        {
+          "candidate": "search_d47f5f332bb0f11294ba",
+          "baseline": "search_59b563d5bbf284185a2d",
+          "full_cagr_difference": 0.018466284550893775,
+          "validation_cagr_difference": 0.027720391363233066
+        },
+        {
+          "candidate": "search_0b3895deff3c46f9aeab",
+          "baseline": "search_6b839d347babff7d4e0a",
+          "full_cagr_difference": 0.015469542916644874,
+          "validation_cagr_difference": 0.028362642297948215
+        }
+      ]
+    },
+    "always_bull": {
+      "matched": 56,
+      "unmatched_ids": [
+        "search_312ae7ee83866bad5c5a",
+        "search_977d874f6042596e5838",
+        "search_47fbd2ecbc637ef11a26",
+        "search_0f675b0a9e2827544735",
+        "search_d479244f7ee441ccf84d",
+        "search_1a7c28b18e14493c1ab7",
+        "search_49d15b4cab0d9205cc3e",
+        "search_2ddf776e84297c4609f3",
+        "search_1b03d33565a3fb67db6b",
+        "search_9384ba8e2ad1cbd8ac92",
+        "search_e2a73e261999c9398772",
+        "search_5bf6e8dcf6456a9e1fea",
+        "search_79d8f31ae34666921750",
+        "search_642a389650ac6a066958",
+        "search_84c1566a53f252538521",
+        "search_dee9a4a31e75647b8263",
+        "search_69beafcc62d8a2797dba",
+        "search_d9d185e97fb25eb9fa67",
+        "search_e4b88918dbaab471365f",
+        "search_d132520590c7cfa88c7d",
+        "search_69a100527b2de77e1dcb",
+        "search_bb6a8d412de6621e6202",
+        "search_23c20377e9b605996965",
+        "search_74193ee99ff7e934f776",
+        "search_1903f16bb5f844d6a2ab",
+        "search_3097a7b6d2eeeb3a6dcd",
+        "search_183f878e665272be52e8",
+        "search_152ad70c06135dedf124",
+        "search_65b3259327f53e4c0ef3",
+        "search_f4894a43a0aac500296a",
+        "search_caff25d6ff4d817837bd",
+        "search_402dc42036eed287abe8",
+        "search_937283875d180a4ef899",
+        "search_c761aa1345ef2433ab1c",
+        "search_942b8d6dcce9fa8db2d2",
+        "search_2bffdd64ceace7c31ad7",
+        "search_0872dc56f53ca3cc364a",
+        "search_702dfa3e29fade31ca11",
+        "search_7ec78c87d83f2052cfbf",
+        "search_b2678c718f0bc2c2b0fe"
+      ],
+      "higher_full_cagr": 17,
+      "median_full_difference": -0.007220512501154866,
+      "comparisons": [
+        {
+          "candidate": "search_785f90cd95e0f0d106ca",
+          "baseline": "search_24d24e99a08d73e2a36c",
+          "full_cagr_difference": -0.05488141353489351,
+          "validation_cagr_difference": -0.11059929277735131
+        },
+        {
+          "candidate": "search_317c4bfd23f3a6d23ab2",
+          "baseline": "search_a5c014f2d7cd9f96450e",
+          "full_cagr_difference": -0.053372059447341635,
+          "validation_cagr_difference": -0.10145724909882395
+        },
+        {
+          "candidate": "search_8c1c535870b52b797e52",
+          "baseline": "search_06da32cb6ca93c2f485e",
+          "full_cagr_difference": -0.013739834851925592,
+          "validation_cagr_difference": -0.00511251505718352
+        },
+        {
+          "candidate": "search_e92b6bf81b4923ce9ba0",
+          "baseline": "search_e5eab61425e0e13dc910",
+          "full_cagr_difference": -0.012237716461144965,
+          "validation_cagr_difference": 0.005173165821434178
+        },
+        {
+          "candidate": "search_f8b8e5e7ca6c49e6edc2",
+          "baseline": "search_a4d528f335473abefe5c",
+          "full_cagr_difference": -0.03619425515714858,
+          "validation_cagr_difference": -0.059248671602738
+        },
+        {
+          "candidate": "search_7a6bf53e60f07a6c4122",
+          "baseline": "search_555a4ba4126a77de967f",
+          "full_cagr_difference": -0.03548145107468953,
+          "validation_cagr_difference": -0.05161758542979639
+        },
+        {
+          "candidate": "search_44fac78f0fe974edfd9d",
+          "baseline": "search_c1234c8f5a777d18b990",
+          "full_cagr_difference": -0.003901406789716233,
+          "validation_cagr_difference": -0.01182041047918203
+        },
+        {
+          "candidate": "search_1708428d22ddf76ccd73",
+          "baseline": "search_96340e2a4a1bf5100533",
+          "full_cagr_difference": -0.002111866865246559,
+          "validation_cagr_difference": -0.002082468486649336
+        },
+        {
+          "candidate": "search_d05eaf63a2ca4bc38718",
+          "baseline": "search_e0030308090195c98be3",
+          "full_cagr_difference": -0.047816458877273565,
+          "validation_cagr_difference": -0.10572652878172231
+        },
+        {
+          "candidate": "search_d26901bd5451c7e5abcd",
+          "baseline": "search_10f9d27f0bb99096a275",
+          "full_cagr_difference": -0.05096983557276302,
+          "validation_cagr_difference": -0.11611735530659728
+        },
+        {
+          "candidate": "search_4c92e505c7b1ba3175ba",
+          "baseline": "search_e5650b175033e55d995d",
+          "full_cagr_difference": -0.06164498022139381,
+          "validation_cagr_difference": -0.14010350444925398
+        },
+        {
+          "candidate": "search_9952a5840350bfee151d",
+          "baseline": "search_30c51fa42cdb615c8db2",
+          "full_cagr_difference": -0.06515714951747001,
+          "validation_cagr_difference": -0.15078431668922382
+        },
+        {
+          "candidate": "search_088322586c98aff39efe",
+          "baseline": "search_7d86c251ceb45bdec1b7",
+          "full_cagr_difference": -0.05782111909205878,
+          "validation_cagr_difference": -0.13932230220205585
+        },
+        {
+          "candidate": "search_0096876054f446663a0b",
+          "baseline": "search_ca1e59ac8ac44dcc823e",
+          "full_cagr_difference": -0.06115349422212507,
+          "validation_cagr_difference": -0.14993335945265227
+        },
+        {
+          "candidate": "search_1b0d1466593a10a15086",
+          "baseline": "search_73fbc2a7dc438639542e",
+          "full_cagr_difference": -0.05148757348235558,
+          "validation_cagr_difference": -0.11434408947574738
+        },
+        {
+          "candidate": "search_576bcecffe85e1d96710",
+          "baseline": "search_d8b03bb3cbf7ef856748",
+          "full_cagr_difference": -0.05791366307770887,
+          "validation_cagr_difference": -0.1231915374637824
+        },
+        {
+          "candidate": "search_3578261602f4808b3e18",
+          "baseline": "search_252c7e4f612ba9fd4656",
+          "full_cagr_difference": -0.044910089129186315,
+          "validation_cagr_difference": -0.08625611590613594
+        },
+        {
+          "candidate": "search_61cbaa4016c2d8e2adaa",
+          "baseline": "search_7908884fa37fe87dd152",
+          "full_cagr_difference": -0.04151830882393798,
+          "validation_cagr_difference": -0.07156962112818993
+        },
+        {
+          "candidate": "search_323a6ea69c0604f7201a",
+          "baseline": "search_19a598d2175d42c018cf",
+          "full_cagr_difference": 0.014876977328516255,
+          "validation_cagr_difference": 0.02844274608894118
+        },
+        {
+          "candidate": "search_587edc67746db145a19a",
+          "baseline": "search_e652e92fb837f2b02119",
+          "full_cagr_difference": -0.049275465386076855,
+          "validation_cagr_difference": -0.1223380117518981
+        },
+        {
+          "candidate": "search_37602b0795fd72acdab8",
+          "baseline": "search_849c95a05d25b9f9b0da",
+          "full_cagr_difference": 0.021804224415255646,
+          "validation_cagr_difference": 0.048646077748541294
+        },
+        {
+          "candidate": "search_31e6b6cae1bc637cd9a1",
+          "baseline": "search_d59ee57935af98fb2ad2",
+          "full_cagr_difference": -0.047456894399114824,
+          "validation_cagr_difference": -0.11349806872174001
+        },
+        {
+          "candidate": "search_d0ca1b99f8aa26ea0f09",
+          "baseline": "search_2ca811e845cbc41584bb",
+          "full_cagr_difference": 0.005967919476090433,
+          "validation_cagr_difference": 0.016564086167859204
+        },
+        {
+          "candidate": "search_ca92fa0fc61f0f94de31",
+          "baseline": "search_b2582cb99b0c2f059db3",
+          "full_cagr_difference": -0.037930052234964595,
+          "validation_cagr_difference": -0.07022214767039281
+        },
+        {
+          "candidate": "search_d531993e075a896884d5",
+          "baseline": "search_98c535ae3e2eb043932e",
+          "full_cagr_difference": 0.010580580584318489,
+          "validation_cagr_difference": 0.03272859709622594
+        },
+        {
+          "candidate": "search_97e79609a11b8c3e9781",
+          "baseline": "search_5175f0b96f8bc820736e",
+          "full_cagr_difference": -0.03557555394241424,
+          "validation_cagr_difference": -0.058241468240034955
+        },
+        {
+          "candidate": "search_f64c100a28c77ba9fc93",
+          "baseline": "search_393cc633f2d9adb6a5ed",
+          "full_cagr_difference": -0.006629929052753308,
+          "validation_cagr_difference": -0.0050404634062941045
+        },
+        {
+          "candidate": "search_d23295603b0a2bdfb706",
+          "baseline": "search_8a89a5a86ef21b04e5ed",
+          "full_cagr_difference": -0.0030953308227935628,
+          "validation_cagr_difference": 0.011538100351005887
+        },
+        {
+          "candidate": "search_dafecf0fb5a8c93ab05d",
+          "baseline": "search_237ac1907ebf50afd2db",
+          "full_cagr_difference": -0.007811095949556424,
+          "validation_cagr_difference": -0.0035972000426111594
+        },
+        {
+          "candidate": "search_8f524a89b8ec0e72c05d",
+          "baseline": "search_1322b7bc26ea9e0217bb",
+          "full_cagr_difference": -0.005453846621352565,
+          "validation_cagr_difference": -0.003710047962475649
+        },
+        {
+          "candidate": "search_7b9e38c0a8a96cdf2b25",
+          "baseline": "search_5b58dee57d42397aa472",
+          "full_cagr_difference": -0.0008008376301630038,
+          "validation_cagr_difference": -0.01552182286397838
+        },
+        {
+          "candidate": "search_196541cffcfe3e2e4a26",
+          "baseline": "search_06c6b1bbde1dbe5fe32a",
+          "full_cagr_difference": -0.02764664573150627,
+          "validation_cagr_difference": -0.056702444946739705
+        },
+        {
+          "candidate": "search_d0fc7492f42b6e76dc41",
+          "baseline": "search_8c0797e008045ad75815",
+          "full_cagr_difference": 0.005760288727049034,
+          "validation_cagr_difference": -0.009890731770870242
+        },
+        {
+          "candidate": "search_7de505cc3bc62db9a5a2",
+          "baseline": "search_ca10d4ef015a01f03344",
+          "full_cagr_difference": -0.025706796698824363,
+          "validation_cagr_difference": -0.05848125982711505
+        },
+        {
+          "candidate": "search_446c0f59af1f0e43148c",
+          "baseline": "search_8336ef3933ad422f357b",
+          "full_cagr_difference": 0.0193280718009623,
+          "validation_cagr_difference": 0.02242624817225053
+        },
+        {
+          "candidate": "search_9fa019481a907a5d4aac",
+          "baseline": "search_19c92917dc2cb3b2ffb4",
+          "full_cagr_difference": 0.004786052088680659,
+          "validation_cagr_difference": 0.022138347889759435
+        },
+        {
+          "candidate": "search_3dfa8edf2167252c6f4d",
+          "baseline": "search_ca0757c75f5527f49a73",
+          "full_cagr_difference": 0.02551485111887125,
+          "validation_cagr_difference": 0.029397499693133877
+        },
+        {
+          "candidate": "search_7e6d739dfd36f48129fb",
+          "baseline": "search_9f60cde21ebb3db785a1",
+          "full_cagr_difference": 0.007515980490840013,
+          "validation_cagr_difference": 0.022832850969656426
+        },
+        {
+          "candidate": "search_9aa851fdabfed7cc4e0b",
+          "baseline": "search_1da43a592da419fb6b34",
+          "full_cagr_difference": 0.036548467070419643,
+          "validation_cagr_difference": 0.08373260595762716
+        },
+        {
+          "candidate": "search_7fa0f4f6bef5ef5b0aa8",
+          "baseline": "search_423b878b1ea10bd161c8",
+          "full_cagr_difference": 0.039868663468522525,
+          "validation_cagr_difference": 0.08635938520127451
+        },
+        {
+          "candidate": "search_0d334df994c7142dfc34",
+          "baseline": "search_ccfe373a3aa501245234",
+          "full_cagr_difference": 0.003073174618503982,
+          "validation_cagr_difference": 0.013472415406992413
+        },
+        {
+          "candidate": "search_db2ad0b541e64e043070",
+          "baseline": "search_e5735596c3b4ab3ec2e2",
+          "full_cagr_difference": 0.007625178223974516,
+          "validation_cagr_difference": 0.017268456811446925
+        },
+        {
+          "candidate": "search_a7aa3d13cd310593b126",
+          "baseline": "search_b7f2cb953b362811765c",
+          "full_cagr_difference": -0.008647005129931717,
+          "validation_cagr_difference": -0.019303390999133446
+        },
+        {
+          "candidate": "search_e8e342ae74edc049573f",
+          "baseline": "search_3b984cad53e71b0beaf2",
+          "full_cagr_difference": -0.004647007099410183,
+          "validation_cagr_difference": -0.017246750786077014
+        },
+        {
+          "candidate": "search_f1ccde112bc14a445d7c",
+          "baseline": "search_4ca95da9a0490c7cdf7e",
+          "full_cagr_difference": -0.004748090854825193,
+          "validation_cagr_difference": -0.007933214223711585
+        },
+        {
+          "candidate": "search_48a1084c9bd55c257da5",
+          "baseline": "search_c89a20f0a0f25878c4cc",
+          "full_cagr_difference": -0.0004504628567164326,
+          "validation_cagr_difference": -0.004895088257077185
+        },
+        {
+          "candidate": "search_40825b410f7bf1a1b91a",
+          "baseline": "search_76a4e7873c8b5f80d87e",
+          "full_cagr_difference": 0.0034461824017838205,
+          "validation_cagr_difference": 0.025957816804735162
+        },
+        {
+          "candidate": "search_ef68da05623bc1f47a81",
+          "baseline": "search_e1d27bec7ab627ca9c2d",
+          "full_cagr_difference": 0.004481060907680023,
+          "validation_cagr_difference": 0.0302973496721968
+        },
+        {
+          "candidate": "search_47c88c57f5dfe4571e27",
+          "baseline": "search_c36e5b5adb3c74c69b50",
+          "full_cagr_difference": -0.02727568632075944,
+          "validation_cagr_difference": -0.05945081787040568
+        },
+        {
+          "candidate": "search_6140945ee9bc8e460793",
+          "baseline": "search_e482c22188a44126e44c",
+          "full_cagr_difference": -0.023139531831898985,
+          "validation_cagr_difference": -0.054159053488776726
+        },
+        {
+          "candidate": "search_fe0f6be3687198f2a188",
+          "baseline": "search_38f9ea175b0398b4a444",
+          "full_cagr_difference": -0.04139226686558056,
+          "validation_cagr_difference": -0.0918734614500833
+        },
+        {
+          "candidate": "search_28e72a2300184befb0ac",
+          "baseline": "search_0c2753d1e6bc0985c712",
+          "full_cagr_difference": -0.03772987429774827,
+          "validation_cagr_difference": -0.08806157969443804
+        },
+        {
+          "candidate": "search_32d129b2b717b29b13a5",
+          "baseline": "search_a1a29eb6dcbf2991d22d",
+          "full_cagr_difference": -0.005559217772826364,
+          "validation_cagr_difference": -0.0008332314879767322
+        },
+        {
+          "candidate": "search_d953ed3eba46393f8e8b",
+          "baseline": "search_61b71bef056db0ea330a",
+          "full_cagr_difference": -0.0008282501188570657,
+          "validation_cagr_difference": 0.00598012152090871
+        },
+        {
+          "candidate": "search_f9c53807649e57777ac3",
+          "baseline": "search_59b563d5bbf284185a2d",
+          "full_cagr_difference": 0.029308467551609374,
+          "validation_cagr_difference": 0.06906897462084502
+        },
+        {
+          "candidate": "search_cc4992679d805ac3cd34",
+          "baseline": "search_6b839d347babff7d4e0a",
+          "full_cagr_difference": 0.03465750347976676,
+          "validation_cagr_difference": 0.0778155259016336
+        }
+      ]
+    },
+    "all_assets": {
+      "matched": 56,
+      "unmatched_ids": [
+        "search_5218e5aac1cf562afce2",
+        "search_41a3f9fc5c4a4c21eda6",
+        "search_db2e707c439f2ade564c",
+        "search_77b43f8b94fb5109c7d1",
+        "search_a8acb43c0bb76be2280c",
+        "search_91399e7e0904ddd590be",
+        "search_5c214addec2a965e0271",
+        "search_05685be87d0f9c144dd0",
+        "search_cbd43544a2037e3751f1",
+        "search_84c3ac1a7cbc9190602f",
+        "search_ff179788aaa525864784",
+        "search_e392e1a4e6e4d1580863",
+        "search_d2d5512c23c75799c962",
+        "search_592ec454229b739a05e1",
+        "search_f8de825e25919507ca86",
+        "search_3d749b138fde17229d34",
+        "search_a7dd7c1ca3ea1e532d6d",
+        "search_47a8d3459a5806f6abf0",
+        "search_4f14738d7e681a9760f4",
+        "search_0e1839fbf4909c91d3ce",
+        "search_1acecf9809dceb5ba196",
+        "search_14c32860bfb608e98110",
+        "search_0370af9d18e73fb70d55",
+        "search_5a8a9b0eaa77b8cea252",
+        "search_ce42d82e1ecbd9cb88a0",
+        "search_f0050b3a3b1144c92b23",
+        "search_a98912216524ad0fa922",
+        "search_ca2595a87d9dcb98e2ba",
+        "search_aa963f4cea125a1643e4",
+        "search_c29735439610a09e8c82",
+        "search_c4e009ab9d1d2bf74209",
+        "search_847cb40ef9506d567870",
+        "search_bf0c6a216d16a89fa2b4",
+        "search_a81603bd2a90f2b0bcf7",
+        "search_aca4a77e1baca71ce31e",
+        "search_4acfcaf8f2b18f825fc1",
+        "search_dbb736499e0a26a183f9",
+        "search_e83d2855e771a7ff96e9",
+        "search_23c39f9d3fe735e8036b",
+        "search_7f0b476f7665095e41ba"
+      ],
+      "higher_full_cagr": 0,
+      "median_full_difference": -0.06927297029823497,
+      "comparisons": [
+        {
+          "candidate": "search_b0598e160b5bbe07b067",
+          "baseline": "search_24d24e99a08d73e2a36c",
+          "full_cagr_difference": -0.07387792830636303,
+          "validation_cagr_difference": -0.1605340879192672
+        },
+        {
+          "candidate": "search_d24eb9bdf89b86f74e28",
+          "baseline": "search_a5c014f2d7cd9f96450e",
+          "full_cagr_difference": -0.07172796729887371,
+          "validation_cagr_difference": -0.14042292049066982
+        },
+        {
+          "candidate": "search_0d75f7d8997ae75d0cb3",
+          "baseline": "search_06da32cb6ca93c2f485e",
+          "full_cagr_difference": -0.10160566464906648,
+          "validation_cagr_difference": -0.21021370668775796
+        },
+        {
+          "candidate": "search_cb9a241abc00a2377507",
+          "baseline": "search_e5eab61425e0e13dc910",
+          "full_cagr_difference": -0.1068406166147492,
+          "validation_cagr_difference": -0.21141079023549186
+        },
+        {
+          "candidate": "search_880f4cb3a0b0854fce33",
+          "baseline": "search_a4d528f335473abefe5c",
+          "full_cagr_difference": -0.14559765374710398,
+          "validation_cagr_difference": -0.2893914736871988
+        },
+        {
+          "candidate": "search_488458f48339c37e361e",
+          "baseline": "search_555a4ba4126a77de967f",
+          "full_cagr_difference": -0.15128543456701843,
+          "validation_cagr_difference": -0.2946451277722097
+        },
+        {
+          "candidate": "search_cd35a8c0d79fe6c14e4b",
+          "baseline": "search_c1234c8f5a777d18b990",
+          "full_cagr_difference": -0.1256585740881036,
+          "validation_cagr_difference": -0.23071727961599306
+        },
+        {
+          "candidate": "search_c5dea37f1270d32980fb",
+          "baseline": "search_96340e2a4a1bf5100533",
+          "full_cagr_difference": -0.13057005479938574,
+          "validation_cagr_difference": -0.23310644819263954
+        },
+        {
+          "candidate": "search_32714b183c77583305ef",
+          "baseline": "search_e0030308090195c98be3",
+          "full_cagr_difference": -0.06470657761896234,
+          "validation_cagr_difference": -0.1033578581746189
+        },
+        {
+          "candidate": "search_554df6038148672cde0f",
+          "baseline": "search_10f9d27f0bb99096a275",
+          "full_cagr_difference": -0.0668154162697388,
+          "validation_cagr_difference": -0.09805185259956781
+        },
+        {
+          "candidate": "search_5684d8a0b81c61a93f32",
+          "baseline": "search_e5650b175033e55d995d",
+          "full_cagr_difference": -0.08410637322366776,
+          "validation_cagr_difference": -0.11096539786516346
+        },
+        {
+          "candidate": "search_c8a20ae3f6ee4f011128",
+          "baseline": "search_30c51fa42cdb615c8db2",
+          "full_cagr_difference": -0.09214245135710145,
+          "validation_cagr_difference": -0.1204356493672104
+        },
+        {
+          "candidate": "search_9f45748fc54bea70947b",
+          "baseline": "search_7d86c251ceb45bdec1b7",
+          "full_cagr_difference": -0.1039589987931207,
+          "validation_cagr_difference": -0.15471190839853619
+        },
+        {
+          "candidate": "search_264318883ac2f6fc3e13",
+          "baseline": "search_ca1e59ac8ac44dcc823e",
+          "full_cagr_difference": -0.11217157480168694,
+          "validation_cagr_difference": -0.16525397752523235
+        },
+        {
+          "candidate": "search_8a5dd4723318445411af",
+          "baseline": "search_73fbc2a7dc438639542e",
+          "full_cagr_difference": -0.12552087851075144,
+          "validation_cagr_difference": -0.19224904369954066
+        },
+        {
+          "candidate": "search_4b0d165e2b027b76c22e",
+          "baseline": "search_d8b03bb3cbf7ef856748",
+          "full_cagr_difference": -0.13688049458721002,
+          "validation_cagr_difference": -0.2117660964736993
+        },
+        {
+          "candidate": "search_48e403f0893d6bc70d04",
+          "baseline": "search_252c7e4f612ba9fd4656",
+          "full_cagr_difference": -0.03800329264239449,
+          "validation_cagr_difference": -0.07507634668974847
+        },
+        {
+          "candidate": "search_2c7f443901967ee5288c",
+          "baseline": "search_7908884fa37fe87dd152",
+          "full_cagr_difference": -0.032205035001540594,
+          "validation_cagr_difference": -0.041285605432057115
+        },
+        {
+          "candidate": "search_d3ea8027470da11f583e",
+          "baseline": "search_19a598d2175d42c018cf",
+          "full_cagr_difference": -0.0193848906624898,
+          "validation_cagr_difference": -0.04001364507720803
+        },
+        {
+          "candidate": "search_c3c5f31e04867803c56e",
+          "baseline": "search_e652e92fb837f2b02119",
+          "full_cagr_difference": -0.08582719841749942,
+          "validation_cagr_difference": -0.196145491902226
+        },
+        {
+          "candidate": "search_fc4c5c415a7f78867cc9",
+          "baseline": "search_849c95a05d25b9f9b0da",
+          "full_cagr_difference": -0.017339424400264286,
+          "validation_cagr_difference": -0.025225158687857685
+        },
+        {
+          "candidate": "search_efdd0563891eb8df202d",
+          "baseline": "search_d59ee57935af98fb2ad2",
+          "full_cagr_difference": -0.08918433018988225,
+          "validation_cagr_difference": -0.1931909098317357
+        },
+        {
+          "candidate": "search_0292048cd466992d4698",
+          "baseline": "search_2ca811e845cbc41584bb",
+          "full_cagr_difference": -0.06737530989166851,
+          "validation_cagr_difference": -0.1306508289412256
+        },
+        {
+          "candidate": "search_9608120bc7599b180052",
+          "baseline": "search_b2582cb99b0c2f059db3",
+          "full_cagr_difference": -0.115622715859376,
+          "validation_cagr_difference": -0.22632231394820362
+        },
+        {
+          "candidate": "search_55f6fa75b25c5864511e",
+          "baseline": "search_98c535ae3e2eb043932e",
+          "full_cagr_difference": -0.06766434306983629,
+          "validation_cagr_difference": -0.12385065352050476
+        },
+        {
+          "candidate": "search_21fcfa3278e398920496",
+          "baseline": "search_5175f0b96f8bc820736e",
+          "full_cagr_difference": -0.11846518001717185,
+          "validation_cagr_difference": -0.22447049106511408
+        },
+        {
+          "candidate": "search_d1d30646bbc99c388b30",
+          "baseline": "search_393cc633f2d9adb6a5ed",
+          "full_cagr_difference": -0.1284552528004821,
+          "validation_cagr_difference": -0.23423902072123998
+        },
+        {
+          "candidate": "search_884b2b97119db869119c",
+          "baseline": "search_8a89a5a86ef21b04e5ed",
+          "full_cagr_difference": -0.13421180109522224,
+          "validation_cagr_difference": -0.24034750770650334
+        },
+        {
+          "candidate": "search_f6bbf2cad425e21d5743",
+          "baseline": "search_237ac1907ebf50afd2db",
+          "full_cagr_difference": -0.06598207976948403,
+          "validation_cagr_difference": -0.09747626599100884
+        },
+        {
+          "candidate": "search_b6ec64d6d4c709320b95",
+          "baseline": "search_1322b7bc26ea9e0217bb",
+          "full_cagr_difference": -0.0683559174021634,
+          "validation_cagr_difference": -0.10053419819465775
+        },
+        {
+          "candidate": "search_3b68c75e696690656453",
+          "baseline": "search_5b58dee57d42397aa472",
+          "full_cagr_difference": -0.07034525414123433,
+          "validation_cagr_difference": -0.12680018145251543
+        },
+        {
+          "candidate": "search_8b4a94d14ed1b68c168f",
+          "baseline": "search_06c6b1bbde1dbe5fe32a",
+          "full_cagr_difference": -0.09976080259796583,
+          "validation_cagr_difference": -0.16474881592315627
+        },
+        {
+          "candidate": "search_136904fe613217c0cab6",
+          "baseline": "search_8c0797e008045ad75815",
+          "full_cagr_difference": -0.06873023303198916,
+          "validation_cagr_difference": -0.1245758540330748
+        },
+        {
+          "candidate": "search_0584991d7526626b0274",
+          "baseline": "search_ca10d4ef015a01f03344",
+          "full_cagr_difference": -0.10292799463517127,
+          "validation_cagr_difference": -0.1699171582329776
+        },
+        {
+          "candidate": "search_c3d62d9fe0a8a57b51cd",
+          "baseline": "search_8336ef3933ad422f357b",
+          "full_cagr_difference": -0.06981570756448077,
+          "validation_cagr_difference": -0.1551488716282698
+        },
+        {
+          "candidate": "search_c004fda940a7d94ff490",
+          "baseline": "search_19c92917dc2cb3b2ffb4",
+          "full_cagr_difference": -0.08929640096059238,
+          "validation_cagr_difference": -0.15836005207887477
+        },
+        {
+          "candidate": "search_942918f582f0cb9f4a00",
+          "baseline": "search_ca0757c75f5527f49a73",
+          "full_cagr_difference": -0.0681600006236821,
+          "validation_cagr_difference": -0.15361404525920286
+        },
+        {
+          "candidate": "search_8ffe45275b5ea29e9d8c",
+          "baseline": "search_9f60cde21ebb3db785a1",
+          "full_cagr_difference": -0.09115355493501698,
+          "validation_cagr_difference": -0.16332797219871434
+        },
+        {
+          "candidate": "search_a0ee0501c7acaf1f7225",
+          "baseline": "search_1da43a592da419fb6b34",
+          "full_cagr_difference": -0.06112726976753538,
+          "validation_cagr_difference": -0.08892661813749428
+        },
+        {
+          "candidate": "search_fdf80c11849ed378f72c",
+          "baseline": "search_423b878b1ea10bd161c8",
+          "full_cagr_difference": -0.06238772636041584,
+          "validation_cagr_difference": -0.09171633896440146
+        },
+        {
+          "candidate": "search_b8cc2246a511c712f8ad",
+          "baseline": "search_ccfe373a3aa501245234",
+          "full_cagr_difference": -0.0386114573143749,
+          "validation_cagr_difference": 0.07679781070355035
+        },
+        {
+          "candidate": "search_d19c5ca4656643c98f50",
+          "baseline": "search_e5735596c3b4ab3ec2e2",
+          "full_cagr_difference": -0.03981024806622391,
+          "validation_cagr_difference": 0.07858854352378386
+        },
+        {
+          "candidate": "search_a5cc8e39aaaa32380253",
+          "baseline": "search_b7f2cb953b362811765c",
+          "full_cagr_difference": -0.055050665366789736,
+          "validation_cagr_difference": 0.03459831445144783
+        },
+        {
+          "candidate": "search_2ad385f83d524b6bbedb",
+          "baseline": "search_3b984cad53e71b0beaf2",
+          "full_cagr_difference": -0.058699190478504776,
+          "validation_cagr_difference": 0.028524987283087333
+        },
+        {
+          "candidate": "search_27d1bfd6777f4c755dc6",
+          "baseline": "search_4ca95da9a0490c7cdf7e",
+          "full_cagr_difference": -0.051898299809482074,
+          "validation_cagr_difference": 0.013425503987221588
+        },
+        {
+          "candidate": "search_4bc75766cf629ba92443",
+          "baseline": "search_c89a20f0a0f25878c4cc",
+          "full_cagr_difference": -0.05545863052845973,
+          "validation_cagr_difference": 0.0069101408884711946
+        },
+        {
+          "candidate": "search_2d9bb5274b6c5581864a",
+          "baseline": "search_76a4e7873c8b5f80d87e",
+          "full_cagr_difference": -0.035652662046975564,
+          "validation_cagr_difference": 0.006880412058045765
+        },
+        {
+          "candidate": "search_74d3656e22ea3e1f9a90",
+          "baseline": "search_e1d27bec7ab627ca9c2d",
+          "full_cagr_difference": -0.038845906564242916,
+          "validation_cagr_difference": 4.7013602920004116e-05
+        },
+        {
+          "candidate": "search_dfa2f941d3299afc2ec4",
+          "baseline": "search_c36e5b5adb3c74c69b50",
+          "full_cagr_difference": -0.04564086916379351,
+          "validation_cagr_difference": -0.010827733289740377
+        },
+        {
+          "candidate": "search_59129a1ab300ef5c74d0",
+          "baseline": "search_e482c22188a44126e44c",
+          "full_cagr_difference": -0.045327111086422456,
+          "validation_cagr_difference": -0.004138061105291635
+        },
+        {
+          "candidate": "search_8f56000d7defb8299a8f",
+          "baseline": "search_38f9ea175b0398b4a444",
+          "full_cagr_difference": -0.0698833467452008,
+          "validation_cagr_difference": -0.04676099624798055
+        },
+        {
+          "candidate": "search_0483d77ab8d6ff640df7",
+          "baseline": "search_0c2753d1e6bc0985c712",
+          "full_cagr_difference": -0.07227362241633234,
+          "validation_cagr_difference": -0.04784439702522714
+        },
+        {
+          "candidate": "search_4bcc186e65f6cae49886",
+          "baseline": "search_a1a29eb6dcbf2991d22d",
+          "full_cagr_difference": -0.05828648030500411,
+          "validation_cagr_difference": -0.045300802552488834
+        },
+        {
+          "candidate": "search_36d3ca2984873f49b2b3",
+          "baseline": "search_61b71bef056db0ea330a",
+          "full_cagr_difference": -0.059408619843200616,
+          "validation_cagr_difference": -0.046350372250167526
+        },
+        {
+          "candidate": "search_d797e3e80a65a2abb2ee",
+          "baseline": "search_59b563d5bbf284185a2d",
+          "full_cagr_difference": -0.058840308437205585,
+          "validation_cagr_difference": -0.07080331094270098
+        },
+        {
+          "candidate": "search_3af5b7a4c0518d6508ae",
+          "baseline": "search_6b839d347babff7d4e0a",
+          "full_cagr_difference": -0.05996268587815931,
+          "validation_cagr_difference": -0.07244374566954129
+        }
+      ]
+    }
+  },
+  "primary": {
+    "full": {
+      "sessions": 3088,
+      "cagr": 0.3907973150179412,
+      "nav_factor": 65.0293820507229,
+      "total_return": 64.0293820507229,
+      "max_dd": -0.26880562915639883,
+      "volatility": 0.2654919281255218,
+      "sharpe": 1.375114456183397,
+      "calmar": 1.453828613055436
+    },
+    "trade_days": 236,
+    "fill_legs": 471,
+    "trade_days_per_year": 18.647668393782382,
+    "turnover": 470.4824692355922,
+    "turnover_per_year": 37.17542826861545,
+    "deferred_count": 1,
+    "missing_held_days": 3,
+    "nonmoney_exposure": 0.9838082901554405,
+    "yearly": {
+      "2014": 0.7345931536622372,
+      "2015": 0.9328707982175102,
+      "2016": -0.035455896108571694,
+      "2017": 0.12100328482125122,
+      "2018": 0.26826964825751576,
+      "2019": 0.4178254057226791,
+      "2020": 0.6277252437333238,
+      "2021": 0.2918103445084894,
+      "2022": 0.1551401121811189,
+      "2023": 0.19921969742006795,
+      "2024": 0.7870412236409321,
+      "2025": 0.7409317811642806,
+      "2026": 0.10081983372955916
+    },
+    "holdings_hash": "4b545b7eaf22376b264a8a7ab58933844b5db7ac7af58b8ca884995f8059a3a1",
+    "return_path_hash": "82c6329c0d94c0b6ca9e965e2331bcb0a3990dfa8e178212736c1a63bef33347",
+    "development": {
+      "sessions": 1950,
+      "cagr": 0.3875981649543616,
+      "nav_factor": 13.70703868960815,
+      "total_return": 12.70703868960815,
+      "max_dd": -0.2604124526441154,
+      "volatility": 0.2631271194166167,
+      "sharpe": 1.3773729099702097,
+      "calmar": 1.4884010385020283
+    },
+    "early": {
+      "sessions": 977,
+      "cagr": 0.37939685958510494,
+      "nav_factor": 3.6251787743964248,
+      "total_return": 2.625178774396425,
+      "max_dd": -0.2604124526441154,
+      "volatility": 0.28040074938217585,
+      "sharpe": 1.2879258114183891,
+      "calmar": 1.456907516260737
+    },
+    "late": {
+      "sessions": 973,
+      "cagr": 0.39588224882682926,
+      "nav_factor": 3.7810655812113176,
+      "total_return": 2.7810655812113176,
+      "max_dd": -0.23692173896587865,
+      "volatility": 0.24455790945734016,
+      "sharpe": 1.487248025344096,
+      "calmar": 1.6709410058983403
+    },
+    "validation": {
+      "sessions": 969,
+      "cagr": 0.4446353665596106,
+      "nav_factor": 4.309726822487848,
+      "total_return": 3.3097268224878484,
+      "max_dd": -0.2376301537297949,
+      "volatility": 0.2616626040459948,
+      "sharpe": 1.5345169810190744,
+      "calmar": 1.8711235067633618
+    },
+    "report_only_2026": {
+      "sessions": 169,
+      "cagr": 0.14876017880446543,
+      "nav_factor": 1.1008198337295594,
+      "total_return": 0.10081983372955935,
+      "max_dd": -0.2688056291563996,
+      "volatility": 0.31035871953733835,
+      "sharpe": 0.601842724948944,
+      "calmar": 0.5534116948046206
+    },
+    "index": 4927,
+    "id": "search_0ed6bb4a28cd7b414fca",
+    "candidate_hash": "0ed6bb4a28cd7b414fca361ea4d89ae2ac8b834b0d59fc2c26015ecc9f1f8c46",
+    "family": "regime_ablation",
+    "regime_mode": "open_stock"
+  },
+  "costs": {
+    "20": {
+      "full": {
+        "sessions": 3088,
+        "cagr": 0.33998832476216934,
+        "nav_factor": 40.60290437221646,
+        "total_return": 39.60290437221646,
+        "max_dd": -0.28041167024688085,
+        "volatility": 0.26564716485670165,
+        "sharpe": 1.2342241861092274,
+        "calmar": 1.212461394573328
+      },
+      "trade_days": 236,
+      "fill_legs": 471,
+      "trade_days_per_year": 18.647668393782382,
+      "turnover": 470.0129727546196,
+      "turnover_per_year": 37.13833074874585,
+      "deferred_count": 1,
+      "missing_held_days": 3,
+      "nonmoney_exposure": 0.9838082901554405,
+      "yearly": {
+        "2014": 0.6917683350736068,
+        "2015": 0.8312636212111852,
+        "2016": -0.08616006298039869,
+        "2017": 0.08787255469670652,
+        "2018": 0.22832741047331329,
+        "2019": 0.37592223602036157,
+        "2020": 0.5268141884793565,
+        "2021": 0.2586560714155155,
+        "2022": 0.1300044768500872,
+        "2023": 0.16610720682431102,
+        "2024": 0.7204075593619557,
+        "2025": 0.6793728032487125,
+        "2026": 0.06615117504423851
+      },
+      "holdings_hash": "4b545b7eaf22376b264a8a7ab58933844b5db7ac7af58b8ca884995f8059a3a1",
+      "return_path_hash": "b59a75ca9d89803258cc7fd2200d5b13cbca3e9e43eb86b8c693d75f6ff16684",
+      "development": {
+        "sessions": 1950,
+        "cagr": 0.33396942142460695,
+        "nav_factor": 10.003251987354426,
+        "total_return": 9.003251987354426,
+        "max_dd": -0.27069455960901,
+        "volatility": 0.2632876392935425,
+        "sharpe": 1.2268397530456907,
+        "calmar": 1.2337500314265306
+      },
+      "early": {
+        "sessions": 977,
+        "cagr": 0.3243719331010729,
+        "nav_factor": 3.079923391648884,
+        "total_return": 2.0799233916488835,
+        "max_dd": -0.27069455960901,
+        "volatility": 0.2807544454063383,
+        "sharpe": 1.1415322713587577,
+        "calmar": 1.1982949844636488
+      },
+      "late": {
+        "sessions": 973,
+        "cagr": 0.3436763464565279,
+        "nav_factor": 3.2478898710526156,
+        "total_return": 2.2478898710526156,
+        "max_dd": -0.2505342988501953,
+        "volatility": 0.2444965960503925,
+        "sharpe": 1.3314851660475742,
+        "calmar": 1.3717736375170972
+      },
+      "validation": {
+        "sessions": 969,
+        "cagr": 0.400224993252874,
+        "nav_factor": 3.8071246931662928,
+        "total_return": 2.8071246931662928,
+        "max_dd": -0.2406735493669906,
+        "volatility": 0.261731406945473,
+        "sharpe": 1.4147285864271573,
+        "calmar": 1.6629371790357887
+      },
+      "report_only_2026": {
+        "sessions": 169,
+        "cagr": 0.09689335800973475,
+        "nav_factor": 1.0661511750442383,
+        "total_return": 0.06615117504423826,
+        "max_dd": -0.28041167024688074,
+        "volatility": 0.31084169855338195,
+        "sharpe": 0.4527449627421687,
+        "calmar": 0.34553967716260764
+      }
+    },
+    "50": {
+      "full": {
+        "sessions": 3088,
+        "cagr": 0.1984287400919279,
+        "nav_factor": 9.88315439123192,
+        "total_return": 8.88315439123192,
+        "max_dd": -0.38942424502755146,
+        "volatility": 0.2676441203489257,
+        "sharpe": 0.8095511302552503,
+        "calmar": 0.5095438782397568
+      },
+      "trade_days": 236,
+      "fill_legs": 471,
+      "trade_days_per_year": 18.647668393782382,
+      "turnover": 468.6100892398332,
+      "turnover_per_year": 37.02748114459822,
+      "deferred_count": 1,
+      "missing_held_days": 3,
+      "nonmoney_exposure": 0.9838082901554405,
+      "yearly": {
+        "2014": 0.5695420032725125,
+        "2015": 0.5573787599584004,
+        "2016": -0.2228344999423083,
+        "2017": -0.005760509941336478,
+        "2018": 0.11588985971235566,
+        "2019": 0.25749676871170846,
+        "2020": 0.2600870914313711,
+        "2021": 0.16421091078320882,
+        "2022": 0.057831159933149356,
+        "2023": 0.07215424310040763,
+        "2024": 0.5350450572263938,
+        "2025": 0.507449256396969,
+        "2026": -0.031441230564214884
+      },
+      "holdings_hash": "4b545b7eaf22376b264a8a7ab58933844b5db7ac7af58b8ca884995f8059a3a1",
+      "return_path_hash": "136f169ece7b05315e30d1d5ad728e15d838a7b339889acc1696bee0bcdcc749",
+      "development": {
+        "sessions": 1950,
+        "cagr": 0.1852013165656823,
+        "nav_factor": 3.8880527497209516,
+        "total_return": 2.888052749720951,
+        "max_dd": -0.38942424502755146,
+        "volatility": 0.2653961207224269,
+        "sharpe": 0.7733536818132162,
+        "calmar": 0.47557726292203367
+      },
+      "early": {
+        "sessions": 977,
+        "cagr": 0.17212049458573972,
+        "nav_factor": 1.8887379730099292,
+        "total_return": 0.8887379730099292,
+        "max_dd": -0.38942424502755146,
+        "volatility": 0.28337263331854956,
+        "sharpe": 0.702397628714734,
+        "calmar": 0.4419871047668394
+      },
+      "late": {
+        "sessions": 973,
+        "cagr": 0.19848279892860973,
+        "nav_factor": 2.0585453383588597,
+        "total_return": 1.0585453383588599,
+        "max_dd": -0.29369060371980293,
+        "volatility": 0.24602699076280954,
+        "sharpe": 0.8595616919000173,
+        "calmar": 0.6758227754469575
+      },
+      "validation": {
+        "sessions": 969,
+        "cagr": 0.275017480607399,
+        "nav_factor": 2.6244448670055034,
+        "total_return": 1.6244448670055032,
+        "max_dd": -0.2497311303454819,
+        "volatility": 0.26326546979256243,
+        "sharpe": 1.0518340376151354,
+        "calmar": 1.1012542978800264
+      },
+      "report_only_2026": {
+        "sessions": 169,
+        "cagr": -0.045075871249038266,
+        "nav_factor": 0.9685587694357858,
+        "total_return": -0.03144123056421432,
+        "max_dd": -0.3141364781113929,
+        "volatility": 0.31386345848266783,
+        "sharpe": 0.009929644034957132,
+        "calmar": -0.1434913624805278
+      }
+    }
+  },
+  "ideal_close": {
+    "start": "2014-01-02",
+    "end": "2026-09-11",
+    "sessions": 3088,
+    "nav_factor": 95.02225102256976,
+    "total_return": 94.02225102256976,
+    "cagr": 0.43310807548586006,
+    "max_dd": -0.2855067516025449,
+    "volatility": 0.26600472426458677,
+    "sharpe": 1.485721553071384,
+    "calmar": 1.5169801521499273,
+    "rebalance_days": 236,
+    "rebalances_per_year": 18.647668393782382,
+    "fill_legs": 471,
+    "turnover": 470.95290470953074,
+    "turnover_per_year": 37.212599983525095,
+    "average_nonmoney_exposure": 0.9841321243523317,
+    "average_money_etf_weight": 0.015867875647668395,
+    "average_uninvested_cash_weight": 1.5459711806632684e-17,
+    "deferred_rebalances": 3,
+    "missing_held_sessions": 3,
+    "yearly": {
+      "2014": 0.7302216476466428,
+      "2015": 1.2373052803662246,
+      "2016": 0.17430183660093124,
+      "2017": 0.14519307925189162,
+      "2018": 0.2996150077044344,
+      "2019": 0.41240338606471894,
+      "2020": 0.5185170815034696,
+      "2021": 0.26680072799073873,
+      "2022": 0.20702017069138057,
+      "2023": 0.15920445272814976,
+      "2024": 0.8025717754238799,
+      "2025": 0.6555151965392403,
+      "2026": 0.2380497877803731
+    }
+  },
+  "registered_window_neighbors": [
+    {
+      "window": 20,
+      "existing_candidate": "search_eee9f488969246c6543d",
+      "metrics": {
+        "full": {
+          "sessions": 3088,
+          "cagr": 0.3333229072106099,
+          "nav_factor": 38.11964965891843,
+          "total_return": 37.11964965891843,
+          "max_dd": -0.34735502902135296,
+          "volatility": 0.2520588219706154,
+          "sharpe": 1.2679007813111172,
+          "calmar": 0.9596029403970989
+        },
+        "trade_days": 251,
+        "fill_legs": 501,
+        "trade_days_per_year": 19.832901554404145,
+        "turnover": 500.4495054989985,
+        "turnover_per_year": 39.54328994227838,
+        "deferred_count": 1,
+        "missing_held_days": 2,
+        "nonmoney_exposure": 0.9838082901554405,
+        "yearly": {
+          "2014": 0.8735262652370053,
+          "2015": 0.9019195101629416,
+          "2016": -0.10696935170277577,
+          "2017": 0.16713162099294787,
+          "2018": 0.23375532380690944,
+          "2019": 0.2921080522587447,
+          "2020": 0.5985193868968894,
+          "2021": 0.2208770438954495,
+          "2022": 0.1023312767286868,
+          "2023": 0.127860777416007,
+          "2024": 0.5942886222810233,
+          "2025": 0.5098924406649772,
+          "2026": 0.10233219612598576
+        },
+        "holdings_hash": "beef824ddf7375b6d62b15dee051b18805de7ef6dfbe5b1e6098b16d3069adb9",
+        "return_path_hash": "133ba59c8e285c1d2923b1f69f653b2a164c9a551446b273e8e94bd7e98d4e03",
+        "development": {
+          "sessions": 1950,
+          "cagr": 0.3582531757294323,
+          "nav_factor": 11.554624250972514,
+          "total_return": 10.554624250972513,
+          "max_dd": -0.34735502902135296,
+          "volatility": 0.2657629609046899,
+          "sharpe": 1.28580012014663,
+          "calmar": 1.0313746622260922
+        },
+        "early": {
+          "sessions": 977,
+          "cagr": 0.3877579261388759,
+          "nav_factor": 3.713967669351684,
+          "total_return": 2.7139676693516845,
+          "max_dd": -0.34735502902135296,
+          "volatility": 0.2864915889937913,
+          "sharpe": 1.287673387732458,
+          "calmar": 1.1163158547937397
+        },
+        "late": {
+          "sessions": 973,
+          "cagr": 0.329258279006746,
+          "nav_factor": 3.1111267732143455,
+          "total_return": 2.111126773214346,
+          "max_dd": -0.2210059848261069,
+          "volatility": 0.2431652003095387,
+          "sharpe": 1.2930169391806758,
+          "calmar": 1.4898161208883764
+        },
+        "validation": {
+          "sessions": 969,
+          "cagr": 0.31789235896917667,
+          "nav_factor": 2.9928198890969253,
+          "total_return": 1.9928198890969253,
+          "max_dd": -0.1631328441025338,
+          "volatility": 0.21235386630803577,
+          "sharpe": 1.406410291639464,
+          "calmar": 1.9486717142586685
+        },
+        "report_only_2026": {
+          "sessions": 169,
+          "cagr": 0.15103949438505443,
+          "nav_factor": 1.1023321961259847,
+          "total_return": 0.10233219612598456,
+          "max_dd": -0.23908745848077384,
+          "volatility": 0.29541779044342953,
+          "sharpe": 0.6235630693472567,
+          "calmar": 0.631733238308693
+        },
+        "index": 4919,
+        "id": "search_eee9f488969246c6543d",
+        "candidate_hash": "eee9f488969246c6543d4d90940b6fb1774a7399ad623284d18f1ecb39783b66",
+        "family": "regime_ablation",
+        "regime_mode": "open_stock"
+      }
+    },
+    {
+      "window": 25,
+      "existing_candidate": "search_5ad5ab0138510fa2b679",
+      "metrics": {
+        "full": {
+          "sessions": 3088,
+          "cagr": 0.3746810751106016,
+          "nav_factor": 56.11095736404117,
+          "total_return": 55.11095736404117,
+          "max_dd": -0.3548805957178047,
+          "volatility": 0.26741552493294,
+          "sharpe": 1.3234583165894593,
+          "calmar": 1.0557947648637906
+        },
+        "trade_days": 242,
+        "fill_legs": 483,
+        "trade_days_per_year": 19.121761658031087,
+        "turnover": 482.4692837409547,
+        "turnover_per_year": 38.12257293808062,
+        "deferred_count": 1,
+        "missing_held_days": 2,
+        "nonmoney_exposure": 0.9838082901554405,
+        "yearly": {
+          "2014": 0.8647202451423872,
+          "2015": 0.8454601909189312,
+          "2016": -0.11835168808762675,
+          "2017": 0.12372463546237933,
+          "2018": 0.29813136554648745,
+          "2019": 0.26292773846355333,
+          "2020": 0.7755810847427533,
+          "2021": 0.20834949105156553,
+          "2022": 0.18255019238481007,
+          "2023": 0.1101011088469317,
+          "2024": 0.9310956766415612,
+          "2025": 0.6265854153548669,
+          "2026": 0.13469992257037777
+        },
+        "holdings_hash": "04df3eb758c0d248ec345c56703f66eed3642ce00521e91caaec57b3a01bc6da",
+        "return_path_hash": "d4a3cce69deff968a22481e65cda8d9f94d722144ee0f1adf1418a75bf7d01c7",
+        "development": {
+          "sessions": 1950,
+          "cagr": 0.3645872356341116,
+          "nav_factor": 11.992338221157208,
+          "total_return": 10.992338221157208,
+          "max_dd": -0.3548805957178047,
+          "volatility": 0.2667825781291282,
+          "sharpe": 1.2993219945247392,
+          "calmar": 1.0273518474479384
+        },
+        "early": {
+          "sessions": 977,
+          "cagr": 0.3584138754736774,
+          "nav_factor": 3.4093661866280898,
+          "total_return": 2.4093661866280898,
+          "max_dd": -0.3548805957178047,
+          "volatility": 0.28496261575741033,
+          "sharpe": 1.218080038362044,
+          "calmar": 1.0099562495061924
+        },
+        "late": {
+          "sessions": 973,
+          "cagr": 0.3708142029279255,
+          "nav_factor": 3.5174685160521864,
+          "total_return": 2.5174685160521864,
+          "max_dd": -0.2065667756899464,
+          "volatility": 0.24718607849835095,
+          "sharpe": 1.4004175952808884,
+          "calmar": 1.7951299365030122
+        },
+        "validation": {
+          "sessions": 969,
+          "cagr": 0.4286533107260955,
+          "nav_factor": 4.123469485053703,
+          "total_return": 3.123469485053703,
+          "max_dd": -0.23763015372979512,
+          "volatility": 0.26158452940114674,
+          "sharpe": 1.492297313925965,
+          "calmar": 1.8038674974452498
+        },
+        "report_only_2026": {
+          "sessions": 169,
+          "cagr": 0.2001527090950647,
+          "nav_factor": 1.1346999225703782,
+          "total_return": 0.13469992257037816,
+          "max_dd": -0.21308576353221198,
+          "volatility": 0.30496047700677287,
+          "sharpe": 0.750557641540761,
+          "calmar": 0.9393058727961795
+        },
+        "index": 4923,
+        "id": "search_5ad5ab0138510fa2b679",
+        "candidate_hash": "5ad5ab0138510fa2b679a274dc2857c912bafe5be5996155ac93076d1b6f5ed7",
+        "family": "regime_ablation",
+        "regime_mode": "open_stock"
+      }
+    },
+    {
+      "window": 30,
+      "existing_candidate": "search_0ed6bb4a28cd7b414fca",
+      "metrics": {
+        "full": {
+          "sessions": 3088,
+          "cagr": 0.3907973150179412,
+          "nav_factor": 65.0293820507229,
+          "total_return": 64.0293820507229,
+          "max_dd": -0.26880562915639883,
+          "volatility": 0.2654919281255218,
+          "sharpe": 1.375114456183397,
+          "calmar": 1.453828613055436
+        },
+        "trade_days": 236,
+        "fill_legs": 471,
+        "trade_days_per_year": 18.647668393782382,
+        "turnover": 470.4824692355922,
+        "turnover_per_year": 37.17542826861545,
+        "deferred_count": 1,
+        "missing_held_days": 3,
+        "nonmoney_exposure": 0.9838082901554405,
+        "yearly": {
+          "2014": 0.7345931536622372,
+          "2015": 0.9328707982175102,
+          "2016": -0.035455896108571694,
+          "2017": 0.12100328482125122,
+          "2018": 0.26826964825751576,
+          "2019": 0.4178254057226791,
+          "2020": 0.6277252437333238,
+          "2021": 0.2918103445084894,
+          "2022": 0.1551401121811189,
+          "2023": 0.19921969742006795,
+          "2024": 0.7870412236409321,
+          "2025": 0.7409317811642806,
+          "2026": 0.10081983372955916
+        },
+        "holdings_hash": "4b545b7eaf22376b264a8a7ab58933844b5db7ac7af58b8ca884995f8059a3a1",
+        "return_path_hash": "82c6329c0d94c0b6ca9e965e2331bcb0a3990dfa8e178212736c1a63bef33347",
+        "development": {
+          "sessions": 1950,
+          "cagr": 0.3875981649543616,
+          "nav_factor": 13.70703868960815,
+          "total_return": 12.70703868960815,
+          "max_dd": -0.2604124526441154,
+          "volatility": 0.2631271194166167,
+          "sharpe": 1.3773729099702097,
+          "calmar": 1.4884010385020283
+        },
+        "early": {
+          "sessions": 977,
+          "cagr": 0.37939685958510494,
+          "nav_factor": 3.6251787743964248,
+          "total_return": 2.625178774396425,
+          "max_dd": -0.2604124526441154,
+          "volatility": 0.28040074938217585,
+          "sharpe": 1.2879258114183891,
+          "calmar": 1.456907516260737
+        },
+        "late": {
+          "sessions": 973,
+          "cagr": 0.39588224882682926,
+          "nav_factor": 3.7810655812113176,
+          "total_return": 2.7810655812113176,
+          "max_dd": -0.23692173896587865,
+          "volatility": 0.24455790945734016,
+          "sharpe": 1.487248025344096,
+          "calmar": 1.6709410058983403
+        },
+        "validation": {
+          "sessions": 969,
+          "cagr": 0.4446353665596106,
+          "nav_factor": 4.309726822487848,
+          "total_return": 3.3097268224878484,
+          "max_dd": -0.2376301537297949,
+          "volatility": 0.2616626040459948,
+          "sharpe": 1.5345169810190744,
+          "calmar": 1.8711235067633618
+        },
+        "report_only_2026": {
+          "sessions": 169,
+          "cagr": 0.14876017880446543,
+          "nav_factor": 1.1008198337295594,
+          "total_return": 0.10081983372955935,
+          "max_dd": -0.2688056291563996,
+          "volatility": 0.31035871953733835,
+          "sharpe": 0.601842724948944,
+          "calmar": 0.5534116948046206
+        },
+        "index": 4927,
+        "id": "search_0ed6bb4a28cd7b414fca",
+        "candidate_hash": "0ed6bb4a28cd7b414fca361ea4d89ae2ac8b834b0d59fc2c26015ecc9f1f8c46",
+        "family": "regime_ablation",
+        "regime_mode": "open_stock"
+      }
+    },
+    {
+      "window": 40,
+      "existing_candidate": "search_d9cb54daf6da8f6f547e",
+      "metrics": {
+        "full": {
+          "sessions": 3088,
+          "cagr": 0.31453032557208827,
+          "nav_factor": 31.85148470928193,
+          "total_return": 30.851484709281927,
+          "max_dd": -0.27511673668135384,
+          "volatility": 0.25771997769208566,
+          "sharpe": 1.190393101382216,
+          "calmar": 1.1432613274138392
+        },
+        "trade_days": 241,
+        "fill_legs": 481,
+        "trade_days_per_year": 19.042746113989637,
+        "turnover": 480.4714813233943,
+        "turnover_per_year": 37.964715493169756,
+        "deferred_count": 1,
+        "missing_held_days": 3,
+        "nonmoney_exposure": 0.9838082901554405,
+        "yearly": {
+          "2014": 0.5060036627394584,
+          "2015": 0.9536031528520443,
+          "2016": -0.0941499394899259,
+          "2017": 0.17584934300772237,
+          "2018": 0.20475335420285967,
+          "2019": 0.38247451179893144,
+          "2020": 0.4912720230843768,
+          "2021": 0.19729931397602885,
+          "2022": 0.1158116287203097,
+          "2023": 0.20080941207322267,
+          "2024": 0.47776902192750015,
+          "2025": 0.5186270168121347,
+          "2026": 0.13663697358864013
+        },
+        "holdings_hash": "672c45601cb493ea733cb8c07cb50829b7887ffae2e1bc1fced33610fc33b27a",
+        "return_path_hash": "9025f1e50d06b29bbd0cd15b74ab90c2ce976558c5e59469b13ce291714b7d5b",
+        "development": {
+          "sessions": 1950,
+          "cagr": 0.32220086542464094,
+          "nav_factor": 9.319342122021077,
+          "total_return": 8.319342122021077,
+          "max_dd": -0.27511673668135384,
+          "volatility": 0.2612657220251032,
+          "sharpe": 1.200512890140449,
+          "calmar": 1.1711423641878282
+        },
+        "early": {
+          "sessions": 977,
+          "cagr": 0.3301194876666765,
+          "nav_factor": 3.1337934906238196,
+          "total_return": 2.1337934906238196,
+          "max_dd": -0.27511673668135384,
+          "volatility": 0.27458011651968867,
+          "sharpe": 1.1769778251929242,
+          "calmar": 1.1999251359579335
+        },
+        "late": {
+          "sessions": 973,
+          "cagr": 0.3142971225272738,
+          "nav_factor": 2.973821392476615,
+          "total_return": 1.9738213924766146,
+          "max_dd": -0.2656251895445513,
+          "volatility": 0.24717450742182048,
+          "sharpe": 1.2302720236600688,
+          "calmar": 1.183235381652534
+        },
+        "validation": {
+          "sessions": 969,
+          "cagr": 0.31945366642480805,
+          "nav_factor": 3.0069253516033982,
+          "total_return": 2.0069253516033982,
+          "max_dd": -0.2376301537297949,
+          "volatility": 0.2413550257581562,
+          "sharpe": 1.2687286931243857,
+          "calmar": 1.344331354462924
+        },
+        "report_only_2026": {
+          "sessions": 169,
+          "cagr": 0.2031118394103906,
+          "nav_factor": 1.136636973588641,
+          "total_return": 0.13663697358864088,
+          "max_dd": -0.26293805833634976,
+          "volatility": 0.3032986265342329,
+          "sharpe": 0.7611983552096376,
+          "calmar": 0.7724702946979642
+        },
+        "index": 4931,
+        "id": "search_d9cb54daf6da8f6f547e",
+        "candidate_hash": "d9cb54daf6da8f6f547e62893f58ba253973e8ec6265c1cf5ecb5057e0270633",
+        "family": "regime_ablation",
+        "regime_mode": "open_stock"
+      }
+    }
+  ],
+  "added_candidate_count": 0,
+  "added_diagnostic_scenarios": 3,
+  "main_scenario_reproduction": true,
+  "caution": "Pool and window also differ from original v9.1; the total improvement is not attributable to removing one gate."
+}

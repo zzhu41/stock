@@ -1,0 +1,86 @@
+{
+  "159915": {
+    "source_sha256": "f11779db295268ff79a0ba57e59d15a6f1e5caa04c92fa4dd2c2273fadae95f0",
+    "snapshot_sha256": "c0996eadd6057ccf9c53c1bac83669ff95481acebe4c97bd9d574d4b1dea7e5d",
+    "first": "2011-12-09",
+    "last": "2026-09-11",
+    "rows": 3584
+  },
+  "588080": {
+    "source_sha256": "3c8432ab1ea67f2f4ecfe814eadecde915d973ef9479bd09a1fd830736daa8ea",
+    "snapshot_sha256": "cbc14eb9cf2464e30303eec859e89c7fc4f431dd54a09eaf7e05de143095a1a7",
+    "first": "2020-11-16",
+    "last": "2026-09-11",
+    "rows": 1415
+  },
+  "510300": {
+    "source_sha256": "44c767c8baf94483255247e5668c84fe09b5a2fe168d83792a8e20bc87220d2f",
+    "snapshot_sha256": "f5acb9e9aaf7093a492bf3fe687f5094eade8074a8c228c8e00cdca05cebcd15",
+    "first": "2012-05-28",
+    "last": "2026-09-11",
+    "rows": 3476
+  },
+  "510500": {
+    "source_sha256": "418418096c2cce54238d75d9b26172c479a4f4f5a9f10a021444d1bfc5db1149",
+    "snapshot_sha256": "a831543598c67b215806a98e8ff4147b77f0c3046bff7c7cf57390339382de34",
+    "first": "2013-03-15",
+    "last": "2026-09-11",
+    "rows": 3279
+  },
+  "563300": {
+    "source_sha256": "f54d5c1af6d2d987bff62720a401586ca24024760f7d80b046dd791c8b6e1a0c",
+    "snapshot_sha256": "500290315b82282bbce3ef59efdefba495a70c12b20dcd6ccb14bb2b1dbae2b3",
+    "first": "2023-09-14",
+    "last": "2026-09-11",
+    "rows": 725
+  },
+  "512400": {
+    "source_sha256": "bf724ae322673894f3d12ac2ba075459f20fd1681ddc7bd3408e341f309aaf9c",
+    "snapshot_sha256": "9ee75910b9fb80d089ec6cb26f0ccf815f3fbcd0b1b0357d0ae9c7374bab500e",
+    "first": "2017-09-01",
+    "last": "2026-09-11",
+    "rows": 2192
+  },
+  "512890": {
+    "source_sha256": "64c8f04182dfd456f12097f81a3c438d2bda98c2fe4ea097db4e80fbaa412542",
+    "snapshot_sha256": "1ac93f61b4c0e2ae102c04963b180fff07ec9e3cda779ea465257ab893d46d8b",
+    "first": "2019-01-18",
+    "last": "2026-09-11",
+    "rows": 1855
+  },
+  "513100": {
+    "source_sha256": "fadada03061ac88071c2224ce8dc9674d7fa788183f47dc19f8b47d65d7a0545",
+    "snapshot_sha256": "790b1fc0caba0d5de3d2dd566a3d4ace5a50ce96200c67a1d5f6b728a064d830",
+    "first": "2013-05-15",
+    "last": "2026-09-11",
+    "rows": 3242
+  },
+  "513120": {
+    "source_sha256": "dbaeaa03c3e89dc0775a824cbecdba36986c0f6ad7653e994afe61ca8be8f0e6",
+    "snapshot_sha256": "5245a64dbaaa86d53b54f04b0a5b79bdd4258c0e91ad96a81cb7f63c23f1279a",
+    "first": "2022-07-12",
+    "last": "2026-09-11",
+    "rows": 1014
+  },
+  "518880": {
+    "source_sha256": "85ad857c8287859de8f819edc22d2b848bdd04532d4b26ab9d0e21dbac5de2a6",
+    "snapshot_sha256": "12cefaab7389ea9eb6a6c2b533dc7a055584b43aa4047f051c21d22ab8d6a5f7",
+    "first": "2013-07-29",
+    "last": "2026-09-11",
+    "rows": 3193
+  },
+  "511880": {
+    "source_sha256": "cfe940a65875aa43edea0b8f6e234072911adb48ac86d960dc67f4c8682cd698",
+    "snapshot_sha256": "ee708a7644baa35648d9c719fb55aacfa0f2cdb2facd79d8d6ca5b05faecb610",
+    "first": "2013-07-12",
+    "last": "2026-09-11",
+    "rows": 3204
+  },
+  "511010": {
+    "source_sha256": "066734f92c56519c35d24b822ae80d0a7aa87da81418d2d2a3908b6d6d63ee2c",
+    "snapshot_sha256": "066734f92c56519c35d24b822ae80d0a7aa87da81418d2d2a3908b6d6d63ee2c",
+    "first": "2013-03-25",
+    "last": "2026-09-11",
+    "rows": 3275
+  }
+}
