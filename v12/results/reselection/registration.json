@@ -1,0 +1,101 @@
+{
+  "design": {
+    "allocation_requires_execution_review": true,
+    "clean_oos": false,
+    "count": 1807,
+    "execution_end": "2025-12-31",
+    "execution_start": "2014-01-02",
+    "fallback": "v12_cca586e367aa3071f32a",
+    "fingerprints": {
+      "inputs": {
+        "v12/EXANTE_PROTOCOL.md": "33bf28951f829bb760ad52ce057110cf25401bbf7720d0dd33288a1484ee7ff8",
+        "v12/PROTOCOL.md": "799c8e28413f6bf97cb8c8f8d6192a1d885de41b2b13d69505d38041820d8eaf",
+        "v12/inputs/features.json": "d2c5bc2c9a97d0312500c28f04bba7700b19c4d82b39fd3fc23d66ba3d98cbfa",
+        "v12/inputs/features.npz.gz": "83989d5c50eaaeac0ede0bcb3835f661dbc6fbfce3f7c8690fbfa5492d0ca583",
+        "v12/inputs/manifest.json": "724a6937b7bacc380544edfa1bebfb834b31653839422f5ccfcf9f535d6a2c8c",
+        "v12/registered_candidates.json": "31b86d239586686d7ac367f6def291a9476c2e943ed19ebcf30e536f022d1533",
+        "v12/results/consensus/registered_candidates.json": "bb6887fdc6dbe11cb0ceed23fbb555569d020e476a78f2e644d7561c64513189",
+        "v12/results/consensus/registration.json": "29670a9d9e5eba9c59c405204c8e553fa931b56197878a0526e4859a12967ec9",
+        "v12/results/exante/registered_candidates.json": "1fddb9ab22abc5f9bb432fb13aa3d88238ae9884257e4f6fbb9b19daac2a9943",
+        "v12/results/exante/registration.json": "3c17771fbc87f1f7042aa3fa118ea6724c1e357568952280f4b9613a2dc08331",
+        "v12/results/main/registration.json": "efb21a0086513b01efe5b1dca668728c671d7fc7858a23314bba45ac43847ade"
+      },
+      "sources": {
+        "v10_deep/portfolios.py": "ac682736e551b0625e5dafde5d31c0bdc90657f7353dd42cd6a6050d5b235351",
+        "v10_deep/reference.py": "307165e11b4e52345d5e0168c3fb36ac661baf214dbc58dbebc7cf5ce2b0f9e5",
+        "v10_deep/schema.py": "b91d01a1ade064e29cd9e9f107be44d68c6748dbcd159e96b8d630c839320b90",
+        "v11/features.py": "d7411bb3d855bd64467c33fba9b35acc579b02fac5ed74107efbd9dbb099b56f",
+        "v12/RESELECTION_PROTOCOL.md": "ed477bd4fae4a79086b9be238e73590d1cadbc5630a7eb60a18528bee0662d9a",
+        "v12/allocation.py": "374c81995b1566109f69380e62a6b72f25a6855e35f5f84491cbe097795d6643",
+        "v12/audit_stages.py": "5393bd2029fc750027d3a8215ac7de0651f9a56db48a040a297a2a588e563a48",
+        "v12/consensus_features.py": "67bffc6b034efccccbb1566d1f22f57efb45a5592c99bb85c486bf96fb002ab4",
+        "v12/data.py": "cf5f56189f093f8972044e85a0d6725380b9cad5520a489712762d09fbde2543",
+        "v12/diagnostic_features.py": "ef5b65579459a5a0c732740292cdc802c949c09bdd921e5c85c45a90e03bb58b",
+        "v12/exante_features.py": "9cb44dc6c18b4a9c1b4aba148a6b83bab85725bee4a379f837611a1620704457",
+        "v12/native.cpp": "cf9dc9190894582d801e313564ac21a80e09d5a63058c312f3567a4aa12873f5",
+        "v12/native.py": "6140b16b971fe4dbbca5ec9b439e9b3227d72dc11e6367d01c1196f07facae51",
+        "v12/reference.py": "e4f4fcb8b0ac89f7d52e96150942dfaa56792581ca72137df36676594e7cc449",
+        "v12/reselection.py": "bbcf4de7226a1ca96c7273ee70cae1ec4396a53e918bcfbb10ca66bd468e0e1d",
+        "v12/scan.py": "83e52ff842ff5a28e6cb5021347bc3b4b631240dbbe153d2bdd33424a90a63c7",
+        "v12/schema.py": "e9e56236ea8aed2322df5550d6f57e097caa42311ff4a9316424b86219890ebd",
+        "v12/selection.py": "7c933f1ca421dfc31011ee5b9ebf15b950fa10dce9c878dd835ee38873237a47",
+        "v12/tests/test_reselection.py": "5d7aa84760ebc380010dc6c24aa63a1415e0d91eed66d15b699f6440fb301a85",
+        "v12/walkforward.py": "fb356deab4e324f8d012d5356329fda39afc77318251e5b1e57e75e1b6974e09"
+      }
+    },
+    "folds": [
+      {
+        "end": "2019-12-31",
+        "known_history": true,
+        "start": "2018-01-01",
+        "train_end": "2017-12-31",
+        "train_start": "2014-01-02"
+      },
+      {
+        "end": "2021-12-31",
+        "known_history": true,
+        "start": "2020-01-01",
+        "train_end": "2019-12-31",
+        "train_start": "2014-01-02"
+      },
+      {
+        "end": "2023-12-31",
+        "known_history": true,
+        "start": "2022-01-01",
+        "train_end": "2021-12-31",
+        "train_start": "2014-01-02"
+      },
+      {
+        "end": "2025-12-31",
+        "known_history": true,
+        "start": "2024-01-01",
+        "train_end": "2023-12-31",
+        "train_start": "2014-01-02"
+      }
+    ],
+    "registry_sha256": "e99a996fd0c68d68cdd72169af965d5716bc7b3f7f3ccb8b4c132d9ab9e84b2a",
+    "scenarios": [
+      [
+        "close_1bp",
+        0,
+        0.0001
+      ],
+      [
+        "close_11bp",
+        0,
+        0.0011
+      ],
+      [
+        "lag1_1bp",
+        1,
+        0.0001
+      ],
+      [
+        "lag1_11bp",
+        1,
+        0.0011
+      ]
+    ]
+  },
+  "registered_at": "2026-09-27T19:16:47.316409+00:00"
+}

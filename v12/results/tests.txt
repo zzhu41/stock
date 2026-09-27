@@ -1,0 +1,161 @@
+test_cash_etf_missing_blocks_fractional_start_instead_of_inventing_cash_return (test_allocation.AllocationAccountingTests) ... ok
+test_full_and_speed_one_match_frozen_units_engine_with_same_tape_semantics (test_allocation.AllocationAccountingTests) ... ok
+test_missing_held_leg_carries_mark_and_resume_catches_up (test_allocation.AllocationAccountingTests) ... ok
+test_missing_target_blocks_whole_trade_and_does_not_queue_old_target (test_allocation.AllocationAccountingTests) ... ok
+test_progressive_uses_actual_drift_and_pays_real_security_turnover (test_allocation.AllocationAccountingTests) ... ok
+test_skip_preserves_units_while_explicit_cash_moves_toward_cash_etf (test_allocation.AllocationAccountingTests) ... ok
+test_delayed_first_entry_keeps_true_l1_and_discloses_native_boundary (test_allocation.NativeReplayTests) ... ok
+test_execution_aligned_full_speed_one_matches_native_with_lag_and_missing_held_day (test_allocation.NativeReplayTests) ... ok
+test_execution_aligned_lag_is_not_applied_twice_and_sigma_uses_same_signal_day (test_allocation.VolatilityAndClockTests) ... ok
+test_explicit_signal_aligned_tape_shifts_once_and_all_bad_provenance_rejects (test_allocation.VolatilityAndClockTests) ... ok
+test_future_price_and_target_changes_do_not_change_return_prefix (test_allocation.VolatilityAndClockTests) ... ok
+test_invalid_prices_params_or_missing_cash_are_rejected (test_allocation.VolatilityAndClockTests) ... ok
+test_predeclared_volatility_neighbors_are_allowed_without_new_main_grid (test_allocation.VolatilityAndClockTests) ... ok
+test_prior_own_quotes_skip_missing_bars_instead_of_zero_filling_returns (test_allocation.VolatilityAndClockTests) ... ok
+test_prior_sigma_needs_window_returns_and_excludes_signal_day_close (test_allocation.VolatilityAndClockTests) ... ok
+test_vol_target_caps_one_and_records_warmup_and_zero_sigma_cash (test_allocation.VolatilityAndClockTests) ... ok
+test_absolute_traversal_manifest_duplicates_and_symlink_escapes_rejected (test_archives.ArchiveTests) ... ok
+test_corrupt_gzip_refuses_without_creating_or_replacing_raw (test_archives.ArchiveTests) ... ok
+test_existing_raw_corruption_refuses_before_other_missing_files_are_restored (test_archives.ArchiveTests) ... ok
+test_fresh_clone_verify_requires_no_raw_files_or_numpy_inputs (test_archives.ArchiveTests) ... ok
+test_gitignore_uses_literal_large_json_paths_and_keeps_user_patterns (test_archives.ArchiveTests) ... ok
+test_new_npz_after_manifest_cannot_silently_extend_frozen_scope (test_archives.ArchiveTests) ... ok
+test_preexisting_matching_archive_reused_conflicting_archive_never_overwritten (test_archives.ArchiveTests) ... ok
+test_preflight_conflict_leaves_other_archives_and_manifest_uncreated (test_archives.ArchiveTests) ... ok
+test_resealed_compressed_hash_does_not_hide_wrong_decompressed_bytes (test_archives.ArchiveTests) ... ok
+test_restore_refuses_a_symlink_destination_even_if_content_matches (test_archives.ArchiveTests) ... ok
+test_scope_threshold_exact_roundtrip_and_idempotent_pack (test_archives.ArchiveTests) ... ok
+test_first_loss_sets_drawdown_and_first_return_is_never_dropped (test_audit_stages.AuditTests) ... ok
+test_invalid_daily_return_is_rejected (test_audit_stages.AuditTests) ... ok
+test_receipt_verifies_actual_bytes_before_reading_metrics (test_audit_stages.AuditTests) ... ok
+test_ten_gates_follow_signed_drawdown_and_v92_tail (test_audit_stages.AuditTests) ... ok
+test_fixed_288_family_and_exact_old_control_roles (test_consensus.ConsensusRegistryTests) ... ok
+test_group_masks_only_selected_lane_and_preserves_control_view (test_consensus.ConsensusRegistryTests) ... ok
+test_arithmetic_mean_requires_both_scores_and_current_own_maturity (test_consensus_features.ConsensusFeatureTests) ... ok
+test_average_rank_denominator_and_ties_use_only_common_original_risk_members (test_consensus_features.ConsensusFeatureTests) ... ok
+test_future_score_and_price_changes_do_not_change_any_prior_consensus (test_consensus_features.ConsensusFeatureTests) ... ok
+test_input_lane_order_is_explicit_and_missing_original_member_is_rejected (test_consensus_features.ConsensusFeatureTests) ... ok
+test_no_members_and_one_member_ranks_are_not_backfilled (test_consensus_features.ConsensusFeatureTests) ... ok
+test_preserves_every_original_array_lane_and_metadata_without_aliasing (test_consensus_features.ConsensusFeatureTests) ... ok
+test_wls25_raw_three_own_quote_mean_uses_pre_maturity_values_and_skips_missing_bars (test_consensus_features.ConsensusFeatureTests) ... ok
+test_MA_override_only_borrows_benchmark_ma180_and_preserves_all_crash_distances (test_diagnostic_features.DiagnosticFeaturesTests) ... ok
+test_WLS25_unmasked_math_retains_exact_legacy_sum_arithmetic (test_diagnostic_features.DiagnosticFeaturesTests) ... ok
+test_centers_reuse_original_scores_features_and_config_exactly (test_diagnostic_features.DiagnosticFeaturesTests) ... ok
+test_extra_math_warmup_masks_only_view_validity (test_diagnostic_features.DiagnosticFeaturesTests) ... ok
+test_future_perturbations_cannot_change_prefix_and_prefix_input_ignores_later_bad_prices (test_diagnostic_features.DiagnosticFeaturesTests) ... ok
+test_invalid_requests_fail_instead_of_silently_selecting_another_feature (test_diagnostic_features.DiagnosticFeaturesTests) ... ok
+test_new_scores_are_trailing_own_quotes_and_do_not_smooth_control_sentinels (test_diagnostic_features.DiagnosticFeaturesTests) ... ok
+test_real_frozen_center_lanes_are_bit_exact_without_computing_new_neighbors (test_diagnostic_features.DiagnosticFeaturesTests)
+No engine or performance evaluation, including for altered views. ... ok
+test_dispatch_crops_before_risk_view_and_preserves_registry_order (test_exante.ExanteTests) ... ok
+test_fixed_1152_candidates_plus_controls_and_actual_context_identity (test_exante.ExanteTests) ... ok
+test_append_fixed_multi_preserves_A_B_features_scores_and_order_lanes (test_exante_features.ExanteFeatureTests) ... ok
+test_current_25smooth3_validity_is_exactly_B_mask_and_invalid_scores_stay_out (test_exante_features.ExanteFeatureTests) ... ok
+test_future_perturbations_leave_score_and_prior_views_unchanged_in_prefix (test_exante_features.ExanteFeatureTests) ... ok
+test_multi_matches_independent_trailing_regressions_and_270_quote_gate (test_exante_features.ExanteFeatureTests) ... ok
+test_prior_context_uses_previous_actual_quote_and_never_changes_rank_scores (test_exante_features.ExanteFeatureTests) ... ok
+test_real_current_controls_are_exact_and_multi_matches_pinned_V11_lane_without_rebuild (test_exante_features.ExanteFeatureTests)
+Read-only feature equality; never instantiate a simulator. ... ok
+test_cached_calendar_result_matches_frozen_numeric_helper_with_explicit_dates (test_family_diagnostics.ConcentrationTests) ... ok
+test_nonpositive_net_does_not_report_meaningless_net_shares (test_family_diagnostics.ConcentrationTests) ... ok
+test_yearly_net_and_positive_mass_are_different_and_sum_consistently (test_family_diagnostics.ConcentrationTests) ... ok
+test_calendar_mismatch_is_not_silently_intersected (test_family_diagnostics.FamilyReceiptTests) ... ok
+test_changed_semantics_cannot_keep_the_old_candidate_id (test_family_diagnostics.FamilyReceiptTests) ... ok
+test_each_duplicate_field_requires_exact_equality_even_with_valid_stage_receipts (test_family_diagnostics.FamilyReceiptTests) ... ok
+test_full_union_keeps_failed_trials_and_deduplicates_only_exact_semantics (test_family_diagnostics.FamilyReceiptTests) ... ok
+test_new_extension_files_do_not_invalidate_older_frozen_source_inventory (test_family_diagnostics.FamilyReceiptTests) ... ok
+test_registration_precedes_complete_union_bootstrap_and_outputs_have_receipts (test_family_diagnostics.FamilyReceiptTests) ... close_1bp {'20': 0.17541229385307347, '60': 0.07846076961519241}
+close_11bp {'20': 0.1794102948525737, '60': 0.08095952023988005}
+lag1_1bp {'20': 0.18240879560219891, '60': 0.08345827086456771}
+lag1_11bp {'20': 0.18590704647676162, '60': 0.08695652173913043}
+ok
+test_source_change_while_matrix_is_loading_cannot_be_resealed (test_family_diagnostics.FamilyReceiptTests) ... ok
+test_stage_without_redundant_observed_period_uses_hash_pinned_date_axis (test_family_diagnostics.FamilyReceiptTests) ... ok
+test_unreconciled_matrix_tamper_is_rejected_by_hash_before_statistics (test_family_diagnostics.FamilyReceiptTests) ... ok
+test_active_lock_panic_exits_to_cash_and_cannot_be_replaced_by_new_crash (test_native.NativeTests) ... ok
+test_existing_trailing_panic_is_reused_without_new_threshold (test_native.NativeTests) ... ok
+test_lag1_entry_date_shock_is_not_a_post_entry_stop (test_native.NativeTests) ... ok
+test_missing_cash_quote_preserves_lock_and_rechecks_next_daily_intent (test_native.NativeTests) ... ok
+test_missing_current_holding_cannot_sell_or_clear_lagged_lock (test_native.NativeTests) ... ok
+test_no_panic_keeps_original_lock_and_normal_panic_rules_stay_unchanged (test_native.NativeTests) ... ok
+test_real_frozen_H_v92_simple_only_flag0_match_original_native_every_day (test_native.NativeTests)
+Explicitly never evaluate real histories with the new flag enabled. ... ok
+test_schema_appends_only_one_flag_and_rejects_non_boolean_values (test_native.NativeTests) ... ok
+test_seeded_synthetic_variants_flag0_exact_and_flag1_oracle_future_prefix (test_native.NativeTests) ... ok
+test_allocation_anchors_precede_search_and_no_vol_progressive_cross (test_registry.RegistryTests) ... ok
+test_each_new_risk_switch_has_same_pool_same_parameters_off_ablation (test_registry.RegistryTests) ... ok
+test_fixed_counts_controls_and_no_outcome_selection (test_registry.RegistryTests) ... ok
+test_allocation_selection_is_preserved_and_execution_refuses_it (test_reselection.ReselectionTests) ... ok
+test_factory_does_not_change_constant_original_policy_path (test_reselection.ReselectionTests) ... ok
+test_grandfathered_out_of_pool_holding_keeps_risk_but_cannot_be_bought (test_reselection.ReselectionTests) ... ok
+test_grouping_keeps_allocation_and_exact_fixed_anchor_without_mutation (test_reselection.ReselectionTests) ... ok
+test_prefix_builder_never_receives_future_arrays_or_history (test_reselection.ReselectionTests) ... ok
+test_train_fold_uses_cutoff_year_tail_and_h_fallback (test_reselection.ReselectionTests) ... ok
+test_union_preserves_control_status_and_context_and_does_not_mutate (test_reselection.ReselectionTests) ... ok
+test_buy_hold_waits_for_maturity_then_keeps_missing_held_bars (test_scan.CandidateRunnerTests) ... evaluated test 1 candidates 6 observations
+ok
+test_missing_base_and_incompatible_start_fail_without_silently_dropping_trials (test_scan.CandidateRunnerTests) ... ok
+test_monthly_equal_uses_signal_clock_and_preserves_drift_between_resets (test_scan.CandidateRunnerTests) ... evaluated close_1bp 1 candidates 7 observations
+evaluated close_11bp 1 candidates 7 observations
+evaluated lag1_1bp 1 candidates 7 observations
+evaluated lag1_11bp 1 candidates 7 observations
+ok
+test_single_allocation_fixed_and_benchmark_rows_align_and_exclude_free_initial_turnover (test_scan.CandidateRunnerTests) ... evaluated close_1bp 7 candidates 6 observations
+evaluated close_11bp 7 candidates 6 observations
+evaluated lag1_1bp 7 candidates 6 observations
+evaluated lag1_11bp 7 candidates 6 observations
+ok
+test_training_prefix_does_not_even_read_invalid_future_price_rows (test_scan.CandidateRunnerTests) ... evaluated close_1bp 2 candidates 2 observations
+evaluated close_11bp 2 candidates 2 observations
+evaluated lag1_1bp 2 candidates 2 observations
+evaluated lag1_11bp 2 candidates 2 observations
+evaluated close_1bp 2 candidates 2 observations
+evaluated close_11bp 2 candidates 2 observations
+evaluated lag1_1bp 2 candidates 2 observations
+evaluated lag1_11bp 2 candidates 2 observations
+ok
+test_blocks_tail_and_yearly_include_boundary_return_and_actual_turnover (test_scan.ContinuousSummaryTests) ... ok
+test_partial_training_prefix_uses_its_own_tail_year_and_no_future_blocks (test_scan.ContinuousSummaryTests) ... ok
+test_registration_precedes_paths_and_selection_seals_exact_output_hashes (test_scan.EvaluationReceiptTests) ... {
+  "primary": null,
+  "qualified_count": 0,
+  "status": "no_qualified_candidate",
+  "top_return": null,
+  "top_tail": null,
+  "least_drawdown": null
+}
+ok
+test_source_drift_cannot_produce_frozen_selection (test_scan.EvaluationReceiptTests) ... ok
+test_source_drift_while_selecting_cannot_produce_frozen_selection (test_scan.EvaluationReceiptTests) ... ok
+test_best_signed_drawdown_and_returns_are_recomputed_per_scenario (test_selection.SelectionTests) ... ok
+test_controls_benchmarks_and_unselectable_rows_cannot_replace_no_winner (test_selection.SelectionTests) ... ok
+test_each_historical_cutoff_uses_only_existing_blocks_and_its_tail (test_selection.SelectionTests) ... ok
+test_ignored_low_fee_lag_and_extra_periods_do_not_add_gates (test_selection.SelectionTests) ... ok
+test_minimum_standardized_advantage_beats_only_highest_cagr (test_selection.SelectionTests) ... ok
+test_missing_nonfinite_positive_drawdown_or_future_metric_dates_stop_selection (test_selection.SelectionTests) ... ok
+test_pareto_filter_precedes_stress_tie_and_keeps_equal_coordinates (test_selection.SelectionTests) ... ok
+test_tail_uses_v92_not_h_or_the_best_control (test_selection.SelectionTests) ... ok
+test_thresholds_are_inclusive_and_one_representable_step_below_fails (test_selection.SelectionTests) ... ok
+test_tie_break_order_stress_then_complexity_then_turnover_then_id (test_selection.SelectionTests) ... ok
+test_actual_feature_overrides_and_prior_context_are_in_identity (test_sensitivity.SensitivityTests) ... ok
+test_fixed_registration_is_nonselectable_and_retains_every_noop_and_invalid_proposal (test_sensitivity.SensitivityTests) ... ok
+test_group_receipt_precedes_evaluator_and_merge_retains_registry_order (test_sensitivity.SensitivityTests) ... sensitivity group 1/2 complete (1 records)
+sensitivity group 2/2 complete (1 records)
+ok
+test_leave_one_out_has_all_36_pairs_and_never_deletes_gold_cash_or_price_information (test_sensitivity.SensitivityTests) ... ok
+test_transform_starts_from_base_then_applies_prior_once_without_changing_crash_MA250 (test_sensitivity.SensitivityTests) ... ok
+test_fixed_flag0_controls_across_year_boundaries_match_continuous_old_reference (test_walkforward.FrozenControlFidelityTests)
+Only already-known H/v92/simple, never new candidates or selection. ... ok
+test_age_peak_and_existing_cooldown_are_carried_at_model_changes (test_walkforward.WalkForwardTests) ... ok
+test_allocation_or_wrapped_models_fail_before_constructing_any_policy (test_walkforward.WalkForwardTests) ... ok
+test_default_zero_is_same_model_and_confirmation_survives_only_identical_models (test_walkforward.WalkForwardTests) ... ok
+test_explicit_factory_masks_a_score_without_repricing_execution_or_mutating_inputs (test_walkforward.WalkForwardTests) ... ok
+test_future_perturbation_and_schedule_gaps_cannot_change_valid_prefix (test_walkforward.WalkForwardTests) ... ok
+test_model_change_retains_live_lock_until_cash_fill_and_trace_records_fee (test_walkforward.WalkForwardTests) ... ok
+test_same_flag1_across_segments_matches_continuous_reference_for_both_lags (test_walkforward.WalkForwardTests) ... ok
+test_switching_to_flag0_or_a_shorter_configured_lock_does_not_erase_actual_lock (test_walkforward.WalkForwardTests) ... ok
+
+----------------------------------------------------------------------
+Ran 121 tests in 67.958s
+
+OK

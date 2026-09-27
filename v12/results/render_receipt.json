@@ -1,0 +1,35 @@
+{
+  "candidate_selection_performed": false,
+  "input_sha256": {
+    "profiles.json": "b59c66a876e8e334e4746bdbff09c8a730770f32582545e85e438ed4d4b1a464",
+    "results/consensus/evaluation.json": "e95a527cf95ba88d1ac9f08fdb6c4456b1ff9a6130bc658114c0b1d757cc60d6",
+    "results/consensus/selection.json": "d046822da10ddd1e765fa8e8826b121be6a296c322a13f34ff4571e98805bfc2",
+    "results/exante/evaluation.json": "7b586cbdfbd8aa9e1f5de19a2c22fcd1a00e1486294d55ba3ad182df6ae134e4",
+    "results/exante/selection.json": "dcfca0b1c9a3070212ef4a55aa9c603a4494bbe1368f5c60a703c28ba6479c6a",
+    "results/family_diagnostics/close_11bp.json": "dc79f38e63abb68927358ef65ab5ae988f30cfe39c536c4cb8acdb562c05c22e",
+    "results/family_diagnostics/close_1bp.json": "a7fed083c3bc7a6c6fc325da4f313bc45df8da9620ae9b3f9c2899253929390d",
+    "results/family_diagnostics/lag1_11bp.json": "7ace768a734cdfbfc544383154944c842b5abd86b8a2dea19f58967488419d3d",
+    "results/family_diagnostics/lag1_1bp.json": "4063d80ecc36d722d680d60a42b89ebf53b98ebacc9634e24d578ee07d382707",
+    "results/main/evaluation.json": "dedda0844865529af9f0801be9fac828c366d625896442751e75b9ae352fb31b",
+    "results/main/selection.json": "cfd40b8b294143c6473e8e13c81264c199b783519108116e8cb28da104a4c093",
+    "results/pressure/base/evaluation.json": "604b4c3f36ed76b8ccb80ed9794ce1db575d8d8c72299346f80db52172983f5f",
+    "results/pressure/base/path_metadata.json": "a622696280ea4fe1e0f43591497c1ef71c2c2bb8caa4cd1a9962db620f332f53",
+    "results/pressure/base/paths.npz": "4decef3ae43c6534b9540593a16563d0c170695b199466549de7ed59f0ec3d53",
+    "results/pressure/cash_lower/evaluation.json": "679b96175cb6025a5917e93ab7f057838fb83339e0d3bf9a6820862914f266f5",
+    "results/pressure/cash_upper/evaluation.json": "8c41f57f47a1212e3676a5ebddde3a81f3e4dfcae5026f28c2ac224f921fb443",
+    "results/pressure/completion.json": "eb9a843aace1381ebdf99a8ae68b971c4807ea97edf924d9d5586acdb3141f83",
+    "results/pressure/official_515100/evaluation.json": "146c7482b49f1869b0a037f4331a2ec4fd183fa90a9601bf61e86c3e4ea5139f"
+  },
+  "output_sha256": {
+    "RESULTS.md": "215887dee54e5fb0426570770edc31f3810fc319619fb6c559814e7cf27e2abe",
+    "results/annual_returns.csv": "dd33f5cdef411d64a1541a5b781caa50174125a88b2778ed2704d7ec3b5067ac",
+    "results/cash_precision.csv": "64ac43896c2bd99873480923707765edcbc1a726d7d606632eea0f8016bd2e7f",
+    "results/equity_drawdown.png": "fc12c449cf38c134541e9b4fce0dc0e4a1f10cb43c07dd5e22ef98cce270065a",
+    "results/execution_stress.csv": "2431c7451f8766361cd857c0763875a07d5033cd5eb07f28b619e65f8ca3aa87",
+    "results/final_qualification.json": "176d967f4b1ab6f60a17a9a13058fe602e1b1d3d72a3b9f587de49b05e812174",
+    "results/full_comparison.csv": "656d7e7693c6d350f598b063de4d77fccfe127b21bafcd3367adad06c7ecbbf5",
+    "results/yearly_metrics.csv": "9e4b227653e778a8b3982a3cefad1e965320dc58afcd876b1b82cba2a67192fe"
+  },
+  "rendered_at": "2026-09-27T19:32:22.753969+00:00",
+  "source_sha256": "d9285f8b0b707baad822360670b7bb684425e5accacc012bbe9c031ac250683d"
+}

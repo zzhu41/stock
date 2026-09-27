@@ -1,0 +1,78 @@
+{
+  "cases": [
+    {
+      "account": "H",
+      "scenario": "close_11bp",
+      "boundaries_verified": 0,
+      "all_model_boundaries_keep_actual_state": true,
+      "only_first_overall_session_free": true,
+      "actual_fees_verified": 290,
+      "continuing_account_drawdown_2018_2025": -0.18158295998693974
+    },
+    {
+      "account": "H",
+      "scenario": "close_1bp",
+      "boundaries_verified": 0,
+      "all_model_boundaries_keep_actual_state": true,
+      "only_first_overall_session_free": true,
+      "actual_fees_verified": 290,
+      "continuing_account_drawdown_2018_2025": -0.17003057694546064
+    },
+    {
+      "account": "H",
+      "scenario": "lag1_11bp",
+      "boundaries_verified": 0,
+      "all_model_boundaries_keep_actual_state": true,
+      "only_first_overall_session_free": true,
+      "actual_fees_verified": 292,
+      "continuing_account_drawdown_2018_2025": -0.3085010626377642
+    },
+    {
+      "account": "H",
+      "scenario": "lag1_1bp",
+      "boundaries_verified": 0,
+      "all_model_boundaries_keep_actual_state": true,
+      "only_first_overall_session_free": true,
+      "actual_fees_verified": 292,
+      "continuing_account_drawdown_2018_2025": -0.29310081979814273
+    },
+    {
+      "account": "reselected",
+      "scenario": "close_11bp",
+      "boundaries_verified": 4,
+      "all_model_boundaries_keep_actual_state": true,
+      "only_first_overall_session_free": true,
+      "actual_fees_verified": 284,
+      "continuing_account_drawdown_2018_2025": -0.2090853080431514
+    },
+    {
+      "account": "reselected",
+      "scenario": "close_1bp",
+      "boundaries_verified": 4,
+      "all_model_boundaries_keep_actual_state": true,
+      "only_first_overall_session_free": true,
+      "actual_fees_verified": 284,
+      "continuing_account_drawdown_2018_2025": -0.19470252318210146
+    },
+    {
+      "account": "reselected",
+      "scenario": "lag1_11bp",
+      "boundaries_verified": 4,
+      "all_model_boundaries_keep_actual_state": true,
+      "only_first_overall_session_free": true,
+      "actual_fees_verified": 286,
+      "continuing_account_drawdown_2018_2025": -0.2321166663520492
+    },
+    {
+      "account": "reselected",
+      "scenario": "lag1_1bp",
+      "boundaries_verified": 4,
+      "all_model_boundaries_keep_actual_state": true,
+      "only_first_overall_session_free": true,
+      "actual_fees_verified": 286,
+      "continuing_account_drawdown_2018_2025": -0.2181527067764356
+    }
+  ],
+  "evaluation_sha256": "418e9048b81c7e92bef4644b7d2f88e5e6c93aa4c1696cf0487744ed931b7c65",
+  "definition": "At each boundary compare saved holding/nav/age/lock/asset_peak to previous actual day; recompute every trade fee; continuing drawdown retains all past NAV peaks."
+}

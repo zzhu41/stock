@@ -1,0 +1,67 @@
+{
+  "design": {
+    "a_primary_unchanged": null,
+    "adaptive_after_a": true,
+    "candidate_count": 293,
+    "clean_oos": false,
+    "fingerprints": {
+      "inputs": {
+        "CONSENSUS_PROTOCOL.md": "36c8dc2683f96c11e18c0d5a54dc4d470062e00042aeed9d21e8a15e7c66b8e2",
+        "PROTOCOL.md": "799c8e28413f6bf97cb8c8f8d6192a1d885de41b2b13d69505d38041820d8eaf",
+        "inputs/features.json": "d2c5bc2c9a97d0312500c28f04bba7700b19c4d82b39fd3fc23d66ba3d98cbfa",
+        "inputs/features.npz.gz": "83989d5c50eaaeac0ede0bcb3835f661dbc6fbfce3f7c8690fbfa5492d0ca583",
+        "inputs/manifest.json": "724a6937b7bacc380544edfa1bebfb834b31653839422f5ccfcf9f535d6a2c8c",
+        "registered_candidates.json": "31b86d239586686d7ac367f6def291a9476c2e943ed19ebcf30e536f022d1533",
+        "registration.json": "fcce77cde4c65ad3daf7b865c532552bb9678396a72da31222c3216d46b02d1a",
+        "results/consensus/registered_candidates.json": "bb6887fdc6dbe11cb0ceed23fbb555569d020e476a78f2e644d7561c64513189",
+        "results/consensus/score_receipt.json": "6842d855c759ce3e11bb66b8d773118aa3ae24b97e3bce86e871f45f3bea4aa9",
+        "results/main/selection.json": "cfd40b8b294143c6473e8e13c81264c199b783519108116e8cb28da104a4c093"
+      },
+      "sources": {
+        "CONSENSUS_PROTOCOL.md": "36c8dc2683f96c11e18c0d5a54dc4d470062e00042aeed9d21e8a15e7c66b8e2",
+        "PROTOCOL.md": "799c8e28413f6bf97cb8c8f8d6192a1d885de41b2b13d69505d38041820d8eaf",
+        "allocation.py": "374c81995b1566109f69380e62a6b72f25a6855e35f5f84491cbe097795d6643",
+        "consensus.py": "d5a21f66c24cb34643c118519c0ba44f320e2383e9167ab133849efd461f560e",
+        "consensus_features.py": "67bffc6b034efccccbb1566d1f22f57efb45a5592c99bb85c486bf96fb002ab4",
+        "data.py": "cf5f56189f093f8972044e85a0d6725380b9cad5520a489712762d09fbde2543",
+        "diagnostic_features.py": "ef5b65579459a5a0c732740292cdc802c949c09bdd921e5c85c45a90e03bb58b",
+        "native.cpp": "cf9dc9190894582d801e313564ac21a80e09d5a63058c312f3567a4aa12873f5",
+        "native.py": "6140b16b971fe4dbbca5ec9b439e9b3227d72dc11e6367d01c1196f07facae51",
+        "registry.py": "e726727652e4b3c6ee9e4b9f4e61a3e26ae4400069fb0175c41270232ef8aaeb",
+        "scan.py": "83e52ff842ff5a28e6cb5021347bc3b4b631240dbbe153d2bdd33424a90a63c7",
+        "schema.py": "e9e56236ea8aed2322df5550d6f57e097caa42311ff4a9316424b86219890ebd",
+        "selection.py": "7c933f1ca421dfc31011ee5b9ebf15b950fa10dce9c878dd835ee38873237a47",
+        "tests/test_consensus.py": "7c1567b08b0f62276d1499252f016e1ea315f24e96977b7c000cd08424a79f08",
+        "tests/test_consensus_features.py": "9a4e8f8cf5ebdcde3a834ea47b208d3b4e98fdaacf0d715e707dc1f4fb5e8382"
+      }
+    },
+    "known_history_including_2026": true,
+    "period": [
+      "2014-01-02",
+      "2026-09-24"
+    ],
+    "scenarios": [
+      [
+        "close_1bp",
+        0,
+        0.0001
+      ],
+      [
+        "close_11bp",
+        0,
+        0.0011
+      ],
+      [
+        "lag1_1bp",
+        1,
+        0.0001
+      ],
+      [
+        "lag1_11bp",
+        1,
+        0.0011
+      ]
+    ]
+  },
+  "registered_at": "2026-09-27T18:24:50.292404+00:00"
+}

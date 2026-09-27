@@ -1,0 +1,3114 @@
+{
+  "close_11bp": {
+    "v12d_0b6153379123514a0284": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 320,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_0cffe25e495dc82db0a9": {
+      "blocked_rebalances": 0,
+      "configured_lag": 0,
+      "full_switches": 315,
+      "kind": "single",
+      "missing_held_days": 0,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_0e8ac9d0991ba40d3420": {
+      "blocked_rebalances": 0,
+      "configured_lag": 0,
+      "full_switches": 307,
+      "kind": "single",
+      "missing_held_days": 0,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_143568768ea1018844fe": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 300,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_17877b2234040b59e5bb": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 300,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_19e18ba00745a8665565": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 315,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_1a6e0a1abe81d241f3e5": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 307,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_1ce83148fa7868bf3f32": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_1d11b0aa5719d4a49563": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 304,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_206c1f4c89b314e64f16": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 249,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_24e49560f27b69e5c7ac": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 311,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2d8c8c6d54643e64b4fc": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 316,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2ec3bd6fd75d0da6d28d": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 339,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2eedd57e62f641650044": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 337,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2fc40c0a8225f5a2eb11": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 269,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_36575e35859f1294a21f": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 309,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_39ff8a024431ca3a7f44": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 254,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_3d967cc2cbd01624d1c4": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 315,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_3d98f41513387102a203": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_3fd715b5831a01120605": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 331,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_43a76915c6490cf3a2f9": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 342,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_43daff26f3d645ad125f": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 333,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_454ecfd3be102a27d3ac": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 307,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_49112b3a167152a4388f": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_497bf87fbea59d1e71ca": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_4a2c1f8e56a30a4e9e60": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 272,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_4d358c441881cbf192a9": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 337,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_4ddf7b98e296afcdaec4": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 330,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_516029e9fdffb21775c1": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 317,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_53dc6c105b7da821ade4": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 320,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_54342fa888b277bebc54": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 298,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_544656cb52ae47b604f9": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 317,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_55f3508d1e4092e26557": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 327,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_5df25cf53f2ac8209597": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 308,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_5e020674285fc2d9db44": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 326,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_67bc006a0ddb5b42b44b": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 328,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_6c646c1cef877b52b04b": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 305,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_6e8cd445a36317a80999": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 336,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7103cea2156443b682a3": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 333,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_711ac000cb7f82d91da3": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_727c50b65b763985a4e2": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 310,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7309f3b9849047c92992": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 306,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_772178e90e355be8de74": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_791ab049135a53c7680a": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 306,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_798c4510dfd541546565": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_79e0f0f769a3eddcae97": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 309,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7b823a4111dbfad544a3": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 314,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7f0deeac662822d5ab98": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 316,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_815b2fcc4a26302b8aa3": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 317,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_88304bd925fad459719f": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 315,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_88fcc1dff4172ba30b16": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 316,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_8af20c4f79f3dc3fb702": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 313,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_926519a942c013c88bdb": {
+      "blocked_rebalances": 0,
+      "configured_lag": 0,
+      "full_switches": 321,
+      "kind": "single",
+      "missing_held_days": 0,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_93b44d2024a832f147d8": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 323,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_94a55c76c9993019ea15": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 335,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_95b4ed5c3c78f0947e86": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 321,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_9884df0bf4537eaf4d0c": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 321,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_9ae769413086d6b23cfe": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 306,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_9c517400627d797a3d1a": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 304,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_a103ccb0ddb85d7b909a": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 340,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_a6c47cfd35839fd6e645": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_a9ca341c6db7abffc905": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 310,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ab1cf56087b1a6020d4e": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 310,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_b49b9549403cce246061": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 340,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_b49e703fee6bf2f0f60e": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 326,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_b970d49c806b3ad0118b": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_bd63f96297ad63d64458": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 300,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_bfa81dcfb2d057e628b7": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 313,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_bfe3569b7056ea96af8c": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 308,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_c5bb7725d12b409a60ec": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 330,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_c91d3d4266643ce486ff": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ca8c838e706f0d27c8ca": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 334,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_cb214c9dc5e9979a5862": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 339,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_cccf648d550fec7d87df": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 288,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_cd756e649595a6f20f51": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 309,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ce51dde098a8c7186df8": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 303,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d2431c419bf252d36178": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 318,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d272c2f89cfce2cc6de1": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 322,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d2c216a2f9c37db743d4": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d396581284040b8a052f": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 312,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d4755e91feab5b98534a": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d4c1521607ee0eaf1cb8": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d71706bb1f7be89d8418": {
+      "blocked_rebalances": 1,
+      "configured_lag": 0,
+      "full_switches": 328,
+      "kind": "single",
+      "missing_held_days": 1,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d8278f4232de5862974c": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 302,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d8973646e47620edb16f": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_db81887ec2b6fdc8ae5e": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_dc15b535337ce9e68444": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 294,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_dc59737235df0ab718e9": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 312,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e16da02a1e21e25e7af7": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 302,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e1f93359c7dccdf45621": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 306,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e2dc52e50c2323bc2385": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e6cc8ce2892bff16aa9b": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ea7ea618f023f587777a": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 306,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ebb7d851f97cc0e657e1": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_f04960ccda0364675403": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_f1751befcd6376782f4d": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 322,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ff01898e4b176607b3e9": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    }
+  },
+  "close_1bp": {
+    "v12d_0b6153379123514a0284": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 320,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_0cffe25e495dc82db0a9": {
+      "blocked_rebalances": 0,
+      "configured_lag": 0,
+      "full_switches": 315,
+      "kind": "single",
+      "missing_held_days": 0,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_0e8ac9d0991ba40d3420": {
+      "blocked_rebalances": 0,
+      "configured_lag": 0,
+      "full_switches": 307,
+      "kind": "single",
+      "missing_held_days": 0,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_143568768ea1018844fe": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 300,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_17877b2234040b59e5bb": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 300,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_19e18ba00745a8665565": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 315,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_1a6e0a1abe81d241f3e5": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 307,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_1ce83148fa7868bf3f32": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_1d11b0aa5719d4a49563": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 304,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_206c1f4c89b314e64f16": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 249,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_24e49560f27b69e5c7ac": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 311,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2d8c8c6d54643e64b4fc": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 316,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2ec3bd6fd75d0da6d28d": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 339,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2eedd57e62f641650044": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 337,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2fc40c0a8225f5a2eb11": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 269,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_36575e35859f1294a21f": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 309,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_39ff8a024431ca3a7f44": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 254,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_3d967cc2cbd01624d1c4": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 315,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_3d98f41513387102a203": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_3fd715b5831a01120605": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 331,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_43a76915c6490cf3a2f9": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 342,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_43daff26f3d645ad125f": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 333,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_454ecfd3be102a27d3ac": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 307,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_49112b3a167152a4388f": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_497bf87fbea59d1e71ca": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_4a2c1f8e56a30a4e9e60": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 272,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_4d358c441881cbf192a9": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 337,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_4ddf7b98e296afcdaec4": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 330,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_516029e9fdffb21775c1": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 317,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_53dc6c105b7da821ade4": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 320,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_54342fa888b277bebc54": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 298,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_544656cb52ae47b604f9": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 317,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_55f3508d1e4092e26557": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 327,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_5df25cf53f2ac8209597": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 308,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_5e020674285fc2d9db44": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 326,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_67bc006a0ddb5b42b44b": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 328,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_6c646c1cef877b52b04b": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 305,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_6e8cd445a36317a80999": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 336,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7103cea2156443b682a3": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 333,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_711ac000cb7f82d91da3": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_727c50b65b763985a4e2": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 310,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7309f3b9849047c92992": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 306,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_772178e90e355be8de74": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_791ab049135a53c7680a": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 306,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_798c4510dfd541546565": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_79e0f0f769a3eddcae97": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 309,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7b823a4111dbfad544a3": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 314,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7f0deeac662822d5ab98": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 316,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_815b2fcc4a26302b8aa3": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 317,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_88304bd925fad459719f": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 315,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_88fcc1dff4172ba30b16": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 316,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_8af20c4f79f3dc3fb702": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 313,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_926519a942c013c88bdb": {
+      "blocked_rebalances": 0,
+      "configured_lag": 0,
+      "full_switches": 321,
+      "kind": "single",
+      "missing_held_days": 0,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_93b44d2024a832f147d8": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 323,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_94a55c76c9993019ea15": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 335,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_95b4ed5c3c78f0947e86": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 321,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_9884df0bf4537eaf4d0c": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 321,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_9ae769413086d6b23cfe": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 306,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_9c517400627d797a3d1a": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 304,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_a103ccb0ddb85d7b909a": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 340,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_a6c47cfd35839fd6e645": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_a9ca341c6db7abffc905": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 310,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ab1cf56087b1a6020d4e": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 310,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_b49b9549403cce246061": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 340,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_b49e703fee6bf2f0f60e": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 326,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_b970d49c806b3ad0118b": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_bd63f96297ad63d64458": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 300,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_bfa81dcfb2d057e628b7": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 313,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_bfe3569b7056ea96af8c": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 308,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_c5bb7725d12b409a60ec": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 330,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_c91d3d4266643ce486ff": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ca8c838e706f0d27c8ca": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 334,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_cb214c9dc5e9979a5862": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 339,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_cccf648d550fec7d87df": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 288,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_cd756e649595a6f20f51": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 309,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ce51dde098a8c7186df8": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 303,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d2431c419bf252d36178": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 318,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d272c2f89cfce2cc6de1": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 322,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d2c216a2f9c37db743d4": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d396581284040b8a052f": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 312,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d4755e91feab5b98534a": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d4c1521607ee0eaf1cb8": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d71706bb1f7be89d8418": {
+      "blocked_rebalances": 1,
+      "configured_lag": 0,
+      "full_switches": 328,
+      "kind": "single",
+      "missing_held_days": 1,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d8278f4232de5862974c": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 302,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d8973646e47620edb16f": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_db81887ec2b6fdc8ae5e": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_dc15b535337ce9e68444": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 294,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_dc59737235df0ab718e9": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 312,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e16da02a1e21e25e7af7": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 302,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e1f93359c7dccdf45621": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 306,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e2dc52e50c2323bc2385": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e6cc8ce2892bff16aa9b": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ea7ea618f023f587777a": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 306,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ebb7d851f97cc0e657e1": {
+      "blocked_rebalances": 3,
+      "configured_lag": 0,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_f04960ccda0364675403": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_f1751befcd6376782f4d": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 322,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ff01898e4b176607b3e9": {
+      "blocked_rebalances": 2,
+      "configured_lag": 0,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    }
+  },
+  "lag1_11bp": {
+    "v12d_0b6153379123514a0284": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 322,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_0cffe25e495dc82db0a9": {
+      "blocked_rebalances": 0,
+      "configured_lag": 1,
+      "full_switches": 315,
+      "kind": "single",
+      "missing_held_days": 0,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_0e8ac9d0991ba40d3420": {
+      "blocked_rebalances": 0,
+      "configured_lag": 1,
+      "full_switches": 307,
+      "kind": "single",
+      "missing_held_days": 0,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_143568768ea1018844fe": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 302,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_17877b2234040b59e5bb": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 302,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_19e18ba00745a8665565": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 317,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_1a6e0a1abe81d241f3e5": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 307,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_1ce83148fa7868bf3f32": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 331,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_1d11b0aa5719d4a49563": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 306,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_206c1f4c89b314e64f16": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 249,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_24e49560f27b69e5c7ac": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 313,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2d8c8c6d54643e64b4fc": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 318,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2ec3bd6fd75d0da6d28d": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 339,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2eedd57e62f641650044": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 337,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2fc40c0a8225f5a2eb11": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 269,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_36575e35859f1294a21f": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 311,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_39ff8a024431ca3a7f44": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 254,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_3d967cc2cbd01624d1c4": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 317,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_3d98f41513387102a203": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_3fd715b5831a01120605": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 333,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_43a76915c6490cf3a2f9": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 342,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_43daff26f3d645ad125f": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 335,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_454ecfd3be102a27d3ac": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 309,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_49112b3a167152a4388f": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 327,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_497bf87fbea59d1e71ca": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_4a2c1f8e56a30a4e9e60": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 272,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_4d358c441881cbf192a9": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 337,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_4ddf7b98e296afcdaec4": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 330,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_516029e9fdffb21775c1": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_53dc6c105b7da821ade4": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 320,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_54342fa888b277bebc54": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 301,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_544656cb52ae47b604f9": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_55f3508d1e4092e26557": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 327,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_5df25cf53f2ac8209597": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 310,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_5e020674285fc2d9db44": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 328,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_67bc006a0ddb5b42b44b": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 328,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_6c646c1cef877b52b04b": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 307,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_6e8cd445a36317a80999": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 336,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7103cea2156443b682a3": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 333,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_711ac000cb7f82d91da3": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 321,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_727c50b65b763985a4e2": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 312,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7309f3b9849047c92992": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 308,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_772178e90e355be8de74": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_791ab049135a53c7680a": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 308,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_798c4510dfd541546565": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 326,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_79e0f0f769a3eddcae97": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 311,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7b823a4111dbfad544a3": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 316,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7f0deeac662822d5ab98": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 316,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_815b2fcc4a26302b8aa3": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_88304bd925fad459719f": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 317,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_88fcc1dff4172ba30b16": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 316,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_8af20c4f79f3dc3fb702": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 315,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_926519a942c013c88bdb": {
+      "blocked_rebalances": 0,
+      "configured_lag": 1,
+      "full_switches": 321,
+      "kind": "single",
+      "missing_held_days": 0,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_93b44d2024a832f147d8": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 323,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_94a55c76c9993019ea15": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 337,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_95b4ed5c3c78f0947e86": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 321,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_9884df0bf4537eaf4d0c": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 323,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_9ae769413086d6b23cfe": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 308,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_9c517400627d797a3d1a": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 306,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_a103ccb0ddb85d7b909a": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 342,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_a6c47cfd35839fd6e645": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_a9ca341c6db7abffc905": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 312,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ab1cf56087b1a6020d4e": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 312,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_b49b9549403cce246061": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 342,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_b49e703fee6bf2f0f60e": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 328,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_b970d49c806b3ad0118b": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_bd63f96297ad63d64458": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 302,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_bfa81dcfb2d057e628b7": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 315,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_bfe3569b7056ea96af8c": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 310,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_c5bb7725d12b409a60ec": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 330,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_c91d3d4266643ce486ff": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 328,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ca8c838e706f0d27c8ca": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 336,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_cb214c9dc5e9979a5862": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 339,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_cccf648d550fec7d87df": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 289,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_cd756e649595a6f20f51": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 311,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ce51dde098a8c7186df8": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 303,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d2431c419bf252d36178": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 320,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d272c2f89cfce2cc6de1": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d2c216a2f9c37db743d4": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d396581284040b8a052f": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 314,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d4755e91feab5b98534a": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 321,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d4c1521607ee0eaf1cb8": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d71706bb1f7be89d8418": {
+      "blocked_rebalances": 0,
+      "configured_lag": 1,
+      "full_switches": 328,
+      "kind": "single",
+      "missing_held_days": 1,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d8278f4232de5862974c": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 304,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d8973646e47620edb16f": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_db81887ec2b6fdc8ae5e": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 326,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_dc15b535337ce9e68444": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 296,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_dc59737235df0ab718e9": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 314,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e16da02a1e21e25e7af7": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 304,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e1f93359c7dccdf45621": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 308,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e2dc52e50c2323bc2385": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e6cc8ce2892bff16aa9b": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ea7ea618f023f587777a": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 308,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ebb7d851f97cc0e657e1": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 331,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_f04960ccda0364675403": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_f1751befcd6376782f4d": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ff01898e4b176607b3e9": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    }
+  },
+  "lag1_1bp": {
+    "v12d_0b6153379123514a0284": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 322,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_0cffe25e495dc82db0a9": {
+      "blocked_rebalances": 0,
+      "configured_lag": 1,
+      "full_switches": 315,
+      "kind": "single",
+      "missing_held_days": 0,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_0e8ac9d0991ba40d3420": {
+      "blocked_rebalances": 0,
+      "configured_lag": 1,
+      "full_switches": 307,
+      "kind": "single",
+      "missing_held_days": 0,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_143568768ea1018844fe": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 302,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_17877b2234040b59e5bb": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 302,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_19e18ba00745a8665565": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 317,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_1a6e0a1abe81d241f3e5": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 307,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_1ce83148fa7868bf3f32": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 331,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_1d11b0aa5719d4a49563": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 306,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_206c1f4c89b314e64f16": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 249,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_24e49560f27b69e5c7ac": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 313,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2d8c8c6d54643e64b4fc": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 318,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2ec3bd6fd75d0da6d28d": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 339,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2eedd57e62f641650044": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 337,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_2fc40c0a8225f5a2eb11": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 269,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_36575e35859f1294a21f": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 311,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_39ff8a024431ca3a7f44": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 254,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_3d967cc2cbd01624d1c4": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 317,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_3d98f41513387102a203": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_3fd715b5831a01120605": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 333,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_43a76915c6490cf3a2f9": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 342,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_43daff26f3d645ad125f": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 335,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_454ecfd3be102a27d3ac": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 309,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_49112b3a167152a4388f": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 327,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_497bf87fbea59d1e71ca": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_4a2c1f8e56a30a4e9e60": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 272,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_4d358c441881cbf192a9": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 337,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_4ddf7b98e296afcdaec4": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 330,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_516029e9fdffb21775c1": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_53dc6c105b7da821ade4": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 320,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_54342fa888b277bebc54": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 301,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_544656cb52ae47b604f9": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_55f3508d1e4092e26557": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 327,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_5df25cf53f2ac8209597": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 310,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_5e020674285fc2d9db44": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 328,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_67bc006a0ddb5b42b44b": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 328,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_6c646c1cef877b52b04b": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 307,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_6e8cd445a36317a80999": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 336,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7103cea2156443b682a3": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 333,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_711ac000cb7f82d91da3": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 321,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_727c50b65b763985a4e2": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 312,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7309f3b9849047c92992": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 308,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_772178e90e355be8de74": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_791ab049135a53c7680a": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 308,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_798c4510dfd541546565": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 326,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_79e0f0f769a3eddcae97": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 311,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7b823a4111dbfad544a3": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 316,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_7f0deeac662822d5ab98": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 316,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_815b2fcc4a26302b8aa3": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_88304bd925fad459719f": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 317,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_88fcc1dff4172ba30b16": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 316,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_8af20c4f79f3dc3fb702": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 315,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_926519a942c013c88bdb": {
+      "blocked_rebalances": 0,
+      "configured_lag": 1,
+      "full_switches": 321,
+      "kind": "single",
+      "missing_held_days": 0,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_93b44d2024a832f147d8": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 323,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_94a55c76c9993019ea15": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 337,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_95b4ed5c3c78f0947e86": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 321,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_9884df0bf4537eaf4d0c": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 323,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_9ae769413086d6b23cfe": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 308,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_9c517400627d797a3d1a": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 306,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_a103ccb0ddb85d7b909a": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 342,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_a6c47cfd35839fd6e645": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_a9ca341c6db7abffc905": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 312,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ab1cf56087b1a6020d4e": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 312,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_b49b9549403cce246061": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 342,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_b49e703fee6bf2f0f60e": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 328,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_b970d49c806b3ad0118b": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_bd63f96297ad63d64458": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 302,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_bfa81dcfb2d057e628b7": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 315,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_bfe3569b7056ea96af8c": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 310,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_c5bb7725d12b409a60ec": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 330,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_c91d3d4266643ce486ff": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 328,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ca8c838e706f0d27c8ca": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 336,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_cb214c9dc5e9979a5862": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 339,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_cccf648d550fec7d87df": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 289,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_cd756e649595a6f20f51": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 311,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ce51dde098a8c7186df8": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 303,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d2431c419bf252d36178": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 320,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d272c2f89cfce2cc6de1": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d2c216a2f9c37db743d4": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d396581284040b8a052f": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 314,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d4755e91feab5b98534a": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 321,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d4c1521607ee0eaf1cb8": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d71706bb1f7be89d8418": {
+      "blocked_rebalances": 0,
+      "configured_lag": 1,
+      "full_switches": 328,
+      "kind": "single",
+      "missing_held_days": 1,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d8278f4232de5862974c": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 304,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_d8973646e47620edb16f": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 325,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_db81887ec2b6fdc8ae5e": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 326,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_dc15b535337ce9e68444": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 296,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_dc59737235df0ab718e9": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 314,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e16da02a1e21e25e7af7": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 304,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e1f93359c7dccdf45621": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 308,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e2dc52e50c2323bc2385": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_e6cc8ce2892bff16aa9b": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 329,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ea7ea618f023f587777a": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 308,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ebb7d851f97cc0e657e1": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 331,
+      "kind": "single",
+      "missing_held_days": 3,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_f04960ccda0364675403": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_f1751befcd6376782f4d": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 324,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    },
+    "v12d_ff01898e4b176607b3e9": {
+      "blocked_rebalances": 1,
+      "configured_lag": 1,
+      "full_switches": 319,
+      "kind": "single",
+      "missing_held_days": 2,
+      "turnover_definition": "Noninitial charged full switches"
+    }
+  }
+}

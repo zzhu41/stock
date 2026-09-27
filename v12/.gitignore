@@ -1,0 +1,20 @@
+cache/
+__pycache__/
+*.pyc
+*.so
+results/**/*.npz
+results/**/*.npy
+results/*.npz
+results/*.npy
+
+# V12 lossless archives: exact large-JSON paths; compressed files stay tracked.
+/results/audit_stages/main/reference_traces.json
+/results/consensus/evaluation.json
+/results/exante/evaluation.json
+/results/main/evaluation.json
+/results/pressure/reference_traces.json
+/results/reselection/folds/2017/evaluation.json
+/results/reselection/folds/2019/evaluation.json
+/results/reselection/folds/2021/evaluation.json
+/results/reselection/folds/2023/evaluation.json
+/results/sensitivity/evaluation.json

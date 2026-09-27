@@ -1,0 +1,98 @@
+{
+  "definition": {
+    "candidate_id": "v12d_5e020674285fc2d9db44",
+    "feature_spec": {
+      "ma_window": 180,
+      "smooth": 4,
+      "window": 25
+    },
+    "frozen_evidence_sha256": {
+      "evaluation.json": "1a99b0606a159b2297083328b991b5530915a5e9893961dcf46799272205c87e",
+      "path_metadata.json": "58cee05318526865373c94a5e3410920e32fe3307782613cba2012e80fe45449",
+      "paths.npz": "16c0bb32d65b80c43c8ba236d6ee017954376651a02ceeabc549284f435e2377",
+      "registered_candidates.json": "dbe4c69e0bca4d272a5eb86f9e58fdcbc5ca52c48105104d40d73c018cbd316f",
+      "registration.json": "cfcdf0c89ee346b6c796cb0ae11b41c7db262f6cb754f713989386dbfbdd4211"
+    },
+    "no_reselection": true,
+    "official_primary": null,
+    "period": [
+      "2014-01-02",
+      "2026-09-24"
+    ],
+    "scenarios": [
+      [
+        "close_1bp",
+        0,
+        0.0001
+      ],
+      [
+        "lag1_11bp",
+        1,
+        0.0011
+      ]
+    ],
+    "source_config": {
+      "bear_entry": 0.07,
+      "breadth_threshold": 0.5,
+      "buffer": 0.02,
+      "buffer_mode": "momentum",
+      "bull_entry": 0.0,
+      "crash_guard": "always",
+      "crash_lock": 5,
+      "crash_mask": 5,
+      "crash_pick": "score",
+      "crash_stock_only": 0,
+      "deep_below": 0.2,
+      "deep_mom": -0.08,
+      "exit_floor": 0.0,
+      "exit_mom": 20,
+      "fallback_floor": -9.9,
+      "fallback_mode": "rank",
+      "fast_mom": 5,
+      "global_buffer": 0.03,
+      "global_pool": [
+        "513100",
+        "513120"
+      ],
+      "gold_buffer": 0.03,
+      "lag": 0,
+      "locked_panic_exit": 0,
+      "ma": "ma180",
+      "min_hold": 2,
+      "mom": 20,
+      "overheat": 0.4,
+      "panic": 1.25,
+      "panic_cooldown": 0,
+      "panic_mode": "volatility",
+      "rank_keep": 1,
+      "regime": "ma",
+      "regime_confirm": 1,
+      "regime_hyst": 0.0,
+      "relaxed_mom": -0.04,
+      "risk_context": "prior_max20_60",
+      "score": "v12_b_wls25_smooth3",
+      "stock_pool": [
+        "159915",
+        "510300",
+        "510500",
+        "512400",
+        "512890",
+        "563300",
+        "588080"
+      ],
+      "switch_confirm": 1,
+      "trail_stop": 0.0,
+      "trend_buffer": 0.0,
+      "volume_below": 0.1,
+      "volume_ratio": 2.0
+    },
+    "source_sha256": {
+      "audit_sensitivity.py": "5ec4e35a44a5adae0ef2ce06e6e57dff4804ae8ab09d004ce6ee9f247d850633",
+      "diagnostic_features.py": "ef5b65579459a5a0c732740292cdc802c949c09bdd921e5c85c45a90e03bb58b",
+      "exante_features.py": "9cb44dc6c18b4a9c1b4aba148a6b83bab85725bee4a379f837611a1620704457",
+      "reference.py": "e4f4fcb8b0ac89f7d52e96150942dfaa56792581ca72137df36676594e7cc449",
+      "sensitivity.py": "5635487cac547c841ffd722fbd4e66a869985f88eeb6642d33576bd5c5f462bc"
+    }
+  },
+  "registered_at": "2026-09-27T19:22:47.937656+00:00"
+}

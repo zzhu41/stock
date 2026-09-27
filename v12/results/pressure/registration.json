@@ -1,0 +1,712 @@
+{
+  "design": {
+    "cash_cases": [
+      "base",
+      "cash_lower",
+      "cash_upper",
+      "official_515100"
+    ],
+    "cash_execution": [
+      [
+        "close_1bp",
+        0,
+        0.0001
+      ],
+      [
+        "close_11bp",
+        0,
+        0.0011
+      ],
+      [
+        "lag1_1bp",
+        1,
+        0.0001
+      ],
+      [
+        "lag1_11bp",
+        1,
+        0.0011
+      ]
+    ],
+    "cash_meaning": "Frozen point baseline, cash lower/upper intervals, official 515100 event replacement; not strategy return bounds",
+    "clean_oos": false,
+    "execution": [
+      [
+        "close_1bp",
+        0,
+        0.0001
+      ],
+      [
+        "close_5bp",
+        0,
+        0.0005
+      ],
+      [
+        "close_11bp",
+        0,
+        0.0011
+      ],
+      [
+        "close_21bp",
+        0,
+        0.0021
+      ],
+      [
+        "lag1_1bp",
+        1,
+        0.0001
+      ],
+      [
+        "lag1_5bp",
+        1,
+        0.0005
+      ],
+      [
+        "lag1_11bp",
+        1,
+        0.0011
+      ],
+      [
+        "lag1_21bp",
+        1,
+        0.0021
+      ]
+    ],
+    "fingerprints": {
+      "dependencies": {
+        "v10_deep/features.py": "388224e2a6f1cd85dc9c79bc7b5825fe329e312dfaaca75e0f1d19bdbd3fc6b0",
+        "v10_deep/precision.py": "7772fc55b9565d028f4d87a6a09cbf7c7e9d0df439c7120a1520296bb83dd910",
+        "v10_deep/reference.py": "307165e11b4e52345d5e0168c3fb36ac661baf214dbc58dbebc7cf5ce2b0f9e5",
+        "v10_deep/scan.py": "372b1ef8950cc3ad394a7fd97d09f0b96db6ebdf1d96a8026ca2298bdd751478",
+        "v10_deep/stress.py": "7c41a2d6d0bdaad038ab3768cb27cb55d944d9bb0a893387658d1dc26cd63027",
+        "v11/diagnostics.py": "6cdb31c0b1e2a3be62bbb32bd5d5f6f49f83c01ccd1734a4d6896d9dc2c12a13",
+        "v11/features.py": "d7411bb3d855bd64467c33fba9b35acc579b02fac5ed74107efbd9dbb099b56f"
+      },
+      "inputs": {
+        "v12/inputs/features.json": "d2c5bc2c9a97d0312500c28f04bba7700b19c4d82b39fd3fc23d66ba3d98cbfa",
+        "v12/inputs/features.npz.gz": "83989d5c50eaaeac0ede0bcb3835f661dbc6fbfce3f7c8690fbfa5492d0ca583",
+        "v12/inputs/manifest.json": "724a6937b7bacc380544edfa1bebfb834b31653839422f5ccfcf9f535d6a2c8c",
+        "v12/results/consensus/selection.json": "d046822da10ddd1e765fa8e8826b121be6a296c322a13f34ff4571e98805bfc2",
+        "v12/results/exante/selection.json": "dcfca0b1c9a3070212ef4a55aa9c603a4494bbe1368f5c60a703c28ba6479c6a",
+        "v12/results/main/selection.json": "cfd40b8b294143c6473e8e13c81264c199b783519108116e8cb28da104a4c093"
+      },
+      "sources": {
+        "v12/DIAGNOSTIC_PROTOCOL.md": "0eb69fdeda43804bfd397e2f58674177c420fec9221bc601082ec391e6617c45",
+        "v12/consensus_features.py": "67bffc6b034efccccbb1566d1f22f57efb45a5592c99bb85c486bf96fb002ab4",
+        "v12/data.py": "cf5f56189f093f8972044e85a0d6725380b9cad5520a489712762d09fbde2543",
+        "v12/diagnostic_features.py": "ef5b65579459a5a0c732740292cdc802c949c09bdd921e5c85c45a90e03bb58b",
+        "v12/exante.py": "f685840d93976898d0739f8a9abc8a0cc5f76508516582fbf4aafc1bb8a910b6",
+        "v12/exante_features.py": "9cb44dc6c18b4a9c1b4aba148a6b83bab85725bee4a379f837611a1620704457",
+        "v12/finalists.py": "d099469a5d5e767be65a48c48460578830107f24c25ec76c02b5317a2648e1a2",
+        "v12/native.cpp": "cf9dc9190894582d801e313564ac21a80e09d5a63058c312f3567a4aa12873f5",
+        "v12/native.py": "6140b16b971fe4dbbca5ec9b439e9b3227d72dc11e6367d01c1196f07facae51",
+        "v12/pressure.py": "3953cf2eb0604e16dc2002cf41beef215ede70e26112c5a243d731424b7370cd",
+        "v12/reference.py": "e4f4fcb8b0ac89f7d52e96150942dfaa56792581ca72137df36676594e7cc449",
+        "v12/scan.py": "83e52ff842ff5a28e6cb5021347bc3b4b631240dbbe153d2bdd33424a90a63c7",
+        "v12/schema.py": "e9e56236ea8aed2322df5550d6f57e097caa42311ff4a9316424b86219890ebd"
+      }
+    },
+    "no_reselection": true,
+    "period": [
+      "2014-01-02",
+      "2026-09-24"
+    ],
+    "qualified_primary": null,
+    "records": [
+      {
+        "complexity": 0,
+        "config": {
+          "bear_entry": 0.07,
+          "breadth_threshold": 0.5,
+          "buffer": 0.02,
+          "buffer_mode": "momentum",
+          "bull_entry": 0.0,
+          "crash_guard": "always",
+          "crash_lock": 5,
+          "crash_mask": 7,
+          "crash_pick": "score",
+          "crash_stock_only": 0,
+          "deep_below": 0.2,
+          "deep_mom": -0.08,
+          "exit_floor": 0.0,
+          "exit_mom": 20,
+          "fallback_floor": -9.9,
+          "fallback_mode": "rank",
+          "fast_mom": 5,
+          "global_buffer": 0.03,
+          "global_pool": [
+            "513100",
+            "513120"
+          ],
+          "gold_buffer": 0.03,
+          "lag": 0,
+          "locked_panic_exit": 0,
+          "ma": "ma180",
+          "min_hold": 0,
+          "mom": 20,
+          "overheat": 0.4,
+          "panic": 1.5,
+          "panic_cooldown": 0,
+          "panic_mode": "volatility",
+          "rank_keep": 1,
+          "regime": "ma",
+          "regime_confirm": 1,
+          "regime_hyst": 0.0,
+          "relaxed_mom": -0.04,
+          "score": "wls20_smooth3",
+          "stock_pool": [
+            "159915",
+            "510300",
+            "510500",
+            "512400",
+            "512890",
+            "563300",
+            "588080"
+          ],
+          "switch_confirm": 1,
+          "trail_stop": 0.0,
+          "trend_buffer": 0.0,
+          "volume_below": 0.1,
+          "volume_ratio": 2.0
+        },
+        "families": [
+          "bounded_existing_interactions",
+          "existing_h"
+        ],
+        "hash": "cca586e367aa3071f32a0b678edff91a4726746f8ef31e92586f149c09f0805e",
+        "id": "v12_cca586e367aa3071f32a",
+        "kind": "single",
+        "previous_ids": [
+          "v11_85ae599b865950104870",
+          "vd_7d52c290adc6c4503f7d"
+        ],
+        "previously_seen": true,
+        "selectable": false
+      },
+      {
+        "complexity": 5,
+        "config": {
+          "bear_entry": 0.07,
+          "breadth_threshold": 0.5,
+          "buffer": 0.02,
+          "buffer_mode": "momentum",
+          "bull_entry": 0.0,
+          "crash_guard": "always",
+          "crash_lock": 5,
+          "crash_mask": 7,
+          "crash_pick": "score",
+          "crash_stock_only": 0,
+          "deep_below": 0.2,
+          "deep_mom": -0.08,
+          "exit_floor": 0.0,
+          "exit_mom": 20,
+          "fallback_floor": -9.9,
+          "fallback_mode": "rank",
+          "fast_mom": 5,
+          "global_buffer": 0.03,
+          "global_pool": [
+            "513100",
+            "513120"
+          ],
+          "gold_buffer": 0.03,
+          "lag": 0,
+          "locked_panic_exit": 0,
+          "ma": "ma250",
+          "min_hold": 2,
+          "mom": 20,
+          "overheat": 0.4,
+          "panic": 0.04,
+          "panic_cooldown": 0,
+          "panic_mode": "fixed",
+          "rank_keep": 1,
+          "regime": "ma",
+          "regime_confirm": 1,
+          "regime_hyst": 0.0,
+          "relaxed_mom": -0.04,
+          "score": "wls25_v20",
+          "stock_pool": [
+            "159915",
+            "510300",
+            "510500",
+            "512400",
+            "512890",
+            "563300",
+            "588080"
+          ],
+          "switch_confirm": 1,
+          "trail_stop": 0.0,
+          "trend_buffer": 0.0,
+          "volume_below": 0.1,
+          "volume_ratio": 2.0
+        },
+        "families": [
+          "bounded_existing_interactions",
+          "existing_simple"
+        ],
+        "hash": "55ec5c56a477b7158b7b95484fbcec2a754f2b0622948fe217773437948c8120",
+        "id": "v12_55ec5c56a477b7158b7b",
+        "kind": "single",
+        "previous_ids": [
+          "v11_e0c1991c319fc1ecaf01",
+          "vd_d2a02ab14be481f562fd"
+        ],
+        "previously_seen": true,
+        "selectable": false
+      },
+      {
+        "complexity": 7,
+        "config": {
+          "bear_entry": 0.07,
+          "breadth_threshold": 0.5,
+          "buffer": 0.02,
+          "buffer_mode": "momentum",
+          "bull_entry": 0.0,
+          "crash_guard": "always",
+          "crash_lock": 5,
+          "crash_mask": 1,
+          "crash_pick": "score",
+          "crash_stock_only": 0,
+          "deep_below": 0.2,
+          "deep_mom": -0.08,
+          "exit_floor": 0.0,
+          "exit_mom": 20,
+          "fallback_floor": -9.9,
+          "fallback_mode": "rank",
+          "fast_mom": 5,
+          "global_buffer": 0.02,
+          "global_pool": [
+            "513100",
+            "513120"
+          ],
+          "gold_buffer": 0.02,
+          "lag": 0,
+          "locked_panic_exit": 0,
+          "ma": "ma250",
+          "min_hold": 0,
+          "mom": 20,
+          "overheat": 0.4,
+          "panic": 0.04,
+          "panic_cooldown": 0,
+          "panic_mode": "fixed",
+          "rank_keep": 1,
+          "regime": "ma",
+          "regime_confirm": 1,
+          "regime_hyst": 0.0,
+          "relaxed_mom": -0.04,
+          "score": "wls25_v20",
+          "stock_pool": [
+            "159915",
+            "510300",
+            "510500",
+            "512400",
+            "512890",
+            "563300",
+            "588080"
+          ],
+          "switch_confirm": 1,
+          "trail_stop": 0.0,
+          "trend_buffer": 0.0,
+          "volume_below": 0.1,
+          "volume_ratio": 2.0
+        },
+        "families": [
+          "existing_v9"
+        ],
+        "hash": "10b7b1a6687fd049aebed1b0d94f4bf5513a9a090e9f7c4b0a0d23a5bc6a743a",
+        "id": "v12_10b7b1a6687fd049aebe",
+        "kind": "single",
+        "previous_ids": [
+          "vd_70fab267cfcd6e8a1762"
+        ],
+        "previously_seen": true,
+        "selectable": false
+      },
+      {
+        "complexity": 5,
+        "config": {
+          "bear_entry": 0.07,
+          "breadth_threshold": 0.5,
+          "buffer": 0.02,
+          "buffer_mode": "momentum",
+          "bull_entry": 0.0,
+          "crash_guard": "always",
+          "crash_lock": 5,
+          "crash_mask": 1,
+          "crash_pick": "score",
+          "crash_stock_only": 0,
+          "deep_below": 0.2,
+          "deep_mom": -0.08,
+          "exit_floor": 0.0,
+          "exit_mom": 20,
+          "fallback_floor": -9.9,
+          "fallback_mode": "rank",
+          "fast_mom": 5,
+          "global_buffer": 0.03,
+          "global_pool": [
+            "513100",
+            "513120"
+          ],
+          "gold_buffer": 0.03,
+          "lag": 0,
+          "locked_panic_exit": 0,
+          "ma": "ma250",
+          "min_hold": 0,
+          "mom": 20,
+          "overheat": 0.4,
+          "panic": 0.04,
+          "panic_cooldown": 0,
+          "panic_mode": "fixed",
+          "rank_keep": 1,
+          "regime": "ma",
+          "regime_confirm": 1,
+          "regime_hyst": 0.0,
+          "relaxed_mom": -0.04,
+          "score": "wls25_v20",
+          "stock_pool": [
+            "159915",
+            "510300",
+            "510500",
+            "512400",
+            "512890",
+            "563300",
+            "588080"
+          ],
+          "switch_confirm": 1,
+          "trail_stop": 0.0,
+          "trend_buffer": 0.0,
+          "volume_below": 0.1,
+          "volume_ratio": 2.0
+        },
+        "families": [
+          "existing_v91"
+        ],
+        "hash": "d1d9ea928d1692b16fb228bf2e950a61856c1f7a452aa7fb8ff58d38577912f4",
+        "id": "v12_d1d9ea928d1692b16fb2",
+        "kind": "single",
+        "previous_ids": [
+          "vd_d3f63c167520ac928dc5"
+        ],
+        "previously_seen": true,
+        "selectable": false
+      },
+      {
+        "complexity": 4,
+        "config": {
+          "bear_entry": 0.07,
+          "breadth_threshold": 0.5,
+          "buffer": 0.02,
+          "buffer_mode": "momentum",
+          "bull_entry": 0.0,
+          "crash_guard": "always",
+          "crash_lock": 5,
+          "crash_mask": 7,
+          "crash_pick": "score",
+          "crash_stock_only": 0,
+          "deep_below": 0.2,
+          "deep_mom": -0.08,
+          "exit_floor": 0.0,
+          "exit_mom": 20,
+          "fallback_floor": -9.9,
+          "fallback_mode": "rank",
+          "fast_mom": 5,
+          "global_buffer": 0.03,
+          "global_pool": [
+            "513100",
+            "513120"
+          ],
+          "gold_buffer": 0.03,
+          "lag": 0,
+          "locked_panic_exit": 0,
+          "ma": "ma250",
+          "min_hold": 0,
+          "mom": 20,
+          "overheat": 0.4,
+          "panic": 0.04,
+          "panic_cooldown": 0,
+          "panic_mode": "fixed",
+          "rank_keep": 1,
+          "regime": "ma",
+          "regime_confirm": 1,
+          "regime_hyst": 0.0,
+          "relaxed_mom": -0.04,
+          "score": "wls25_v20",
+          "stock_pool": [
+            "159915",
+            "510300",
+            "510500",
+            "512400",
+            "512890",
+            "563300",
+            "588080"
+          ],
+          "switch_confirm": 1,
+          "trail_stop": 0.0,
+          "trend_buffer": 0.0,
+          "volume_below": 0.1,
+          "volume_ratio": 2.0
+        },
+        "families": [
+          "bounded_existing_interactions",
+          "existing_v92"
+        ],
+        "hash": "24552ec3549d227cc2e1b517d8f660a0c91e5328ad54fef9f08427c984481491",
+        "id": "v12_24552ec3549d227cc2e1",
+        "kind": "single",
+        "previous_ids": [
+          "v11_711053f1548224bed3e1",
+          "vd_368146734e874b98662b"
+        ],
+        "previously_seen": true,
+        "selectable": false
+      },
+      {
+        "complexity": 4,
+        "config": {
+          "bear_entry": 0.07,
+          "breadth_threshold": 0.5,
+          "buffer": 0.02,
+          "buffer_mode": "momentum",
+          "bull_entry": 0.0,
+          "crash_guard": "always",
+          "crash_lock": 5,
+          "crash_mask": 5,
+          "crash_pick": "score",
+          "crash_stock_only": 0,
+          "deep_below": 0.2,
+          "deep_mom": -0.08,
+          "exit_floor": 0.0,
+          "exit_mom": 20,
+          "fallback_floor": -9.9,
+          "fallback_mode": "rank",
+          "fast_mom": 5,
+          "global_buffer": 0.03,
+          "global_pool": [
+            "513100",
+            "513120"
+          ],
+          "gold_buffer": 0.03,
+          "lag": 0,
+          "locked_panic_exit": 0,
+          "ma": "ma180",
+          "min_hold": 2,
+          "mom": 20,
+          "overheat": 0.4,
+          "panic": 1.35,
+          "panic_cooldown": 0,
+          "panic_mode": "volatility",
+          "rank_keep": 1,
+          "regime": "ma",
+          "regime_confirm": 1,
+          "regime_hyst": 0.0,
+          "relaxed_mom": -0.04,
+          "score": "v12_b_wls25_smooth3",
+          "stock_pool": [
+            "159915",
+            "510300",
+            "510500",
+            "512400",
+            "512890",
+            "563300",
+            "588080"
+          ],
+          "switch_confirm": 1,
+          "trail_stop": 0.0,
+          "trend_buffer": 0.0,
+          "volume_below": 0.1,
+          "volume_ratio": 2.0
+        },
+        "families": [
+          "consensus_wls25_smooth3"
+        ],
+        "hash": "bb36c1de9e534b1cf33226746511245f1caddd4c3ddee367d284a1f55741a8c6",
+        "id": "v12_bb36c1de9e534b1cf332",
+        "kind": "single",
+        "previous_ids": [],
+        "previously_seen": false,
+        "selectable": true
+      },
+      {
+        "complexity": 5,
+        "config": {
+          "bear_entry": 0.07,
+          "breadth_threshold": 0.5,
+          "buffer": 0.02,
+          "buffer_mode": "momentum",
+          "bull_entry": 0.0,
+          "crash_guard": "always",
+          "crash_lock": 5,
+          "crash_mask": 5,
+          "crash_pick": "score",
+          "crash_stock_only": 0,
+          "deep_below": 0.2,
+          "deep_mom": -0.08,
+          "exit_floor": 0.0,
+          "exit_mom": 20,
+          "fallback_floor": -9.9,
+          "fallback_mode": "rank",
+          "fast_mom": 5,
+          "global_buffer": 0.03,
+          "global_pool": [
+            "513100",
+            "513120"
+          ],
+          "gold_buffer": 0.03,
+          "lag": 0,
+          "locked_panic_exit": 0,
+          "ma": "ma180",
+          "min_hold": 2,
+          "mom": 20,
+          "overheat": 0.4,
+          "panic": 1.25,
+          "panic_cooldown": 0,
+          "panic_mode": "volatility",
+          "rank_keep": 1,
+          "regime": "ma",
+          "regime_confirm": 1,
+          "regime_hyst": 0.0,
+          "relaxed_mom": -0.04,
+          "risk_context": "prior_max20_60",
+          "score": "v12_b_wls25_smooth3",
+          "stock_pool": [
+            "159915",
+            "510300",
+            "510500",
+            "512400",
+            "512890",
+            "563300",
+            "588080"
+          ],
+          "switch_confirm": 1,
+          "trail_stop": 0.0,
+          "trend_buffer": 0.0,
+          "volume_below": 0.1,
+          "volume_ratio": 2.0
+        },
+        "direction_previously_researched": true,
+        "families": [
+          "exante_prior_max20_60"
+        ],
+        "hash": "7f06d74ee08531d6cdbe9890901e7e7e8c95a55a4c69bad3e564e85a074cce47",
+        "id": "v12_7f06d74ee08531d6cdbe",
+        "kind": "single",
+        "previous_ids": [],
+        "previously_seen": false,
+        "selectable": true
+      },
+      {
+        "complexity": 2,
+        "config": {
+          "bear_entry": 0.07,
+          "breadth_threshold": 0.5,
+          "buffer": 0.02,
+          "buffer_mode": "momentum",
+          "bull_entry": 0.0,
+          "crash_guard": "always",
+          "crash_lock": 5,
+          "crash_mask": 5,
+          "crash_pick": "score",
+          "crash_stock_only": 0,
+          "deep_below": 0.2,
+          "deep_mom": -0.08,
+          "exit_floor": 0.0,
+          "exit_mom": 20,
+          "fallback_floor": -9.9,
+          "fallback_mode": "rank",
+          "fast_mom": 5,
+          "global_buffer": 0.03,
+          "global_pool": [
+            "513100",
+            "513120"
+          ],
+          "gold_buffer": 0.03,
+          "lag": 0,
+          "locked_panic_exit": 0,
+          "ma": "ma180",
+          "min_hold": 3,
+          "mom": 20,
+          "overheat": 0.4,
+          "panic": 1.5,
+          "panic_cooldown": 0,
+          "panic_mode": "volatility",
+          "rank_keep": 1,
+          "regime": "ma",
+          "regime_confirm": 1,
+          "regime_hyst": 0.0,
+          "relaxed_mom": -0.04,
+          "score": "wls20_smooth3",
+          "stock_pool": [
+            "159915",
+            "510300",
+            "510500",
+            "512400",
+            "512890",
+            "563300",
+            "588080"
+          ],
+          "switch_confirm": 1,
+          "trail_stop": 0.0,
+          "trend_buffer": 0.0,
+          "volume_below": 0.1,
+          "volume_ratio": 2.0
+        },
+        "families": [
+          "bounded_existing_interactions"
+        ],
+        "hash": "6ace1b82572e526d2b758c52e78d51e275debc965906e64a3a107e1d25199b6a",
+        "id": "v12_6ace1b82572e526d2b75",
+        "kind": "single",
+        "previous_ids": [],
+        "previously_seen": false,
+        "selectable": true
+      }
+    ],
+    "roles": {
+      "balanced_a": "v12_6ace1b82572e526d2b75",
+      "balanced_b": "v12_bb36c1de9e534b1cf332",
+      "balanced_c": "v12_7f06d74ee08531d6cdbe",
+      "h": "v12_cca586e367aa3071f32a",
+      "simple": "v12_55ec5c56a477b7158b7b",
+      "v9": "v12_10b7b1a6687fd049aebe",
+      "v91": "v12_d1d9ea928d1692b16fb2",
+      "v92": "v12_24552ec3549d227cc2e1"
+    },
+    "sources": {
+      "v12_10b7b1a6687fd049aebe": [
+        "main",
+        "consensus",
+        "exante"
+      ],
+      "v12_24552ec3549d227cc2e1": [
+        "main",
+        "consensus",
+        "exante"
+      ],
+      "v12_55ec5c56a477b7158b7b": [
+        "main",
+        "consensus",
+        "exante"
+      ],
+      "v12_6ace1b82572e526d2b75": [
+        "main",
+        "exante"
+      ],
+      "v12_7f06d74ee08531d6cdbe": [
+        "exante"
+      ],
+      "v12_bb36c1de9e534b1cf332": [
+        "consensus"
+      ],
+      "v12_cca586e367aa3071f32a": [
+        "main",
+        "consensus",
+        "exante"
+      ],
+      "v12_d1d9ea928d1692b16fb2": [
+        "main",
+        "consensus",
+        "exante"
+      ]
+    }
+  },
+  "registered_at": "2026-09-27T19:08:46.876917+00:00"
+}

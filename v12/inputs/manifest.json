@@ -1,0 +1,19 @@
+{
+  "archive_sha256": "83989d5c50eaaeac0ede0bcb3835f661dbc6fbfce3f7c8690fbfa5492d0ca583",
+  "array_sha256": "8843bc507ca8d55268cd82cf4d8bffb83bf9533554cd4f3b66a6392dfb5660a8",
+  "base_array_sha256": "ce00a551d84ac04119b5922a42f55cbaed27b324fadd95abc7f7ca45ea28f598",
+  "base_metadata_sha256": "46df4ccee412e38afad294dbe0123a010f14509192b5dcfebe4c0a2a878a3be3",
+  "fixed_score_names": [
+    "wls25_v20",
+    "wls20_smooth3"
+  ],
+  "manifests": {
+    "v10_deep/profiles.json": "14082b92db8386c2abd51f52d6267015d2b5f2abfa069f033115cc68ec9cfe19",
+    "v10_h_close/corrected_manifest.json": "1498be16c517288a1829aca04201dea12de6b63dc3e2d8f5056a3d189a914fee",
+    "v10_h_close/qvix_manifest.json": "87045736b27dfeed55bce3b098001bc6c5817c65f1fc831493dbbf96466f4257"
+  },
+  "metadata_sha256": "d2c5bc2c9a97d0312500c28f04bba7700b19c4d82b39fd3fc23d66ba3d98cbfa",
+  "prepared_at": "2026-09-27T17:41:44.323822+00:00",
+  "schema": 1,
+  "source_sha256": "cf5f56189f093f8972044e85a0d6725380b9cad5520a489712762d09fbde2543"
+}

@@ -1,0 +1,47 @@
+{
+  "checks": [
+    {
+      "days": 3097,
+      "exact": true,
+      "role": "h"
+    },
+    {
+      "days": 3097,
+      "exact": true,
+      "role": "v9"
+    },
+    {
+      "days": 3097,
+      "exact": true,
+      "role": "v91"
+    },
+    {
+      "days": 3097,
+      "exact": true,
+      "role": "v92"
+    },
+    {
+      "days": 3097,
+      "exact": true,
+      "role": "simple"
+    },
+    {
+      "days": 3097,
+      "exact": true,
+      "role": "balanced_a"
+    },
+    {
+      "days": 3097,
+      "exact": true,
+      "role": "balanced_b"
+    },
+    {
+      "days": 3097,
+      "exact": true,
+      "role": "balanced_c"
+    }
+  ],
+  "completed_at": "2026-09-27T19:15:27.743396+00:00",
+  "not_deployed": true,
+  "source": "v12.cli.evaluate independent Python runtime against frozen pressure native paths"
+}

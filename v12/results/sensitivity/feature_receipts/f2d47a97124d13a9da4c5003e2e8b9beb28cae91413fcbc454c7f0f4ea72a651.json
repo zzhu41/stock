@@ -1,0 +1,91 @@
+{
+  "array_sha256": {
+    "fear": "831216ecc85a5c1effaadc6da496712c009f0af71e1e76213eeb7aa3436f0ed7",
+    "features": "4be439f4ad0895323d8b1e0415790fbb425ecadf2574488b596e9e6364eb7d97",
+    "orders": "89ded9791a55e19c516bf377452d34f9e3604cf47846f34cd61fa72487b00b27",
+    "scores": "c9e13bfa1af41d6ba645101bceb21ef5724cdc61e31d8ccd3c2a47518dc163c0",
+    "years": "b3add7d10b263055d9491f4d17242572c4c6cd2fccaafe7bc9ccc6a88ee2c1ce"
+  },
+  "effective_configs": {
+    "v12d_e2dc52e50c2323bc2385": {
+      "bear_entry": 0.07,
+      "breadth_threshold": 0.5,
+      "buffer": 0.02,
+      "buffer_mode": "momentum",
+      "bull_entry": 0.0,
+      "crash_guard": "always",
+      "crash_lock": 5,
+      "crash_mask": 5,
+      "crash_pick": "score",
+      "crash_stock_only": 0,
+      "deep_below": 0.2,
+      "deep_mom": -0.08,
+      "exit_floor": 0.0,
+      "exit_mom": 20,
+      "fallback_floor": -9.9,
+      "fallback_mode": "rank",
+      "fast_mom": 5,
+      "global_buffer": 0.03,
+      "global_pool": [
+        "513100",
+        "513120"
+      ],
+      "gold_buffer": 0.03,
+      "lag": 0,
+      "locked_panic_exit": 0,
+      "ma": "ma180",
+      "min_hold": 2,
+      "mom": 20,
+      "overheat": 0.4,
+      "panic": 1.35,
+      "panic_cooldown": 0,
+      "panic_mode": "volatility",
+      "rank_keep": 1,
+      "regime": "ma",
+      "regime_confirm": 1,
+      "regime_hyst": 0.0,
+      "relaxed_mom": -0.04,
+      "score": "v12_diag_wls25_smooth3",
+      "stock_pool": [
+        "159915",
+        "510300",
+        "510500",
+        "512400",
+        "512890",
+        "563300",
+        "588080"
+      ],
+      "switch_confirm": 1,
+      "trail_stop": 0.0,
+      "trend_buffer": 0.0,
+      "volume_below": 0.1,
+      "volume_ratio": 2.0
+    }
+  },
+  "feature_metadata": {
+    "active_score": "v12_diag_wls25_smooth3",
+    "actual_ma_window": 216,
+    "cash_rank_excluded": true,
+    "diagnostic_only": true,
+    "ma250_crash_column_preserved": true,
+    "ma_center_reused": false,
+    "ma_overridden_asset": "510300",
+    "ma_slot": "ma180",
+    "missing_ma_behavior": "NaN before enough benchmark observations; existing native initialization fallback unchanged",
+    "required_observations": 270,
+    "score_arithmetic": "legacy_list_sum_WLS25_VOL20",
+    "score_center_reused": null,
+    "smooth": 3,
+    "smooth_clock": "trailing own quoted observations; raw scores before investability mask",
+    "source_config_hash": null,
+    "source_config_id": null,
+    "source_config_ma": "ma180",
+    "source_score": "wls25_v20",
+    "window": 25
+  },
+  "group": "f2d47a97124d13a9da4c5003e2e8b9beb28cae91413fcbc454c7f0f4ea72a651",
+  "ids": [
+    "v12d_e2dc52e50c2323bc2385"
+  ],
+  "risk_context": "current20"
+}

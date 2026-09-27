@@ -1,0 +1,138 @@
+{
+  "cases": [
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v9",
+      "scenario": "close_1bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v91",
+      "scenario": "close_1bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v92",
+      "scenario": "close_1bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "simple_reference",
+      "scenario": "close_1bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v10_h",
+      "scenario": "close_1bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v9",
+      "scenario": "close_11bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v91",
+      "scenario": "close_11bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v92",
+      "scenario": "close_11bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "simple_reference",
+      "scenario": "close_11bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v10_h",
+      "scenario": "close_11bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v9",
+      "scenario": "lag1_1bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v91",
+      "scenario": "lag1_1bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v92",
+      "scenario": "lag1_1bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "simple_reference",
+      "scenario": "lag1_1bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v10_h",
+      "scenario": "lag1_1bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v9",
+      "scenario": "lag1_11bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v91",
+      "scenario": "lag1_11bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v92",
+      "scenario": "lag1_11bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "simple_reference",
+      "scenario": "lag1_11bp"
+    },
+    {
+      "exact": true,
+      "observations": 3097,
+      "role": "v10_h",
+      "scenario": "lag1_11bp"
+    }
+  ],
+  "frozen_control_archive_sha256": "9f69fa6ae029eca3ae7e92fb771af302949e7f2b3aba3135ad0f6642527648ba",
+  "input_manifest_sha256": "724a6937b7bacc380544edfa1bebfb834b31653839422f5ccfcf9f535d6a2c8c",
+  "new_candidate_performance_computed": false,
+  "only_existing_controls": true,
+  "passed": true,
+  "protected_files_verified": 895,
+  "source_sha256": {
+    "data.py": "cf5f56189f093f8972044e85a0d6725380b9cad5520a489712762d09fbde2543",
+    "fidelity.py": "aa215b161cb019acac6c36c0569022d68c659ef02dcb7ee206fe25ba021d8c73",
+    "native.cpp": "cf9dc9190894582d801e313564ac21a80e09d5a63058c312f3567a4aa12873f5",
+    "native.py": "6140b16b971fe4dbbca5ec9b439e9b3227d72dc11e6367d01c1196f07facae51",
+    "registry.py": "d0d298c16b6824c294baf11f7671a55d9faeb14420ef4636884831c268e19143",
+    "schema.py": "e9e56236ea8aed2322df5550d6f57e097caa42311ff4a9316424b86219890ebd"
+  }
+}

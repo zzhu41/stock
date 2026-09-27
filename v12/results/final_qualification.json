@@ -1,0 +1,55 @@
+{
+  "all_stages_qualified_count": 0,
+  "no_reselection": true,
+  "parents": {
+    "balanced_a": {
+      "checks": {
+        "close_11bp_cagr": true,
+        "close_11bp_drawdown": true,
+        "early_cagr": true,
+        "lag1_11bp_cagr": true,
+        "lag1_11bp_drawdown": true,
+        "main_cagr": true,
+        "main_drawdown": true,
+        "middle_cagr": true,
+        "recent_cagr": true,
+        "tail_return": false
+      },
+      "id": "v12_6ace1b82572e526d2b75",
+      "stage": "main"
+    },
+    "balanced_b": {
+      "checks": {
+        "close_11bp_cagr": true,
+        "close_11bp_drawdown": true,
+        "early_cagr": true,
+        "lag1_11bp_cagr": true,
+        "lag1_11bp_drawdown": true,
+        "main_cagr": false,
+        "main_drawdown": true,
+        "middle_cagr": true,
+        "recent_cagr": true,
+        "tail_return": true
+      },
+      "id": "v12_bb36c1de9e534b1cf332",
+      "stage": "consensus"
+    },
+    "balanced_c": {
+      "checks": {
+        "close_11bp_cagr": true,
+        "close_11bp_drawdown": true,
+        "early_cagr": true,
+        "lag1_11bp_cagr": true,
+        "lag1_11bp_drawdown": true,
+        "main_cagr": true,
+        "main_drawdown": true,
+        "middle_cagr": true,
+        "recent_cagr": true,
+        "tail_return": false
+      },
+      "id": "v12_7f06d74ee08531d6cdbe",
+      "stage": "exante"
+    }
+  },
+  "qualified_primary": null
+}

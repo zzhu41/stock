@@ -1,0 +1,69 @@
+{
+  "design": {
+    "a_primary_unchanged": null,
+    "adaptive_after_a_b": true,
+    "b_primary_unchanged": null,
+    "candidate_count": 1157,
+    "clean_oos": false,
+    "fingerprints": {
+      "inputs": {
+        "inputs/features.json": "d2c5bc2c9a97d0312500c28f04bba7700b19c4d82b39fd3fc23d66ba3d98cbfa",
+        "inputs/features.npz.gz": "83989d5c50eaaeac0ede0bcb3835f661dbc6fbfce3f7c8690fbfa5492d0ca583",
+        "inputs/manifest.json": "724a6937b7bacc380544edfa1bebfb834b31653839422f5ccfcf9f535d6a2c8c",
+        "registered_candidates.json": "31b86d239586686d7ac367f6def291a9476c2e943ed19ebcf30e536f022d1533",
+        "registration.json": "fcce77cde4c65ad3daf7b865c532552bb9678396a72da31222c3216d46b02d1a",
+        "results/consensus/selection.json": "d046822da10ddd1e765fa8e8826b121be6a296c322a13f34ff4571e98805bfc2",
+        "results/exante/feature_receipt.json": "6b34d4980461fc7cd896251a2adcc5b81456d68419f060e481c90e584d706acf",
+        "results/exante/registered_candidates.json": "1fddb9ab22abc5f9bb432fb13aa3d88238ae9884257e4f6fbb9b19daac2a9943",
+        "results/main/selection.json": "cfd40b8b294143c6473e8e13c81264c199b783519108116e8cb28da104a4c093"
+      },
+      "sources": {
+        "CONSENSUS_PROTOCOL.md": "36c8dc2683f96c11e18c0d5a54dc4d470062e00042aeed9d21e8a15e7c66b8e2",
+        "EXANTE_PROTOCOL.md": "33bf28951f829bb760ad52ce057110cf25401bbf7720d0dd33288a1484ee7ff8",
+        "PROTOCOL.md": "799c8e28413f6bf97cb8c8f8d6192a1d885de41b2b13d69505d38041820d8eaf",
+        "allocation.py": "374c81995b1566109f69380e62a6b72f25a6855e35f5f84491cbe097795d6643",
+        "consensus_features.py": "67bffc6b034efccccbb1566d1f22f57efb45a5592c99bb85c486bf96fb002ab4",
+        "data.py": "cf5f56189f093f8972044e85a0d6725380b9cad5520a489712762d09fbde2543",
+        "diagnostic_features.py": "ef5b65579459a5a0c732740292cdc802c949c09bdd921e5c85c45a90e03bb58b",
+        "exante.py": "f685840d93976898d0739f8a9abc8a0cc5f76508516582fbf4aafc1bb8a910b6",
+        "exante_features.py": "9cb44dc6c18b4a9c1b4aba148a6b83bab85725bee4a379f837611a1620704457",
+        "native.cpp": "cf9dc9190894582d801e313564ac21a80e09d5a63058c312f3567a4aa12873f5",
+        "native.py": "6140b16b971fe4dbbca5ec9b439e9b3227d72dc11e6367d01c1196f07facae51",
+        "registry.py": "e726727652e4b3c6ee9e4b9f4e61a3e26ae4400069fb0175c41270232ef8aaeb",
+        "scan.py": "83e52ff842ff5a28e6cb5021347bc3b4b631240dbbe153d2bdd33424a90a63c7",
+        "schema.py": "e9e56236ea8aed2322df5550d6f57e097caa42311ff4a9316424b86219890ebd",
+        "selection.py": "7c933f1ca421dfc31011ee5b9ebf15b950fa10dce9c878dd835ee38873237a47",
+        "tests/test_exante.py": "17c50ee5e4a93b94da3aedeb71a48e9824920d6a715cf8530c340444f3261fd7",
+        "tests/test_exante_features.py": "9c1db1f68cce027d11baeea55870600477a26c814d1ab9bd9aecd034481ee889"
+      }
+    },
+    "known_history_including_2026": true,
+    "period": [
+      "2014-01-02",
+      "2026-09-24"
+    ],
+    "scenarios": [
+      [
+        "close_1bp",
+        0,
+        0.0001
+      ],
+      [
+        "close_11bp",
+        0,
+        0.0011
+      ],
+      [
+        "lag1_1bp",
+        1,
+        0.0001
+      ],
+      [
+        "lag1_11bp",
+        1,
+        0.0011
+      ]
+    ]
+  },
+  "registered_at": "2026-09-27T18:55:35.011021+00:00"
+}

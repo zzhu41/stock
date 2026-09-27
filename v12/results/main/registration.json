@@ -1,0 +1,84 @@
+{
+  "design": {
+    "allocation_tape_alignment": "execution_day; each lag's base is rerun, never shifted twice",
+    "blocks": [
+      [
+        "early",
+        "2014-01-02",
+        "2017-12-31"
+      ],
+      [
+        "middle",
+        "2018-01-01",
+        "2021-12-31"
+      ],
+      [
+        "recent",
+        "2022-01-01",
+        "2025-12-31"
+      ]
+    ],
+    "candidate_count": 439,
+    "clean_oos": false,
+    "fingerprints": {
+      "inputs": {
+        "PROTOCOL.md": "799c8e28413f6bf97cb8c8f8d6192a1d885de41b2b13d69505d38041820d8eaf",
+        "inputs/features.json": "d2c5bc2c9a97d0312500c28f04bba7700b19c4d82b39fd3fc23d66ba3d98cbfa",
+        "inputs/features.npz.gz": "83989d5c50eaaeac0ede0bcb3835f661dbc6fbfce3f7c8690fbfa5492d0ca583",
+        "inputs/manifest.json": "724a6937b7bacc380544edfa1bebfb834b31653839422f5ccfcf9f535d6a2c8c",
+        "protected_manifest.json": "b81bef65dcfcad22a18d19dac01108793f30785663302c0a5be3ce78f33f6928",
+        "registered_candidates.json": "31b86d239586686d7ac367f6def291a9476c2e943ed19ebcf30e536f022d1533",
+        "registration.json": "fcce77cde4c65ad3daf7b865c532552bb9678396a72da31222c3216d46b02d1a"
+      },
+      "sources": {
+        "PROTOCOL.md": "799c8e28413f6bf97cb8c8f8d6192a1d885de41b2b13d69505d38041820d8eaf",
+        "allocation.py": "374c81995b1566109f69380e62a6b72f25a6855e35f5f84491cbe097795d6643",
+        "data.py": "cf5f56189f093f8972044e85a0d6725380b9cad5520a489712762d09fbde2543",
+        "diagnostic_features.py": "ef5b65579459a5a0c732740292cdc802c949c09bdd921e5c85c45a90e03bb58b",
+        "fidelity.py": "ddd2e32e613a9622d1e57cb0c8094544a1a637a05a2bda909d55208b32b152bd",
+        "native.cpp": "cf9dc9190894582d801e313564ac21a80e09d5a63058c312f3567a4aa12873f5",
+        "native.py": "6140b16b971fe4dbbca5ec9b439e9b3227d72dc11e6367d01c1196f07facae51",
+        "reference.py": "e4f4fcb8b0ac89f7d52e96150942dfaa56792581ca72137df36676594e7cc449",
+        "registry.py": "e726727652e4b3c6ee9e4b9f4e61a3e26ae4400069fb0175c41270232ef8aaeb",
+        "scan.py": "83e52ff842ff5a28e6cb5021347bc3b4b631240dbbe153d2bdd33424a90a63c7",
+        "schema.py": "e9e56236ea8aed2322df5550d6f57e097caa42311ff4a9316424b86219890ebd",
+        "selection.py": "7c933f1ca421dfc31011ee5b9ebf15b950fa10dce9c878dd835ee38873237a47",
+        "tests/test_allocation.py": "0d191d4d82c51e66832ab2dd952cbf6eaf533f17c5927ab2206e633a573f1942",
+        "tests/test_diagnostic_features.py": "ea6a7070f2d646f88df695a37d04bf869038539108f979e5905aef0aa4c7059d",
+        "tests/test_native.py": "61cb7bcca46114f35cb47e7e864c22bf596653600b48e591756d7125132927c0",
+        "tests/test_registry.py": "ebb8e795ca6f3110c7dbf86e48c5e89f3eb356e0633c9a906df5bd33c9bf7680",
+        "tests/test_scan.py": "c6ba863c21683b118a37bb4cee4347dffbf6dab49a5cdc2d1313b86fbd8d8c50",
+        "tests/test_selection.py": "34ff8c602ef493d19035d30ce6d1e5af398fcbcf233a5773b2177a57c0635ffe"
+      }
+    },
+    "known_history_including_2026": true,
+    "period": [
+      "2014-01-02",
+      "2026-09-24"
+    ],
+    "scenarios": [
+      [
+        "close_1bp",
+        0,
+        0.0001
+      ],
+      [
+        "close_11bp",
+        0,
+        0.0011
+      ],
+      [
+        "lag1_1bp",
+        1,
+        0.0001
+      ],
+      [
+        "lag1_11bp",
+        1,
+        0.0011
+      ]
+    ],
+    "turnover_definition": "Noninitial native full switches or actual portfolio L1 turnover/2"
+  },
+  "registered_at": "2026-09-27T18:00:39.373597+00:00"
+}

@@ -1,0 +1,1679 @@
+{
+  "input_sha256": {
+    "profiles.json": "b59c66a876e8e334e4746bdbff09c8a730770f32582545e85e438ed4d4b1a464",
+    "results/family_diagnostics/concentration.json": "66d12a4f394748bbb0487e0dcbbc57f7c88e8a2b2a5d409d7e522c5d8672747c",
+    "results/family_diagnostics/concentration_close_1bp.json.gz": "f5956db28a0bb77cf0ae4b0786008f2cde3a78250769fbe4b6fd0f606314adec",
+    "results/pressure/base/path_metadata.json": "a622696280ea4fe1e0f43591497c1ef71c2c2bb8caa4cd1a9962db620f332f53",
+    "results/pressure/base/paths.npz": "4decef3ae43c6534b9540593a16563d0c170695b199466549de7ed59f0ec3d53"
+  },
+  "interpretation": "Post-freeze description, no new selection; pre2026 is also examined history, not clean OOS. All excess shares refer to paired log returns, not strategy profit.",
+  "pre2026_period_end": "2025-12-31",
+  "roles": {
+    "balanced_a": {
+      "concentration": {
+        "annual_interpretation": "Signed yearly contributions to net log excess and positive-mass contributions are separate; they are not shares of total strategy profit or yearly CAGR differences.",
+        "annualization_of_partial_year": false,
+        "benchmark_net_log_growth": 5.423490911376647,
+        "clean_oos": false,
+        "exclusion_is_tradable": false,
+        "interpretation": "Shares of paired log excess, not shares of total strategy profit; signed offsets can make net shares exceed 100%.",
+        "negative_advantage_days": 324,
+        "negative_log_excess": -0.49701158547805635,
+        "net_log_excess": 0.09919557242246194,
+        "net_share_defined": true,
+        "observations": 3097,
+        "positive_advantage_days": 343,
+        "positive_log_excess": 0.5962071579005184,
+        "selected_net_log_growth": 5.52268648379911,
+        "top": {
+          "10": {
+            "actual_positive_days": 10,
+            "dates": [
+              "2026-07-10",
+              "2026-07-15",
+              "2020-02-21",
+              "2020-02-18",
+              "2026-08-13",
+              "2026-07-13",
+              "2014-12-11",
+              "2023-05-12",
+              "2021-07-30",
+              "2021-07-28"
+            ],
+            "fixed_path_net_log_excess_excluding_days": -0.3262220656137491,
+            "indices": [
+              3042,
+              3045,
+              1494,
+              1491,
+              3066,
+              3043,
+              230,
+              2276,
+              1846,
+              1844
+            ],
+            "positive_log_excess": 0.425417638036211,
+            "share_of_net_log_excess": 4.288675670164076,
+            "share_of_positive_log_excess": 0.7135399707951764
+          }
+        },
+        "top_positive_days": [
+          {
+            "benchmark_return": -0.05223550243470543,
+            "date": "2026-07-10",
+            "index": 3042,
+            "log_excess": 0.09061089123159646,
+            "selected_return": 0.037653239929947624
+          },
+          {
+            "benchmark_return": -0.048132300242130666,
+            "date": "2026-07-15",
+            "index": 3045,
+            "log_excess": 0.09021935998981903,
+            "selected_return": 0.04173764906303257
+          },
+          {
+            "benchmark_return": -0.026634502617801092,
+            "date": "2020-02-21",
+            "index": 1494,
+            "log_excess": 0.04581971292385355,
+            "selected_return": 0.019002375296912177
+          },
+          {
+            "benchmark_return": -0.03495975855130773,
+            "date": "2020-02-18",
+            "index": 1491,
+            "log_excess": 0.04471796109278462,
+            "selected_return": 0.00917431192660545
+          },
+          {
+            "benchmark_return": -0.03659793814432988,
+            "date": "2026-08-13",
+            "index": 3066,
+            "log_excess": 0.03728444460181096,
+            "selected_return": 0.0
+          },
+          {
+            "benchmark_return": -0.04904250350303596,
+            "date": "2026-07-13",
+            "index": 3043,
+            "log_excess": 0.031546009868702346,
+            "selected_return": -0.018565400843881807
+          },
+          {
+            "benchmark_return": -0.010792476102374104,
+            "date": "2014-12-11",
+            "index": 230,
+            "log_excess": 0.023322582195332592,
+            "selected_return": 0.012549537648612885
+          },
+          {
+            "benchmark_return": -0.017543469387755084,
+            "date": "2023-05-12",
+            "index": 2276,
+            "log_excess": 0.021936474344674314,
+            "selected_return": 0.00424628450106157
+          },
+          {
+            "benchmark_return": -0.016813450760608695,
+            "date": "2021-07-30",
+            "index": 1846,
+            "log_excess": 0.020187421999936655,
+            "selected_return": 0.003236245954692629
+          },
+          {
+            "benchmark_return": -0.00994035785288272,
+            "date": "2021-07-28",
+            "index": 1844,
+            "log_excess": 0.019772779787700458,
+            "selected_return": 0.00983069361004918
+          }
+        ],
+        "years": {
+          "2014": {
+            "benchmark_total_return": 0.6244947951951391,
+            "end": "2014-12-31",
+            "negative_log_excess": -0.003821321312417066,
+            "net_log_excess": 0.022442597571120212,
+            "observations": 245,
+            "positive_log_excess": 0.02626391888353728,
+            "selected_total_return": 0.6613648606443292,
+            "share_of_net_log_excess": 0.22624596061142635,
+            "share_of_positive_log_excess": 0.044051666497971854,
+            "start": "2014-01-02"
+          },
+          "2015": {
+            "benchmark_total_return": 1.0257736452027086,
+            "end": "2015-12-31",
+            "negative_log_excess": -3.253690719628999e-15,
+            "net_log_excess": -1.1202789997749596e-15,
+            "observations": 244,
+            "positive_log_excess": 2.1334117198540392e-15,
+            "selected_total_return": 1.0257736452027064,
+            "share_of_net_log_excess": -1.1293639145543986e-14,
+            "share_of_positive_log_excess": 3.578306116562953e-15,
+            "start": "2015-01-05"
+          },
+          "2016": {
+            "benchmark_total_return": 0.17330472042307324,
+            "end": "2016-12-30",
+            "negative_log_excess": -1.119764003743029e-15,
+            "net_log_excess": 1.0001765041178778e-15,
+            "observations": 244,
+            "positive_log_excess": 2.119940507860907e-15,
+            "selected_total_return": 0.17330472042307446,
+            "share_of_net_log_excess": 1.0082874463975542e-14,
+            "share_of_positive_log_excess": 3.555711265403215e-15,
+            "start": "2016-01-04"
+          },
+          "2017": {
+            "benchmark_total_return": 0.25485583450073174,
+            "end": "2017-12-29",
+            "negative_log_excess": -5.243147496031275e-15,
+            "net_log_excess": 2.3440450969136606e-16,
+            "observations": 244,
+            "positive_log_excess": 5.477552005722641e-15,
+            "selected_total_return": 0.25485583450073196,
+            "share_of_net_log_excess": 2.363054156218441e-15,
+            "share_of_positive_log_excess": 9.187330163916971e-15,
+            "start": "2017-01-03"
+          },
+          "2018": {
+            "benchmark_total_return": 0.31188554303879823,
+            "end": "2018-12-28",
+            "negative_log_excess": -3.355009412647769e-15,
+            "net_log_excess": -1.20346441145891e-16,
+            "observations": 243,
+            "positive_log_excess": 3.2346629715018782e-15,
+            "selected_total_return": 0.31188554303879806,
+            "share_of_net_log_excess": -1.2132239192425854e-15,
+            "share_of_positive_log_excess": 5.4254011020136155e-15,
+            "start": "2018-01-02"
+          },
+          "2019": {
+            "benchmark_total_return": 0.5435730314419266,
+            "end": "2019-12-31",
+            "negative_log_excess": -0.004492009170794131,
+            "net_log_excess": 0.006389018672117346,
+            "observations": 244,
+            "positive_log_excess": 0.010881027842911476,
+            "selected_total_return": 0.5534665195477433,
+            "share_of_net_log_excess": 0.06440830488791666,
+            "share_of_positive_log_excess": 0.018250414639817285,
+            "start": "2019-01-02"
+          },
+          "2020": {
+            "benchmark_total_return": 0.8519952046843619,
+            "end": "2020-12-31",
+            "negative_log_excess": -0.07217313729644848,
+            "net_log_excess": 0.059337159070150906,
+            "observations": 243,
+            "positive_log_excess": 0.13151029636659936,
+            "selected_total_return": 0.9652131368460751,
+            "share_of_net_log_excess": 0.5981835440944998,
+            "share_of_positive_log_excess": 0.22057819102625206,
+            "start": "2020-01-02"
+          },
+          "2021": {
+            "benchmark_total_return": 0.2146360288279803,
+            "end": "2021-12-31",
+            "negative_log_excess": -0.0969779660198049,
+            "net_log_excess": -0.053933475605402015,
+            "observations": 243,
+            "positive_log_excess": 0.0430444904144029,
+            "selected_total_return": 0.15086172925876726,
+            "share_of_net_log_excess": -0.5437084971464842,
+            "share_of_positive_log_excess": 0.07219720502179075,
+            "start": "2021-01-04"
+          },
+          "2022": {
+            "benchmark_total_return": 0.3291480759507397,
+            "end": "2022-12-30",
+            "negative_log_excess": -1.7770073607037418e-15,
+            "net_log_excess": 5.670919463185431e-16,
+            "observations": 242,
+            "positive_log_excess": 2.344099307022285e-15,
+            "selected_total_return": 0.3291480759507405,
+            "share_of_net_log_excess": 5.716907846484994e-15,
+            "share_of_positive_log_excess": 3.931685951703075e-15,
+            "start": "2022-01-04"
+          },
+          "2023": {
+            "benchmark_total_return": 0.38474607135141,
+            "end": "2023-12-29",
+            "negative_log_excess": -0.05192840553965907,
+            "net_log_excess": -0.013772506813420977,
+            "observations": 242,
+            "positive_log_excess": 0.0381558987262381,
+            "selected_total_return": 0.3658053764649246,
+            "share_of_net_log_excess": -0.1388419510778721,
+            "share_of_positive_log_excess": 0.06399771995458782,
+            "start": "2023-01-03"
+          },
+          "2024": {
+            "benchmark_total_return": 0.9308429345553921,
+            "end": "2024-12-31",
+            "negative_log_excess": -0.04025240633252206,
+            "net_log_excess": 0.02295322960712695,
+            "observations": 242,
+            "positive_log_excess": 0.06320563593964901,
+            "selected_total_return": 0.9756745628153005,
+            "share_of_net_log_excess": 0.23139369073220248,
+            "share_of_positive_log_excess": 0.10601287673603432,
+            "start": "2024-01-02"
+          },
+          "2025": {
+            "benchmark_total_return": 0.9865682613186949,
+            "end": "2025-12-31",
+            "negative_log_excess": -0.015033174165121174,
+            "net_log_excess": 0.009148135402265745,
+            "observations": 243,
+            "positive_log_excess": 0.024181309567386917,
+            "selected_total_return": 1.0048250371646483,
+            "share_of_net_log_excess": 0.09222322306186151,
+            "share_of_positive_log_excess": 0.04055856969671228,
+            "start": "2025-01-02"
+          },
+          "2026": {
+            "benchmark_total_return": 0.4547058602611422,
+            "end": "2026-09-24",
+            "negative_log_excess": -0.2123331656412747,
+            "net_log_excess": 0.04663141451850325,
+            "observations": 178,
+            "positive_log_excess": 0.25896458015977797,
+            "selected_total_return": 0.5241473467487475,
+            "share_of_net_log_excess": 0.4700957248364443,
+            "share_of_positive_log_excess": 0.43435335642680784,
+            "start": "2026-01-05"
+          }
+        }
+      },
+      "excess_log_2026": 0.04663141451850325,
+      "known_history_pre2026": {
+        "cagr": 0.5317562925600873,
+        "calmar": 2.6278497581709246,
+        "max_dd": -0.20235414559248177,
+        "nav": 164.22728409189943,
+        "sessions": 2919,
+        "sharpe": 1.8945404237477388,
+        "total_return": 163.22728409189943,
+        "volatility": 0.2404841012215617
+      },
+      "share_2026_of_net_log_excess": 0.4700957248364443
+    },
+    "balanced_b": {
+      "concentration": {
+        "annual_interpretation": "Signed yearly contributions to net log excess and positive-mass contributions are separate; they are not shares of total strategy profit or yearly CAGR differences.",
+        "annualization_of_partial_year": false,
+        "benchmark_net_log_growth": 5.423490911376647,
+        "clean_oos": false,
+        "exclusion_is_tradable": false,
+        "interpretation": "Shares of paired log excess, not shares of total strategy profit; signed offsets can make net shares exceed 100%.",
+        "negative_advantage_days": 410,
+        "negative_log_excess": -1.8560715609134726,
+        "net_log_excess": 0.027081559451317128,
+        "net_share_defined": true,
+        "observations": 3097,
+        "positive_advantage_days": 416,
+        "positive_log_excess": 1.8831531203647898,
+        "selected_net_log_growth": 5.450572470827965,
+        "top": {
+          "10": {
+            "actual_positive_days": 10,
+            "dates": [
+              "2015-08-18",
+              "2026-07-15",
+              "2020-02-21",
+              "2020-02-18",
+              "2025-10-20",
+              "2025-07-21",
+              "2018-03-27",
+              "2026-08-13",
+              "2025-10-28",
+              "2026-07-13"
+            ],
+            "fixed_path_net_log_excess_excluding_days": -0.4776113759203309,
+            "indices": [
+              398,
+              3045,
+              1494,
+              1491,
+              2866,
+              2807,
+              1032,
+              3066,
+              2872,
+              3043
+            ],
+            "positive_log_excess": 0.504692935371648,
+            "share_of_net_log_excess": 18.636036683149797,
+            "share_of_positive_log_excess": 0.2680041946211378
+          }
+        },
+        "top_positive_days": [
+          {
+            "benchmark_return": -0.08549683856502244,
+            "date": "2015-08-18",
+            "index": 398,
+            "log_excess": 0.10213776927696204,
+            "selected_return": 0.012845215157353929
+          },
+          {
+            "benchmark_return": -0.048132300242130666,
+            "date": "2026-07-15",
+            "index": 3045,
+            "log_excess": 0.09021935998981903,
+            "selected_return": 0.04173764906303257
+          },
+          {
+            "benchmark_return": -0.026634502617801092,
+            "date": "2020-02-21",
+            "index": 1494,
+            "log_excess": 0.04581971292385355,
+            "selected_return": 0.019002375296912177
+          },
+          {
+            "benchmark_return": -0.03495975855130773,
+            "date": "2020-02-18",
+            "index": 1491,
+            "log_excess": 0.04471796109278462,
+            "selected_return": 0.00917431192660545
+          },
+          {
+            "benchmark_return": -0.01376421304608022,
+            "date": "2025-10-20",
+            "index": 2866,
+            "log_excess": 0.042230515255192294,
+            "selected_return": 0.02877697841726623
+          },
+          {
+            "benchmark_return": -0.01025641025641022,
+            "date": "2025-07-21",
+            "index": 2807,
+            "log_excess": 0.03850360865525168,
+            "selected_return": 0.028595458368376736
+          },
+          {
+            "benchmark_return": -0.0007304601899195129,
+            "date": "2018-03-27",
+            "index": 1032,
+            "log_excess": 0.03777979690196651,
+            "selected_return": 0.03774394147233662
+          },
+          {
+            "benchmark_return": -0.03659793814432988,
+            "date": "2026-08-13",
+            "index": 3066,
+            "log_excess": 0.03708442459914392,
+            "selected_return": -0.00019999999999997797
+          },
+          {
+            "benchmark_return": -0.03159103963239529,
+            "date": "2025-10-28",
+            "index": 2872,
+            "log_excess": 0.03465377680797205,
+            "selected_return": 0.002556237218813928
+          },
+          {
+            "benchmark_return": -0.04904250350303596,
+            "date": "2026-07-13",
+            "index": 3043,
+            "log_excess": 0.031546009868702346,
+            "selected_return": -0.018565400843881807
+          }
+        ],
+        "years": {
+          "2014": {
+            "benchmark_total_return": 0.6244947951951391,
+            "end": "2014-12-31",
+            "negative_log_excess": -0.009496173960678663,
+            "net_log_excess": 0.018260637888846284,
+            "observations": 245,
+            "positive_log_excess": 0.027756811849524946,
+            "selected_total_return": 0.6544316071773142,
+            "share_of_net_log_excess": 0.6742831010774074,
+            "share_of_positive_log_excess": 0.01473954058719777,
+            "start": "2014-01-02"
+          },
+          "2015": {
+            "benchmark_total_return": 1.0257736452027086,
+            "end": "2015-12-31",
+            "negative_log_excess": -0.1962057309232902,
+            "net_log_excess": -0.031856622023701195,
+            "observations": 244,
+            "positive_log_excess": 0.16434910889958898,
+            "selected_total_return": 0.96225643336946,
+            "share_of_net_log_excess": -1.1763215512373986,
+            "share_of_positive_log_excess": 0.08727336461506251,
+            "start": "2015-01-05"
+          },
+          "2016": {
+            "benchmark_total_return": 0.17330472042307324,
+            "end": "2016-12-30",
+            "negative_log_excess": -0.007900768456299747,
+            "net_log_excess": 0.0268885799392689,
+            "observations": 244,
+            "positive_log_excess": 0.03478934839556866,
+            "selected_total_return": 0.20528119260768726,
+            "share_of_net_log_excess": 0.9928741359080472,
+            "share_of_positive_log_excess": 0.018473988131580896,
+            "start": "2016-01-04"
+          },
+          "2017": {
+            "benchmark_total_return": 0.25485583450073174,
+            "end": "2017-12-29",
+            "negative_log_excess": -0.03668167215032403,
+            "net_log_excess": 0.005424732043918889,
+            "observations": 244,
+            "positive_log_excess": 0.042106404194242913,
+            "selected_total_return": 0.2616815883606353,
+            "share_of_net_log_excess": 0.20031091834540032,
+            "share_of_positive_log_excess": 0.022359522302725116,
+            "start": "2017-01-03"
+          },
+          "2018": {
+            "benchmark_total_return": 0.31188554303879823,
+            "end": "2018-12-28",
+            "negative_log_excess": -0.019542755149580926,
+            "net_log_excess": 0.08438926030433816,
+            "observations": 243,
+            "positive_log_excess": 0.1039320154539191,
+            "selected_total_return": 0.42740014406520777,
+            "share_of_net_log_excess": 3.1161152464664967,
+            "share_of_positive_log_excess": 0.055190422026747454,
+            "start": "2018-01-02"
+          },
+          "2019": {
+            "benchmark_total_return": 0.5435730314419266,
+            "end": "2019-12-31",
+            "negative_log_excess": -0.06715120910573275,
+            "net_log_excess": -0.01457210450615951,
+            "observations": 244,
+            "positive_log_excess": 0.05257910459957323,
+            "selected_total_return": 0.5212430167088276,
+            "share_of_net_log_excess": -0.5380821784784918,
+            "share_of_positive_log_excess": 0.02792078032899843,
+            "start": "2019-01-02"
+          },
+          "2020": {
+            "benchmark_total_return": 0.8519952046843619,
+            "end": "2020-12-31",
+            "negative_log_excess": -0.2343594328801905,
+            "net_log_excess": 0.001011344626580618,
+            "observations": 243,
+            "positive_log_excess": 0.23537077750677113,
+            "selected_total_return": 0.8538691575294166,
+            "share_of_net_log_excess": 0.037344401396036696,
+            "share_of_positive_log_excess": 0.12498759392501069,
+            "start": "2020-01-02"
+          },
+          "2021": {
+            "benchmark_total_return": 0.2146360288279803,
+            "end": "2021-12-31",
+            "negative_log_excess": -0.20734354996861964,
+            "net_log_excess": -0.07577465169794745,
+            "observations": 243,
+            "positive_log_excess": 0.1315688982706722,
+            "selected_total_return": 0.12599806975384545,
+            "share_of_net_log_excess": -2.798016555662643,
+            "share_of_positive_log_excess": 0.06986627738756883,
+            "start": "2021-01-04"
+          },
+          "2022": {
+            "benchmark_total_return": 0.3291480759507397,
+            "end": "2022-12-30",
+            "negative_log_excess": -0.058406949623299204,
+            "net_log_excess": -0.02146766690409406,
+            "observations": 242,
+            "positive_log_excess": 0.036939282719205144,
+            "selected_total_return": 0.30091846389584764,
+            "share_of_net_log_excess": -0.7927042363526066,
+            "share_of_positive_log_excess": 0.019615655423733974,
+            "start": "2022-01-04"
+          },
+          "2023": {
+            "benchmark_total_return": 0.38474607135141,
+            "end": "2023-12-29",
+            "negative_log_excess": -0.10503823144623897,
+            "net_log_excess": -0.015894303673155436,
+            "observations": 242,
+            "positive_log_excess": 0.08914392777308355,
+            "selected_total_return": 0.36291048717570557,
+            "share_of_net_log_excess": -0.5869050377888193,
+            "share_of_positive_log_excess": 0.04733758864803054,
+            "start": "2023-01-03"
+          },
+          "2024": {
+            "benchmark_total_return": 0.9308429345553921,
+            "end": "2024-12-31",
+            "negative_log_excess": -0.29171203156771786,
+            "net_log_excess": -0.10258587982303669,
+            "observations": 242,
+            "positive_log_excess": 0.18912615174468111,
+            "selected_total_return": 0.7425869838464433,
+            "share_of_net_log_excess": -3.7880344375090025,
+            "share_of_positive_log_excess": 0.10043057555938152,
+            "start": "2024-01-02"
+          },
+          "2025": {
+            "benchmark_total_return": 0.9865682613186949,
+            "end": "2025-12-31",
+            "negative_log_excess": -0.5022904131763445,
+            "net_log_excess": 0.06414517129280417,
+            "observations": 243,
+            "positive_log_excess": 0.5664355844691489,
+            "selected_total_return": 1.11817279857742,
+            "share_of_net_log_excess": 2.3685922300048503,
+            "share_of_positive_log_excess": 0.30079103942403973,
+            "start": "2025-01-02"
+          },
+          "2026": {
+            "benchmark_total_return": 0.4547058602611422,
+            "end": "2026-09-24",
+            "negative_log_excess": -0.11994264250515571,
+            "net_log_excess": 0.08911306198365429,
+            "observations": 178,
+            "positive_log_excess": 0.20905570448881,
+            "selected_total_return": 0.5902906277449985,
+            "share_of_net_log_excess": 3.2905439638307175,
+            "share_of_positive_log_excess": 0.11101365163992259,
+            "start": "2026-01-05"
+          }
+        }
+      },
+      "excess_log_2026": 0.08911306198365429,
+      "known_history_pre2026": {
+        "cagr": 0.5171535252315822,
+        "calmar": 2.564678215703418,
+        "max_dd": -0.2016446047948911,
+        "nav": 146.44584282384432,
+        "sessions": 2919,
+        "sharpe": 1.8736816681217534,
+        "total_return": 145.44584282384432,
+        "volatility": 0.23767599831286695
+      },
+      "share_2026_of_net_log_excess": 3.2905439638307175
+    },
+    "balanced_c": {
+      "concentration": {
+        "annual_interpretation": "Signed yearly contributions to net log excess and positive-mass contributions are separate; they are not shares of total strategy profit or yearly CAGR differences.",
+        "annualization_of_partial_year": false,
+        "benchmark_net_log_growth": 5.423490911376647,
+        "clean_oos": false,
+        "exclusion_is_tradable": false,
+        "interpretation": "Shares of paired log excess, not shares of total strategy profit; signed offsets can make net shares exceed 100%.",
+        "negative_advantage_days": 410,
+        "negative_log_excess": -1.813450330344401,
+        "net_log_excess": 0.08893632793412312,
+        "net_share_defined": true,
+        "observations": 3097,
+        "positive_advantage_days": 447,
+        "positive_log_excess": 1.9023866582785245,
+        "selected_net_log_growth": 5.512427239310771,
+        "top": {
+          "10": {
+            "actual_positive_days": 10,
+            "dates": [
+              "2026-07-15",
+              "2020-02-21",
+              "2020-02-18",
+              "2021-02-09",
+              "2020-01-23",
+              "2025-10-20",
+              "2025-07-21",
+              "2018-03-27",
+              "2026-08-13",
+              "2025-10-28"
+            ],
+            "fixed_path_net_log_excess_excluding_days": -0.3684334193549509,
+            "indices": [
+              3045,
+              1494,
+              1491,
+              1733,
+              1479,
+              2866,
+              2807,
+              1032,
+              3066,
+              2872
+            ],
+            "positive_log_excess": 0.457369747289074,
+            "share_of_net_log_excess": 5.14266507189117,
+            "share_of_positive_log_excess": 0.2404189207797269
+          }
+        },
+        "top_positive_days": [
+          {
+            "benchmark_return": -0.048132300242130666,
+            "date": "2026-07-15",
+            "index": 3045,
+            "log_excess": 0.09021935998981903,
+            "selected_return": 0.04173764906303257
+          },
+          {
+            "benchmark_return": -0.026634502617801092,
+            "date": "2020-02-21",
+            "index": 1494,
+            "log_excess": 0.04581971292385355,
+            "selected_return": 0.019002375296912177
+          },
+          {
+            "benchmark_return": -0.03495975855130773,
+            "date": "2020-02-18",
+            "index": 1491,
+            "log_excess": 0.04471796109278462,
+            "selected_return": 0.00917431192660545
+          },
+          {
+            "benchmark_return": -0.0002204099625303657,
+            "date": "2021-02-09",
+            "index": 1733,
+            "log_excess": 0.0439952633100756,
+            "selected_return": 0.04474708171206232
+          },
+          {
+            "benchmark_return": -0.029763978494623422,
+            "date": "2020-01-23",
+            "index": 1479,
+            "log_excess": 0.042365327753014964,
+            "selected_return": 0.01222351571594893
+          },
+          {
+            "benchmark_return": -0.01376421304608022,
+            "date": "2025-10-20",
+            "index": 2866,
+            "log_excess": 0.042230515255192294,
+            "selected_return": 0.02877697841726623
+          },
+          {
+            "benchmark_return": -0.01025641025641022,
+            "date": "2025-07-21",
+            "index": 2807,
+            "log_excess": 0.03850360865525168,
+            "selected_return": 0.028595458368376736
+          },
+          {
+            "benchmark_return": -0.0007304601899195129,
+            "date": "2018-03-27",
+            "index": 1032,
+            "log_excess": 0.0377797969019663,
+            "selected_return": 0.037743941472336395
+          },
+          {
+            "benchmark_return": -0.03659793814432988,
+            "date": "2026-08-13",
+            "index": 3066,
+            "log_excess": 0.03708442459914392,
+            "selected_return": -0.00019999999999997797
+          },
+          {
+            "benchmark_return": -0.03159103963239529,
+            "date": "2025-10-28",
+            "index": 2872,
+            "log_excess": 0.03465377680797205,
+            "selected_return": 0.002556237218813928
+          }
+        ],
+        "years": {
+          "2014": {
+            "benchmark_total_return": 0.6244947951951391,
+            "end": "2014-12-31",
+            "negative_log_excess": -0.009496173960678663,
+            "net_log_excess": 0.018260637888846284,
+            "observations": 245,
+            "positive_log_excess": 0.027756811849524946,
+            "selected_total_return": 0.6544316071773142,
+            "share_of_net_log_excess": 0.20532259778447673,
+            "share_of_positive_log_excess": 0.014590520664522622,
+            "start": "2014-01-02"
+          },
+          "2015": {
+            "benchmark_total_return": 1.0257736452027086,
+            "end": "2015-12-31",
+            "negative_log_excess": -0.15923976322160596,
+            "net_log_excess": -0.0771043603243683,
+            "observations": 244,
+            "positive_log_excess": 0.0821354028972376,
+            "selected_total_return": 0.875447531270756,
+            "share_of_net_log_excess": -0.8669613656804115,
+            "share_of_positive_log_excess": 0.04317492584370949,
+            "start": "2015-01-05"
+          },
+          "2016": {
+            "benchmark_total_return": 0.17330472042307324,
+            "end": "2016-12-30",
+            "negative_log_excess": -0.007900768456300647,
+            "net_log_excess": 0.026888579939268784,
+            "observations": 244,
+            "positive_log_excess": 0.034789348395569436,
+            "selected_total_return": 0.20528119260768707,
+            "share_of_net_log_excess": 0.30233517128327675,
+            "share_of_positive_log_excess": 0.018287212141747475,
+            "start": "2016-01-04"
+          },
+          "2017": {
+            "benchmark_total_return": 0.25485583450073174,
+            "end": "2017-12-29",
+            "negative_log_excess": -0.036681672150324494,
+            "net_log_excess": 0.005424732043918664,
+            "observations": 244,
+            "positive_log_excess": 0.04210640419424315,
+            "selected_total_return": 0.26168158836063504,
+            "share_of_net_log_excess": 0.06099568275336113,
+            "share_of_positive_log_excess": 0.02213346272746959,
+            "start": "2017-01-03"
+          },
+          "2018": {
+            "benchmark_total_return": 0.31188554303879823,
+            "end": "2018-12-28",
+            "negative_log_excess": -0.019542755149581148,
+            "net_log_excess": 0.08438926030433808,
+            "observations": 243,
+            "positive_log_excess": 0.10393201545391922,
+            "selected_total_return": 0.4274001440652076,
+            "share_of_net_log_excess": 0.9488727752156223,
+            "share_of_positive_log_excess": 0.05463243500034195,
+            "start": "2018-01-02"
+          },
+          "2019": {
+            "benchmark_total_return": 0.5435730314419266,
+            "end": "2019-12-31",
+            "negative_log_excess": -0.08104463683031693,
+            "net_log_excess": -0.028265512228075173,
+            "observations": 244,
+            "positive_log_excess": 0.05277912460224175,
+            "selected_total_return": 0.5005539907520667,
+            "share_of_net_log_excess": -0.3178173968348681,
+            "share_of_positive_log_excess": 0.027743636853509973,
+            "start": "2019-01-02"
+          },
+          "2020": {
+            "benchmark_total_return": 0.8519952046843619,
+            "end": "2020-12-31",
+            "negative_log_excess": -0.2814591952314138,
+            "net_log_excess": 0.03882708516467051,
+            "observations": 243,
+            "positive_log_excess": 0.32028628039608437,
+            "selected_total_return": 0.9253170050348436,
+            "share_of_net_log_excess": 0.43657171446779874,
+            "share_of_positive_log_excess": 0.1683602431726011,
+            "start": "2020-01-02"
+          },
+          "2021": {
+            "benchmark_total_return": 0.2146360288279803,
+            "end": "2021-12-31",
+            "negative_log_excess": -0.26738440183433293,
+            "net_log_excess": -0.05361587476444708,
+            "observations": 243,
+            "positive_log_excess": 0.2137685270698859,
+            "selected_total_return": 0.15122730196182874,
+            "share_of_net_log_excess": -0.602856852873006,
+            "share_of_positive_log_excess": 0.11236860085179828,
+            "start": "2021-01-04"
+          },
+          "2022": {
+            "benchmark_total_return": 0.3291480759507397,
+            "end": "2022-12-30",
+            "negative_log_excess": -0.058406949623298766,
+            "net_log_excess": -0.02146766690409406,
+            "observations": 242,
+            "positive_log_excess": 0.0369392827192047,
+            "selected_total_return": 0.3009184638958477,
+            "share_of_net_log_excess": -0.24138242946117114,
+            "share_of_positive_log_excess": 0.019417336932246555,
+            "start": "2022-01-04"
+          },
+          "2023": {
+            "benchmark_total_return": 0.38474607135141,
+            "end": "2023-12-29",
+            "negative_log_excess": -0.10503823144623953,
+            "net_log_excess": -0.015894303673155013,
+            "observations": 242,
+            "positive_log_excess": 0.08914392777308452,
+            "selected_total_return": 0.36291048717570623,
+            "share_of_net_log_excess": -0.17871553776009547,
+            "share_of_positive_log_excess": 0.04685899545455766,
+            "start": "2023-01-03"
+          },
+          "2024": {
+            "benchmark_total_return": 0.9308429345553921,
+            "end": "2024-12-31",
+            "negative_log_excess": -0.1468174976418591,
+            "net_log_excess": -0.02922669980637853,
+            "observations": 242,
+            "positive_log_excess": 0.11759079783548057,
+            "selected_total_return": 0.8752274550349127,
+            "share_of_net_log_excess": -0.3286249891948239,
+            "share_of_positive_log_excess": 0.06181224901035042,
+            "start": "2024-01-02"
+          },
+          "2025": {
+            "benchmark_total_return": 0.9865682613186949,
+            "end": "2025-12-31",
+            "negative_log_excess": -0.5030127237032379,
+            "net_log_excess": 0.06362288076857718,
+            "observations": 243,
+            "positive_log_excess": 0.5666356044718152,
+            "selected_total_return": 1.1170667858511725,
+            "share_of_net_log_excess": 0.7153756203618379,
+            "share_of_positive_log_excess": 0.2978551189927738,
+            "start": "2025-01-02"
+          },
+          "2026": {
+            "benchmark_total_return": 0.4547058602611422,
+            "end": "2026-09-24",
+            "negative_log_excess": -0.13742556109521126,
+            "net_log_excess": 0.07709756952502181,
+            "observations": 178,
+            "positive_log_excess": 0.2145231306202331,
+            "selected_total_return": 0.5712968410643966,
+            "share_of_net_log_excess": 0.8668850099380029,
+            "share_of_positive_log_excess": 0.11276526235437108,
+            "start": "2026-01-05"
+          }
+        }
+      },
+      "excess_log_2026": 0.07709756952502181,
+      "known_history_pre2026": {
+        "cagr": 0.5265506811637566,
+        "calmar": 2.611280781349708,
+        "max_dd": -0.2016446047948912,
+        "nav": 157.67342246090038,
+        "sessions": 2919,
+        "sharpe": 1.8919204157219733,
+        "total_return": 156.67342246090038,
+        "volatility": 0.23880420922157533
+      },
+      "share_2026_of_net_log_excess": 0.8668850099380029
+    },
+    "h": {
+      "concentration": {
+        "annual_interpretation": "Signed yearly contributions to net log excess and positive-mass contributions are separate; they are not shares of total strategy profit or yearly CAGR differences.",
+        "annualization_of_partial_year": false,
+        "benchmark_net_log_growth": 5.423490911376647,
+        "clean_oos": false,
+        "exclusion_is_tradable": false,
+        "interpretation": "Shares of paired log excess, not shares of total strategy profit; signed offsets can make net shares exceed 100%.",
+        "negative_advantage_days": 0,
+        "negative_log_excess": 0.0,
+        "net_log_excess": 0.0,
+        "net_share_defined": false,
+        "observations": 3097,
+        "positive_advantage_days": 0,
+        "positive_log_excess": 0.0,
+        "selected_net_log_growth": 5.423490911376647,
+        "top": {
+          "10": {
+            "actual_positive_days": 0,
+            "dates": [],
+            "fixed_path_net_log_excess_excluding_days": 0.0,
+            "indices": [],
+            "positive_log_excess": 0.0,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": null
+          }
+        },
+        "top_positive_days": [],
+        "years": {
+          "2014": {
+            "benchmark_total_return": 0.6244947951951391,
+            "end": "2014-12-31",
+            "negative_log_excess": 0.0,
+            "net_log_excess": 0.0,
+            "observations": 245,
+            "positive_log_excess": 0.0,
+            "selected_total_return": 0.6244947951951391,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": null,
+            "start": "2014-01-02"
+          },
+          "2015": {
+            "benchmark_total_return": 1.0257736452027086,
+            "end": "2015-12-31",
+            "negative_log_excess": 0.0,
+            "net_log_excess": 0.0,
+            "observations": 244,
+            "positive_log_excess": 0.0,
+            "selected_total_return": 1.0257736452027086,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": null,
+            "start": "2015-01-05"
+          },
+          "2016": {
+            "benchmark_total_return": 0.17330472042307324,
+            "end": "2016-12-30",
+            "negative_log_excess": 0.0,
+            "net_log_excess": 0.0,
+            "observations": 244,
+            "positive_log_excess": 0.0,
+            "selected_total_return": 0.17330472042307324,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": null,
+            "start": "2016-01-04"
+          },
+          "2017": {
+            "benchmark_total_return": 0.25485583450073174,
+            "end": "2017-12-29",
+            "negative_log_excess": 0.0,
+            "net_log_excess": 0.0,
+            "observations": 244,
+            "positive_log_excess": 0.0,
+            "selected_total_return": 0.25485583450073174,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": null,
+            "start": "2017-01-03"
+          },
+          "2018": {
+            "benchmark_total_return": 0.31188554303879823,
+            "end": "2018-12-28",
+            "negative_log_excess": 0.0,
+            "net_log_excess": 0.0,
+            "observations": 243,
+            "positive_log_excess": 0.0,
+            "selected_total_return": 0.31188554303879823,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": null,
+            "start": "2018-01-02"
+          },
+          "2019": {
+            "benchmark_total_return": 0.5435730314419266,
+            "end": "2019-12-31",
+            "negative_log_excess": 0.0,
+            "net_log_excess": 0.0,
+            "observations": 244,
+            "positive_log_excess": 0.0,
+            "selected_total_return": 0.5435730314419266,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": null,
+            "start": "2019-01-02"
+          },
+          "2020": {
+            "benchmark_total_return": 0.8519952046843619,
+            "end": "2020-12-31",
+            "negative_log_excess": 0.0,
+            "net_log_excess": 0.0,
+            "observations": 243,
+            "positive_log_excess": 0.0,
+            "selected_total_return": 0.8519952046843619,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": null,
+            "start": "2020-01-02"
+          },
+          "2021": {
+            "benchmark_total_return": 0.2146360288279803,
+            "end": "2021-12-31",
+            "negative_log_excess": 0.0,
+            "net_log_excess": 0.0,
+            "observations": 243,
+            "positive_log_excess": 0.0,
+            "selected_total_return": 0.2146360288279803,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": null,
+            "start": "2021-01-04"
+          },
+          "2022": {
+            "benchmark_total_return": 0.3291480759507397,
+            "end": "2022-12-30",
+            "negative_log_excess": 0.0,
+            "net_log_excess": 0.0,
+            "observations": 242,
+            "positive_log_excess": 0.0,
+            "selected_total_return": 0.3291480759507397,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": null,
+            "start": "2022-01-04"
+          },
+          "2023": {
+            "benchmark_total_return": 0.38474607135141,
+            "end": "2023-12-29",
+            "negative_log_excess": 0.0,
+            "net_log_excess": 0.0,
+            "observations": 242,
+            "positive_log_excess": 0.0,
+            "selected_total_return": 0.38474607135141,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": null,
+            "start": "2023-01-03"
+          },
+          "2024": {
+            "benchmark_total_return": 0.9308429345553921,
+            "end": "2024-12-31",
+            "negative_log_excess": 0.0,
+            "net_log_excess": 0.0,
+            "observations": 242,
+            "positive_log_excess": 0.0,
+            "selected_total_return": 0.9308429345553921,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": null,
+            "start": "2024-01-02"
+          },
+          "2025": {
+            "benchmark_total_return": 0.9865682613186949,
+            "end": "2025-12-31",
+            "negative_log_excess": 0.0,
+            "net_log_excess": 0.0,
+            "observations": 243,
+            "positive_log_excess": 0.0,
+            "selected_total_return": 0.9865682613186949,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": null,
+            "start": "2025-01-02"
+          },
+          "2026": {
+            "benchmark_total_return": 0.4547058602611422,
+            "end": "2026-09-24",
+            "negative_log_excess": 0.0,
+            "net_log_excess": 0.0,
+            "observations": 178,
+            "positive_log_excess": 0.0,
+            "selected_total_return": 0.4547058602611422,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": null,
+            "start": "2026-01-05"
+          }
+        }
+      },
+      "excess_log_2026": 0.0,
+      "known_history_pre2026": {
+        "cagr": 0.525040746190048,
+        "calmar": 2.5946626625946365,
+        "max_dd": -0.20235414559248044,
+        "nav": 155.81777088358155,
+        "sessions": 2919,
+        "sharpe": 1.8711069284705526,
+        "total_return": 154.81777088358155,
+        "volatility": 0.2412417678949895
+      },
+      "share_2026_of_net_log_excess": null
+    },
+    "simple": {
+      "concentration": {
+        "annual_interpretation": "Signed yearly contributions to net log excess and positive-mass contributions are separate; they are not shares of total strategy profit or yearly CAGR differences.",
+        "annualization_of_partial_year": false,
+        "benchmark_net_log_growth": 5.423490911376647,
+        "clean_oos": false,
+        "exclusion_is_tradable": false,
+        "interpretation": "Shares of paired log excess, not shares of total strategy profit; signed offsets can make net shares exceed 100%.",
+        "negative_advantage_days": 486,
+        "negative_log_excess": -3.084967724718141,
+        "net_log_excess": -0.2658478297740902,
+        "net_share_defined": false,
+        "observations": 3097,
+        "positive_advantage_days": 500,
+        "positive_log_excess": 2.8191198949440506,
+        "selected_net_log_growth": 5.157643081602558,
+        "top": {
+          "10": {
+            "actual_positive_days": 10,
+            "dates": [
+              "2015-08-18",
+              "2026-07-15",
+              "2026-03-03",
+              "2020-02-05",
+              "2021-05-10",
+              "2020-02-21",
+              "2020-02-18",
+              "2020-02-04",
+              "2025-10-20",
+              "2021-05-13"
+            ],
+            "fixed_path_net_log_excess_excluding_days": -0.839555866605076,
+            "indices": [
+              398,
+              3045,
+              2954,
+              1482,
+              1788,
+              1494,
+              1491,
+              1481,
+              2866,
+              1791
+            ],
+            "positive_log_excess": 0.5737080368309858,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.2035060792766928
+          }
+        },
+        "top_positive_days": [
+          {
+            "benchmark_return": -0.08549683856502244,
+            "date": "2015-08-18",
+            "index": 398,
+            "log_excess": 0.10213776927696204,
+            "selected_return": 0.012845215157353929
+          },
+          {
+            "benchmark_return": -0.048132300242130666,
+            "date": "2026-07-15",
+            "index": 3045,
+            "log_excess": 0.09021935998981903,
+            "selected_return": 0.04173764906303257
+          },
+          {
+            "benchmark_return": -0.054632666132906293,
+            "date": "2026-03-03",
+            "index": 2954,
+            "log_excess": 0.06711078446307263,
+            "selected_return": 0.01098901098901095
+          },
+          {
+            "benchmark_return": -0.006785166093929096,
+            "date": "2020-02-05",
+            "index": 1482,
+            "log_excess": 0.04914871031395628,
+            "selected_return": 0.04324956165984806
+          },
+          {
+            "benchmark_return": 0.0034974441754103136,
+            "date": "2021-05-10",
+            "index": 1788,
+            "log_excess": 0.04793170141459536,
+            "selected_return": 0.052768166089965485
+          },
+          {
+            "benchmark_return": -0.026634502617801092,
+            "date": "2020-02-21",
+            "index": 1494,
+            "log_excess": 0.04581971292385355,
+            "selected_return": 0.019002375296912177
+          },
+          {
+            "benchmark_return": -0.03495975855130773,
+            "date": "2020-02-18",
+            "index": 1491,
+            "log_excess": 0.04471796109278462,
+            "selected_return": 0.00917431192660545
+          },
+          {
+            "benchmark_return": -0.007954545454545325,
+            "date": "2020-02-04",
+            "index": 1481,
+            "log_excess": 0.04338038069399908,
+            "selected_return": 0.03602785346654569
+          },
+          {
+            "benchmark_return": -0.01376421304608022,
+            "date": "2025-10-20",
+            "index": 2866,
+            "log_excess": 0.042230515255192294,
+            "selected_return": 0.02877697841726623
+          },
+          {
+            "benchmark_return": -0.05079022298456237,
+            "date": "2021-05-13",
+            "index": 1791,
+            "log_excess": 0.04101114140675104,
+            "selected_return": -0.01105277701022378
+          }
+        ],
+        "years": {
+          "2014": {
+            "benchmark_total_return": 0.6244947951951391,
+            "end": "2014-12-31",
+            "negative_log_excess": -0.011427069687765183,
+            "net_log_excess": 0.04240371199645308,
+            "observations": 245,
+            "positive_log_excess": 0.053830781684218273,
+            "selected_total_return": 0.6948607501870515,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.019094889075402955,
+            "start": "2014-01-02"
+          },
+          "2015": {
+            "benchmark_total_return": 1.0257736452027086,
+            "end": "2015-12-31",
+            "negative_log_excess": -0.32868726816859184,
+            "net_log_excess": -0.061232240890025595,
+            "observations": 244,
+            "positive_log_excess": 0.26745502727856624,
+            "selected_total_return": 0.9054523485930747,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.09487181717891224,
+            "start": "2015-01-05"
+          },
+          "2016": {
+            "benchmark_total_return": 0.17330472042307324,
+            "end": "2016-12-30",
+            "negative_log_excess": -0.07768837188371408,
+            "net_log_excess": -0.03571750311197029,
+            "observations": 244,
+            "positive_log_excess": 0.041970868771743795,
+            "selected_total_return": 0.13213678980344348,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.014887933232998155,
+            "start": "2016-01-04"
+          },
+          "2017": {
+            "benchmark_total_return": 0.25485583450073174,
+            "end": "2017-12-29",
+            "negative_log_excess": -0.10427076308388013,
+            "net_log_excess": -0.04346782291936274,
+            "observations": 244,
+            "positive_log_excess": 0.06080294016451739,
+            "selected_total_return": 0.20147848609014066,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.021568057560646642,
+            "start": "2017-01-03"
+          },
+          "2018": {
+            "benchmark_total_return": 0.31188554303879823,
+            "end": "2018-12-28",
+            "negative_log_excess": -0.09462237239363339,
+            "net_log_excess": -0.0040634989157348825,
+            "observations": 243,
+            "positive_log_excess": 0.09055887347789851,
+            "selected_total_return": 0.3065655138438929,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.032123101128232,
+            "start": "2018-01-02"
+          },
+          "2019": {
+            "benchmark_total_return": 0.5435730314419266,
+            "end": "2019-12-31",
+            "negative_log_excess": -0.3138003595034292,
+            "net_log_excess": -0.14669201355606573,
+            "observations": 244,
+            "positive_log_excess": 0.16710834594736348,
+            "selected_total_return": 0.3329677745375528,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.0592767786311834,
+            "start": "2019-01-02"
+          },
+          "2020": {
+            "benchmark_total_return": 0.8519952046843619,
+            "end": "2020-12-31",
+            "negative_log_excess": -0.34925506326375844,
+            "net_log_excess": -0.002393763861202835,
+            "observations": 243,
+            "positive_log_excess": 0.34686129940255556,
+            "selected_total_return": 0.8475672673248615,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.12303886047011829,
+            "start": "2020-01-02"
+          },
+          "2021": {
+            "benchmark_total_return": 0.2146360288279803,
+            "end": "2021-12-31",
+            "negative_log_excess": -0.25443358074134176,
+            "net_log_excess": 0.010540427641657267,
+            "observations": 243,
+            "positive_log_excess": 0.26497400838299895,
+            "selected_total_return": 0.22750652309780833,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.09399174858019216,
+            "start": "2021-01-04"
+          },
+          "2022": {
+            "benchmark_total_return": 0.3291480759507397,
+            "end": "2022-12-30",
+            "negative_log_excess": -0.07070772163574969,
+            "net_log_excess": -0.0488383546736919,
+            "observations": 242,
+            "positive_log_excess": 0.021869366962057785,
+            "selected_total_return": 0.26579430969338624,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.007757515741448028,
+            "start": "2022-01-04"
+          },
+          "2023": {
+            "benchmark_total_return": 0.38474607135141,
+            "end": "2023-12-29",
+            "negative_log_excess": -0.19357704170441123,
+            "net_log_excess": -0.0824524854196445,
+            "observations": 242,
+            "positive_log_excess": 0.11112455628476674,
+            "selected_total_return": 0.27515060783428463,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.039418173197976795,
+            "start": "2023-01-03"
+          },
+          "2024": {
+            "benchmark_total_return": 0.9308429345553921,
+            "end": "2024-12-31",
+            "negative_log_excess": -0.44514271745555933,
+            "net_log_excess": -0.1000793274244241,
+            "observations": 242,
+            "positive_log_excess": 0.3450633900311352,
+            "selected_total_return": 0.7469603481742682,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.12240110491575366,
+            "start": "2024-01-02"
+          },
+          "2025": {
+            "benchmark_total_return": 0.9865682613186949,
+            "end": "2025-12-31",
+            "negative_log_excess": -0.6351085617396905,
+            "net_log_excess": 0.019805420509605397,
+            "observations": 243,
+            "positive_log_excess": 0.6549139822492961,
+            "selected_total_return": 1.0263052864402944,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.2323115038221153,
+            "start": "2025-01-02"
+          },
+          "2026": {
+            "benchmark_total_return": 0.4547058602611422,
+            "end": "2026-09-24",
+            "negative_log_excess": -0.20624683345661615,
+            "net_log_excess": 0.1863396208503166,
+            "observations": 178,
+            "positive_log_excess": 0.39258645430693273,
+            "selected_total_return": 0.7526752643965571,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.13925851646502044,
+            "start": "2026-01-05"
+          }
+        }
+      },
+      "excess_log_2026": 0.1863396208503166,
+      "known_history_pre2026": {
+        "cagr": 0.4684723711388368,
+        "calmar": 2.1606092853286554,
+        "max_dd": -0.2168241959895013,
+        "nav": 99.13670324028212,
+        "sessions": 2919,
+        "sharpe": 1.718860624533616,
+        "total_return": 98.13670324028212,
+        "volatility": 0.24049726550742526
+      },
+      "share_2026_of_net_log_excess": null
+    },
+    "v92": {
+      "concentration": {
+        "annual_interpretation": "Signed yearly contributions to net log excess and positive-mass contributions are separate; they are not shares of total strategy profit or yearly CAGR differences.",
+        "annualization_of_partial_year": false,
+        "benchmark_net_log_growth": 5.423490911376647,
+        "clean_oos": false,
+        "exclusion_is_tradable": false,
+        "interpretation": "Shares of paired log excess, not shares of total strategy profit; signed offsets can make net shares exceed 100%.",
+        "negative_advantage_days": 486,
+        "negative_log_excess": -3.1348979792379277,
+        "net_log_excess": -0.5925687036498958,
+        "net_share_defined": false,
+        "observations": 3097,
+        "positive_advantage_days": 487,
+        "positive_log_excess": 2.5423292755880316,
+        "selected_net_log_growth": 4.830922207726752,
+        "top": {
+          "10": {
+            "actual_positive_days": 10,
+            "dates": [
+              "2015-08-18",
+              "2026-07-15",
+              "2026-03-03",
+              "2020-02-05",
+              "2021-05-10",
+              "2020-02-04",
+              "2025-10-20",
+              "2026-07-30",
+              "2015-03-24",
+              "2018-03-27"
+            ],
+            "fixed_path_net_log_excess_excluding_days": -1.153167284776989,
+            "indices": [
+              398,
+              3045,
+              2954,
+              1482,
+              1788,
+              1481,
+              2866,
+              3056,
+              296,
+              1032
+            ],
+            "positive_log_excess": 0.5605985811270932,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.22050589060594
+          }
+        },
+        "top_positive_days": [
+          {
+            "benchmark_return": -0.08549683856502244,
+            "date": "2015-08-18",
+            "index": 398,
+            "log_excess": 0.10213776927696204,
+            "selected_return": 0.012845215157353929
+          },
+          {
+            "benchmark_return": -0.048132300242130666,
+            "date": "2026-07-15",
+            "index": 3045,
+            "log_excess": 0.09021935998981903,
+            "selected_return": 0.04173764906303257
+          },
+          {
+            "benchmark_return": -0.054632666132906293,
+            "date": "2026-03-03",
+            "index": 2954,
+            "log_excess": 0.06711078446307263,
+            "selected_return": 0.01098901098901095
+          },
+          {
+            "benchmark_return": -0.006785166093929096,
+            "date": "2020-02-05",
+            "index": 1482,
+            "log_excess": 0.04914871031395628,
+            "selected_return": 0.04324956165984806
+          },
+          {
+            "benchmark_return": 0.0034974441754103136,
+            "date": "2021-05-10",
+            "index": 1788,
+            "log_excess": 0.04793170141459536,
+            "selected_return": 0.052768166089965485
+          },
+          {
+            "benchmark_return": -0.007954545454545325,
+            "date": "2020-02-04",
+            "index": 1481,
+            "log_excess": 0.04338038069399908,
+            "selected_return": 0.03602785346654569
+          },
+          {
+            "benchmark_return": -0.01376421304608022,
+            "date": "2025-10-20",
+            "index": 2866,
+            "log_excess": 0.042230515255192294,
+            "selected_return": 0.02877697841726623
+          },
+          {
+            "benchmark_return": -0.02382978723404261,
+            "date": "2026-07-30",
+            "index": 3056,
+            "log_excess": 0.0406271159340853,
+            "selected_return": 0.016645829823083602
+          },
+          {
+            "benchmark_return": -0.00900450225112559,
+            "date": "2015-03-24",
+            "index": 296,
+            "log_excess": 0.038964911840944715,
+            "selected_return": 0.030371713508613007
+          },
+          {
+            "benchmark_return": -0.0007304601899195129,
+            "date": "2018-03-27",
+            "index": 1032,
+            "log_excess": 0.038847331944466414,
+            "selected_return": 0.03885236102809331
+          }
+        ],
+        "years": {
+          "2014": {
+            "benchmark_total_return": 0.6244947951951391,
+            "end": "2014-12-31",
+            "negative_log_excess": -0.011427069687765072,
+            "net_log_excess": 0.019081129801120096,
+            "observations": 245,
+            "positive_log_excess": 0.030508199488885175,
+            "selected_total_return": 0.6557896119702031,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.012000097619860331,
+            "start": "2014-01-02"
+          },
+          "2015": {
+            "benchmark_total_return": 1.0257736452027086,
+            "end": "2015-12-31",
+            "negative_log_excess": -0.3286872681685917,
+            "net_log_excess": -0.06123224089002581,
+            "observations": 244,
+            "positive_log_excess": 0.2674550272785659,
+            "selected_total_return": 0.9054523485930742,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.10520078175817903,
+            "start": "2015-01-05"
+          },
+          "2016": {
+            "benchmark_total_return": 0.17330472042307324,
+            "end": "2016-12-30",
+            "negative_log_excess": -0.0776883718837142,
+            "net_log_excess": -0.03571750311197041,
+            "observations": 244,
+            "positive_log_excess": 0.0419708687717438,
+            "selected_total_return": 0.13213678980344337,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.016508824869680222,
+            "start": "2016-01-04"
+          },
+          "2017": {
+            "benchmark_total_return": 0.25485583450073174,
+            "end": "2017-12-29",
+            "negative_log_excess": -0.10427076308388147,
+            "net_log_excess": -0.043467822919363984,
+            "observations": 244,
+            "positive_log_excess": 0.06080294016451749,
+            "selected_total_return": 0.20147848609013919,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.023916233333093326,
+            "start": "2017-01-03"
+          },
+          "2018": {
+            "benchmark_total_return": 0.31188554303879823,
+            "end": "2018-12-28",
+            "negative_log_excess": -0.09442235239096605,
+            "net_log_excess": 0.034783833028733294,
+            "observations": 243,
+            "positive_log_excess": 0.12920618541969933,
+            "selected_total_return": 0.3583208682139818,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.05082197127664134,
+            "start": "2018-01-02"
+          },
+          "2019": {
+            "benchmark_total_return": 0.5435730314419266,
+            "end": "2019-12-31",
+            "negative_log_excess": -0.299577732905116,
+            "net_log_excess": -0.13978463281704662,
+            "observations": 244,
+            "positive_log_excess": 0.1597931000880694,
+            "selected_total_return": 0.342206963030533,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.06285303073147747,
+            "start": "2019-01-02"
+          },
+          "2020": {
+            "benchmark_total_return": 0.8519952046843619,
+            "end": "2020-12-31",
+            "negative_log_excess": -0.3264995603408365,
+            "net_log_excess": -0.12185159174392893,
+            "observations": 243,
+            "positive_log_excess": 0.20464796859690756,
+            "selected_total_return": 0.6395338362039706,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.0804962482877334,
+            "start": "2020-01-02"
+          },
+          "2021": {
+            "benchmark_total_return": 0.2146360288279803,
+            "end": "2021-12-31",
+            "negative_log_excess": -0.26623074548529435,
+            "net_log_excess": -0.03744025244153091,
+            "observations": 243,
+            "positive_log_excess": 0.22879049304376345,
+            "selected_total_return": 0.17000054511740076,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.08999247077892576,
+            "start": "2021-01-04"
+          },
+          "2022": {
+            "benchmark_total_return": 0.3291480759507397,
+            "end": "2022-12-30",
+            "negative_log_excess": -0.07090774163841712,
+            "net_log_excess": -0.0699728449185066,
+            "observations": 242,
+            "positive_log_excess": 0.0009348967199105324,
+            "selected_total_return": 0.23932310521933725,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.0003677323503637404,
+            "start": "2022-01-04"
+          },
+          "2023": {
+            "benchmark_total_return": 0.38474607135141,
+            "end": "2023-12-29",
+            "negative_log_excess": -0.19377706170707898,
+            "net_log_excess": -0.0974527478948065,
+            "observations": 242,
+            "positive_log_excess": 0.09632431381227252,
+            "selected_total_return": 0.2561657588573021,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.03788821327638335,
+            "start": "2023-01-03"
+          },
+          "2024": {
+            "benchmark_total_return": 0.9308429345553921,
+            "end": "2024-12-31",
+            "negative_log_excess": -0.44534273745822617,
+            "net_log_excess": -0.10159778143293222,
+            "observations": 242,
+            "positive_log_excess": 0.3437449560252939,
+            "selected_total_return": 0.7443096821973708,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.13520866841522208,
+            "start": "2024-01-02"
+          },
+          "2025": {
+            "benchmark_total_return": 0.9865682613186949,
+            "end": "2025-12-31",
+            "negative_log_excess": -0.6353085817423579,
+            "net_log_excess": -0.016499053318174167,
+            "observations": 243,
+            "positive_log_excess": 0.6188095284241838,
+            "selected_total_return": 0.954060675280535,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.243402589257859,
+            "start": "2025-01-02"
+          },
+          "2026": {
+            "benchmark_total_return": 0.4547058602611422,
+            "end": "2026-09-24",
+            "negative_log_excess": -0.28075799274568214,
+            "net_log_excess": 0.07858280500853693,
+            "observations": 178,
+            "positive_log_excess": 0.35934079775421907,
+            "selected_total_return": 0.5736323208272638,
+            "share_of_net_log_excess": null,
+            "share_of_positive_log_excess": 0.14134313804458112,
+            "start": "2026-01-05"
+          }
+        }
+      },
+      "excess_log_2026": 0.07858280500853693,
+      "known_history_pre2026": {
+        "cagr": 0.4418390145943136,
+        "calmar": 1.8284384042335202,
+        "max_dd": -0.24164829045993053,
+        "nav": 79.64152920076137,
+        "sessions": 2919,
+        "sharpe": 1.6376918189951726,
+        "total_return": 78.64152920076137,
+        "volatility": 0.24135130903261476
+      },
+      "share_2026_of_net_log_excess": null
+    }
+  },
+  "source_sha256": "8d192d7f42f5a4e1b9f1b8dd4aca0b8f7e3d714bdbc6ca2c5edfdcfc24e5f3ef"
+}

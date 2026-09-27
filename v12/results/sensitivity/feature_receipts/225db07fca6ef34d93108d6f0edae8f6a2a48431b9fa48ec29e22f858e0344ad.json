@@ -1,0 +1,91 @@
+{
+  "array_sha256": {
+    "fear": "831216ecc85a5c1effaadc6da496712c009f0af71e1e76213eeb7aa3436f0ed7",
+    "features": "b0249a1f67d55a142ae14a81a58350cc2ae9aff587f8faf4e4003d05d147e3f4",
+    "orders": "c03226d2af7bd78e5eeeb10095a62cc91387a34e20aa43431e1769907f6ab11f",
+    "scores": "bbb176c9f03ba8564069c0377c32f6dce7af3b42dd62b560cf83be637cd0ff0d",
+    "years": "b3add7d10b263055d9491f4d17242572c4c6cd2fccaafe7bc9ccc6a88ee2c1ce"
+  },
+  "effective_configs": {
+    "v12d_95b4ed5c3c78f0947e86": {
+      "bear_entry": 0.07,
+      "breadth_threshold": 0.5,
+      "buffer": 0.02,
+      "buffer_mode": "momentum",
+      "bull_entry": 0.0,
+      "crash_guard": "always",
+      "crash_lock": 5,
+      "crash_mask": 5,
+      "crash_pick": "score",
+      "crash_stock_only": 0,
+      "deep_below": 0.2,
+      "deep_mom": -0.08,
+      "exit_floor": 0.0,
+      "exit_mom": 20,
+      "fallback_floor": -9.9,
+      "fallback_mode": "rank",
+      "fast_mom": 5,
+      "global_buffer": 0.03,
+      "global_pool": [
+        "513100",
+        "513120"
+      ],
+      "gold_buffer": 0.03,
+      "lag": 0,
+      "locked_panic_exit": 0,
+      "ma": "ma180",
+      "min_hold": 2,
+      "mom": 20,
+      "overheat": 0.4,
+      "panic": 1.25,
+      "panic_cooldown": 0,
+      "panic_mode": "volatility",
+      "rank_keep": 1,
+      "regime": "ma",
+      "regime_confirm": 1,
+      "regime_hyst": 0.0,
+      "relaxed_mom": -0.04,
+      "risk_context": "prior_max20_60",
+      "score": "v12_diag_wls30_smooth3",
+      "stock_pool": [
+        "159915",
+        "510300",
+        "510500",
+        "512400",
+        "512890",
+        "563300",
+        "588080"
+      ],
+      "switch_confirm": 1,
+      "trail_stop": 0.0,
+      "trend_buffer": 0.0,
+      "volume_below": 0.1,
+      "volume_ratio": 2.0
+    }
+  },
+  "feature_metadata": {
+    "active_score": "v12_diag_wls30_smooth3",
+    "actual_ma_window": 180,
+    "cash_rank_excluded": true,
+    "diagnostic_only": true,
+    "ma250_crash_column_preserved": true,
+    "ma_center_reused": true,
+    "ma_overridden_asset": null,
+    "ma_slot": "ma180",
+    "required_observations": 270,
+    "score_arithmetic": "frozen_convolution_WLS_VOL20",
+    "score_center_reused": null,
+    "smooth": 3,
+    "smooth_clock": "trailing own quoted observations; raw scores before investability mask",
+    "source_config_hash": null,
+    "source_config_id": null,
+    "source_config_ma": "ma180",
+    "source_score": "wls25_v20",
+    "window": 30
+  },
+  "group": "225db07fca6ef34d93108d6f0edae8f6a2a48431b9fa48ec29e22f858e0344ad",
+  "ids": [
+    "v12d_95b4ed5c3c78f0947e86"
+  ],
+  "risk_context": "prior_max20_60"
+}

@@ -1,0 +1,19 @@
+{
+  "archive_bytes": 155030879,
+  "archives": 35,
+  "cold_copy_initial_missing_raw": 35,
+  "cold_copy_post_restore_verify": true,
+  "cold_copy_restored": 35,
+  "cold_copy_verify_with_missing_raw": true,
+  "completed_at": "2026-09-27T19:33:36.702361+00:00",
+  "eligible_raw_set_equals_manifest": true,
+  "large_json_files": 10,
+  "manifest_sha256": "41afe2acf30974d489d04ff7dc328017fa49e93b9ea5876b04a7e8d1b164b71b",
+  "npz_files": 25,
+  "original_directory_verify": true,
+  "original_raw_preserved": true,
+  "raw_bytes": 397151220,
+  "source_sha256": "147cc0517b6cf9ac1c7d90502ee9a781a4578deeb76803e031533bb3bcc43fd5",
+  "temporary_copy_removed": true,
+  "verified_by": "review_data_live"
+}
