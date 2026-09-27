@@ -1,0 +1,32 @@
+{
+  "backup_directory": "/tmp/dingtalk-security-review-m13wlb1y",
+  "default_auth_mode": "token",
+  "files": [
+    "app.py",
+    "dingtalk.py"
+  ],
+  "python_compatibility": "3.6",
+  "source_after_sha256": {
+    "app.py": "543ace6798b9e03b202d700f395862e86a99ba302a98bbd5fe1ae3464fd7e852",
+    "dingtalk.py": "96dac3c6717c5ce5c4a41c5751a96df81e2a3b867e0ddde21d8df5364f24552d"
+  },
+  "source_before_sha256": {
+    "app.py": "dc6e15e70fa59ee2333105cc7dbfa2fee8ee2f83673496236ce48ddd61533c04",
+    "dingtalk.py": "15588acc301d7a7a51807e1fb2c71b3abf66e5be514b5ceb44e746887586542d"
+  },
+  "source_scope": "Callback authentication and redacted logs; read-only saved momentum queries; unrelated stock-config isolation. Root deployment verification is recorded separately.",
+  "transmission_logs": "All six send helpers log only exception class and integer errcode, never requests exception URL or remote response content",
+  "upstream_token_present_in_running_service_confirmed_by_root": true,
+  "deployment": {
+    "applied_at": "2026-09-27T21:47:55+08:00",
+    "private_backup": "/root/dingtalk-stock-bot/backups/daily-system-fix-20260927T214755",
+    "service_reloaded": true,
+    "local_authenticated_momentum_http_status": 200,
+    "local_unsigned_http_status": 401,
+    "malformed_payload_http_status": 400,
+    "oversized_payload_http_status": 413,
+    "session_webhook_supplied": false,
+    "external_test_messages_sent": false
+  },
+  "review_had_network_or_message_sends": false
+}

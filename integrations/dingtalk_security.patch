@@ -1,0 +1,209 @@
+--- a/app.py
++++ b/app.py
+@@ -287,8 +287,22 @@
+     钉钉 Outgoing Webhook 回调入口
+     """
+     global _current_session_webhook
+-    data = request.get_json(force=True, silent=True) or {}
+-    logger.info(f"收到钉钉消息: {data}")
++    # Authenticate before parsing/logging any potentially sensitive payload.
++    try:
++        accepted, auth_reason = dingtalk.verify_callback_request(request.headers)
++    except Exception as exc:
++        logger.error("DingTalk callback authentication unavailable: %s", type(exc).__name__)
++        return jsonify({"error": "callback authentication unavailable"}), 503
++    if not accepted:
++        logger.warning("DingTalk callback rejected: %s", auth_reason)
++        status = 503 if auth_reason in ("auth_not_configured", "invalid_auth_mode") else 401
++        return jsonify({"error": "callback authentication failed"}), status
++    # Read at most the published local body limit plus one byte, including
++    # requests without Content-Length. Never log sessionWebhook or body text.
++    data, payload_error = dingtalk.parse_callback_body(request.stream.read(128 * 1024 + 1))
++    if payload_error is not None:
++        return jsonify({"error": "invalid callback payload"}), payload_error
++    logger.info("DingTalk authenticated callback accepted: %s", auth_reason)
+ 
+     # 解析消息内容
+     # 真实钉钉回调字段是 senderId；旧版/测试可能用 senderStaffId，两者都兼容
+@@ -578,12 +592,7 @@
+ 
+ 
+ def _handle_momentum_signal():
+-    """与每日主动推送复用排版，每次查询加载最新格式，无需重启刷新样式。"""
+-    try:
+-        with open(MOMENTUM_SIGNAL_FILE, encoding="utf-8") as f:
+-            text = f.read()
+-    except Exception as e:
+-        return "⚠️ 读取动量信号失败: %s" % e
++    """Read-only shared query rendering, including saved-run freshness/errors."""
+     try:
+         import importlib.util
+         renderer_path = os.path.join(os.path.dirname(os.path.dirname(MOMENTUM_SIGNAL_FILE)),
+@@ -591,18 +600,21 @@
+         spec = importlib.util.spec_from_file_location("_stock_momentum_format", renderer_path)
+         renderer = importlib.util.module_from_spec(spec)
+         spec.loader.exec_module(renderer)
+-        return renderer.build_markdown(text, query=True)[0]
+-    except Exception:
+-        logger.exception("动量查询排版加载失败")
++        return renderer.render_saved_query(path=MOMENTUM_SIGNAL_FILE)
++    except Exception as exc:
++        logger.error("动量查询展示不可用: %s", type(exc).__name__)
+         return "⚠️ 动量信号展示暂时不可用，请稍后再试。"
+ 
+ 
+ def handle_command(cmd, args, sender_id, sender_name, session_webhook=None, conversation_id=None):
+-    stocks = config.load_stocks()
+-
+-    # ── 动量轮动信号查询（快速链路，不走大模型）──
++    # Saved momentum queries do not depend on the stock-monitoring config.
+     if cmd == "momentum":
+         return _handle_momentum_signal()
++    try:
++        stocks = config.load_stocks()
++    except Exception as exc:
++        logger.error("股票监控配置读取失败: %s", type(exc).__name__)
++        return "⚠️ 股票监控配置暂时不可用，请检查配置后再试。"
+ 
+     # ── 盘面哨兵（大盘监控，快速链路，不走大模型）──
+     if cmd in ("sentinel", "sentinel_status", "sentinel_on", "sentinel_off"):
+--- a/dingtalk.py
++++ b/dingtalk.py
+@@ -16,12 +16,34 @@
+ 
+ # ── 请求验证 ───────────────────────────────────────────────────────────────
+ 
++def _callback_guard():
++    """Load the reviewed shared pure validator without changing sys.path."""
++    import importlib.util
++    spec = importlib.util.spec_from_file_location(
++        "_stock_dingtalk_callback_guard", "/root/stock/integrations/dingtalk_guard.py")
++    module = importlib.util.module_from_spec(spec)
++    spec.loader.exec_module(module)
++    return module
++
++
+ def verify_outgoing_token(token: str) -> bool:
+-    """验证钉钉 Outgoing 机器人 Token（明文比对模式）"""
+-    if not config.DINGTALK_OUTGOING_TOKEN:
+-        logger.warning("DINGTALK_OUTGOING_TOKEN 未配置，跳过验证")
+-        return True
+-    return hmac.compare_digest(token, config.DINGTALK_OUTGOING_TOKEN)
++    """Legacy Outgoing token mode; missing configuration always rejects."""
++    return _callback_guard().verify_token(token, config.DINGTALK_OUTGOING_TOKEN)
++
++
++def verify_callback_request(headers, now_ms=None):
++    """Explicit legacy-token or enterprise-AppSecret callback authentication."""
++    import os
++    mode = os.environ.get("DINGTALK_CALLBACK_AUTH_MODE", "token")
++    secret = os.environ.get("DINGTALK_CALLBACK_APP_SECRET", "")
++    return _callback_guard().verify_request(
++        headers, mode=mode, token=getattr(config, "DINGTALK_OUTGOING_TOKEN", ""),
++        app_secret=secret, now_ms=now_ms)
++
++
++def parse_callback_body(raw):
++    """Return validated callback JSON and an optional HTTP error status."""
++    return _callback_guard().parse_payload(raw)
+ 
+ 
+ # ── 发送消息 ───────────────────────────────────────────────────────────────
+@@ -51,6 +73,12 @@
+     return content
+ 
+ 
++def _error_code(response):
++    """Log only numeric status, never echoed payloads, URLs or credentials."""
++    value = response.get("errcode") if isinstance(response, dict) else None
++    return value if type(value) is int else None
++
++
+ def send_text(content: str, at_all: bool = False) -> bool:
+     """发送文本消息到群"""
+     if not config.DINGTALK_WEBHOOK_URL:
+@@ -71,11 +99,11 @@
+         resp.raise_for_status()
+         data = resp.json()
+         if data.get("errcode") != 0:
+-            logger.error("钉钉发送失败: %s", data)
++            logger.error("钉钉发送失败: %s", _error_code(data))
+             return False
+         return True
+     except Exception as e:
+-        logger.error("钉钉发送异常: %s", e)
++        logger.error("钉钉发送异常: %s", type(e).__name__)
+         return False
+ 
+ 
+@@ -128,12 +156,12 @@
+             resp.raise_for_status()
+             data = resp.json()
+             if data.get("errcode") != 0:
+-                logger.error("钉钉 Markdown 发送失败: %s", data)
++                logger.error("钉钉 Markdown 发送失败: %s", _error_code(data))
+                 ok = False
+             if len(chunks) > 1 and i < len(chunks) - 1:
+                 time.sleep(0.3)  # 多条之间间隔，避免钉钉端乱序
+         except Exception as e:
+-            logger.error("钉钉 Markdown 发送异常: %s", e)
++            logger.error("钉钉 Markdown 发送异常: %s", type(e).__name__)
+             ok = False
+     return ok
+ 
+@@ -319,11 +347,11 @@
+         )
+         data = resp.json()
+         if data.get("errcode") != 0:
+-            logger.error("sessionWebhook 文字发送失败: %s", data)
++            logger.error("sessionWebhook 文字发送失败: %s", _error_code(data))
+             return False
+         return True
+     except Exception as e:
+-        logger.error("sessionWebhook 文字发送异常: %s", e)
++        logger.error("sessionWebhook 文字发送异常: %s", type(e).__name__)
+         return False
+ 
+ 
+@@ -347,11 +375,11 @@
+         resp.raise_for_status()
+         data = resp.json()
+         if data.get("errcode") != 0:
+-            logger.error("钉钉 FeedCard 发送失败: %s", data)
++            logger.error("钉钉 FeedCard 发送失败: %s", _error_code(data))
+             return False
+         return True
+     except Exception as e:
+-        logger.error("钉钉 FeedCard 发送异常: %s", e)
++        logger.error("钉钉 FeedCard 发送异常: %s", type(e).__name__)
+         return False
+ 
+ 
+@@ -365,11 +393,11 @@
+         )
+         data = resp.json()
+         if data.get("errcode") != 0:
+-            logger.error("sessionWebhook FeedCard 发送失败: %s", data)
++            logger.error("sessionWebhook FeedCard 发送失败: %s", _error_code(data))
+             return False
+         return True
+     except Exception as e:
+-        logger.error("sessionWebhook FeedCard 发送异常: %s", e)
++        logger.error("sessionWebhook FeedCard 发送异常: %s", type(e).__name__)
+         return False
+ 
+ 
+@@ -387,11 +415,11 @@
+             )
+             data = resp.json()
+             if data.get("errcode") != 0:
+-                logger.error("sessionWebhook Markdown 发送失败: %s", data)
++                logger.error("sessionWebhook Markdown 发送失败: %s", _error_code(data))
+                 ok = False
+             if len(chunks) > 1 and i < len(chunks) - 1:
+                 time.sleep(0.3)  # 多条之间间隔，避免钉钉端乱序
+         except Exception as e:
+-            logger.error("sessionWebhook Markdown 发送异常: %s", e)
++            logger.error("sessionWebhook Markdown 发送异常: %s", type(e).__name__)
+             ok = False
+     return ok

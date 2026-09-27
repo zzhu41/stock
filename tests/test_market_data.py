@@ -1,4 +1,5 @@
 import copy
+from datetime import datetime
 import csv
 import os
 import tempfile
@@ -22,6 +23,10 @@ def quote_payload(price="2.194", stamp="20260902145000", volume="500"):
 
 class LiveHistoryTests(unittest.TestCase):
     def setUp(self):
+        clock = patch.object(md, "datetime", wraps=datetime)
+        self.clock = clock.start()
+        self.clock.now.return_value = datetime(2026, 9, 2, 14, 50, 30)
+        self.addCleanup(clock.stop)
         self.histories = {"513100": [("2026-08-31", 2.2, 2.223, 400.0),
                                      ("2026-09-01", 2.218, 2.233, 600.0)]}
 

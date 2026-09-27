@@ -7,6 +7,7 @@ Unknown share conversions, inconsistent quotes and incomplete histories fail
 closed. Output TR O/H/L are placeholders, not executable prices.
 """
 from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError
+from bisect import bisect_left, bisect_right
 from copy import deepcopy
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal
@@ -151,8 +152,17 @@ def _load_seed():
 
 
 def _empty_state(seed):
-    return dict(schema=1, seed_manifest_sha256=seed["manifest_hash"], seed_end=seed["end"],
-                last_completed=seed["end"], assets={c: dict(raw=[], tr=[], actions={}) for c in CODES})
+    return dict(schema=2, seed_manifest_sha256=seed["manifest_hash"], seed_end=seed["end"],
+                last_completed=seed["end"], calendar=[],
+                assets={c: dict(raw=[], tr=[], actions={}, last_observed_completed=seed["end"])
+                        for c in CODES})
+
+
+def _is_no_action_gap(action):
+    return (action.get("not_observed") is True
+            and action.get("verification") == "bracketed_no_action_interval"
+            and action.get("split_ratio") == 1
+            and action.get("cash_per_old_share") == 0)
 
 
 def _read_state(path, seed):
@@ -160,17 +170,48 @@ def _read_state(path, seed):
         return _empty_state(seed)
     envelope = json.loads(path.read_text())
     state = envelope["state"]
-    if envelope.get("sha256") != _hash(state) or state.get("schema") != 1:
+    if envelope.get("sha256") != _hash(state) or state.get("schema") not in (1, 2):
         raise LiveDataError("V10独立缓存校验失败")
     if state.get("seed_manifest_sha256") != seed["manifest_hash"] or set(state["assets"]) != set(CODES):
         raise LiveDataError("V10缓存与冻结种子不一致")
+    old_schema = state["schema"] == 1
+    if old_schema:
+        # Schema 1 had exactly matching asset calendars. Migrate only that
+        # valid contract; never reinterpret a damaged old cache as a gap.
+        state["calendar"] = [r[0] for r in state["assets"][BENCHMARK]["raw"]]
+    calendar = state["calendar"]
+    if (calendar != sorted(set(calendar))
+            or (calendar and (calendar[0] <= seed["end"] or calendar[-1] != state["last_completed"]))
+            or (not calendar and state["last_completed"] != seed["end"])):
+        raise LiveDataError("V10缓存基准日历非法")
+    for day in calendar:
+        _date(day)
     for code in CODES:
         asset = state["assets"][code]
         ds = [r[0] for r in asset["raw"]]
-        if ds != [r[0] for r in asset["tr"]] or set(ds) != set(asset["actions"]):
+        if (ds != sorted(set(ds)) or ds != [r[0] for r in asset["tr"]]
+                or set(asset["actions"]) != set(calendar) or not set(ds).issubset(calendar)):
             raise LiveDataError(code + "缓存缺少已确认行情或行动条目")
-        if ds and (ds[0] <= seed["end"] or ds[-1] != state["last_completed"]):
+        if (old_schema or code == BENCHMARK) and ds != calendar:
+            raise LiveDataError(code + "旧缓存/基准日期不完整")
+        if ds:
+            _rows(asset["raw"], state["last_completed"])
+            _rows(asset["tr"], state["last_completed"])
+        last_observed = ds[-1] if ds else seed["end"]
+        if old_schema:
+            asset["last_observed_completed"] = last_observed
+        if (asset.get("last_observed_completed") != last_observed
+                or (ds and ds[0] <= seed["end"])):
             raise LiveDataError(code + "缓存日期非法")
+        observed = set(ds)
+        for day, action in asset["actions"].items():
+            if day not in observed:
+                if (not _is_no_action_gap(action)
+                        or not action.get("previous_quote_date", "") < day < action.get("next_quote_date", "")):
+                    raise LiveDataError(code + "缺报价日没有明确的跨期无行动核验")
+            elif action.get("not_observed"):
+                raise LiveDataError(code + "缓存缺日标记与真实报价冲突")
+    state["schema"] = 2
     return state
 
 
@@ -356,6 +397,38 @@ def _infer_actions(code, raw, qfq, splits, quote, signal_date):
     return actions
 
 
+def _gap_actions(code, raw, actions, calendar, splits, seed_end):
+    """Annotate absent benchmark sessions without manufacturing a price bar.
+
+    An affine jump spanning absent observations cannot locate a cash ex-date.
+    Such intervals remain blocked. An explicitly dated conversion at the next
+    quoted bar is already located by the supplied split schedule; otherwise a
+    recoverable interval must have both zero cash and unchanged share units.
+    """
+    result = {}
+    for date, action in actions.items():
+        if date <= seed_end:
+            continue
+        previous = action["previous_quote_date"]
+        missing = calendar[bisect_right(calendar, previous):bisect_left(calendar, date)]
+        missing = [day for day in missing if day > seed_end]
+        if not missing:
+            continue
+        located_split = date in splits and math.isclose(
+            action["split_ratio"], float(splits[date]), rel_tol=1e-12, abs_tol=1e-12)
+        if action["cash_per_old_share"] != 0 or (action["split_ratio"] != 1 and not located_split):
+            raise LiveDataError(code + "跨缺报价区间存在无法定位的现金/拆分行动，需独立核验: "
+                                + previous + "至" + date)
+        for day in missing:
+            result[day] = dict(not_observed=True, split_ratio=1., split_ratio_exact="1",
+                               cash_per_old_share=0., cash_lower=0., cash_upper=0.,
+                               verification="bracketed_no_action_interval",
+                               previous_quote_date=previous, next_quote_date=date,
+                               cash_source="no_cash_change_between_observed_quotes",
+                               split_source="no_declared_unit_change_on_missing_session")
+    return result
+
+
 def _build(seed, state, pairs, quotes, signal_date, overrides):
     checked = {}
     known_raw = {c: seed["raw"][c] + [tuple(r) for r in state["assets"][c]["raw"]] for c in CODES}
@@ -367,7 +440,8 @@ def _build(seed, state, pairs, quotes, signal_date, overrides):
         _validate_day_alias(code, pairs[code], raw, qfq, seed, state, overrides, signal_date)
         previous = {r[0]: r for r in known_raw[code]}
         overlap = [r for r in raw if r[0] in previous]
-        if len(overlap) < 5 or state["last_completed"] not in {r[0] for r in overlap}:
+        last_observed = known_raw[code][-1][0]
+        if len(overlap) < 5 or last_observed not in {r[0] for r in overlap}:
             raise LiveDataError(code + "完成日线缺少足够重叠锚点")
         expected = {d for d in previous if raw[0][0] <= d <= state["last_completed"]}
         if expected - {r[0] for r in overlap}:
@@ -375,6 +449,8 @@ def _build(seed, state, pairs, quotes, signal_date, overrides):
         for r in overlap:
             if any(abs(r[k] - previous[r[0]][k]) > TOL for k in (1, 2, 3)):
                 raise LiveDataError(code + "历史raw被修订，不能静默重写TR种子或锚点")
+        if any(known_raw[code][0][0] <= r[0] <= state["last_completed"] and r[0] not in previous for r in raw):
+            raise LiveDataError(code + "已记录缺报价日被供应商补回，需显式核验后重建，不能静默改写历史")
         splits = _split_map(code, seed, state, overrides)
         if any(raw[0][0] < d <= signal_date and d not in {r[0] for r in raw} for d in splits):
             raise LiveDataError(code + "折算override不是首个新单位报价日")
@@ -390,16 +466,20 @@ def _build(seed, state, pairs, quotes, signal_date, overrides):
             if not action["cash_lower"] - TOL <= old_cash <= action["cash_upper"] + TOL:
                 raise LiveDataError(code + "新复权版本与已确认现金行动不一致")
         tail_dates = [r[0] for r in raw if r[0] > state["last_completed"]]
-        checked[code] = (raw, actions, tail_dates)
+        checked[code] = (raw, actions, tail_dates, splits)
     calendar_tail = checked[BENCHMARK][2]
     if not calendar_tail or calendar_tail[-1] != signal_date:
         raise LiveDataError("缺少当前基准交易日")
-    if any(checked[c][2] != calendar_tail for c in CODES):
-        raise LiveDataError("原11资产增量日期不齐；停牌/缺行情需核验，禁止按旧价成交")
+    calendar = [r[0] for r in known_raw[BENCHMARK]] + calendar_tail
+    if any(set(checked[c][2]) - set(calendar_tail) for c in CODES):
+        raise LiveDataError("资产报价日超出基准日历，需核验基准是否缺行情")
     next_state = deepcopy(state)
+    next_state["schema"] = 2
+    next_state["calendar"] = list(state.get("calendar", [r[0] for r in state["assets"][BENCHMARK]["raw"]])) + calendar_tail[:-1]
     histories, raw_histories, output_actions, receipts = {}, {}, {}, {}
     for code in CODES:
-        raw, inferred, _ = checked[code]
+        raw, inferred, _, splits = checked[code]
+        gaps = _gap_actions(code, raw, inferred, calendar, splits, seed["end"])
         by_date = {r[0]: r for r in raw}
         asset = next_state["assets"][code]
         base_tr = seed["tr"][code] + [tuple(r) for r in asset["tr"]]
@@ -410,6 +490,13 @@ def _build(seed, state, pairs, quotes, signal_date, overrides):
         for saved_action in asset["actions"].values():
             cumulative_split *= saved_action["split_ratio"]
         for date in calendar_tail:
+            if date not in by_date:
+                if date not in gaps:
+                    raise LiveDataError(code + "缺报价区间没有前后无行动确认: " + date)
+                # No artificial close, volume, dividend reinvestment or trade.
+                all_actions[date] = gaps[date]
+                asset["actions"][date] = gaps[date]
+                continue
             action = inferred[date]
             daily = by_date[date]
             current = date == signal_date
@@ -436,6 +523,7 @@ def _build(seed, state, pairs, quotes, signal_date, overrides):
                 asset["tr"].append(tr_row)
                 asset["actions"][date] = action
             previous_raw = price
+        asset["last_observed_completed"] = asset["raw"][-1][0] if asset["raw"] else seed["end"]
         histories[code] = [(d, o, c, c, c, v) for d, o, c, v in base_tr]
         raw_histories[code] = raw_rows
         output_actions[code] = all_actions
@@ -446,12 +534,15 @@ def _build(seed, state, pairs, quotes, signal_date, overrides):
                               qfq_quote_info=pairs[code].get("qfq_quote_info"))
     next_state["last_completed"] = calendar_tail[-2] if len(calendar_tail) > 1 else state["last_completed"]
     return dict(histories=histories, raw_histories=raw_histories, actions=output_actions,
-                calendar=[r[0] for r in raw_histories[BENCHMARK]],
+                calendar=calendar,
                 metadata=dict(seed_end=seed["end"], seed_manifest_sha256=seed["manifest_hash"],
                               completed_through=next_state["last_completed"], signal_date=signal_date,
                               provisional_date=signal_date, data_view="independent_live_TR_close",
                               quote_timestamps={c: quotes[c]["timestamp"] for c in CODES},
                               receipts=receipts, volume_unit="fixed_seed_end_share_units",
+                              last_observed_completed={c: next_state["assets"][c]["last_observed_completed"] for c in CODES},
+                              not_observed={c: [d for d, a in output_actions[c].items() if a.get("not_observed")]
+                                            for c in CODES},
                               open_high_low="TR close placeholders; raw prices are separate",
                               usable_for_next_open=False,
                               calendar_source="fresh benchmark raw day sequence; no inferred asset fills",
@@ -491,8 +582,13 @@ def build_live_view(quotes, signal_date, now=None, *, split_overrides=None,
             raise LiveDataError("缓存时间晚于实时请求，禁止倒退或重用历史信号")
         if (_date(signal_date) - _date(state["last_completed"])).days > 600:
             raise LiveDataError("V10增量超过单页安全范围，需独立补齐历史")
-        benchmark_rows = seed["raw"][BENCHMARK] + state["assets"][BENCHMARK]["raw"]
-        start = benchmark_rows[-22:][0][0]
+        observed_rows = {c: seed["raw"][c] + state["assets"][c]["raw"] for c in CODES}
+        if any((_date(signal_date) - _date(rows[-1][0])).days > 600 for rows in observed_rows.values()):
+            raise LiveDataError("某资产报价缺口超过单页安全范围，需独立补齐历史")
+        # A suspended asset's observed watermark may precede the benchmark's.
+        # Include its own historical anchors rather than demanding a fake bar
+        # on the benchmark's latest completed date.
+        start = min(rows[-22:][0][0] for rows in observed_rows.values())
         pairs = _fetch_all(start, signal_date, fetch_pair or _fetch_pair)
         view, updated = _build(seed, state, pairs, normalized_quotes, signal_date, split_overrides)
         finished_clock = reference_clock + timedelta(seconds=time.monotonic() - started)

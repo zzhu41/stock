@@ -3,8 +3,9 @@ import csv
 import json
 import tempfile
 import unittest
+from copy import deepcopy
 from contextlib import ExitStack, contextmanager
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from unittest.mock import patch
 
@@ -34,6 +35,20 @@ def history(last_index, prices=None):
             for code, p in prices.items()}
 
 
+def call(module, table, histories, prices, signal_date=None, actions=None):
+    """Explicit verified raw/action fixtures; never infer actions from QFQ ratios."""
+    day = signal_date or histories["510300"][-1][0]
+    quotes = {code: dict(date=day, timestamp=day + " 14:50:00", price=price)
+              for code, price in prices.items()}
+    action_rows = {code: {row[0]: dict(split_ratio=1., cash_per_old_share=0.) for row in rows}
+                   for code, rows in histories.items()}
+    for code, values in (actions or {}).items():
+        action_rows[code].update(deepcopy(values))
+    view = dict(calendar=[row[0] for row in histories["510300"]], raw_histories=deepcopy(histories),
+                actions=action_rows, metadata=dict(signal_date=day))
+    return module.block(table, histories, prices, signal_date=day, quotes=quotes, action_view=view)
+
+
 @contextmanager
 def isolated(module, state=None):
     with tempfile.TemporaryDirectory() as directory, ExitStack() as stack:
@@ -55,12 +70,12 @@ class LiveSignalTests(unittest.TestCase):
         for module in MODULES:
             with self.subTest(module=module.__name__), isolated(module):
                 with patch.object(module.strategy, "decide", return_value=(CASH, "ordinary exit")):
-                    module.block(crash, history(20), prices, signal_date=DATES[20])
+                    call(module, crash, history(20), prices, signal_date=DATES[20])
                     self.assertEqual(module._load_state()["lock_trigger_date"], DATES[20])
                     for i in range(21, 25):
-                        module.block([], history(i), prices, signal_date=DATES[i])
+                        call(module, [], history(i), prices, signal_date=DATES[i])
                         self.assertEqual(module._load_state()["holding"], "510300")
-                    module.block([], history(25), prices, signal_date=DATES[25])
+                    call(module, [], history(25), prices, signal_date=DATES[25])
                     self.assertEqual(module._load_state()["holding"], CASH)
 
     def test_nav_uses_saved_execution_price_and_does_not_backdate_entry(self):
@@ -68,41 +83,39 @@ class LiveSignalTests(unittest.TestCase):
             with self.subTest(module=module.__name__), isolated(module):
                 with patch.object(module.strategy, "decide", return_value=("510300", "buy")):
                     prices = {"510300": 120.0, "510500": 100.0, CASH: 100.0}
-                    module.block([], history(20), prices, signal_date=DATES[20])
+                    call(module, [], history(20), prices, signal_date=DATES[20])
                     st = module._load_state()
                     self.assertEqual(st["nav"], 1.0)
                     self.assertEqual(st["mark_price"], 120.0)
-                    self.assertEqual(st["mark_anchor_date"], DATES[19])
+                    self.assertAlmostEqual(st["units"], 1 / 120.)
                     # Yesterday's cache later says 105; entry was still 120, not 105.
                     hs = history(21)
                     hs["510300"][-2] = (DATES[20], 105, 105, 100)
                     prices["510300"] = 132.0
-                    module.block([], hs, prices, signal_date=DATES[21])
+                    call(module, [], hs, prices, signal_date=DATES[21])
                     self.assertAlmostEqual(module._load_state()["nav"], 1.1)
 
-    def test_completed_anchor_handles_split_dividend_rebase_and_no_action(self):
+    def test_raw_units_handle_cash_dividend_split_and_no_action(self):
         for module in MODULES:
-            for factor in (0.5, 0.95, 1.0):
-                with self.subTest(module=module.__name__, adjustment=factor), isolated(module):
+            for ratio, cash, price, expected in ((2., 0., 50., 1.), (1., 10., 100., 1.1), (1., 0., 100., 1.)):
+                with self.subTest(module=module.__name__, ratio=ratio, cash=cash), isolated(module):
                     with patch.object(module.strategy, "decide", return_value=("510300", "keep")):
-                        module.block([], history(20), {"510300": 120.0}, signal_date=DATES[20])
+                        call(module, [], history(20), {"510300": 100.0}, signal_date=DATES[20])
                         rebased = history(21)
-                        rebased["510300"] = [(d, o * factor, c * factor, v)
+                        # Arbitrary additive QFQ rebasing must not enter raw-unit NAV.
+                        rebased["510300"] = [(d, o - 10., c - 10., v)
                                                for d, o, c, v in rebased["510300"]]
-                        # A corporate action alone produces no loss in adjusted NAV.
-                        module.block([], rebased, {"510300": 120.0 * factor}, signal_date=DATES[21])
-                        self.assertAlmostEqual(module._load_state()["nav"], 1.0)
-                        next_day = history(22)
-                        next_day["510300"] = [(d, o * factor, c * factor, v)
-                                                for d, o, c, v in next_day["510300"]]
-                        module.block([], next_day, {"510300": 132.0 * factor}, signal_date=DATES[22])
-                        self.assertAlmostEqual(module._load_state()["nav"], 1.1)
+                        actions = {"510300": {DATES[21]: dict(split_ratio=ratio, cash_per_old_share=cash)}}
+                        call(module, [], rebased, {"510300": price}, signal_date=DATES[21], actions=actions)
+                        self.assertAlmostEqual(module._load_state()["nav"], expected)
+                        call(module, [], history(22), {"510300": price * 1.1}, signal_date=DATES[22], actions=actions)
+                        self.assertAlmostEqual(module._load_state()["nav"], expected * 1.1)
 
-    def test_missing_completed_anchor_does_not_write_state(self):
+    def test_missing_explicit_raw_action_view_does_not_write_state(self):
         for module in MODULES:
             with self.subTest(module=module.__name__), isolated(module) as root:
                 with patch.object(module.strategy, "decide", return_value=("510300", "buy")):
-                    with self.assertRaisesRegex(ValueError, "已完成行情"):
+                    with self.assertRaisesRegex(ValueError, "原始行情/公司行动"):
                         module.block([], history(0), {"510300": 100.0}, signal_date=DATES[0])
                 self.assertFalse((root / "state.json").exists())
 
@@ -114,9 +127,9 @@ class LiveSignalTests(unittest.TestCase):
         for module in MODULES:
             with self.subTest(module=module.__name__), isolated(module, old):
                 with patch.object(module.strategy, "decide", return_value=("510300", "keep")):
-                    lines = module.block([], history(20), {"510300": 50.0}, signal_date=DATES[20])
+                    lines = call(module, [], history(20), {"510300": 50.0}, signal_date=DATES[20])
                 st = module._load_state()
-                self.assertEqual(st["valuation_version"], 3)
+                self.assertEqual(st["valuation_version"], 4)
                 self.assertEqual(st["nav"], 1.0)
                 self.assertEqual(st["legacy_performance"]["nav"], 1.2)
                 self.assertEqual(st["legacy_performance_history"], [older])
@@ -127,14 +140,14 @@ class LiveSignalTests(unittest.TestCase):
             with self.subTest(module=module.__name__), isolated(module) as root:
                 prices = {"510300": 100.0, "510500": 100.0, CASH: 100.0}
                 with patch.object(module.strategy, "decide", return_value=("510300", "buy")):
-                    module.block([], history(20), prices, signal_date=DATES[20])
+                    call(module, [], history(20), prices, signal_date=DATES[20])
                 with patch.object(module.strategy, "decide", return_value=("510500", "switch")):
-                    module.block([], history(21), prices, signal_date=DATES[21])
+                    call(module, [], history(21), prices, signal_date=DATES[21])
                 saved = (root / "state.json").read_bytes()
                 trades = (root / "trades.csv").read_bytes()
                 prices["510300"] = 150.0
                 with patch.object(module.strategy, "decide", side_effect=AssertionError("same-day decide")):
-                    module.block([], history(21), prices, signal_date=DATES[21])
+                    call(module, [], history(21), prices, signal_date=DATES[21])
                 self.assertEqual((root / "state.json").read_bytes(), saved)
                 self.assertEqual((root / "trades.csv").read_bytes(), trades)
 
@@ -143,21 +156,21 @@ class LiveSignalTests(unittest.TestCase):
             with self.subTest(module=module.__name__), isolated(module):
                 prices = {"510300": 100.0, "510500": 100.0, CASH: 100.0}
                 with patch.object(module.strategy, "decide", return_value=("510300", "buy")):
-                    module.block([], history(20), prices, signal_date=DATES[20])
+                    call(module, [], history(20), prices, signal_date=DATES[20])
                 prices.update({"510300": 110.0, "510500": 200.0})
                 with patch.object(module.strategy, "decide", return_value=("510500", "switch")):
-                    module.block([], history(21), prices, signal_date=DATES[21])
+                    call(module, [], history(21), prices, signal_date=DATES[21])
                     self.assertAlmostEqual(module._load_state()["nav"], 1.1 * (1 - module.FEE))
                     prices["510500"] = 220.0
-                    module.block([], history(22), prices, signal_date=DATES[22])
+                    call(module, [], history(22), prices, signal_date=DATES[22])
                 self.assertAlmostEqual(module._load_state()["nav"], 1.21 * (1 - module.FEE))
 
     def test_stale_history_rejected_before_qvix_or_state_write(self):
         for module in MODULES:
             with self.subTest(module=module.__name__), isolated(module) as root:
                 with patch.object(shadow_0906, "qvix_state", side_effect=AssertionError("stale signal")):
-                    with self.assertRaisesRegex(ValueError, "行情末日"):
-                        module.block([], history(20), {}, signal_date=DATES[21])
+                    with self.assertRaisesRegex(ValueError, "交易日历|行情末日"):
+                        call(module, [], history(20), {}, signal_date=DATES[21])
                 self.assertFalse((root / "state.json").exists())
 
     def test_legacy_nav_is_archived_and_new_baseline_is_explicit(self):
@@ -166,7 +179,7 @@ class LiveSignalTests(unittest.TestCase):
         for module in MODULES:
             with self.subTest(module=module.__name__), isolated(module, old):
                 with patch.object(module.strategy, "decide", return_value=("510300", "keep")):
-                    lines = module.block([], history(20), {"510300": 150.0}, signal_date=DATES[20])
+                    lines = call(module, [], history(20), {"510300": 150.0}, signal_date=DATES[20])
                 st = module._load_state()
                 self.assertEqual(st["legacy_performance"]["nav"], 1.23)
                 self.assertEqual(st["nav"], 1.0)
@@ -180,7 +193,7 @@ class LiveSignalTests(unittest.TestCase):
             with self.subTest(module=module.__name__), isolated(module, old) as root:
                 saved = (root / "state.json").read_bytes()
                 with self.assertRaisesRegex(ValueError, "没有触发日"):
-                    module.block([], history(21), {"510300": 100}, signal_date=DATES[21])
+                    call(module, [], history(21), {"510300": 100}, signal_date=DATES[21])
                 self.assertEqual((root / "state.json").read_bytes(), saved)
         # Main v9 locks already recorded trigger_date, which can be migrated exactly.
         self.assertTrue(live_state.lock_active("510300", DATES[20], DATES[:25], DATES[24]))
@@ -192,7 +205,7 @@ class LiveSignalTests(unittest.TestCase):
                  for code in ("510300", "510500")]
         for module in MODULES:
             with self.subTest(module=module.__name__), isolated(module, old):
-                module.block(crash, history(20), {"510300": 100, "510500": 100},
+                call(module, crash, history(20), {"510300": 100, "510500": 100},
                              signal_date=DATES[20])
                 self.assertEqual(module._load_state()["holding"], "510500")
 
@@ -210,13 +223,14 @@ class LiveSignalTests(unittest.TestCase):
             self.assertIn("停用", note)
 
     def test_main_rejects_stale_quotes_without_generating_a_signal(self):
-        with patch.object(signal_daily, "fetch_history", return_value=[(DATES[0], 1, 1, 1)]), \
-                patch.object(signal_daily.time, "sleep"), \
+        with tempfile.TemporaryDirectory() as directory, \
+                patch.object(signal_daily, "SIGNAL_DIR", directory), \
+                patch.object(signal_daily, "fetch_histories", return_value=history(20)), \
                 patch.object(signal_daily, "fetch_realtime", return_value={}), \
                 patch.object(signal_daily, "prepare_live_histories", side_effect=ValueError("stale quote")), \
-                patch.object(signal_daily, "_atomic_write") as write:
+                patch.object(signal_daily.signal_store, "publish") as write:
             with self.assertRaisesRegex(ValueError, "stale quote"):
-                signal_daily.main()
+                signal_daily.main(now=datetime(2026, 9, 24, 14, 50))
             write.assert_not_called()
 
 

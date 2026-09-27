@@ -27,7 +27,7 @@ def _latest_nav(code):
     url = ("https://api.fund.eastmoney.com/f10/lsjz?fundCode=%s&pageIndex=1&pageSize=2"
            % code)
     req = urllib.request.Request(url, headers=_UA)
-    with urllib.request.urlopen(req, timeout=15) as r:
+    with urllib.request.urlopen(req, timeout=6) as r:
         d = json.loads(r.read().decode("utf-8"))
     rows = (d.get("Data") or {}).get("LSJZList") or []
     for row in rows:
@@ -36,15 +36,15 @@ def _latest_nav(code):
     return None, None
 
 
-def get_premium(code):
+def get_premium(code, quote=None):
     """返回 dict(price, nav, nav_date, premium, warn); 任一环失败则 premium=None。"""
-    try:
-        price = fetch_realtime([code]).get(code, (None, None))[1]
-        if not price:
-            price = fetch_history(code)[-1][2]
-    except Exception:
+    # Daily generation supplies its already validated snapshot; never perform
+    # another price fetch or replace it with an undated historical price.
+    if quote is not None:
+        price = quote.get("price")
+    else:
         try:
-            price = fetch_history(code)[-1][2]
+            price = fetch_realtime([code]).get(code, (None, None))[1]
         except Exception:
             price = None
     try:
@@ -57,12 +57,12 @@ def get_premium(code):
             "premium": prem, "warn": prem is not None and prem > WARN_THR}
 
 
-def signal_block(codes=None):
+def signal_block(codes=None, quotes=None):
     """信号卡片文本行(list); 全部失败返回 []。绝不抛异常(主链路保护)。"""
     out = []
     for code in (codes or QDII):
         try:
-            p = get_premium(code)
+            p = get_premium(code, quote=quotes.get(code) if quotes is not None else None)
             if p["premium"] is None:
                 out.append("  %s %s 溢价: 获取失败(不影响信号)" % (code, p["name"]))
             else:

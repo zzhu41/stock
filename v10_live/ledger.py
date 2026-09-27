@@ -85,6 +85,15 @@ def advance(state, decision, view, quotes, signal_date):
             cash = float(action["cash_per_old_share"])
             if not math.isfinite(cash) or cash < 0:
                 raise ValueError("V10-H invalid dividend")
+            if action.get("not_observed"):
+                # Only a bracketed, explicitly verified zero-action gap can
+                # carry the units. Never invent a close for a suspended asset
+                # or reinvest cash on an unobserved date.
+                if (date == signal_date or date in raw_rows or split != 1 or cash != 0
+                        or action.get("verification") != "bracketed_no_action_interval"
+                        or not action.get("previous_quote_date", "") < date < action.get("next_quote_date", "")):
+                    raise ValueError("V10-H unsafe unobserved-session action: " + date)
+                continue
             entitlement = units * cash
             units *= split
             if date == signal_date:

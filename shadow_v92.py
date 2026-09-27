@@ -10,20 +10,19 @@
 
 数据: QVIX 复用 shadow_0906.qvix_state(严格当日口径, 缺失即停用恐慌判定);
       价格、量比和信号日由 market_data 的带日期报价统一对齐。
-状态: signals/shadow_v92.json(幂等: 同一交易日重跑不重复记账)
-流水: signals/shadow_v92_trades.csv(date,from,to,price,nav)
+状态: signals/shadow_v92.json(v4原始份额/锁仓/权威事件与当天封存卡片)
+流水: signals/shadow_v92_trades.csv(JSON事件的可重建投影；旧流水随旧状态归档)
 旧研究结果归档于 v10/README.md；修复后的评估见 reports/correctness_review.md。
 历史扫描结果不代表独立样本外验证，也不是修复后前向业绩。
 """
-import csv
 import json
 import os
 from datetime import datetime
 
 import strategy
 from market_data import UNIVERSE, STOCK_POOL, GLOBAL_POOL, GOLD
-from live_state import (signal_calendar, lock_active, migrate_shadow_state,
-                        advance_shadow_nav, settle_shadow)
+from live_state import signal_calendar, lock_active
+from shadow_account import atomic_json, cached_lines, transact
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 STATE_FILE = os.path.join(BASE, "signals", "shadow_v92.json")
@@ -63,19 +62,11 @@ def _load_state():
 
 
 def _save_state(st):
-    tmp = "%s.tmp.%d" % (STATE_FILE, os.getpid())
-    with open(tmp, "w", encoding="utf-8") as f:
-        json.dump(st, f, ensure_ascii=False)
-    os.replace(tmp, STATE_FILE)
+    atomic_json(STATE_FILE, st)
 
 
-def _log_trade(date, frm, to, price, nav):
-    new = not os.path.exists(TRADES_FILE)
-    with open(TRADES_FILE, "a", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
-        if new:
-            w.writerow(["date", "from", "to", "price", "nav"])
-        w.writerow([date, frm or "", to, "%.4f" % price, "%.6f" % nav])
+def cached_block(signal_date):
+    return cached_lines(STATE_FILE, "v9.2", signal_date)
 
 
 def _vol_ratio20(histories, code, last_date):
@@ -101,20 +92,16 @@ def _trigger_channels(ind, vr, fear):
     return ch
 
 
-def block(table, histories, live_prices, signal_date=None):
-    """计算影子信号并推进状态(同日幂等), 返回信号文本行列表。异常由调用方兜底。"""
+def block(table, histories, live_prices, signal_date=None, *, quotes=None, action_view=None, qvix=None):
+    """原三通道规则不变；共享原始行情记账，锁内封存同日目标和卡片。"""
     import shadow_0906                       # 复用 QVIX 严格当日口径(同源同窗同阈值)
     last_date = signal_date or datetime.now().strftime("%Y-%m-%d")
-    cal = signal_calendar(histories, last_date)
-    st = _load_state()
-    migrate_shadow_state(st, last_date)
-    z, v, qd, fear, note = shadow_0906.qvix_state(last_date)
+    context = {}
 
-    rerun = st.get("last_date") == last_date     # 同日重跑: 只展示不推进
-    if not rerun:
-        # 1) 上次实际信号价到本次报价的持仓收益，不回算入场前的历史收益。
-        advance_shadow_nav(st, live_prices, histories)
-
+    def decide(st):
+        cal = signal_calendar(histories, last_date)
+        context["qvix"] = qvix if qvix is not None else shadow_0906.qvix_state(last_date)
+        z, v, qd, fear, note = context["qvix"]
         # 2) 决策: 锁仓期 > 抄底检测(① ∪ ② ∪ ③, score 最强者, 排除当前持仓——同 lab 口径) > v9.1 常规信号
         target, reason = None, ""
         if lock_active(st.get("lock_code"), st.get("lock_trigger_date"), cal, last_date, LOCK_DAYS):
@@ -140,35 +127,47 @@ def block(table, histories, live_prices, signal_date=None):
                     cand[1]["dist_ma250"] * 100, cand_vr)
             else:
                 target, reason = strategy.decide(table, st.get("holding"))
-        # 3) 换仓并保存本次执行/估值价，作为下一次收益的唯一分母。
-        settle_shadow(st, target, live_prices, last_date, FEE, _log_trade, histories)
+        return target, reason
+
+    def render(st, target, reason):
+        z, v, qd, fear, note = context["qvix"]
         name = UNIVERSE[target][0] if target in UNIVERSE else "空仓"
         st["last_advice"] = "%s %s | %s" % (target, name, reason)
-        _save_state(st)
+        qvix_line = "QVIX %.2f (z=%+.2f, %s) 恐慌: %s%s" % (
+            v or 0.0, z or 0.0, qd or "-", "激活" if fear else "未激活",
+            " | " + note if note else "")
+        lines = ["-" * 56,
+                 "【影子 v9.2】QVIX∪量能恐慌抄底 · 虚拟跟踪不下单 (v10第八轮候选 fz25_cv)",
+                 "  " + qvix_line,
+                 "  抄底三口并集: ①MOM5≤-8%∧低年线20% ②恐慌日MOM5≤-4%∧低年线20% ③量比≥2∧低年线10%且MOM5≤-4%",
+                 "  数据截止: %s | 估值时间: %s（当日封存）" % (last_date, st.get("quote_timestamp") or "-"),
+                 "  影子持仓: %s | 虚拟净值 %.4f (自%s) | 建议: %s" % (
+                     st.get("holding") or "空仓", st["nav"], st["start_date"], st["last_advice"]),
+                 "  跟踪说明: 原始份额记账；分红归属旧持仓，按首次有效价格虚拟再投资"]
+        if st.get("valuation_note"):
+            lines.append("  " + st["valuation_note"])
+        return lines
 
-    qvix_line = "QVIX %.2f (z=%+.2f, %s) 恐慌: %s%s" % (
-        v or 0.0, z or 0.0, qd or "-", "激活" if fear else "未激活",
-        " | " + note if note else "")
-    lines = [
-        "-" * 56,
-        "【影子 v9.2】QVIX∪量能恐慌抄底 · 虚拟跟踪不下单 (v10第八轮候选 fz25_cv)",
-        "  " + qvix_line,
-        "  抄底三口并集: ①MOM5≤-8%∧低年线20% ②恐慌日MOM5≤-4%∧低年线20% ③量比≥2∧MOM5≤-4%∧低年线10%",
-        "  影子持仓: %s | 虚拟净值 %.4f (自%s) | 建议: %s" % (
-            st.get("holding") or "空仓", st.get("nav", 1.0),
-            st.get("start_date") or st.get("last_date"), st.get("last_advice", "")),
-    ]
-    if st.get("valuation_note"):
-        lines.append("  " + st["valuation_note"])
-    return lines
+    return transact(STATE_FILE, TRADES_FILE, _load_state, _save_state, "v9.2", last_date,
+                    quotes, action_view, FEE, decide, render)
 
 
 if __name__ == "__main__":
     from market_data import fetch_history, fetch_realtime, prepare_live_histories
+    from signal_store import execution_window
+    if not execution_window():
+        raise SystemExit("正式影子记账仅在14:50–14:55；其它时段请查询保存信号")
     sig_date = datetime.now().strftime("%Y-%m-%d")
     hs = {c: fetch_history(c) for c in UNIVERSE}
     quotes = fetch_realtime(codes=list(UNIVERSE), detailed=True)
     hs = prepare_live_histories(hs, quotes, sig_date)
     lv = {c: q["price"] for c, q in quotes.items()}
     tbl = strategy.rank(hs, on_date=sig_date)
-    print("\n".join(block(tbl, hs, lv, signal_date=sig_date)))
+    from v10_live.data import build_live_view
+    import shadow_0906
+    view = build_live_view(quotes, sig_date)
+    qvix = shadow_0906.qvix_state(sig_date)
+    if not execution_window():
+        raise SystemExit("已超过执行窗口，本次不记账")
+    print("\n".join(block(tbl, hs, lv, signal_date=sig_date, quotes=quotes,
+                           action_view=view, qvix=qvix)))

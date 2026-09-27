@@ -108,16 +108,14 @@ class LiveDataTests(unittest.TestCase):
             self.assertEqual(set(view['actions'][c]), {'2026-09-25', '2026-09-28'})
             self.assertAlmostEqual(view['histories'][c][-1][2], 1.06)
 
-    def test_missing_today_history_raw_revision_and_cross_asset_gap_fail_closed(self):
-        for mode in ('missing_today', 'revised_raw', 'gap'):
+    def test_missing_today_history_and_raw_revision_fail_closed(self):
+        for mode in ('missing_today', 'revised_raw'):
             pairs = self.pairs('2026-09-28')
             if mode == 'missing_today':
                 pairs['159915']['raw'].pop(); pairs['159915']['qfq'].pop()
             elif mode == 'revised_raw':
                 r = pairs['159915']['raw'][1]
                 pairs['159915']['raw'][1] = (r[0], r[1], r[2] + .001, r[3])
-            else:
-                pairs['159915']['raw'].pop(-2); pairs['159915']['qfq'].pop(-2)
             with self.subTest(mode=mode), self.assertRaises(live.LiveDataError):
                 self.run_view(pairs, date='2026-09-28')
         self.assertFalse((self.directory / 'completed.json').exists())

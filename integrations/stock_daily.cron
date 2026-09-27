@@ -1,0 +1,3 @@
+# Only the daily signal entries; preserve all other existing jobs.
+47 14 * * 1-5 /usr/bin/python3.8 -B /root/stock/daily_job.py --warmup >> /root/stock/signals/cron.log 2>&1
+50,52,54 14 * * 1-5 /usr/bin/python3.8 -B /root/stock/daily_job.py >> /root/stock/signals/cron.log 2>&1

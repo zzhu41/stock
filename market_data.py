@@ -218,11 +218,15 @@ def fetch_realtime(codes=None, detailed=False):
     return out
 
 
-def prepare_live_histories(histories, quotes, signal_date):
+def prepare_live_histories(histories, quotes, signal_date, now=None, max_age_seconds=180):
     """纯函数: 报价与信号日期严格匹配, 保留昨日K线并替换/追加当日K线。
     非货币ETF必须有当日报价; CASH 无报价时保持其历史, 有报价时同样严格校验。
     不修改输入, 不允许未来K线, 不用昨日量冒充今日累计量。"""
     signal_date = _date(signal_date)
+    now = now or datetime.now()
+    if now.strftime("%Y-%m-%d") != signal_date:
+        raise ValueError("实时信号日期与当前时钟不一致")
+    stamps = []
     out = {}
     for code, history in histories.items():
         rows = _validated_rows(history, signal_date)
@@ -236,11 +240,15 @@ def prepare_live_histories(histories, quotes, signal_date):
             raise ValueError("%s 缺 %s 当日报价或报价已陈旧" % (code, signal_date))
         stamp = quote.get("timestamp", "")
         try:
-            stamp_date = datetime.strptime(stamp, "%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d")
+            moment = datetime.strptime(stamp, "%Y-%m-%d %H:%M:%S")
+            stamp_date = moment.strftime("%Y-%m-%d")
         except (TypeError, ValueError):
             raise ValueError("%s 报价时间戳非法" % code)
         if stamp_date != signal_date:
             raise ValueError("%s 报价日期与时间戳不一致" % code)
+        if not -5 <= (now - moment).total_seconds() <= max_age_seconds:
+            raise ValueError("%s 报价时间已过期或来自未来" % code)
+        stamps.append(moment)
         row = (signal_date, _number(quote.get("open"), "%s 开盘" % code, True),
                _number(quote.get("price"), "%s 实时价" % code, True),
                _number(quote.get("volume"), "%s 当日累计量" % code))
@@ -249,6 +257,8 @@ def prepare_live_histories(histories, quotes, signal_date):
         else:
             rows.append(row)
         out[code] = rows
+    if stamps and (max(stamps) - min(stamps)).total_seconds() > 60:
+        raise ValueError("资产报价时间差超过60秒")
     return out
 
 
