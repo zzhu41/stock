@@ -22,6 +22,7 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 LATEST = os.path.join(BASE, "signals", "latest.txt")
 SECRET_FILE = os.path.join(BASE, "data", "dingtalk.secret")
 WEBHOOK_FILE = os.path.join(BASE, "data", "dingtalk.webhook")
+ASSET_PATTERN = r"(\d{6}\s+[^\s|()（）,，;；/]+)"
 
 
 def load_file(path):
@@ -39,6 +40,28 @@ def signed_url(webhook, secret):
                  digestmod=hashlib.sha256).digest()
     sign = urllib.parse.quote_plus(base64.b64encode(s))
     return "%s&timestamp=%s&sign=%s" % (webhook, ts, sign)
+
+
+def highlight_advice(advice):
+    """只强调操作中的目标标的，保留买入/持有/卖出的原始含义。"""
+    highlighted = re.sub(r"((?:买入|继续持有)\s+)" + ASSET_PATTERN,
+                         r"\1**\2**", advice)
+    if re.search(r"买入\s+" + ASSET_PATTERN, advice):
+        highlighted = "🟧 " + highlighted
+    return highlighted
+
+
+def shadow_markdown(line):
+    """影子建议单独展示，不将虚拟目标解释为实盘买入指令。"""
+    holding, separator, advice = line.partition(" | 建议: ")
+    if not separator:
+        return ["- " + line]
+    target, _, reason = advice.partition(" | ")
+    target = re.sub("^" + ASSET_PATTERN, r"**\1**", target.strip())
+    result = ["- " + holding, "", "影子建议标的: " + target]
+    if reason:
+        result += ["", "> " + reason]
+    return result
 
 
 def build_markdown(text):
@@ -66,7 +89,10 @@ def build_markdown(text):
           "",
           "**%s**" % holding,
           "",
-          "## %s" % advice.replace("★ ", ""),
+          "## 今日操作",
+          "",
+          highlight_advice(advice.replace("★ ", "", 1)),
+          "",
           "> %s" % reason.strip(),
           "",
           "动量前三: " + " / ".join(rank)]
@@ -89,7 +115,9 @@ def build_markdown(text):
         md += ["", "---"]
         if label:
             md.append("**%s**(虚拟跟踪不下单)" % label)
-        md += ["- %s" % s for s in slines]
+        md.append("")
+        for s in slines:
+            md += shadow_markdown(s) + [""]
     md += ["",
            "---",
            "⏰ 尾盘 14:30-14:50 限价贴价执行; 操作后回报 代码/价格/金额 记账",
