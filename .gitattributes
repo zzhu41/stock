@@ -2,3 +2,5 @@
 *.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Matplotlib's frozen SVG path data contains intentional trailing spaces.
 */results/*.svg -text -whitespace
+# Unified patches retain the leading space on empty context lines.
+integrations/*.patch -whitespace

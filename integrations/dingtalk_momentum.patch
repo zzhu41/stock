@@ -1,0 +1,67 @@
+--- a/app.py
++++ b/app.py
+@@ -578,52 +578,23 @@
+ 
+ 
+ def _handle_momentum_signal():
+-    """动量轮动信号查询: 读 /root/stock/signals/latest.txt 提取关键行回复(快速链路, 不走大模型)。"""
++    """与每日主动推送复用排版，每次查询加载最新格式，无需重启刷新样式。"""
+     try:
+         with open(MOMENTUM_SIGNAL_FILE, encoding="utf-8") as f:
+             text = f.read()
+     except Exception as e:
+         return "⚠️ 读取动量信号失败: %s" % e
+-    lines = text.splitlines()
+-    gen = next((l.strip() for l in lines if "动量轮动信号" in l), "")
+-    gen_m = re.search(r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2})", gen)
+-    regime = next((l.strip() for l in lines if "牛熊体制" in l), "").split(":", 1)[-1].strip()
+-    holding = next((l.strip() for l in lines if "当前持仓" in l), "").split(":", 1)[-1].strip()
+-    advice = next((l.strip() for l in lines if "★ 建议" in l), "").split(":", 1)[-1].strip()
+-    reason = next((l.strip() for l in lines if "依据" in l), "").split(":", 1)[-1].strip()
+-    top = []
+-    for l in lines:
+-        m = re.match(r"\s*(\d{6})\s+(\S+)\s+MOM20\s+([+-]\d+\.\d+)%", l)
+-        if m:
+-            top.append("%s(%s%%)" % (m.group(2), m.group(3)))
+-        if len(top) >= 3:
+-            break
+-    # 影子版本(v9.1-0906/v9.2, 虚拟跟踪不下单): 按【影子 标题分块, 各取影子持仓行; 失败行单列
+-    shadows = []
+-    cur = None
+-    for l in lines:
+-        s = l.strip()
+-        if s.startswith("【影子"):
+-            cur = s[1:s.index("】")] if "】" in s else s
+-        elif "影子" in s and "计算失败" in s:
+-            shadows.append("**%s**" % s)
+-            cur = None
+-        elif cur and "影子持仓" in s:
+-            shadows.append("**%s**: %s" % (cur, s.replace("影子持仓: ", "", 1)))
+-            cur = None
+-    shadow_txt = ("\n\n---\n虚拟影子(不下单): " + " ｜ ".join(shadows)) if shadows else ""
+-    return (
+-        "**📊 动量轮动 · 当前信号**\n\n"
+-        "**牛熊体制**: %s\n\n"
+-        "**当前持仓**: %s\n\n"
+-        "**★ 建议**: %s\n\n"
+-        "> 依据: %s\n\n"
+-        "动量前三: %s%s\n\n"
+-        "---\n信号生成 %s · v9.1 · 以每日 14:50 正式推送为准\n\n"
+-        "📈 动量跟踪网页: http://120.26.67.168:8081/"
+-        % (regime, holding, advice, reason, " / ".join(top), shadow_txt,
+-           gen_m.group(1) if gen_m else "-")
+-    )
++    try:
++        import importlib.util
++        renderer_path = os.path.join(os.path.dirname(os.path.dirname(MOMENTUM_SIGNAL_FILE)),
++                                     "push_signal.py")
++        spec = importlib.util.spec_from_file_location("_stock_momentum_format", renderer_path)
++        renderer = importlib.util.module_from_spec(spec)
++        spec.loader.exec_module(renderer)
++        return renderer.build_markdown(text, query=True)[0]
++    except Exception:
++        logger.exception("动量查询排版加载失败")
++        return "⚠️ 动量信号展示暂时不可用，请稍后再试。"
+ 
+ 
+ def handle_command(cmd, args, sender_id, sender_name, session_webhook=None, conversation_id=None):

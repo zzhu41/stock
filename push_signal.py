@@ -64,8 +64,8 @@ def shadow_markdown(line):
     return result
 
 
-def build_markdown(text):
-    """从信号文本提取关键行, 组装 markdown。"""
+def build_markdown(text, query=False):
+    """主动推送与“动量”查询共用标的排版；查询保留最近信号的日期提示。"""
     lines = text.splitlines()
     title = next((l.strip() for l in lines if "动量轮动信号" in l), "动量轮动信号")
     date_m = re.search(r"(\d{4}-\d{2}-\d{2})", title)
@@ -89,7 +89,7 @@ def build_markdown(text):
           "",
           "**%s**" % holding,
           "",
-          "## 今日操作",
+          "## 信号建议" if query else "## 今日操作",
           "",
           highlight_advice(advice.replace("★ ", "", 1)),
           "",
@@ -118,10 +118,14 @@ def build_markdown(text):
         md.append("")
         for s in slines:
             md += shadow_markdown(s) + [""]
-    md += ["",
-           "---",
-           "⏰ 尾盘 14:30-14:50 限价贴价执行; 操作后回报 代码/价格/金额 记账",
-           "_信号 %s · v9.1 (+0906/v9.2影子)_" % date]
+    md += ["", "---"]
+    if query:
+        md += ["最近保存信号 · 以每日 14:50 正式推送为准",
+               "_信号 %s · v9.1 (+0906/v9.2影子)_" % date,
+               "", "📈 动量跟踪网页: http://120.26.67.168:8081/"]
+    else:
+        md += ["⏰ 尾盘 14:30-14:50 限价贴价执行; 操作后回报 代码/价格/金额 记账",
+               "_信号 %s · v9.1 (+0906/v9.2影子)_" % date]
     return "\n".join(md), date
 
 
