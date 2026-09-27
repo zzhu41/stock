@@ -1,0 +1,28 @@
+{
+  "A_primary_unchanged": "v11_eb861bbfca33954401fe",
+  "B_primary_unchanged": "v11_e2a10e8c6af1c0803ba4",
+  "adaptive_selection": false,
+  "created_by": "explicit fixed-control diagnostic; no ranking or model selection",
+  "generator_arguments": {
+    "controls": {
+      "h": "v11_85ae599b865950104870",
+      "simple": "v11_e0c1991c319fc1ecaf01",
+      "v92": "v11_711053f1548224bed3e1"
+    },
+    "parents": [
+      "v11_85ae599b865950104870"
+    ],
+    "primary": "v11_85ae599b865950104870",
+    "selection_period": [
+      "2014-01-02",
+      "2021-12-31"
+    ]
+  },
+  "parent": "v11_85ae599b865950104870",
+  "parent_role": "pre-existing frozen H benchmark",
+  "reason": "Compare candidate neighborhoods with the inherited H neighborhood, not just with one H point",
+  "selected_as_new_A_or_B_candidate": false,
+  "source_A_registry_sha256": "df2cd9d66761b23c61459f14c269b492d68e15e9a8180216acebdb089d16ab71",
+  "source_A_selection_sha256": "468fc698edf9c7a141a4ee433d1df179d93988cb95451748377996898cfc062d",
+  "source_B_selection_sha256": "39d380fa3dc74db98fae2ee958c9905aece5a091e16e823314a5e324f5b24cde"
+}

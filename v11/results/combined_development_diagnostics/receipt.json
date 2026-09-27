@@ -1,0 +1,41 @@
+{
+  "artifacts_sha256": {
+    "close_11bp.json": "3d8d9b53a2a14c82d2e1ce9998dcdb4e85140aff557deb9c641b7c426b86c0df",
+    "close_1bp.json": "b2a66f43d3beb01bb98ea124bf95568185f727eefebabb32c6280c29f418a773",
+    "concentration.json": "aa5b627f6bf8e71da0cdc16acd8082d94bfe1485cdf36c915ef1896412e2de15",
+    "diagnostics.json": "a0edaed4ec7d2a992965b943e4fe357eebd7e08eacf5d8842f9869ad6dc2cecb",
+    "lag1_11bp.json": "1b3f496034f5f97c1cd6e929cf07f57967bfa5a1897ede8796b37b9e039ed020",
+    "lag1_1bp.json": "650afec60940131701993d446f9e601042c56398b66bf223c21db56c418fc9fb",
+    "registration.json": "11bb9d42471e8ce24f5302d4f4ffe190b2b54170b037a4e19844dc0cfe33f19d"
+  },
+  "completed_at": "2026-09-27T15:37:53.391348+00:00",
+  "diagnostic_source_sha256": {
+    "../v10_deep/schema.py": "b91d01a1ade064e29cd9e9f107be44d68c6748dbcd159e96b8d630c839320b90",
+    "combined_diagnostics.py": "16463ef50c8e34cd8ab049aaabfc55cc2292f3622fa212cfa42267fbe8eb8895",
+    "development_diagnostics.py": "301f381d0da11b8d4fd56791e641c92c4a30a2764452514d2cf0bd37f1b38fd6",
+    "diagnostics.py": "6cdb31c0b1e2a3be62bbb32bd5d5f6f49f83c01ccd1734a4d6896d9dc2c12a13"
+  },
+  "input_sha256": {
+    "a_control_fidelity": "a02d86a11c0bdf40eee63466f9b9ad49249e591c543d5327b77292cac2c3c57f",
+    "a_evaluation": "e2c136c65b6b2cc0652e5f65aa678535b905c2fefb43c1a0be19aeac7389b53e",
+    "a_path_metadata": "8b2f40c59945973b874741a3cf073c4993f66c45fc79c668ce7dff63cd91461a",
+    "a_paths": "505fbefa34ae9796edd5e6ff39fd5eabfad17555748874ebf71c1bc6bd70efa7",
+    "a_registration": "d33a6ad8fc071dfea61ec6e91ca0458a0d0c995c3f8835041a7377843a89b103",
+    "a_registry": "df2cd9d66761b23c61459f14c269b492d68e15e9a8180216acebdb089d16ab71",
+    "a_selection": "468fc698edf9c7a141a4ee433d1df179d93988cb95451748377996898cfc062d",
+    "b_evaluation": "1a4fe2d751c15df88533a66805e51567779265abb5d6bc0843d0f5777a107908",
+    "b_path_metadata": "2835113e6182c4b1e84ca824a742e6beae3995d4c2cb8f189b3f5530c768c026",
+    "b_paths": "1ca34272e6d0c21e41c01201915622193638a613529c4f4e89c5f9480b9cadf5",
+    "b_registered_candidates": "bd08560fe7ad09374da968939a72d630b62d9f4598819493c3d77d8221157fbf",
+    "b_registration": "ee5783c1046adea4241884900f1a54f009cc0087c9e5b75b4dae332b6b33a51f",
+    "b_selection": "39d380fa3dc74db98fae2ee958c9905aece5a091e16e823314a5e324f5b24cde",
+    "long_trend_path_metadata": "5813227d6757b8d441a7afd249bde34ca912e2ee5304c16d73db385f065d06c8",
+    "long_trend_registration": "b4ba221e885be6b5ec80db66499795def79e4edcd9a2d6e67b488ec354a796d4",
+    "manifest_corrected": "1498be16c517288a1829aca04201dea12de6b63dc3e2d8f5056a3d189a914fee",
+    "manifest_frozen_profiles": "14082b92db8386c2abd51f52d6267015d2b5f2abfa069f033115cc68ec9cfe19",
+    "manifest_qvix": "87045736b27dfeed55bce3b098001bc6c5817c65f1fc831493dbbf96466f4257",
+    "neighborhood_path_metadata": "b7ad6a7d71647330e4e2baa783acbf912e7408aa52e7e19e5e25c0c70771ea5e",
+    "neighborhood_registered_candidates": "4780cfb267c9d70761c84af934449f5865ca91412d9f4e6df987822386db38ae"
+  },
+  "result": "completed_conditional_union714_development_only_no_reselection"
+}

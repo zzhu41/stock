@@ -1,0 +1,55 @@
+{
+  "operation_labels": [
+    "momentum_buffers_+0.005",
+    "momentum_buffers_-0.005",
+    "panic_x0.9",
+    "panic_x1.1",
+    "score_all_windows_x0.8",
+    "score_all_windows_x1.2",
+    "smooth_+1",
+    "switch_confirmation_+1"
+  ],
+  "predefined_rule": "Intersect effective whole-window/smooth/panic/buffer/hold/confirmation operators across A/B/H before new results",
+  "role": "Supplementary only; full neighborhoods remain primary and disclose all additional active axes",
+  "subjects": {
+    "A": {
+      "operation_to_id": {
+        "momentum_buffers_+0.005": "v11_01294cfec3e09b1ba0a7",
+        "momentum_buffers_-0.005": "v11_c926e9611337f19f6f6f",
+        "panic_x0.9": "v11_f52fc89322145b45cbb5",
+        "panic_x1.1": "v11_0ff156a353b1f5983035",
+        "score_all_windows_x0.8": "v11_8699735c104a1d3f373e",
+        "score_all_windows_x1.2": "v11_d5a8daaae810daa0abc8",
+        "smooth_+1": "v11_776f065ab04a9f308dcb",
+        "switch_confirmation_+1": "v11_9bc3e7a7ed8f80fe632d"
+      },
+      "parent": "v11_eb861bbfca33954401fe"
+    },
+    "B": {
+      "operation_to_id": {
+        "momentum_buffers_+0.005": "v11_e736445bcf31756f4549",
+        "momentum_buffers_-0.005": "v11_daca1d5bb547206db144",
+        "panic_x0.9": "v11_b58ac69898559f9eba60",
+        "panic_x1.1": "v11_23d366cff98990bec386",
+        "score_all_windows_x0.8": "v11_70e96d4d85e6950507c1",
+        "score_all_windows_x1.2": "v11_f78bb17a903800b280f1",
+        "smooth_+1": "v11_7d7c8e01326739b20f7a",
+        "switch_confirmation_+1": "v11_c4d8a94a6ae390de9b5b"
+      },
+      "parent": "v11_e2a10e8c6af1c0803ba4"
+    },
+    "H": {
+      "operation_to_id": {
+        "momentum_buffers_+0.005": "v11_c00a3caf37cd18d4c1bb",
+        "momentum_buffers_-0.005": "v11_b9b3ded53cfc9feb5110",
+        "panic_x0.9": "v11_1d82429e7566c3e91afd",
+        "panic_x1.1": "v11_c6cf80b411be51057816",
+        "score_all_windows_x0.8": "v11_cb7d9b4c52f5c7ec8c1b",
+        "score_all_windows_x1.2": "v11_ece65f1573d614c6aa27",
+        "smooth_+1": "v11_cccd8ad02a31c27ff14c",
+        "switch_confirmation_+1": "v11_a64fecc8dfad3474ef72"
+      },
+      "parent": "v11_85ae599b865950104870"
+    }
+  }
+}

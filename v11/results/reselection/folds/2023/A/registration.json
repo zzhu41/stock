@@ -1,0 +1,50 @@
+{
+  "definition": {
+    "blocks": [
+      [
+        "early",
+        "2014-01-02",
+        "2017-12-31"
+      ],
+      [
+        "late",
+        "2018-01-01",
+        "2023-12-31"
+      ]
+    ],
+    "candidate_count": 586,
+    "period": [
+      "2014-01-02",
+      "2023-12-31"
+    ],
+    "provenance": {
+      "global_registration_sha256": "1b65d748f10dd975139f9f8c50bcce9f1a13ba6bc627a75ed31f47d18789b09b",
+      "strategy_family": "original_A",
+      "training_cutoff": "2023-12-31"
+    },
+    "registry_sha256": "df2cd9d66761b23c61459f14c269b492d68e15e9a8180216acebdb089d16ab71",
+    "scenarios": [
+      [
+        "close_1bp",
+        0,
+        0.0001
+      ],
+      [
+        "close_11bp",
+        0,
+        0.0011
+      ],
+      [
+        "lag1_1bp",
+        1,
+        0.0001
+      ],
+      [
+        "lag1_11bp",
+        1,
+        0.0011
+      ]
+    ]
+  },
+  "registered_at": "2026-09-27T16:24:55.666233+00:00"
+}

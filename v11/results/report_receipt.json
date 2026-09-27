@@ -1,0 +1,21 @@
+{
+  "candidate_selection_performed": false,
+  "inputs": {
+    "results/b_neighborhood/comparison.json": "700516dee01a0f5ae1edebe89edfec8ea891c1e3b4f05aa36b3c786967deb367",
+    "results/combined_development_diagnostics/diagnostics.json": "a0edaed4ec7d2a992965b943e4fe357eebd7e08eacf5d8842f9869ad6dc2cecb",
+    "results/final_audit/audit.json": "c2333bce86de892f001f41892fa93cd62721bb64cdf80b7ad17b70e1e958ec00",
+    "results/leave_one_out/evaluation.json": "2b836d0d6d294e03b85022eeac3a711dfb67a6b7a3dc99d273d1205130c5f356",
+    "results/report_2026/evaluation.json": "d8e8d094c92b673e7801b84bc254c78eb9e03b1d17d9a205b81de72a353ce3c2",
+    "results/report_2026/path_metadata.json": "3da595f2cbf73879b48303dd436cf4e2eb1c7b347e6c5218b0b9b2b7f4af6b58",
+    "results/report_2026/paths.npz": "1c32bb62c9f6fb9cfdc4bbc684bac7a0856ab358a52bde08d218b52b7fc09b05",
+    "results/reselection/evaluation.json": "bc5756b906acc92b59053fbaeb8fb31863a394494f18668ece3c19aaf1ce26f9"
+  },
+  "outputs": {
+    "REPORT.md": "fc7d87f22a289b64d279ff15039a0e83fed80a0a9b78153e228e5c6e0c72b2ea",
+    "results/annual_returns.csv": "0c890e2cf8d4bc0e6028c47951d479006c8ea422198d82a5de19477411e826cc",
+    "results/equity_drawdown.png": "0f29a9b78f73e94a1924a22f84dbaefbba130f1c0980b22353a24d46b4083a7c",
+    "results/execution_stress.csv": "fccbfc8166fc42eef3e30a3d0f726d157485357a62cedd0c744200d78c1ec26a",
+    "results/full_comparison.csv": "7b457c2b08931d0d1d915581fc9ddb6ebae8084f22210c74a872c8f0190694e1"
+  },
+  "source_sha256": "3e3fa5dbb51e669ceeeef7c015187d4f955d4cd9f792250d9fe4a3a2422c3296"
+}

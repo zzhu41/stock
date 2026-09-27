@@ -1,0 +1,42 @@
+{
+  "chosen_once_per_fold": true,
+  "fold_selection_sha256": {
+    "2017-12-31/A": "5fb9b385741bea28da0a6df22413d3c3fda4770f39702c2e12f7e2cb4f6271e2",
+    "2017-12-31/B": "8057d8ef5e450fc6778d9008d4018a9c403cb2803eabe2d354db2bf46e1511b1",
+    "2019-12-31/A": "315bb2aa63a73811da836d88afb0ba3b05de4d4003a1a82f2611bf20b9e0f598",
+    "2019-12-31/B": "464ab1dfd924a38ffa4cf324a2bef3499161c265d4290f1e0a71dcb3bcef7ef0",
+    "2021-12-31/A": "e3b44d4173b04772535759ee952e3eafa024a3da9a9272f81a887ee0726d2a06",
+    "2021-12-31/B": "e88026a07a1e7daa9125684527476b61aebe5007d58e07af99258b84b50106bf",
+    "2023-12-31/A": "7667cc1e4d292eef32f2d726cb3bf53b4f7e42b34e557cb63527ac2b7c2184e7",
+    "2023-12-31/B": "b4f9b598d27c72b1634f01fb8a3206a0202c5347d2f994e9f70b595fd853c7b2"
+  },
+  "global_registration_sha256": "1b65d748f10dd975139f9f8c50bcce9f1a13ba6bc627a75ed31f47d18789b09b",
+  "period": [
+    "2014-01-02",
+    "2025-12-31"
+  ],
+  "registered_at": "2026-09-27T16:25:18.606934+00:00",
+  "scenarios": [
+    [
+      "close_1bp",
+      0,
+      0.0001
+    ],
+    [
+      "close_11bp",
+      0,
+      0.0011
+    ],
+    [
+      "lag1_1bp",
+      1,
+      0.0001
+    ],
+    [
+      "lag1_11bp",
+      1,
+      0.0011
+    ]
+  ],
+  "schedules_sha256": "f2137f1cde183023e2f379ab2b6a8cccdf2c14677fced1d7ee044e6a29dd0d16"
+}

@@ -1,0 +1,70 @@
+[
+  {
+    "config": {
+      "bear_entry": 0.07,
+      "breadth_threshold": 0.5,
+      "buffer": 0.02,
+      "buffer_mode": "momentum",
+      "bull_entry": 0.0,
+      "crash_guard": "always",
+      "crash_lock": 5,
+      "crash_mask": 7,
+      "crash_pick": "score",
+      "crash_stock_only": 0,
+      "deep_below": 0.2,
+      "deep_mom": -0.08,
+      "exit_floor": 0.0,
+      "exit_mom": 20,
+      "fallback_floor": -9.9,
+      "fallback_mode": "rank",
+      "families": [
+        "control_h",
+        "prior_risk_scale",
+        "simplified_branches"
+      ],
+      "fast_mom": 5,
+      "global_buffer": 0.03,
+      "global_pool": [
+        "513100",
+        "513120"
+      ],
+      "gold_buffer": 0.03,
+      "hash": "85ae599b8659501048702a753cedab5a97a41d2a68c227686c225afdbdbdfc3e",
+      "id": "v11_85ae599b865950104870",
+      "lag": 1,
+      "ma": "ma180",
+      "min_hold": 0,
+      "mom": 20,
+      "overheat": 0.4,
+      "panic": 1.5,
+      "panic_cooldown": 0,
+      "panic_mode": "volatility",
+      "parents": [],
+      "rank_keep": 1,
+      "regime": "ma",
+      "regime_confirm": 1,
+      "regime_hyst": 0.0,
+      "relaxed_mom": -0.04,
+      "risk_context": "current20",
+      "score": "wls20_smooth3",
+      "stage": "mechanisms",
+      "stock_pool": [
+        "159915",
+        "510300",
+        "510500",
+        "512400",
+        "512890",
+        "563300",
+        "588080"
+      ],
+      "switch_confirm": 1,
+      "trail_stop": 0.0,
+      "trend_buffer": 0.0,
+      "volume_below": 0.1,
+      "volume_ratio": 2.0
+    },
+    "end": "2025-12-31",
+    "risk_context": "current20",
+    "start": "2014-01-02"
+  }
+]

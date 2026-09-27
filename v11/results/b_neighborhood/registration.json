@@ -1,0 +1,85 @@
+{
+  "candidate_count": 25,
+  "center_relative_definition": "CAGR differences are neighbor minus its own center; worst pressure delta is min of four paired block differences, not difference of minima",
+  "clean_oos": false,
+  "complete_and_matched_tables_both_required": true,
+  "fingerprints": {
+    "corrected_manifest_sha256": "1498be16c517288a1829aca04201dea12de6b63dc3e2d8f5056a3d189a914fee",
+    "original_artifacts": {
+      "A/evaluation.json": "e2c136c65b6b2cc0652e5f65aa678535b905c2fefb43c1a0be19aeac7389b53e",
+      "A/path_metadata.json": "8b2f40c59945973b874741a3cf073c4993f66c45fc79c668ce7dff63cd91461a",
+      "A/paths.npz": "505fbefa34ae9796edd5e6ff39fd5eabfad17555748874ebf71c1bc6bd70efa7",
+      "A/registration.json": "d33a6ad8fc071dfea61ec6e91ca0458a0d0c995c3f8835041a7377843a89b103",
+      "A/selection.json": "468fc698edf9c7a141a4ee433d1df179d93988cb95451748377996898cfc062d",
+      "A_neighborhood/REPORT.md": "373c4819e28b9f2735ff6e22add4e6768055d1541e6ba87e40d4eefd9cc7d1cf",
+      "A_neighborhood/evaluation.json": "9fe8e5260a0d462b3b0a493116b08c2aa3138d00b0dabc9ec6a65d8d9b4ccaac",
+      "A_neighborhood/feature_receipt.json": "e3cfbd18621abe995d4adcb6e81a31e7c59331635e517108832371b8cc8bf517",
+      "A_neighborhood/path_metadata.json": "b7ad6a7d71647330e4e2baa783acbf912e7408aa52e7e19e5e25c0c70771ea5e",
+      "A_neighborhood/paths.npz": "5adfda186c4fd465da958610a6703a183c96670a02d03fe3d26395b2d2ca9363",
+      "A_neighborhood/registered_candidates.json": "4780cfb267c9d70761c84af934449f5865ca91412d9f4e6df987822386db38ae",
+      "A_neighborhood/registration.json": "b04eda1369bed496d9a24ebdbe8d3361a29396dd7b377ba7718b3f4170d93c0d",
+      "A_registry": "df2cd9d66761b23c61459f14c269b492d68e15e9a8180216acebdb089d16ab71",
+      "B/evaluation.json": "1a4fe2d751c15df88533a66805e51567779265abb5d6bc0843d0f5777a107908",
+      "B/path_metadata.json": "2835113e6182c4b1e84ca824a742e6beae3995d4c2cb8f189b3f5530c768c026",
+      "B/paths.npz": "1ca34272e6d0c21e41c01201915622193638a613529c4f4e89c5f9480b9cadf5",
+      "B/registered_candidates.json": "bd08560fe7ad09374da968939a72d630b62d9f4598819493c3d77d8221157fbf",
+      "B/registration.json": "ee5783c1046adea4241884900f1a54f009cc0087c9e5b75b4dae332b6b33a51f",
+      "B/selection.json": "39d380fa3dc74db98fae2ee958c9905aece5a091e16e823314a5e324f5b24cde"
+    },
+    "protected_manifest_sha256": "253b5f05ef103bbe874fcd0d9e71bf6582ee999e905c5f262f095d3d9bf84ec0",
+    "qvix_manifest_sha256": "87045736b27dfeed55bce3b098001bc6c5817c65f1fc831493dbbf96466f4257",
+    "sources": {
+      "v10_deep/native.cpp": "e11d8a21b710857505e187b1953de66ee8eb396732c2f0759a1089756836f893",
+      "v10_deep/native.py": "fc7f1c745873f03620649140ead8a9370256eaf4f9a51376cc3f7b100540c4ad",
+      "v10_deep/reference.py": "307165e11b4e52345d5e0168c3fb36ac661baf214dbc58dbebc7cf5ce2b0f9e5",
+      "v10_deep/scan.py": "372b1ef8950cc3ad394a7fd97d09f0b96db6ebdf1d96a8026ca2298bdd751478",
+      "v10_deep/schema.py": "b91d01a1ade064e29cd9e9f107be44d68c6748dbcd159e96b8d630c839320b90",
+      "v11/COMBINATION_PROTOCOL.md": "fd4951cf3caeb10b0d0faa782e880380d5fea3312b70b1e6719bdf9e547e240c",
+      "v11/PROTOCOL.md": "86c5d62b28f4866d820a12f2a2a06d51f30e6ed96fec12422f8f7b249af48c8a",
+      "v11/combinations.py": "5e217dd48e97e51fe3e6f366b785217158e3d2a1064d98957827e92db8ccc4b4",
+      "v11/data.py": "71d72afd8c11d1e7bacb27260dc9c903a1b29ee6877f2d7b0e782e2d33eea6bc",
+      "v11/extended_neighborhoods.py": "0e74f9a840db8cb9417a95a1d9f3992e555592e8c5d23958fdecd849b08acdff",
+      "v11/features.py": "d7411bb3d855bd64467c33fba9b35acc579b02fac5ed74107efbd9dbb099b56f",
+      "v11/neighborhood.py": "79f46e75d09742f41bddfaa1d46adc6cfcb30deb31d37aa74c343a6b43a8294c",
+      "v11/registry.py": "17e6b11ecb6ee4b558067b9df94625401c861dd1b31e272d9461d989bcf5757b",
+      "v11/scan.py": "a43612a8d0d4e745ea69f72469a7b6d871c815ae526fd884fa3eae0df127af1c",
+      "v11/tests/test_extended_neighborhoods.py": "2c04fc90bf97405fb7125e3203bf81faf63e4de0249e50cb96c30a57976e92f9",
+      "v11/tests/test_neighborhood.py": "1f53a91bf8b61fb68ac5727507297d530f483f0b1ac54ab5f41a7d718f0ad736"
+    }
+  },
+  "gate_definition": "Existing full development gates versus H, plus separately labeled four pressure-only checks; no new selection gate",
+  "matched_registration_sha256": "780483d70f1f8658c277fcb154ff4137286def7a5889da67a92e84ad1b08b411",
+  "parent": "v11_e2a10e8c6af1c0803ba4",
+  "parent_override_sha256": null,
+  "period": [
+    "2014-01-02",
+    "2021-12-31"
+  ],
+  "registered_at": "2026-09-27T15:47:10.958371+00:00",
+  "registry_sha256": "5f5df98639a2665709e8d491a82964bd451e2c8ed7a5bbd976c87ae7eda50161",
+  "scenarios": [
+    [
+      "close_1bp",
+      0,
+      0.0001
+    ],
+    [
+      "close_11bp",
+      0,
+      0.0011
+    ],
+    [
+      "lag1_1bp",
+      1,
+      0.0001
+    ],
+    [
+      "lag1_11bp",
+      1,
+      0.0011
+    ]
+  ],
+  "selection_performed": false,
+  "subject": "b",
+  "subject_kind": "frozen_B_candidate"
+}

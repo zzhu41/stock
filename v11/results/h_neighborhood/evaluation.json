@@ -1,0 +1,2308 @@
+{
+  "A_primary_unchanged": "v11_eb861bbfca33954401fe",
+  "B_primary_unchanged": "v11_e2a10e8c6af1c0803ba4",
+  "checks": {
+    "v11_1d82429e7566c3e91afd": {
+      "close_11bp_drawdown": true,
+      "close_11bp_growth": false,
+      "lag1_11bp_drawdown": true,
+      "lag1_11bp_growth": false,
+      "main_drawdown": true,
+      "return_floor": true
+    },
+    "v11_711053f1548224bed3e1": {
+      "close_11bp_drawdown": false,
+      "close_11bp_growth": false,
+      "lag1_11bp_drawdown": false,
+      "lag1_11bp_growth": false,
+      "main_drawdown": false,
+      "return_floor": false
+    },
+    "v11_7b7fc83110cf10f39108": {
+      "close_11bp_drawdown": true,
+      "close_11bp_growth": false,
+      "lag1_11bp_drawdown": true,
+      "lag1_11bp_growth": true,
+      "main_drawdown": true,
+      "return_floor": true
+    },
+    "v11_85ae599b865950104870": {
+      "close_11bp_drawdown": true,
+      "close_11bp_growth": true,
+      "lag1_11bp_drawdown": true,
+      "lag1_11bp_growth": true,
+      "main_drawdown": true,
+      "return_floor": true
+    },
+    "v11_a64fecc8dfad3474ef72": {
+      "close_11bp_drawdown": true,
+      "close_11bp_growth": false,
+      "lag1_11bp_drawdown": true,
+      "lag1_11bp_growth": true,
+      "main_drawdown": true,
+      "return_floor": true
+    },
+    "v11_b9b3ded53cfc9feb5110": {
+      "close_11bp_drawdown": true,
+      "close_11bp_growth": true,
+      "lag1_11bp_drawdown": true,
+      "lag1_11bp_growth": true,
+      "main_drawdown": true,
+      "return_floor": true
+    },
+    "v11_c00a3caf37cd18d4c1bb": {
+      "close_11bp_drawdown": true,
+      "close_11bp_growth": false,
+      "lag1_11bp_drawdown": true,
+      "lag1_11bp_growth": true,
+      "main_drawdown": true,
+      "return_floor": true
+    },
+    "v11_c6cf80b411be51057816": {
+      "close_11bp_drawdown": false,
+      "close_11bp_growth": false,
+      "lag1_11bp_drawdown": true,
+      "lag1_11bp_growth": false,
+      "main_drawdown": false,
+      "return_floor": true
+    },
+    "v11_cb7d9b4c52f5c7ec8c1b": {
+      "close_11bp_drawdown": true,
+      "close_11bp_growth": false,
+      "lag1_11bp_drawdown": true,
+      "lag1_11bp_growth": false,
+      "main_drawdown": true,
+      "return_floor": true
+    },
+    "v11_cccd8ad02a31c27ff14c": {
+      "close_11bp_drawdown": true,
+      "close_11bp_growth": false,
+      "lag1_11bp_drawdown": true,
+      "lag1_11bp_growth": true,
+      "main_drawdown": true,
+      "return_floor": true
+    },
+    "v11_e0c1991c319fc1ecaf01": {
+      "close_11bp_drawdown": true,
+      "close_11bp_growth": false,
+      "lag1_11bp_drawdown": false,
+      "lag1_11bp_growth": false,
+      "main_drawdown": true,
+      "return_floor": true
+    },
+    "v11_ece65f1573d614c6aa27": {
+      "close_11bp_drawdown": true,
+      "close_11bp_growth": false,
+      "lag1_11bp_drawdown": true,
+      "lag1_11bp_growth": true,
+      "main_drawdown": true,
+      "return_floor": true
+    }
+  },
+  "clean_oos": false,
+  "completed_at": "2026-09-27T15:48:27.220683+00:00",
+  "diagnostic_parent": "v11_85ae599b865950104870",
+  "feature_receipt_sha256": "fac3c9a205e0db292a27c1cfe7f75479c6575f5cd18ccc0e4af47c3dc23eed00",
+  "fidelity": {
+    "exact_ids": [
+      "v11_711053f1548224bed3e1",
+      "v11_85ae599b865950104870",
+      "v11_e0c1991c319fc1ecaf01"
+    ],
+    "fields": [
+      "returns",
+      "holdings",
+      "summary"
+    ],
+    "passed": true,
+    "scenarios": [
+      "close_1bp",
+      "close_11bp",
+      "lag1_1bp",
+      "lag1_11bp"
+    ]
+  },
+  "fingerprints": {
+    "corrected_manifest_sha256": "1498be16c517288a1829aca04201dea12de6b63dc3e2d8f5056a3d189a914fee",
+    "original_artifacts": {
+      "A/evaluation.json": "e2c136c65b6b2cc0652e5f65aa678535b905c2fefb43c1a0be19aeac7389b53e",
+      "A/path_metadata.json": "8b2f40c59945973b874741a3cf073c4993f66c45fc79c668ce7dff63cd91461a",
+      "A/paths.npz": "505fbefa34ae9796edd5e6ff39fd5eabfad17555748874ebf71c1bc6bd70efa7",
+      "A/registration.json": "d33a6ad8fc071dfea61ec6e91ca0458a0d0c995c3f8835041a7377843a89b103",
+      "A/selection.json": "468fc698edf9c7a141a4ee433d1df179d93988cb95451748377996898cfc062d",
+      "A_neighborhood/REPORT.md": "373c4819e28b9f2735ff6e22add4e6768055d1541e6ba87e40d4eefd9cc7d1cf",
+      "A_neighborhood/evaluation.json": "9fe8e5260a0d462b3b0a493116b08c2aa3138d00b0dabc9ec6a65d8d9b4ccaac",
+      "A_neighborhood/feature_receipt.json": "e3cfbd18621abe995d4adcb6e81a31e7c59331635e517108832371b8cc8bf517",
+      "A_neighborhood/path_metadata.json": "b7ad6a7d71647330e4e2baa783acbf912e7408aa52e7e19e5e25c0c70771ea5e",
+      "A_neighborhood/paths.npz": "5adfda186c4fd465da958610a6703a183c96670a02d03fe3d26395b2d2ca9363",
+      "A_neighborhood/registered_candidates.json": "4780cfb267c9d70761c84af934449f5865ca91412d9f4e6df987822386db38ae",
+      "A_neighborhood/registration.json": "b04eda1369bed496d9a24ebdbe8d3361a29396dd7b377ba7718b3f4170d93c0d",
+      "A_registry": "df2cd9d66761b23c61459f14c269b492d68e15e9a8180216acebdb089d16ab71",
+      "B/evaluation.json": "1a4fe2d751c15df88533a66805e51567779265abb5d6bc0843d0f5777a107908",
+      "B/path_metadata.json": "2835113e6182c4b1e84ca824a742e6beae3995d4c2cb8f189b3f5530c768c026",
+      "B/paths.npz": "1ca34272e6d0c21e41c01201915622193638a613529c4f4e89c5f9480b9cadf5",
+      "B/registered_candidates.json": "bd08560fe7ad09374da968939a72d630b62d9f4598819493c3d77d8221157fbf",
+      "B/registration.json": "ee5783c1046adea4241884900f1a54f009cc0087c9e5b75b4dae332b6b33a51f",
+      "B/selection.json": "39d380fa3dc74db98fae2ee958c9905aece5a091e16e823314a5e324f5b24cde"
+    },
+    "protected_manifest_sha256": "253b5f05ef103bbe874fcd0d9e71bf6582ee999e905c5f262f095d3d9bf84ec0",
+    "qvix_manifest_sha256": "87045736b27dfeed55bce3b098001bc6c5817c65f1fc831493dbbf96466f4257",
+    "sources": {
+      "v10_deep/native.cpp": "e11d8a21b710857505e187b1953de66ee8eb396732c2f0759a1089756836f893",
+      "v10_deep/native.py": "fc7f1c745873f03620649140ead8a9370256eaf4f9a51376cc3f7b100540c4ad",
+      "v10_deep/reference.py": "307165e11b4e52345d5e0168c3fb36ac661baf214dbc58dbebc7cf5ce2b0f9e5",
+      "v10_deep/scan.py": "372b1ef8950cc3ad394a7fd97d09f0b96db6ebdf1d96a8026ca2298bdd751478",
+      "v10_deep/schema.py": "b91d01a1ade064e29cd9e9f107be44d68c6748dbcd159e96b8d630c839320b90",
+      "v11/COMBINATION_PROTOCOL.md": "fd4951cf3caeb10b0d0faa782e880380d5fea3312b70b1e6719bdf9e547e240c",
+      "v11/PROTOCOL.md": "86c5d62b28f4866d820a12f2a2a06d51f30e6ed96fec12422f8f7b249af48c8a",
+      "v11/combinations.py": "5e217dd48e97e51fe3e6f366b785217158e3d2a1064d98957827e92db8ccc4b4",
+      "v11/data.py": "71d72afd8c11d1e7bacb27260dc9c903a1b29ee6877f2d7b0e782e2d33eea6bc",
+      "v11/extended_neighborhoods.py": "0e74f9a840db8cb9417a95a1d9f3992e555592e8c5d23958fdecd849b08acdff",
+      "v11/features.py": "d7411bb3d855bd64467c33fba9b35acc579b02fac5ed74107efbd9dbb099b56f",
+      "v11/neighborhood.py": "79f46e75d09742f41bddfaa1d46adc6cfcb30deb31d37aa74c343a6b43a8294c",
+      "v11/registry.py": "17e6b11ecb6ee4b558067b9df94625401c861dd1b31e272d9461d989bcf5757b",
+      "v11/scan.py": "a43612a8d0d4e745ea69f72469a7b6d871c815ae526fd884fa3eae0df127af1c",
+      "v11/tests/test_extended_neighborhoods.py": "2c04fc90bf97405fb7125e3203bf81faf63e4de0249e50cb96c30a57976e92f9",
+      "v11/tests/test_neighborhood.py": "1f53a91bf8b61fb68ac5727507297d530f483f0b1ac54ab5f41a7d718f0ad736"
+    }
+  },
+  "heldout_performance_accessed": false,
+  "new_gate_added": false,
+  "parent_flatness": {
+    "v11_85ae599b865950104870": {
+      "ablations": [],
+      "ablations_in_neighbor_statistics": false,
+      "center": "v11_85ae599b865950104870",
+      "center_checks": {
+        "close_11bp_drawdown": true,
+        "close_11bp_growth": true,
+        "lag1_11bp_drawdown": true,
+        "lag1_11bp_growth": true,
+        "main_drawdown": true,
+        "return_floor": true
+      },
+      "center_in_neighbor_statistics": false,
+      "center_score": {
+        "complexity": 0,
+        "median_block_excess": 0.0,
+        "switches": 187,
+        "worst_block_excess": 0.0
+      },
+      "neighbor_count": 9,
+      "pass_rate": 0.1111111111111111,
+      "passed_count": 1,
+      "passed_ids": [
+        "v11_b9b3ded53cfc9feb5110"
+      ],
+      "worst_block_excess_max": 0.006546147539533309,
+      "worst_block_excess_median": -0.03958358459360051,
+      "worst_block_excess_min": -0.06288475695189588,
+      "worst_block_excess_q25": -0.054961847306059686
+    }
+  },
+  "paths_sha256": "3a537a82a928d502bb02c9146a74c3a7580a84bb548946322368e8efcb611804",
+  "period": [
+    "2014-01-02",
+    "2021-12-31"
+  ],
+  "protected_files_verified": 643,
+  "registration_sha256": "8eb78c16d477546cb609f4def4c778649b2feb89d11fbc729ad86f00c3e96cf2",
+  "registry_sha256": "74bd7e8cbba00707e7dd14f54b7dc6c6ff6650270bae2fd2251a17c083ff3299",
+  "relative_to_own_center": {
+    "center": "v11_85ae599b865950104870",
+    "existing_H_gate_passed": 1,
+    "existing_H_gate_passed_ids": [
+      "v11_b9b3ded53cfc9feb5110"
+    ],
+    "existing_H_gate_rate": 0.1111111111111111,
+    "neighbor_count": 9,
+    "neighbor_ids": [
+      "v11_cb7d9b4c52f5c7ec8c1b",
+      "v11_ece65f1573d614c6aa27",
+      "v11_7b7fc83110cf10f39108",
+      "v11_cccd8ad02a31c27ff14c",
+      "v11_1d82429e7566c3e91afd",
+      "v11_c6cf80b411be51057816",
+      "v11_b9b3ded53cfc9feb5110",
+      "v11_c00a3caf37cd18d4c1bb",
+      "v11_a64fecc8dfad3474ef72"
+    ],
+    "no_selection_or_new_gate": true,
+    "per_neighbor_worst_paired_delta": {
+      "v11_1d82429e7566c3e91afd": -0.016891374161858208,
+      "v11_7b7fc83110cf10f39108": -0.044353900604802876,
+      "v11_a64fecc8dfad3474ef72": -0.03958358459360051,
+      "v11_b9b3ded53cfc9feb5110": 0.006546147539533309,
+      "v11_c00a3caf37cd18d4c1bb": -0.054961847306059686,
+      "v11_c6cf80b411be51057816": -0.05758904101729578,
+      "v11_cb7d9b4c52f5c7ec8c1b": -0.06288475695189588,
+      "v11_cccd8ad02a31c27ff14c": -0.03203897577379633,
+      "v11_ece65f1573d614c6aa27": -0.03424810320811866
+    },
+    "pressure_only_passed": 1,
+    "pressure_only_rate": 0.1111111111111111,
+    "scenarios": {
+      "close_11bp": {
+        "cagr_delta_to_center": {
+          "count": 9,
+          "maximum": 0.014085491382258952,
+          "median": -0.024250174366436283,
+          "minimum": -0.035649295220523514,
+          "q25": -0.029863228677002973,
+          "q75": -0.016493572285972202
+        },
+        "cagr_drop_from_center": {
+          "count": 9,
+          "maximum": 0.035649295220523514,
+          "median": 0.024250174366436283,
+          "minimum": -0.014085491382258952,
+          "q25": 0.016493572285972202,
+          "q75": 0.029863228677002973
+        },
+        "center": {
+          "cagr": 0.40540550038402656,
+          "calmar": 1.819186056035325,
+          "max_dd": -0.22284993832217148,
+          "nav": 15.177551053892872,
+          "sessions": 1950,
+          "sharpe": 1.5848538177741218,
+          "total_return": 14.177551053892872,
+          "volatility": 0.23184582935540243
+        },
+        "drawdown_worsening": {
+          "count": 9,
+          "maximum": 0.02056038599635679,
+          "median": 0.009022028351102218,
+          "minimum": -0.019981822748396993,
+          "q25": 0.00469086173530231,
+          "q75": 0.018997957082221073
+        }
+      },
+      "close_1bp": {
+        "cagr_delta_to_center": {
+          "count": 9,
+          "maximum": 0.015133932266380157,
+          "median": -0.02722559279725395,
+          "minimum": -0.04004681909939656,
+          "q25": -0.032017931979985204,
+          "q75": -0.01837843013901108
+        },
+        "cagr_drop_from_center": {
+          "count": 9,
+          "maximum": 0.04004681909939656,
+          "median": 0.02722559279725395,
+          "minimum": -0.015133932266380157,
+          "q25": 0.01837843013901108,
+          "q75": 0.032017931979985204
+        },
+        "center": {
+          "cagr": 0.47282166793915803,
+          "calmar": 2.3366048002365623,
+          "max_dd": -0.20235414559248044,
+          "nav": 22.071052231309807,
+          "sessions": 1950,
+          "sharpe": 1.8033323907355423,
+          "total_return": 21.071052231309807,
+          "volatility": 0.2294595712298315
+        },
+        "drawdown_worsening": {
+          "count": 9,
+          "maximum": 0.028838599058599867,
+          "median": 0.013389515410421993,
+          "minimum": -0.01101401283355996,
+          "q25": 0.006096302359671513,
+          "q75": 0.019498990550331774
+        }
+      },
+      "lag1_11bp": {
+        "cagr_delta_to_center": {
+          "count": 9,
+          "maximum": 0.013316357969059167,
+          "median": 0.003591529785526737,
+          "minimum": -0.007040072640057626,
+          "q25": -0.0020723190335494857,
+          "q75": 0.006114756561941437
+        },
+        "cagr_drop_from_center": {
+          "count": 9,
+          "maximum": 0.007040072640057626,
+          "median": -0.003591529785526737,
+          "minimum": -0.013316357969059167,
+          "q25": -0.006114756561941437,
+          "q75": 0.0020723190335494857
+        },
+        "center": {
+          "cagr": 0.3071053483816345,
+          "calmar": 0.9954758202639689,
+          "max_dd": -0.30850106263776433,
+          "nav": 8.502201003324679,
+          "sessions": 1950,
+          "sharpe": 1.2727375033833,
+          "total_return": 7.502201003324679,
+          "volatility": 0.2317075852756265
+        },
+        "drawdown_worsening": {
+          "count": 9,
+          "maximum": 2.220446049250313e-16,
+          "median": -0.01932861811341058,
+          "minimum": -0.07509828243692984,
+          "q25": -0.020347333580890026,
+          "q75": -0.0007720949739700167
+        }
+      },
+      "lag1_1bp": {
+        "cagr_delta_to_center": {
+          "count": 9,
+          "maximum": 0.013268531417054807,
+          "median": -0.0003600588544829808,
+          "minimum": -0.006230191639911342,
+          "q25": -0.001992889921951957,
+          "q75": 0.005376697869539093
+        },
+        "cagr_drop_from_center": {
+          "count": 9,
+          "maximum": 0.006230191639911342,
+          "median": 0.0003600588544829808,
+          "minimum": -0.013268531417054807,
+          "q25": -0.005376697869539093,
+          "q75": 0.001992889921951957
+        },
+        "center": {
+          "cagr": 0.37049273847913994,
+          "calmar": 1.2640453845686832,
+          "max_dd": -0.29310081979814295,
+          "nav": 12.413434865285243,
+          "sessions": 1950,
+          "sharpe": 1.479004386705679,
+          "total_return": 11.413434865285243,
+          "volatility": 0.23139256913696593
+        },
+        "drawdown_worsening": {
+          "count": 9,
+          "maximum": 4.440892098500626e-16,
+          "median": -0.016442143880065374,
+          "minimum": -0.07363861119064996,
+          "q25": -0.01975908213384281,
+          "q75": -0.003629128677439475
+        }
+      }
+    },
+    "worst_paired_pressure_block_delta_to_center": {
+      "count": 9,
+      "maximum": 0.006546147539533309,
+      "median": -0.03958358459360051,
+      "minimum": -0.06288475695189588,
+      "q25": -0.054961847306059686,
+      "q75": -0.03203897577379633
+    }
+  },
+  "rows": [
+    {
+      "families": [
+        "diagnostic_neighbor"
+      ],
+      "id": "v11_1d82429e7566c3e91afd",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.43141727518114564,
+              "calmar": 1.8605840169935133,
+              "max_dd": -0.2318719666732737,
+              "nav": 4.20439395703642,
+              "sessions": 977,
+              "sharpe": 1.719288795148434,
+              "total_return": 3.2043939570364204,
+              "volatility": 0.2232474290813183
+            },
+            "late": {
+              "cagr": 0.36644614641883366,
+              "calmar": 1.9639830650932106,
+              "max_dd": -0.18658314978975754,
+              "nav": 3.472985416575198,
+              "sessions": 973,
+              "sharpe": 1.416462248334749,
+              "total_return": 2.472985416575198,
+              "volatility": 0.24109846931830253
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.39862110766814235,
+            "calmar": 1.719143169341517,
+            "max_dd": -0.2318719666732737,
+            "nav": 14.601798898324429,
+            "sessions": 1950,
+            "sharpe": 1.5611848931417438,
+            "total_return": 13.601798898324429,
+            "volatility": 0.232330102786674
+          },
+          "switches": 205
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4913359249373318,
+              "calmar": 2.3570874026143316,
+              "max_dd": -0.20845044795215195,
+              "nav": 4.954653569395471,
+              "sessions": 977,
+              "sharpe": 1.9191334636667885,
+              "total_return": 3.9546535693954707,
+              "volatility": 0.22114604788902298
+            },
+            "late": {
+              "cagr": 0.45350382500772773,
+              "calmar": 2.6398553726507537,
+              "max_dd": -0.17179116314707488,
+              "nav": 4.442912863295226,
+              "sessions": 973,
+              "sharpe": 1.6927711720214427,
+              "total_return": 3.442912863295226,
+              "volatility": 0.23779853507499785
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.47233716513263013,
+            "calmar": 2.265944591498557,
+            "max_dd": -0.20845044795215195,
+            "nav": 22.01309407663882,
+            "sessions": 1950,
+            "sharpe": 1.8008838610557554,
+            "total_return": 21.01309407663882,
+            "volatility": 0.2296072961098773
+          },
+          "switches": 205
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.3234014983937084,
+              "calmar": 1.206464170515096,
+              "max_dd": -0.26805727538152513,
+              "nav": 3.0708968169977737,
+              "sessions": 977,
+              "sharpe": 1.398395110305666,
+              "total_return": 2.0708968169977737,
+              "volatility": 0.21743129361203614
+            },
+            "late": {
+              "cagr": 0.27704714856502954,
+              "calmar": 0.9002959671567672,
+              "max_dd": -0.30772896766379465,
+              "nav": 2.6516848289019563,
+              "sessions": 973,
+              "sharpe": 1.1222366477000625,
+              "total_return": 1.6516848289019563,
+              "volatility": 0.24486426054735538
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.3000652757415769,
+            "calmar": 0.9750959684413255,
+            "max_dd": -0.3077289676637943,
+            "nav": 8.143050500756319,
+            "sessions": 1950,
+            "sharpe": 1.2501944210819698,
+            "total_return": 7.143050500756319,
+            "volatility": 0.23152819827251347
+          },
+          "switches": 205
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.37810929479051136,
+              "calmar": 1.5175486528251776,
+              "max_dd": -0.2491579390793145,
+              "nav": 3.611648547612808,
+              "sessions": 977,
+              "sharpe": 1.586569416923725,
+              "total_return": 2.611648547612808,
+              "volatility": 0.2171656985267502
+            },
+            "late": {
+              "cagr": 0.35909141453647825,
+              "calmar": 1.2405061550103165,
+              "max_dd": -0.2894716911207038,
+              "nav": 3.399040761950484,
+              "sessions": 973,
+              "sharpe": 1.3797715460759972,
+              "total_return": 2.399040761950484,
+              "volatility": 0.24420782497729612
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.3685868260375926,
+            "calmar": 1.273308711503329,
+            "max_dd": -0.2894716911207035,
+            "nav": 12.276140631175217,
+            "sessions": 1950,
+            "sharpe": 1.4747889542693695,
+            "total_return": 11.276140631175217,
+            "volatility": 0.23105511010740892
+          },
+          "switches": 205
+        }
+      }
+    },
+    {
+      "families": [
+        "control_v92",
+        "diagnostic_control"
+      ],
+      "id": "v11_711053f1548224bed3e1",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.39206144290333356,
+              "calmar": 1.8113787576786258,
+              "max_dd": -0.21644365720937364,
+              "nav": 3.76029902784471,
+              "sessions": 977,
+              "sharpe": 1.6152129939507784,
+              "total_return": 2.76029902784471,
+              "volatility": 0.21984756791920887
+            },
+            "late": {
+              "cagr": 0.3076937360592837,
+              "calmar": 1.2057313546939035,
+              "max_dd": -0.2551926138948234,
+              "nav": 2.9146856475012646,
+              "sessions": 973,
+              "sharpe": 1.1940153763124313,
+              "total_return": 1.9146856475012646,
+              "volatility": 0.2513042744036537
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.3493048226431208,
+            "calmar": 1.3687889210895638,
+            "max_dd": -0.2551926138948233,
+            "nav": 10.960089606772025,
+            "sessions": 1950,
+            "sharpe": 1.3878541704944345,
+            "total_return": 9.960089606772025,
+            "volatility": 0.23607477341363806
+          },
+          "switches": 157
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.43877425905097334,
+              "calmar": 2.1038348050962914,
+              "max_dd": -0.20855927375480932,
+              "nav": 4.291589243583243,
+              "sessions": 977,
+              "sharpe": 1.774913316709131,
+              "total_return": 3.2915892435832426,
+              "volatility": 0.21851600949666913
+            },
+            "late": {
+              "cagr": 0.3688352778023424,
+              "calmar": 1.5263310040403595,
+              "max_dd": -0.24164829045993064,
+              "nav": 3.4972631226552067,
+              "sessions": 973,
+              "sharpe": 1.3861106418253417,
+              "total_return": 2.4972631226552067,
+              "volatility": 0.24905384644456313
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.40344087364006637,
+            "calmar": 1.6695374623681183,
+            "max_dd": -0.24164829045993053,
+            "nav": 15.008816799167429,
+            "sessions": 1950,
+            "sharpe": 1.5648509248222977,
+            "total_return": 14.008816799167429,
+            "volatility": 0.23425573588362575
+          },
+          "switches": 157
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.2611990168064845,
+              "calmar": 0.7752260939098891,
+              "max_dd": -0.3369326946789356,
+              "nav": 2.5324888485815684,
+              "sessions": 977,
+              "sharpe": 1.1738800032147156,
+              "total_return": 1.5324888485815684,
+              "volatility": 0.21807071305303904
+            },
+            "late": {
+              "cagr": 0.23854978099916188,
+              "calmar": 1.0067229693687845,
+              "max_dd": -0.23695672817392122,
+              "nav": 2.3469913487465246,
+              "sessions": 973,
+              "sharpe": 0.9955866038711754,
+              "total_return": 1.3469913487465246,
+              "volatility": 0.24532550807826345
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.2498463237899709,
+            "calmar": 0.7415318481575389,
+            "max_dd": -0.3369326946789356,
+            "nav": 5.943729418418028,
+            "sessions": 1950,
+            "sharpe": 1.0778079189928216,
+            "total_return": 4.943729418418028,
+            "volatility": 0.2320709119115047
+          },
+          "switches": 157
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.3028688252932414,
+              "calmar": 0.9604362117585978,
+              "max_dd": -0.31534507090135244,
+              "nav": 2.884520797339263,
+              "sessions": 977,
+              "sharpe": 1.3255177963002445,
+              "total_return": 1.8845207973392628,
+              "volatility": 0.21758804397136833
+            },
+            "late": {
+              "cagr": 0.29710965294210795,
+              "calmar": 1.3057475336871076,
+              "max_dd": -0.22753989211309777,
+              "nav": 2.821744632335191,
+              "sessions": 973,
+              "sharpe": 1.1839034707698215,
+              "total_return": 1.8217446323351911,
+              "volatility": 0.24535715262519173
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.29999195670225764,
+            "calmar": 0.9513132894222481,
+            "max_dd": -0.31534507090135244,
+            "nav": 8.139381076751345,
+            "sessions": 1950,
+            "sharpe": 1.248363706121671,
+            "total_return": 7.139381076751345,
+            "volatility": 0.23186022462705688
+          },
+          "switches": 157
+        }
+      }
+    },
+    {
+      "families": [
+        "diagnostic_neighbor"
+      ],
+      "id": "v11_7b7fc83110cf10f39108",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4404860478191675,
+              "calmar": 2.1712926478038956,
+              "max_dd": -0.2028681155737745,
+              "nav": 4.312070492546,
+              "sessions": 977,
+              "sharpe": 1.7512781811786462,
+              "total_return": 3.312070492546,
+              "volatility": 0.2227120385030411
+            },
+            "late": {
+              "cagr": 0.338983619975889,
+              "calmar": 1.881515803046731,
+              "max_dd": -0.18016517290313172,
+              "nav": 3.202892368749432,
+              "sessions": 973,
+              "sharpe": 1.3264225300746824,
+              "total_return": 2.202892368749432,
+              "volatility": 0.24237633572939052
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.38891192809805436,
+            "calmar": 1.9170677807012195,
+            "max_dd": -0.2028681155737745,
+            "nav": 13.811097674085207,
+            "sessions": 1950,
+            "sharpe": 1.5288695925855555,
+            "total_return": 12.811097674085207,
+            "volatility": 0.23274213803839242
+          },
+          "switches": 184
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.49255120441609973,
+              "calmar": 2.574217950589022,
+              "max_dd": -0.19134013275892048,
+              "nav": 4.970839969102156,
+              "sessions": 977,
+              "sharpe": 1.9249420042866565,
+              "total_return": 3.9708399691021556,
+              "volatility": 0.22087132215502414
+            },
+            "late": {
+              "cagr": 0.41715755946980654,
+              "calmar": 2.4883461619209175,
+              "max_dd": -0.16764450455228275,
+              "nav": 4.0161585782902,
+              "sessions": 973,
+              "sharpe": 1.5757755788951606,
+              "total_return": 3.0161585782901996,
+              "volatility": 0.23964354140543523
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.45444323780014695,
+            "calmar": 2.3750544710488097,
+            "max_dd": -0.19134013275892048,
+            "nav": 19.9636815832175,
+            "sessions": 1950,
+            "sharpe": 1.7421146543754558,
+            "total_return": 18.9636815832175,
+            "volatility": 0.23043444407360023
+          },
+          "switches": 184
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.3414022083896844,
+              "calmar": 1.445654603614839,
+              "max_dd": -0.23615752167634851,
+              "nav": 3.241595724321146,
+              "sessions": 977,
+              "sharpe": 1.4625805234231388,
+              "total_return": 2.241595724321146,
+              "volatility": 0.2170838048543453
+            },
+            "late": {
+              "cagr": 0.28551787392945527,
+              "calmar": 0.9255004552924495,
+              "max_dd": -0.3085010626377642,
+              "nav": 2.72252172192488,
+              "sessions": 973,
+              "sharpe": 1.1461326408106824,
+              "total_return": 1.7225217219248798,
+              "volatility": 0.24571730310427226
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.31322010494357594,
+            "calmar": 1.0152966808783812,
+            "max_dd": -0.30850106263776456,
+            "nav": 8.825314773163132,
+            "sessions": 1950,
+            "sharpe": 1.292402894574459,
+            "total_return": 7.825314773163132,
+            "volatility": 0.23181655066162596
+          },
+          "switches": 186
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.3905813028163837,
+              "calmar": 1.8334383540810664,
+              "max_dd": -0.21303214364801815,
+              "nav": 3.744315307631123,
+              "sessions": 977,
+              "sharpe": 1.6300708662896537,
+              "total_return": 2.744315307631123,
+              "volatility": 0.21686378759215622
+            },
+            "late": {
+              "cagr": 0.3612536947047452,
+              "calmar": 1.2325236584242214,
+              "max_dd": -0.2931008197981426,
+              "nav": 3.4206567316923935,
+              "sessions": 973,
+              "sharpe": 1.3817166266987633,
+              "total_return": 2.4206567316923935,
+              "volatility": 0.24519481567785584
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.37586943634867903,
+            "calmar": 1.2823895771002585,
+            "max_dd": -0.2931008197981425,
+            "nav": 12.808017362627341,
+            "sessions": 1950,
+            "sharpe": 1.4957209046787894,
+            "total_return": 11.808017362627341,
+            "volatility": 0.23143464641831749
+          },
+          "switches": 186
+        }
+      }
+    },
+    {
+      "families": [
+        "control_h",
+        "diagnostic_center",
+        "diagnostic_control",
+        "diagnostic_neighbor",
+        "prior_risk_scale",
+        "simplified_branches"
+      ],
+      "id": "v11_85ae599b865950104870",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4277330076346162,
+              "calmar": 1.9193768275414451,
+              "max_dd": -0.22284993832217148,
+              "nav": 4.1612307526382075,
+              "sessions": 977,
+              "sharpe": 1.713665835138336,
+              "total_return": 3.1612307526382075,
+              "volatility": 0.22235781449599426
+            },
+            "late": {
+              "cagr": 0.38333752058069187,
+              "calmar": 2.138801025969029,
+              "max_dd": -0.1792300994464937,
+              "nav": 3.647370683365808,
+              "sessions": 973,
+              "sharpe": 1.4680049638829769,
+              "total_return": 2.647370683365808,
+              "volatility": 0.24099412692445338
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.40540550038402656,
+            "calmar": 1.819186056035325,
+            "max_dd": -0.22284993832217148,
+            "nav": 15.177551053892872,
+            "sessions": 1950,
+            "sharpe": 1.5848538177741218,
+            "total_return": 14.177551053892872,
+            "volatility": 0.23184582935540243
+          },
+          "switches": 187
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4830408424082092,
+              "calmar": 2.3871062339439377,
+              "max_dd": -0.20235414559248044,
+              "nav": 4.845224373106218,
+              "sessions": 977,
+              "sharpe": 1.898670164078907,
+              "total_return": 3.845224373106218,
+              "volatility": 0.22051406006072674
+            },
+            "late": {
+              "cagr": 0.4626313337890514,
+              "calmar": 2.759597369592114,
+              "max_dd": -0.1676445045522823,
+              "nav": 4.555217783889827,
+              "sessions": 973,
+              "sharpe": 1.7172369690716016,
+              "total_return": 3.5552177838898267,
+              "volatility": 0.2381035266442325
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.47282166793915803,
+            "calmar": 2.3366048002365623,
+            "max_dd": -0.20235414559248044,
+            "nav": 22.071052231309807,
+            "sessions": 1950,
+            "sharpe": 1.8033323907355423,
+            "total_return": 21.071052231309807,
+            "volatility": 0.2294595712298315
+          },
+          "switches": 187
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.3319444081097844,
+              "calmar": 1.2716790475790738,
+              "max_dd": -0.2610284479733428,
+              "nav": 3.151044848581346,
+              "sessions": 977,
+              "sharpe": 1.4282084264898387,
+              "total_return": 2.151044848581346,
+              "volatility": 0.21739513680459163
+            },
+            "late": {
+              "cagr": 0.2826302404232504,
+              "calmar": 0.9161402492642591,
+              "max_dd": -0.30850106263776456,
+              "nav": 2.6982164367328916,
+              "sessions": 973,
+              "sharpe": 1.138725530568573,
+              "total_return": 1.6982164367328916,
+              "volatility": 0.2452357774404598
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.3071053483816345,
+            "calmar": 0.9954758202639689,
+            "max_dd": -0.30850106263776433,
+            "nav": 8.502201003324679,
+            "sessions": 1950,
+            "sharpe": 1.2727375033833,
+            "total_return": 7.502201003324679,
+            "volatility": 0.2317075852756265
+          },
+          "switches": 189
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.3842336293412515,
+              "calmar": 1.5684451803253758,
+              "max_dd": -0.244977404477434,
+              "nav": 3.6763454310244046,
+              "sessions": 977,
+              "sharpe": 1.6069345300620188,
+              "total_return": 2.6763454310244046,
+              "volatility": 0.21717648142718135
+            },
+            "late": {
+              "cagr": 0.3568326011486168,
+              "calmar": 1.2174397921997135,
+              "max_dd": -0.29310081979814295,
+              "nav": 3.3765692310981525,
+              "sessions": 973,
+              "sharpe": 1.3700739714176646,
+              "total_return": 2.3765692310981525,
+              "volatility": 0.24483720466529152
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.37049273847913994,
+            "calmar": 1.2640453845686832,
+            "max_dd": -0.29310081979814295,
+            "nav": 12.413434865285243,
+            "sessions": 1950,
+            "sharpe": 1.479004386705679,
+            "total_return": 11.413434865285243,
+            "volatility": 0.23139256913696593
+          },
+          "switches": 189
+        }
+      }
+    },
+    {
+      "families": [
+        "diagnostic_neighbor"
+      ],
+      "id": "v11_a64fecc8dfad3474ef72",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.399312132224935,
+              "calmar": 1.651087893724474,
+              "max_dd": -0.24184789540439233,
+              "nav": 3.839338543345447,
+              "sessions": 977,
+              "sharpe": 1.6222983948514,
+              "total_return": 2.839338543345447,
+              "volatility": 0.22249103564472944
+            },
+            "late": {
+              "cagr": 0.34375393598709136,
+              "calmar": 2.4525421130152747,
+              "max_dd": -0.14016229697457205,
+              "nav": 3.2486378170176113,
+              "sessions": 973,
+              "sharpe": 1.34386422236847,
+              "total_return": 2.2486378170176113,
+              "volatility": 0.24175864595304367
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.371308665685488,
+            "calmar": 1.535298312456369,
+            "max_dd": -0.24184789540439233,
+            "nav": 12.472620384245335,
+            "sessions": 1950,
+            "sharpe": 1.4762991892624684,
+            "total_return": 11.472620384245335,
+            "volatility": 0.23230779061169024
+          },
+          "switches": 175
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4491642006796626,
+              "calmar": 2.0246015381568667,
+              "max_dd": -0.22185313614281232,
+              "nav": 4.417033628904286,
+              "sessions": 977,
+              "sharpe": 1.7941243316562645,
+              "total_return": 3.417033628904286,
+              "volatility": 0.22046020136476877
+            },
+            "late": {
+              "cagr": 0.4165046177939889,
+              "calmar": 3.1084331202802127,
+              "max_dd": -0.13399182214235406,
+              "nav": 4.008784781052639,
+              "sessions": 973,
+              "sharpe": 1.5790680735894682,
+              "total_return": 3.008784781052639,
+              "volatility": 0.2386994142259487
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.4327748488397615,
+            "calmar": 1.9507267571875733,
+            "max_dd": -0.22185313614281232,
+            "nav": 17.706937188949162,
+            "sessions": 1950,
+            "sharpe": 1.6812133463338355,
+            "total_return": 16.706937188949162,
+            "volatility": 0.22974294501555725
+          },
+          "switches": 175
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.33855958588270785,
+              "calmar": 1.4505379310023205,
+              "max_dd": -0.2334027802008345,
+              "nav": 3.2141773857376608,
+              "sessions": 977,
+              "sharpe": 1.4746326283248008,
+              "total_return": 2.2141773857376608,
+              "volatility": 0.21328200205366687
+            },
+            "late": {
+              "cagr": 0.2833031660657856,
+              "calmar": 1.2787995827168321,
+              "max_dd": -0.2215383629261929,
+              "nav": 2.7038658814115397,
+              "sessions": 973,
+              "sharpe": 1.1453729380947888,
+              "total_return": 1.7038658814115397,
+              "volatility": 0.24401152355819855
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.31069687816716124,
+            "calmar": 1.3311618563404344,
+            "max_dd": -0.2334027802008345,
+            "nav": 8.690704570100577,
+            "sessions": 1950,
+            "sharpe": 1.2963361384362408,
+            "total_return": 7.690704570100577,
+            "volatility": 0.22913372174512364
+          },
+          "switches": 177
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.3869406962439074,
+              "calmar": 1.763131332264813,
+              "max_dd": -0.219462208607493,
+              "nav": 3.7052180488300785,
+              "sessions": 977,
+              "sharpe": 1.6421307095576132,
+              "total_return": 2.7052180488300785,
+              "volatility": 0.21315752280569814
+            },
+            "late": {
+              "cagr": 0.35346051218068014,
+              "calmar": 1.7043930973320491,
+              "max_dd": -0.2073820368868926,
+              "nav": 3.343229758951334,
+              "sessions": 973,
+              "sharpe": 1.364493759731905,
+              "total_return": 2.343229758951334,
+              "volatility": 0.2438362184603857
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.37013267962465696,
+            "calmar": 1.6865440385986332,
+            "max_dd": -0.219462208607493,
+            "nav": 12.387395244252302,
+            "sessions": 1950,
+            "sharpe": 1.4909156222271278,
+            "total_return": 11.387395244252302,
+            "volatility": 0.2289804431890027
+          },
+          "switches": 177
+        }
+      }
+    },
+    {
+      "families": [
+        "diagnostic_neighbor"
+      ],
+      "id": "v11_b9b3ded53cfc9feb5110",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4342791551741495,
+              "calmar": 1.9487515161270372,
+              "max_dd": -0.22284993832217204,
+              "nav": 4.238153558913896,
+              "sessions": 977,
+              "sharpe": 1.733656849037966,
+              "total_return": 3.238153558913896,
+              "volatility": 0.22244802388661086
+            },
+            "late": {
+              "cagr": 0.4047954472569116,
+              "calmar": 2.2585238110508192,
+              "max_dd": -0.17923009944649337,
+              "nav": 3.8782647174869567,
+              "sessions": 973,
+              "sharpe": 1.5246065133874,
+              "total_return": 2.8782647174869567,
+              "volatility": 0.24237188813120988
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.4194909917662855,
+            "calmar": 1.8823922273643683,
+            "max_dd": -0.22284993832217204,
+            "nav": 16.436681414827454,
+            "sessions": 1950,
+            "sharpe": 1.6233705157273306,
+            "total_return": 15.436681414827454,
+            "volatility": 0.23260351618206854
+          },
+          "switches": 188
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.48984057604863596,
+              "calmar": 2.4207093687871506,
+              "max_dd": -0.20235414559248022,
+              "nav": 4.934791205125471,
+              "sessions": 977,
+              "sharpe": 1.9187196617246367,
+              "total_return": 3.934791205125471,
+              "volatility": 0.22060886131065172
+            },
+            "late": {
+              "cagr": 0.4860652748639008,
+              "calmar": 2.8993809022371733,
+              "max_dd": -0.16764450455228253,
+              "nav": 4.853290913525169,
+              "sessions": 973,
+              "sharpe": 1.7756960961445865,
+              "total_return": 3.8532909135251687,
+              "volatility": 0.23940178516748548
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.4879556002055382,
+            "calmar": 2.4113941366352285,
+            "max_dd": -0.20235414559248022,
+            "nav": 23.949977315979467,
+            "sessions": 1950,
+            "sharpe": 1.8428952963977778,
+            "total_return": 22.949977315979467,
+            "volatility": 0.23017792898561268
+          },
+          "switches": 188
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.34204150641141606,
+              "calmar": 1.3103610317843437,
+              "max_dd": -0.26102844797334335,
+              "nav": 3.2477861257667793,
+              "sessions": 977,
+              "sharpe": 1.4621570010864147,
+              "total_return": 2.2477861257667793,
+              "volatility": 0.2175405703572381
+            },
+            "late": {
+              "cagr": 0.29555043416345467,
+              "calmar": 1.0256693020450907,
+              "max_dd": -0.28815372905687453,
+              "nav": 2.8082428489068945,
+              "sessions": 973,
+              "sharpe": 1.1806313835983093,
+              "total_return": 1.8082428489068945,
+              "volatility": 0.24496808964192396
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.31863876914303735,
+            "calmar": 1.1057943625645257,
+            "max_dd": -0.2881537290568743,
+            "nav": 9.120572162463546,
+            "sessions": 1950,
+            "sharpe": 1.3110202971037896,
+            "total_return": 8.120572162463546,
+            "volatility": 0.23163435642549365
+          },
+          "switches": 190
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.3947271176150724,
+              "calmar": 1.6112796951909565,
+              "max_dd": -0.24497740447743455,
+              "nav": 3.789214136315051,
+              "sessions": 977,
+              "sharpe": 1.6405641004286318,
+              "total_return": 2.789214136315051,
+              "volatility": 0.21735850687794014
+            },
+            "late": {
+              "cagr": 0.37118861206247905,
+              "calmar": 1.3416843365952964,
+              "max_dd": -0.2766586759180776,
+              "nav": 3.521301158166367,
+              "sessions": 973,
+              "sharpe": 1.4140376422703347,
+              "total_return": 2.521301158166367,
+              "volatility": 0.2446390448896879
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.3829319265405722,
+            "calmar": 1.3841312775384047,
+            "max_dd": -0.2766586759180776,
+            "nav": 13.342964126746619,
+            "sessions": 1950,
+            "sharpe": 1.5181975301632833,
+            "total_return": 12.342964126746619,
+            "volatility": 0.23137346683752177
+          },
+          "switches": 190
+        }
+      }
+    },
+    {
+      "families": [
+        "diagnostic_neighbor"
+      ],
+      "id": "v11_c00a3caf37cd18d4c1bb",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4122484129837056,
+              "calmar": 1.704577219059059,
+              "max_dd": -0.24184789540439255,
+              "nav": 3.9834445050390537,
+              "sessions": 977,
+              "sharpe": 1.6642816351908654,
+              "total_return": 2.9834445050390537,
+              "volatility": 0.22240307577374208
+            },
+            "late": {
+              "cagr": 0.3283756732746322,
+              "calmar": 1.83214579631846,
+              "max_dd": -0.17923009944649326,
+              "nav": 3.102897389857898,
+              "sessions": 973,
+              "sharpe": 1.2818152051133815,
+              "total_return": 2.102897389857898,
+              "volatility": 0.24512337440940699
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.36975620516350305,
+            "calmar": 1.5288791516884432,
+            "max_dd": -0.24184789540439255,
+            "nav": 12.360219557329454,
+            "sessions": 1950,
+            "sharpe": 1.4623774927306612,
+            "total_return": 11.360219557329454,
+            "volatility": 0.23402266927722953
+          },
+          "switches": 185
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4654899195623119,
+              "calmar": 2.098189494435025,
+              "max_dd": -0.2218531361428122,
+              "nav": 4.619676871538539,
+              "sessions": 977,
+              "sharpe": 1.845263130018709,
+              "total_return": 3.6196768715385392,
+              "volatility": 0.22042605808647886
+            },
+            "late": {
+              "cagr": 0.4045190373778122,
+              "calmar": 2.412957337660039,
+              "max_dd": -0.16764450455228264,
+              "nav": 3.8752226189477055,
+              "sessions": 973,
+              "sharpe": 1.5259952053174166,
+              "total_return": 2.8752226189477055,
+              "volatility": 0.24194690578280612
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.4347431542788528,
+            "calmar": 1.9595988672389024,
+            "max_dd": -0.2218531361428122,
+            "nav": 17.902276304815654,
+            "sessions": 1950,
+            "sharpe": 1.6766877397173388,
+            "total_return": 16.902276304815654,
+            "volatility": 0.23141783380976436
+          },
+          "switches": 185
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.3640756139236201,
+              "calmar": 1.5598597994863048,
+              "max_dd": -0.23340278020083471,
+              "nav": 3.4666212621771204,
+              "sessions": 977,
+              "sharpe": 1.5617347589966968,
+              "total_return": 2.4666212621771204,
+              "volatility": 0.2135227622019038
+            },
+            "late": {
+              "cagr": 0.2779939388468651,
+              "calmar": 0.9011117707989224,
+              "max_dd": -0.30850106263776433,
+              "nav": 2.6595330773112686,
+              "sessions": 973,
+              "sharpe": 1.1204217967203594,
+              "total_return": 1.6595330773112686,
+              "volatility": 0.2462288116933415
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.32042170635069367,
+            "calmar": 1.0386405272351564,
+            "max_dd": -0.30850106263776444,
+            "nav": 9.219593913270629,
+            "sessions": 1950,
+            "sharpe": 1.3224461031384942,
+            "total_return": 8.219593913270629,
+            "volatility": 0.2304306279191757
+          },
+          "switches": 187
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.41620906761075604,
+              "calmar": 1.89649539322346,
+              "max_dd": -0.21946220860749277,
+              "nav": 4.028365402608419,
+              "sessions": 977,
+              "sharpe": 1.7386427730505745,
+              "total_return": 3.0283654026084186,
+              "volatility": 0.21337741787860956
+            },
+            "late": {
+              "cagr": 0.35192808156897437,
+              "calmar": 1.200706575339316,
+              "max_dd": -0.29310081979814306,
+              "nav": 3.3281605714367597,
+              "sessions": 973,
+              "sharpe": 1.3494167898129574,
+              "total_return": 2.3281605714367597,
+              "volatility": 0.24613786938176727
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.38376126989619475,
+            "calmar": 1.309314897721844,
+            "max_dd": -0.2931008197981434,
+            "nav": 13.40704690030125,
+            "sessions": 1950,
+            "sharpe": 1.5266540625592269,
+            "total_return": 12.40704690030125,
+            "volatility": 0.23031064385070227
+          },
+          "switches": 187
+        }
+      }
+    },
+    {
+      "families": [
+        "diagnostic_neighbor"
+      ],
+      "id": "v11_c6cf80b411be51057816",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.42862279431413686,
+              "calmar": 1.9233695891559162,
+              "max_dd": -0.22284993832217181,
+              "nav": 4.171624495286611,
+              "sessions": 977,
+              "sharpe": 1.6952848924838229,
+              "total_return": 3.1716244952866113,
+              "volatility": 0.22555669679763082
+            },
+            "late": {
+              "cagr": 0.3257484795633961,
+              "calmar": 1.338268951719236,
+              "max_dd": -0.24341032431852827,
+              "nav": 3.0784980380781053,
+              "sessions": 973,
+              "sharpe": 1.2856356149538863,
+              "total_return": 2.0784980380781053,
+              "volatility": 0.24231926932863915
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.3763302179657439,
+            "calmar": 1.5460733599503191,
+            "max_dd": -0.24341032431852827,
+            "nav": 12.842337824338445,
+            "sessions": 1950,
+            "sharpe": 1.4825207404012661,
+            "total_return": 11.842337824338445,
+            "volatility": 0.23408187650241402
+          },
+          "switches": 183
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.48396509783951575,
+              "calmar": 2.391673748133477,
+              "max_dd": -0.20235414559248077,
+              "nav": 4.857326565510701,
+              "sessions": 977,
+              "sharpe": 1.8769067273094215,
+              "total_return": 3.857326565510701,
+              "volatility": 0.22378919874873254
+            },
+            "late": {
+              "cagr": 0.3989285710099992,
+              "calmar": 1.7255237469154519,
+              "max_dd": -0.2311927446510802,
+              "nav": 3.8140781916678566,
+              "sessions": 973,
+              "sharpe": 1.5223336839492352,
+              "total_return": 2.8140781916678566,
+              "volatility": 0.23952133760917133
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.4409068256772432,
+            "calmar": 1.9070962903384647,
+            "max_dd": -0.2311927446510803,
+            "nav": 18.5262233233234,
+            "sessions": 1950,
+            "sharpe": 1.692938135189012,
+            "total_return": 17.5262233233234,
+            "volatility": 0.2317794365070331
+          },
+          "switches": 183
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.3190477626874567,
+              "calmar": 1.1742899086696088,
+              "max_dd": -0.27169420458438265,
+              "nav": 3.030644232357075,
+              "sessions": 977,
+              "sharpe": 1.361588371877457,
+              "total_return": 2.030644232357075,
+              "volatility": 0.22155188829093064
+            },
+            "late": {
+              "cagr": 0.28602981880755457,
+              "calmar": 1.0099835145256555,
+              "max_dd": -0.2832024629054367,
+              "nav": 2.726847834421036,
+              "sessions": 973,
+              "sharpe": 1.149863885692208,
+              "total_return": 1.726847834421036,
+              "volatility": 0.24514215463294428
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.3024680295090651,
+            "calmar": 1.0680275390474312,
+            "max_dd": -0.2832024629054368,
+            "nav": 8.264105661903514,
+            "sessions": 1950,
+            "sharpe": 1.2489921420294687,
+            "total_return": 7.264105661903514,
+            "volatility": 0.23362163175757616
+          },
+          "switches": 185
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.37083068985625356,
+              "calmar": 1.4577635118633328,
+              "max_dd": -0.2543832980030162,
+              "nav": 3.535873214150693,
+              "sessions": 977,
+              "sharpe": 1.5379027592409236,
+              "total_return": 2.535873214150693,
+              "volatility": 0.2211611049109797
+            },
+            "late": {
+              "cagr": 0.3576990666621794,
+              "calmar": 1.3239900006234402,
+              "max_dd": -0.2701674986168673,
+              "nav": 3.3851759568403694,
+              "sessions": 973,
+              "sharpe": 1.3719342966159902,
+              "total_return": 2.3851759568403694,
+              "volatility": 0.2449986390034797
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.3642625468392286,
+            "calmar": 1.3482841152399296,
+            "max_dd": -0.27016749861686784,
+            "nav": 11.969552990978729,
+            "sessions": 1950,
+            "sharpe": 1.4489510516080302,
+            "total_return": 10.969552990978729,
+            "volatility": 0.23336002893989002
+          },
+          "switches": 185
+        }
+      }
+    },
+    {
+      "families": [
+        "diagnostic_neighbor"
+      ],
+      "id": "v11_cb7d9b4c52f5c7ec8c1b",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4443826346960297,
+              "calmar": 2.193541951437043,
+              "max_dd": -0.20258679548157432,
+              "nav": 4.35896587578215,
+              "sessions": 977,
+              "sharpe": 1.7588844891594668,
+              "total_return": 3.3589658757821503,
+              "volatility": 0.22337000299572324
+            },
+            "late": {
+              "cagr": 0.320452763628796,
+              "calmar": 1.4083310050235103,
+              "max_dd": -0.227540800057474,
+              "nav": 3.029752704940914,
+              "sessions": 973,
+              "sharpe": 1.2597686649674318,
+              "total_return": 2.029752704940914,
+              "volatility": 0.24454559085468056
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.3811553260175903,
+            "calmar": 1.6751076111243148,
+            "max_dd": -0.2275408000574738,
+            "nav": 13.206588652896142,
+            "sessions": 1950,
+            "sharpe": 1.4969106734145068,
+            "total_return": 12.206588652896142,
+            "volatility": 0.2341912881616935
+          },
+          "switches": 182
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4950925249244855,
+              "calmar": 2.565930212814456,
+              "max_dd": -0.1929485542716457,
+              "nav": 5.004816205421494,
+              "sessions": 977,
+              "sharpe": 1.9280094332055298,
+              "total_return": 4.004816205421494,
+              "volatility": 0.22147206655713453
+            },
+            "late": {
+              "cagr": 0.3975448153227191,
+              "calmar": 1.842672055691919,
+              "max_dd": -0.21574366100290265,
+              "nav": 3.799055951667044,
+              "sessions": 973,
+              "sharpe": 1.5071542015864088,
+              "total_return": 2.799055951667044,
+              "volatility": 0.24161042639857908
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.4455960751419041,
+            "calmar": 2.065395910454627,
+            "max_dd": -0.21574366100290243,
+            "nav": 19.013576792206287,
+            "sessions": 1950,
+            "sharpe": 1.7071834774453247,
+            "total_return": 18.013576792206287,
+            "volatility": 0.2317481831266935
+          },
+          "switches": 182
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.3349700325130489,
+              "calmar": 1.4479989827006583,
+              "max_dd": -0.2313330579060887,
+              "nav": 3.179803583906992,
+              "sessions": 977,
+              "sharpe": 1.4279877437014958,
+              "total_return": 2.179803583906992,
+              "volatility": 0.2193194325416489
+            },
+            "late": {
+              "cagr": 0.27564842392117533,
+              "calmar": 0.9532319871437847,
+              "max_dd": -0.28917244452435353,
+              "nav": 2.640122120852482,
+              "sessions": 973,
+              "sharpe": 1.110170951140007,
+              "total_return": 1.640122120852482,
+              "volatility": 0.2470251153448891
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.305033029348085,
+            "calmar": 1.054848188767846,
+            "max_dd": -0.28917244452435376,
+            "nav": 8.395069781838826,
+            "sessions": 1950,
+            "sharpe": 1.2577272504262318,
+            "total_return": 7.395069781838826,
+            "volatility": 0.23355837149518754
+          },
+          "switches": 184
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.3825298413028374,
+              "calmar": 1.7429532514286148,
+              "max_dd": -0.21947223253939607,
+              "nav": 3.6582601937439705,
+              "sessions": 977,
+              "sharpe": 1.5901211213830118,
+              "total_return": 2.6582601937439705,
+              "volatility": 0.2189444576425298
+            },
+            "late": {
+              "cagr": 0.35080278961743766,
+              "calmar": 1.283385379104706,
+              "max_dd": -0.2733417376643007,
+              "nav": 3.3171274383070903,
+              "sessions": 973,
+              "sharpe": 1.3441742373864705,
+              "total_return": 2.3171274383070903,
+              "volatility": 0.24655964769614944
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.3666067849531507,
+            "calmar": 1.341203096482074,
+            "max_dd": -0.2733417376643006,
+            "nav": 12.134915265134795,
+            "sessions": 1950,
+            "sharpe": 1.4575369745343234,
+            "total_return": 11.134915265134795,
+            "volatility": 0.23313358798264655
+          },
+          "switches": 184
+        }
+      }
+    },
+    {
+      "families": [
+        "diagnostic_neighbor"
+      ],
+      "id": "v11_cccd8ad02a31c27ff14c",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4001190208258619,
+              "calmar": 1.654424241140594,
+              "max_dd": -0.24184789540439255,
+              "nav": 3.8482108442868452,
+              "sessions": 977,
+              "sharpe": 1.628216762991696,
+              "total_return": 2.8482108442868452,
+              "volatility": 0.22196226808148628
+            },
+            "late": {
+              "cagr": 0.35129854480689554,
+              "calmar": 1.5498937371305381,
+              "max_dd": -0.22665976149906064,
+              "nav": 3.321984779244655,
+              "sessions": 973,
+              "sharpe": 1.3564947740422284,
+              "total_return": 2.321984779244655,
+              "volatility": 0.24405688021633898
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.3755422717070236,
+            "calmar": 1.5528035548090315,
+            "max_dd": -0.24184789540439255,
+            "nav": 12.783697852045195,
+            "sessions": 1950,
+            "sharpe": 1.4845117656359443,
+            "total_return": 11.783697852045195,
+            "volatility": 0.23325069622217345
+          },
+          "switches": 185
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4550846280873881,
+              "calmar": 2.051287784340535,
+              "max_dd": -0.2218531361428121,
+              "nav": 4.489733734314157,
+              "sessions": 977,
+              "sharpe": 1.8156775880602547,
+              "total_return": 3.4897337343141572,
+              "volatility": 0.22003911350720767
+            },
+            "late": {
+              "cagr": 0.42660515816610894,
+              "calmar": 1.9773705340078063,
+              "max_dd": -0.21574366100290276,
+              "nav": 4.1239935949988045,
+              "sessions": 973,
+              "sharpe": 1.5947266993587017,
+              "total_return": 3.1239935949988045,
+              "volatility": 0.24119733589032966
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.4408037359591728,
+            "calmar": 1.9869168569040063,
+            "max_dd": -0.2218531361428121,
+            "nav": 18.51563316356168,
+            "sessions": 1950,
+            "sharpe": 1.6985703109070158,
+            "total_return": 17.51563316356168,
+            "volatility": 0.23083955624639294
+          },
+          "switches": 185
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.35002479414950144,
+              "calmar": 1.4996599177109944,
+              "max_dd": -0.23340278020083494,
+              "nav": 3.3258385752665935,
+              "sessions": 977,
+              "sharpe": 1.5233081123337116,
+              "total_return": 2.3258385752665935,
+              "volatility": 0.2118974521006201
+            },
+            "late": {
+              "cagr": 0.2759847798532691,
+              "calmar": 0.9543951544457312,
+              "max_dd": -0.28917244452435253,
+              "nav": 2.642899186749938,
+              "sessions": 973,
+              "sharpe": 1.1102741403551109,
+              "total_return": 1.642899186749938,
+              "volatility": 0.24729204661268497
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.3125587265929101,
+            "calmar": 1.080873134738078,
+            "max_dd": -0.28917244452435276,
+            "nav": 8.789856065833629,
+            "sessions": 1950,
+            "sharpe": 1.2974148749173497,
+            "total_return": 7.789856065833629,
+            "volatility": 0.2302447748426027
+          },
+          "switches": 187
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4037256232968421,
+              "calmar": 1.8396134161709092,
+              "max_dd": -0.21946220860749255,
+              "nav": 3.8880561271728244,
+              "sessions": 977,
+              "sharpe": 1.7086112293391524,
+              "total_return": 2.8880561271728244,
+              "volatility": 0.21175434756955827
+            },
+            "late": {
+              "cagr": 0.3477708326501687,
+              "calmar": 1.27229319467222,
+              "max_dd": -0.2733417376643005,
+              "nav": 3.2875364293990144,
+              "sessions": 973,
+              "sharpe": 1.3334398589701877,
+              "total_return": 2.2875364293990144,
+              "volatility": 0.24691667207206475
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.3755211093456162,
+            "calmar": 1.3738154756548957,
+            "max_dd": -0.27334173766430014,
+            "nav": 12.78212615762867,
+            "sessions": 1950,
+            "sharpe": 1.5026018334576863,
+            "total_return": 11.78212615762867,
+            "volatility": 0.22997482013160667
+          },
+          "switches": 187
+        }
+      }
+    },
+    {
+      "families": [
+        "control_simple",
+        "diagnostic_control"
+      ],
+      "id": "v11_e0c1991c319fc1ecaf01",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4001934121239274,
+              "calmar": 1.8489495940128506,
+              "max_dd": -0.2164436572093733,
+              "nav": 3.8490296020622687,
+              "sessions": 977,
+              "sharpe": 1.6413926738766653,
+              "total_return": 2.8490296020622687,
+              "volatility": 0.21990154111521854
+            },
+            "late": {
+              "cagr": 0.3495674203678721,
+              "calmar": 1.535040187409568,
+              "max_dd": -0.22772525646887387,
+              "nav": 3.3050466122275854,
+              "sessions": 973,
+              "sharpe": 1.3276628031831879,
+              "total_return": 2.3050466122275854,
+              "volatility": 0.24940771980331058
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.374699299185505,
+            "calmar": 1.645400712224997,
+            "max_dd": -0.22772525646887376,
+            "nav": 12.721222246659627,
+            "sessions": 1950,
+            "sharpe": 1.4720665150104366,
+            "total_return": 11.721222246659627,
+            "volatility": 0.23508967963105476
+          },
+          "switches": 155
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4471791093179163,
+              "calmar": 2.1441343809225155,
+              "max_dd": -0.20855927375480876,
+              "nav": 4.3928565031999245,
+              "sessions": 977,
+              "sharpe": 1.8017036589425675,
+              "total_return": 3.3928565031999245,
+              "volatility": 0.21850309900368106
+            },
+            "late": {
+              "cagr": 0.41124876334772403,
+              "calmar": 1.896692209423144,
+              "max_dd": -0.2168241959895013,
+              "nav": 3.9497982155136278,
+              "sessions": 973,
+              "sharpe": 1.5194148009317838,
+              "total_return": 2.9497982155136278,
+              "volatility": 0.2469668090653093
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.4291378721919706,
+            "calmar": 1.9791973411157007,
+            "max_dd": -0.2168241959895013,
+            "nav": 17.35089677734645,
+            "sessions": 1950,
+            "sharpe": 1.64913012380757,
+            "total_return": 16.35089677734645,
+            "volatility": 0.23314129606419717
+          },
+          "switches": 155
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.2620627642383833,
+              "calmar": 0.7777896546611623,
+              "max_dd": -0.3369326946789345,
+              "nav": 2.5394407268145094,
+              "sessions": 977,
+              "sharpe": 1.1768996264717198,
+              "total_return": 1.5394407268145094,
+              "volatility": 0.2180986526810269
+            },
+            "late": {
+              "cagr": 0.27871972978399706,
+              "calmar": 1.319599358330796,
+              "max_dd": -0.21121541778904673,
+              "nav": 2.6655611653435844,
+              "sessions": 973,
+              "sharpe": 1.130894995356296,
+              "total_return": 1.6655611653435844,
+              "volatility": 0.2439022566477407
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.270346862784282,
+            "calmar": 0.8023764599095894,
+            "max_dd": -0.3369326946789345,
+            "nav": 6.769034583088639,
+            "sessions": 1950,
+            "sharpe": 1.150861565235398,
+            "total_return": 5.769034583088639,
+            "volatility": 0.23133485520398214
+          },
+          "switches": 155
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.303761110798505,
+              "calmar": 0.9632657644854337,
+              "max_dd": -0.3153450709013529,
+              "nav": 2.8924390305645384,
+              "sessions": 977,
+              "sharpe": 1.3286064988365578,
+              "total_return": 1.8924390305645384,
+              "volatility": 0.217600066237674
+            },
+            "late": {
+              "cagr": 0.33783462993356367,
+              "calmar": 1.6884866757175565,
+              "max_dd": -0.20008131233253235,
+              "nav": 3.191946515937632,
+              "sessions": 973,
+              "sharpe": 1.3152592240532481,
+              "total_return": 2.191946515937632,
+              "volatility": 0.24414869730260585
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.32065304281521034,
+            "calmar": 1.0168322653615154,
+            "max_dd": -0.3153450709013529,
+            "nav": 9.232510686172489,
+            "sessions": 1950,
+            "sharpe": 1.3193703499276477,
+            "total_return": 8.232510686172489,
+            "volatility": 0.2312307604465104
+          },
+          "switches": 155
+        }
+      }
+    },
+    {
+      "families": [
+        "diagnostic_neighbor"
+      ],
+      "id": "v11_ece65f1573d614c6aa27",
+      "scenarios": {
+        "close_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4273428258727329,
+              "calmar": 2.1605742573688076,
+              "max_dd": -0.1977913160888809,
+              "nav": 4.156679109299052,
+              "sessions": 977,
+              "sharpe": 1.7436017479631332,
+              "total_return": 3.156679109299052,
+              "volatility": 0.21777303167013698
+            },
+            "late": {
+              "cagr": 0.3490894173725732,
+              "calmar": 1.5310870043395848,
+              "max_dd": -0.2280010321968271,
+              "nav": 3.300381019341556,
+              "sessions": 973,
+              "sharpe": 1.3505595192982345,
+              "total_return": 2.300381019341556,
+              "volatility": 0.24390010897775824
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.3877448729461427,
+            "calmar": 1.7006277086123578,
+            "max_dd": -0.2280010321968272,
+            "nav": 13.718624835824183,
+            "sessions": 1950,
+            "sharpe": 1.533868850543818,
+            "total_return": 12.718624835824183,
+            "volatility": 0.23118477433828724
+          },
+          "switches": 180
+        },
+        "close_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.4818942820740943,
+              "calmar": 2.5185217294756335,
+              "max_dd": -0.1913401327589207,
+              "nav": 4.83024277740959,
+              "sessions": 977,
+              "sharpe": 1.9304955695251238,
+              "total_return": 3.83024277740959,
+              "volatility": 0.21593265860481184
+            },
+            "late": {
+              "cagr": 0.4221289615211305,
+              "calmar": 1.9585204542143217,
+              "max_dd": -0.21553461982630728,
+              "nav": 4.072635346638196,
+              "sessions": 973,
+              "sharpe": 1.5816179204671386,
+              "total_return": 3.0726353466381964,
+              "volatility": 0.2412187850612084
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.4517653887008897,
+            "calmar": 2.0960223887232314,
+            "max_dd": -0.21553461982630706,
+            "nav": 19.671817468122295,
+            "sessions": 1950,
+            "sharpe": 1.7440770385610311,
+            "total_return": 18.671817468122295,
+            "volatility": 0.2289020125956737
+          },
+          "switches": 180
+        },
+        "lag1_11bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.31153541788305306,
+              "calmar": 1.0213191755016662,
+              "max_dd": -0.3050323790601783,
+              "nav": 2.962121017588792,
+              "sessions": 977,
+              "sharpe": 1.3949740520400145,
+              "total_return": 1.962121017588792,
+              "volatility": 0.21040604330157514
+            },
+            "late": {
+              "cagr": 0.303452174141349,
+              "calmar": 1.0227957679951694,
+              "max_dd": -0.29668892230181987,
+              "nav": 2.877168517331643,
+              "sessions": 973,
+              "sharpe": 1.1997181135164352,
+              "total_return": 1.877168517331643,
+              "volatility": 0.24646180612992427
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.30749583994511653,
+            "calmar": 1.0080760635724255,
+            "max_dd": -0.3050323790601783,
+            "nav": 8.522521336332874,
+            "sessions": 1950,
+            "sharpe": 1.2858409746967723,
+            "total_return": 7.522521336332874,
+            "volatility": 0.22910733775751077
+          },
+          "switches": 182
+        },
+        "lag1_1bp": {
+          "blocks": {
+            "early": {
+              "cagr": 0.3623419649083739,
+              "calmar": 1.2896208813635883,
+              "max_dd": -0.2809678178638434,
+              "nav": 3.44901347790246,
+              "sessions": 977,
+              "sharpe": 1.576716572337093,
+              "total_return": 2.44901347790246,
+              "volatility": 0.2102646392925761
+            },
+            "late": {
+              "cagr": 0.37471105337079114,
+              "calmar": 1.3402426137727494,
+              "max_dd": -0.2795844942700254,
+              "nav": 3.5575120329708874,
+              "sessions": 973,
+              "sharpe": 1.4172269508685507,
+              "total_return": 2.5575120329708874,
+              "volatility": 0.2461794034998137
+            }
+          },
+          "crashes": 13,
+          "full": {
+            "cagr": 0.368499848557188,
+            "calmar": 1.311537568105976,
+            "max_dd": -0.2809678178638434,
+            "nav": 12.26990694951673,
+            "sessions": 1950,
+            "sharpe": 1.486260143442677,
+            "total_return": 11.26990694951673,
+            "volatility": 0.22889135881505462
+          },
+          "switches": 182
+        }
+      }
+    }
+  ],
+  "scores": {
+    "v11_1d82429e7566c3e91afd": {
+      "complexity": 1,
+      "median_block_excess": -0.007063000787148416,
+      "switches": 205,
+      "worst_block_excess": -0.016891374161858208
+    },
+    "v11_711053f1548224bed3e1": {
+      "complexity": 4,
+      "median_block_excess": -0.0574129253636942,
+      "switches": 157,
+      "worst_block_excess": -0.07564378452140819
+    },
+    "v11_7b7fc83110cf10f39108": {
+      "complexity": 1,
+      "median_block_excess": 0.006172716893052432,
+      "switches": 184,
+      "worst_block_excess": -0.044353900604802876
+    },
+    "v11_85ae599b865950104870": {
+      "complexity": 0,
+      "median_block_excess": 0.0,
+      "switches": 187,
+      "worst_block_excess": 0.0
+    },
+    "v11_a64fecc8dfad3474ef72": {
+      "complexity": 1,
+      "median_block_excess": -0.013873974883573004,
+      "switches": 175,
+      "worst_block_excess": -0.03958358459360051
+    },
+    "v11_b9b3ded53cfc9feb5110": {
+      "complexity": 3,
+      "median_block_excess": 0.011508646020917973,
+      "switches": 188,
+      "worst_block_excess": 0.006546147539533309
+    },
+    "v11_c00a3caf37cd18d4c1bb": {
+      "complexity": 3,
+      "median_block_excess": -0.010060448113647952,
+      "switches": 185,
+      "worst_block_excess": -0.054961847306059686
+    },
+    "v11_c6cf80b411be51057816": {
+      "complexity": 1,
+      "median_block_excess": -0.006003429371403496,
+      "switches": 183,
+      "worst_block_excess": -0.05758904101729578
+    },
+    "v11_cb7d9b4c52f5c7ec8c1b": {
+      "complexity": 1,
+      "median_block_excess": -0.00197809604940527,
+      "switches": 182,
+      "worst_block_excess": -0.06288475695189588
+    },
+    "v11_cccd8ad02a31c27ff14c": {
+      "complexity": 1,
+      "median_block_excess": -0.0171297236893678,
+      "switches": 185,
+      "worst_block_excess": -0.03203897577379633
+    },
+    "v11_e0c1991c319fc1ecaf01": {
+      "complexity": 5,
+      "median_block_excess": -0.030654847861754292,
+      "switches": 155,
+      "worst_block_excess": -0.06988164387140106
+    },
+    "v11_ece65f1573d614c6aa27": {
+      "complexity": 1,
+      "median_block_excess": -0.010399585994307292,
+      "switches": 180,
+      "worst_block_excess": -0.03424810320811866
+    }
+  },
+  "selected_here": false,
+  "subject_kind": "fixed_H_control"
+}

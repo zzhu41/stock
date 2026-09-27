@@ -1,0 +1,100 @@
+{
+  "B_components": "Regenerate from that fold's complete A training rows/checks/order",
+  "chosen_configuration_shared_across_pressure_scenarios": true,
+  "clean_oos": false,
+  "common_initialization": "Frozen H from 2014 through 2017; actual account persists after each replacement",
+  "execution_end": "2025-12-31",
+  "execution_start": "2014-01-02",
+  "fingerprints": {
+    "A_algorithm_receipt_sha256": "d33a6ad8fc071dfea61ec6e91ca0458a0d0c995c3f8835041a7377843a89b103",
+    "B_algorithm_receipt_sha256": "ee5783c1046adea4241884900f1a54f009cc0087c9e5b75b4dae332b6b33a51f",
+    "corrected_manifest_sha256": "1498be16c517288a1829aca04201dea12de6b63dc3e2d8f5056a3d189a914fee",
+    "frozen_profiles_sha256": "14082b92db8386c2abd51f52d6267015d2b5f2abfa069f033115cc68ec9cfe19",
+    "original_A_registration_sha256": "416c62e73a2c7a243b6b782366944ea5466abb3ad7a2aa9e7ccb95ae0df62e2c",
+    "original_A_registry_sha256": "df2cd9d66761b23c61459f14c269b492d68e15e9a8180216acebdb089d16ab71",
+    "qvix_manifest_sha256": "87045736b27dfeed55bce3b098001bc6c5817c65f1fc831493dbbf96466f4257",
+    "sources": {
+      "v10_deep/native.cpp": "e11d8a21b710857505e187b1953de66ee8eb396732c2f0759a1089756836f893",
+      "v10_deep/native.py": "fc7f1c745873f03620649140ead8a9370256eaf4f9a51376cc3f7b100540c4ad",
+      "v10_deep/reference.py": "307165e11b4e52345d5e0168c3fb36ac661baf214dbc58dbebc7cf5ce2b0f9e5",
+      "v10_deep/scan.py": "372b1ef8950cc3ad394a7fd97d09f0b96db6ebdf1d96a8026ca2298bdd751478",
+      "v10_deep/schema.py": "b91d01a1ade064e29cd9e9f107be44d68c6748dbcd159e96b8d630c839320b90",
+      "v11/COMBINATION_PROTOCOL.md": "fd4951cf3caeb10b0d0faa782e880380d5fea3312b70b1e6719bdf9e547e240c",
+      "v11/PROTOCOL.md": "86c5d62b28f4866d820a12f2a2a06d51f30e6ed96fec12422f8f7b249af48c8a",
+      "v11/RESELECTION_PROTOCOL.md": "be64a55c5f8d7037de0c69628d2127aabd8666477c00df2c0bee7f6ed1a3dbc3",
+      "v11/combinations.py": "5e217dd48e97e51fe3e6f366b785217158e3d2a1064d98957827e92db8ccc4b4",
+      "v11/data.py": "71d72afd8c11d1e7bacb27260dc9c903a1b29ee6877f2d7b0e782e2d33eea6bc",
+      "v11/features.py": "d7411bb3d855bd64467c33fba9b35acc579b02fac5ed74107efbd9dbb099b56f",
+      "v11/registry.py": "17e6b11ecb6ee4b558067b9df94625401c861dd1b31e272d9461d989bcf5757b",
+      "v11/reselect.py": "b6ffa06cae793994669efccbdbfeb9264cfadada8f1a04c8589c13effa25d7c9",
+      "v11/scan.py": "a43612a8d0d4e745ea69f72469a7b6d871c815ae526fd884fa3eae0df127af1c",
+      "v11/tests/test_reselect.py": "4bd4b3c40e148a2a92177910cf8f86b17e51d22525635b69ddf941b93c4b8c07",
+      "v11/walkforward.py": "6f9e788393ba1000f0e2a6fdf844471dec9711850d60d071dd11df809e25fa53"
+    }
+  },
+  "folds": [
+    {
+      "end": "2019-12-31",
+      "known_history": true,
+      "start": "2018-01-01",
+      "train_end": "2017-12-31",
+      "train_start": "2014-01-02"
+    },
+    {
+      "end": "2021-12-31",
+      "known_history": true,
+      "start": "2020-01-01",
+      "train_end": "2019-12-31",
+      "train_start": "2014-01-02"
+    },
+    {
+      "end": "2023-12-31",
+      "known_history": true,
+      "start": "2022-01-01",
+      "train_end": "2021-12-31",
+      "train_start": "2014-01-02"
+    },
+    {
+      "end": "2025-12-31",
+      "known_history": true,
+      "start": "2024-01-01",
+      "train_end": "2023-12-31",
+      "train_start": "2014-01-02"
+    }
+  ],
+  "limitations": [
+    "Candidate family, H and asset pool inherit knowledge of later history.",
+    "Historical reselection is a process diagnostic, not clean out-of-sample or live trading.",
+    "Same-close fills, first overall session free, fixed linear double-sided switch costs and reconstructed TR inputs remain assumptions."
+  ],
+  "original_A_count": 586,
+  "registered_at": "2026-09-27T16:24:05.105504+00:00",
+  "reporting_period": [
+    "2018-01-01",
+    "2025-12-31"
+  ],
+  "scenarios": [
+    [
+      "close_1bp",
+      0,
+      0.0001
+    ],
+    [
+      "close_11bp",
+      0,
+      0.0011
+    ],
+    [
+      "lag1_1bp",
+      1,
+      0.0001
+    ],
+    [
+      "lag1_11bp",
+      1,
+      0.0011
+    ]
+  ],
+  "selection_rule": "Original selector across all four training scenarios; no eligible candidate -> frozen H",
+  "training_blocks": "2014 to min(2017, cutoff), and 2018 to cutoff when present"
+}

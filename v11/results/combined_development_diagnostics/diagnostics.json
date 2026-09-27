@@ -1,0 +1,537 @@
+{
+  "all_receipts_verified": true,
+  "benchmark_id": "v11_85ae599b865950104870",
+  "candidate_selection_performed": false,
+  "candidates": 714,
+  "clean_oos": false,
+  "completed_at": "2026-09-27T15:37:53.389384+00:00",
+  "concentration_sha256": "aa5b627f6bf8e71da0cdc16acd8082d94bfe1485cdf36c915ef1896412e2de15",
+  "input_sha256": {
+    "a_control_fidelity": "a02d86a11c0bdf40eee63466f9b9ad49249e591c543d5327b77292cac2c3c57f",
+    "a_evaluation": "e2c136c65b6b2cc0652e5f65aa678535b905c2fefb43c1a0be19aeac7389b53e",
+    "a_path_metadata": "8b2f40c59945973b874741a3cf073c4993f66c45fc79c668ce7dff63cd91461a",
+    "a_paths": "505fbefa34ae9796edd5e6ff39fd5eabfad17555748874ebf71c1bc6bd70efa7",
+    "a_registration": "d33a6ad8fc071dfea61ec6e91ca0458a0d0c995c3f8835041a7377843a89b103",
+    "a_registry": "df2cd9d66761b23c61459f14c269b492d68e15e9a8180216acebdb089d16ab71",
+    "a_selection": "468fc698edf9c7a141a4ee433d1df179d93988cb95451748377996898cfc062d",
+    "b_evaluation": "1a4fe2d751c15df88533a66805e51567779265abb5d6bc0843d0f5777a107908",
+    "b_path_metadata": "2835113e6182c4b1e84ca824a742e6beae3995d4c2cb8f189b3f5530c768c026",
+    "b_paths": "1ca34272e6d0c21e41c01201915622193638a613529c4f4e89c5f9480b9cadf5",
+    "b_registered_candidates": "bd08560fe7ad09374da968939a72d630b62d9f4598819493c3d77d8221157fbf",
+    "b_registration": "ee5783c1046adea4241884900f1a54f009cc0087c9e5b75b4dae332b6b33a51f",
+    "b_selection": "39d380fa3dc74db98fae2ee958c9905aece5a091e16e823314a5e324f5b24cde",
+    "long_trend_path_metadata": "5813227d6757b8d441a7afd249bde34ca912e2ee5304c16d73db385f065d06c8",
+    "long_trend_registration": "b4ba221e885be6b5ec80db66499795def79e4edcd9a2d6e67b488ec354a796d4",
+    "manifest_corrected": "1498be16c517288a1829aca04201dea12de6b63dc3e2d8f5056a3d189a914fee",
+    "manifest_frozen_profiles": "14082b92db8386c2abd51f52d6267015d2b5f2abfa069f033115cc68ec9cfe19",
+    "manifest_qvix": "87045736b27dfeed55bce3b098001bc6c5817c65f1fc831493dbbf96466f4257",
+    "neighborhood_path_metadata": "b7ad6a7d71647330e4e2baa783acbf912e7408aa52e7e19e5e25c0c70771ea5e",
+    "neighborhood_registered_candidates": "4780cfb267c9d70761c84af934449f5865ca91412d9f4e6df987822386db38ae"
+  },
+  "limitations": [
+    "The complete tested union is A586 plus B152 minus 24 common semantic IDs = 714 configurations, including three controls; B contributes 128 new IDs. No TopK filtering occurred.",
+    "B components were chosen adaptively using A development results and diagnostics. Zero-centered resampling of the resulting fixed union does not reproduce or correct this data-dependent family construction.",
+    "The 714 count excludes prior V10's 9558 unique single-position configurations, A's 17 previously seen signatures, supplemental neighborhoods, and eight long-trend controls. It is not the total number of observed research attempts.",
+    "Only 2014-2021 paths are read. All years have previously been seen in earlier research; this is not clean OOS or new validation evidence.",
+    "All four cost/lag scenarios and both stationary mean block lengths are reported. There is no adjustment for choosing the smallest across eight p-values, and none is used for reselection.",
+    "This conditional White-style maximum mean net log-excess test is not SPA/PBO/DSR, does not jointly test the selector's risk criteria, and does not give a probability of future profit or overfitting.",
+    "Concentration is relative log-excess accounting for each frozen primary versus H, with separate net and positive denominators; it is not total strategy profit or an executable day-exclusion strategy."
+  ],
+  "observations": 1950,
+  "overlap_checks": {
+    "close_11bp": {
+      "holdings": {
+        "checked_values": 46800,
+        "exact_equal": true,
+        "shared_candidate_count": 24
+      },
+      "returns": {
+        "checked_values": 46800,
+        "exact_equal": true,
+        "shared_candidate_count": 24
+      },
+      "summary": {
+        "checked_values": 240,
+        "exact_equal": true,
+        "shared_candidate_count": 24
+      }
+    },
+    "close_1bp": {
+      "holdings": {
+        "checked_values": 46800,
+        "exact_equal": true,
+        "shared_candidate_count": 24
+      },
+      "returns": {
+        "checked_values": 46800,
+        "exact_equal": true,
+        "shared_candidate_count": 24
+      },
+      "summary": {
+        "checked_values": 240,
+        "exact_equal": true,
+        "shared_candidate_count": 24
+      }
+    },
+    "lag1_11bp": {
+      "holdings": {
+        "checked_values": 46800,
+        "exact_equal": true,
+        "shared_candidate_count": 24
+      },
+      "returns": {
+        "checked_values": 46800,
+        "exact_equal": true,
+        "shared_candidate_count": 24
+      },
+      "summary": {
+        "checked_values": 240,
+        "exact_equal": true,
+        "shared_candidate_count": 24
+      }
+    },
+    "lag1_1bp": {
+      "holdings": {
+        "checked_values": 46800,
+        "exact_equal": true,
+        "shared_candidate_count": 24
+      },
+      "returns": {
+        "checked_values": 46800,
+        "exact_equal": true,
+        "shared_candidate_count": 24
+      },
+      "summary": {
+        "checked_values": 240,
+        "exact_equal": true,
+        "shared_candidate_count": 24
+      }
+    }
+  },
+  "period": [
+    "2014-01-02",
+    "2021-12-31"
+  ],
+  "registration_sha256": "11bb9d42471e8ce24f5302d4f4ffe190b2b54170b037a4e19844dc0cfe33f19d",
+  "scenarios": {
+    "close_11bp": {
+      "clean_oos": false,
+      "end": "2021-12-31",
+      "known_confirmation_or_2026_included": false,
+      "start": "2014-01-02",
+      "tests": {
+        "20": {
+          "annual_log_excess_is_cagr_difference": false,
+          "batch_size": 32,
+          "block_length": 20,
+          "block_method": "stationary",
+          "bootstrap_95_critical": 0.025953905754732443,
+          "bootstrap_exceedances": 1997,
+          "bootstrap_tail_probability_wilson95": [
+            0.9955989674442294,
+            0.9994897364163615
+          ],
+          "candidate_selection_performed": false,
+          "candidates": 714,
+          "circular_full_blocks": null,
+          "circular_remainder": null,
+          "clean_oos": false,
+          "draws": 2000,
+          "limitations": [
+            "All 2014-2026 history has previously been examined; no clean out-of-sample interpretation.",
+            "Conditional on the complete supplied family, not all earlier searches or the adaptive construction of this family.",
+            "Unstudentized least-favorable zero-centering; this is White-style, not Hansen SPA, PBO or deflated Sharpe.",
+            "Block resampling assumes the historical dependence/regime distribution is informative; it does not create new crises.",
+            "An omnibus family rejection would not by itself validate the particular frozen finalist or establish causality.",
+            "This test evaluates one declared clock/cost return matrix, not every drawdown, lag or multi-criterion selection requirement jointly.",
+            "A p-value and Monte Carlo error are not probabilities of future profit or of overfitting."
+          ],
+          "mc_interval_note": "Simulation tail-probability interval only; boundary MC SE=0 is not certainty about the true tail probability.",
+          "mc_standard_error": 0.0008649434940729546,
+          "mean_generated_block_count": 98.301,
+          "method": "white_style_zero_centered_stationary_block_max_mean_log_excess",
+          "minimum_reportable_p": 0.0004997501249375312,
+          "null_hypothesis": "Every supplied candidate has expected net daily log-return excess <= 0 versus the benchmark",
+          "observations": 1950,
+          "observed_statistic": 0.0038565867002127,
+          "observed_winner_annual_log_excess": 0.021309615808091046,
+          "observed_winner_id": "v11_e2a10e8c6af1c0803ba4",
+          "observed_winner_index": 642,
+          "observed_winner_mean_daily_log_excess": 8.733449101676658e-05,
+          "p_value": 0.9985007496251874,
+          "resampling_count_sha256": "16ea58781c1ee777fa1c09f1724feb4f29c27c1a4d0360191b6eaaab505a1db9",
+          "return_matrix_orientation": "candidate_by_time",
+          "scope": "All supplied rows, no internal performance filter; completeness beyond the declared row count remains caller responsibility",
+          "seed": 20260928,
+          "supplied_family_count_checked": true,
+          "trials": 714
+        },
+        "60": {
+          "annual_log_excess_is_cagr_difference": false,
+          "batch_size": 32,
+          "block_length": 60,
+          "block_method": "stationary",
+          "bootstrap_95_critical": 0.025661245118424495,
+          "bootstrap_exceedances": 1997,
+          "bootstrap_tail_probability_wilson95": [
+            0.9955989674442294,
+            0.9994897364163615
+          ],
+          "candidate_selection_performed": false,
+          "candidates": 714,
+          "circular_full_blocks": null,
+          "circular_remainder": null,
+          "clean_oos": false,
+          "draws": 2000,
+          "limitations": [
+            "All 2014-2026 history has previously been examined; no clean out-of-sample interpretation.",
+            "Conditional on the complete supplied family, not all earlier searches or the adaptive construction of this family.",
+            "Unstudentized least-favorable zero-centering; this is White-style, not Hansen SPA, PBO or deflated Sharpe.",
+            "Block resampling assumes the historical dependence/regime distribution is informative; it does not create new crises.",
+            "An omnibus family rejection would not by itself validate the particular frozen finalist or establish causality.",
+            "This test evaluates one declared clock/cost return matrix, not every drawdown, lag or multi-criterion selection requirement jointly.",
+            "A p-value and Monte Carlo error are not probabilities of future profit or of overfitting."
+          ],
+          "mc_interval_note": "Simulation tail-probability interval only; boundary MC SE=0 is not certainty about the true tail probability.",
+          "mc_standard_error": 0.0008649434940729546,
+          "mean_generated_block_count": 33.523,
+          "method": "white_style_zero_centered_stationary_block_max_mean_log_excess",
+          "minimum_reportable_p": 0.0004997501249375312,
+          "null_hypothesis": "Every supplied candidate has expected net daily log-return excess <= 0 versus the benchmark",
+          "observations": 1950,
+          "observed_statistic": 0.0038565867002127,
+          "observed_winner_annual_log_excess": 0.021309615808091046,
+          "observed_winner_id": "v11_e2a10e8c6af1c0803ba4",
+          "observed_winner_index": 642,
+          "observed_winner_mean_daily_log_excess": 8.733449101676658e-05,
+          "p_value": 0.9985007496251874,
+          "resampling_count_sha256": "955d694ab0bcb036df346c2598f29ef2f096e6f615c9f7a8873a5c7f287584d6",
+          "return_matrix_orientation": "candidate_by_time",
+          "scope": "All supplied rows, no internal performance filter; completeness beyond the declared row count remains caller responsibility",
+          "seed": 20260928,
+          "supplied_family_count_checked": true,
+          "trials": 714
+        }
+      }
+    },
+    "close_1bp": {
+      "clean_oos": false,
+      "end": "2021-12-31",
+      "known_confirmation_or_2026_included": false,
+      "start": "2014-01-02",
+      "tests": {
+        "20": {
+          "annual_log_excess_is_cagr_difference": false,
+          "batch_size": 32,
+          "block_length": 20,
+          "block_method": "stationary",
+          "bootstrap_95_critical": 0.02505391869712348,
+          "bootstrap_exceedances": 1992,
+          "bootstrap_tail_probability_wilson95": [
+            0.9921265357039621,
+            0.9979717533930348
+          ],
+          "candidate_selection_performed": false,
+          "candidates": 714,
+          "circular_full_blocks": null,
+          "circular_remainder": null,
+          "clean_oos": false,
+          "draws": 2000,
+          "limitations": [
+            "All 2014-2026 history has previously been examined; no clean out-of-sample interpretation.",
+            "Conditional on the complete supplied family, not all earlier searches or the adaptive construction of this family.",
+            "Unstudentized least-favorable zero-centering; this is White-style, not Hansen SPA, PBO or deflated Sharpe.",
+            "Block resampling assumes the historical dependence/regime distribution is informative; it does not create new crises.",
+            "An omnibus family rejection would not by itself validate the particular frozen finalist or establish causality.",
+            "This test evaluates one declared clock/cost return matrix, not every drawdown, lag or multi-criterion selection requirement jointly.",
+            "A p-value and Monte Carlo error are not probabilities of future profit or of overfitting."
+          ],
+          "mc_interval_note": "Simulation tail-probability interval only; boundary MC SE=0 is not certainty about the true tail probability.",
+          "mc_standard_error": 0.0014106783783026503,
+          "mean_generated_block_count": 98.401,
+          "method": "white_style_zero_centered_stationary_block_max_mean_log_excess",
+          "minimum_reportable_p": 0.0004997501249375312,
+          "null_hypothesis": "Every supplied candidate has expected net daily log-return excess <= 0 versus the benchmark",
+          "observations": 1950,
+          "observed_statistic": 0.0037658956779877354,
+          "observed_winner_annual_log_excess": 0.020808501483149135,
+          "observed_winner_id": "v11_e2a10e8c6af1c0803ba4",
+          "observed_winner_index": 642,
+          "observed_winner_mean_daily_log_excess": 8.52807437833981e-05,
+          "p_value": 0.9960019990004998,
+          "resampling_count_sha256": "ca2198f1ade319d51ec7b20e7035149b6a4459ca8700b4f67ba8dcd0d7ced387",
+          "return_matrix_orientation": "candidate_by_time",
+          "scope": "All supplied rows, no internal performance filter; completeness beyond the declared row count remains caller responsibility",
+          "seed": 20260927,
+          "supplied_family_count_checked": true,
+          "trials": 714
+        },
+        "60": {
+          "annual_log_excess_is_cagr_difference": false,
+          "batch_size": 32,
+          "block_length": 60,
+          "block_method": "stationary",
+          "bootstrap_95_critical": 0.025024946881367707,
+          "bootstrap_exceedances": 1993,
+          "bootstrap_tail_probability_wilson95": [
+            0.9927928037467583,
+            0.9983035683029576
+          ],
+          "candidate_selection_performed": false,
+          "candidates": 714,
+          "circular_full_blocks": null,
+          "circular_remainder": null,
+          "clean_oos": false,
+          "draws": 2000,
+          "limitations": [
+            "All 2014-2026 history has previously been examined; no clean out-of-sample interpretation.",
+            "Conditional on the complete supplied family, not all earlier searches or the adaptive construction of this family.",
+            "Unstudentized least-favorable zero-centering; this is White-style, not Hansen SPA, PBO or deflated Sharpe.",
+            "Block resampling assumes the historical dependence/regime distribution is informative; it does not create new crises.",
+            "An omnibus family rejection would not by itself validate the particular frozen finalist or establish causality.",
+            "This test evaluates one declared clock/cost return matrix, not every drawdown, lag or multi-criterion selection requirement jointly.",
+            "A p-value and Monte Carlo error are not probabilities of future profit or of overfitting."
+          ],
+          "mc_interval_note": "Simulation tail-probability interval only; boundary MC SE=0 is not certainty about the true tail probability.",
+          "mc_standard_error": 0.0013198998029947872,
+          "mean_generated_block_count": 33.469,
+          "method": "white_style_zero_centered_stationary_block_max_mean_log_excess",
+          "minimum_reportable_p": 0.0004997501249375312,
+          "null_hypothesis": "Every supplied candidate has expected net daily log-return excess <= 0 versus the benchmark",
+          "observations": 1950,
+          "observed_statistic": 0.0037658956779877354,
+          "observed_winner_annual_log_excess": 0.020808501483149135,
+          "observed_winner_id": "v11_e2a10e8c6af1c0803ba4",
+          "observed_winner_index": 642,
+          "observed_winner_mean_daily_log_excess": 8.52807437833981e-05,
+          "p_value": 0.9965017491254373,
+          "resampling_count_sha256": "21f02053a2060b14e10dbc430e46baa3bdaa2bdfaf8167852344ba5fe5ad036d",
+          "return_matrix_orientation": "candidate_by_time",
+          "scope": "All supplied rows, no internal performance filter; completeness beyond the declared row count remains caller responsibility",
+          "seed": 20260927,
+          "supplied_family_count_checked": true,
+          "trials": 714
+        }
+      }
+    },
+    "lag1_11bp": {
+      "clean_oos": false,
+      "end": "2021-12-31",
+      "known_confirmation_or_2026_included": false,
+      "start": "2014-01-02",
+      "tests": {
+        "20": {
+          "annual_log_excess_is_cagr_difference": false,
+          "batch_size": 32,
+          "block_length": 20,
+          "block_method": "stationary",
+          "bootstrap_95_critical": 0.02589355788889225,
+          "bootstrap_exceedances": 1702,
+          "bootstrap_tail_probability_wilson95": [
+            0.8347215901219346,
+            0.8659326426866257
+          ],
+          "candidate_selection_performed": false,
+          "candidates": 714,
+          "circular_full_blocks": null,
+          "circular_remainder": null,
+          "clean_oos": false,
+          "draws": 2000,
+          "limitations": [
+            "All 2014-2026 history has previously been examined; no clean out-of-sample interpretation.",
+            "Conditional on the complete supplied family, not all earlier searches or the adaptive construction of this family.",
+            "Unstudentized least-favorable zero-centering; this is White-style, not Hansen SPA, PBO or deflated Sharpe.",
+            "Block resampling assumes the historical dependence/regime distribution is informative; it does not create new crises.",
+            "An omnibus family rejection would not by itself validate the particular frozen finalist or establish causality.",
+            "This test evaluates one declared clock/cost return matrix, not every drawdown, lag or multi-criterion selection requirement jointly.",
+            "A p-value and Monte Carlo error are not probabilities of future profit or of overfitting."
+          ],
+          "mc_interval_note": "Simulation tail-probability interval only; boundary MC SE=0 is not certainty about the true tail probability.",
+          "mc_standard_error": 0.00795874927051283,
+          "mean_generated_block_count": 97.981,
+          "method": "white_style_zero_centered_stationary_block_max_mean_log_excess",
+          "minimum_reportable_p": 0.0004997501249375312,
+          "null_hypothesis": "Every supplied candidate has expected net daily log-return excess <= 0 versus the benchmark",
+          "observations": 1950,
+          "observed_statistic": 0.009324092171296275,
+          "observed_winner_annual_log_excess": 0.05152038249745421,
+          "observed_winner_id": "v11_db01f4a1b2e175f5e809",
+          "observed_winner_index": 622,
+          "observed_winner_mean_daily_log_excess": 0.00021114910859612381,
+          "p_value": 0.8510744627686156,
+          "resampling_count_sha256": "1b31c47b1dd30795ea0174d13076a559836545387772a51309c86b18b693b1a2",
+          "return_matrix_orientation": "candidate_by_time",
+          "scope": "All supplied rows, no internal performance filter; completeness beyond the declared row count remains caller responsibility",
+          "seed": 20260930,
+          "supplied_family_count_checked": true,
+          "trials": 714
+        },
+        "60": {
+          "annual_log_excess_is_cagr_difference": false,
+          "batch_size": 32,
+          "block_length": 60,
+          "block_method": "stationary",
+          "bootstrap_95_critical": 0.02597503659964188,
+          "bootstrap_exceedances": 1668,
+          "bootstrap_tail_probability_wilson95": [
+            0.8170559130927837,
+            0.8496634993233392
+          ],
+          "candidate_selection_performed": false,
+          "candidates": 714,
+          "circular_full_blocks": null,
+          "circular_remainder": null,
+          "clean_oos": false,
+          "draws": 2000,
+          "limitations": [
+            "All 2014-2026 history has previously been examined; no clean out-of-sample interpretation.",
+            "Conditional on the complete supplied family, not all earlier searches or the adaptive construction of this family.",
+            "Unstudentized least-favorable zero-centering; this is White-style, not Hansen SPA, PBO or deflated Sharpe.",
+            "Block resampling assumes the historical dependence/regime distribution is informative; it does not create new crises.",
+            "An omnibus family rejection would not by itself validate the particular frozen finalist or establish causality.",
+            "This test evaluates one declared clock/cost return matrix, not every drawdown, lag or multi-criterion selection requirement jointly.",
+            "A p-value and Monte Carlo error are not probabilities of future profit or of overfitting."
+          ],
+          "mc_interval_note": "Simulation tail-probability interval only; boundary MC SE=0 is not certainty about the true tail probability.",
+          "mc_standard_error": 0.008316231632099692,
+          "mean_generated_block_count": 33.4615,
+          "method": "white_style_zero_centered_stationary_block_max_mean_log_excess",
+          "minimum_reportable_p": 0.0004997501249375312,
+          "null_hypothesis": "Every supplied candidate has expected net daily log-return excess <= 0 versus the benchmark",
+          "observations": 1950,
+          "observed_statistic": 0.009324092171296275,
+          "observed_winner_annual_log_excess": 0.05152038249745421,
+          "observed_winner_id": "v11_db01f4a1b2e175f5e809",
+          "observed_winner_index": 622,
+          "observed_winner_mean_daily_log_excess": 0.00021114910859612381,
+          "p_value": 0.8340829585207397,
+          "resampling_count_sha256": "4e86f82620a9035ae5b7a469861d9ccb4d69899c10550053c6e3b7b856e131b0",
+          "return_matrix_orientation": "candidate_by_time",
+          "scope": "All supplied rows, no internal performance filter; completeness beyond the declared row count remains caller responsibility",
+          "seed": 20260930,
+          "supplied_family_count_checked": true,
+          "trials": 714
+        }
+      }
+    },
+    "lag1_1bp": {
+      "clean_oos": false,
+      "end": "2021-12-31",
+      "known_confirmation_or_2026_included": false,
+      "start": "2014-01-02",
+      "tests": {
+        "20": {
+          "annual_log_excess_is_cagr_difference": false,
+          "batch_size": 32,
+          "block_length": 20,
+          "block_method": "stationary",
+          "bootstrap_95_critical": 0.025291727110998072,
+          "bootstrap_exceedances": 1788,
+          "bootstrap_tail_probability_wilson95": [
+            0.8797451436838335,
+            0.9067442230585392
+          ],
+          "candidate_selection_performed": false,
+          "candidates": 714,
+          "circular_full_blocks": null,
+          "circular_remainder": null,
+          "clean_oos": false,
+          "draws": 2000,
+          "limitations": [
+            "All 2014-2026 history has previously been examined; no clean out-of-sample interpretation.",
+            "Conditional on the complete supplied family, not all earlier searches or the adaptive construction of this family.",
+            "Unstudentized least-favorable zero-centering; this is White-style, not Hansen SPA, PBO or deflated Sharpe.",
+            "Block resampling assumes the historical dependence/regime distribution is informative; it does not create new crises.",
+            "An omnibus family rejection would not by itself validate the particular frozen finalist or establish causality.",
+            "This test evaluates one declared clock/cost return matrix, not every drawdown, lag or multi-criterion selection requirement jointly.",
+            "A p-value and Monte Carlo error are not probabilities of future profit or of overfitting."
+          ],
+          "mc_interval_note": "Simulation tail-probability interval only; boundary MC SE=0 is not certainty about the true tail probability.",
+          "mc_standard_error": 0.006880222256841255,
+          "mean_generated_block_count": 98.583,
+          "method": "white_style_zero_centered_stationary_block_max_mean_log_excess",
+          "minimum_reportable_p": 0.0004997501249375312,
+          "null_hypothesis": "Every supplied candidate has expected net daily log-return excess <= 0 versus the benchmark",
+          "observations": 1950,
+          "observed_statistic": 0.008546867604327983,
+          "observed_winner_annual_log_excess": 0.04722581888300448,
+          "observed_winner_id": "v11_82b7d3c89f7c7bb2225f",
+          "observed_winner_index": 377,
+          "observed_winner_mean_daily_log_excess": 0.0001935484380451003,
+          "p_value": 0.8940529735132434,
+          "resampling_count_sha256": "8e38b2ff139460042a78116af9e11ebda1e12e4f81c3e9fd03cce136fe46eb4f",
+          "return_matrix_orientation": "candidate_by_time",
+          "scope": "All supplied rows, no internal performance filter; completeness beyond the declared row count remains caller responsibility",
+          "seed": 20260929,
+          "supplied_family_count_checked": true,
+          "trials": 714
+        },
+        "60": {
+          "annual_log_excess_is_cagr_difference": false,
+          "batch_size": 32,
+          "block_length": 60,
+          "block_method": "stationary",
+          "bootstrap_95_critical": 0.02516826094602213,
+          "bootstrap_exceedances": 1737,
+          "bootstrap_tail_probability_wilson95": [
+            0.8529800370090288,
+            0.8826070991446877
+          ],
+          "candidate_selection_performed": false,
+          "candidates": 714,
+          "circular_full_blocks": null,
+          "circular_remainder": null,
+          "clean_oos": false,
+          "draws": 2000,
+          "limitations": [
+            "All 2014-2026 history has previously been examined; no clean out-of-sample interpretation.",
+            "Conditional on the complete supplied family, not all earlier searches or the adaptive construction of this family.",
+            "Unstudentized least-favorable zero-centering; this is White-style, not Hansen SPA, PBO or deflated Sharpe.",
+            "Block resampling assumes the historical dependence/regime distribution is informative; it does not create new crises.",
+            "An omnibus family rejection would not by itself validate the particular frozen finalist or establish causality.",
+            "This test evaluates one declared clock/cost return matrix, not every drawdown, lag or multi-criterion selection requirement jointly.",
+            "A p-value and Monte Carlo error are not probabilities of future profit or of overfitting."
+          ],
+          "mc_interval_note": "Simulation tail-probability interval only; boundary MC SE=0 is not certainty about the true tail probability.",
+          "mc_standard_error": 0.007553219876897375,
+          "mean_generated_block_count": 33.465,
+          "method": "white_style_zero_centered_stationary_block_max_mean_log_excess",
+          "minimum_reportable_p": 0.0004997501249375312,
+          "null_hypothesis": "Every supplied candidate has expected net daily log-return excess <= 0 versus the benchmark",
+          "observations": 1950,
+          "observed_statistic": 0.008546867604327983,
+          "observed_winner_annual_log_excess": 0.04722581888300448,
+          "observed_winner_id": "v11_82b7d3c89f7c7bb2225f",
+          "observed_winner_index": 377,
+          "observed_winner_mean_daily_log_excess": 0.0001935484380451003,
+          "p_value": 0.8685657171414293,
+          "resampling_count_sha256": "9baa9d5fa2f003f3e2e6953ed01fa0d5d236bbdeec84e2be2fc18e1903f3affd",
+          "return_matrix_orientation": "candidate_by_time",
+          "scope": "All supplied rows, no internal performance filter; completeness beyond the declared row count remains caller responsibility",
+          "seed": 20260929,
+          "supplied_family_count_checked": true,
+          "trials": 714
+        }
+      }
+    }
+  },
+  "source_sha256": {
+    "../v10_deep/schema.py": "b91d01a1ade064e29cd9e9f107be44d68c6748dbcd159e96b8d630c839320b90",
+    "combined_diagnostics.py": "16463ef50c8e34cd8ab049aaabfc55cc2292f3622fa212cfa42267fbe8eb8895",
+    "development_diagnostics.py": "301f381d0da11b8d4fd56791e641c92c4a30a2764452514d2cf0bd37f1b38fd6",
+    "diagnostics.py": "6cdb31c0b1e2a3be62bbb32bd5d5f6f49f83c01ccd1734a4d6896d9dc2c12a13"
+  },
+  "supplemental_observed_diagnostics": {
+    "counting_note": "These supplemental diagnostics were also observed. They are not included in the 714-row test; counts do not exhaust later diagnostics or all adaptive research.",
+    "long_trend_controls": {
+      "evaluated_models": 8,
+      "return_paths_read": false
+    },
+    "neighborhood": {
+      "evaluated_rows": 58,
+      "outside_tested_union": 44,
+      "return_paths_read": false,
+      "shared_with_union": 14
+    }
+  }
+}

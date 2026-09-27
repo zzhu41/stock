@@ -1,0 +1,53 @@
+{
+  "definition": {
+    "blocks": [
+      [
+        "early",
+        "2014-01-02",
+        "2017-12-31"
+      ],
+      [
+        "late",
+        "2018-01-01",
+        "2021-12-31"
+      ]
+    ],
+    "candidate_count": 152,
+    "period": [
+      "2014-01-02",
+      "2021-12-31"
+    ],
+    "provenance": {
+      "A_training_evaluation_sha256": "e16ae22623f598b6f9a539bc011d4613f6d66bcf5eb9d1c7a6adb34a17a1b21f",
+      "A_training_registry_sha256": "df2cd9d66761b23c61459f14c269b492d68e15e9a8180216acebdb089d16ab71",
+      "A_training_selection_sha256": "e3b44d4173b04772535759ee952e3eafa024a3da9a9272f81a887ee0726d2a06",
+      "global_registration_sha256": "1b65d748f10dd975139f9f8c50bcce9f1a13ba6bc627a75ed31f47d18789b09b",
+      "strategy_family": "fold_specific_B_component_cross",
+      "training_cutoff": "2021-12-31"
+    },
+    "registry_sha256": "bd08560fe7ad09374da968939a72d630b62d9f4598819493c3d77d8221157fbf",
+    "scenarios": [
+      [
+        "close_1bp",
+        0,
+        0.0001
+      ],
+      [
+        "close_11bp",
+        0,
+        0.0011
+      ],
+      [
+        "lag1_1bp",
+        1,
+        0.0001
+      ],
+      [
+        "lag1_11bp",
+        1,
+        0.0011
+      ]
+    ]
+  },
+  "registered_at": "2026-09-27T16:24:51.539317+00:00"
+}
