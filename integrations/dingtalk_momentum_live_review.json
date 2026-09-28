@@ -1,0 +1,24 @@
+{
+  "scope": "dingtalk-stock-bot webhook: momentum read-only anonymous inline fallback + authenticated async live estimate",
+  "parent_review": "dingtalk_momentum_reply_review.json",
+  "source_before_sha256": {
+    "app.py": "72c8eb70196bc67bf400981b01a70fd3e699a7e448948d2bf25c263634b51732",
+    "dingtalk.py": "96dac3c6717c5ce5c4a41c5751a96df81e2a3b867e0ddde21d8df5364f24552d"
+  },
+  "source_after_sha256": {
+    "app.py": "259a365928cfa06d701515a73591a8ce07cdb05f764002c50636b92a2a3b9b9d",
+    "dingtalk.py": "96dac3c6717c5ce5c4a41c5751a96df81e2a3b867e0ddde21d8df5364f24552d"
+  },
+  "patch_sha256": "63bd0a604be958f7bc0a1a258cd92411a08518824dc9537a22219bbd71b0e08b",
+  "live_transport_source_sha256": "2772d495ddae8c1512fe2602284d47ca9dbbb5272f05a29b9b8e3b2c920970d9",
+  "deployed": true,
+  "deployed_at": "2026-09-29T01:03:31.636931",
+  "notes": "momentum command no longer 401s: anonymous callers get saved bundle inline (sessionWebhook unused); authenticated callbacks ACK immediately and a daemon thread computes the observe-mode estimate via subprocess and delivers through the verified session channel. All other commands keep authenticate-first.",
+  "deployment": {
+    "service_restarted": true,
+    "local_authenticated_momentum_http_status": 200,
+    "local_anonymous_momentum_http_status": 200,
+    "local_anonymous_other_command_http_status": 401,
+    "external_test_messages_sent": false
+  }
+}

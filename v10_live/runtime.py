@@ -23,12 +23,17 @@ def runtime_clock(now=None):
     return lambda: reference + timedelta(seconds=max(0., time.monotonic() - started))
 
 
-def validate_snapshot(quotes, signal_date, now):
-    """A cached/injected data view cannot bypass the independent commit guard."""
+def validate_snapshot(quotes, signal_date, now, observe=False):
+    """A cached/injected data view cannot bypass the independent commit guard.
+
+    observe=True is for read-only estimates staged in a throwaway directory:
+    the execution-window assertion is skipped, every other quote/date check
+    stays in force, and no production account or journal is ever written.
+    """
     from .data import _clock, _quotes
     import signal_store
     moment = _clock(now)
-    if not signal_store.execution_window(moment):
+    if not observe and not signal_store.execution_window(moment):
         raise ValueError("影子更新须在交易日14:50–14:55窗口内，停止本次记账")
     _quotes(quotes, signal_date, moment)
     return moment
@@ -92,12 +97,14 @@ def render(state, view):
     return lines
 
 
-def run(quotes, signal_date, state_path=None, now=None, build_view=None, decide=None):
+def run(quotes, signal_date, state_path=None, now=None, build_view=None, decide=None,
+        observe=False):
     """Compute one dated account update at the explicitly supplied state path.
 
     The daily worker supplies an isolated staging path. Only the main daily
     journal transaction promotes that prepared state to production. Queries
     use saved text, and same-day calls return the existing card without trades.
+    observe=True skips only the execution-window assertion (see validate_snapshot).
     """
     clock = runtime_clock(now)
     started_at = clock()
@@ -113,7 +120,7 @@ def run(quotes, signal_date, state_path=None, now=None, build_view=None, decide=
             return state["saved_lines"]
         if state and signal_date < state["last_date"]:
             raise ValueError("V10-H refuses backdated forward updates")
-        validated_at = validate_snapshot(quotes, signal_date, clock())
+        validated_at = validate_snapshot(quotes, signal_date, clock(), observe=observe)
         if build_view is None:
             from .data import build_live_view
             build_view = build_live_view
@@ -122,12 +129,12 @@ def run(quotes, signal_date, state_path=None, now=None, build_view=None, decide=
             decide = policy_decide
         view = build_view(quotes, signal_date, now=validated_at)
         decision = decide(view["histories"], view["calendar"], signal_date, state=state)
-        validate_snapshot(quotes, signal_date, clock())
+        validate_snapshot(quotes, signal_date, clock(), observe=observe)
         updated = advance(state, decision, view, quotes, signal_date)
         updated["data_metadata"] = view["metadata"]
         updated["saved_lines"] = render(updated, view)
         # State, mark, action entitlement, virtual fill and card commit together.
-        validator = lambda: validate_snapshot(quotes, signal_date, clock())
+        validator = lambda: validate_snapshot(quotes, signal_date, clock(), observe=observe)
         validator()
         atomic_json(state_path, updated, validator=validator)
         return updated["saved_lines"]

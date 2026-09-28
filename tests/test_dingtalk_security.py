@@ -17,6 +17,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import tempfile
+import threading
 import types
 import unittest
 from unittest.mock import patch
@@ -94,9 +95,12 @@ class CallbackIntegrationTests(unittest.TestCase):
         receipt = json.loads((ROOT / 'integrations/dingtalk_security_review.json').read_text())
         presence = json.loads((ROOT / 'integrations/dingtalk_auth_presence_review.json').read_text())
         reply_review = json.loads((ROOT / 'integrations/dingtalk_momentum_reply_review.json').read_text())
+        live = json.loads((ROOT / 'integrations/dingtalk_momentum_live_review.json').read_text())
         originals = {name: (BOT / name).read_text() for name in ('app.py', 'dingtalk.py')}
         hashes = {name: hashlib.sha256(source.encode()).hexdigest() for name, source in originals.items()}
-        if hashes == reply_review['source_after_sha256']:
+        if hashes == live['source_after_sha256']:
+            cls.sources = originals
+        elif hashes == reply_review['source_after_sha256']:
             cls.sources = originals
         elif hashes == presence['source_after_sha256']:
             cls.sources = originals
@@ -140,6 +144,19 @@ class CallbackIntegrationTests(unittest.TestCase):
                 cls.sources = {name: (Path(directory) / name).read_text() for name in originals}
             if {name: hashlib.sha256(source.encode()).hexdigest() for name, source in cls.sources.items()} != reply_review['source_after_sha256']:
                 raise AssertionError('Session reply patch result differs')
+        cls_hashes = {name: hashlib.sha256(source.encode()).hexdigest() for name, source in cls.sources.items()}
+        if cls_hashes == live['source_before_sha256']:
+            patch_path = ROOT / 'integrations/dingtalk_momentum_live.patch'
+            if hashlib.sha256(patch_path.read_bytes()).hexdigest() != live['patch_sha256']:
+                raise AssertionError('Live estimate patch changed')
+            with tempfile.TemporaryDirectory(prefix='bot_live_test_') as directory:
+                for name, source in cls.sources.items():
+                    (Path(directory) / name).write_text(source)
+                subprocess.run(['patch', '--batch', '-p1', '-d', directory, '-i', str(patch_path)],
+                               check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                cls.sources = {name: (Path(directory) / name).read_text() for name in originals}
+            if {name: hashlib.sha256(source.encode()).hexdigest() for name, source in cls.sources.items()} != live['source_after_sha256']:
+                raise AssertionError('Live estimate patch result differs')
 
     def setUp(self):
         self.logs = []
@@ -152,7 +169,7 @@ class CallbackIntegrationTests(unittest.TestCase):
         self.ding = selected_functions(self.sources['dingtalk.py'],
             {'_callback_guard', 'verify_outgoing_token', 'verify_callback_request', 'parse_callback_body'}, {'config': self.config})
         self.module = types.SimpleNamespace(**{name: self.ding[name] for name in ('verify_callback_request', 'parse_callback_body')})
-        self.module.parse_command = lambda text: ('momentum', [])
+        self.module.parse_command = lambda text: ('momentum', []) if text.strip() == '动量' else ('quote', [text])
         self.outgoing = []
         def fake_post(url, **kwargs):
             self.outgoing.append((url,kwargs))
@@ -165,11 +182,22 @@ class CallbackIntegrationTests(unittest.TestCase):
         def command(*args):
             self.called.append(args)
             return 'saved test signal'
+        class SyncThread:
+            def __init__(inner, target=None, daemon=None, name=None):
+                inner._target = target
+            def start(inner):
+                inner._target()
+        fake_threading = types.SimpleNamespace(Thread=SyncThread)
         self.namespace = dict(logger=self.logger, dingtalk=self.module, os=os,
                               _momentum_reply_transport=lambda:reply_module,
+                              _handle_momentum_signal=lambda:'saved test signal',
+                              _live_momentum_markdown=lambda:'live test signal',
+                              _momentum_inflight=set(),
+                              _momentum_inflight_lock=threading.Lock(),
+                              threading=fake_threading,
                               router=types.SimpleNamespace(safety_check=lambda text: (False, '')),
                               jsonify=lambda value: value, handle_command=command)
-        selected_functions(self.sources['app.py'], {'webhook'}, self.namespace)
+        selected_functions(self.sources['app.py'], {'webhook', '_answer_momentum'}, self.namespace)
         self.auth_env = patch.dict(os.environ, {'DINGTALK_CALLBACK_AUTH_MODE': 'token'}, clear=False)
         self.auth_env.start()
         self.addCleanup(self.auth_env.stop)
@@ -180,20 +208,21 @@ class CallbackIntegrationTests(unittest.TestCase):
             stream=io.BytesIO(json.dumps(payload).encode('utf-8') if raw is None else raw))
         return self.namespace['webhook']()
 
-    def test_no_auth_cannot_reach_command_or_parse_body(self):
+    def test_malformed_body_fails_before_auth_and_unconfigured_auth_rejects_non_momentum(self):
         result = self.request(raw=b'not json')
-        self.assertEqual(result[1], 401)
+        self.assertEqual(result[1], 400)
         self.assertEqual(self.called, [])
         self.config.DINGTALK_OUTGOING_TOKEN = ''
-        self.assertEqual(self.request(headers={'token': 'any'})[1], 503)
+        self.assertEqual(self.request(payload={'text': {'content': '行情'}}, headers={'token': 'any'})[1], 503)
 
     def test_rejected_callback_logs_header_presence_but_no_values_or_body(self):
-        result = self.request(headers={'token':'wrong-private-token','sign':'private-signature','timestamp':'private-timestamp'},
-                              raw=b'private-body-not-json')
+        payload = {'text': {'content': 'private-body-marker'}, 'senderId': 'private-sender'}
+        result = self.request(payload=payload,
+                              headers={'token':'wrong-private-token','sign':'private-signature','timestamp':'private-timestamp'})
         self.assertEqual(result[1],401)
         self.assertFalse(self.called)
         logged='\n'.join(self.logs)
-        for value in ('wrong-private-token','private-signature','private-timestamp','private-body-not-json'):
+        for value in ('wrong-private-token','private-signature','private-timestamp','private-body-marker','private-sender'):
             self.assertNotIn(value,logged)
         for value in ('token_present=True','sign_present=True','timestamp_present=True'):
             self.assertIn(value,logged)
@@ -203,7 +232,7 @@ class CallbackIntegrationTests(unittest.TestCase):
         payload = dict(text={'content': 'private-marker'}, senderNick='private-name', senderId='private-id',
                        sessionWebhook='https://example.invalid/secret-session', conversationType='2')
         result = self.request(payload, {'token': 'synthetic-token'})
-        self.assertEqual(result, {})  # Unsafe supplied session URL is never called.
+        self.assertEqual(result['markdown']['text'], '@private-name\n\nsaved test signal')
         self.assertEqual(self.outgoing, [])
         self.assertEqual(len(self.called), 1)
         logs = '\n'.join(self.logs)
@@ -217,7 +246,7 @@ class CallbackIntegrationTests(unittest.TestCase):
         self.assertEqual(self.request(payload,{'token':'synthetic-token'}),{})
         self.assertEqual(self.request(payload,{'token':'synthetic-token'}),{})
         self.assertEqual(len(self.outgoing),1)
-        self.assertEqual(self.outgoing[0][1]['json']['markdown']['text'],'saved test signal')
+        self.assertEqual(self.outgoing[0][1]['json']['markdown']['text'],'live test signal')
         self.assertFalse(self.outgoing[0][1]['allow_redirects'])
         logs='\n'.join(self.logs)
         self.assertIn('status=sent',logs)
@@ -225,10 +254,24 @@ class CallbackIntegrationTests(unittest.TestCase):
         for private in ('private-sender','synthetic-session','synthetic-message','saved test signal'):
             self.assertNotIn(private,logs)
 
-    def test_unauthenticated_session_cannot_trigger_outbound_delivery(self):
+    def test_unauthenticated_momentum_gets_saved_inline_and_never_uses_session(self):
         payload=dict(text={'content':'动量'},sessionWebhook='https://oapi.dingtalk.com/robot/sendBySession?session=synthetic')
-        self.assertEqual(self.request(payload)[1],401)
+        result = self.request(payload)
+        self.assertEqual(result['markdown']['text'], 'saved test signal')
         self.assertEqual(self.outgoing,[])
+        self.assertIn('anonymous momentum fallback', '\n'.join(self.logs))
+
+    def test_non_momentum_command_still_requires_auth(self):
+        result = self.request(payload={'text': {'content': '行情 600000'}})
+        self.assertEqual(result[1], 401)
+        self.assertEqual(self.called, [])
+        self.assertEqual(self.outgoing, [])
+
+    def test_authenticated_momentum_without_session_replies_live_inline(self):
+        payload = dict(text={'content': '动量'}, senderId='private-sender')
+        result = self.request(payload, {'token': 'synthetic-token'})
+        self.assertEqual(result['markdown']['text'], 'live test signal')
+        self.assertEqual(self.outgoing, [])
 
     def test_bad_or_oversized_json_returns_visible_http_failure_without_dispatch(self):
         for raw, status in ((b'{"text":null}', 400), (b'[' + b' ' * guard.MAX_CALLBACK_BYTES, 413)):

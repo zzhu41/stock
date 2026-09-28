@@ -49,11 +49,14 @@ def validate_view(view, quotes, signal_date):
             raise ValueError("V9.2+ missing verified current corporate action: " + code)
 
 
-def run(quotes, signal_date, state_path=STATE, now=None, build_view=None, decide=None):
+def run(quotes, signal_date, state_path=STATE, now=None, build_view=None, decide=None,
+        observe=False):
     """New dates require fresh validated inputs; sealed dates are read-only.
 
     state_path may point into the caller's batch staging directory. This module
     commits only that one independent account; the parent owns batch publishing.
+    observe=True skips only the execution-window assertion (see validate_snapshot)
+    for read-only estimates staged outside production accounts.
     """
     from v10_live.runtime import runtime_clock, validate_snapshot
     clock = runtime_clock(now)
@@ -70,7 +73,7 @@ def run(quotes, signal_date, state_path=STATE, now=None, build_view=None, decide
             return lines
         if state and signal_date < state["last_date"]:
             raise ValueError("V9.2+ refuses backdated forward updates")
-        validate_snapshot(quotes, signal_date, clock())
+        validate_snapshot(quotes, signal_date, clock(), observe=observe)
         if build_view is None:
             from v10_live.data import build_live_view
             build_view = build_live_view
@@ -80,13 +83,13 @@ def run(quotes, signal_date, state_path=STATE, now=None, build_view=None, decide
         view = build_view(quotes, signal_date, now=clock())
         validate_view(view, quotes, signal_date)
         decision = decide(view["histories"], view["calendar"], signal_date, state=state)
-        validate_snapshot(quotes, signal_date, clock())
+        validate_snapshot(quotes, signal_date, clock(), observe=observe)
         updated = advance(state, decision, view, quotes, signal_date)
         updated["data_metadata"] = view["metadata"]
         updated["saved_lines"] = render(updated, view)
-        validate_snapshot(quotes, signal_date, clock())
+        validate_snapshot(quotes, signal_date, clock(), observe=observe)
         atomic_json(state_path, updated,
-                    validator=lambda: validate_snapshot(quotes, signal_date, clock()))
+                    validator=lambda: validate_snapshot(quotes, signal_date, clock(), observe=observe))
         return updated["saved_lines"]
 
 

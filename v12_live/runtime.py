@@ -49,11 +49,13 @@ def render(state,view):
     return lines
 
 
-def run(quotes,signal_date,state_path=None,now=None,build_view=None,decide=None):
+def run(quotes,signal_date,state_path=None,now=None,build_view=None,decide=None,observe=False):
     """Only fresh current-window observations; never backfill the launch day.
 
     Explicit now is a test hook. Live callers leave it absent; monotonic elapsed
     time is rechecked before settlement and immediately before atomic replace.
+    observe=True skips only the execution-window assertion (see validate_snapshot)
+    for read-only estimates staged outside production accounts.
     """
     clock=runtime_clock(now)
     if signal_date!=clock().strftime("%Y-%m-%d"):
@@ -70,7 +72,7 @@ def run(quotes,signal_date,state_path=None,now=None,build_view=None,decide=None)
                 raise ValueError("V12-R2 sealed daily card missing; duplicate fill refused")
             return lines
         if state and signal_date<state["last_date"]:raise ValueError("V12-R2 backdated update refused")
-        validate_snapshot(quotes,signal_date,clock())
+        validate_snapshot(quotes,signal_date,clock(),observe=observe)
         if build_view is None:
             from v10_live.data import build_live_view
             build_view=build_live_view
@@ -80,12 +82,12 @@ def run(quotes,signal_date,state_path=None,now=None,build_view=None,decide=None)
         current=build_view(quotes,signal_date,now=clock())
         validate_view(current,quotes,signal_date)
         decision=decide(current["histories"],current["calendar"],signal_date,state=state)
-        validate_snapshot(quotes,signal_date,clock())
+        validate_snapshot(quotes,signal_date,clock(),observe=observe)
         updated=advance(state,decision,current,quotes,signal_date)
         updated["data_metadata"]=current["metadata"]
         updated["saved_lines"]=render(updated,current)
-        validate_snapshot(quotes,signal_date,clock())
-        atomic_json(path,updated,validator=lambda:validate_snapshot(quotes,signal_date,clock()))
+        validate_snapshot(quotes,signal_date,clock(),observe=observe)
+        atomic_json(path,updated,validator=lambda:validate_snapshot(quotes,signal_date,clock(),observe=observe))
         return updated["saved_lines"]
 
 

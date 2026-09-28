@@ -136,13 +136,24 @@ def collect(payload):
     stage = Path(payload['state_dir']).resolve()
     if not stage.is_dir() or stage == Path(__file__).resolve().parent / 'signals':
         raise ValueError('Strategy worker requires an isolated staging directory')
+    # observe_only: read-only estimate outside the 14:50 commit window. Staging
+    # is still mandatory; production accounts/journals are never touched.
+    observe = payload.get('observe_only') is True
+    limits = payload.get('input_limits')
+    if limits is not None:
+        if (not isinstance(limits, dict) or set(limits) != set(INPUT_LIMITS)
+                or any(not isinstance(v, (int, float)) or isinstance(v, bool)
+                       or not math.isfinite(v) or v <= 0 or v > INPUT_LIMITS[k]
+                       for k, v in limits.items())):
+            raise ValueError('input_limits must cover every input within its default budget')
+        limits = {k: float(v) for k, v in limits.items()}
     initial = datetime.fromisoformat(payload['now']) if payload.get('now') else None
     clock = runtime.runtime_clock(initial)
     inputs = _collect_inputs({
         'view': (build_live_view, (quotes, date), dict(now=clock())),
         'qvix': (_qvix_input, (date,), {}),
         'premium': (premium.signal_block, (), dict(quotes=quotes)),
-    }, stage)
+    }, stage, limits=limits)
     output, successful, diagnostics = [], [], []
     for name in ('view', 'qvix', 'premium'):
         if not inputs[name]['ok']:
@@ -202,21 +213,21 @@ def collect(payload):
         # Isolate import/frozen-configuration failures to this version too.
         from v12_live import runtime as r2_runtime
         return r2_runtime.run(quotes, date, state_path=stage / 'shadow_v12_r2.json',
-                              now=clock(), build_view=checked_view)
+                              now=clock(), build_view=checked_view, observe=observe)
 
     jobs = (
         ('V12-R2', 'shadow_v12_r2.json', run_r2),
         ('V9.2', 'shadow_v92.json', run_v92),
         ('V9.2+', 'shadow_v92_plus.json', lambda: plus_runtime.run(
-            quotes, date, state_path=stage / 'shadow_v92_plus.json', now=clock(), build_view=checked_view, decide=decide_plus)),
+            quotes, date, state_path=stage / 'shadow_v92_plus.json', now=clock(), build_view=checked_view, decide=decide_plus, observe=observe)),
         ('V10-H', 'shadow_v10.json', lambda: runtime.run(
-            quotes, date, state_path=stage / 'shadow_v10.json', now=clock(), build_view=checked_view, decide=decide_h)),
+            quotes, date, state_path=stage / 'shadow_v10.json', now=clock(), build_view=checked_view, decide=decide_h, observe=observe)),
     )
     for label, name, compute in jobs:
         try:
-            runtime.validate_snapshot(quotes, date, clock())
+            runtime.validate_snapshot(quotes, date, clock(), observe=observe)
             lines = compute()
-            runtime.validate_snapshot(quotes, date, clock())
+            runtime.validate_snapshot(quotes, date, clock(), observe=observe)
             output.extend(lines)
             successful.append(name)
         except Exception as exc:
