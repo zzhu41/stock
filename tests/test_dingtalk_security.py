@@ -192,9 +192,10 @@ class CallbackIntegrationTests(unittest.TestCase):
                               hashlib=hashlib,
                               _momentum_reply_transport=lambda:reply_module,
                               _handle_momentum_signal=lambda:'saved test signal',
-                              _live_momentum_markdown=lambda:'live test signal',
+                              _live_momentum_markdown=lambda *a, **k:'live test signal',
                               _momentum_inflight=set(),
                               _momentum_inflight_lock=threading.Lock(),
+                              MOMENTUM_LIVE_TIMEOUT_SYNC=25,
                               threading=fake_threading,
                               router=types.SimpleNamespace(safety_check=lambda text: (False, '')),
                               jsonify=lambda value: value, handle_command=command)

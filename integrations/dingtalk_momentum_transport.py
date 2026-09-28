@@ -149,11 +149,16 @@ def reply_momentum(payload, markdown, requester, *, authenticated, logger=None,
                    now_ms=None, cache=None, dispatch=None, title="回复"):
     """Return (callback_body, safe_event); outbound delivery may finish later.
 
-    The caller must invoke this ONLY from the authenticated momentum branch.
-    requester is requests.post or an injected fake; this module owns no HTTP
-    client or credentials. With a session endpoint return an empty HTTP ACK,
-    including failure/duplicate cases. Without a session retain the old inline
-    Markdown response. A queued event is NOT delivery confirmation.
+    Callers pass authenticated=True only after verifying credentials OR, for the
+    read-only momentum command, when relying on the session id being an
+    unguessable short-lived platform value and the content being public market
+    data (anonymous fallback decided in the bot, not here). This module's own
+    guarantees never depend on the caller's credential state: endpoint shape,
+    expiry, dedup and bounded cache are enforced regardless. requester is
+    requests.post or an injected fake; this module owns no HTTP client or
+    credentials. With a session endpoint return an empty HTTP ACK, including
+    failure/duplicate cases. Without a session retain the old inline Markdown
+    response. A queued event is NOT delivery confirmation.
 
     dispatch(work) defaults to one bounded daemon thread; tests can capture or
     execute work synchronously. Missing expiry permits compatibility with an

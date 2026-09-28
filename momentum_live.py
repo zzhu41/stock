@@ -40,7 +40,10 @@ VERSION_ROWS = (
 )
 
 # A chat answer cannot wait for the 14:50 defaults (view 45s / qvix 22s / premium 18s).
-LIVE_INPUT_LIMITS = {"view": 25.0, "qvix": 8.0, "premium": 8.0}
+# qvix keeps its full 22s budget: its own fetch timeout is 20s, so any smaller
+# budget would silently disable the panic-dip channel whenever the API is slow.
+# Inputs run concurrently, so a generous qvix budget does not lengthen the reply.
+LIVE_INPUT_LIMITS = {"view": 25.0, "qvix": 22.0, "premium": 10.0}
 
 
 def _etf(code):
@@ -75,6 +78,8 @@ def _row(label, new_state, old_state=None):
         previous = old_state.get("holding")
     if previous and previous != code:
         action = "换仓 卖%s" % _etf(previous)
+    elif previous == code:
+        action = "持有"
     elif new_state.get("start_date") and new_state.get("start_date") == new_state.get("last_date"):
         action = "建仓"
     else:

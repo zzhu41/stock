@@ -24,6 +24,14 @@ class RowTests(unittest.TestCase):
         self.assertEqual(target, "518880 黄金ETF")
         self.assertEqual(reason, "黄金score居首")
 
+    def test_same_holding_survives_start_date_reset(self):
+        # shadow_v92 跨日推进会把 start_date 重置为 last_date；只要 previous
+        # 与现持仓一致就必须判"持有"，不能落入建仓分支（M1 回归）。
+        new = dict(holding="513100", last_date="2026-09-28", start_date="2026-09-28",
+                   last_advice="513100 纳指ETF | 避险池最强接盘(永不空仓)")
+        label, action, target, reason = momentum_live._row("V9.2", new, dict(holding="513100"))
+        self.assertEqual(action, "持有")
+
     def test_first_day_state_shows_entry(self):
         new = dict(holding="513100", last_date="2026-09-29", start_date="2026-09-29",
                    last_decision={"reason": "首次建仓"})

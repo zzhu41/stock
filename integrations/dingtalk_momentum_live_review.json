@@ -6,11 +6,11 @@
     "dingtalk.py": "96dac3c6717c5ce5c4a41c5751a96df81e2a3b867e0ddde21d8df5364f24552d"
   },
   "source_after_sha256": {
-    "app.py": "9783be0fbe5e9f4689da371b006047e6f8ffc471cc015cf0acb39d07b6bbd0d6",
+    "app.py": "793db2675fdf636d112426b62b5337f6cee544dbb7b078267f08399d6bd5f3a0",
     "dingtalk.py": "96dac3c6717c5ce5c4a41c5751a96df81e2a3b867e0ddde21d8df5364f24552d"
   },
-  "patch_sha256": "d89582ed9ddcc23640ed77edb30c96b595b9efcda76beae48fcc975b9d451d58",
-  "live_transport_source_sha256": "2772d495ddae8c1512fe2602284d47ca9dbbb5272f05a29b9b8e3b2c920970d9",
+  "patch_sha256": "f95f602a1ad8dc0c94bd9ac7a446b7be577d1a448828c3c1ff3c2c89f8b78883",
+  "live_transport_source_sha256": "33965ca09c014e15cbb3f120c785bb92d83cd18a28240874d4f1a87f94f1ca9d",
   "deployed": true,
   "deployed_at": "2026-09-29T02:12:25.885063",
   "notes": "momentum never 401s: anonymous and authenticated callers get the same read-only estimate table (session reply is safe anonymously: unguessable short-lived platform session id, official-endpoint re-verification, dedup, public market data only). Reject logs carry len+sha8 fingerprints of both supplied and configured tokens for mismatch diagnosis; values are never recorded. All non-momentum commands keep authenticate-first.",
@@ -20,5 +20,12 @@
     "anonymous_session_reply_delivered_attempted": true,
     "anonymous_other_command_http_status": 401,
     "external_test_messages_sent": false
-  }
+  },
+  "transport_source_sha256": "a0bf723715fc0ac327d4f66f5703216f7a81164cbfe5fdce7503a724b804e536",
+  "review_findings_addressed": [
+    "M1 row action priority (hold before entry)",
+    "M2 concurrency lock + failure cache + sync timeout 25s",
+    "M3 qvix budget restored to 22s",
+    "L1-L4 comments/stdin/log labels"
+  ]
 }

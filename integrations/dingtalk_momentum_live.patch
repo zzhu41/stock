@@ -10,15 +10,16 @@
  import threading
  import time
  
-@@ -304,51 +307,59 @@
+@@ -304,51 +307,60 @@
  def webhook():
      """
      钉钉 Outgoing Webhook 回调入口
 +
 +    Body parsing is a pure size-capped function, so it runs before credential
-+    verification to allow a read-only "momentum" fallback: an unauthenticated
-+    momentum query still gets the saved bundle inline (the caller-supplied
-+    sessionWebhook is never used without verified credentials). Every other
++    verification to allow a read-only "momentum" fallback: momentum answers
++    with the same estimate table regardless of credentials (the session reply
++    channel is safe anonymously — unguessable short-lived platform session id,
++    endpoint re-verified, deduped, public market data only). Every other
 +    command keeps the authenticate-first rule.
      """
      global _current_session_webhook
@@ -99,7 +100,7 @@
      if not text:
          return jsonify({})
  
-@@ -359,9 +370,16 @@
+@@ -359,9 +371,16 @@
              block_reply = f"@{sender_name}\n\n{block_reply}"
          return jsonify({"msgtype": "markdown", "markdown": {"title": "安全拦截", "text": block_reply}})
  
@@ -117,7 +118,7 @@
      if cmd == "ai":
          # 自然语言处理
          reply = handle_natural_language(text, sender_id, sender_name, session_webhook, conversation_type)
-@@ -373,15 +391,109 @@
+@@ -373,15 +392,132 @@
      if conversation_type == "2" and reply:
          reply = f"@{sender_name}\n\n{reply}"
  
@@ -126,39 +127,66 @@
 +
 +
 +# ── 动量查询：实时估算 + 宽容认证 ────────────────────────────────────────────
-+# 认证回调：立即 ACK，后台线程经 /root/stock/momentum_live.py 子进程做实时估算，
-+# 再由已验证的 session 通道回发。匿名回调：只读已封存信号同步 inline 返回，
-+# 绝不使用请求方提供的 sessionWebhook。
++# 动量命令对认证/匿名一视同仁：立即 ACK，后台线程经 /root/stock/momentum_live.py
++# 子进程做实时估算，再经官方 session 通道回发（无 session 时同步 inline）。
++# 匿名回发安全依据：会话ID为平台下发的不可猜测短时效值、transport 复核官方
++# endpoint 与时效并去重、内容仅为公开行情估算；非动量命令仍强制认证。
 +_momentum_inflight = set()
 +_momentum_inflight_lock = threading.Lock()
 +_live_md_cache = {"at": 0.0, "md": None}
++_live_md_lock = threading.Lock()
 +LIVE_MD_TTL_SECONDS = 90
-+MOMENTUM_LIVE_TIMEOUT = 55
++LIVE_MD_FAILURE_TTL_SECONDS = 30
++MOMENTUM_LIVE_TIMEOUT_ASYNC = 50
++MOMENTUM_LIVE_TIMEOUT_SYNC = 25  # 同步路径必须留出 worker 60s 超时的余量
 +MOMENTUM_LIVE_CMD = ["/usr/bin/python3.8", "-B", "/root/stock/momentum_live.py"]
 +
 +
-+def _live_momentum_markdown():
-+    """Realtime estimate via an isolated subprocess; saved rendering on failure."""
++def _live_momentum_markdown(timeout=MOMENTUM_LIVE_TIMEOUT_ASYNC):
++    """Realtime estimate via an isolated subprocess; saved rendering on failure.
++
++    A non-blocking lock keeps concurrent requests from multiplying subprocesses;
++    even failures are cached briefly so a broken estimator cannot stall workers.
++    """
 +    now = time.time()
 +    if _live_md_cache["md"] and now - _live_md_cache["at"] < LIVE_MD_TTL_SECONDS:
 +        return _live_md_cache["md"]
-+    payload = None
++    if not _live_md_lock.acquire(False):
++        # 另一请求正在计算：并发不放大，复用最近结果（过期也先用）
++        if _live_md_cache["md"]:
++            return _live_md_cache["md"]
++        return _handle_momentum_signal()
 +    try:
-+        proc = subprocess.run(MOMENTUM_LIVE_CMD, stdout=subprocess.PIPE,
-+                              stderr=subprocess.PIPE, universal_newlines=True,
-+                              timeout=MOMENTUM_LIVE_TIMEOUT, cwd="/root/stock")
-+        if proc.returncode == 0 and proc.stdout:
-+            payload = json.loads(proc.stdout.strip().splitlines()[-1])
-+    except Exception as exc:
-+        logger.warning("动量实时估算不可用: %s", type(exc).__name__)
-+    if isinstance(payload, dict) and payload.get("ok") and isinstance(payload.get("markdown"), str):
-+        if payload.get("live_fallback"):
-+            logger.warning("动量实时估算降级为封存信号: %s", payload["live_fallback"])
-+        _live_md_cache.update(at=now, md=payload["markdown"])
-+        return payload["markdown"]
-+    if isinstance(payload, dict) and payload.get("error"):
-+        logger.warning("动量实时估算失败: %s", payload["error"])
-+    return _handle_momentum_signal()
++        payload = None
+         try:
+-            body, _ = _momentum_reply_transport().reply_momentum(
+-                data, reply, dingtalk.requests.post, authenticated=True, logger=logger)
+-            return jsonify(body)
++            proc = subprocess.run(MOMENTUM_LIVE_CMD, stdout=subprocess.PIPE,
++                                  stderr=subprocess.PIPE, stdin=subprocess.DEVNULL,
++                                  universal_newlines=True, timeout=timeout,
++                                  cwd="/root/stock")
++            if proc.returncode == 0 and proc.stdout:
++                payload = json.loads(proc.stdout.strip().splitlines()[-1])
+         except Exception as exc:
+-            logger.error("DingTalk momentum reply unavailable: %s", type(exc).__name__)
+-            return jsonify({"error": "momentum reply unavailable"}), 503
+-    return jsonify({"msgtype": "markdown", "markdown": {"title": "回复", "text": reply}})
++            logger.warning("动量实时估算不可用: %s", type(exc).__name__)
++        if isinstance(payload, dict) and payload.get("ok") and isinstance(payload.get("markdown"), str):
++            if payload.get("live_fallback"):
++                logger.warning("动量实时估算降级为封存信号: %s", payload["live_fallback"])
++            _live_md_cache.update(at=now, md=payload["markdown"])
++            return payload["markdown"]
++        if isinstance(payload, dict) and payload.get("error"):
++            logger.warning("动量实时估算失败: %s", payload["error"])
++        fallback = _handle_momentum_signal()
++        # 失败结果也短缓存：防止估算器持续故障时每个请求都重起子进程
++        _live_md_cache.update(at=now - (LIVE_MD_TTL_SECONDS - LIVE_MD_FAILURE_TTL_SECONDS),
++                              md=fallback)
++        return fallback
++    finally:
++        _live_md_lock.release()
 +
 +
 +def _answer_momentum(data, authenticated, conversation_type, sender_name):
@@ -172,8 +200,9 @@
 +    """
 +    label = "authenticated" if authenticated else "anonymous"
 +    if not data.get("sessionWebhook"):
-+        # 无异步会话通道（本机自测等）：同步计算并 inline 返回
-+        markdown = _live_momentum_markdown()
++        # 无异步会话通道（本机自测等）：同步计算并 inline 返回；超时收紧，
++        # 单 worker 的 60s 上限内必须留有余量
++        markdown = _live_momentum_markdown(timeout=MOMENTUM_LIVE_TIMEOUT_SYNC)
 +        if conversation_type == "2" and sender_name:
 +            markdown = "@%s\n\n%s" % (sender_name, markdown)
 +        logger.info("动量%s同步inline回复", label)
@@ -187,20 +216,15 @@
 +    payload = dict(data)  # snapshot for the worker thread
 +
 +    def work():
-         try:
--            body, _ = _momentum_reply_transport().reply_momentum(
--                data, reply, dingtalk.requests.post, authenticated=True, logger=logger)
--            return jsonify(body)
++        try:
 +            markdown = _live_momentum_markdown()
 +            if conversation_type == "2" and sender_name:
 +                markdown = "@%s\n\n%s" % (sender_name, markdown)
 +            _momentum_reply_transport().reply_momentum(
 +                payload, markdown, dingtalk.requests.post, authenticated=True, logger=logger)
-         except Exception as exc:
--            logger.error("DingTalk momentum reply unavailable: %s", type(exc).__name__)
--            return jsonify({"error": "momentum reply unavailable"}), 503
--    return jsonify({"msgtype": "markdown", "markdown": {"title": "回复", "text": reply}})
-+            logger.error("动量异步回复失败: %s", type(exc).__name__)
++            logger.info("动量%s异步回发已受理", label)
++        except Exception as exc:
++            logger.error("动量%s异步回复失败: %s", label, type(exc).__name__)
 +        finally:
 +            if msg_id:
 +                with _momentum_inflight_lock:
@@ -234,3 +258,12 @@
  
  
  # 板块多选缓存: sender_id -> [(code, name), ...]
+@@ -639,7 +775,7 @@
+ 
+ 
+ def handle_command(cmd, args, sender_id, sender_name, session_webhook=None, conversation_id=None):
+-    # Saved momentum queries do not depend on the stock-monitoring config.
++    # momentum 已在 webhook 提前拦截（实时估算+session回发）；此分支仅为防御性兜底。
+     if cmd == "momentum":
+         return _handle_momentum_signal()
+     try:
