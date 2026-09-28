@@ -4,7 +4,7 @@
 
 协议依据：阿里官方 [chatbot.install 参数说明](https://developer.alibaba.com/docs/api.htm?apiId=47514) 定义 `outgoing_token` 通过回调的 `token` 请求头提供；企业应用机器人另有 [HTTP 接收消息协议](https://open.dingtalk.com/document/orgapp/receive-message)，使用 `timestamp` / `sign` 与应用 AppSecret。两种协议不能混用。
 
-本次现场检查只记录存在性：运行服务 `DINGTALK_OUTGOING_TOKEN` 已配置；回调 AppSecret 和显式模式未配置。因此默认使用旧版 Outgoing `token` 模式，恒定时间比较；缺配置返回 503，凭据缺失或错误返回 401。没有使用向群发消息的 `DINGTALK_WEBHOOK_SECRET` 替代回调凭据。
+原现场检查只确认了运行服务 `DINGTALK_OUTGOING_TOKEN` 已配置，回调AppSecret和显式模式未配置，因而程序默认使用旧版Outgoing token模式。**这只能证明服务端配置，不能证明用户实际机器人也采用该协议或携带匹配token。** 2026-09-28发现两次真实来源未确认的认证拒绝，需要结合平台请求头存在性和实际配置排查；不能再将本机token自测等同于平台联通。缺配置返回503，凭据缺失或错误返回401；没有使用发群Webhook secret冒充回调AppSecret，也不会自动降级认证。
 
 可选显式企业模式：`DINGTALK_CALLBACK_AUTH_MODE=sign`，配合 `DINGTALK_CALLBACK_APP_SECRET`。该模式验证原始 Base64 签名及正负一小时窗口；计算式为 `Base64(HMAC-SHA256(AppSecret, timestamp + "\n" + AppSecret))`。它不会在失败时尝试 token 模式，也不接受 URL 查询参数中的发群签名。现场没有部署这种模式，其协议仅做离线合成验签测试。
 
@@ -27,3 +27,5 @@ python3.8 -B -m unittest discover -s tests -p test_dingtalk_security.py -v
 部署方还应在本机内存中用现场配置的 token 做一次合法请求验证、一次错误 token 验证；不得打印凭据或把它放入命令行参数。认证只解决应用回调来源检查，不代表已经审计公网入口、HTTPS终止或所有其它机器人业务。
 
 2026-09-27 已在本机部署并重载。内存使用现场token的本机“动量”请求返回200，未认证401、非法正文400、超限413；未提供sessionWebhook，未外发群测试消息。备份及核验状态见review JSON的deployment字段。
+
+2026-09-28新增了独立的认证存在性诊断与会话回复补丁，旧review收据保留。当前外部源的审计链为`dingtalk_security_review.json` → `dingtalk_auth_presence_review.json` → `dingtalk_momentum_reply_review.json`；只允许已核对的源码状态。模拟测试覆盖实际会话发送及ACK/去重/失败语义；生产验证仍不能省略用户真实回调是否通过认证及回发是否获errcode=0。

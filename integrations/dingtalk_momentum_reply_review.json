@@ -1,0 +1,20 @@
+{
+  "scope": "Authenticated momentum replies through the supplied DingTalk session endpoint, inline fallback without session; no auth-mode change",
+  "parent_review": "dingtalk_auth_presence_review.json",
+  "source_before_sha256": {
+    "app.py": "54ef30c900ebc9ef14a54c0c6860f624a2d6b635d2e70cbe05889a07f18e198a",
+    "dingtalk.py": "96dac3c6717c5ce5c4a41c5751a96df81e2a3b867e0ddde21d8df5364f24552d"
+  },
+  "source_after_sha256": {
+    "app.py": "72c8eb70196bc67bf400981b01a70fd3e699a7e448948d2bf25c263634b51732",
+    "dingtalk.py": "96dac3c6717c5ce5c4a41c5751a96df81e2a3b867e0ddde21d8df5364f24552d"
+  },
+  "patch_sha256": "a2bc933f3e759e36c6d73240f5dcc87981a010eef12f473635f99004cc4a5367",
+  "transport_source_sha256": "3c4e54b1fde569af469f458129d932d1d48cfd6b32d6d6652065402da84da80f",
+  "deployed": true,
+  "deployed_at": "2026-09-28T23:21:17.166985",
+  "private_backup": "/root/dingtalk-stock-bot/backups/momentum-reply-20260928T232117",
+  "mock_tests_passed": 31,
+  "external_test_messages_sent": false,
+  "real_user_callback_not_yet_verified": true
+}

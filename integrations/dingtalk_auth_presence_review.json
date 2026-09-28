@@ -1,0 +1,16 @@
+{
+  "scope": "Safe presence-only rejection diagnostics; authentication behavior unchanged",
+  "source_before_sha256": {
+    "app.py": "543ace6798b9e03b202d700f395862e86a99ba302a98bbd5fe1ae3464fd7e852",
+    "dingtalk.py": "96dac3c6717c5ce5c4a41c5751a96df81e2a3b867e0ddde21d8df5364f24552d"
+  },
+  "source_after_sha256": {
+    "app.py": "54ef30c900ebc9ef14a54c0c6860f624a2d6b635d2e70cbe05889a07f18e198a",
+    "dingtalk.py": "96dac3c6717c5ce5c4a41c5751a96df81e2a3b867e0ddde21d8df5364f24552d"
+  },
+  "patch_sha256": "d115f5030ef9ac4c7dc1757c1d94c05a0905e11fe5a0cefcf31df0a8abd3a692",
+  "deployed": true,
+  "deployed_at": "2026-09-28T23:13:06.636956",
+  "private_backup": "/root/dingtalk-stock-bot/backups/auth-presence-20260928T231306",
+  "tests_passed": 13
+}

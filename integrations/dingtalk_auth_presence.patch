@@ -1,0 +1,16 @@
+--- a/app.py
++++ b/app.py
+@@ -294,7 +294,12 @@
+         logger.error("DingTalk callback authentication unavailable: %s", type(exc).__name__)
+         return jsonify({"error": "callback authentication unavailable"}), 503
+     if not accepted:
+-        logger.warning("DingTalk callback rejected: %s", auth_reason)
++        # Header presence only: never record credentials, signatures or body.
++        logger.warning("DingTalk callback rejected: %s; token_present=%s sign_present=%s timestamp_present=%s mode=%s loopback=%s",
++                       auth_reason, bool(request.headers.get("token")),
++                       bool(request.headers.get("sign")), bool(request.headers.get("timestamp")),
++                       "sign" if os.environ.get("DINGTALK_CALLBACK_AUTH_MODE", "token") == "sign" else "token_or_invalid",
++                       getattr(request, "remote_addr", None) in ("127.0.0.1", "::1"))
+         status = 503 if auth_reason in ("auth_not_configured", "invalid_auth_mode") else 401
+         return jsonify({"error": "callback authentication failed"}), status
+     # Read at most the published local body limit plus one byte, including

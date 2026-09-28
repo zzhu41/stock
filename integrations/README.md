@@ -25,4 +25,8 @@ Gunicorn无`--preload`时，HUP让工作进程重新加载入口；先完成语�
 
 可通过本机 `POST http://127.0.0.1:5000/webhook` 验证精确命令“动量”。使用合成发送者、合法的本机回调token header且完全省略`sessionWebhook`，该命令同步返回Markdown JSON，不发送群消息。未认证请求现在返回401；不得把token打印到终端或日志。测试时不要使用会调用其他业务或异步发送的命令。
 
+2026-09-28补充了实际会话回复链路：**已认证**的动量回调携带合法、未过期的官方sessionWebhook时，向该次会话显式回发Markdown，HTTP仅返回ACK；无会话地址时保留旧同步响应。地址限制为官方HTTPS `oapi.dingtalk.com/robot/sendBySession`，禁止重定向，不会回退发送到固定群。只有回发HTTP成功且整数errcode=0才记录sent，收到/排队/HTTP ACK都不等于已送达。进程内缓存抑制同msgId重试，但不承诺跨重启或多worker严格一次。
+
+接入补丁为[dingtalk_auth_presence.patch](dingtalk_auth_presence.patch)与[dingtalk_momentum_reply.patch](dingtalk_momentum_reply.patch)，按各自review JSON中的before/after SHA核对源再应用。它们基于已经完成安全接入的应用，不要对未知基线盲目重复打补丁。回调认证模式保持显式token/sign，不能仅凭本机配置存在token就认定真实机器人协议正确；拒绝日志只记录请求头存在性和来源是否loopback，不记录任何凭据值或正文。
+
 回调鉴权、日志脱敏和无关配置隔离的追加补丁见 [安全部署说明](dingtalk_security.md)。定时链路与状态恢复见 [运维说明](daily_system.md)。当前运行版本已应用两份补丁，不要重复应用旧排版补丁。

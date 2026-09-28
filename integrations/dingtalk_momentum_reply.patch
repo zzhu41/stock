@@ -1,0 +1,43 @@
+--- a/app.py
++++ b/app.py
+@@ -281,6 +281,25 @@
+ 
+ # ── Webhook 回调 ─────────────────────────────────────────────────────────────
+ 
++_momentum_reply_module = None
++_momentum_reply_init_lock = threading.Lock()
++
++
++def _momentum_reply_transport():
++    """One instance per worker keeps bounded reply deduplication alive."""
++    global _momentum_reply_module
++    if _momentum_reply_module is None:
++        with _momentum_reply_init_lock:
++            if _momentum_reply_module is None:
++                import importlib.util
++                spec = importlib.util.spec_from_file_location(
++                    "_stock_momentum_reply_transport", "/root/stock/integrations/dingtalk_momentum_transport.py")
++                module = importlib.util.module_from_spec(spec)
++                spec.loader.exec_module(module)
++                _momentum_reply_module = module
++    return _momentum_reply_module
++
++
+ @app.route("/webhook", methods=["POST"])
+ def webhook():
+     """
+@@ -354,6 +373,14 @@
+     if conversation_type == "2" and reply:
+         reply = f"@{sender_name}\n\n{reply}"
+ 
++    if cmd == "momentum":
++        try:
++            body, _ = _momentum_reply_transport().reply_momentum(
++                data, reply, dingtalk.requests.post, authenticated=True, logger=logger)
++            return jsonify(body)
++        except Exception as exc:
++            logger.error("DingTalk momentum reply unavailable: %s", type(exc).__name__)
++            return jsonify({"error": "momentum reply unavailable"}), 503
+     return jsonify({"msgtype": "markdown", "markdown": {"title": "回复", "text": reply}})
+ 
+ 
