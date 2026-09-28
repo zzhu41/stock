@@ -91,7 +91,10 @@ def _failure_note(label, diagnostics):
     phase = "strategy." + label.split("(")[0]
     for detail in diagnostics or []:
         if isinstance(detail, dict) and detail.get("phase") == phase:
-            return "估算失败: " + _cell(detail.get("message"), 30)
+            message = str(detail.get("message") or "")
+            if "等待新的有效窗口" in message:
+                return "今日上线，等待首次信号"
+            return "估算失败: " + _cell(message, 30)
     return "本次无有效估算"
 
 
@@ -105,7 +108,7 @@ def render_table(rows, mode, date, quote_label):
         else:
             lines.append("| %s | %s | %s | %s |" % (label, action, target, reason or "—"))
     if mode == "live":
-        lines += ["", "⚠️ 盘中实时估算，不写入任何账户；正式信号以 14:50 推送为准"]
+        lines += ["", "⚠️ 按所示行情时点实时估算，不写入任何账户；正式信号以 14:50 推送为准"]
     return "\n".join(lines)
 
 
@@ -171,13 +174,20 @@ def saved_payload(journal):
 
 
 def live_payload(journal, now):
-    """None when the saved bundle is authoritative (post-close / non-trading)."""
+    """None when the saved bundle is authoritative for the latest quote date.
+
+    Any trading-day quote not yet covered by the saved bundle is estimated
+    live: intraday (quote_date == today), pre-open and post-close replays
+    (quote_date = latest completed session) alike. observe_only keeps every
+    data check while skipping only the commit-window and same-day assertions;
+    nothing is ever written to production accounts.
+    """
     quotes = fetch_realtime(codes=list(UNIVERSE), detailed=True)
     dates = {q["date"] for q in quotes.values()}
     if len(dates) != 1:
         raise ValueError("报价交易日不一致: %s" % ",".join(sorted(dates)))
     quote_date = dates.pop()
-    if quote_date != now.strftime("%Y-%m-%d") or signal_store.trading_day(quote_date) is False:
+    if signal_store.trading_day(quote_date) is False:
         return None
     if _saved_date(journal) == quote_date:
         return None

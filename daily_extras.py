@@ -150,7 +150,7 @@ def collect(payload):
     initial = datetime.fromisoformat(payload['now']) if payload.get('now') else None
     clock = runtime.runtime_clock(initial)
     inputs = _collect_inputs({
-        'view': (build_live_view, (quotes, date), dict(now=clock())),
+        'view': (build_live_view, (quotes, date), dict(now=clock(), observe=observe)),
         'qvix': (_qvix_input, (date,), {}),
         'premium': (premium.signal_block, (), dict(quotes=quotes)),
     }, stage, limits=limits)

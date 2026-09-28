@@ -58,7 +58,7 @@ def run(quotes,signal_date,state_path=None,now=None,build_view=None,decide=None,
     for read-only estimates staged outside production accounts.
     """
     clock=runtime_clock(now)
-    if signal_date!=clock().strftime("%Y-%m-%d"):
+    if not observe and signal_date!=clock().strftime("%Y-%m-%d"):
         raise ValueError("V12-R2 refuses historical forward-account updates")
     if signal_date<FIRST_LIVE_DATE:
         raise ValueError("V12-R2从%s起等待新的有效窗口，不补记上线当天交易"%FIRST_LIVE_DATE)

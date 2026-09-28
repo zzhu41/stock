@@ -78,9 +78,9 @@ def _clock(now):
     return now.replace(tzinfo=TZ) if now.tzinfo is None else now.astimezone(TZ)
 
 
-def _quotes(quotes, signal_date, now):
+def _quotes(quotes, signal_date, now, observe=False):
     moment = _clock(now)
-    if moment.date().isoformat() != signal_date or _date(signal_date).weekday() >= 5:
+    if not observe and (moment.date().isoformat() != signal_date or _date(signal_date).weekday() >= 5):
         raise LiveDataError("V10实时日期不是当前交易工作日")
     stamps, out = [], {}
     for code in CODES:
@@ -92,7 +92,8 @@ def _quotes(quotes, signal_date, now):
         except (KeyError, TypeError, ValueError):
             raise LiveDataError(code + "报价时间戳非法")
         age = (moment - stamp).total_seconds()
-        if stamp.date().isoformat() != signal_date or not -5 <= age <= MAX_AGE_SECONDS:
+        # observe 复盘：时钟/日期与新鲜度断言豁免，报价日期必须等于信号日不变
+        if stamp.date().isoformat() != signal_date or (not observe and not -5 <= age <= MAX_AGE_SECONDS):
             raise LiveDataError(code + "报价已陈旧或来自未来")
         row = dict(price=_number(q.get("price"), code + "价格", True),
                    open=_number(q.get("open"), code + "开盘", True),
@@ -284,7 +285,7 @@ def _fetch_pair(code, start, end):
     return result
 
 
-def _current_anchor_times(code, pair, quote, signal_date, moment):
+def _current_anchor_times(code, pair, quote, signal_date, moment, observe=False):
     """The delayed-qfq bridge needs two fresh, contemporaneous qt anchors."""
     stamps = []
     for label in ("raw", "qfq"):
@@ -294,7 +295,7 @@ def _current_anchor_times(code, pair, quote, signal_date, moment):
         except (KeyError, TypeError, ValueError):
             raise LiveDataError(code + "缺少当日qfq桥接所需的双端qt时间戳")
         if (qt.get("date") != signal_date or stamp.date().isoformat() != signal_date
-                or not -5 <= (_clock(moment) - stamp).total_seconds() <= MAX_AGE_SECONDS):
+                or (not observe and not -5 <= (_clock(moment) - stamp).total_seconds() <= MAX_AGE_SECONDS)):
             raise LiveDataError(code + "当日qfq桥接qt已陈旧或来自未来")
         stamps.append(stamp)
     stamps.append(datetime.strptime(quote["timestamp"], "%Y-%m-%d %H:%M:%S").replace(tzinfo=TZ))
@@ -640,7 +641,7 @@ def _build(seed, state, pairs, quotes, signal_date, overrides, validation_time=N
 
 
 def build_live_view(quotes, signal_date, now=None, *, split_overrides=None,
-                    cache_dir=None, fetch_pair=None):
+                    cache_dir=None, fetch_pair=None, observe=False):
     """Return independent H histories/raw_histories/actions/calendar/metadata.
 
     ``fetch_pair(code,start,end)`` is injectable and returns raw/qfq four-column
@@ -648,11 +649,13 @@ def build_live_view(quotes, signal_date, now=None, *, split_overrides=None,
     explicitly supplies independently checked new/old share ratios.
     Every validated post-seed date has an action entry, including zero events.
     This function never prints, sends a message, or mutates a legacy cache.
+    observe=True exempts only the wall-clock/freshness assertions (read-only
+    estimates replaying a recent session); every data-consistency check stays.
     """
     _date(signal_date)
     started = time.monotonic()
     reference_clock = _clock(now)
-    normalized_quotes = _quotes(quotes, signal_date, reference_clock)
+    normalized_quotes = _quotes(quotes, signal_date, reference_clock, observe=observe)
     if set(split_overrides or {}) - set(CODES):
         raise LiveDataError("折算override含非H池资产")
     seed = _load_seed()
@@ -683,10 +686,10 @@ def build_live_view(quotes, signal_date, now=None, *, split_overrides=None,
         view, updated = _build(seed, state, pairs, normalized_quotes, signal_date,
                                split_overrides, validation_time=observed_clock)
         finished_clock = reference_clock + timedelta(seconds=time.monotonic() - started)
-        _quotes(quotes, signal_date, finished_clock)
+        _quotes(quotes, signal_date, finished_clock, observe=observe)
         for code, receipt in view["metadata"]["receipts"].items():
             if receipt["current_qfq_open_anchor_provisional"]:
-                _current_anchor_times(code, pairs[code], normalized_quotes[code], signal_date, finished_clock)
+                _current_anchor_times(code, pairs[code], normalized_quotes[code], signal_date, finished_clock, observe=observe)
         view["metadata"]["constructed_at"] = finished_clock.isoformat()
         # The current provisional row/action remains solely in the returned view.
         _write_state(state_path, updated)

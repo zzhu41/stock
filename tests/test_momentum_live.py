@@ -99,21 +99,18 @@ class SavedDateTests(unittest.TestCase):
 
 
 class LiveFreshnessGateTests(unittest.TestCase):
-    """live_payload 的入口判定：非交易日/已有当日信号时不重算。报价拉取被替身。"""
-
-    class _FakeDateTime:
-        pass
+    """live_payload 的入口判定：报价日非交易日或 saved 已覆盖时不重算。"""
 
     def _quotes(self, date):
         return {code: {"name": code, "price": 1.0, "date": date,
                        "timestamp": date + " 10:30:00", "prev_close": 1.0,
                        "open": 1.0, "volume": 100} for code in momentum_live.UNIVERSE}
 
-    def test_non_trading_day_returns_none_without_collect(self):
+    def test_non_trading_quote_date_returns_none_without_collect(self):
         with patch.object(momentum_live, "fetch_realtime", return_value=self._quotes("2026-09-27")), \
-             patch.object(momentum_live.signal_store, "trading_day", return_value=True):
+             patch.object(momentum_live.signal_store, "trading_day", return_value=False):
             import datetime
-            now = datetime.datetime(2026, 9, 28, 10, 30)  # 报价日期≠今天
+            now = datetime.datetime(2026, 9, 28, 10, 30)
             self.assertIsNone(momentum_live.live_payload(None, now))
 
     def test_same_day_saved_bundle_returns_none(self):
@@ -123,6 +120,36 @@ class LiveFreshnessGateTests(unittest.TestCase):
             import datetime
             now = datetime.datetime(2026, 9, 28, 10, 30)
             self.assertIsNone(momentum_live.live_payload({"date": "2026-09-28"}, now))
+
+    def test_stale_saved_triggers_observe_even_preopen(self):
+        """盘前/盘后（报价日≠今天）且 saved 过期时也现场估算（observe_only）。"""
+        import datetime
+        captured = []
+
+        class FakeStage:
+            """替身 staging：collect 不落任何账户文件，全部版本走失败行。"""
+            pass
+
+        def fake_collect(payload):
+            captured.append(payload)
+            return dict(lines=[], successful_accounts=[], diagnostics=[])
+
+        class FakeDateTimeDir:
+            pass
+
+        with patch.object(momentum_live, "fetch_realtime", return_value=self._quotes("2026-09-28")), \
+             patch.object(momentum_live.signal_store, "trading_day", return_value=True), \
+             patch.object(momentum_live, "_saved_date", return_value="2026-09-24"):
+            import daily_extras
+            with patch.object(daily_extras, "collect", side_effect=fake_collect):
+                # 盘前时刻：今天 9-29 开盘前，报价日 9-28
+                now = datetime.datetime(2026, 9, 29, 8, 30)
+                payload = momentum_live.live_payload(None, now)
+        self.assertIsNotNone(payload)
+        self.assertEqual(payload["mode"], "live")
+        self.assertEqual(payload["date"], "2026-09-28")
+        self.assertEqual(captured[0]["observe_only"], True)
+        self.assertEqual(captured[0]["date"], "2026-09-28")
 
 
 if __name__ == "__main__":

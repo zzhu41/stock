@@ -35,7 +35,7 @@ def validate_snapshot(quotes, signal_date, now, observe=False):
     moment = _clock(now)
     if not observe and not signal_store.execution_window(moment):
         raise ValueError("影子更新须在交易日14:50–14:55窗口内，停止本次记账")
-    _quotes(quotes, signal_date, moment)
+    _quotes(quotes, signal_date, moment, observe=observe)
     return moment
 
 
@@ -108,7 +108,7 @@ def run(quotes, signal_date, state_path=None, now=None, build_view=None, decide=
     """
     clock = runtime_clock(now)
     started_at = clock()
-    if signal_date != started_at.strftime("%Y-%m-%d"):
+    if not observe and signal_date != started_at.strftime("%Y-%m-%d"):
         raise ValueError("V10-H cannot start/update a forward account with historical quotes")
     state_path = Path(STATE if state_path is None else state_path)
     with locked(state_path):

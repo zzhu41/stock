@@ -60,7 +60,7 @@ def run(quotes, signal_date, state_path=STATE, now=None, build_view=None, decide
     """
     from v10_live.runtime import runtime_clock, validate_snapshot
     clock = runtime_clock(now)
-    if signal_date != clock().strftime("%Y-%m-%d"):
+    if not observe and signal_date != clock().strftime("%Y-%m-%d"):
         raise ValueError("V9.2+ refuses historical forward-account updates")
     state_path = Path(state_path)
     with locked(state_path):
