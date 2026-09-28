@@ -6,19 +6,19 @@
     "dingtalk.py": "96dac3c6717c5ce5c4a41c5751a96df81e2a3b867e0ddde21d8df5364f24552d"
   },
   "source_after_sha256": {
-    "app.py": "259a365928cfa06d701515a73591a8ce07cdb05f764002c50636b92a2a3b9b9d",
+    "app.py": "9783be0fbe5e9f4689da371b006047e6f8ffc471cc015cf0acb39d07b6bbd0d6",
     "dingtalk.py": "96dac3c6717c5ce5c4a41c5751a96df81e2a3b867e0ddde21d8df5364f24552d"
   },
-  "patch_sha256": "63bd0a604be958f7bc0a1a258cd92411a08518824dc9537a22219bbd71b0e08b",
+  "patch_sha256": "d89582ed9ddcc23640ed77edb30c96b595b9efcda76beae48fcc975b9d451d58",
   "live_transport_source_sha256": "2772d495ddae8c1512fe2602284d47ca9dbbb5272f05a29b9b8e3b2c920970d9",
   "deployed": true,
-  "deployed_at": "2026-09-29T01:03:31.636931",
-  "notes": "momentum command no longer 401s: anonymous callers get saved bundle inline (sessionWebhook unused); authenticated callbacks ACK immediately and a daemon thread computes the observe-mode estimate via subprocess and delivers through the verified session channel. All other commands keep authenticate-first.",
+  "deployed_at": "2026-09-29T02:12:25.885063",
+  "notes": "momentum never 401s: anonymous and authenticated callers get the same read-only estimate table (session reply is safe anonymously: unguessable short-lived platform session id, official-endpoint re-verification, dedup, public market data only). Reject logs carry len+sha8 fingerprints of both supplied and configured tokens for mismatch diagnosis; values are never recorded. All non-momentum commands keep authenticate-first.",
   "deployment": {
     "service_restarted": true,
-    "local_authenticated_momentum_http_status": 200,
-    "local_anonymous_momentum_http_status": 200,
-    "local_anonymous_other_command_http_status": 401,
+    "anonymous_momentum_inline_table": true,
+    "anonymous_session_reply_delivered_attempted": true,
+    "anonymous_other_command_http_status": 401,
     "external_test_messages_sent": false
   }
 }

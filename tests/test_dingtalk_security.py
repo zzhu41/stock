@@ -188,7 +188,8 @@ class CallbackIntegrationTests(unittest.TestCase):
             def start(inner):
                 inner._target()
         fake_threading = types.SimpleNamespace(Thread=SyncThread)
-        self.namespace = dict(logger=self.logger, dingtalk=self.module, os=os,
+        self.namespace = dict(logger=self.logger, dingtalk=self.module, os=os, config=self.config,
+                              hashlib=hashlib,
                               _momentum_reply_transport=lambda:reply_module,
                               _handle_momentum_signal=lambda:'saved test signal',
                               _live_momentum_markdown=lambda:'live test signal',
@@ -254,12 +255,20 @@ class CallbackIntegrationTests(unittest.TestCase):
         for private in ('private-sender','synthetic-session','synthetic-message','saved test signal'):
             self.assertNotIn(private,logs)
 
-    def test_unauthenticated_momentum_gets_saved_inline_and_never_uses_session(self):
-        payload=dict(text={'content':'动量'},sessionWebhook='https://oapi.dingtalk.com/robot/sendBySession?session=synthetic')
-        result = self.request(payload)
-        self.assertEqual(result['markdown']['text'], 'saved test signal')
-        self.assertEqual(self.outgoing,[])
+    def test_unauthenticated_momentum_also_gets_session_table_reply(self):
+        # session id 为平台下发的不可猜测短时效值，回发内容为公开行情估算，
+        # 匿名动量查询同样经官方会话通道回发；日志标注 anonymous。
+        payload=dict(text={'content':'动量'},msgId='anon-message',
+                     sessionWebhook='https://oapi.dingtalk.com/robot/sendBySession?session=synthetic')
+        self.assertEqual(self.request(payload), {})
+        self.assertEqual(len(self.outgoing), 1)
+        self.assertEqual(self.outgoing[0][1]['json']['markdown']['text'], 'live test signal')
         self.assertIn('anonymous momentum fallback', '\n'.join(self.logs))
+
+    def test_unauthenticated_momentum_without_session_gets_inline_table(self):
+        result = self.request(payload={'text': {'content': '动量'}, 'senderId': 'anon'})
+        self.assertEqual(result['markdown']['text'], 'live test signal')
+        self.assertEqual(self.outgoing, [])
 
     def test_non_momentum_command_still_requires_auth(self):
         result = self.request(payload={'text': {'content': '行情 600000'}})

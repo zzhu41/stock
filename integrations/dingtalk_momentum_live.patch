@@ -1,15 +1,16 @@
 --- a/app.py
 +++ b/app.py
-@@ -6,6 +6,8 @@
+@@ -6,6 +6,9 @@
  import logging
  import os
  import re
++import hashlib
 +import json
 +import subprocess
  import threading
  import time
  
-@@ -304,51 +306,52 @@
+@@ -304,51 +307,59 @@
  def webhook():
      """
      钉钉 Outgoing Webhook 回调入口
@@ -42,14 +43,22 @@
 +            return jsonify({"error": "callback authentication unavailable"}), 503
 +        accepted, auth_reason = False, "auth_unavailable"
      if not accepted:
-         # Header presence only: never record credentials, signatures or body.
+-        # Header presence only: never record credentials, signatures or body.
 -        logger.warning("DingTalk callback rejected: %s; token_present=%s sign_present=%s timestamp_present=%s mode=%s loopback=%s",
-+        logger.warning("DingTalk callback %s: %s; token_present=%s sign_present=%s timestamp_present=%s mode=%s loopback=%s",
+-                       auth_reason, bool(request.headers.get("token")),
++        # Metadata only: never record credentials, signatures or body.
++        # len+sha8 fingerprints let us diagnose a token mismatch without
++        # exposing either side's secret.
++        supplied = request.headers.get("token") or ""
++        configured = getattr(config, "DINGTALK_OUTGOING_TOKEN", "") or ""
++        def _fp(value):
++            return "len=%d sha8=%s" % (len(value), hashlib.sha256(value.encode("utf-8")).hexdigest()[:8]) if value else "none"
++        logger.warning("DingTalk callback %s: %s; token_present=%s sign_present=%s timestamp_present=%s mode=%s loopback=%s supplied_token=%s configured_token=%s",
 +                       "anonymous momentum fallback" if prelim_cmd == "momentum" else "rejected",
-                        auth_reason, bool(request.headers.get("token")),
++                       auth_reason, bool(supplied),
                         bool(request.headers.get("sign")), bool(request.headers.get("timestamp")),
                         "sign" if os.environ.get("DINGTALK_CALLBACK_AUTH_MODE", "token") == "sign" else "token_or_invalid",
-                        getattr(request, "remote_addr", None) in ("127.0.0.1", "::1"))
+-                       getattr(request, "remote_addr", None) in ("127.0.0.1", "::1"))
 -        status = 503 if auth_reason in ("auth_not_configured", "invalid_auth_mode") else 401
 -        return jsonify({"error": "callback authentication failed"}), status
 -    # Read at most the published local body limit plus one byte, including
@@ -58,6 +67,8 @@
 -    if payload_error is not None:
 -        return jsonify({"error": "invalid callback payload"}), payload_error
 -    logger.info("DingTalk authenticated callback accepted: %s", auth_reason)
++                       getattr(request, "remote_addr", None) in ("127.0.0.1", "::1"),
++                       _fp(supplied), _fp(configured))
 +        if prelim_cmd != "momentum":
 +            status = 503 if auth_reason in ("auth_not_configured", "invalid_auth_mode") else 401
 +            return jsonify({"error": "callback authentication failed"}), status
@@ -88,7 +99,7 @@
      if not text:
          return jsonify({})
  
-@@ -359,9 +362,16 @@
+@@ -359,9 +370,16 @@
              block_reply = f"@{sender_name}\n\n{block_reply}"
          return jsonify({"msgtype": "markdown", "markdown": {"title": "安全拦截", "text": block_reply}})
  
@@ -106,7 +117,7 @@
      if cmd == "ai":
          # 自然语言处理
          reply = handle_natural_language(text, sender_id, sender_name, session_webhook, conversation_type)
-@@ -373,15 +383,81 @@
+@@ -373,15 +391,109 @@
      if conversation_type == "2" and reply:
          reply = f"@{sender_name}\n\n{reply}"
  
@@ -151,16 +162,21 @@
 +
 +
 +def _answer_momentum(data, authenticated, conversation_type, sender_name):
-+    if not authenticated:
-+        reply = _handle_momentum_signal()
-+        if conversation_type == "2" and sender_name:
-+            reply = "@%s\n\n%s" % (sender_name, reply)
-+        return jsonify({"msgtype": "markdown", "markdown": {"title": "动量信号", "text": reply}})
++    """Momentum always answers. authenticated only changes the log label.
++
++    Anonymous callers get the same read-only estimate table: the session reply
++    channel is safe without credentials because a sessionWebhook session id is
++    an unguessable short-lived platform-issued value delivered over HTTPS, the
++    transport re-verifies the official endpoint shape/expiry and dedups, and
++    the payload is public market data only. Nothing account-related is exposed.
++    """
++    label = "authenticated" if authenticated else "anonymous"
 +    if not data.get("sessionWebhook"):
 +        # 无异步会话通道（本机自测等）：同步计算并 inline 返回
 +        markdown = _live_momentum_markdown()
 +        if conversation_type == "2" and sender_name:
 +            markdown = "@%s\n\n%s" % (sender_name, markdown)
++        logger.info("动量%s同步inline回复", label)
 +        return jsonify({"msgtype": "markdown", "markdown": {"title": "动量实时估算", "text": markdown}})
 +    msg_id = data.get("msgId") or ""
 +    if msg_id:
@@ -184,6 +200,29 @@
 -            logger.error("DingTalk momentum reply unavailable: %s", type(exc).__name__)
 -            return jsonify({"error": "momentum reply unavailable"}), 503
 -    return jsonify({"msgtype": "markdown", "markdown": {"title": "回复", "text": reply}})
++            logger.error("动量异步回复失败: %s", type(exc).__name__)
++        finally:
++            if msg_id:
++                with _momentum_inflight_lock:
++                    _momentum_inflight.discard(msg_id)
++
++    threading.Thread(target=work, daemon=True, name="momentum-live-reply").start()
++    return jsonify({})
++    if msg_id:
++        with _momentum_inflight_lock:
++            if msg_id in _momentum_inflight:  # 平台重试不重复计算/发送
++                return jsonify({})
++            _momentum_inflight.add(msg_id)
++    payload = dict(data)  # snapshot for the worker thread
++
++    def work():
++        try:
++            markdown = _live_momentum_markdown()
++            if conversation_type == "2" and sender_name:
++                markdown = "@%s\n\n%s" % (sender_name, markdown)
++            _momentum_reply_transport().reply_momentum(
++                payload, markdown, dingtalk.requests.post, authenticated=True, logger=logger)
++        except Exception as exc:
 +            logger.error("动量异步回复失败: %s", type(exc).__name__)
 +        finally:
 +            if msg_id:
