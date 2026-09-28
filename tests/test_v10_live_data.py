@@ -133,7 +133,7 @@ class LiveDataTests(unittest.TestCase):
 
     def test_download_elapsed_time_invalidates_previously_fresh_quote(self):
         with patch.object(live, '_fetch_all', return_value=self.pairs()), \
-                patch.object(live.time, 'monotonic', side_effect=[0., 180.]), \
+                patch.object(live.time, 'monotonic', side_effect=[0., 0., 180.]), \
                 self.assertRaisesRegex(live.LiveDataError, '陈旧'):
             self.run_view()
         self.assertFalse((self.directory / 'completed.json').exists())
@@ -188,6 +188,163 @@ class LiveDataTests(unittest.TestCase):
         self.assertEqual(pair['qfq_alias'],'day')
         self.assertEqual(pair['qfq_quote_info']['prev_close'],103.)
         self.assertEqual(pair['qfq_provider_version'],'16')
+
+    def delayed_pairs(self):
+        pairs = self.pairs()
+        for code, pair in pairs.items():
+            pair['qfq'].pop()
+            pair.update(raw_provider_version='16', qfq_provider_version='18')
+            for label in ('raw', 'qfq'):
+                pair[label + '_quote_info'] = dict(date='2026-09-25', timestamp='2026-09-25 14:50:00',
+                                                  prev_close=103., open=104.)
+        q = quotes()
+        for quote in q.values(): quote['prev_close'] = 103.
+        return pairs, q
+
+    def test_delayed_current_qfq_uses_only_open_anchor_and_never_persists_it(self):
+        pairs, q = self.delayed_pairs()
+        original = deepcopy(pairs)
+        # Independent daily-close capture is deliberately far from the main quote.
+        pairs['159915']['raw'][-1] = ('2026-09-25', 104., 120., 180.)
+        view = self.run_view(pairs, q)
+        for code in live.CODES:
+            receipt = view['metadata']['receipts'][code]
+            anchor = receipt['current_qfq_open_anchor_provisional']
+            self.assertTrue(anchor['synthetic_provisional'])
+            self.assertFalse(anchor['published_qfq_close'])
+            self.assertEqual(anchor['verification'], 'no_detected_action_within_tick')
+            self.assertEqual(receipt['qfq_response_sha256'], live._hash(original[code]['qfq']))
+            self.assertEqual(pairs[code]['qfq'], original[code]['qfq'])
+            self.assertAlmostEqual(view['histories'][code][-1][2], 1.06)
+            self.assertEqual(view['histories'][code][-1][5], 200.)
+            self.assertEqual(view['actions'][code]['2026-09-25']['cash_per_old_share'], 0.)
+        state = json.loads((self.directory / 'completed.json').read_text())['state']
+        self.assertEqual(state['last_completed'], '2026-09-24')
+        self.assertTrue(all(not x['raw'] and not x['actions'] for x in state['assets'].values()))
+        # On the next session only the subsequently published completed close is
+        # retained, not yesterday's provisional quote or artificial qfq anchor.
+        next_view = self.run_view(date='2026-09-28')
+        state = json.loads((self.directory / 'completed.json').read_text())['state']
+        self.assertEqual(state['assets']['159915']['raw'][0][2], 105.)
+        self.assertNotIn('current_qfq_open_anchor_provisional', state['assets']['159915']['actions']['2026-09-25'])
+        self.assertAlmostEqual(next_view['histories']['159915'][-1][2], 1.06)
+
+    def test_delayed_qfq_rejects_uncertain_actions_references_or_multiple_missing_rows(self):
+        self.run_view()
+        before = (self.directory / 'completed.json').read_bytes()
+        cases = ('two_missing', 'internal_gap', 'version', 'alias', 'missing_main_previous',
+                 'main_previous', 'raw_previous', 'qfq_previous', 'main_open', 'raw_qt_open',
+                 'qfq_qt_open', 'terminal_adjustment', 'known_cash', 'known_split', 'revised_raw')
+        for mode in cases:
+            pairs, q = self.delayed_pairs(); code = '159915'; pair = pairs[code]; kwargs = {}
+            if mode == 'two_missing': pair['qfq'].pop()
+            elif mode == 'internal_gap': pair['qfq'].pop(2)
+            elif mode == 'version': pair['qfq_provider_version'] = '19'
+            elif mode == 'alias': pair['qfq_alias'] = 'day'
+            elif mode == 'missing_main_previous': del q[code]['prev_close']
+            elif mode == 'main_previous': q[code]['prev_close'] = 102.
+            elif mode == 'raw_previous': pair['raw_quote_info']['prev_close'] = 102.
+            elif mode == 'qfq_previous': pair['qfq_quote_info']['prev_close'] = 102.
+            elif mode == 'main_open': q[code]['open'] = 103.
+            elif mode == 'raw_qt_open': pair['raw_quote_info']['open'] = 103.
+            elif mode == 'qfq_qt_open': pair['qfq_quote_info']['open'] = 103.
+            elif mode == 'terminal_adjustment':
+                pair['qfq'] = [(d, o - .01, c - .01, v) for d, o, c, v in pair['qfq']]
+            elif mode == 'known_cash':
+                self.seed['assets'][code]['cash_events'] = [dict(date='2026-09-25', cash_per_old_share=.01)]
+            elif mode == 'known_split': kwargs['split_overrides'] = {code: {'2026-09-25': 2}}
+            elif mode == 'revised_raw':
+                d, o, c, v = pair['raw'][1]; pair['raw'][1] = (d, o, c + .001, v)
+            with self.subTest(mode=mode), self.assertRaises(live.LiveDataError):
+                self.run_view(pairs, q, **kwargs)
+            self.seed['assets'][code]['cash_events'] = []
+            self.assertEqual((self.directory / 'completed.json').read_bytes(), before)
+
+    def test_delayed_qfq_requires_both_fresh_contemporaneous_quote_anchors(self):
+        for label in ('raw', 'qfq'):
+            for mode in ('missing', 'date', 'stale', 'future', 'skew'):
+                pairs, q = self.delayed_pairs(); pair = pairs['159915']
+                qt = pair[label + '_quote_info']
+                if mode == 'missing': del pair[label + '_quote_info']
+                elif mode == 'date': qt['date'] = '2026-09-24'
+                elif mode == 'stale': qt['timestamp'] = '2026-09-25 14:45:00'
+                elif mode == 'future': qt['timestamp'] = '2026-09-25 14:51:00'
+                else: qt['timestamp'] = '2026-09-25 14:48:59'
+                with self.subTest(label=label, mode=mode), self.assertRaises(live.LiveDataError):
+                    self.run_view(pairs, q)
+        self.assertFalse((self.directory / 'completed.json').exists())
+
+    def test_delayed_qfq_anchors_are_rechecked_after_download_elapsed(self):
+        pairs, q = self.delayed_pairs()
+        for label in ('raw', 'qfq'):
+            pairs['159915'][label + '_quote_info']['timestamp'] = '2026-09-25 14:49:30'
+        with patch.object(live, '_fetch_all', return_value=pairs), \
+                patch.object(live.time, 'monotonic', side_effect=[0., 0., 160.]), \
+                self.assertRaisesRegex(live.LiveDataError, '桥接qt已陈旧'):
+            self.run_view(pairs, q)
+        self.assertFalse((self.directory / 'completed.json').exists())
+
+    def test_delayed_qfq_allows_quotes_updated_during_download_but_not_future_quotes(self):
+        pairs, q = self.delayed_pairs()
+        for pair in pairs.values():
+            for label in ('raw', 'qfq'):
+                pair[label + '_quote_info']['timestamp'] = '2026-09-25 14:50:20'
+        with patch.object(live, '_fetch_all', return_value=pairs), \
+                patch.object(live.time, 'monotonic', side_effect=[0., 20., 21.]):
+            view = self.run_view(pairs, q)
+        self.assertEqual(view['metadata']['constructed_at'], '2026-09-25T14:50:23+08:00')
+        pairs['159915']['qfq_quote_info']['timestamp'] = '2026-09-25 14:50:28'
+        with patch.object(live, '_fetch_all', return_value=pairs), \
+                patch.object(live.time, 'monotonic', side_effect=[0., 20.]), \
+                self.assertRaisesRegex(live.LiveDataError, '来自未来'):
+            self.run_view(pairs, q)
+
+
+class CapturedCurrentQfqTests(unittest.TestCase):
+    def test_all_eleven_actual_responses_replay_without_network_or_production_cache(self):
+        fixture = json.loads((Path(__file__).parent / 'fixtures/tencent_current_qfq_20260928.json').read_text())
+        pairs, q = {}, {}
+        class Response:
+            def __init__(self, body): self.body = body
+            def __enter__(self): return self
+            def __exit__(self, *args): pass
+            def read(self, *args): return json.dumps(self.body).encode()
+        for code in live.CODES:
+            response = fixture['responses'][code]
+            with patch.object(live.urllib.request, 'urlopen', side_effect=[Response(response[k]) for k in ('raw', 'qfq')]):
+                pairs[code] = live._fetch_pair(code, '2026-08-01', fixture['signal_date'])
+            symbol = ('sh' if code.startswith('5') else 'sz') + code
+            qt = response['raw']['data'][symbol]['qt'][symbol]
+            stamp = datetime.strptime(qt[30], '%Y%m%d%H%M%S')
+            q[code] = dict(date=stamp.date().isoformat(), timestamp=stamp.strftime('%Y-%m-%d %H:%M:%S'),
+                           price=float(qt[3]), prev_close=float(qt[4]), open=float(qt[5]), volume=float(qt[6]))
+        # Reproduce the old rejection predicate on the preserved real responses.
+        rejected_by_original_axis_check = [c for c in live.CODES
+            if [r[0] for r in pairs[c]['raw']] != [r[0] for r in pairs[c]['qfq']]]
+        self.assertEqual(set(rejected_by_original_axis_check), set(live.CODES) - live.DAY_ALIAS_CODES)
+        seed = live._load_seed()
+        before_seed = live._hash(seed)
+        original_pairs = deepcopy(pairs)
+        with tempfile.TemporaryDirectory() as tmp:
+            view = live.build_live_view(q, fixture['signal_date'],
+                                       now=datetime.strptime(fixture['validation_time'], '%Y-%m-%d %H:%M:%S'),
+                                       cache_dir=tmp, fetch_pair=lambda c, start, end: pairs[c])
+            state = json.loads((Path(tmp) / 'completed.json').read_text())['state']
+        for code in live.CODES:
+            expected_prefix = [(d, o, c, c, c, v) for d, o, c, v in seed['tr'][code]]
+            self.assertEqual(view['histories'][code][:-1], expected_prefix)
+            self.assertEqual(view['raw_histories'][code][:-1], seed['raw'][code])
+            self.assertAlmostEqual(view['histories'][code][-1][2],
+                seed['tr'][code][-1][2] * q[code]['price'] / seed['raw'][code][-1][2])
+            self.assertEqual(view['histories'][code][-1][5], q[code]['volume'])
+            self.assertEqual(view['actions'][code][fixture['signal_date']]['cash_per_old_share'], 0.)
+            receipt = view['metadata']['receipts'][code]
+            self.assertEqual(bool(receipt['current_qfq_open_anchor_provisional']), code not in live.DAY_ALIAS_CODES)
+            self.assertEqual(receipt['qfq_response_sha256'], live._hash(original_pairs[code]['qfq']))
+        self.assertEqual(state['last_completed'], '2026-09-24')
+        self.assertTrue(all(not x['raw'] and not x['actions'] for x in state['assets'].values()))
+        self.assertEqual(pairs, original_pairs)
+        self.assertEqual(live._hash(live._load_seed()), before_seed)
 
 
 if __name__ == '__main__': unittest.main()

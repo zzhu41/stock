@@ -1,0 +1,420 @@
+{
+  "v12r2_08b522c2e1aa291f054d": {
+    "neighbor_cagr_delta_median_pp": -1.7935505730577561,
+    "neighbor_cagr_delta_q25_pp": -2.700144353757536,
+    "neighbors": [
+      {
+        "axis": "window",
+        "delta": {
+          "cagr_pp": -3.202283574739395,
+          "return_2021_pp": 11.957240236919663,
+          "return_2026_pp": -28.094662127521563
+        },
+        "id": "v12r2_9b77032dd4b41ea9fca9",
+        "label": "20"
+      },
+      {
+        "axis": "window",
+        "delta": {
+          "cagr_pp": -5.617151837754436,
+          "return_2021_pp": -2.9984542966858596,
+          "return_2026_pp": -2.591286589139874
+        },
+        "id": "v12r2_9f874d7cbf96b95cdf5d",
+        "label": "30"
+      },
+      {
+        "axis": "smooth",
+        "delta": {
+          "cagr_pp": -0.4211673713652164,
+          "return_2021_pp": 2.7152269048553945,
+          "return_2026_pp": -17.782953215109675
+        },
+        "id": "v12r2_fa45d0465176fbd7cf32",
+        "label": "3"
+      },
+      {
+        "axis": "smooth",
+        "delta": {
+          "cagr_pp": -1.6282718472127922,
+          "return_2021_pp": -1.2147739509414057,
+          "return_2026_pp": -4.742614438982917
+        },
+        "id": "v12r2_f0df6d2a8f97bf7ffacc",
+        "label": "5"
+      },
+      {
+        "axis": "panic",
+        "delta": {
+          "cagr_pp": -0.6882625035874335,
+          "return_2021_pp": -1.042063635387347,
+          "return_2026_pp": 4.440892098500626e-14
+        },
+        "id": "v12r2_e4a678cf7dbb90a34118",
+        "label": "1.25"
+      },
+      {
+        "axis": "panic",
+        "delta": {
+          "cagr_pp": -2.5327646134302495,
+          "return_2021_pp": -3.684718063825998,
+          "return_2026_pp": -29.78791773756926
+        },
+        "id": "v12r2_7543f0344ab8af4bff59",
+        "label": "1.5"
+      },
+      {
+        "axis": "min_hold",
+        "delta": {
+          "cagr_pp": -2.2070828618621974,
+          "return_2021_pp": 3.0287845486658194,
+          "return_2026_pp": 3.281532644040075
+        },
+        "id": "v12r2_a7bee09a0c0c7e7eae8f",
+        "label": "0"
+      },
+      {
+        "axis": "min_hold",
+        "delta": {
+          "cagr_pp": -0.2796047230111176,
+          "return_2021_pp": 1.9935989815391686,
+          "return_2026_pp": -7.792800254219157
+        },
+        "id": "v12r2_aa805bc73385c668d7a0",
+        "label": "3"
+      },
+      {
+        "axis": "buffer",
+        "delta": {
+          "cagr_pp": -1.1762954260545078,
+          "return_2021_pp": 1.3322676295501878e-13,
+          "return_2026_pp": -7.912650384215869
+        },
+        "id": "v12r2_ef1411ab3d87788a409c",
+        "label": "uniform2"
+      },
+      {
+        "axis": "risk_context",
+        "delta": {
+          "cagr_pp": -4.593425396837548,
+          "return_2021_pp": -1.0475548086419373,
+          "return_2026_pp": -29.78791773756928
+        },
+        "id": "v12r2_f465f93117b4dc3a9bae",
+        "label": "current20"
+      },
+      {
+        "axis": "risk_context",
+        "delta": {
+          "cagr_pp": -1.95882929890272,
+          "return_2021_pp": 2.7311405552894463,
+          "return_2026_pp": -21.275659125771874
+        },
+        "id": "v12r2_52b752bf89ab9a819b7b",
+        "label": "prior20"
+      },
+      {
+        "axis": "risk_context",
+        "delta": {
+          "cagr_pp": -1.6281603208377238,
+          "return_2021_pp": -3.679363457716134,
+          "return_2026_pp": 0.07043958846235654
+        },
+        "id": "v12r2_30f11888f35a1ccbcdc6",
+        "label": "prior60"
+      }
+    ],
+    "no_reselection": true,
+    "restore_one_C4_axis": [
+      {
+        "axis": "panic",
+        "delta": {
+          "cagr_pp": -0.6882625035874335,
+          "return_2021_pp": -1.042063635387347,
+          "return_2026_pp": 4.440892098500626e-14
+        },
+        "id": "v12r2_e4a678cf7dbb90a34118"
+      }
+    ]
+  },
+  "v12r2_7743224871bb70b78781": {
+    "neighbor_cagr_delta_median_pp": 1.826027423024268,
+    "neighbor_cagr_delta_q25_pp": -0.7986113098796432,
+    "neighbors": [
+      {
+        "axis": "window",
+        "delta": {
+          "cagr_pp": -3.0263665323331077,
+          "return_2021_pp": -12.605257326913243,
+          "return_2026_pp": 6.805711555038818
+        },
+        "id": "v12r2_5def0c7130d5aa55e8ba",
+        "label": "25"
+      },
+      {
+        "axis": "smooth",
+        "delta": {
+          "cagr_pp": -2.081897825222312,
+          "return_2021_pp": -0.5212616905240441,
+          "return_2026_pp": 0.0
+        },
+        "id": "v12r2_ea98b7aad415ed0aef65",
+        "label": "4"
+      },
+      {
+        "axis": "panic",
+        "delta": {
+          "cagr_pp": 1.9041617831961788,
+          "return_2021_pp": -2.995667785906053,
+          "return_2026_pp": 8.613897697483065
+        },
+        "id": "v12r2_d75cc093f82d49372a88",
+        "label": "1.25"
+      },
+      {
+        "axis": "panic",
+        "delta": {
+          "cagr_pp": 1.826027423024268,
+          "return_2021_pp": 0.0,
+          "return_2026_pp": -6.661338147750939e-14
+        },
+        "id": "v12r2_f7fdf2ac8e8f378f7944",
+        "label": "1.5"
+      },
+      {
+        "axis": "min_hold",
+        "delta": {
+          "cagr_pp": 2.7758380830372076,
+          "return_2021_pp": -2.328177501567086,
+          "return_2026_pp": -2.823568181952485
+        },
+        "id": "v12r2_b95b043bd2d24a7fba4d",
+        "label": "2"
+      },
+      {
+        "axis": "buffer",
+        "delta": {
+          "cagr_pp": -0.7986113098796432,
+          "return_2021_pp": -0.887112106428356,
+          "return_2026_pp": -6.199058363876753
+        },
+        "id": "v12r2_b71e1d55817f7aeaad70",
+        "label": "uniform2"
+      },
+      {
+        "axis": "risk_context",
+        "delta": {
+          "cagr_pp": 1.646731841198612,
+          "return_2021_pp": -0.36955322255074474,
+          "return_2026_pp": 11.910538394666737
+        },
+        "id": "v12r2_75cd0a9c04acfcb41587",
+        "label": "prior20"
+      },
+      {
+        "axis": "risk_context",
+        "delta": {
+          "cagr_pp": 2.0407563062101786,
+          "return_2021_pp": -8.254848420970195,
+          "return_2026_pp": 14.742451195414198
+        },
+        "id": "v12r2_6ffe2993042d52f8566c",
+        "label": "prior60"
+      },
+      {
+        "axis": "risk_context",
+        "delta": {
+          "cagr_pp": 2.0923194896982356,
+          "return_2021_pp": -3.409392368660513,
+          "return_2026_pp": 15.5148108615895
+        },
+        "id": "v12r2_235843138fb5087ce91f",
+        "label": "prior_max20_60"
+      }
+    ],
+    "no_reselection": true,
+    "restore_one_C4_axis": [
+      {
+        "axis": "window",
+        "delta": {
+          "cagr_pp": -3.0263665323331077,
+          "return_2021_pp": -12.605257326913243,
+          "return_2026_pp": 6.805711555038818
+        },
+        "id": "v12r2_5def0c7130d5aa55e8ba"
+      },
+      {
+        "axis": "smooth",
+        "delta": {
+          "cagr_pp": -2.081897825222312,
+          "return_2021_pp": -0.5212616905240441,
+          "return_2026_pp": 0.0
+        },
+        "id": "v12r2_ea98b7aad415ed0aef65"
+      },
+      {
+        "axis": "panic",
+        "delta": {
+          "cagr_pp": 1.9041617831961788,
+          "return_2021_pp": -2.995667785906053,
+          "return_2026_pp": 8.613897697483065
+        },
+        "id": "v12r2_d75cc093f82d49372a88"
+      },
+      {
+        "axis": "min_hold",
+        "delta": {
+          "cagr_pp": 2.7758380830372076,
+          "return_2021_pp": -2.328177501567086,
+          "return_2026_pp": -2.823568181952485
+        },
+        "id": "v12r2_b95b043bd2d24a7fba4d"
+      },
+      {
+        "axis": "risk_context",
+        "delta": {
+          "cagr_pp": 2.0923194896982356,
+          "return_2021_pp": -3.409392368660513,
+          "return_2026_pp": 15.5148108615895
+        },
+        "id": "v12r2_235843138fb5087ce91f"
+      }
+    ]
+  },
+  "v12r2_9a8799a5f7dd7581608e": {
+    "neighbor_cagr_delta_median_pp": -1.9224894479174914,
+    "neighbor_cagr_delta_q25_pp": -2.831364013689519,
+    "neighbors": [
+      {
+        "axis": "window",
+        "delta": {
+          "cagr_pp": -1.4036081540434453,
+          "return_2021_pp": -12.82888473468724,
+          "return_2026_pp": 23.352047688538647
+        },
+        "id": "v12r2_f0df6d2a8f97bf7ffacc",
+        "label": "25"
+      },
+      {
+        "axis": "smooth",
+        "delta": {
+          "cagr_pp": -2.9776198815700483,
+          "return_2021_pp": 0.34312945317382937,
+          "return_2026_pp": 0.0
+        },
+        "id": "v12r2_9b77032dd4b41ea9fca9",
+        "label": "4"
+      },
+      {
+        "axis": "panic",
+        "delta": {
+          "cagr_pp": -1.7851086387242643,
+          "return_2021_pp": -3.666465806444008,
+          "return_2026_pp": 8.881784197001252e-14
+        },
+        "id": "v12r2_5fc61828cf6bd6321ee1",
+        "label": "1.25"
+      },
+      {
+        "axis": "panic",
+        "delta": {
+          "cagr_pp": -1.6253187518822432,
+          "return_2021_pp": -6.56803655314786,
+          "return_2026_pp": -12.608615761884767
+        },
+        "id": "v12r2_60a34d3712b73dc7b13c",
+        "label": "1.5"
+      },
+      {
+        "axis": "min_hold",
+        "delta": {
+          "cagr_pp": -2.7433888504496906,
+          "return_2021_pp": 0.489527782150323,
+          "return_2026_pp": 5.729763281657174
+        },
+        "id": "v12r2_235843138fb5087ce91f",
+        "label": "0"
+      },
+      {
+        "axis": "min_hold",
+        "delta": {
+          "cagr_pp": -2.860689068102795,
+          "return_2021_pp": -5.016020581918168,
+          "return_2026_pp": -18.06618581497663
+        },
+        "id": "v12r2_c6b548295d3cc806a7c1",
+        "label": "3"
+      },
+      {
+        "axis": "buffer",
+        "delta": {
+          "cagr_pp": -1.2119487329691259,
+          "return_2021_pp": -0.8588995639434938,
+          "return_2026_pp": -6.641711688865204
+        },
+        "id": "v12r2_f4a8e27df38c38d06e99",
+        "label": "uniform2"
+      },
+      {
+        "axis": "risk_context",
+        "delta": {
+          "cagr_pp": -2.0598702571107186,
+          "return_2021_pp": 1.5707426492437504,
+          "return_2026_pp": -12.608615761884812
+        },
+        "id": "v12r2_b95b043bd2d24a7fba4d",
+        "label": "current20"
+      },
+      {
+        "axis": "risk_context",
+        "delta": {
+          "cagr_pp": -0.6208793667526913,
+          "return_2021_pp": 3.027353930552712,
+          "return_2026_pp": -3.468894333858197
+        },
+        "id": "v12r2_2ba60949aaafd855898a",
+        "label": "prior20"
+      },
+      {
+        "axis": "risk_context",
+        "delta": {
+          "cagr_pp": -3.594028966460472,
+          "return_2021_pp": -6.52734240932491,
+          "return_2026_pp": -3.6539637863470142
+        },
+        "id": "v12r2_387848d3d0009556c1bd",
+        "label": "prior60"
+      }
+    ],
+    "no_reselection": true,
+    "restore_one_C4_axis": [
+      {
+        "axis": "window",
+        "delta": {
+          "cagr_pp": -1.4036081540434453,
+          "return_2021_pp": -12.82888473468724,
+          "return_2026_pp": 23.352047688538647
+        },
+        "id": "v12r2_f0df6d2a8f97bf7ffacc"
+      },
+      {
+        "axis": "smooth",
+        "delta": {
+          "cagr_pp": -2.9776198815700483,
+          "return_2021_pp": 0.34312945317382937,
+          "return_2026_pp": 0.0
+        },
+        "id": "v12r2_9b77032dd4b41ea9fca9"
+      },
+      {
+        "axis": "panic",
+        "delta": {
+          "cagr_pp": -1.7851086387242643,
+          "return_2021_pp": -3.666465806444008,
+          "return_2026_pp": 8.881784197001252e-14
+        },
+        "id": "v12r2_5fc61828cf6bd6321ee1"
+      }
+    ]
+  }
+}

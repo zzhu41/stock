@@ -30,7 +30,7 @@ import urllib.parse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 from market_data import UNIVERSE, fetch_realtime
-from web_signals import v10_signal
+from web_signals import v10_signal, v12_signal
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 CACHE = os.path.join(BASE, "signals", "web_cache.json")
@@ -181,7 +181,7 @@ def version_info(vid, ver):
                 basis=metadata.get("basis", "legacy_qfq_same_close"),
                 kind=metadata.get("kind", "historical"),
                 warnings=metadata.get("warnings", ["旧行情回测口径；与修正总回报研究曲线不可直接比较"]),
-                default_compare="v9.2-tr" if vid == "v10-h" else "",
+                default_compare="v10-h" if vid == "v12-r2" else "v9.2-tr" if vid == "v10-h" else "",
                 metrics_note=note,
                 metadata=metadata)
 
@@ -230,7 +230,7 @@ def range_summary(ver, daily):
 
 
 def series_response(data, qs, now=None):
-    vid = qs.get("version", ["v10-h" if "v10-h" in data["versions"] else "v9.2"])[0]
+    vid = qs.get("version", [default_version(data)])[0]
     ver = data["versions"].get(vid)
     if ver is None:
         raise ValueError("unknown version")
@@ -246,13 +246,17 @@ def series_response(data, qs, now=None):
     # Holding belongs to the displayed historical endpoint, not a future/current day.
     held_prefix = [row for row in ver["daily"] if row[0] <= daily[-1][0]]
     held_trades = [row for row in ver["trades"] if row[0] <= daily[-1][0]]
+    def displayed_trade_kind(trade):
+        if ver.get("metadata", {}).get("crash_markers_available") is False and trade[1] is not None:
+            return "换仓"  # Saved holdings show fills, but cannot identify their trigger.
+        return trade_kind(trade, crash_set)
     resp = dict(version=vid, label=ver["label"], range=[daily[0][0], daily[-1][0]],
-                daily=daily, trades=[t + [trade_kind(t, crash_set), names.get(t[1] or "", ""),
+                daily=daily, trades=[t + [displayed_trade_kind(t), names.get(t[1] or "", ""),
                                          names.get(t[2], "")] for t in trades],
                 metrics=metrics, yearly=years, normalization_base=base,
                 holding=holding_info(dict(daily=held_prefix, trades=held_trades)), names=names,
                 version_meta=version_info(vid, ver), comparison_warning=None,
-                signal=v10_signal(data["versions"].get("v10-h"), now=now))
+                signal=primary_signal(data, now))
     cmp_id = qs.get("compare", [""])[0]
     other = data["versions"].get(cmp_id)
     if other is None:
@@ -267,11 +271,22 @@ def series_response(data, qs, now=None):
                                    range=[compared[0][0], compared[-1][0]])
             warnings = []
             if version_info(vid, ver)["basis"] != other.get("metadata", {}).get("basis", "legacy_qfq_same_close"):
-                warnings.append("两条曲线的数据口径不同，收益数字不能当作同口径优劣比较；V10请优先选择v9.2同口径对照")
+                warnings.append("两条曲线的数据口径不同，收益数字不能当作同口径优劣比较；V12-R2、V10-H与v9.2同口径对照可直接比较")
             if [r[0] for r in daily] != [r[0] for r in compared]:
                 warnings.append("两条曲线可用日期不同；对比曲线仅覆盖%s至%s" % (compared[0][0], compared[-1][0]))
             resp["comparison_warning"] = "；".join(warnings) or None
     return resp
+
+
+def default_version(data):
+    return next((key for key in ("v12-r2", "v10-h", "v9.2") if key in data["versions"]),
+                next(iter(data["versions"])))
+
+
+def primary_signal(data, now=None):
+    # The primary forward account is independent of the historical curve cache.
+    # A missing R2 export must never promote an older model's saved advice.
+    return v12_signal(data["versions"].get("v12-r2"), now=now)
 
 
 # ---------- 实盘账本(record.py 的网页入口) ----------
@@ -428,9 +443,13 @@ class Handler(BaseHTTPRequestHandler):
             "built_at": data["built_at"],
             "v10_updated_at": data.get("v10_updated_at"),
             "v10_error": data.get("v10_error"),
+            "v12_updated_at": data.get("v12_updated_at"),
+            "v12_error": data.get("v12_error"),
+            "default_version": default_version(data),
             "data_range": data["data_range"],
-            "versions": [version_info(k, v) for k, v in data["versions"].items()],
-            "signal": v10_signal(data["versions"].get("v10-h")),
+            "versions": [version_info(k, data["versions"][k]) for k in
+                         sorted(data["versions"], key=lambda key: (key != "v12-r2", key != "v10-h", key))],
+            "signal": primary_signal(data),
             "benchmarks": [{"id": k, "label": v["label"]}
                            for k, v in data["benchmarks"].items()],
         })

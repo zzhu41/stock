@@ -1,0 +1,86 @@
+{
+  "verified_at": "2026-09-28T09:44:04.440027+00:00",
+  "selection": "explicit_user_designation",
+  "primary_version": "V12-R2",
+  "candidate_id": "v12r2_08b522c2e1aa291f054d",
+  "first_live_date": "2026-09-29",
+  "comparisons": [
+    "V9.2",
+    "V9.2+",
+    "V10-H"
+  ],
+  "research_qualification_changed": false,
+  "backtest": {
+    "cagr": 0.5526937725744602,
+    "calmar": 2.688815110042286,
+    "max_dd": -0.2055529108380264,
+    "nav": 266.3055100968753,
+    "sessions": 3097,
+    "sharpe": 1.8803675515015332,
+    "total_return": 265.3055100968753,
+    "volatility": 0.25089955951035064
+  },
+  "return_2021": 0.070841887098126,
+  "return_2026": 0.7491263732154936,
+  "tests": {
+    "count": 307,
+    "seconds": 89.566,
+    "passed": true,
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3.8 -B -m unittest discover -s tests -v",
+    "log_sha256": "e173101bfa5aa93a7fd3a37738a018362578be685a9d0e9da9c7b7f8f0f43987"
+  },
+  "fidelity": {
+    "days": 3097,
+    "score_risk_target_and_fee_returns_exact": true
+  },
+  "bot_readonly_http": {
+    "http_status": 200,
+    "main_heading": true,
+    "comparisons": [
+      "V9.2",
+      "V9.2+",
+      "V10-H"
+    ],
+    "first_signal_pending": true,
+    "state_files_unchanged": true,
+    "session_webhook_supplied": false
+  },
+  "web": {
+    "http_status": 200,
+    "default_version": "v12-r2",
+    "primary_status": "not_started",
+    "total_versions": 10,
+    "old_curves_preserved": 9,
+    "desktop_visual_checked": true,
+    "mobile_viewport_width": 390,
+    "mobile_document_width": 390
+  },
+  "primary_account_created": false,
+  "outbound_test_messages_sent": 0,
+  "retroactive_trades_created": 0,
+  "source_sha256": {
+    ".gitignore": "624d37c00a77a3c303e72f316add9f635c8154e0e5685aa5839c4be6212ff723",
+    "README.md": "3dee8f156dbd37bb50f2a0f998e768732afb53901e33ee0dd0f2de65a4ac8747",
+    "daily_diagnostics.py": "3248565e5f977f43cb2a8119795c6f81e1291fa37be959004dbcf8082914ac4a",
+    "daily_extras.py": "d8a2dc6122d9a554a2cf7c55d74d6bf8d4e1d0fab7bfe7d54ac372d4d05c7916",
+    "daily_job.py": "0d1e2fc9649197d2828f9bb6914e5196d3f4df49510bc6383b14439e3f54281b",
+    "market_data.py": "dae10151b88be286bc973c346e49e8c736e0d0f7ec52b85df79dd3b7f4602c19",
+    "push_signal.py": "f5b12c749a566ada06fe9e004a4ffdfcd460281386f3d9b6c428ef4243b681d1",
+    "shadow_v12_r2.py": "5d062d9e38f0d834a9b52a25f1bcfb5d6aa3da4af19d33b1f9f60790617c2359",
+    "signal_daily.py": "8b0deff21273045de50304bdf916212a62e8c1e10e8e0450a38f97925b67b33c",
+    "signal_store.py": "c5d18185ade809c7f3446bbe5f595235f60a065980462a0bfb4279a164d4b22a",
+    "v10_live/data.py": "6daeec63e9ac7dc88ae9db267477008338a6579086519698927296c588d9f8f0",
+    "v12_live/__init__.py": "00cea375388afe95a79d8855b38fe1a45465af276240025b945666ee106b02d5",
+    "v12_live/constants.py": "dd6b30a9d307db07c70a2fa9caf16ab2fdf5eea9dc9886590ea046db1ea8bd20",
+    "v12_live/ledger.py": "63adce793cd9c55ad03d5efa389614340d7b0598f5517719e3e094d4f2f6b056",
+    "v12_live/policy.py": "ed1caa7bba60381b8ef1e213847f57619f5f5cae6d37a42be2b06e6e1111cdef",
+    "v12_live/profile.py": "dd664a02ed35673d1653bd3cb99c0ea0cc7b4f0c07bd750c09f72fc528b7d8f2",
+    "v12_live/runtime.py": "87a7626373c251f60ff74a857e108627c6b0529b53fe0796931b195ad193a842",
+    "watchdog.py": "37a137fed35ca10026fc7a6513eb9ececff3e0d062fbc9e143a8082e9d35aff4",
+    "web/index.html": "6e9353ee08398cb69eaab924868b8341ce098ed7df5d3a032b3710e386513054",
+    "web_app.py": "909d585eba09b9b481b9895e92420757c89ed43fab481ab010d006360b6976a8",
+    "web_build.py": "2871089d5a4faa3500605ec5e89b9e1719c514b4e071d2d63cdd5fc6fe5d7db8",
+    "web_signals.py": "2aa706fc87e1e55a95e7dfbfe3b754bb944f44a6bdaab886c7aff4b6a58efc90",
+    "web_v12.py": "dedb3ec24d19a96e6c051a84031e84d3b73c63915146cece0a026d647f54552d"
+  }
+}

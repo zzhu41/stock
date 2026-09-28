@@ -19,18 +19,24 @@ import re
 import time
 import urllib.parse
 import urllib.request
+from datetime import datetime
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 # The Python3.6 bot imports this file by absolute path from another directory.
 _spec = importlib.util.spec_from_file_location("_stock_signal_store", os.path.join(BASE, "signal_store.py"))
 store = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(store)
+_diagnostic_spec = importlib.util.spec_from_file_location(
+    "_stock_daily_diagnostics", os.path.join(BASE, "daily_diagnostics.py"))
+diagnostics = importlib.util.module_from_spec(_diagnostic_spec)
+_diagnostic_spec.loader.exec_module(diagnostics)
 LATEST = os.path.join(BASE, "signals", "latest.txt")
 SIGNAL_DIR = os.path.join(BASE, "signals")
 SECRET_FILE = os.path.join(BASE, "data", "dingtalk.secret")
 WEBHOOK_FILE = os.path.join(BASE, "data", "dingtalk.webhook")
 ASSET_PATTERN = r"(\d{6}\s+[^\s|()（）,，;；/]+)"
-VERSIONS = ("V9.2", "V9.2+", "V10-H")
+PRIMARY_VERSION = "V12-R2"
+VERSIONS = (PRIMARY_VERSION, "V9.2", "V9.2+", "V10-H")
 
 
 def load_file(path):
@@ -107,7 +113,7 @@ def shadow_markdown(line, historical=False, unavailable=False):
 
 
 def _version(label):
-    match = re.fullmatch(r"(?:影子\s*)?(V9\.2\+?|V10-H)", label.strip().replace("＋", "+"), re.I)
+    match = re.fullmatch(r"(?:(?:影子|主推送)\s*)?(V12-R2|V9\.2\+?|V10-H)", label.strip().replace("＋", "+"), re.I)
     return match.group(1).upper() if match else None
 
 
@@ -123,7 +129,7 @@ def _version_sections(lines):
             if version:
                 sections[version] = current
             continue
-        failure = re.search(r"影子\s*(V9\.2\+?|V10-H)(?![\w.+-]).*计算失败", value, re.I)
+        failure = re.search(r"(?:影子|主推送)\s*(V12-R2|V9\.2\+?|V10-H)(?![\w.+-]).*计算失败", value, re.I)
         if failure:
             version = failure.group(1).upper()
             current = {"lines": ["信号状态: 本次无有效建议，计算失败", "数据说明: " + value], "failed": True}
@@ -133,19 +139,16 @@ def _version_sections(lines):
             current = None
             continue
         if current is not None and (value.startswith(("QVIX", "信号状态:", "数据截止:", "行情时间:",
-                "策略规则:", "数据说明:", "跟踪说明:", "抄底三口并集:", "建议:", "建议："))
+                "策略规则:", "数据说明:", "跟踪说明:", "抄底三口并集:", "抄底规则:", "换仓动作:", "建议:", "建议："))
                 or "影子持仓" in value or "旧口径净值" in value):
             current["lines"].append(value)
     return sections
 
 
-def _section_markdown(version, section, info):
-    result = ["", "---", "**影子 %s**(虚拟跟踪不下单)" % version, ""]
-    if not section or not section["lines"]:
-        return result + ["- 信号状态: 尚无有效信号；等待首次生成", "- 不沿用其他版本目标或补记历史交易"]
-    lines = section["lines"]
+def _section_state(version, section, info, now):
+    lines = section['lines'] if section else []
     status = " ".join(line for line in lines if line.startswith("信号状态:"))
-    failed = section["failed"] or bool(re.search(r"计算失败|无有效建议|暂停虚拟成交", status))
+    failed = bool(section and section["failed"]) or bool(re.search(r"计算失败|无有效建议|暂停虚拟成交", status))
     pending = bool(re.search(r"无有效信号|等待首次生成", status))
     targets = [_target_asset(_shadow_advice(line)[1]) for line in lines]
     unavailable = failed or pending or not any(targets)
@@ -153,6 +156,31 @@ def _section_markdown(version, section, info):
                    [re.match(r"数据截止[:：]\s*(\d{4}-\d{2}-\d{2})", line)] if match]
     historical = (not info["actionable"] or "历史" in status or "尚未启动" in status
                   or any(day != info["date"] for day in block_dates))
+    if version == PRIMARY_VERSION:
+        # The new primary has no legacy date-only cards. Do not promote an
+        # undated or individually stale main card using another version's time.
+        stamps = [match.group(1) for line in lines for match in
+                  [re.search(r"(?:行情|估值)时间[:：]\s*(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})",line)] if match]
+        if not block_dates or not stamps:
+            historical = True
+        for value in stamps:
+            try:
+                moment = datetime.strptime(value,'%Y-%m-%d %H:%M:%S')
+                if value[:10] != info['date'] or not -5 <= (now-moment).total_seconds() <= 300:
+                    historical = True
+            except (TypeError,ValueError):
+                historical = True
+    return dict(lines=lines,failed=failed,unavailable=unavailable,historical=historical,block_dates=block_dates)
+
+
+def _section_markdown(version, section, info, now):
+    primary = version == PRIMARY_VERSION
+    heading = "**主推送 V12-R2**（独立虚拟跟踪，不自动下单）" if primary else "**影子 %s**(虚拟跟踪不下单) · 对照" % version
+    result = ["", "---", heading, ""]
+    if not section or not section["lines"]:
+        return result + ["- 信号状态: 尚无有效信号；等待首次生成", "- 不沿用其他版本目标或补记历史交易"]
+    state = _section_state(version,section,info,now)
+    lines,failed,unavailable,historical,block_dates = (state[k] for k in ('lines','failed','unavailable','historical','block_dates'))
     if unavailable:
         result += ["- 信号状态: 本次无有效建议，计算失败" if failed else "- 信号状态: 尚无有效信号；等待首次生成"]
     elif historical:
@@ -160,37 +188,59 @@ def _section_markdown(version, section, info):
     if not block_dates and info["date"]:
         result += ["- 数据截止: %s（保存文本日期）" % info["date"]]
     for line in lines:
+        if line.startswith('换仓动作:'):
+            if unavailable:
+                continue
+            result += [('- ' + line.replace('换仓动作:', '历史虚拟换仓记录:') + '（非当前操作指令）')
+                       if historical else '- ' + highlight_advice(line), '']
+            continue
         if unavailable and line.startswith("信号状态:"):
             # Preserve specific failure details, but do not leave a conflicting
             # stale 'normal/valid' status beside the unavailable label.
             if failed:
                 result += ["- " + line]
             continue
-        result += shadow_markdown(line, historical=historical, unavailable=unavailable) + [""]
+        rendered = shadow_markdown(line, historical=historical, unavailable=unavailable)
+        if primary:
+            rendered = [value.replace('影子建议标的:', '主推送标的:').replace('历史影子目标:', '历史主推送目标:')
+                        for value in rendered]
+        result += rendered + [""]
     return result
 
 
 def build_markdown(text, query=False, now=None, notices=None):
-    """Shared three-version view, including old saved cards; no model/account work."""
+    """Main V12-R2 and comparison cards; no model/account work on query."""
+    now = now or store.now_local()
     lines = text.splitlines()
     title = next((l.strip() for l in lines if "动量轮动信号" in l), "动量轮动信号")
     info = store.signal_info(text, now=now)
     date = info["date"]
     historical = not info["actionable"]
+    sections = _version_sections(lines)
+    primary = _section_state(PRIMARY_VERSION,sections.get(PRIMARY_VERSION),info,now)
     prem = [l.strip() for l in lines if (re.match(r"\s*\d{6}\s+", l) and "溢价" in l)
             or l.strip().startswith("QDII 溢价:")]
+    status_note = (("⚠️ **%s**" if historical else "✅ %s") % info["note"])
+    if not historical and primary['unavailable']:
+        status_note = "⚠️ **主推送本次无有效建议**；对照版本状态见下方"
+    elif not historical and primary['historical']:
+        status_note = "⚠️ **主推送未通过当前时效核验**；仅查看历史记录"
     md = ["### 📊 %s" % title, "",
-          ("⚠️ **%s**" if historical else "✅ %s") % info["note"], "",
+          status_note, "",
+          "**主推送：V12-R2（R2提高年化）**", "",
           "行情时间: %s" % (info["quote_time"] or "未记录")]
+    if primary['unavailable']:
+        md += ["", "⚠️ **主推送本次无有效建议**；下方旧版本仅为对照，不替代主版本。"]
+    elif primary['historical']:
+        md += ["", "⚠️ 主版本当前仅可查看历史记录，非当前操作指令。"]
     for notice in notices or []:
         md += ["", "⚠️ " + notice]
     for item in prem:
         md += ["", item if item.startswith("QDII ") else "QDII " + item]
-    sections = _version_sections(lines)
     for version in VERSIONS:
-        md += _section_markdown(version, sections.get(version), info)
+        md += _section_markdown(version, sections.get(version), info, now)
     md += ["", "---"]
-    versions = "V9.2 / V9.2+ / V10-H（独立虚拟跟踪）"
+    versions = "主推送 V12-R2 · 对照 V9.2 / V9.2+ / V10-H"
     if query:
         md += ["最近保存信号 · 14:50开始生成，须同时核对行情时间与信号状态",
                "_行情日期 %s · %s_" % (date or "未知", versions),
@@ -207,28 +257,70 @@ def is_current_signal(text, today):
     return bool(dates and dates.group(1) == dates.group(2) == today)
 
 
+def _query_status(directory, filename, notices):
+    """Status sidecars are observations, never substitutes for the journal."""
+    try:
+        value = store.read_json(os.path.join(directory, filename), {})
+        if not isinstance(value, dict):
+            raise ValueError("Status record must be an object")
+        if value:
+            allowed = (("running", "ready", "failed") if filename == "generation_status.json"
+                       else ("pending", "sending", "sent", "failed", "uncertain", "expired"))
+            if value.get("status") not in allowed:
+                raise ValueError("Unknown status")
+            for field in ("date", "signal_id"):
+                if field in value and not isinstance(value[field], str):
+                    raise ValueError("Malformed status field")
+            if filename == "generation_status.json" and not value.get("date"):
+                raise ValueError("Generation date missing")
+            if filename == "delivery.json":
+                if not value.get("signal_id"):
+                    raise ValueError("Delivery identity missing")
+                if ("attempts" in value and (not isinstance(value["attempts"], list)
+                        or not all(isinstance(attempt, dict) for attempt in value["attempts"]))):
+                    raise ValueError("Malformed delivery attempts")
+        return value
+    except Exception:
+        # Do not leak file contents, private paths or exception URLs into a
+        # bot response. A damaged receipt cannot count as confirmed delivery.
+        notices.append("生成状态记录损坏或无法读取；当前无法核验生成任务状态"
+                       if filename == "generation_status.json"
+                       else "推送回执记录损坏或无法读取；无法确认自动推送是否送达")
+        return None
+
+
 def render_saved_query(path=LATEST, now=None):
     """Read-only query with explicit freshness and delivery/generation status."""
     now = now or store.now_local()
     directory = os.path.dirname(os.path.abspath(path))
+    notices = []
+    generation = _query_status(directory, "generation_status.json", notices)
+    receipt = _query_status(directory, "delivery.json", notices)
+    today = now.strftime("%Y-%m-%d")
+    if generation and generation.get("date") == today and generation.get("status") in ("failed", "running"):
+        notices.append("今日信号生成%s；请核对下方数据日期，不沿用旧买入建议" % (
+            "失败" if generation["status"] == "failed" else "尚未完成"))
+        if isinstance(generation.get("diagnostic"), dict):
+            detail = diagnostics.clean_detail(generation["diagnostic"])
+            causes = detail.get("causes", [])
+            main_cause = next((value for value in causes if value["phase"] == "input.view"),
+                              causes[0] if causes else detail)
+            notices.append("生成诊断 [%s]: %s" % (main_cause["phase"],
+                diagnostics.safe_message(main_cause["message"], 300)))
     try:
         text, journal = store.load_saved(directory)
-        notices = []
-        generation = store.read_json(os.path.join(directory, "generation_status.json"), {})
-        receipt = store.read_json(os.path.join(directory, "delivery.json"), {})
-        today = now.strftime("%Y-%m-%d")
-        if generation.get("date") == today and generation.get("status") in ("failed", "running"):
-            notices.append("今日信号生成%s；请核对下方数据日期，不沿用旧买入建议" % (
-                "失败" if generation["status"] == "failed" else "尚未完成"))
         signal_id = journal["signal_id"] if journal else store.digest(text)
-        if receipt.get("signal_id") == signal_id:
+        if receipt is None:
+            pass  # The independent sidecar warning above remains visible.
+        elif receipt.get("signal_id") == signal_id:
             if receipt.get("status") != "sent":
                 notices.append("这份信号的自动推送尚未确认送达（%s）" % receipt.get("status", "未知"))
         elif store.signal_info(text, now)["actionable"]:
             notices.append("这份信号尚无自动推送成功记录")
         return build_markdown(text, query=True, now=now, notices=notices)[0]
     except Exception:
-        return "⚠️ 信号记录缺失或校验失败，当前没有可用操作建议，请检查生成任务。"
+        return "\n\n".join(["⚠️ 信号记录缺失或校验失败，当前没有可用操作建议，请检查生成任务。"]
+                           + ["⚠️ " + notice for notice in notices])
 
 
 def main(directory=None, now=None, attempts=3, sleeper=None, max_per_run=1):
@@ -283,8 +375,12 @@ def main(directory=None, now=None, attempts=3, sleeper=None, max_per_run=1):
                 receipt.update(status="sending", updated_at=attempt["started_at"])
                 store.atomic_json(receipt_path, receipt)
                 url = signed_url(webhook, secret) if secret else webhook
+                primary = _section_state(PRIMARY_VERSION, _version_sections(text.splitlines()).get(PRIMARY_VERSION),
+                                         store.signal_info(text,current_time()),current_time())
+                title = ("动量主推 V12-R2 %s" if not primary['unavailable'] and not primary['historical']
+                         else "动量 V12-R2待核验 %s") % date
                 body = json.dumps({"msgtype": "markdown", "markdown": {
-                    "title": "动量信号 %s" % date, "text": md}}, ensure_ascii=False).encode("utf-8")
+                    "title": title, "text": md}}, ensure_ascii=False).encode("utf-8")
                 req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
                 try:
                     with urllib.request.urlopen(req, timeout=min(8, remaining - 1)) as response:

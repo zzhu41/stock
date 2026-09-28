@@ -29,6 +29,9 @@ signals/shadow_v10.lock
 signals/shadow_v92_plus.json
 signals/shadow_v92_plus.json.tmp.*
 signals/shadow_v92_plus.lock
+signals/shadow_v12_r2.json
+signals/shadow_v12_r2.json.tmp.*
+signals/shadow_v12_r2.lock
 signals/.signal-stage-*/
 signals/daily_state.json
 signals/generation_status.json

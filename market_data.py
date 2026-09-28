@@ -211,6 +211,7 @@ def fetch_realtime(codes=None, detailed=False):
         dt = datetime.strptime(stamp, "%Y%m%d%H%M%S")
         out[code] = {"name": f[1], "price": price, "date": dt.strftime("%Y-%m-%d"),
                      "timestamp": dt.strftime("%Y-%m-%d %H:%M:%S"),
+                     "prev_close": _number(f[4], "%s 实时除权前收" % code, True),
                      "open": _number(f[5], "%s 实时开盘" % code, True),
                      "volume": _number(f[6], "%s 实时成交量" % code)}
     if detailed and set(codes) - set(out):

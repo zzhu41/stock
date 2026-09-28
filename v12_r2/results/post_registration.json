@@ -1,0 +1,37 @@
+{
+  "definition": {
+    "ablation": "Restore one differing C4 axis using existing registered rows only",
+    "dependencies": {
+      "v10_deep/reference.py": "307165e11b4e52345d5e0168c3fb36ac661baf214dbc58dbebc7cf5ce2b0f9e5",
+      "v11/diagnostics.py": "6cdb31c0b1e2a3be62bbb32bd5d5f6f49f83c01ccd1734a4d6896d9dc2c12a13",
+      "v12/reference.py": "e4f4fcb8b0ac89f7d52e96150942dfaa56792581ca72137df36676594e7cc449"
+    },
+    "frozen_paths_sha256": "14e043b61d868bdcdf8e4fdca0dde18a03a1bf0eaa8e227a77edeb2db629914b",
+    "frozen_selection_sha256": "a8496918bc0a28aafe155b1ba019aad195cc12619f8a7ca5c8e32920654a53a1",
+    "neighborhood": "Only adjacent registered numerical values; other registered risk contexts; no new model runs",
+    "no_reselection": true,
+    "registry_sha256": "f391bb755614ede25fcfb88f090d7cd4d83db3310bdc35741acf853a95de20e0",
+    "role_semantics": "controls, predeclared qualified/exploratory results, and all records satisfying three main gates only; no promotion",
+    "roles": {
+      "c": "v12r2_55420df78993194e846c",
+      "c4": "v12r2_e4a678cf7dbb90a34118",
+      "h": "v12r2_2b63e64ab0b9e24b8cab",
+      "highest_2021": "v12r2_7743224871bb70b78781",
+      "highest_cagr": "v12r2_08b522c2e1aa291f054d",
+      "main_three_gates_1": "v12r2_9a8799a5f7dd7581608e",
+      "simple": "v12r2_c03a5dc306d9bf5b3e82"
+    },
+    "source_sha256": "1c3502f292592cc913934db8c93e5f20e3f1219d360d3c4cca3d7d5246129890",
+    "statistics": {
+      "block_lengths": [
+        20,
+        60
+      ],
+      "candidate_count": 862,
+      "draws": 2000,
+      "method": "stationary",
+      "seed": 20260928
+    }
+  },
+  "registered_at": "2026-09-28T07:54:39.195684+00:00"
+}

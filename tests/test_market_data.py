@@ -74,11 +74,17 @@ class RealtimeTests(unittest.TestCase):
     def test_detailed_has_quote_timestamp_and_current_cumulative_volume(self):
         with patch.object(md, "_get", return_value=quote_payload()):
             result = md.fetch_realtime(["513100"], detailed=True)
-        self.assertEqual(result["513100"], quote())
+        self.assertEqual(result["513100"], dict(quote(),prev_close=2.233))
 
     def test_legacy_tuple_api_is_preserved(self):
         with patch.object(md, "_get", return_value=quote_payload()):
             self.assertEqual(md.fetch_realtime(["513100"]), {"513100": ("ETF", 2.194)})
+
+    def test_missing_or_invalid_reference_close_cannot_enter_live_action_check(self):
+        for value in ('','0','nan','-1'):
+            payload=quote_payload().replace(b'~2.233~',('~'+value+'~').encode())
+            with self.subTest(value=value),patch.object(md,'_get',return_value=payload):
+                with self.assertRaises(ValueError):md.fetch_realtime(['513100'],detailed=True)
 
     def test_rejects_malformed_zero_price_and_missing_quote(self):
         for payload in (quote_payload(price="0"), quote_payload(price="nan"),

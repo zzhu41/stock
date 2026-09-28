@@ -1,0 +1,63 @@
+{
+  "checked_at": "2026-09-28T08:01:27.775339+00:00",
+  "tests": {
+    "command": "OPENBLAS_NUM_THREADS=1 python3.8 -B -m unittest discover -s tests -v",
+    "count": 260,
+    "seconds": 51.21,
+    "passed": true,
+    "log_sha256": "67033197ea61c69fd2507af4ac32683c062412df6d385df2e353f1ed38313d72"
+  },
+  "production_observation_before_annotation": {
+    "date": "2026-09-28",
+    "status": "failed",
+    "reason": "RuntimeError",
+    "started_at": "2026-09-28T14:54:01.834328",
+    "finished_at": "2026-09-28T14:54:05.561991"
+  },
+  "canonical_present": false,
+  "delivery_present": false,
+  "real_response_replay": {
+    "date": "2026-09-28",
+    "sample_period": "15:41–15:42 Asia/Shanghai",
+    "assets": 11,
+    "explicit_qfq_missing_current": 9,
+    "existing_day_alias": 2,
+    "all_passed": true,
+    "history_prefix_unchanged": true,
+    "current_anchor_persisted": false,
+    "production_cache_used": false
+  },
+  "source_sha256": {
+    "daily_diagnostics.py": "3248565e5f977f43cb2a8119795c6f81e1291fa37be959004dbcf8082914ac4a",
+    "daily_extras.py": "504b07e6406b3f0901e204df9d17b5d3f401cf8519deaf24fbdad962b96df0f5",
+    "daily_job.py": "0d1e2fc9649197d2828f9bb6914e5196d3f4df49510bc6383b14439e3f54281b",
+    "market_data.py": "dae10151b88be286bc973c346e49e8c736e0d0f7ec52b85df79dd3b7f4602c19",
+    "push_signal.py": "58523950d26d8d4ebe875b65b41714267bcf8f2dd0195aa6e0ad4ba1cd70e26c",
+    "signal_daily.py": "b3f58c96e71cec48004faccb81d5cf8c0857ddbc89a5252c88d3716b29059678",
+    "v10_live/data.py": "6daeec63e9ac7dc88ae9db267477008338a6579086519698927296c588d9f8f0",
+    "tests/fixtures/tencent_current_qfq_20260928.json": "1f3a7da08e33e07e620a7f405d6656248662675bd8bc7894a14c49d107826535"
+  },
+  "v12_frozen_files_unchanged": 248,
+  "v10_frozen_profile_checks": [
+    "growth",
+    "v92",
+    "simple"
+  ],
+  "outbound_messages_sent": 0,
+  "retroactive_account_updates": 0,
+  "status_annotation": {
+    "origin": "post_close_replay_not_original_exception",
+    "investigated_at": "2026-09-28T16:03:31.922852",
+    "existing_failed_status_preserved": true,
+    "account_signal_delivery_bytes_unchanged": true,
+    "query_three_versions_historical_and_diagnostic": true,
+    "original_file_sha256": "dd2a014283132cc82315d3ded28541bdf062f9d51d4eedb6c2dcf3a3c0a2d6fe"
+  },
+  "installed_query_handler_offline_replay": {
+    "passed": true,
+    "http_request_sent": false,
+    "diagnostic_visible": true,
+    "historical_only": true,
+    "account_signal_delivery_bytes_unchanged": true
+  }
+}

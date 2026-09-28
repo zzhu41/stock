@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>动量轮动策略跟踪</title>
+<title>V12-R2 · 动量轮动策略跟踪</title>
 <style>
   :root {
     --bg: #0f1420; --card: #182032; --card2: #1e2840; --line: #2a3550;
@@ -51,7 +51,7 @@
   td { padding: 6px 10px; text-align: right; border-bottom: 1px solid #1c2438; font-variant-numeric: tabular-nums; }
   .scroll { max-height: 420px; overflow-y: auto; }
   .badge { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 12px; }
-  .b-轮动 { background: #26314e; color: #9db2dd; }
+  .b-轮动, .b-换仓 { background: #26314e; color: #9db2dd; }
   .b-建仓 { background: #123a5e; color: #6db3ff; }
   .b-恐慌抄底 { background: #4a1626; color: #ff7d9c; }
   .b-避险停靠 { background: #3a3a10; color: #e6d97a; }
@@ -70,7 +70,7 @@
 </head>
 <body>
 <header>
-  <h1>动量轮动策略跟踪</h1>
+  <h1>V12-R2 · 动量轮动策略跟踪</h1>
   <span class="meta" id="metaInfo">加载中…</span>
   <span class="spacer"></span>
   <button id="btnRefresh">⟳ 重建数据</button>
@@ -78,6 +78,11 @@
 
 <div id="banner">⏳ 正在重建回测缓存（全量约 3 分钟），完成后自动刷新…</div>
 <div id="err"></div>
+
+<div class="panel" id="shadowCard" aria-live="polite">
+  <h2 id="shadowTitle">V12-R2 主推送 <span class="badge">虚拟观察 · 不下单</span></h2>
+  <div id="shadowContent" class="context-line">正在读取保存状态；历史回测净值不作为前向净值。</div>
+</div>
 
 <div id="controls">
   <div class="grp"><span class="lbl">版本</span><select id="selVersion"></select></div>
@@ -97,10 +102,7 @@
 
 <div id="stats"></div>
 
-<div class="panel" id="shadowCard" aria-live="polite">
-  <h2>V10-H 独立影子账户 <span class="badge">研究观察 · 不下单</span></h2>
-  <div id="shadowContent" class="context-line">正在读取保存状态；历史回测净值不作为前向净值。</div>
-</div>
+
 
 <div id="chart"><div id="chartDiv"></div></div>
 
@@ -147,10 +149,10 @@ const POOL_COLORS = {
   "513120": "#e91e63", "518880": "#ffd700", "511880": "#5d6b80"
 };
 const VERSION_COLORS = {
-  "v10-h": "#61d2ba", "v9.2-tr": "#c49bff", "v9.2": "#4f8cff",
+  "v12-r2": "#f4c572", "v10-h": "#61d2ba", "v9.2-tr": "#c49bff", "v9.2": "#4f8cff",
   "v9.1": "#ffb454", "v9": "#84a7d8"
 };
-const state = { version: "v10-h", compare: "v9.2-tr", start: null, end: null, log: true,
+const state = { version: "v12-r2", compare: "v10-h", start: null, end: null, log: true,
                 quick: "all", range: null, meta: null, series: null };
 let chart = null, pollTimer = null, seriesRequest = 0;
 
@@ -209,8 +211,10 @@ function syncVersionRange() {
   ["#inpStart", "#inpEnd"].forEach(selector => {
     $(selector).min = range[0]; $(selector).max = range[1];
   });
+  const built = state.version === "v12-r2" ? (state.meta.v12_updated_at || state.meta.built_at) :
+    state.version === "v10-h" ? (state.meta.v10_updated_at || state.meta.built_at) : state.meta.built_at;
   $("#metaInfo").textContent = `${current.label || state.version} · 历史数据 ${range[0]} ~ ${range[1]}` +
-    (state.meta.built_at ? ` · 缓存构建于 ${state.meta.built_at}` : "") +
+    (built ? ` · 缓存构建于 ${built}` : "") +
     (state.meta.building ? " · ⏳ 后台重建中" : "");
 }
 
@@ -220,7 +224,8 @@ async function loadMeta() {
   const versions = m.versions || [];
   if (!versions.length) throw new Error("暂无可用版本");
   if (!versions.some(v => v.id === state.version)) {
-    state.version = versions.some(v => v.id === "v10-h") ? "v10-h" :
+    state.version = versions.some(v => v.id === m.default_version) ? m.default_version :
+      versions.some(v => v.id === "v12-r2") ? "v12-r2" : versions.some(v => v.id === "v10-h") ? "v10-h" :
       (versions.some(v => v.id === "v9.2") ? "v9.2" : versions[0].id);
   }
   const sv = $("#selVersion"), sc = $("#selCompare");
@@ -257,7 +262,7 @@ function renderVersionInfo(s) {
   const basis = bases[meta.basis] || meta.basis || "历史数据（以版本说明为准）";
   const kinds = {frozen_research:"冻结研究回测", research_backtest:"研究回测",
     frozen_control:"冻结同口径对照", legacy_backtest:"旧版历史回测", legacy:"旧版历史回测"};
-  const kind = kinds[meta.kind] || (state.version === "v10-h" ? "冻结研究回测" :
+  const kind = kinds[meta.kind] || (["v12-r2", "v10-h"].includes(state.version) ? "冻结研究回测" :
     (state.version === "v9.2-tr" ? "冻结同口径对照" : "历史模型回测"));
   const warnings = textList(meta.warnings);
   if (s.comparison_warning) warnings.unshift(s.comparison_warning);
@@ -271,11 +276,12 @@ function renderVersionInfo(s) {
 
 function renderShadow(signal) {
   const el = $("#shadowContent");
+  $("#shadowTitle").innerHTML = `${esc((signal || {}).label || "V12-R2 主推送")} <span class="badge">虚拟观察 · 不下单</span>`;
   if (!signal) {
-    el.innerHTML = '<div class="context-warning">尚未取得V10-H保存状态；不使用回测曲线推定今日持仓或前向净值。</div>';
+    el.innerHTML = '<div class="context-warning">尚未取得主推送保存状态；不使用回测曲线推定今日持仓或前向净值。</div>';
     return;
   }
-  const labels = {not_started: "尚未启动", active: "最新有效影子记录", stale: "历史影子记录（非当前建议）",
+  const labels = {not_started: "等待首次生成", active: "最新有效影子记录", stale: "历史影子记录（非当前建议）",
                   failed: "本次信号不可用", historical_preview: "历史预览 · 前向跟踪尚未启动"};
   const current = signal.status === "active" && signal.actionable !== false;
   const status = signal.status === "active" && !current ? "当日保存记录（非当前操作建议）" : (labels[signal.status] || "保存状态待核验");
@@ -296,6 +302,7 @@ function renderShadow(signal) {
     <span>${current ? "独立虚拟净值" : "上次记录净值"}：<strong>${navText}</strong>${recordedNav ? `（自 ${esc(signal.start_date)} 从1起算）` : ""}</span></div>
     <div class="context-line">信号数据日期 ${esc(signal.data_date || "—")} · 行情时间 ${esc(signal.quote_timestamp || "—")} · 账户记录日期 ${esc(signal.state_date || "—")}</div>
     <div class="context-line">${esc(generationText)} · ${esc(deliveryText)}</div>
+    ${signal.version === "v12-r2" ? `<div class="context-line">保存时价格 ${finite(signal.quote_price) ? signal.quote_price.toFixed(3) : "—"} · 当时累计成交量（手） ${finite(signal.quote_volume) ? signal.quote_volume.toLocaleString() : "未保存"}</div>` : ""}
     ${signal.reason ? `<div class="context-line">${esc(signal.reason)}</div>` : ""}
     ${signal.preview && signal.preview.code ? `<div class="context-warning">历史预览 ${esc(signal.preview.date || "—")}：<strong>${esc(signal.preview.code)} ${esc(signal.preview.name || "")}</strong>，非今日买入指令；不计入前向账户。</div>` : ""}
     ${notes.map(note => `<div class="context-warning">${esc(note)}</div>`).join("")}

@@ -1,0 +1,1373 @@
+{
+  "comparisons": {
+    "c": {
+      "disagreement_episodes": [
+        {
+          "c4_return": -0.06828075343891471,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-02-24",
+              "indicators": {
+                "mom20": 0.0034690101757632874,
+                "mom5": -0.047001976718647254,
+                "ret1": -0.01743659420289867,
+                "vol20": 0.01480350619532038
+              },
+              "new_holding": "512400",
+              "old_holding": "513100",
+              "old_holding_age": 4,
+              "panic": false,
+              "reason": "healthy_rotation"
+            },
+            {
+              "crash": false,
+              "date": "2021-02-26",
+              "indicators": {
+                "mom20": 0.016873889875665737,
+                "mom5": -0.06377759607522504,
+                "ret1": -0.04103852596314905,
+                "vol20": 0.03441587488298271
+              },
+              "new_holding": "512890",
+              "old_holding": "512400",
+              "old_holding_age": 2,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "days": 3,
+          "end": "2021-02-26",
+          "log_excess": -0.029561006436242872,
+          "other_return": -0.040327060738408416,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-02-23",
+              "indicators": {
+                "mom20": 0.029130738755534846,
+                "mom5": -0.026455026455026398,
+                "ret1": -0.015823490082460423,
+                "vol20": 0.014380108478989375
+              },
+              "new_holding": "512400",
+              "old_holding": "513100",
+              "old_holding_age": 3,
+              "panic": false,
+              "reason": "healthy_rotation"
+            },
+            {
+              "crash": false,
+              "date": "2021-02-24",
+              "indicators": {
+                "mom20": 0.12279069767441841,
+                "mom5": 0.06437389770723079,
+                "ret1": -0.04433887569279493,
+                "vol20": 0.03329728126313173
+              },
+              "new_holding": "512890",
+              "old_holding": "512400",
+              "old_holding_age": 1,
+              "panic": true,
+              "reason": "panic_exit"
+            }
+          ],
+          "start": "2021-02-24"
+        },
+        {
+          "c4_return": -0.004862624916721847,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-06-18",
+              "indicators": {
+                "mom20": 0.019795221843003752,
+                "mom5": -0.019685039370078705,
+                "ret1": -0.004663557628247661,
+                "vol20": 0.00707774403069506
+              },
+              "new_holding": "513100",
+              "old_holding": "512890",
+              "old_holding_age": 14,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "days": 1,
+          "end": "2021-06-18",
+          "log_excess": -0.025582732411712814,
+          "other_return": 0.020924149956408122,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-06-17",
+              "indicators": {
+                "mom20": 0.010774410774410992,
+                "mom5": -0.015091863517060378,
+                "ret1": -0.0006657789613848664,
+                "vol20": 0.007076702088884154
+              },
+              "new_holding": "513100",
+              "old_holding": "512890",
+              "old_holding_age": 13,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "start": "2021-06-18"
+        },
+        {
+          "c4_return": -0.00019999999999997797,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-04-06",
+              "indicators": {
+                "mom20": 0.02460202604920414,
+                "mom5": -0.006315789473684386,
+                "ret1": 0.0,
+                "vol20": 0.010504108401257484
+              },
+              "new_holding": "513100",
+              "old_holding": "512890",
+              "old_holding_age": 5,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "days": 1,
+          "end": "2021-04-06",
+          "log_excess": -0.015707641365371106,
+          "other_return": 0.015628488501897797,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-04-02",
+              "indicators": {
+                "mom20": 0.018705035971223083,
+                "mom5": 0.009985734664764712,
+                "ret1": -0.008403361344537674,
+                "vol20": 0.010881729783040233
+              },
+              "new_holding": "513100",
+              "old_holding": "512890",
+              "old_holding_age": 4,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "start": "2021-04-06"
+        },
+        {
+          "c4_return": -0.008598238065970043,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-10-12",
+              "indicators": {
+                "mom20": -0.06599768429177921,
+                "mom5": -0.03296703296703318,
+                "ret1": -0.008399918049580068,
+                "vol20": 0.0082762918964388
+              },
+              "new_holding": "518880",
+              "old_holding": "513100",
+              "old_holding_age": 8,
+              "panic": false,
+              "reason": "momentum_exit"
+            }
+          ],
+          "days": 1,
+          "end": "2021-10-12",
+          "log_excess": -0.01366055238181032,
+          "other_return": 0.005037783375315019,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-10-11",
+              "indicators": {
+                "mom20": -0.06008087810514129,
+                "mom5": -0.04218995290423877,
+                "ret1": -0.011342920802106637,
+                "vol20": 0.008097151604517759
+              },
+              "new_holding": "518880",
+              "old_holding": "513100",
+              "old_holding_age": 7,
+              "panic": false,
+              "reason": "momentum_exit"
+            }
+          ],
+          "start": "2021-10-12"
+        },
+        {
+          "c4_return": -0.018732020801869753,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-12-08",
+              "indicators": {
+                "mom20": 0.006395786305492646,
+                "mom5": 0.0,
+                "ret1": 0.02490421455938696,
+                "vol20": 0.009713328888288146
+              },
+              "new_holding": "510500",
+              "old_holding": "513100",
+              "old_holding_age": 3,
+              "panic": false,
+              "reason": "healthy_rotation"
+            },
+            {
+              "crash": false,
+              "date": "2021-12-10",
+              "indicators": {
+                "mom20": 0.022894114719423264,
+                "mom5": 0.0010959571358990505,
+                "ret1": -0.00036478599221800856,
+                "vol20": 0.008722208633743478
+              },
+              "new_holding": "512890",
+              "old_holding": "510500",
+              "old_holding_age": 2,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "days": 4,
+          "end": "2021-12-14",
+          "log_excess": 0.0015494957270050166,
+          "other_return": -0.02025131396957125,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-12-08",
+              "indicators": {
+                "mom20": 0.006395786305492646,
+                "mom5": 0.0,
+                "ret1": 0.02490421455938696,
+                "vol20": 0.009713328888288146
+              },
+              "new_holding": "512400",
+              "old_holding": "513100",
+              "old_holding_age": 3,
+              "panic": false,
+              "reason": "healthy_rotation"
+            },
+            {
+              "crash": false,
+              "date": "2021-12-14",
+              "indicators": {
+                "mom20": 0.07267221801665391,
+                "mom5": -0.0035161744022504937,
+                "ret1": -0.02945205479452051,
+                "vol20": 0.02043349876627531
+              },
+              "new_holding": "512890",
+              "old_holding": "512400",
+              "old_holding_age": 4,
+              "panic": true,
+              "reason": "panic_exit"
+            }
+          ],
+          "start": "2021-12-09"
+        }
+      ],
+      "exposure_disagreement_days": 10,
+      "fee_log_excess": 0.0,
+      "net_log_excess": -0.08216235685746488,
+      "worst_days": [
+        {
+          "c4_close_target": "512400",
+          "c4_exposure": "512400",
+          "c4_return": -0.010770505385252815,
+          "date": "2021-02-25",
+          "log_excess": -0.03401837206389436,
+          "other_close_target": "512890",
+          "other_exposure": "512890",
+          "other_return": 0.023460410557184508
+        },
+        {
+          "c4_close_target": "513100",
+          "c4_exposure": "512890",
+          "c4_return": -0.004862624916721847,
+          "date": "2021-06-18",
+          "log_excess": -0.025582732411712814,
+          "other_close_target": "513100",
+          "other_exposure": "513100",
+          "other_return": 0.020924149956408122
+        },
+        {
+          "c4_close_target": "512890",
+          "c4_exposure": "512400",
+          "c4_return": -0.04123031825795642,
+          "date": "2021-02-26",
+          "log_excess": -0.023304133466727377,
+          "other_close_target": "512890",
+          "other_exposure": "512890",
+          "other_return": -0.01862464183381074
+        },
+        {
+          "c4_close_target": "513100",
+          "c4_exposure": "512890",
+          "c4_return": -0.00019999999999997797,
+          "date": "2021-04-06",
+          "log_excess": -0.015707641365371106,
+          "other_close_target": "513100",
+          "other_exposure": "513100",
+          "other_return": 0.015628488501897797
+        },
+        {
+          "c4_close_target": "518880",
+          "c4_exposure": "513100",
+          "c4_return": -0.008598238065970043,
+          "date": "2021-10-12",
+          "log_excess": -0.01366055238181032,
+          "other_close_target": "518880",
+          "other_exposure": "518880",
+          "other_return": 0.005037783375315019
+        },
+        {
+          "c4_close_target": "512890",
+          "c4_exposure": "510500",
+          "c4_return": -0.0005647130350194818,
+          "date": "2021-12-10",
+          "log_excess": -0.010206820521733065,
+          "other_close_target": "512400",
+          "other_exposure": "512400",
+          "other_return": 0.009688581314878819
+        },
+        {
+          "c4_close_target": "512890",
+          "c4_exposure": "512890",
+          "c4_return": -0.0063775510204081565,
+          "date": "2021-12-13",
+          "log_excess": -0.007083140659256087,
+          "other_close_target": "512400",
+          "other_exposure": "512400",
+          "other_return": 0.0006854009595613775
+        },
+        {
+          "c4_close_target": "510300",
+          "c4_exposure": "159915",
+          "c4_return": -0.03462141503474425,
+          "date": "2021-01-28",
+          "log_excess": -2.2898349882893854e-16,
+          "other_close_target": "510300",
+          "other_exposure": "159915",
+          "other_return": -0.03462141503474403
+        },
+        {
+          "c4_close_target": "512890",
+          "c4_exposure": "512890",
+          "c4_return": -0.014883061658398478,
+          "date": "2021-03-05",
+          "log_excess": -2.255140518769849e-16,
+          "other_close_target": "512890",
+          "other_exposure": "512890",
+          "other_return": -0.014883061658398256
+        },
+        {
+          "c4_close_target": "513100",
+          "c4_exposure": "518880",
+          "c4_return": -0.007655012427506325,
+          "date": "2021-10-27",
+          "log_excess": -2.237793284010081e-16,
+          "other_close_target": "513100",
+          "other_exposure": "518880",
+          "other_return": -0.007655012427506103
+        },
+        {
+          "c4_close_target": "512400",
+          "c4_exposure": "513100",
+          "c4_return": -0.006113563124617527,
+          "date": "2021-07-19",
+          "log_excess": -2.229119666630197e-16,
+          "other_close_target": "512400",
+          "other_exposure": "513100",
+          "other_return": -0.006113563124617305
+        },
+        {
+          "c4_close_target": "513100",
+          "c4_exposure": "512400",
+          "c4_return": -0.000200000000000089,
+          "date": "2021-07-23",
+          "log_excess": -2.220988150336556e-16,
+          "other_close_target": "513100",
+          "other_exposure": "512400",
+          "other_return": -0.00019999999999986695
+        }
+      ]
+    },
+    "h": {
+      "disagreement_episodes": [
+        {
+          "c4_return": -0.051556752278376194,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-02-24",
+              "indicators": {
+                "mom20": 0.0034690101757632874,
+                "mom5": -0.047001976718647254,
+                "ret1": -0.01743659420289867,
+                "vol20": 0.01480350619532038
+              },
+              "new_holding": "512400",
+              "old_holding": "513100",
+              "old_holding_age": 4,
+              "panic": false,
+              "reason": "healthy_rotation"
+            },
+            {
+              "crash": false,
+              "date": "2021-02-26",
+              "indicators": {
+                "mom20": 0.016873889875665737,
+                "mom5": -0.06377759607522504,
+                "ret1": -0.04103852596314905,
+                "vol20": 0.03441587488298271
+              },
+              "new_holding": "512890",
+              "old_holding": "512400",
+              "old_holding_age": 2,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "days": 2,
+          "end": "2021-02-26",
+          "log_excess": -0.05288121622808529,
+          "other_return": -5.210752612905267e-05,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-02-25",
+              "indicators": {
+                "mom20": -0.0029312288613303483,
+                "mom5": -0.024271844660194497,
+                "ret1": 0.0191288315280016,
+                "vol20": 0.014802905244535819
+              },
+              "new_holding": "512890",
+              "old_holding": "513100",
+              "old_holding_age": 10,
+              "panic": false,
+              "reason": "momentum_exit"
+            }
+          ],
+          "start": "2021-02-25"
+        },
+        {
+          "c4_return": 0.013221368150055701,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-01-19",
+              "indicators": {
+                "mom20": 0.07127429805615515,
+                "mom5": -0.03250975292587788,
+                "ret1": -0.022980958634274407,
+                "vol20": 0.017761315388703073
+              },
+              "new_holding": "510300",
+              "old_holding": "159915",
+              "old_holding_age": 17,
+              "panic": true,
+              "reason": "panic_exit"
+            },
+            {
+              "crash": false,
+              "date": "2021-01-26",
+              "indicators": {
+                "mom20": 0.08829900193375995,
+                "mom5": 0.013424052960647304,
+                "ret1": -0.021310602024507186,
+                "vol20": 0.01241838371793819
+              },
+              "new_holding": "159915",
+              "old_holding": "510300",
+              "old_holding_age": 5,
+              "panic": true,
+              "reason": "panic_exit"
+            }
+          ],
+          "days": 5,
+          "end": "2021-01-26",
+          "log_excess": -0.04432232633663445,
+          "other_return": 0.05913978494623651,
+          "other_trades": [],
+          "start": "2021-01-20"
+        },
+        {
+          "c4_return": -0.008601680672268741,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-04-06",
+              "indicators": {
+                "mom20": 0.02460202604920414,
+                "mom5": -0.006315789473684386,
+                "ret1": 0.0,
+                "vol20": 0.010504108401257484
+              },
+              "new_holding": "513100",
+              "old_holding": "512890",
+              "old_holding_age": 5,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "days": 2,
+          "end": "2021-04-06",
+          "log_excess": -0.03514673317935447,
+          "other_return": 0.02686230248307009,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-04-01",
+              "indicators": {
+                "mom20": 0.012048192771084043,
+                "mom5": 0.02659956865564328,
+                "ret1": 0.006342494714587588,
+                "vol20": 0.010881729783040233
+              },
+              "new_holding": "513100",
+              "old_holding": "512890",
+              "old_holding_age": 3,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "start": "2021-04-02"
+        },
+        {
+          "c4_return": -0.004862624916721847,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-06-18",
+              "indicators": {
+                "mom20": 0.019795221843003752,
+                "mom5": -0.019685039370078705,
+                "ret1": -0.004663557628247661,
+                "vol20": 0.00707774403069506
+              },
+              "new_holding": "513100",
+              "old_holding": "512890",
+              "old_holding_age": 14,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "days": 1,
+          "end": "2021-06-18",
+          "log_excess": -0.025582732411712814,
+          "other_return": 0.020924149956408122,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-06-17",
+              "indicators": {
+                "mom20": 0.010774410774410992,
+                "mom5": -0.015091863517060378,
+                "ret1": -0.0006657789613848664,
+                "vol20": 0.006540588139331888
+              },
+              "new_holding": "513100",
+              "old_holding": "512890",
+              "old_holding_age": 10,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "start": "2021-06-18"
+        },
+        {
+          "c4_return": -0.0035271214642264015,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-10-27",
+              "indicators": {
+                "mom20": -0.012637362637362926,
+                "mom5": 0.002790178571428603,
+                "ret1": -0.0074565037282519064,
+                "vol20": 0.007085060218735006
+              },
+              "new_holding": "513100",
+              "old_holding": "518880",
+              "old_holding_age": 11,
+              "panic": false,
+              "reason": "momentum_exit"
+            }
+          ],
+          "days": 2,
+          "end": "2021-10-27",
+          "log_excess": -0.01438694101383653,
+          "other_return": 0.010912698412698596,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-10-25",
+              "indicators": {
+                "mom20": -0.006063947078280285,
+                "mom5": 0.007262569832402255,
+                "ret1": -0.0024896265560166997,
+                "vol20": 0.007373048330147565
+              },
+              "new_holding": "513100",
+              "old_holding": "518880",
+              "old_holding_age": 10,
+              "panic": false,
+              "reason": "momentum_exit"
+            }
+          ],
+          "start": "2021-10-26"
+        },
+        {
+          "c4_return": -0.008598238065970043,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-10-12",
+              "indicators": {
+                "mom20": -0.06599768429177921,
+                "mom5": -0.03296703296703318,
+                "ret1": -0.008399918049580068,
+                "vol20": 0.0082762918964388
+              },
+              "new_holding": "518880",
+              "old_holding": "513100",
+              "old_holding_age": 8,
+              "panic": false,
+              "reason": "momentum_exit"
+            }
+          ],
+          "days": 1,
+          "end": "2021-10-12",
+          "log_excess": -0.01366055238181032,
+          "other_return": 0.005037783375315019,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-10-11",
+              "indicators": {
+                "mom20": -0.06008087810514129,
+                "mom5": -0.04218995290423877,
+                "ret1": -0.011342920802106637,
+                "vol20": 0.0082762918964388
+              },
+              "new_holding": "518880",
+              "old_holding": "513100",
+              "old_holding_age": 5,
+              "panic": false,
+              "reason": "momentum_exit"
+            }
+          ],
+          "start": "2021-10-12"
+        },
+        {
+          "c4_return": -0.009094583670170131,
+          "c4_trades": [],
+          "days": 1,
+          "end": "2021-07-16",
+          "log_excess": -0.011172475436759016,
+          "other_return": 0.002038358208955149,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-07-15",
+              "indicators": {
+                "mom20": 0.07846556233653024,
+                "mom5": 0.00773930753564156,
+                "ret1": 0.0020251113811260435,
+                "vol20": 0.006564430862727791
+              },
+              "new_holding": "512400",
+              "old_holding": "513100",
+              "old_holding_age": 20,
+              "panic": false,
+              "reason": "healthy_rotation"
+            },
+            {
+              "crash": false,
+              "date": "2021-07-16",
+              "indicators": {
+                "mom20": 0.2209090909090914,
+                "mom5": 0.02519083969465674,
+                "ret1": 0.002238805970149249,
+                "vol20": 0.023658807006242392
+              },
+              "new_holding": "513100",
+              "old_holding": "512400",
+              "old_holding_age": 1,
+              "panic": false,
+              "reason": "bear_stock_exit"
+            }
+          ],
+          "start": "2021-07-16"
+        },
+        {
+          "c4_return": -0.006665134451850019,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-03-24",
+              "indicators": {
+                "mom20": 0.021260997067448884,
+                "mom5": -0.022456140350876952,
+                "ret1": -0.00995024875621875,
+                "vol20": 0.013061939908153866
+              },
+              "new_holding": "513100",
+              "old_holding": "512890",
+              "old_holding_age": 18,
+              "panic": false,
+              "reason": "bear_stock_exit"
+            }
+          ],
+          "days": 2,
+          "end": "2021-03-26",
+          "log_excess": -0.006766872348542808,
+          "other_return": 7.942984907760575e-05,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-03-24",
+              "indicators": {
+                "mom20": 0.021260997067448884,
+                "mom5": -0.022456140350876952,
+                "ret1": -0.00995024875621875,
+                "vol20": 0.013289289378897833
+              },
+              "new_holding": "518880",
+              "old_holding": "512890",
+              "old_holding_age": 19,
+              "panic": false,
+              "reason": "bear_stock_exit"
+            },
+            {
+              "crash": false,
+              "date": "2021-03-26",
+              "indicators": {
+                "mom20": -0.009410462219762383,
+                "mom5": -0.0027862914460854427,
+                "ret1": -0.0027862914460853316,
+                "vol20": 0.007825181861780516
+              },
+              "new_holding": "513100",
+              "old_holding": "518880",
+              "old_holding_age": 2,
+              "panic": false,
+              "reason": "momentum_exit"
+            }
+          ],
+          "start": "2021-03-25"
+        },
+        {
+          "c4_return": 0.004479791015421064,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-05-28",
+              "indicators": {
+                "mom20": 0.0402408978921438,
+                "mom5": -0.00419287211740027,
+                "ret1": -0.007573779054583563,
+                "vol20": 0.00764773733354681
+              },
+              "new_holding": "512890",
+              "old_holding": "518880",
+              "old_holding_age": 11,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "days": 6,
+          "end": "2021-06-02",
+          "log_excess": 0.00019123227720514724,
+          "other_return": 0.004287720423212571,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-05-25",
+              "indicators": {
+                "mom20": 0.036996735582154994,
+                "mom5": 0.0026301946344033933,
+                "ret1": -0.004179728317659337,
+                "vol20": 0.005506543143503267
+              },
+              "new_holding": "159915",
+              "old_holding": "518880",
+              "old_holding_age": 8,
+              "panic": false,
+              "reason": "healthy_rotation"
+            },
+            {
+              "crash": false,
+              "date": "2021-06-02",
+              "indicators": {
+                "mom20": 0.04817664770826369,
+                "mom5": 0.012277867528271313,
+                "ret1": -0.017252195734002607,
+                "vol20": 0.016643273512368453
+              },
+              "new_holding": "512890",
+              "old_holding": "159915",
+              "old_holding_age": 6,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "start": "2021-05-26"
+        },
+        {
+          "c4_return": 0.000408446932814277,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-12-08",
+              "indicators": {
+                "mom20": 0.006395786305492646,
+                "mom5": 0.0,
+                "ret1": 0.02490421455938696,
+                "vol20": 0.009713328888288146
+              },
+              "new_holding": "510500",
+              "old_holding": "513100",
+              "old_holding_age": 3,
+              "panic": false,
+              "reason": "healthy_rotation"
+            },
+            {
+              "crash": false,
+              "date": "2021-12-10",
+              "indicators": {
+                "mom20": 0.022894114719423264,
+                "mom5": 0.0010959571358990505,
+                "ret1": -0.00036478599221800856,
+                "vol20": 0.008722208633743478
+              },
+              "new_holding": "512890",
+              "old_holding": "510500",
+              "old_holding_age": 2,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "days": 2,
+          "end": "2021-12-10",
+          "log_excess": 0.001683060973072848,
+          "other_return": -0.00127388535031836,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-12-08",
+              "indicators": {
+                "mom20": 0.006395786305492646,
+                "mom5": 0.0,
+                "ret1": 0.02490421455938696,
+                "vol20": 0.011060958802187236
+              },
+              "new_holding": "512890",
+              "old_holding": "513100",
+              "old_holding_age": 3,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "start": "2021-12-09"
+        },
+        {
+          "c4_return": 0.0061204343534055905,
+          "c4_trades": [],
+          "days": 1,
+          "end": "2021-09-27",
+          "log_excess": 0.005186973254635952,
+          "other_return": 0.0009152258784161926,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-09-24",
+              "indicators": {
+                "mom20": -0.010355607659241262,
+                "mom5": -0.003148986419995614,
+                "ret1": 0.001978239366963619,
+                "vol20": 0.007509551849001972
+              },
+              "new_holding": "518880",
+              "old_holding": "513100",
+              "old_holding_age": 1,
+              "panic": false,
+              "reason": "momentum_exit"
+            },
+            {
+              "crash": false,
+              "date": "2021-09-27",
+              "indicators": {
+                "mom20": -0.015089163237311687,
+                "mom5": -0.010474090407938452,
+                "ret1": 0.001115448968209698,
+                "vol20": 0.006455539125136389
+              },
+              "new_holding": "513100",
+              "old_holding": "518880",
+              "old_holding_age": 1,
+              "panic": false,
+              "reason": "momentum_exit"
+            }
+          ],
+          "start": "2021-09-27"
+        },
+        {
+          "c4_return": 0.018366388115135024,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-01-28",
+              "indicators": {
+                "mom20": 0.09217577706323676,
+                "mom5": -0.037468513853904484,
+                "ret1": -0.03442830069488312,
+                "vol20": 0.02001832434786321
+              },
+              "new_holding": "510300",
+              "old_holding": "159915",
+              "old_holding_age": 2,
+              "panic": true,
+              "reason": "panic_exit"
+            },
+            {
+              "crash": false,
+              "date": "2021-02-03",
+              "indicators": {
+                "mom20": 0.013614432484976513,
+                "mom5": -0.0065205578699508715,
+                "ret1": -0.0010926971407755337,
+                "vol20": 0.014305092485835787
+              },
+              "new_holding": "159915",
+              "old_holding": "510300",
+              "old_holding_age": 4,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "days": 4,
+          "end": "2021-02-03",
+          "log_excess": 0.007433099532046599,
+          "other_return": 0.01082483268142198,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-01-28",
+              "indicators": {
+                "mom20": 0.09217577706323676,
+                "mom5": -0.037468513853904484,
+                "ret1": -0.03442830069488312,
+                "vol20": 0.021328449475542577
+              },
+              "new_holding": "510500",
+              "old_holding": "159915",
+              "old_holding_age": 25,
+              "panic": true,
+              "reason": "panic_exit"
+            },
+            {
+              "crash": false,
+              "date": "2021-01-29",
+              "indicators": {
+                "mom20": -0.002697714042311228,
+                "mom5": -0.04344273457714831,
+                "ret1": -0.014037057832678168,
+                "vol20": 0.010336904978354138
+              },
+              "new_holding": "159915",
+              "old_holding": "510500",
+              "old_holding_age": 1,
+              "panic": false,
+              "reason": "momentum_exit"
+            }
+          ],
+          "start": "2021-01-29"
+        },
+        {
+          "c4_return": 0.013266331658291497,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-07-23",
+              "indicators": {
+                "mom20": 0.25548726953468015,
+                "mom5": 0.06478034251675369,
+                "ret1": 0.0,
+                "vol20": 0.02494258251625075
+              },
+              "new_holding": "513100",
+              "old_holding": "512400",
+              "old_holding_age": 4,
+              "panic": false,
+              "reason": "bear_stock_exit"
+            }
+          ],
+          "days": 1,
+          "end": "2021-07-26",
+          "log_excess": 0.010939107015239155,
+          "other_return": 0.002242508143322386,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-07-23",
+              "indicators": {
+                "mom20": 0.25548726953468015,
+                "mom5": 0.06478034251675369,
+                "ret1": 0.0,
+                "vol20": 0.024882636469607592
+              },
+              "new_holding": "518880",
+              "old_holding": "512400",
+              "old_holding_age": 4,
+              "panic": false,
+              "reason": "bear_stock_exit"
+            },
+            {
+              "crash": false,
+              "date": "2021-07-26",
+              "indicators": {
+                "mom20": 0.017635712317442875,
+                "mom5": 0.003805381897254767,
+                "ret1": 0.0024429967426709,
+                "vol20": 0.0058010990103340675
+              },
+              "new_holding": "513100",
+              "old_holding": "518880",
+              "old_holding_age": 1,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "start": "2021-07-26"
+        },
+        {
+          "c4_return": 0.03336333118140744,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-02-18",
+              "indicators": {
+                "mom20": 0.058512396694214486,
+                "mom5": 0.030907920154539692,
+                "ret1": -0.02763437594898277,
+                "vol20": 0.02102549228764757
+              },
+              "new_holding": "513100",
+              "old_holding": "159915",
+              "old_holding_age": 6,
+              "panic": true,
+              "reason": "panic_exit"
+            }
+          ],
+          "days": 5,
+          "end": "2021-02-18",
+          "log_excess": 0.014334861235323654,
+          "other_return": 0.018655877725331838,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-02-04",
+              "indicators": {
+                "mom20": 0.013743455497381651,
+                "mom5": 0.013411841674844327,
+                "ret1": -0.0025756600128783447,
+                "vol20": 0.019636232543814053
+              },
+              "new_holding": "513100",
+              "old_holding": "159915",
+              "old_holding_age": 4,
+              "panic": false,
+              "reason": "healthy_rotation"
+            }
+          ],
+          "start": "2021-02-05"
+        },
+        {
+          "c4_return": 0.017985292391942354,
+          "c4_trades": [
+            {
+              "crash": false,
+              "date": "2021-12-22",
+              "indicators": {
+                "mom20": -0.03017883755588635,
+                "mom5": -0.002108491470193319,
+                "ret1": 0.0050193050193052535,
+                "vol20": 0.014230298998180272
+              },
+              "new_holding": "518880",
+              "old_holding": "513100",
+              "old_holding_age": 3,
+              "panic": false,
+              "reason": "momentum_exit"
+            }
+          ],
+          "days": 2,
+          "end": "2021-12-22",
+          "log_excess": 0.02697314340863147,
+          "other_return": -0.009105960264900514,
+          "other_trades": [
+            {
+              "crash": false,
+              "date": "2021-12-20",
+              "indicators": {
+                "mom20": -0.06149045521292196,
+                "mom5": -0.04358398802843233,
+                "ret1": -0.015026006549797577,
+                "vol20": 0.014156074832888409
+              },
+              "new_holding": "518880",
+              "old_holding": "513100",
+              "old_holding_age": 1,
+              "panic": false,
+              "reason": "momentum_exit"
+            }
+          ],
+          "start": "2021-12-21"
+        }
+      ],
+      "exposure_disagreement_days": 37,
+      "fee_log_excess": 0.0006000600080011999,
+      "net_log_excess": -0.13577823162191197,
+      "worst_days": [
+        {
+          "c4_close_target": "510300",
+          "c4_exposure": "510300",
+          "c4_return": 0.0055167340934167974,
+          "date": "2021-01-20",
+          "log_excess": -0.034029266105210954,
+          "other_close_target": "159915",
+          "other_exposure": "159915",
+          "other_return": 0.040322580645161255
+        },
+        {
+          "c4_close_target": "512400",
+          "c4_exposure": "512400",
+          "c4_return": -0.010770505385252815,
+          "date": "2021-02-25",
+          "log_excess": -0.029577082761357912,
+          "other_close_target": "512890",
+          "other_exposure": "513100",
+          "other_return": 0.01892500576169609
+        },
+        {
+          "c4_close_target": "513100",
+          "c4_exposure": "512890",
+          "c4_return": -0.004862624916721847,
+          "date": "2021-06-18",
+          "log_excess": -0.025582732411712814,
+          "other_close_target": "513100",
+          "other_exposure": "513100",
+          "other_return": 0.020924149956408122
+        },
+        {
+          "c4_close_target": "513100",
+          "c4_exposure": "159915",
+          "c4_return": -0.027828849073793016,
+          "date": "2021-02-18",
+          "log_excess": -0.023600395635486306,
+          "other_close_target": "513100",
+          "other_exposure": "513100",
+          "other_return": -0.0046123435097737975
+        },
+        {
+          "c4_close_target": "512890",
+          "c4_exposure": "512400",
+          "c4_return": -0.04123031825795642,
+          "date": "2021-02-26",
+          "log_excess": -0.023304133466727377,
+          "other_close_target": "512890",
+          "other_exposure": "512890",
+          "other_return": -0.01862464183381074
+        },
+        {
+          "c4_close_target": "510300",
+          "c4_exposure": "510300",
+          "c4_return": 0.0005393743257822159,
+          "date": "2021-01-22",
+          "log_excess": -0.019720151858785808,
+          "other_close_target": "159915",
+          "other_exposure": "159915",
+          "other_return": 0.02046599496221657
+        },
+        {
+          "c4_close_target": "512890",
+          "c4_exposure": "512890",
+          "c4_return": -0.008403361344537674,
+          "date": "2021-04-02",
+          "log_excess": -0.019439091813983362,
+          "other_close_target": "513100",
+          "other_exposure": "513100",
+          "other_return": 0.011060948081264232
+        },
+        {
+          "c4_close_target": "513100",
+          "c4_exposure": "513100",
+          "c4_return": -0.015168926683520878,
+          "date": "2021-03-25",
+          "log_excess": -0.01835477876774253,
+          "other_close_target": "518880",
+          "other_exposure": "518880",
+          "other_return": 0.0030743432084963107
+        },
+        {
+          "c4_close_target": "159915",
+          "c4_exposure": "159915",
+          "c4_return": -0.004519044544867512,
+          "date": "2021-02-05",
+          "log_excess": -0.017703530647218933,
+          "other_close_target": "513100",
+          "other_exposure": "513100",
+          "other_return": 0.013261407057765906
+        },
+        {
+          "c4_close_target": "512890",
+          "c4_exposure": "512890",
+          "c4_return": 0.005890052356020803,
+          "date": "2021-05-31",
+          "log_excess": -0.0175608507287257,
+          "other_close_target": "159915",
+          "other_exposure": "159915",
+          "other_return": 0.023710349247036078
+        },
+        {
+          "c4_close_target": "513100",
+          "c4_exposure": "512890",
+          "c4_return": -0.00019999999999997797,
+          "date": "2021-04-06",
+          "log_excess": -0.015707641365371106,
+          "other_close_target": "513100",
+          "other_exposure": "513100",
+          "other_return": 0.015628488501897797
+        },
+        {
+          "c4_close_target": "518880",
+          "c4_exposure": "513100",
+          "c4_return": -0.008598238065970043,
+          "date": "2021-10-12",
+          "log_excess": -0.01366055238181032,
+          "other_close_target": "518880",
+          "other_exposure": "518880",
+          "other_return": 0.005037783375315019
+        }
+      ]
+    }
+  },
+  "controls": {
+    "c": {
+      "fee_log_growth": -0.005800580077344936,
+      "market_log_growth": 0.1466291724762933,
+      "metrics": {
+        "cagr": 0.15189467936445247,
+        "calmar": 1.2852351268588271,
+        "max_dd": -0.11818435101107916,
+        "nav": 1.1512273019618295,
+        "sessions": 243,
+        "sharpe": 0.8412736555165192,
+        "total_return": 0.15122730196182954,
+        "volatility": 0.189496227544405
+      },
+      "switches": 29,
+      "trade_reasons": {
+        "bear_stock_exit": 4,
+        "crash_override": 0,
+        "healthy_rotation": 9,
+        "held_signal_missing": 0,
+        "initial_entry": 0,
+        "momentum_exit": 6,
+        "overheat_exit": 0,
+        "panic_exit": 10
+      }
+    },
+    "c4": {
+      "fee_log_growth": -0.005800580077344936,
+      "market_log_growth": 0.06446681561882847,
+      "metrics": {
+        "cagr": 0.06067729367883879,
+        "calmar": 0.367075580989532,
+        "max_dd": -0.16529918311446912,
+        "nav": 1.0604212507442525,
+        "sessions": 243,
+        "sharpe": 0.4122721239203849,
+        "total_return": 0.06042125074425253,
+        "volatility": 0.18394556722704955
+      },
+      "switches": 29,
+      "trade_reasons": {
+        "bear_stock_exit": 4,
+        "crash_override": 0,
+        "healthy_rotation": 11,
+        "held_signal_missing": 0,
+        "initial_entry": 0,
+        "momentum_exit": 6,
+        "panic_exit": 8
+      }
+    },
+    "h": {
+      "fee_log_growth": -0.0064006400853461355,
+      "market_log_growth": 0.2008451072487416,
+      "metrics": {
+        "cagr": 0.21560834888536143,
+        "calmar": 2.435246462269722,
+        "max_dd": -0.08853656179194613,
+        "nav": 1.2146360288279798,
+        "sessions": 243,
+        "sharpe": 1.163342624674128,
+        "total_return": 0.21463602882797983,
+        "volatility": 0.1821387616152798
+      },
+      "switches": 32,
+      "trade_reasons": {
+        "bear_stock_exit": 5,
+        "crash_override": 0,
+        "healthy_rotation": 11,
+        "held_signal_missing": 0,
+        "initial_entry": 0,
+        "momentum_exit": 11,
+        "overheat_exit": 0,
+        "panic_exit": 5
+      }
+    },
+    "simple": {
+      "fee_log_growth": -0.004200420056008402,
+      "market_log_growth": 0.20918531486106112,
+      "metrics": {
+        "cagr": 0.22854243442978453,
+        "calmar": 2.2528196714079383,
+        "max_dd": -0.10144728285640059,
+        "nav": 1.227506523097808,
+        "sessions": 243,
+        "sharpe": 1.1282669580499805,
+        "total_return": 0.22750652309780794,
+        "volatility": 0.20024294165996218
+      },
+      "switches": 21,
+      "trade_reasons": {
+        "bear_stock_exit": 3,
+        "crash_override": 0,
+        "healthy_rotation": 11,
+        "held_signal_missing": 0,
+        "initial_entry": 0,
+        "momentum_exit": 5,
+        "overheat_exit": 0,
+        "panic_exit": 2
+      }
+    }
+  },
+  "frozen_inputs_sha256": "15bdbcbf74ee6b115aea41bda4ff38b445eef82cf370f93d0b4947696deb7ef6",
+  "known_history": true,
+  "period": [
+    "2021-01-04",
+    "2021-12-31"
+  ],
+  "source": "Pinned continuous frozen paths; no year reset",
+  "year": 2021
+}

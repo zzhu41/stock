@@ -48,7 +48,7 @@ class WebDashboardTests(unittest.TestCase):
         other = version(main["daily"] + [["2026-09-28", 2., "510300"]], "legacy_qfq_same_close")
         data = dict(start="2014-01-01", names={"510300": "沪深300ETF"}, benchmarks={},
                     versions={"v10-h": main, "old": other})
-        with patch.object(web_app, "v10_signal", return_value={"status": "not_started"}):
+        with patch.object(web_app, "v12_signal", return_value={"status": "not_started"}):
             response = web_app.series_response(data, {"version": ["v10-h"], "compare": ["old"]})
         self.assertEqual(response["compare"]["range"], ["2026-09-23", "2026-09-24"])
         self.assertEqual(len(response["compare"]["daily"]), 2)
@@ -62,7 +62,7 @@ class WebDashboardTests(unittest.TestCase):
         main["benchmarks"] = {"510300": corrected_benchmark}
         data = dict(start="2014-01-01", names={}, versions={"v10-h": main},
                     benchmarks={"510300": version([["2026-09-23", 1., "510300"], ["2026-09-24", 4., "510300"]], "legacy_qfq_same_close")})
-        with patch.object(web_app, "v10_signal", return_value={}):
+        with patch.object(web_app, "v12_signal", return_value={}):
             response = web_app.series_response(data, {"compare": ["510300"]})
         self.assertEqual(response["compare"]["label"], "corrected benchmark")
         self.assertIsNone(response["comparison_warning"])
@@ -73,7 +73,7 @@ class WebDashboardTests(unittest.TestCase):
                        ["2026-09-28", 1.2, "518880"]])
         ver["trades"].append(["2026-09-28", "510300", "518880", 1.2])
         data = dict(start="2014-01-01", names={}, versions={"v10-h": ver}, benchmarks={})
-        with patch.object(web_app, "v10_signal", return_value={}):
+        with patch.object(web_app, "v12_signal", return_value={}):
             response = web_app.series_response(data, {"end": ["2026-09-24"]})
         self.assertEqual(response["holding"]["code"], "510300")
         self.assertEqual(response["holding"]["date"], "2026-09-24")

@@ -1,0 +1,4907 @@
+[
+  {
+    "crash": false,
+    "date": "2014-01-02",
+    "indicators": {
+      "mom20": null,
+      "mom5": null,
+      "ret1": null,
+      "vol20": null
+    },
+    "new_holding": "511880",
+    "old_holding": null,
+    "old_holding_age": 0,
+    "panic": false,
+    "reason": "initial_entry"
+  },
+  {
+    "crash": false,
+    "date": "2014-06-24",
+    "indicators": {
+      "mom20": 0.0037194786841494576,
+      "mom5": 0.0023816057707388705,
+      "ret1": 0.0005184793879988714,
+      "vol20": 0.0006251406456493267
+    },
+    "new_holding": "513100",
+    "old_holding": "511880",
+    "old_holding_age": 114,
+    "panic": false,
+    "reason": "held_signal_missing"
+  },
+  {
+    "crash": false,
+    "date": "2014-07-23",
+    "indicators": {
+      "mom20": 0.03987240829346117,
+      "mom5": 0.006172839506172867,
+      "ret1": 0.0038491147036181506,
+      "vol20": 0.007120098476853068
+    },
+    "new_holding": "510500",
+    "old_holding": "513100",
+    "old_holding_age": 21,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2014-07-28",
+    "indicators": {
+      "mom20": 0.06176203451407902,
+      "mom5": 0.03268551236749162,
+      "ret1": 0.0174064403829417,
+      "vol20": 0.009391736205562077
+    },
+    "new_holding": "510300",
+    "old_holding": "510500",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2014-08-20",
+    "indicators": {
+      "mom20": 0.07750896057347689,
+      "mom5": 0.0008322929671242818,
+      "ret1": -0.0037282518641261753,
+      "vol20": 0.011174278400533954
+    },
+    "new_holding": "510500",
+    "old_holding": "510300",
+    "old_holding_age": 17,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2014-09-16",
+    "indicators": {
+      "mom20": 0.03489294210943683,
+      "mom5": -0.012112036336109133,
+      "ret1": -0.032616753150481737,
+      "vol20": 0.008401895416392642
+    },
+    "new_holding": "159915",
+    "old_holding": "510500",
+    "old_holding_age": 18,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2014-09-19",
+    "indicators": {
+      "mom20": 0.03180212014134254,
+      "mom5": -0.015509103169251692,
+      "ret1": 0.0027472527472527375,
+      "vol20": 0.013070985294601057
+    },
+    "new_holding": "510500",
+    "old_holding": "159915",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2014-11-05",
+    "indicators": {
+      "mom20": -0.001423487544484181,
+      "mom5": -0.0007122507122505617,
+      "ret1": -0.001423487544483959,
+      "vol20": 0.010545562989013012
+    },
+    "new_holding": "513100",
+    "old_holding": "510500",
+    "old_holding_age": 28,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2014-11-27",
+    "indicators": {
+      "mom20": 0.04947526236881572,
+      "mom5": 0.020408163265305923,
+      "ret1": 0.007919366450683807,
+      "vol20": 0.008696471341000928
+    },
+    "new_holding": "510300",
+    "old_holding": "513100",
+    "old_holding_age": 16,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2014-12-09",
+    "indicators": {
+      "mom20": 0.20663068619892022,
+      "mom5": 0.055293324342548855,
+      "ret1": -0.05523694536673718,
+      "vol20": 0.01904007160914728
+    },
+    "new_holding": "510500",
+    "old_holding": "510300",
+    "old_holding_age": 8,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2014-12-11",
+    "indicators": {
+      "mom20": 0.1092619392185239,
+      "mom5": 0.001960784313725261,
+      "ret1": 0.012549537648612885,
+      "vol20": 0.015951336806716634
+    },
+    "new_holding": "510300",
+    "old_holding": "510500",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2015-01-19",
+    "indicators": {
+      "mom20": -0.026004728132388077,
+      "mom5": -0.07023977433004236,
+      "ret1": -0.09994538503549966,
+      "vol20": 0.019309928092072805
+    },
+    "new_holding": "159915",
+    "old_holding": "510300",
+    "old_holding_age": 25,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-01-23",
+    "indicators": {
+      "mom20": 0.10675675675675689,
+      "mom5": 0.028894472361809198,
+      "ret1": -0.0267379679144385,
+      "vol20": 0.020705243445193523
+    },
+    "new_holding": "510500",
+    "old_holding": "159915",
+    "old_holding_age": 4,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-01-27",
+    "indicators": {
+      "mom20": 0.0658327847267941,
+      "mom5": 0.0567885117493474,
+      "ret1": 0.002476780185758587,
+      "vol20": 0.017964982568197695
+    },
+    "new_holding": "159915",
+    "old_holding": "510500",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2015-02-06",
+    "indicators": {
+      "mom20": 0.10512308715901608,
+      "mom5": 0.02341343191620493,
+      "ret1": -0.02808660035108257,
+      "vol20": 0.019867436258148536
+    },
+    "new_holding": "510500",
+    "old_holding": "159915",
+    "old_holding_age": 8,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-02-10",
+    "indicators": {
+      "mom20": 0.033025099075297604,
+      "mom5": -0.02493765586034913,
+      "ret1": 0.012297734627831902,
+      "vol20": 0.017477990571842603
+    },
+    "new_holding": "159915",
+    "old_holding": "510500",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2015-03-06",
+    "indicators": {
+      "mom20": 0.15834873690696294,
+      "mom5": 0.00912506709608163,
+      "ret1": -0.029927760577915352,
+      "vol20": 0.021484439770489795
+    },
+    "new_holding": "513100",
+    "old_holding": "159915",
+    "old_holding_age": 13,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-03-10",
+    "indicators": {
+      "mom20": 0.060716898317483725,
+      "mom5": -0.016282225237449266,
+      "ret1": 0.0006901311249136732,
+      "vol20": 0.010570370074353857
+    },
+    "new_holding": "510500",
+    "old_holding": "513100",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2015-04-15",
+    "indicators": {
+      "mom20": 0.23260940435320632,
+      "mom5": 0.012744695443623,
+      "ret1": -0.022924868060633208,
+      "vol20": 0.015045446197214863
+    },
+    "new_holding": "510300",
+    "old_holding": "510500",
+    "old_holding_age": 25,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-05-05",
+    "indicators": {
+      "mom20": 0.10271830647101265,
+      "mom5": -0.04200626959247655,
+      "ret1": -0.03798530954879331,
+      "vol20": 0.0144633290103179
+    },
+    "new_holding": "510500",
+    "old_holding": "510300",
+    "old_holding_age": 13,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-05-08",
+    "indicators": {
+      "mom20": 0.04600702676881485,
+      "mom5": -0.026226037868987473,
+      "ret1": 0.04426787741203175,
+      "vol20": 0.020796011143754203
+    },
+    "new_holding": "159915",
+    "old_holding": "510500",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2015-05-28",
+    "indicators": {
+      "mom20": 0.20822622107969146,
+      "mom5": -0.035190615835777095,
+      "ret1": -0.04995668495524108,
+      "vol20": 0.029585677978680284
+    },
+    "new_holding": "510500",
+    "old_holding": "159915",
+    "old_holding_age": 14,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-06-16",
+    "indicators": {
+      "mom20": 0.19311393504941887,
+      "mom5": -0.010805943268798024,
+      "ret1": -0.03926884729753377,
+      "vol20": 0.026331236858586498
+    },
+    "new_holding": "510300",
+    "old_holding": "510500",
+    "old_holding_age": 13,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-06-18",
+    "indicators": {
+      "mom20": 0.016356107660455255,
+      "mom5": -0.0665525765354632,
+      "ret1": -0.0393346379647751,
+      "vol20": 0.02427503762428975
+    },
+    "new_holding": "510500",
+    "old_holding": "510300",
+    "old_holding_age": 2,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-06-19",
+    "indicators": {
+      "mom20": 0.022175183953230926,
+      "mom5": -0.1332478632478632,
+      "ret1": -0.06482847657690882,
+      "vol20": 0.02881579138199371
+    },
+    "new_holding": "513100",
+    "old_holding": "510500",
+    "old_holding_age": 1,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-07-06",
+    "indicators": {
+      "mom20": -0.03415300546448086,
+      "mom5": -0.028846153846153966,
+      "ret1": -0.02009702009702019,
+      "vol20": 0.006803267331393166
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 10,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-07-07",
+    "indicators": {
+      "mom20": -0.02363866610384091,
+      "mom5": -0.01406649616368294,
+      "ret1": -0.007296137339055764,
+      "vol20": 0.005542788022789132
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-07-08",
+    "indicators": {
+      "mom20": -0.04761904761904767,
+      "mom5": -0.04166666666666685,
+      "ret1": -0.02748414376321362,
+      "vol20": 0.007918592741295936
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 1,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-07-09",
+    "indicators": {
+      "mom20": -0.023618726275832613,
+      "mom5": -0.006437768240343478,
+      "ret1": 0.03533094812164572,
+      "vol20": 0.007981034549217218
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-07-10",
+    "indicators": {
+      "mom20": -0.05068493150684927,
+      "mom5": -0.03950103950103967,
+      "ret1": 0.0028943560057888007,
+      "vol20": 0.009713571431660184
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-07-15",
+    "indicators": {
+      "mom20": -0.025760135135134643,
+      "mom5": 0.03175313059034002,
+      "ret1": -0.0008661758336943048,
+      "vol20": 0.01159373821510541
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-07-16",
+    "indicators": {
+      "mom20": -0.004840940525587589,
+      "mom5": 0.04124457308248952,
+      "ret1": -0.015731874145006652,
+      "vol20": 0.012499968836475039
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-07-17",
+    "indicators": {
+      "mom20": -0.025847457627118153,
+      "mom5": -0.0008691873098650715,
+      "ret1": 0.0,
+      "vol20": 0.011598000403054014
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-08-12",
+    "indicators": {
+      "mom20": 0.04582763337893314,
+      "mom5": 0.017976031957389838,
+      "ret1": -0.022378516624041,
+      "vol20": 0.016318811147574795
+    },
+    "new_holding": "510500",
+    "old_holding": "513100",
+    "old_holding_age": 18,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-08-18",
+    "indicators": {
+      "mom20": -0.010550569973320267,
+      "mom5": -0.043044804128548164,
+      "ret1": -0.08531390134529149,
+      "vol20": 0.04915912224684929
+    },
+    "new_holding": "518880",
+    "old_holding": "510500",
+    "old_holding_age": 4,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": true,
+    "date": "2015-09-15",
+    "indicators": {
+      "mom20": -0.008264462809917661,
+      "mom5": -0.009986973512809638,
+      "ret1": -0.0008764241893078895,
+      "vol20": 0.011025362844149681
+    },
+    "new_holding": "159915",
+    "old_holding": "518880",
+    "old_holding_age": 18,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2015-09-22",
+    "indicators": {
+      "mom20": -0.12893081761006253,
+      "mom5": 0.18738518064911225,
+      "ret1": -0.013231552162849991,
+      "vol20": 0.06192319284331085
+    },
+    "new_holding": "513100",
+    "old_holding": "159915",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-09-29",
+    "indicators": {
+      "mom20": -0.05878378378378424,
+      "mom5": -0.05108991825613096,
+      "ret1": -0.028591352859135277,
+      "vol20": 0.019277631606903087
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 5,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2015-10-28",
+    "indicators": {
+      "mom20": 0.03439380911435941,
+      "mom5": 0.002917882451021203,
+      "ret1": 0.005012531328320913,
+      "vol20": 0.009120507565642443
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 16,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2015-12-21",
+    "indicators": {
+      "mom20": -0.008191556395714894,
+      "mom5": 0.008974358974359165,
+      "ret1": -0.00694006309148254,
+      "vol20": 0.01172468868728503
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 38,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": true,
+    "date": "2016-01-04",
+    "indicators": {
+      "mom20": 0.023181818181818414,
+      "mom5": 0.0004444444444444695,
+      "ret1": 0.008512544802867339,
+      "vol20": 0.007271581466255164
+    },
+    "new_holding": "510300",
+    "old_holding": "518880",
+    "old_holding_age": 9,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": true,
+    "date": "2016-01-11",
+    "indicators": {
+      "mom20": -0.11690794864791021,
+      "mom5": -0.0841359773371102,
+      "ret1": -0.051349765258215885,
+      "vol20": 0.021047710684660957
+    },
+    "new_holding": "510500",
+    "old_holding": "510300",
+    "old_holding_age": 5,
+    "panic": true,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2016-01-18",
+    "indicators": {
+      "mom20": -0.2211830131445901,
+      "mom5": -0.02484570343408765,
+      "ret1": 0.014320987654320882,
+      "vol20": 0.03307560557045439
+    },
+    "new_holding": "518880",
+    "old_holding": "510500",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": true,
+    "date": "2016-01-26",
+    "indicators": {
+      "mom20": 0.06016042780748698,
+      "mom5": 0.029424491562094257,
+      "ret1": 0.017101325352714802,
+      "vol20": 0.007739840622860625
+    },
+    "new_holding": "159915",
+    "old_holding": "518880",
+    "old_holding_age": 6,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2016-02-02",
+    "indicators": {
+      "mom20": -0.13318681318681325,
+      "mom5": 0.04449152542372903,
+      "ret1": 0.040633245382585725,
+      "vol20": 0.03948777615360471
+    },
+    "new_holding": "518880",
+    "old_holding": "159915",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": true,
+    "date": "2016-02-25",
+    "indicators": {
+      "mom20": 0.1123404255319147,
+      "mom5": 0.030350808040993327,
+      "ret1": 0.014357780364765205,
+      "vol20": 0.010923868400775813
+    },
+    "new_holding": "159915",
+    "old_holding": "518880",
+    "old_holding_age": 12,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2016-03-03",
+    "indicators": {
+      "mom20": 0.05199115044247771,
+      "mom5": 0.0031645569620251113,
+      "ret1": -0.005230125523012608,
+      "vol20": 0.035508383369101205
+    },
+    "new_holding": "518880",
+    "old_holding": "159915",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2016-03-18",
+    "indicators": {
+      "mom20": 0.016705516705516787,
+      "mom5": -0.0128253489249337,
+      "ret1": 0.0,
+      "vol20": 0.010406010793972393
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 11,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2016-04-28",
+    "indicators": {
+      "mom20": -0.0091324200913242,
+      "mom5": -0.02063185041908433,
+      "ret1": -0.001971090670170872,
+      "vol20": 0.009535983189593979
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 28,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2016-05-27",
+    "indicators": {
+      "mom20": -0.012629161882893092,
+      "mom5": -0.021986353297952732,
+      "ret1": -0.004245465071401,
+      "vol20": 0.008663239960446436
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 20,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2016-06-24",
+    "indicators": {
+      "mom20": -0.006493506493506884,
+      "mom5": -0.012903225806451646,
+      "ret1": -0.0090673575129534,
+      "vol20": 0.006614503639813426
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 18,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2016-07-12",
+    "indicators": {
+      "mom20": 0.07434670592565285,
+      "mom5": 0.01003460207612461,
+      "ret1": -0.007817811012916454,
+      "vol20": 0.013988307614650159
+    },
+    "new_holding": "510500",
+    "old_holding": "518880",
+    "old_holding_age": 12,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2016-07-22",
+    "indicators": {
+      "mom20": 0.0867446393762179,
+      "mom5": -0.007565643079661677,
+      "ret1": -0.006386454774988781,
+      "vol20": 0.01506603516075076
+    },
+    "new_holding": "513100",
+    "old_holding": "510500",
+    "old_holding_age": 8,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2016-08-29",
+    "indicators": {
+      "mom20": 0.014371257485029432,
+      "mom5": 0.0017740981667648814,
+      "ret1": -0.00294290759270166,
+      "vol20": 0.00583540060809952
+    },
+    "new_holding": "510300",
+    "old_holding": "513100",
+    "old_holding_age": 26,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2016-09-12",
+    "indicators": {
+      "mom20": -0.037713954163040464,
+      "mom5": -0.017185185185185192,
+      "ret1": -0.019799054373522362,
+      "vol20": 0.007920572081842773
+    },
+    "new_holding": "513100",
+    "old_holding": "510300",
+    "old_holding_age": 10,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2016-10-28",
+    "indicators": {
+      "mom20": -0.02030456852791873,
+      "mom5": 0.005208333333333481,
+      "ret1": -0.0005753739930954849,
+      "vol20": 0.009739240060627414
+    },
+    "new_holding": "510300",
+    "old_holding": "513100",
+    "old_holding_age": 27,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2016-12-05",
+    "indicators": {
+      "mom20": 0.03135990621336493,
+      "mom5": -0.023042754025541123,
+      "ret1": -0.020050125313283207,
+      "vol20": 0.006671162456267748
+    },
+    "new_holding": "513100",
+    "old_holding": "510300",
+    "old_holding_age": 26,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": true,
+    "date": "2017-01-16",
+    "indicators": {
+      "mom20": 0.014851485148514865,
+      "mom5": 0.012068019747668579,
+      "ret1": 0.004354926510615087,
+      "vol20": 0.009958904374959944
+    },
+    "new_holding": "159915",
+    "old_holding": "513100",
+    "old_holding_age": 29,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2017-01-23",
+    "indicators": {
+      "mom20": -0.035752401280683244,
+      "mom5": 0.029043280182232234,
+      "ret1": 0.003331482509716821,
+      "vol20": 0.011728948747378735
+    },
+    "new_holding": "510300",
+    "old_holding": "159915",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2017-02-07",
+    "indicators": {
+      "mom20": 0.0055899987699272735,
+      "mom5": -0.000892060660124705,
+      "ret1": -0.0017825311942959443,
+      "vol20": 0.007096626561496962
+    },
+    "new_holding": "513100",
+    "old_holding": "510300",
+    "old_holding_age": 6,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2017-03-22",
+    "indicators": {
+      "mom20": 0.006106870229007688,
+      "mom5": -0.020802377414561812,
+      "ret1": -0.030882352941176472,
+      "vol20": 0.00907123099282632
+    },
+    "new_holding": "159915",
+    "old_holding": "513100",
+    "old_holding_age": 31,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2017-03-29",
+    "indicators": {
+      "mom20": -0.002702702702703119,
+      "mom5": -0.010193133047210479,
+      "ret1": -0.009661835748792313,
+      "vol20": 0.009004164138454606
+    },
+    "new_holding": "510500",
+    "old_holding": "159915",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2017-03-30",
+    "indicators": {
+      "mom20": -0.008762810040100488,
+      "mom5": -0.020258367586611814,
+      "ret1": -0.015053128689492268,
+      "vol20": 0.007458462695125645
+    },
+    "new_holding": "513100",
+    "old_holding": "510500",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2017-04-05",
+    "indicators": {
+      "mom20": -0.014851485148515198,
+      "mom5": 0.02789256198347112,
+      "ret1": -0.008470353761833693,
+      "vol20": 0.011640604939907458
+    },
+    "new_holding": "510300",
+    "old_holding": "513100",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2017-04-17",
+    "indicators": {
+      "mom20": -0.0014376078205865506,
+      "mom5": -0.009129814550641768,
+      "ret1": -0.003443328550932434,
+      "vol20": 0.006678530159470413
+    },
+    "new_holding": "518880",
+    "old_holding": "510300",
+    "old_holding_age": 8,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2017-04-26",
+    "indicators": {
+      "mom20": -0.002142857142857224,
+      "mom5": -0.01654347060894057,
+      "ret1": -0.004631278945493422,
+      "vol20": 0.0059899553529694765
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 7,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": true,
+    "date": "2017-05-11",
+    "indicators": {
+      "mom20": 0.05182926829268242,
+      "mom5": 0.018199704869650724,
+      "ret1": -0.00048285852245311123,
+      "vol20": 0.009100350538645932
+    },
+    "new_holding": "159915",
+    "old_holding": "513100",
+    "old_holding_age": 10,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2017-05-18",
+    "indicators": {
+      "mom20": -0.014180374361883352,
+      "mom5": 0.024764150943396235,
+      "ret1": -0.002868617326448608,
+      "vol20": 0.009237244080394356
+    },
+    "new_holding": "513100",
+    "old_holding": "159915",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2017-06-07",
+    "indicators": {
+      "mom20": 0.023751817741153536,
+      "mom5": 0.0023730422401520013,
+      "ret1": -0.005181347150259086,
+      "vol20": 0.009084443638459819
+    },
+    "new_holding": "510300",
+    "old_holding": "513100",
+    "old_holding_age": 12,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2017-07-10",
+    "indicators": {
+      "mom20": 0.029050279329608575,
+      "mom5": 0.004362050163576825,
+      "ret1": 0.0010869565217390686,
+      "vol20": 0.006970394788522215
+    },
+    "new_holding": "510500",
+    "old_holding": "510300",
+    "old_holding_age": 23,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2017-07-14",
+    "indicators": {
+      "mom20": 0.019654461879853535,
+      "mom5": -0.01726245035135965,
+      "ret1": -0.0026356589147287224,
+      "vol20": 0.009482822256726005
+    },
+    "new_holding": "510300",
+    "old_holding": "510500",
+    "old_holding_age": 4,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": true,
+    "date": "2017-07-17",
+    "indicators": {
+      "mom20": 0.03666386789812437,
+      "mom5": 0.005428881650380024,
+      "ret1": -0.013581890812250252,
+      "vol20": 0.0068826639999709244
+    },
+    "new_holding": "159915",
+    "old_holding": "510300",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2017-07-24",
+    "indicators": {
+      "mom20": -0.08576329331046373,
+      "mom5": 0.01847133757961772,
+      "ret1": 0.005028284098051561,
+      "vol20": 0.01386978350214299
+    },
+    "new_holding": "510300",
+    "old_holding": "159915",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2017-08-11",
+    "indicators": {
+      "mom20": -0.01464713715046606,
+      "mom5": -0.015695663740356358,
+      "ret1": -0.019088016967126142,
+      "vol20": 0.00739577563734418
+    },
+    "new_holding": "510500",
+    "old_holding": "510300",
+    "old_holding_age": 14,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2017-08-17",
+    "indicators": {
+      "mom20": 0.04744810363664742,
+      "mom5": 0.01298113207547158,
+      "ret1": 0.009932279909706576,
+      "vol20": 0.01027474568793477
+    },
+    "new_holding": "159915",
+    "old_holding": "510500",
+    "old_holding_age": 4,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2017-09-13",
+    "indicators": {
+      "mom20": 0.03573487031700284,
+      "mom5": -0.008825151682294474,
+      "ret1": 0.002230897936419396,
+      "vol20": 0.012847452842047349
+    },
+    "new_holding": "510500",
+    "old_holding": "159915",
+    "old_holding_age": 19,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2017-10-16",
+    "indicators": {
+      "mom20": -0.00642123287671259,
+      "mom5": -0.010796988208552238,
+      "ret1": -0.014437367303609339,
+      "vol20": 0.009624812891721016
+    },
+    "new_holding": "513100",
+    "old_holding": "510500",
+    "old_holding_age": 18,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2017-11-20",
+    "indicators": {
+      "mom20": 0.03101503759398483,
+      "mom5": -0.001365498406918797,
+      "ret1": -0.004085338175215725,
+      "vol20": 0.005930355029415718
+    },
+    "new_holding": "510300",
+    "old_holding": "513100",
+    "old_holding_age": 25,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2017-11-23",
+    "indicators": {
+      "mom20": 0.021166625646074078,
+      "mom5": -0.003841536614645924,
+      "ret1": -0.03173862310385067,
+      "vol20": 0.006737996366303192
+    },
+    "new_holding": "513100",
+    "old_holding": "510300",
+    "old_holding_age": 3,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2017-12-05",
+    "indicators": {
+      "mom20": 0.004107713372888844,
+      "mom5": -0.010791366906474975,
+      "ret1": -0.027409372236958385,
+      "vol20": 0.006434021656068372
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 8,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2017-12-06",
+    "indicators": {
+      "mom20": -0.012500000000000067,
+      "mom5": -0.018991964937910888,
+      "ret1": -0.005921539600296066,
+      "vol20": 0.004099765894719053
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2017-12-29",
+    "indicators": {
+      "mom20": -0.0053547523427039945,
+      "mom5": -0.017628911414720227,
+      "ret1": 0.0008980691513247319,
+      "vol20": 0.009556727686789656
+    },
+    "new_holding": "510300",
+    "old_holding": "513100",
+    "old_holding_age": 17,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2018-02-06",
+    "indicators": {
+      "mom20": -0.012168090674167353,
+      "mom5": -0.027007984969469434,
+      "ret1": -0.028149190710767047,
+      "vol20": 0.009450194487764468
+    },
+    "new_holding": "513100",
+    "old_holding": "510300",
+    "old_holding_age": 26,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": true,
+    "date": "2018-02-09",
+    "indicators": {
+      "mom20": -0.09515570934256024,
+      "mom5": -0.08805579773321703,
+      "ret1": -0.035500230520977394,
+      "vol20": 0.017546529834034715
+    },
+    "new_holding": "510500",
+    "old_holding": "513100",
+    "old_holding_age": 3,
+    "panic": true,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2018-02-23",
+    "indicators": {
+      "mom20": -0.06130500758725366,
+      "mom5": 0.05997258396161742,
+      "ret1": 0.0014570179698882857,
+      "vol20": 0.017810270333224427
+    },
+    "new_holding": "513100",
+    "old_holding": "510500",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2018-03-06",
+    "indicators": {
+      "mom20": -0.00948275862068948,
+      "mom5": -0.009482758620689702,
+      "ret1": 0.013227513227513255,
+      "vol20": 0.02118884780698501
+    },
+    "new_holding": "159915",
+    "old_holding": "513100",
+    "old_holding_age": 7,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2018-03-21",
+    "indicators": {
+      "mom20": 0.11039380245319586,
+      "mom5": -0.012062033314187426,
+      "ret1": -0.022727272727272596,
+      "vol20": 0.016351146610490908
+    },
+    "new_holding": "510500",
+    "old_holding": "159915",
+    "old_holding_age": 11,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2018-03-23",
+    "indicators": {
+      "mom20": -0.015195602974458877,
+      "mom5": -0.05579665220086805,
+      "ret1": -0.051976346093993264,
+      "vol20": 0.012708535141688883
+    },
+    "new_holding": "513100",
+    "old_holding": "510500",
+    "old_holding_age": 2,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2018-03-27",
+    "indicators": {
+      "mom20": -0.021551724137931272,
+      "mom5": -0.010030527692978852,
+      "ret1": 0.03795153177869226,
+      "vol20": 0.014607005830894396
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2018-04-26",
+    "indicators": {
+      "mom20": -0.01242690058479523,
+      "mom5": -0.01170446232626221,
+      "ret1": 0.0011115227862170673,
+      "vol20": 0.005134283582608686
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 20,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": true,
+    "date": "2018-06-19",
+    "indicators": {
+      "mom20": 0.05077452667814142,
+      "mom5": 0.004524886877828482,
+      "ret1": -0.01213592233009686,
+      "vol20": 0.012944592900847948
+    },
+    "new_holding": "510500",
+    "old_holding": "513100",
+    "old_holding_age": 35,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2018-06-26",
+    "indicators": {
+      "mom20": -0.12351429489238652,
+      "mom5": 0.003309431880860636,
+      "ret1": 0.008687615526802084,
+      "vol20": 0.016952617081905767
+    },
+    "new_holding": "513100",
+    "old_holding": "510500",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2018-07-31",
+    "indicators": {
+      "mom20": 0.032361166600079816,
+      "mom5": -0.021582733812949506,
+      "ret1": -0.023431594860166216,
+      "vol20": 0.01263481443961655
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 25,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2018-08-01",
+    "indicators": {
+      "mom20": -0.0003741114852228167,
+      "mom5": 0.0014992503748125774,
+      "ret1": -0.00037411148522259463,
+      "vol20": 0.0033024510196447937
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": true,
+    "date": "2018-08-06",
+    "indicators": {
+      "mom20": 0.07536907536907567,
+      "mom5": 0.046107331821617636,
+      "ret1": 0.024426350851221246,
+      "vol20": 0.013369346828320038
+    },
+    "new_holding": "159915",
+    "old_holding": "513100",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2018-08-13",
+    "indicators": {
+      "mom20": -0.05447470817120659,
+      "mom5": 0.06113537117903922,
+      "ret1": 0.014613778705636626,
+      "vol20": 0.017768336204509565
+    },
+    "new_holding": "513100",
+    "old_holding": "159915",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2018-10-08",
+    "indicators": {
+      "mom20": -0.022992700729927207,
+      "mom5": -0.01580882352941193,
+      "ret1": -0.027959331880900495,
+      "vol20": 0.011132463063860006
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 34,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": true,
+    "date": "2018-10-11",
+    "indicators": {
+      "mom20": 0.015625000000000222,
+      "mom5": 0.008705526116578488,
+      "ret1": 0.004901960784313708,
+      "vol20": 0.0041120548363927445
+    },
+    "new_holding": "510300",
+    "old_holding": "518880",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2018-10-18",
+    "indicators": {
+      "mom20": -0.04811523138216356,
+      "mom5": -0.021424070573408782,
+      "ret1": -0.022040302267002487,
+      "vol20": 0.0195205044273936
+    },
+    "new_holding": "518880",
+    "old_holding": "510300",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2018-11-14",
+    "indicators": {
+      "mom20": -0.01140125045972773,
+      "mom5": -0.017184643510054665,
+      "ret1": -0.00037188545927857586,
+      "vol20": 0.00465106136436144
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 19,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2018-11-20",
+    "indicators": {
+      "mom20": -0.05817610062893064,
+      "mom5": -0.03813729425933354,
+      "ret1": -0.03542673107890504,
+      "vol20": 0.01466735406495815
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 4,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2018-11-21",
+    "indicators": {
+      "mom20": -0.008014571948998461,
+      "mom5": 0.01302083333333326,
+      "ret1": -0.0003671071953011973,
+      "vol20": 0.004169821503470167
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": true,
+    "date": "2018-11-23",
+    "indicators": {
+      "mom20": -0.051807228915662695,
+      "mom5": -0.0456750202101861,
+      "ret1": -0.006731173748422248,
+      "vol20": 0.015310435662752005
+    },
+    "new_holding": "512400",
+    "old_holding": "513100",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2018-11-30",
+    "indicators": {
+      "mom20": -0.04523424878836835,
+      "mom5": 0.01721170395869165,
+      "ret1": 0.01025641025641022,
+      "vol20": 0.020613982787176566
+    },
+    "new_holding": "518880",
+    "old_holding": "512400",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2019-01-21",
+    "indicators": {
+      "mom20": 0.010830324909747446,
+      "mom5": -0.0024937655860347574,
+      "ret1": -0.003913198150124586,
+      "vol20": 0.004625687929393366
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 34,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2019-02-12",
+    "indicators": {
+      "mom20": 0.056271477663230485,
+      "mom5": 0.04861407249466976,
+      "ret1": 0.00820008200082012,
+      "vol20": 0.016512857580529984
+    },
+    "new_holding": "510300",
+    "old_holding": "513100",
+    "old_holding_age": 11,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2019-02-26",
+    "indicators": {
+      "mom20": 0.17403754374801172,
+      "mom5": 0.07611548556430447,
+      "ret1": -0.02251655629139071,
+      "vol20": 0.01829709056351467
+    },
+    "new_holding": "159915",
+    "old_holding": "510300",
+    "old_holding_age": 10,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2019-03-13",
+    "indicators": {
+      "mom20": 0.24365872405841693,
+      "mom5": -0.010397553516819369,
+      "ret1": -0.04599056603773577,
+      "vol20": 0.02259717309145527
+    },
+    "new_holding": "510500",
+    "old_holding": "159915",
+    "old_holding_age": 11,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2019-03-15",
+    "indicators": {
+      "mom20": 0.18770764119601346,
+      "mom5": 0.015624999999999778,
+      "ret1": 0.010957935666312979,
+      "vol20": 0.0239292479691046
+    },
+    "new_holding": "159915",
+    "old_holding": "510500",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2019-04-08",
+    "indicators": {
+      "mom20": 0.05113636363636398,
+      "mom5": 0.025246305418719084,
+      "ret1": -0.021164021164021163,
+      "vol20": 0.02415007243013195
+    },
+    "new_holding": "513100",
+    "old_holding": "159915",
+    "old_holding_age": 15,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2019-04-10",
+    "indicators": {
+      "mom20": 0.054625199362041466,
+      "mom5": 0.012246460007653948,
+      "ret1": -0.0011329305135951984,
+      "vol20": 0.010306416848746794
+    },
+    "new_holding": "510300",
+    "old_holding": "513100",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2019-04-22",
+    "indicators": {
+      "mom20": 0.049098981457299296,
+      "mom5": 0.015163002274450443,
+      "ret1": -0.02499999999999991,
+      "vol20": 0.016433708159162168
+    },
+    "new_holding": "513100",
+    "old_holding": "510300",
+    "old_holding_age": 8,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2019-05-06",
+    "indicators": {
+      "mom20": 0.04362801377726755,
+      "mom5": -0.005107624954396095,
+      "ret1": -0.028500178126113274,
+      "vol20": 0.008675764420653485
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 7,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2019-05-07",
+    "indicators": {
+      "mom20": -0.003575259206292758,
+      "mom5": 0.007228044813877954,
+      "ret1": -0.002148227712137629,
+      "vol20": 0.005189073067878593
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2019-05-14",
+    "indicators": {
+      "mom20": -0.013162843174125305,
+      "mom5": -0.048240841494377795,
+      "ret1": -0.020530048525569167,
+      "vol20": 0.010014633182261057
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 5,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2019-06-03",
+    "indicators": {
+      "mom20": 0.043322592194772636,
+      "mom5": 0.019594121763471195,
+      "ret1": 0.012508686587908269,
+      "vol20": 0.005052911040271367
+    },
+    "new_holding": "512400",
+    "old_holding": "518880",
+    "old_holding_age": 14,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2019-06-28",
+    "indicators": {
+      "mom20": 0.032710280373831946,
+      "mom5": -0.017777777777777892,
+      "ret1": -0.007485029940119792,
+      "vol20": 0.022163569888781876
+    },
+    "new_holding": "510300",
+    "old_holding": "512400",
+    "old_holding_age": 18,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2019-07-08",
+    "indicators": {
+      "mom20": 0.06004427227448783,
+      "mom5": -0.031107738998482515,
+      "ret1": -0.02295332823259366,
+      "vol20": 0.014728935952108694
+    },
+    "new_holding": "513100",
+    "old_holding": "510300",
+    "old_holding_age": 6,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2019-08-06",
+    "indicators": {
+      "mom20": -0.007982583454281711,
+      "mom5": -0.04439007340090895,
+      "ret1": -0.019720329867336073,
+      "vol20": 0.010206661067807292
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 21,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2019-08-14",
+    "indicators": {
+      "mom20": 0.0879793747985822,
+      "mom5": 0.0038655961938744987,
+      "ret1": -0.025685425685425645,
+      "vol20": 0.012146140292357143
+    },
+    "new_holding": "512400",
+    "old_holding": "518880",
+    "old_holding_age": 6,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2019-09-02",
+    "indicators": {
+      "mom20": 0.030581039755351647,
+      "mom5": 0.016591251885369473,
+      "ret1": 0.012012012012011963,
+      "vol20": 0.013477726726790876
+    },
+    "new_holding": "159915",
+    "old_holding": "512400",
+    "old_holding_age": 13,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2019-09-16",
+    "indicators": {
+      "mom20": 0.09126984126984095,
+      "mom5": 0.011649294911097341,
+      "ret1": 0.002430133657351119,
+      "vol20": 0.013263127392834624
+    },
+    "new_holding": "510500",
+    "old_holding": "159915",
+    "old_holding_age": 9,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2019-09-17",
+    "indicators": {
+      "mom20": 0.050767190755824476,
+      "mom5": -0.022727272727272818,
+      "ret1": -0.020829655781112177,
+      "vol20": 0.011353094929365771
+    },
+    "new_holding": "510300",
+    "old_holding": "510500",
+    "old_holding_age": 1,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2019-09-19",
+    "indicators": {
+      "mom20": 0.037740760020822606,
+      "mom5": -0.00250187640730537,
+      "ret1": 0.004788306451612989,
+      "vol20": 0.009299630699971613
+    },
+    "new_holding": "510500",
+    "old_holding": "510300",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2019-09-26",
+    "indicators": {
+      "mom20": 0.011667293940534229,
+      "mom5": -0.04017139796464908,
+      "ret1": -0.022723141247045997,
+      "vol20": 0.011201817920919774
+    },
+    "new_holding": "513100",
+    "old_holding": "510500",
+    "old_holding_age": 5,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2019-09-30",
+    "indicators": {
+      "mom20": -0.0024639211545233186,
+      "mom5": -0.01699618453000351,
+      "ret1": -0.007355516637478021,
+      "vol20": 0.00955413408732764
+    },
+    "new_holding": "510500",
+    "old_holding": "513100",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2019-10-08",
+    "indicators": {
+      "mom20": -0.01312869822485252,
+      "mom5": -0.04508856682769746,
+      "ret1": 0.0022535211267604716,
+      "vol20": 0.01171393961652656
+    },
+    "new_holding": "513100",
+    "old_holding": "510500",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2019-10-11",
+    "indicators": {
+      "mom20": -0.0062805303558971515,
+      "mom5": -0.0024518388791593404,
+      "ret1": 0.010287335934728636,
+      "vol20": 0.009568275040164182
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2019-10-16",
+    "indicators": {
+      "mom20": -0.01150781941575707,
+      "mom5": -0.026162790697674576,
+      "ret1": -0.0038655961938744987,
+      "vol20": 0.011661055172731116
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2019-12-09",
+    "indicators": {
+      "mom20": 0.03626595030221624,
+      "mom5": -0.010897435897435748,
+      "ret1": 0.00915631131458472,
+      "vol20": 0.006815819283194342
+    },
+    "new_holding": "512400",
+    "old_holding": "513100",
+    "old_holding_age": 38,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2020-01-15",
+    "indicators": {
+      "mom20": 0.12778603268945,
+      "mom5": -0.007843137254901822,
+      "ret1": -0.021907216494845394,
+      "vol20": 0.0165361369796235
+    },
+    "new_holding": "510500",
+    "old_holding": "512400",
+    "old_holding_age": 26,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-01-17",
+    "indicators": {
+      "mom20": 0.04873328641801611,
+      "mom5": 0.00488873904248166,
+      "ret1": -0.005671392827356181,
+      "vol20": 0.010903575824548428
+    },
+    "new_holding": "513100",
+    "old_holding": "510500",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2020-02-03",
+    "indicators": {
+      "mom20": 0.03574788334901191,
+      "mom5": -0.05167958656330762,
+      "ret1": -0.05031627372052916,
+      "vol20": 0.011154372949823127
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 5,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-02-05",
+    "indicators": {
+      "mom20": 0.032133293662600426,
+      "mom5": 0.009310445155659153,
+      "ret1": -0.00658648339060719,
+      "vol20": 0.01334138207987304
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2020-02-14",
+    "indicators": {
+      "mom20": 0.21884498480243142,
+      "mom5": 0.08115394985171176,
+      "ret1": -0.04455563497736481,
+      "vol20": 0.022818592836446442
+    },
+    "new_holding": "159915",
+    "old_holding": "513100",
+    "old_holding_age": 7,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-02-26",
+    "indicators": {
+      "mom20": 0.11099365750528567,
+      "mom5": 0.023369036027264034,
+      "ret1": -0.04236902050113889,
+      "vol20": 0.029084206528517172
+    },
+    "new_holding": "510500",
+    "old_holding": "159915",
+    "old_holding_age": 8,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-02-28",
+    "indicators": {
+      "mom20": 0.01634830493890882,
+      "mom5": -0.059404363752189826,
+      "ret1": -0.049718423169750614,
+      "vol20": 0.02541443268476955
+    },
+    "new_holding": "159915",
+    "old_holding": "510500",
+    "old_holding_age": 2,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-03-09",
+    "indicators": {
+      "mom20": 0.026517083120857432,
+      "mom5": -0.019961051606620872,
+      "ret1": -0.046423495973472395,
+      "vol20": 0.02294690816366947
+    },
+    "new_holding": "512890",
+    "old_holding": "159915",
+    "old_holding_age": 6,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-03-13",
+    "indicators": {
+      "mom20": -0.018584070796460517,
+      "mom5": -0.05294619982920601,
+      "ret1": -0.017714791851195733,
+      "vol20": 0.01695868365402823
+    },
+    "new_holding": "518880",
+    "old_holding": "512890",
+    "old_holding_age": 4,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-03-16",
+    "indicators": {
+      "mom20": -0.025962910128387806,
+      "mom5": -0.06695818529652908,
+      "ret1": -0.025128498001142252,
+      "vol20": 0.014765159318658266
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 1,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-03-17",
+    "indicators": {
+      "mom20": -0.19702892885066492,
+      "mom5": -0.09727512452387943,
+      "ret1": 0.021890547263681448,
+      "vol20": 0.03207403482235942
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-04-22",
+    "indicators": {
+      "mom20": 0.04286119784274778,
+      "mom5": -0.007563479200431988,
+      "ret1": -0.002714440825190012,
+      "vol20": 0.015679260915921398
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 25,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2020-05-22",
+    "indicators": {
+      "mom20": 0.07407407407407396,
+      "mom5": -0.0038781163434902233,
+      "ret1": -0.033333333333333326,
+      "vol20": 0.026336323203908024
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 19,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-05-26",
+    "indicators": {
+      "mom20": 0.03664081305161804,
+      "mom5": 0.002846054333764503,
+      "ret1": 0.00466562986003094,
+      "vol20": 0.015095620753502936
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2020-06-17",
+    "indicators": {
+      "mom20": 0.02660575114216579,
+      "mom5": 0.008447729672650617,
+      "ret1": 0.0036784025223330907,
+      "vol20": 0.019275615068252927
+    },
+    "new_holding": "159915",
+    "old_holding": "513100",
+    "old_holding_age": 16,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2020-07-16",
+    "indicators": {
+      "mom20": 0.17178195144296793,
+      "mom5": -0.04338070306656716,
+      "ret1": -0.0602498163115357,
+      "vol20": 0.01633414069378086
+    },
+    "new_holding": "510500",
+    "old_holding": "159915",
+    "old_holding_age": 19,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-07-20",
+    "indicators": {
+      "mom20": 0.1423322683706072,
+      "mom5": -0.054475737141345904,
+      "ret1": 0.029365193608752005,
+      "vol20": 0.01976272952097414
+    },
+    "new_holding": "159915",
+    "old_holding": "510500",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2020-07-24",
+    "indicators": {
+      "mom20": 0.09969657563935841,
+      "mom5": -0.01780874951606648,
+      "ret1": -0.06245380635624531,
+      "vol20": 0.02228045012486237
+    },
+    "new_holding": "512890",
+    "old_holding": "159915",
+    "old_holding_age": 4,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-07-30",
+    "indicators": {
+      "mom20": 0.07877280265339981,
+      "mom5": -0.009893455098935022,
+      "ret1": 0.008527131782945618,
+      "vol20": 0.02165211588444957
+    },
+    "new_holding": "512400",
+    "old_holding": "512890",
+    "old_holding_age": 4,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2020-08-10",
+    "indicators": {
+      "mom20": -0.00890868596881944,
+      "mom5": 0.01714285714285735,
+      "ret1": -0.02412280701754388,
+      "vol20": 0.030509225705243607
+    },
+    "new_holding": "512890",
+    "old_holding": "512400",
+    "old_holding_age": 7,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-08-24",
+    "indicators": {
+      "mom20": 0.09249011857707434,
+      "mom5": -0.010737294201861425,
+      "ret1": 0.006554989075018058,
+      "vol20": 0.01454115821060039
+    },
+    "new_holding": "513100",
+    "old_holding": "512890",
+    "old_holding_age": 10,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2020-09-04",
+    "indicators": {
+      "mom20": 0.21028971028971055,
+      "mom5": 0.010214717531790596,
+      "ret1": -0.08652214891611676,
+      "vol20": 0.02096022530980105
+    },
+    "new_holding": "510300",
+    "old_holding": "513100",
+    "old_holding_age": 9,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-09-07",
+    "indicators": {
+      "mom20": -0.010248901903367247,
+      "mom5": -0.029134181370537582,
+      "ret1": -0.020086974528887858,
+      "vol20": 0.01728959680685735
+    },
+    "new_holding": "513100",
+    "old_holding": "510300",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-09-09",
+    "indicators": {
+      "mom20": 0.12584777694046756,
+      "mom5": -0.13691507798960123,
+      "ret1": -0.05122777307366633,
+      "vol20": 0.0370013645789705
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 2,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-09-11",
+    "indicators": {
+      "mom20": -0.0002446183953034309,
+      "mom5": 0.005412054120541132,
+      "ret1": -0.002197265625,
+      "vol20": 0.0125763438767886
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-10-12",
+    "indicators": {
+      "mom20": -0.03569954601733394,
+      "mom5": 0.051293588301462245,
+      "ret1": 0.006244616709732975,
+      "vol20": 0.036542150133248234
+    },
+    "new_holding": "159915",
+    "old_holding": "513100",
+    "old_holding_age": 15,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-10-23",
+    "indicators": {
+      "mom20": 0.019862180786380135,
+      "mom5": -0.04479878511769164,
+      "ret1": -0.025561580170410436,
+      "vol20": 0.019540479696351632
+    },
+    "new_holding": "510300",
+    "old_holding": "159915",
+    "old_holding_age": 9,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-10-26",
+    "indicators": {
+      "mom20": -0.012679276657659333,
+      "mom5": -0.014931563666528369,
+      "ret1": -0.007521938988717003,
+      "vol20": 0.012891890888055334
+    },
+    "new_holding": "159915",
+    "old_holding": "510300",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-11-05",
+    "indicators": {
+      "mom20": 0.08075532342306135,
+      "mom5": 0.031837360951284976,
+      "ret1": 0.012039127163280705,
+      "vol20": 0.017111521613407493
+    },
+    "new_holding": "512400",
+    "old_holding": "159915",
+    "old_holding_age": 8,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2020-11-10",
+    "indicators": {
+      "mom20": 0.07626076260762638,
+      "mom5": 0.042908224076281254,
+      "ret1": -0.024526198439241975,
+      "vol20": 0.018086535192761842
+    },
+    "new_holding": "512890",
+    "old_holding": "512400",
+    "old_holding_age": 3,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-11-12",
+    "indicators": {
+      "mom20": 0.04826546003016596,
+      "mom5": 0.028867505551443573,
+      "ret1": 0.0036101083032489267,
+      "vol20": 0.009054174049924757
+    },
+    "new_holding": "512400",
+    "old_holding": "512890",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2020-12-03",
+    "indicators": {
+      "mom20": 0.09283196239718006,
+      "mom5": -0.02002107481559512,
+      "ret1": -0.03124999999999989,
+      "vol20": 0.02042325508760394
+    },
+    "new_holding": "512890",
+    "old_holding": "512400",
+    "old_holding_age": 15,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-12-07",
+    "indicators": {
+      "mom20": 0.007982583454281933,
+      "mom5": -0.03070481507327294,
+      "ret1": -0.013494318181818121,
+      "vol20": 0.011260897373295808
+    },
+    "new_holding": "512400",
+    "old_holding": "512890",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2020-12-14",
+    "indicators": {
+      "mom20": -0.004333694474539351,
+      "mom5": -0.026483050847457612,
+      "ret1": 0.007675438596491224,
+      "vol20": 0.020673490738581535
+    },
+    "new_holding": "510300",
+    "old_holding": "512400",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-12-16",
+    "indicators": {
+      "mom20": 0.013314504740770117,
+      "mom5": 0.0005976095617525878,
+      "ret1": 0.0019948134849390176,
+      "vol20": 0.010216831788967946
+    },
+    "new_holding": "159915",
+    "old_holding": "510300",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2020-12-22",
+    "indicators": {
+      "mom20": 0.05267234701781587,
+      "mom5": 0.01912260967379087,
+      "ret1": -0.021598272138228958,
+      "vol20": 0.015103500458227056
+    },
+    "new_holding": "513100",
+    "old_holding": "159915",
+    "old_holding_age": 4,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2020-12-24",
+    "indicators": {
+      "mom20": -0.006242774566474152,
+      "mom5": 0.003502218071445018,
+      "ret1": -0.003939745075318801,
+      "vol20": 0.014710748000152195
+    },
+    "new_holding": "159915",
+    "old_holding": "513100",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-01-19",
+    "indicators": {
+      "mom20": 0.07127429805615515,
+      "mom5": -0.03250975292587788,
+      "ret1": -0.022980958634274407,
+      "vol20": 0.017761315388703073
+    },
+    "new_holding": "510300",
+    "old_holding": "159915",
+    "old_holding_age": 17,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-01-26",
+    "indicators": {
+      "mom20": 0.08829900193375995,
+      "mom5": 0.013424052960647304,
+      "ret1": -0.021310602024507186,
+      "vol20": 0.01241838371793819
+    },
+    "new_holding": "159915",
+    "old_holding": "510300",
+    "old_holding_age": 5,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-01-28",
+    "indicators": {
+      "mom20": 0.09217577706323676,
+      "mom5": -0.037468513853904484,
+      "ret1": -0.03442830069488312,
+      "vol20": 0.02001832434786321
+    },
+    "new_holding": "510300",
+    "old_holding": "159915",
+    "old_holding_age": 2,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-02-03",
+    "indicators": {
+      "mom20": 0.013614432484976513,
+      "mom5": -0.0065205578699508715,
+      "ret1": -0.0010926971407755337,
+      "vol20": 0.014305092485835787
+    },
+    "new_holding": "159915",
+    "old_holding": "510300",
+    "old_holding_age": 4,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2021-02-18",
+    "indicators": {
+      "mom20": 0.058512396694214486,
+      "mom5": 0.030907920154539692,
+      "ret1": -0.02763437594898277,
+      "vol20": 0.02102549228764757
+    },
+    "new_holding": "513100",
+    "old_holding": "159915",
+    "old_holding_age": 6,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-02-24",
+    "indicators": {
+      "mom20": 0.0034690101757632874,
+      "mom5": -0.047001976718647254,
+      "ret1": -0.01743659420289867,
+      "vol20": 0.01480350619532038
+    },
+    "new_holding": "512400",
+    "old_holding": "513100",
+    "old_holding_age": 4,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2021-02-26",
+    "indicators": {
+      "mom20": 0.016873889875665737,
+      "mom5": -0.06377759607522504,
+      "ret1": -0.04103852596314905,
+      "vol20": 0.03441587488298271
+    },
+    "new_holding": "512890",
+    "old_holding": "512400",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2021-03-24",
+    "indicators": {
+      "mom20": 0.021260997067448884,
+      "mom5": -0.022456140350876952,
+      "ret1": -0.00995024875621875,
+      "vol20": 0.013061939908153866
+    },
+    "new_holding": "513100",
+    "old_holding": "512890",
+    "old_holding_age": 18,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-03-29",
+    "indicators": {
+      "mom20": -0.004606172270842368,
+      "mom5": 0.0032497678737233304,
+      "ret1": 0.0,
+      "vol20": 0.015405710618703928
+    },
+    "new_holding": "512890",
+    "old_holding": "513100",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-04-06",
+    "indicators": {
+      "mom20": 0.02460202604920414,
+      "mom5": -0.006315789473684386,
+      "ret1": 0.0,
+      "vol20": 0.010504108401257484
+    },
+    "new_holding": "513100",
+    "old_holding": "512890",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2021-04-28",
+    "indicators": {
+      "mom20": 0.07134610944354614,
+      "mom5": 0.011995637949836269,
+      "ret1": -0.0034364261168384758,
+      "vol20": 0.014566572885870035
+    },
+    "new_holding": "159915",
+    "old_holding": "513100",
+    "old_holding_age": 16,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2021-05-06",
+    "indicators": {
+      "mom20": 0.05370101596516719,
+      "mom5": 0.014320642682500662,
+      "ret1": -0.02843760455001676,
+      "vol20": 0.021119157306457914
+    },
+    "new_holding": "510500",
+    "old_holding": "159915",
+    "old_holding_age": 3,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-05-07",
+    "indicators": {
+      "mom20": 0.019370460048426574,
+      "mom5": 0.001539322698013379,
+      "ret1": -0.004312743461324375,
+      "vol20": 0.010615325387181483
+    },
+    "new_holding": "518880",
+    "old_holding": "510500",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-05-12",
+    "indicators": {
+      "mom20": 0.027816028642247304,
+      "mom5": 0.029517241379310555,
+      "ret1": 0.0018791946308724938,
+      "vol20": 0.009071287454844472
+    },
+    "new_holding": "512400",
+    "old_holding": "518880",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2021-05-13",
+    "indicators": {
+      "mom20": 0.09279368213228101,
+      "mom5": -0.01687388987566607,
+      "ret1": -0.05060034305317318,
+      "vol20": 0.029060992010064856
+    },
+    "new_holding": "518880",
+    "old_holding": "512400",
+    "old_holding_age": 1,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-05-28",
+    "indicators": {
+      "mom20": 0.0402408978921438,
+      "mom5": -0.00419287211740027,
+      "ret1": -0.007573779054583563,
+      "vol20": 0.00764773733354681
+    },
+    "new_holding": "512890",
+    "old_holding": "518880",
+    "old_holding_age": 11,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2021-06-18",
+    "indicators": {
+      "mom20": 0.019795221843003752,
+      "mom5": -0.019685039370078705,
+      "ret1": -0.004663557628247661,
+      "vol20": 0.00707774403069506
+    },
+    "new_holding": "513100",
+    "old_holding": "512890",
+    "old_holding_age": 14,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2021-07-19",
+    "indicators": {
+      "mom20": 0.050204697263520615,
+      "mom5": -0.012160518848804425,
+      "ret1": -0.005914746073832244,
+      "vol20": 0.009659121813301478
+    },
+    "new_holding": "512400",
+    "old_holding": "513100",
+    "old_holding_age": 21,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2021-07-23",
+    "indicators": {
+      "mom20": 0.25548726953468015,
+      "mom5": 0.06478034251675369,
+      "ret1": 0.0,
+      "vol20": 0.02494258251625075
+    },
+    "new_holding": "513100",
+    "old_holding": "512400",
+    "old_holding_age": 4,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-09-22",
+    "indicators": {
+      "mom20": -0.008118811881187682,
+      "mom5": -0.022061694650526875,
+      "ret1": -0.02453748782862697,
+      "vol20": 0.0069145512192115895
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 41,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-09-23",
+    "indicators": {
+      "mom20": -0.0201141614569178,
+      "mom5": -0.01124520021941855,
+      "ret1": -0.009615384615384692,
+      "vol20": 0.006875479986442258
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-10-12",
+    "indicators": {
+      "mom20": -0.06599768429177921,
+      "mom5": -0.03296703296703318,
+      "ret1": -0.008399918049580068,
+      "vol20": 0.0082762918964388
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 8,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-10-27",
+    "indicators": {
+      "mom20": -0.012637362637362926,
+      "mom5": 0.002790178571428603,
+      "ret1": -0.0074565037282519064,
+      "vol20": 0.007085060218735006
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 11,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-12-02",
+    "indicators": {
+      "mom20": -0.01599247412982141,
+      "mom5": -0.030583873957367613,
+      "ret1": -0.0224299065420559,
+      "vol20": 0.008421391415272941
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 26,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-12-03",
+    "indicators": {
+      "mom20": -0.016004415011037776,
+      "mom5": -0.017089305402425592,
+      "ret1": -0.0025174825174825166,
+      "vol20": 0.007194173405622715
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-12-08",
+    "indicators": {
+      "mom20": 0.006395786305492646,
+      "mom5": 0.0,
+      "ret1": 0.02490421455938696,
+      "vol20": 0.009713328888288146
+    },
+    "new_holding": "510500",
+    "old_holding": "513100",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2021-12-10",
+    "indicators": {
+      "mom20": 0.022894114719423264,
+      "mom5": 0.0010959571358990505,
+      "ret1": -0.00036478599221800856,
+      "vol20": 0.008722208633743478
+    },
+    "new_holding": "512890",
+    "old_holding": "510500",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2021-12-17",
+    "indicators": {
+      "mom20": 0.04787234042553212,
+      "mom5": 0.005102040816326481,
+      "ret1": 0.0012706480304955914,
+      "vol20": 0.014329066276774442
+    },
+    "new_holding": "513100",
+    "old_holding": "512890",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2021-12-22",
+    "indicators": {
+      "mom20": -0.03017883755588635,
+      "mom5": -0.002108491470193319,
+      "ret1": 0.0050193050193052535,
+      "vol20": 0.014230298998180272
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": true,
+    "date": "2022-02-24",
+    "indicators": {
+      "mom20": 0.04872074033750673,
+      "mom5": 0.03408480944712822,
+      "ret1": 0.02147401908801716,
+      "vol20": 0.008787896815449399
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 40,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2022-03-03",
+    "indicators": {
+      "mom20": 0.01657458563535874,
+      "mom5": 0.07351225204200684,
+      "ret1": 0.016574585635359185,
+      "vol20": 0.0248702146723512
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": true,
+    "date": "2022-03-08",
+    "indicators": {
+      "mom20": 0.10271903323262821,
+      "mom5": 0.06048600105652402,
+      "ret1": 0.022669383596535697,
+      "vol20": 0.010019082118892745
+    },
+    "new_holding": "159915",
+    "old_holding": "518880",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": true,
+    "date": "2022-03-15",
+    "indicators": {
+      "mom20": -0.11188554658840821,
+      "mom5": -0.03430394894295996,
+      "ret1": -0.027710843373494165,
+      "vol20": 0.020447824931969942
+    },
+    "new_holding": "510500",
+    "old_holding": "159915",
+    "old_holding_age": 5,
+    "panic": true,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2022-03-22",
+    "indicators": {
+      "mom20": -0.06415638939910817,
+      "mom5": 0.06717534410532622,
+      "ret1": 0.0002804655728509964,
+      "vol20": 0.021145484439650357
+    },
+    "new_holding": "518880",
+    "old_holding": "510500",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2022-03-24",
+    "indicators": {
+      "mom20": 0.0070075266026470295,
+      "mom5": 0.00910273081924573,
+      "ret1": 0.011734028683181297,
+      "vol20": 0.013865901704071208
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": true,
+    "date": "2022-04-11",
+    "indicators": {
+      "mom20": 0.05090497737556565,
+      "mom5": -0.05493387589013243,
+      "ret1": -0.025183630640083887,
+      "vol20": 0.02045911100274663
+    },
+    "new_holding": "588080",
+    "old_holding": "513100",
+    "old_holding_age": 10,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2022-04-18",
+    "indicators": {
+      "mom20": -0.12159863945578198,
+      "mom5": 0.007804878048780495,
+      "ret1": 0.029910269192422678,
+      "vol20": 0.01621908751609067
+    },
+    "new_holding": "518880",
+    "old_holding": "588080",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": true,
+    "date": "2022-04-21",
+    "indicators": {
+      "mom20": 0.01836523538541135,
+      "mom5": 0.001526329178326069,
+      "ret1": 0.013124034997426648,
+      "vol20": 0.010147423071017538
+    },
+    "new_holding": "510300",
+    "old_holding": "518880",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2022-04-28",
+    "indicators": {
+      "mom20": -0.05113911778962654,
+      "mom5": -0.020270270270270396,
+      "ret1": 0.00668552327076366,
+      "vol20": 0.017845388247074222
+    },
+    "new_holding": "518880",
+    "old_holding": "510300",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2022-06-06",
+    "indicators": {
+      "mom20": -0.013513513513513709,
+      "mom5": -0.01225427623181008,
+      "ret1": -0.0020634511220014584,
+      "vol20": 0.009208202435301757
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 23,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2022-06-13",
+    "indicators": {
+      "mom20": -0.04739336492891022,
+      "mom5": -0.0662020905923345,
+      "ret1": -0.05076741440377808,
+      "vol20": 0.018250959497044566
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 5,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2022-06-15",
+    "indicators": {
+      "mom20": -0.011091049780758477,
+      "mom5": -0.009814049586776896,
+      "ret1": -0.005447470817120492,
+      "vol20": 0.0076666046677123624
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2022-06-16",
+    "indicators": {
+      "mom20": -0.07638888888888917,
+      "mom5": -0.07317073170731703,
+      "ret1": -0.0062266500622665255,
+      "vol20": 0.01984925988781081
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2022-07-06",
+    "indicators": {
+      "mom20": -0.03796487603305687,
+      "mom5": -0.025124313007065857,
+      "ret1": -0.018962338688438107,
+      "vol20": 0.006923159531131722
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 14,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2022-08-29",
+    "indicators": {
+      "mom20": -0.00790067720090315,
+      "mom5": -0.03618421052631582,
+      "ret1": -0.03934426229508192,
+      "vol20": 0.014832414756089953
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 38,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": true,
+    "date": "2022-10-11",
+    "indicators": {
+      "mom20": 0.00982735723771544,
+      "mom5": 0.014949279231179613,
+      "ret1": -0.0020997375328084544,
+      "vol20": 0.0054544393856894476
+    },
+    "new_holding": "588080",
+    "old_holding": "518880",
+    "old_holding_age": 25,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2022-10-18",
+    "indicators": {
+      "mom20": -0.06880301602262018,
+      "mom5": 0.07625272331154664,
+      "ret1": -0.002020202020202033,
+      "vol20": 0.01895836496854248
+    },
+    "new_holding": "518880",
+    "old_holding": "588080",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2022-12-08",
+    "indicators": {
+      "mom20": -0.003821656050955413,
+      "mom5": -0.011627906976744207,
+      "ret1": 0.0030785017957926097,
+      "vol20": 0.005877236771154937
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 37,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2022-12-13",
+    "indicators": {
+      "mom20": -0.01988304093567206,
+      "mom5": -0.007109004739336178,
+      "ret1": 0.01575757575757586,
+      "vol20": 0.018525499644549845
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2023-01-17",
+    "indicators": {
+      "mom20": 0.03145611364789369,
+      "mom5": 0.013207076999750544,
+      "ret1": 0.003950617283950519,
+      "vol20": 0.006005678651262523
+    },
+    "new_holding": "510300",
+    "old_holding": "518880",
+    "old_holding_age": 24,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2023-02-06",
+    "indicators": {
+      "mom20": 0.05206368516495208,
+      "mom5": -0.029726516052318575,
+      "ret1": -0.01377810007251623,
+      "vol20": 0.010090059786967465
+    },
+    "new_holding": "510500",
+    "old_holding": "510300",
+    "old_holding_age": 9,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2023-02-23",
+    "indicators": {
+      "mom20": 0.02342747111681609,
+      "mom5": 0.010136205258156616,
+      "ret1": -0.0017217091876662316,
+      "vol20": 0.0074510003798247135
+    },
+    "new_holding": "512890",
+    "old_holding": "510500",
+    "old_holding_age": 13,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2023-03-09",
+    "indicators": {
+      "mom20": 0.04958677685950397,
+      "mom5": 0.0011261261261261701,
+      "ret1": -0.0011235955056179137,
+      "vol20": 0.006731900942847351
+    },
+    "new_holding": "518880",
+    "old_holding": "512890",
+    "old_holding_age": 10,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2023-03-30",
+    "indicators": {
+      "mom20": 0.05514157973174383,
+      "mom5": -0.0011756407241946265,
+      "ret1": 0.0018867924528302993,
+      "vol20": 0.009544369985337892
+    },
+    "new_holding": "588080",
+    "old_holding": "518880",
+    "old_holding_age": 15,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2023-04-10",
+    "indicators": {
+      "mom20": 0.1328740157480317,
+      "mom5": 0.04257246376811619,
+      "ret1": -0.028691983122362874,
+      "vol20": 0.013840007486995716
+    },
+    "new_holding": "513100",
+    "old_holding": "588080",
+    "old_holding_age": 6,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2023-04-12",
+    "indicators": {
+      "mom20": 0.07966706302021431,
+      "mom5": -0.015184381778741929,
+      "ret1": -0.007650273224043769,
+      "vol20": 0.012602730829627746
+    },
+    "new_holding": "588080",
+    "old_holding": "513100",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2023-04-13",
+    "indicators": {
+      "mom20": 0.09329446064139968,
+      "mom5": -0.03928266438941075,
+      "ret1": -0.024284475281873275,
+      "vol20": 0.015830975290102106
+    },
+    "new_holding": "510500",
+    "old_holding": "588080",
+    "old_holding_age": 1,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2023-04-20",
+    "indicators": {
+      "mom20": 0.02244865467282331,
+      "mom5": -0.00046692607003884223,
+      "ret1": -0.0010888163011355534,
+      "vol20": 0.006538651739850309
+    },
+    "new_holding": "512400",
+    "old_holding": "510500",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2023-04-24",
+    "indicators": {
+      "mom20": -0.004424778761061843,
+      "mom5": -0.068708609271523,
+      "ret1": -0.024284475281873386,
+      "vol20": 0.0134882743747152
+    },
+    "new_holding": "512890",
+    "old_holding": "512400",
+    "old_holding_age": 2,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2023-04-25",
+    "indicators": {
+      "mom20": 0.060022650056625215,
+      "mom5": 0.0042918454935620964,
+      "ret1": 0.006451612903225712,
+      "vol20": 0.00780514549030128
+    },
+    "new_holding": "518880",
+    "old_holding": "512890",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2023-04-27",
+    "indicators": {
+      "mom20": 0.021933962264150342,
+      "mom5": 0.005803156917363106,
+      "ret1": 0.0023132084200785386,
+      "vol20": 0.007667264121270749
+    },
+    "new_holding": "512890",
+    "old_holding": "518880",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2023-05-10",
+    "indicators": {
+      "mom20": 0.08958566629339271,
+      "mom5": 0.013541666666666563,
+      "ret1": -0.02505010020040077,
+      "vol20": 0.011737932466324706
+    },
+    "new_holding": "513100",
+    "old_holding": "512890",
+    "old_holding_age": 6,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2023-06-08",
+    "indicators": {
+      "mom20": 0.09341825902335477,
+      "mom5": 0.0,
+      "ret1": -0.020912547528517123,
+      "vol20": 0.010852574443261298
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 21,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2023-06-12",
+    "indicators": {
+      "mom20": -0.0009128251939749532,
+      "mom5": 0.012488436632747568,
+      "ret1": 0.0006857142857144005,
+      "vol20": 0.008285121394695139
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2023-07-28",
+    "indicators": {
+      "mom20": 0.03090909090909033,
+      "mom5": 0.005319148936170137,
+      "ret1": -0.006134969325153339,
+      "vol20": 0.010541828070840536
+    },
+    "new_holding": "512890",
+    "old_holding": "513100",
+    "old_holding_age": 32,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2023-08-11",
+    "indicators": {
+      "mom20": 0.0032017075773744796,
+      "mom5": -0.022869022869022815,
+      "ret1": -0.010526315789473717,
+      "vol20": 0.008627476925213134
+    },
+    "new_holding": "518880",
+    "old_holding": "512890",
+    "old_holding_age": 10,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2023-09-18",
+    "indicators": {
+      "mom20": 0.01937809824245207,
+      "mom5": -0.0046204620462042545,
+      "ret1": -0.005277044854881341,
+      "vol20": 0.0037407873915071958
+    },
+    "new_holding": "513120",
+    "old_holding": "518880",
+    "old_holding_age": 26,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2023-09-21",
+    "indicators": {
+      "mom20": -0.002541296060991294,
+      "mom5": -0.012578616352201366,
+      "ret1": -0.024844720496894457,
+      "vol20": 0.01946877075862766
+    },
+    "new_holding": "518880",
+    "old_holding": "513120",
+    "old_holding_age": 3,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2023-10-10",
+    "indicators": {
+      "mom20": -0.03506435863293356,
+      "mom5": -0.0508622571490942,
+      "ret1": -0.012939841089670945,
+      "vol20": 0.006860946963690607
+    },
+    "new_holding": "513120",
+    "old_holding": "518880",
+    "old_holding_age": 7,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2023-10-18",
+    "indicators": {
+      "mom20": 0.013767209011263715,
+      "mom5": -0.018181818181818188,
+      "ret1": -0.0345649582836709,
+      "vol20": 0.019243989193710086
+    },
+    "new_holding": "513100",
+    "old_holding": "513120",
+    "old_holding_age": 6,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2023-10-19",
+    "indicators": {
+      "mom20": -0.02482269503546064,
+      "mom5": -0.02482269503546075,
+      "ret1": -0.012567324955116699,
+      "vol20": 0.01141305454568724
+    },
+    "new_holding": "513120",
+    "old_holding": "513100",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": true,
+    "date": "2023-10-24",
+    "indicators": {
+      "mom20": -0.013301088270858852,
+      "mom5": -0.0274135876042908,
+      "ret1": 0.032911392405063244,
+      "vol20": 0.019578558469136947
+    },
+    "new_holding": "510500",
+    "old_holding": "513120",
+    "old_holding_age": 3,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2023-10-31",
+    "indicators": {
+      "mom20": -0.02613361024576011,
+      "mom5": 0.03437499999999982,
+      "ret1": -0.0023049645390070816,
+      "vol20": 0.009754530958144166
+    },
+    "new_holding": "513120",
+    "old_holding": "510500",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2023-11-24",
+    "indicators": {
+      "mom20": 0.0175029171528589,
+      "mom5": -0.022421524663677084,
+      "ret1": -0.0113378684807256,
+      "vol20": 0.023588608376280292
+    },
+    "new_holding": "513100",
+    "old_holding": "513120",
+    "old_holding_age": 18,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": true,
+    "date": "2024-01-22",
+    "indicators": {
+      "mom20": 0.06135986733001664,
+      "mom5": 0.04319478402608001,
+      "ret1": 0.030595813204508993,
+      "vol20": 0.009306771688857237
+    },
+    "new_holding": "513120",
+    "old_holding": "513100",
+    "old_holding_age": 40,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2024-01-29",
+    "indicators": {
+      "mom20": -0.17987421383647806,
+      "mom5": -0.021021021021021102,
+      "ret1": 0.0,
+      "vol20": 0.0288911821408301
+    },
+    "new_holding": "513100",
+    "old_holding": "513120",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": true,
+    "date": "2024-01-31",
+    "indicators": {
+      "mom20": 0.061293031066331105,
+      "mom5": -0.010954616588419341,
+      "ret1": -0.021671826625387025,
+      "vol20": 0.01204520255625068
+    },
+    "new_holding": "513120",
+    "old_holding": "513100",
+    "old_holding_age": 2,
+    "panic": true,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2024-02-07",
+    "indicators": {
+      "mom20": -0.17038007863695948,
+      "mom5": 0.03262642740619892,
+      "ret1": -0.004716981132075526,
+      "vol20": 0.03520714277038054
+    },
+    "new_holding": "513100",
+    "old_holding": "513120",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2024-03-11",
+    "indicators": {
+      "mom20": 0.026500389711613614,
+      "mom5": -0.01643017176997774,
+      "ret1": -0.014958863126402377,
+      "vol20": 0.011562204464136899
+    },
+    "new_holding": "513120",
+    "old_holding": "513100",
+    "old_holding_age": 17,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2024-03-18",
+    "indicators": {
+      "mom20": 0.09531250000000036,
+      "mom5": 0.0541353383458647,
+      "ret1": 0.0057388809182210565,
+      "vol20": 0.026184836712506227
+    },
+    "new_holding": "512400",
+    "old_holding": "513120",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2024-03-19",
+    "indicators": {
+      "mom20": 0.14732142857142883,
+      "mom5": 0.051124744376278564,
+      "ret1": -0.006763285024154464,
+      "vol20": 0.01746774828767304
+    },
+    "new_holding": "518880",
+    "old_holding": "512400",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2024-04-01",
+    "indicators": {
+      "mom20": 0.09100529100529098,
+      "mom5": 0.04015334947538318,
+      "ret1": 0.005657432696059228,
+      "vol20": 0.007555196331899729
+    },
+    "new_holding": "512400",
+    "old_holding": "518880",
+    "old_holding_age": 9,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2024-04-02",
+    "indicators": {
+      "mom20": 0.13593256059009495,
+      "mom5": 0.06838453914767095,
+      "ret1": 0.01030927835051565,
+      "vol20": 0.01804438141206112
+    },
+    "new_holding": "518880",
+    "old_holding": "512400",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": true,
+    "date": "2024-04-19",
+    "indicators": {
+      "mom20": 0.12110655737704823,
+      "mom5": -0.005995639534884023,
+      "ret1": 0.0047750229568410685,
+      "vol20": 0.010686458026774264
+    },
+    "new_holding": "513120",
+    "old_holding": "518880",
+    "old_holding_age": 11,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2024-04-26",
+    "indicators": {
+      "mom20": -0.00770416024653342,
+      "mom5": 0.11611785095320615,
+      "ret1": 0.018987341772152,
+      "vol20": 0.0241319923970561
+    },
+    "new_holding": "512890",
+    "old_holding": "513120",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2024-05-10",
+    "indicators": {
+      "mom20": 0.035957240038872795,
+      "mom5": 0.02499999999999991,
+      "ret1": 0.004712535344015167,
+      "vol20": 0.010235139124781772
+    },
+    "new_holding": "513120",
+    "old_holding": "512890",
+    "old_holding_age": 7,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2024-05-21",
+    "indicators": {
+      "mom20": 0.13028764805414528,
+      "mom5": -0.034682080924855474,
+      "ret1": -0.034682080924855474,
+      "vol20": 0.01909812093266471
+    },
+    "new_holding": "510300",
+    "old_holding": "513120",
+    "old_holding_age": 7,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2024-05-23",
+    "indicators": {
+      "mom20": 0.03376844494892195,
+      "mom5": 0.0022008253094909502,
+      "ret1": -0.010054347826087051,
+      "vol20": 0.007810867230958189
+    },
+    "new_holding": "513100",
+    "old_holding": "510300",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": true,
+    "date": "2024-05-24",
+    "indicators": {
+      "mom20": 0.07863383637807897,
+      "mom5": 0.0022140221402215943,
+      "ret1": -0.016654598117306185,
+      "vol20": 0.009420489287893966
+    },
+    "new_holding": "513120",
+    "old_holding": "513100",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2024-05-31",
+    "indicators": {
+      "mom20": -0.02790697674418663,
+      "mom5": -3.3306690738754696e-16,
+      "ret1": 0.01620745542949753,
+      "vol20": 0.02085573719899558
+    },
+    "new_holding": "513100",
+    "old_holding": "513120",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2024-07-12",
+    "indicators": {
+      "mom20": 0.039721254355400415,
+      "mom5": -0.02419882275997387,
+      "ret1": -0.04051446945337622,
+      "vol20": 0.01032719566014221
+    },
+    "new_holding": "512400",
+    "old_holding": "513100",
+    "old_holding_age": 29,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2024-07-17",
+    "indicators": {
+      "mom20": 0.005917159763313862,
+      "mom5": 0.007905138339920903,
+      "ret1": -0.025787965616045794,
+      "vol20": 0.017339193257043275
+    },
+    "new_holding": "513100",
+    "old_holding": "512400",
+    "old_holding_age": 3,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2024-07-24",
+    "indicators": {
+      "mom20": -0.005494505494505697,
+      "mom5": -0.048620236530880434,
+      "ret1": -0.019634394041977088,
+      "vol20": 0.01572453863995148
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2024-07-25",
+    "indicators": {
+      "mom20": 0.016215185043875646,
+      "mom5": -0.04414139601650835,
+      "ret1": -0.025251601097895704,
+      "vol20": 0.00967645916785865
+    },
+    "new_holding": "513120",
+    "old_holding": "518880",
+    "old_holding_age": 1,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2024-07-31",
+    "indicators": {
+      "mom20": 0.027777777777777013,
+      "mom5": 0.01451612903225774,
+      "ret1": 0.03453947368421062,
+      "vol20": 0.019317236388498877
+    },
+    "new_holding": "588080",
+    "old_holding": "513120",
+    "old_holding_age": 4,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2024-08-01",
+    "indicators": {
+      "mom20": 0.07213578500707274,
+      "mom5": 0.03551912568306026,
+      "ret1": -0.006553079947575369,
+      "vol20": 0.018323254364489255
+    },
+    "new_holding": "513120",
+    "old_holding": "588080",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2024-08-23",
+    "indicators": {
+      "mom20": 0.00809061488673124,
+      "mom5": -0.056060606060606144,
+      "ret1": -0.023510971786833812,
+      "vol20": 0.016087551386988502
+    },
+    "new_holding": "518880",
+    "old_holding": "513120",
+    "old_holding_age": 16,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2024-09-02",
+    "indicators": {
+      "mom20": 0.023294819232202668,
+      "mom5": -0.008486818345973424,
+      "ret1": -0.005613908004346357,
+      "vol20": 0.008969541911771543
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 6,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2024-09-04",
+    "indicators": {
+      "mom20": 0.016491754122939017,
+      "mom5": -0.05963938973647687,
+      "ret1": -0.052410901467505155,
+      "vol20": 0.01931161132532333
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 2,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2024-09-24",
+    "indicators": {
+      "mom20": 0.03506540697674465,
+      "mom5": 0.015327036178934605,
+      "ret1": -0.002451409560497164,
+      "vol20": 0.008178179927538694
+    },
+    "new_holding": "513120",
+    "old_holding": "518880",
+    "old_holding_age": 12,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2024-10-09",
+    "indicators": {
+      "mom20": 0.23906249999999973,
+      "mom5": 0.1542940320232895,
+      "ret1": -0.0714285714285714,
+      "vol20": 0.026689864273626202
+    },
+    "new_holding": "512400",
+    "old_holding": "513120",
+    "old_holding_age": 6,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2024-10-11",
+    "indicators": {
+      "mom20": 0.1733507356430939,
+      "mom5": 0.0,
+      "ret1": -0.02198852772466553,
+      "vol20": 0.03560079743823917
+    },
+    "new_holding": "513120",
+    "old_holding": "512400",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2024-10-18",
+    "indicators": {
+      "mom20": 0.22511485451761137,
+      "mom5": 0.026957637997433004,
+      "ret1": 0.038961038961039085,
+      "vol20": 0.03500736830389222
+    },
+    "new_holding": "510500",
+    "old_holding": "513120",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2024-10-31",
+    "indicators": {
+      "mom20": 0.18553645524599904,
+      "mom5": 0.03128222756961163,
+      "ret1": 0.011122345803842304,
+      "vol20": 0.036705072871385504
+    },
+    "new_holding": "563300",
+    "old_holding": "510500",
+    "old_holding_age": 9,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2024-12-09",
+    "indicators": {
+      "mom20": 0.0072529465095192425,
+      "mom5": 0.009082652134423386,
+      "ret1": -0.0044802867383514355,
+      "vol20": 0.030179616912011417
+    },
+    "new_holding": "513100",
+    "old_holding": "563300",
+    "old_holding_age": 27,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2024-12-19",
+    "indicators": {
+      "mom20": 0.07947019867549665,
+      "mom5": 0.008039579468150704,
+      "ret1": -0.02628434886499398,
+      "vol20": 0.009891429675464466
+    },
+    "new_holding": "563300",
+    "old_holding": "513100",
+    "old_holding_age": 8,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2024-12-23",
+    "indicators": {
+      "mom20": 0.002873563218390718,
+      "mom5": -0.06684491978609641,
+      "ret1": -0.048181818181818326,
+      "vol20": 0.030504206254877632
+    },
+    "new_holding": "513100",
+    "old_holding": "563300",
+    "old_holding_age": 2,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-01-13",
+    "indicators": {
+      "mom20": -0.022713321055862323,
+      "mom5": -0.046135410425404255,
+      "ret1": -0.023312883435582687,
+      "vol20": 0.013792591899894591
+    },
+    "new_holding": "518880",
+    "old_holding": "513100",
+    "old_holding_age": 14,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-02-07",
+    "indicators": {
+      "mom20": 0.07411745022586591,
+      "mom5": 0.03765960885728137,
+      "ret1": 0.00281162136832247,
+      "vol20": 0.00940636526012766
+    },
+    "new_holding": "512400",
+    "old_holding": "518880",
+    "old_holding_age": 13,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2025-02-13",
+    "indicators": {
+      "mom20": 0.06402439024390216,
+      "mom5": 0.00191387559808609,
+      "ret1": -0.006641366223909095,
+      "vol20": 0.012794499628651356
+    },
+    "new_holding": "513120",
+    "old_holding": "512400",
+    "old_holding_age": 4,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2025-02-28",
+    "indicators": {
+      "mom20": 0.1960227272727273,
+      "mom5": -0.026589595375722475,
+      "ret1": -0.04535147392290251,
+      "vol20": 0.017061073427264123
+    },
+    "new_holding": "563300",
+    "old_holding": "513120",
+    "old_holding_age": 11,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-03-04",
+    "indicators": {
+      "mom20": 0.105367793240557,
+      "mom5": -0.013309671694764935,
+      "ret1": 0.015525114155251263,
+      "vol20": 0.019477455790626114
+    },
+    "new_holding": "513120",
+    "old_holding": "563300",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2025-03-21",
+    "indicators": {
+      "mom20": 0.010404624277456698,
+      "mom5": -1.1102230246251565e-16,
+      "ret1": -0.046892039258451534,
+      "vol20": 0.022237152046663277
+    },
+    "new_holding": "512400",
+    "old_holding": "513120",
+    "old_holding_age": 13,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-04-03",
+    "indicators": {
+      "mom20": -0.0009487666034161402,
+      "mom5": -0.030386740331491913,
+      "ret1": -0.014967259120673537,
+      "vol20": 0.011443022424466119
+    },
+    "new_holding": "512890",
+    "old_holding": "512400",
+    "old_holding_age": 9,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-04-07",
+    "indicators": {
+      "mom20": -0.019354838709677025,
+      "mom5": -0.043165467625899345,
+      "ret1": -0.05422222222222217,
+      "vol20": 0.007295684350477174
+    },
+    "new_holding": "518880",
+    "old_holding": "512890",
+    "old_holding_age": 1,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": true,
+    "date": "2025-04-09",
+    "indicators": {
+      "mom20": 0.07794004611837058,
+      "mom5": -0.0062358276643993404,
+      "ret1": 0.012563176895306727,
+      "vol20": 0.009885109573946747
+    },
+    "new_holding": "513100",
+    "old_holding": "518880",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2025-04-16",
+    "indicators": {
+      "mom20": -0.0453608247422681,
+      "mom5": 0.06846153846153835,
+      "ret1": -0.01906779661016944,
+      "vol20": 0.03600332031739573
+    },
+    "new_holding": "512890",
+    "old_holding": "513100",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-04-30",
+    "indicators": {
+      "mom20": -0.0053811659192822825,
+      "mom5": -0.006272401433691788,
+      "ret1": -0.015971606033717833,
+      "vol20": 0.014076778756271089
+    },
+    "new_holding": "513100",
+    "old_holding": "512890",
+    "old_holding_age": 10,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-05-09",
+    "indicators": {
+      "mom20": 0.1266110689916602,
+      "mom5": 0.02766251728907343,
+      "ret1": 0.0006734006734006037,
+      "vol20": 0.026083164581611973
+    },
+    "new_holding": "563300",
+    "old_holding": "513100",
+    "old_holding_age": 4,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2025-05-20",
+    "indicators": {
+      "mom20": 0.08823529411764675,
+      "mom5": 0.014625228519195455,
+      "ret1": 0.010009099181073733,
+      "vol20": 0.01950954992279437
+    },
+    "new_holding": "513100",
+    "old_holding": "563300",
+    "old_holding_age": 7,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2025-06-05",
+    "indicators": {
+      "mom20": 0.07455540355677193,
+      "mom5": 0.001913265306122458,
+      "ret1": -0.0025396825396825085,
+      "vol20": 0.02386949532897038
+    },
+    "new_holding": "513120",
+    "old_holding": "513100",
+    "old_holding_age": 11,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2025-06-17",
+    "indicators": {
+      "mom20": 0.23271130625686132,
+      "mom5": -0.04017094017093992,
+      "ret1": -0.04830508474576267,
+      "vol20": 0.030588991621144725
+    },
+    "new_holding": "512890",
+    "old_holding": "513120",
+    "old_holding_age": 8,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-06-19",
+    "indicators": {
+      "mom20": 0.019047619047619646,
+      "mom5": 0.0008503401360546725,
+      "ret1": -0.0016963528413910245,
+      "vol20": 0.009215881363394766
+    },
+    "new_holding": "513120",
+    "old_holding": "512890",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-07-02",
+    "indicators": {
+      "mom20": 0.0674157303370786,
+      "mom5": -0.023136246786632397,
+      "ret1": -0.02480752780153994,
+      "vol20": 0.029870051227566443
+    },
+    "new_holding": "512400",
+    "old_holding": "513120",
+    "old_holding_age": 9,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2025-07-31",
+    "indicators": {
+      "mom20": 0.054030874785591765,
+      "mom5": -0.045807453416149,
+      "ret1": -0.033044846577497844,
+      "vol20": 0.014597693031940162
+    },
+    "new_holding": "510300",
+    "old_holding": "512400",
+    "old_holding_age": 21,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-08-04",
+    "indicators": {
+      "mom20": 0.03437967115097118,
+      "mom5": -0.01471286188894172,
+      "ret1": 0.004597144931042907,
+      "vol20": 0.0064289775589872694
+    },
+    "new_holding": "513120",
+    "old_holding": "510300",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2025-08-07",
+    "indicators": {
+      "mom20": 0.20151133501259433,
+      "mom5": -0.007628294036061023,
+      "ret1": -0.030487804878048808,
+      "vol20": 0.023254214393248627
+    },
+    "new_holding": "588080",
+    "old_holding": "513120",
+    "old_holding_age": 3,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-09-04",
+    "indicators": {
+      "mom20": 0.15391705069124395,
+      "mom5": -0.10762651461154693,
+      "ret1": -0.062172284644194775,
+      "vol20": 0.029783075150751622
+    },
+    "new_holding": "159915",
+    "old_holding": "588080",
+    "old_holding_age": 20,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-10-10",
+    "indicators": {
+      "mom20": 0.1250454380225372,
+      "mom5": -0.03612581750233557,
+      "ret1": -0.04327666151468301,
+      "vol20": 0.0250002111160171
+    },
+    "new_holding": "513100",
+    "old_holding": "159915",
+    "old_holding_age": 20,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-11-07",
+    "indicators": {
+      "mom20": 0.034408602150538536,
+      "mom5": -0.029263370332996863,
+      "ret1": -0.012827090815803022,
+      "vol20": 0.013919993204278133
+    },
+    "new_holding": "512890",
+    "old_holding": "513100",
+    "old_holding_age": 20,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2025-12-02",
+    "indicators": {
+      "mom20": -0.007395234182415944,
+      "mom5": -0.0008271298593881538,
+      "ret1": -0.0024772914946326052,
+      "vol20": 0.0067477727132939395
+    },
+    "new_holding": "512400",
+    "old_holding": "512890",
+    "old_holding_age": 17,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-12-09",
+    "indicators": {
+      "mom20": 0.013937282229965042,
+      "mom5": 0.00866551126516435,
+      "ret1": -0.03322259136212624,
+      "vol20": 0.024389562423418307
+    },
+    "new_holding": "159915",
+    "old_holding": "512400",
+    "old_holding_age": 5,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-12-11",
+    "indicators": {
+      "mom20": -0.011313639220616123,
+      "mom5": 0.03113733202228741,
+      "ret1": -0.01441102756892243,
+      "vol20": 0.019314219642614754
+    },
+    "new_holding": "518880",
+    "old_holding": "159915",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2025-12-23",
+    "indicators": {
+      "mom20": 0.06981132075471663,
+      "mom5": 0.04318181818181799,
+      "ret1": 0.013458101146041512,
+      "vol20": 0.015360232299876195
+    },
+    "new_holding": "512400",
+    "old_holding": "518880",
+    "old_holding_age": 8,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2026-01-30",
+    "indicators": {
+      "mom20": 0.2138038401660607,
+      "mom5": 0.02006105538595704,
+      "ret1": -0.09865125240847794,
+      "vol20": 0.02157272801427053
+    },
+    "new_holding": "510500",
+    "old_holding": "512400",
+    "old_holding_age": 26,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-02-02",
+    "indicators": {
+      "mom20": 0.04070345251400753,
+      "mom5": -0.06013545072396076,
+      "ret1": -0.046327014218009444,
+      "vol20": 0.014015231971986222
+    },
+    "new_holding": "512400",
+    "old_holding": "510500",
+    "old_holding_age": 1,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-03-03",
+    "indicators": {
+      "mom20": -0.021541010770505742,
+      "mom5": 0.045132743362831906,
+      "ret1": -0.0544435548438752,
+      "vol20": 0.04541483665105311
+    },
+    "new_holding": "512890",
+    "old_holding": "512400",
+    "old_holding_age": 15,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-03-23",
+    "indicators": {
+      "mom20": -0.007712082262209985,
+      "mom5": -0.039004149377593,
+      "ret1": -0.03177257525083599,
+      "vol20": 0.0062135244630158746
+    },
+    "new_holding": "518880",
+    "old_holding": "512890",
+    "old_holding_age": 14,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-03-24",
+    "indicators": {
+      "mom20": -0.15077625570776299,
+      "mom5": -0.1257873460562191,
+      "ret1": 0.04004026395257787,
+      "vol20": 0.02846951106249051
+    },
+    "new_holding": "513120",
+    "old_holding": "518880",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-03-25",
+    "indicators": {
+      "mom20": -0.0892717306186368,
+      "mom5": -0.038842975206611174,
+      "ret1": 0.006055363321799456,
+      "vol20": 0.027579253671793737
+    },
+    "new_holding": "512890",
+    "old_holding": "513120",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-03-31",
+    "indicators": {
+      "mom20": 0.0016722408026763613,
+      "mom5": 0.01697792869269965,
+      "ret1": 0.004191114836546328,
+      "vol20": 0.009927052079169645
+    },
+    "new_holding": "513120",
+    "old_holding": "512890",
+    "old_holding_age": 4,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-04-22",
+    "indicators": {
+      "mom20": 0.11072664359861628,
+      "mom5": -0.033132530120481896,
+      "ret1": -0.010023130300693794,
+      "vol20": 0.02399463878534807
+    },
+    "new_holding": "159915",
+    "old_holding": "513120",
+    "old_holding_age": 15,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2026-04-30",
+    "indicators": {
+      "mom20": 0.14139851485148536,
+      "mom5": -0.01046137339055786,
+      "ret1": -0.0013535462912830365,
+      "vol20": 0.020260253613533997
+    },
+    "new_holding": "588080",
+    "old_holding": "159915",
+    "old_holding_age": 6,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2026-05-21",
+    "indicators": {
+      "mom20": 0.21727395411605888,
+      "mom5": 0.02383654937570956,
+      "ret1": -0.0352941176470587,
+      "vol20": 0.024773743495474013
+    },
+    "new_holding": "513100",
+    "old_holding": "588080",
+    "old_holding_age": 12,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-06-04",
+    "indicators": {
+      "mom20": 0.09055501460564774,
+      "mom5": 0.01174345076784089,
+      "ret1": -0.02566333188342751,
+      "vol20": 0.01816102001920605
+    },
+    "new_holding": "159915",
+    "old_holding": "513100",
+    "old_holding_age": 10,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-06-05",
+    "indicators": {
+      "mom20": 0.044929059379926306,
+      "mom5": -0.01875154206760432,
+      "ret1": -0.029999999999999916,
+      "vol20": 0.018885033666678142
+    },
+    "new_holding": "513100",
+    "old_holding": "159915",
+    "old_holding_age": 1,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": true,
+    "date": "2026-06-08",
+    "indicators": {
+      "mom20": 0.002846299810246533,
+      "mom5": -0.10613107822410184,
+      "ret1": -0.041269841269841456,
+      "vol20": 0.019624804998069654
+    },
+    "new_holding": "513120",
+    "old_holding": "513100",
+    "old_holding_age": 1,
+    "panic": true,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2026-06-15",
+    "indicators": {
+      "mom20": -0.09697508896797191,
+      "mom5": 0.02941176470588247,
+      "ret1": 0.001974333662388972,
+      "vol20": 0.021786388319521677
+    },
+    "new_holding": "513100",
+    "old_holding": "513120",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-06-23",
+    "indicators": {
+      "mom20": -0.025549081129538687,
+      "mom5": -0.037201062887511016,
+      "ret1": -0.033777777777777906,
+      "vol20": 0.024800407876902037
+    },
+    "new_holding": "159915",
+    "old_holding": "513100",
+    "old_holding_age": 5,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-06-25",
+    "indicators": {
+      "mom20": 0.08357988165680497,
+      "mom5": 0.05068132918957713,
+      "ret1": 0.03217472992015025,
+      "vol20": 0.025332736996704703
+    },
+    "new_holding": "588080",
+    "old_holding": "159915",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2026-07-02",
+    "indicators": {
+      "mom20": 0.15902659875495195,
+      "mom5": -0.03167848699763587,
+      "ret1": -0.07664562669071229,
+      "vol20": 0.029560881895417054
+    },
+    "new_holding": "510500",
+    "old_holding": "588080",
+    "old_holding_age": 5,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-07-06",
+    "indicators": {
+      "mom20": 0.056481592517088064,
+      "mom5": -0.01827501671495435,
+      "ret1": -0.010223570385349934,
+      "vol20": 0.01979861580527873
+    },
+    "new_holding": "588080",
+    "old_holding": "510500",
+    "old_holding_age": 2,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2026-07-10",
+    "indicators": {
+      "mom20": 0.25867136978248095,
+      "mom5": 0.05105547373588615,
+      "ret1": -0.05223550243470543,
+      "vol20": 0.03483776249700121
+    },
+    "new_holding": "513120",
+    "old_holding": "588080",
+    "old_holding_age": 4,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-07-17",
+    "indicators": {
+      "mom20": 0.1359516616314198,
+      "mom5": -0.04810126582278473,
+      "ret1": -0.06234413965087282,
+      "vol20": 0.02931533470174983
+    },
+    "new_holding": "518880",
+    "old_holding": "513120",
+    "old_holding_age": 5,
+    "panic": true,
+    "reason": "panic_exit"
+  },
+  {
+    "crash": true,
+    "date": "2026-07-20",
+    "indicators": {
+      "mom20": -0.04566314823313433,
+      "mom5": -0.0119966741893337,
+      "ret1": 0.0008422572494284353,
+      "vol20": 0.013411450715501545
+    },
+    "new_holding": "563300",
+    "old_holding": "518880",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "crash_override"
+  },
+  {
+    "crash": false,
+    "date": "2026-07-27",
+    "indicators": {
+      "mom20": -0.1624040920716111,
+      "mom5": 0.03968253968253954,
+      "ret1": 0.04299363057324834,
+      "vol20": 0.02625012669498402
+    },
+    "new_holding": "512890",
+    "old_holding": "563300",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "momentum_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-07-28",
+    "indicators": {
+      "mom20": 0.10215557638238093,
+      "mom5": 0.013793103448276112,
+      "ret1": 0.007712082262210762,
+      "vol20": 0.011348828877416188
+    },
+    "new_holding": "513120",
+    "old_holding": "512890",
+    "old_holding_age": 1,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-08-12",
+    "indicators": {
+      "mom20": 0.04088307440719485,
+      "mom5": 0.06884970612930275,
+      "ret1": -0.0077942322681215925,
+      "vol20": 0.026491388563595897
+    },
+    "new_holding": "512400",
+    "old_holding": "513120",
+    "old_holding_age": 11,
+    "panic": false,
+    "reason": "healthy_rotation"
+  },
+  {
+    "crash": false,
+    "date": "2026-08-19",
+    "indicators": {
+      "mom20": 0.0542986425339369,
+      "mom5": -0.039175257731958735,
+      "ret1": -0.03569580962234864,
+      "vol20": 0.030762408104168484
+    },
+    "new_holding": "513120",
+    "old_holding": "512400",
+    "old_holding_age": 5,
+    "panic": false,
+    "reason": "bear_stock_exit"
+  },
+  {
+    "crash": false,
+    "date": "2026-09-15",
+    "indicators": {
+      "mom20": -0.01014040561622509,
+      "mom5": -0.03277439024390272,
+      "ret1": -0.010911925175370207,
+      "vol20": 0.026459947655507146
+    },
+    "new_holding": "513100",
+    "old_holding": "513120",
+    "old_holding_age": 19,
+    "panic": false,
+    "reason": "momentum_exit"
+  }
+]

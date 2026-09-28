@@ -1,16 +1,16 @@
 --- a/app.py
 +++ b/app.py
-@@ -578,52 +578,23 @@
+@@ -1,52 +1,18 @@
  
  
  def _handle_momentum_signal():
 -    """动量轮动信号查询: 读 /root/stock/signals/latest.txt 提取关键行回复(快速链路, 不走大模型)。"""
-+    """与每日主动推送复用排版，每次查询加载最新格式，无需重启刷新样式。"""
++    """Read-only shared query rendering, including saved-run freshness/errors."""
      try:
-         with open(MOMENTUM_SIGNAL_FILE, encoding="utf-8") as f:
-             text = f.read()
-     except Exception as e:
-         return "⚠️ 读取动量信号失败: %s" % e
+-        with open(MOMENTUM_SIGNAL_FILE, encoding="utf-8") as f:
+-            text = f.read()
+-    except Exception as e:
+-        return "⚠️ 读取动量信号失败: %s" % e
 -    lines = text.splitlines()
 -    gen = next((l.strip() for l in lines if "动量轮动信号" in l), "")
 -    gen_m = re.search(r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2})", gen)
@@ -51,16 +51,15 @@
 -        % (regime, holding, advice, reason, " / ".join(top), shadow_txt,
 -           gen_m.group(1) if gen_m else "-")
 -    )
-+    try:
 +        import importlib.util
 +        renderer_path = os.path.join(os.path.dirname(os.path.dirname(MOMENTUM_SIGNAL_FILE)),
 +                                     "push_signal.py")
 +        spec = importlib.util.spec_from_file_location("_stock_momentum_format", renderer_path)
 +        renderer = importlib.util.module_from_spec(spec)
 +        spec.loader.exec_module(renderer)
-+        return renderer.build_markdown(text, query=True)[0]
-+    except Exception:
-+        logger.exception("动量查询排版加载失败")
++        return renderer.render_saved_query(path=MOMENTUM_SIGNAL_FILE)
++    except Exception as exc:
++        logger.error("动量查询展示不可用: %s", type(exc).__name__)
 +        return "⚠️ 动量信号展示暂时不可用，请稍后再试。"
  
  

@@ -12,6 +12,7 @@ import subprocess
 import sys
 
 import signal_store as store
+from daily_diagnostics import DiagnosticError, child_failure, exception_detail
 
 ROOT = Path(__file__).resolve().parent
 
@@ -22,9 +23,8 @@ def run_child(command, timeout):
                              start_new_session=True)
     try:
         output, error = child.communicate(timeout=timeout)
-        # Do not leak URLs, credentials or raw exception payloads from workers.
         if child.returncode:
-            raise RuntimeError("任务子进程失败，退出码%d" % child.returncode)
+            raise DiagnosticError(child_failure(output, error, Path(command[-1]).name, child.returncode))
         return output
     except subprocess.TimeoutExpired:
         try:
@@ -72,9 +72,13 @@ def run_job(directory=store.SIGNALS, now=None, generate=None, deliver=None):
                     # A child can finish its atomic journal before losing stdout.
                     journal = store.load_journal(directory)
                     if not journal or journal["date"] != date:
-                        status.update(status="failed", reason=type(exc).__name__, finished_at=clock().isoformat())
+                        detail = exception_detail(exc, 'generation')
+                        status.update(status="failed", reason=detail['error_type'], diagnostic=detail,
+                                      finished_at=clock().isoformat())
                         store.atomic_json(status_path, status)
-                        print("每日生成失败: " + type(exc).__name__)
+                        print("每日生成失败: %s: %s" % (detail['error_type'], detail['message']))
+                        for cause in detail.get('causes', []):
+                            print("  %s: %s: %s" % (cause['phase'],cause['error_type'],cause['message']))
                         return 1
                 status.update(status="ready", signal_id=journal["signal_id"], finished_at=clock().isoformat())
                 store.atomic_json(status_path, status)

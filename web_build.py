@@ -63,6 +63,24 @@ def build_v10_only():
     print("V10-H及同口径v9.2已追加，旧版本曲线保持不变", flush=True)
 
 
+def append_v12(payload):
+    """Append the user's frozen R2 choice without altering research selection."""
+    from web_v12 import export_versions
+    payload["versions"].update(export_versions())
+    payload["default_version"] = "v12-r2"
+    payload["v12_updated_at"] = time.strftime("%Y-%m-%d %H:%M:%S")
+    payload.pop("v12_error", None)
+    return payload
+
+
+def build_v12_only():
+    with open(CACHE, encoding="utf-8") as stream:
+        payload = json.load(stream)
+    append_v12(payload)
+    atomic_write(CACHE, json.dumps(payload, ensure_ascii=False, separators=(",", ":"), allow_nan=False))
+    print("V12-R2冻结曲线已追加；旧曲线与独立前向账户保持不变", flush=True)
+
+
 def metrics(res):
     return {
         "nav": round(res["nav"], 4),
@@ -154,6 +172,23 @@ def build():
         except (OSError, ValueError):
             pass
         print("V10研究曲线更新失败: %s" % type(exc).__name__, flush=True)
+    try:
+        append_v12(payload)
+    except Exception as exc:
+        payload["v12_error"] = type(exc).__name__
+        try:
+            with open(CACHE, encoding="utf-8") as stream:
+                previous = json.load(stream)
+            if "v12-r2" in previous.get("versions", {}):
+                payload["versions"]["v12-r2"] = previous["versions"]["v12-r2"]
+                warnings = payload["versions"]["v12-r2"].setdefault("metadata", {}).setdefault("warnings", [])
+                note = "本次研究快照核验未完成，显示上一次已保存的历史数据"
+                if note not in warnings: warnings.append(note)
+                payload["default_version"] = "v12-r2"
+            payload["v12_updated_at"] = previous.get("v12_updated_at")
+        except (OSError, ValueError):
+            pass
+        print("V12研究曲线更新失败: %s" % type(exc).__name__, flush=True)
     atomic_write(CACHE, json.dumps(payload, ensure_ascii=False, separators=(",", ":"), allow_nan=False))
     print("缓存写入 %s (%.1f KB), 总耗时 %ds"
           % (CACHE, os.path.getsize(CACHE) / 1024, time.time() - t0), flush=True)
@@ -161,7 +196,9 @@ def build():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--v10-only", action="store_true", help="Append frozen V10 curves without rebuilding legacy versions")
+    fast = parser.add_mutually_exclusive_group()
+    fast.add_argument("--v10-only", action="store_true", help="Append frozen V10 curves without rebuilding legacy versions")
+    fast.add_argument("--v12-only", action="store_true", help="Append frozen V12-R2 path without rebuilding legacy versions")
     args = parser.parse_args()
     import fcntl
     lock_fd = os.open(LOCK, os.O_CREAT | os.O_WRONLY)
@@ -171,6 +208,6 @@ if __name__ == "__main__":
         print("已有构建在进行, 退出")
         sys.exit(0)
     try:
-        build_v10_only() if args.v10_only else build()
+        build_v12_only() if args.v12_only else build_v10_only() if args.v10_only else build()
     finally:
         os.close(lock_fd)

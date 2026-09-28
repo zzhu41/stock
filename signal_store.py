@@ -1,6 +1,6 @@
 """Small standard-library signal journal shared by generation, query and push.
 
-Schema 2 commits the three-version signal AND successful virtual accounts.
+Schema 2 commits the versioned signal AND successful virtual accounts.
 Schema 1 retains compatibility with old primary-lock journals. Account/text
 files are recoverable projections. Compatible with the bot's Python 3.6.
 """
@@ -20,7 +20,24 @@ ROOT = Path(__file__).resolve().parent
 SIGNALS = ROOT / "signals"
 TZ = timezone(timedelta(hours=8))
 START_TIME, END_TIME = "14:50:00", "14:55:00"
-ACCOUNT_FILES = ("shadow_v92.json", "shadow_v92_plus.json", "shadow_v10.json")
+PRIMARY_VERSION = "V12-R2"
+PRIMARY_ACCOUNT = "shadow_v12_r2.json"
+PRIMARY_START_DATE = "2026-09-29"
+ACCOUNT_FILES = (PRIMARY_ACCOUNT, "shadow_v92.json", "shadow_v92_plus.json", "shadow_v10.json")
+
+
+def primary_target(record):
+    """Only today's committed main account supplies the main target.
+
+    An older three-version journal's target meant V9.2. A retained checkpoint
+    from a failed main account is also not a new executable recommendation.
+    """
+    if record.get('primary_version') != PRIMARY_VERSION:
+        return None
+    if PRIMARY_ACCOUNT not in record.get('updated_accounts', []):
+        return None
+    state = record.get('account_states', {}).get(PRIMARY_ACCOUNT, {})
+    return state.get('holding') if state.get('last_date') == record.get('date') else None
 
 
 def now_local():
@@ -96,7 +113,11 @@ def load_journal(directory=SIGNALS):
                     any(not isinstance(state, dict) or not isinstance(state.get('last_date'), str)
                         or state['last_date'] > value['date'] for state in accounts.values()) or
                     any(accounts[name]['last_date'] != value['date'] for name in updated)):
-                raise ValueError("三版本账户提交记录不完整")
+                raise ValueError("多版本账户提交记录不完整")
+        if 'primary_version' in value:
+            if (value['schema'] != 2 or value['primary_version'] != PRIMARY_VERSION
+                    or value.get('target') != primary_target(value)):
+                raise ValueError("主推送目标与当日提交账户不一致")
     return value
 
 
@@ -108,7 +129,7 @@ def load_saved(directory=SIGNALS):
     return path.read_text(encoding="utf-8"), None
 
 
-def publish(text, date, target, crash_lock, directory=SIGNALS, account_states=None, accounts_locked=False, validator=None, updated_accounts=None):
+def publish(text, date, target, crash_lock, directory=SIGNALS, account_states=None, accounts_locked=False, validator=None, updated_accounts=None, primary_version=None):
     """One atomic commit; failed compatibility projections cannot orphan a lock."""
     directory = Path(directory)
     if account_states is not None:
@@ -125,6 +146,11 @@ def publish(text, date, target, crash_lock, directory=SIGNALS, account_states=No
     if account_states is not None:
         record["account_states"] = account_states
         record['updated_accounts'] = updated_accounts
+    if primary_version is not None:
+        record['primary_version'] = primary_version
+        if (record['schema'] != 2 or primary_version != PRIMARY_VERSION
+                or target != primary_target(record)):
+            raise ValueError("主推送仅允许使用该版本当日成功账户的目标")
     record["checksum"] = record_digest(record)
     if validator is None:
         atomic_json(directory / "daily_state.json", record)
@@ -205,7 +231,7 @@ def signal_info(text, now=None):
                   note="信号格式缺失或损坏，仅供检查，不作为操作指令")
     header = re.search(r"^动量轮动信号\s*\|\s*生成 (\d{4}-\d{2}-\d{2} \d{2}:\d{2}(?::\d{2})?)\s*\|\s*数据截止 (\d{4}-\d{2}-\d{2})", text, re.M)
     legacy = re.search(r"^★ 建议:\s*\S", text, re.M)
-    bundle = re.search(r"^策略版本:\s*V9\.2\s*\|\s*V9\.2\+\s*\|\s*V10-H\s*$", text, re.M)
+    bundle = re.search(r"^策略版本:\s*(?:V12-R2\s*\|\s*)?V9\.2\s*\|\s*V9\.2\+\s*\|\s*V10-H\s*$", text, re.M)
     if not header or not (legacy or bundle):
         return result
     generated, date = header.groups()

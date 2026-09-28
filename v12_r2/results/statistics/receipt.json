@@ -1,0 +1,31 @@
+{
+  "block_lengths": [
+    20,
+    60
+  ],
+  "clean_oos": false,
+  "completed_at": "2026-09-28T07:55:47.387568+00:00",
+  "draws": 2000,
+  "family_size": 862,
+  "limitations": "Conditional full-family test on repeatedly researched history; conservative zero centering, not an overfit probability or clean OOS.",
+  "no_reselection": true,
+  "p_values": {
+    "close_11bp": {
+      "20": 0.9920039980009995,
+      "60": 0.9875062468765617
+    },
+    "close_1bp": {
+      "20": 0.9970014992503748,
+      "60": 0.9965017491254373
+    },
+    "lag1_11bp": {
+      "20": 0.9815092453773113,
+      "60": 0.9750124937531235
+    },
+    "lag1_1bp": {
+      "20": 0.9735132433783108,
+      "60": 0.9575212393803099
+    }
+  },
+  "selection_unchanged_sha256": "a8496918bc0a28aafe155b1ba019aad195cc12619f8a7ca5c8e32920654a53a1"
+}

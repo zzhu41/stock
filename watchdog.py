@@ -12,6 +12,7 @@ import json
 import math
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 import urllib.request
@@ -171,6 +172,42 @@ def _delivery_checks(directory, today, journal, canonical_error):
     return failures
 
 
+def _primary_checks(journal, today):
+    """A delivered comparison bundle does not prove the main version worked."""
+    if today < store.PRIMARY_START_DATE or journal is None:
+        return []
+    if journal.get("primary_version") != store.PRIMARY_VERSION:
+        return ["DEGRADED: 主推送%s尚未生成；当前仍为旧部署版本记录" % store.PRIMARY_VERSION]
+    target = store.primary_target(journal)
+    if not target:
+        return ["DEGRADED: 主推送未生成（%s）；对照版本已提交或送达不能替代主版本" % store.PRIMARY_VERSION]
+    state = journal["account_states"][store.PRIMARY_ACCOUNT]
+    try:
+        quote = _timestamp(state["quote_timestamp"])
+        committed = _timestamp(journal["committed_at"])
+        if quote.strftime("%Y-%m-%d") != today or not -5 <= (committed - quote).total_seconds() <= 180:
+            raise ValueError("Main quote was stale when committed")
+    except (KeyError, TypeError, ValueError):
+        return ["DEGRADED: 主推送%s账户行情时间无法核验，不能用对照行情代替" % store.PRIMARY_VERSION]
+    body, active = [], False
+    headers = ("【影子 %s】" % store.PRIMARY_VERSION, "【主推送 %s】" % store.PRIMARY_VERSION)
+    for line in journal["text"].splitlines():
+        line = line.strip()
+        if line.startswith("【"):
+            active = line.startswith(headers)
+        if active:
+            body.append(line)
+    statuses = " ".join(line for line in body if line.startswith("信号状态:"))
+    advice = [re.split(r"建议[:：]", line, maxsplit=1)[1].split("|",1)[0].strip()
+              for line in body if re.search(r"建议[:：]",line)]
+    displayed_target = any(re.search(r"(?:^|(?:买入|继续持有|持有|建仓)\s+)" + re.escape(target) + r"(?=\s|$)",line)
+                           for line in advice)
+    if (not body or not displayed_target
+            or any(word in statuses for word in ("计算失败", "无有效建议", "尚无有效信号", "历史", "尚未启动"))):
+        return ["DEGRADED: 主推送%s缺少有效的独立卡片；不得视为主版本正常" % store.PRIMARY_VERSION]
+    return []
+
+
 def _qvix_fresh(alerts, today):
     path = Path(BASE) / "data/qvix50.csv"
     try:
@@ -228,12 +265,14 @@ def main(now=None, directory=None):
     else:
         failures = _delivery_checks(directory, today, journal, canonical_error)
         alerts[:0] = failures
+        primary_alerts = _primary_checks(journal, today)
+        alerts.extend(primary_alerts)
         if calendar is None:
             alerts.append("DEGRADED: 官方日历未覆盖%s；已凭当日信号/行情确认开市，仍需补充官方日历" % today)
         qvix_ok = _qvix_fresh(alerts, today)
         if failures or dual["status"] == "FAILED":
             status = "FAILED"
-        elif dual["status"] != "OK" or not qvix_ok or calendar is None:
+        elif primary_alerts or dual["status"] != "OK" or not qvix_ok or calendar is None:
             status = "DEGRADED"
         else:
             status = "OK"

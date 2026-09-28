@@ -1,0 +1,49 @@
+{
+  "account_writes": false,
+  "addon_only": true,
+  "arbitrary_ids_allowed": false,
+  "calculation": "Stored continuous-path slicing and metric recalculation only; no strategy/search rerun",
+  "cli_smoke": {
+    "candidate_id": "v12r2_9a8799a5f7dd7581608e",
+    "command": [
+      "python3.8",
+      "-B",
+      "-m",
+      "v12_r2.explore",
+      "recovery_2021",
+      "--end",
+      "2021-12-31",
+      "--lag",
+      "1",
+      "--fee-bp",
+      "11"
+    ],
+    "configuration_lag": 1,
+    "cumulative_2021": 0.07932399567885762,
+    "exit_code": 0,
+    "explicit_role_required": true,
+    "period": [
+      "2014-01-02",
+      "2021-12-31"
+    ],
+    "scenario": "lag1_11bp"
+  },
+  "created_at": "2026-09-28T08:14:07.297260+00:00",
+  "deployed": false,
+  "network": false,
+  "orders": false,
+  "original_captured_files_verified": 53,
+  "original_release_overwritten": false,
+  "original_release_sha256": "f05425fd1e4f599f780d89d785ce93074e1d3af2fe7ea4c8832ad7e9058582eb",
+  "original_selection_sha256": "a8496918bc0a28aafe155b1ba019aad195cc12619f8a7ca5c8e32920654a53a1",
+  "source_sha256": {
+    "EXPLORER.md": "cf658c0f6ff9e5226d64308b9d23ab82bf59636d06ceaa5338ff54f6aedcf22d",
+    "explore.py": "65ab5a9cba77217f70bb4e1c811ceb9aa784ac4166d57c6d44cccf2d087b37fd",
+    "tests/test_explore.py": "46c04a5976dd3255cd441623a48b6cead4e966a90941b2969ec6964ec73de49f"
+  },
+  "tests": {
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3.8 -B -m unittest discover -s v12_r2/tests -p test_explore.py -v",
+    "count": 3,
+    "passed": true
+  }
+}

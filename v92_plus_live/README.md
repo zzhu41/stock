@@ -4,7 +4,7 @@
 
 `policy.py`使用明确的原WLS25算术及冻结参考决策器，按实际入场日期计算持有年龄；`ledger.py`维护独立原始份额、分红权益和净值。新账户首次有效信号从1开始，位于`signals/shadow_v92_plus.json`，不复制V9.2或H的持仓、净值、事件。
 
-生产入口是`daily_job.py`→`signal_daily.py`→`daily_extras.py`：三个版本共享同一批校验TR/原始行情和封存QVIX快照，各自在隔离stage目录准备，主journal统一提交。`shadow_v92_plus.saved_block`仅作只读查询/恢复；独立测试run须显式传临时state_path，不运行生产账户作为测试。
+生产入口是`daily_job.py`→`signal_daily.py`→`daily_extras.py`：V12-R2主推送和原三个对照共享同一批校验TR/原始行情；原三个对照使用同一封存QVIX快照，R2不使用QVIX。各版本在隔离stage目录准备，主journal统一提交。`shadow_v92_plus.saved_block`仅作只读查询/恢复；独立测试run须显式传临时state_path，不运行生产账户作为测试。
 
 当前为虚拟前向观察，不向券商下单。14:50价格与累计量不等于历史最终收盘；现金分红使用虚拟即时再投资约定，不模拟到账延迟、整手与真实成交限制。代码不把历史50.13%年化或2026的75.27%累积收益写入前向账户。
 

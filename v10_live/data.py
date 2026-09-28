@@ -235,6 +235,21 @@ def _write_state(path, state):
                 pass
 
 
+def _provider_quote_info(node, symbol, code, label):
+    """Keep only the public quote fields needed to check an adjustment anchor."""
+    qt = (node.get("qt") or {}).get(symbol) or []
+    if not qt:
+        return None
+    try:
+        stamp = datetime.strptime(str(qt[30]), "%Y%m%d%H%M%S")
+        return dict(date=stamp.strftime("%Y-%m-%d"),
+                    timestamp=stamp.strftime("%Y-%m-%d %H:%M:%S"),
+                    prev_close=_number(qt[4], code + label + "前收", True),
+                    open=_number(qt[5], code + label + "开盘", True))
+    except (IndexError, TypeError, ValueError):
+        raise LiveDataError(code + label + "响应的qt锚点非法")
+
+
 def _fetch_pair(code, start, end):
     symbol = ("sh" if code.startswith("5") else "sz") + code
     result, urls = {}, {}
@@ -247,23 +262,17 @@ def _fetch_pair(code, start, end):
         if len(body) > 4000000:
             raise LiveDataError(code + "日K响应过大")
         node = (json.loads(body.decode("utf-8")).get("data") or {}).get(symbol) or {}
+        result[label + "_provider_version"] = str(node.get("version"))
+        result[label + "_quote_info"] = _provider_quote_info(node, symbol, code, label)
         page = node.get(key)
         if label == "qfq" and not page and code in DAY_ALIAS_CODES and node.get("day"):
             # Observed Tencent v16 representation for these two zero-action
             # funds. This is only a candidate alias; _validate_day_alias must
             # check action history, all completed O/C and the current qt anchor.
             page = node["day"]
-            qt = (node.get("qt") or {}).get(symbol) or []
-            try:
-                stamp = datetime.strptime(str(qt[30]), "%Y%m%d%H%M%S")
-                result["qfq_quote_info"] = dict(date=stamp.strftime("%Y-%m-%d"),
-                    timestamp=stamp.strftime("%Y-%m-%d %H:%M:%S"),
-                    prev_close=_number(qt[4], code + "qfq前收", True),
-                    open=_number(qt[5], code + "qfq开盘", True))
-            except (IndexError, TypeError, ValueError):
+            if result["qfq_quote_info"] is None:
                 raise LiveDataError(code + "未调整day响应缺可核对的qt锚点")
             result["qfq_alias"] = "day"
-            result["qfq_provider_version"] = str(node.get("version"))
         if not page:
             raise LiveDataError(code + "缺少明确的" + key + "行情")
         try:
@@ -273,6 +282,74 @@ def _fetch_pair(code, start, end):
         urls[label] = url
     result["sources"] = urls
     return result
+
+
+def _current_anchor_times(code, pair, quote, signal_date, moment):
+    """The delayed-qfq bridge needs two fresh, contemporaneous qt anchors."""
+    stamps = []
+    for label in ("raw", "qfq"):
+        qt = pair.get(label + "_quote_info") or {}
+        try:
+            stamp = datetime.strptime(qt["timestamp"], "%Y-%m-%d %H:%M:%S").replace(tzinfo=TZ)
+        except (KeyError, TypeError, ValueError):
+            raise LiveDataError(code + "缺少当日qfq桥接所需的双端qt时间戳")
+        if (qt.get("date") != signal_date or stamp.date().isoformat() != signal_date
+                or not -5 <= (_clock(moment) - stamp).total_seconds() <= MAX_AGE_SECONDS):
+            raise LiveDataError(code + "当日qfq桥接qt已陈旧或来自未来")
+        stamps.append(stamp)
+    stamps.append(datetime.strptime(quote["timestamp"], "%Y-%m-%d %H:%M:%S").replace(tzinfo=TZ))
+    if (max(stamps) - min(stamps)).total_seconds() > MAX_QUOTE_SKEW_SECONDS:
+        raise LiveDataError(code + "当日qfq桥接双端qt与主报价时间差过大")
+
+
+def _complete_current_qfq(code, pair, raw, qfq, quote, seed, state,
+                          splits, signal_date, moment):
+    """Bridge only an unpublished current OPEN under zero-detected-action checks.
+
+    Tencent v18 can expose completed qfqday rows and a current qt while its raw
+    v16 day already includes today. This does not provide a published qfq close.
+    A neutral last completed adjustment and unchanged, fresh ex-reference allow
+    a provisional zero-action opening anchor at the vendor's tick precision.
+    It is not issuer-level proof against sub-tick actions. Any detectable or
+    declared new cash/split, multiple absent rows or uncertain quote is refused.
+    The returned anchor must never be persisted as a completed qfq observation.
+    """
+    if [r[0] for r in raw] == [r[0] for r in qfq]:
+        return qfq, None
+    if (pair.get("qfq_alias") is not None
+            or pair.get("raw_provider_version") != "16"
+            or pair.get("qfq_provider_version") != "18"
+            or len(raw) < 2 or raw[-1][0] != signal_date
+            or [r[0] for r in qfq] != [r[0] for r in raw[:-1]]):
+        raise LiveDataError(code + "当前日配对raw/qfq尚未确认或日期缺失")
+    _current_anchor_times(code, pair, quote, signal_date, moment)
+    known_cash = [e for e in seed["assets"][code]["cash_events"] if e["date"] == signal_date]
+    saved_action = state["assets"][code]["actions"].get(signal_date, {})
+    if (splits.get(signal_date, Decimal(1)) != 1
+            or any(e.get("cash_per_old_share", 0) != 0 for e in known_cash)
+            or saved_action.get("cash_per_old_share", 0) != 0
+            or saved_action.get("split_ratio", 1) != 1):
+        raise LiveDataError(code + "当前有已知现金/折算行动，禁止桥接缺失qfq")
+    if any(abs(raw[-2][k] - qfq[-1][k]) > EPS + TOL for k in (1, 2)):
+        raise LiveDataError(code + "末个完成日复权偏移非中性，不能确认当前无新行动")
+    previous, opening = raw[-2][2], raw[-1][1]
+    if (abs(_number(quote.get("prev_close"), code + "桥接主报价前收", True) - previous) > EPS + TOL
+            or abs(quote["open"] - opening) > EPS + TOL):
+        raise LiveDataError(code + "桥接主报价前收/开盘与raw锚点不一致")
+    for label in ("raw", "qfq"):
+        qt = pair[label + "_quote_info"]
+        if (abs(_number(qt.get("prev_close"), code + label + "桥接前收", True) - previous) > EPS + TOL
+                or abs(_number(qt.get("open"), code + label + "桥接开盘", True) - opening) > EPS + TOL):
+            raise LiveDataError(code + "桥接双端qt前收/开盘不能确认无新行动")
+    details = dict(date=signal_date, verification="no_detected_action_within_tick",
+                   price_tick=TICK, observed_raw_open=opening,
+                   previous_raw_close=previous, last_published_qfq_date=qfq[-1][0],
+                   synthetic_provisional=True, published_qfq_close=False,
+                   meaning="observed raw current open used only as a provisional qfq open anchor; no published qfq close",
+                   limitation="conditional on vendor ex-reference and affine adjustment, not issuer-confirmed zero cash")
+    # The close column is deliberately an OPEN placeholder. _infer_actions uses
+    # only today's open, and the actual TR mark/volume come from the main quote.
+    return list(qfq) + [(signal_date, opening, opening, raw[-1][3])], details
 
 
 def _validate_day_alias(code, pair, raw, qfq, seed, state, overrides, signal_date):
@@ -429,12 +506,16 @@ def _gap_actions(code, raw, actions, calendar, splits, seed_end):
     return result
 
 
-def _build(seed, state, pairs, quotes, signal_date, overrides):
-    checked = {}
+def _build(seed, state, pairs, quotes, signal_date, overrides, validation_time=None):
+    checked, provisional_anchors = {}, {}
     known_raw = {c: seed["raw"][c] + [tuple(r) for r in state["assets"][c]["raw"]] for c in CODES}
     for code in CODES:
         raw = _rows(pairs[code]["raw"], signal_date)
         qfq = _rows(pairs[code]["qfq"], signal_date, adjusted=True)
+        splits = _split_map(code, seed, state, overrides)
+        qfq, anchor = _complete_current_qfq(code, pairs[code], raw, qfq, quotes[code],
+                                            seed, state, splits, signal_date, validation_time)
+        provisional_anchors[code] = anchor
         if [r[0] for r in raw] != [r[0] for r in qfq] or raw[-1][0] != signal_date:
             raise LiveDataError(code + "当前日配对raw/qfq尚未确认或日期缺失")
         _validate_day_alias(code, pairs[code], raw, qfq, seed, state, overrides, signal_date)
@@ -451,10 +532,15 @@ def _build(seed, state, pairs, quotes, signal_date, overrides):
                 raise LiveDataError(code + "历史raw被修订，不能静默重写TR种子或锚点")
         if any(known_raw[code][0][0] <= r[0] <= state["last_completed"] and r[0] not in previous for r in raw):
             raise LiveDataError(code + "已记录缺报价日被供应商补回，需显式核验后重建，不能静默改写历史")
-        splits = _split_map(code, seed, state, overrides)
         if any(raw[0][0] < d <= signal_date and d not in {r[0] for r in raw} for d in splits):
             raise LiveDataError(code + "折算override不是首个新单位报价日")
         actions = _infer_actions(code, raw, qfq, splits, quotes[code], signal_date)
+        if anchor is not None:
+            if (actions[signal_date]["cash_per_old_share"] != 0
+                    or actions[signal_date]["split_ratio"] != 1):
+                raise LiveDataError(code + "桥接qfq推断出非零行动，拒绝继续")
+            actions[signal_date]["current_qfq_open_anchor_provisional"] = True
+            actions[signal_date]["verification"] = "no_detected_action_within_tick"
         old_actions = {e["date"]: e for e in seed["assets"][code]["cash_events"]}
         for date, action in actions.items():
             if date <= seed["end"]:
@@ -530,8 +616,11 @@ def _build(seed, state, pairs, quotes, signal_date, overrides):
         receipts[code] = dict(raw_response_sha256=_hash(pairs[code]["raw"]),
                               qfq_response_sha256=_hash(pairs[code]["qfq"]),
                               source_urls=pairs[code].get("sources", {}),
-                              qfq_representation="validated_no_known_action_day_alias" if pairs[code].get("qfq_alias") else "explicit_qfqday",
-                              qfq_quote_info=pairs[code].get("qfq_quote_info"))
+                              qfq_representation=("explicit_completed_qfqday_with_provisional_current_open" if provisional_anchors[code]
+                                                  else "validated_no_known_action_day_alias" if pairs[code].get("qfq_alias") else "explicit_qfqday"),
+                              raw_quote_info=pairs[code].get("raw_quote_info"),
+                              qfq_quote_info=pairs[code].get("qfq_quote_info"),
+                              current_qfq_open_anchor_provisional=provisional_anchors[code])
     next_state["last_completed"] = calendar_tail[-2] if len(calendar_tail) > 1 else state["last_completed"]
     return dict(histories=histories, raw_histories=raw_histories, actions=output_actions,
                 calendar=calendar,
@@ -590,9 +679,14 @@ def build_live_view(quotes, signal_date, now=None, *, split_overrides=None,
         # on the benchmark's latest completed date.
         start = min(rows[-22:][0][0] for rows in observed_rows.values())
         pairs = _fetch_all(start, signal_date, fetch_pair or _fetch_pair)
-        view, updated = _build(seed, state, pairs, normalized_quotes, signal_date, split_overrides)
+        observed_clock = reference_clock + timedelta(seconds=time.monotonic() - started)
+        view, updated = _build(seed, state, pairs, normalized_quotes, signal_date,
+                               split_overrides, validation_time=observed_clock)
         finished_clock = reference_clock + timedelta(seconds=time.monotonic() - started)
         _quotes(quotes, signal_date, finished_clock)
+        for code, receipt in view["metadata"]["receipts"].items():
+            if receipt["current_qfq_open_anchor_provisional"]:
+                _current_anchor_times(code, pairs[code], normalized_quotes[code], signal_date, finished_clock)
         view["metadata"]["constructed_at"] = finished_clock.isoformat()
         # The current provisional row/action remains solely in the returned view.
         _write_state(state_path, updated)
