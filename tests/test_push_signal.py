@@ -35,6 +35,33 @@ def section(card, version):
 
 
 class PushSignalTests(unittest.TestCase):
+    def test_summary_table_mirrors_card_states_without_promoting_them(self):
+        # 主版本新鲜度需要带秒的独立行情时间(与真实卡片一致), 否则按历史处理。
+        r2 = block('V12-R2', reason='主版原因')
+        r2.insert(3, '行情时间: 2026-09-28 14:50:00')
+        fresh = '\n'.join(HEADER + ['策略版本: V12-R2 | V9.2 | V9.2+ | V10-H']
+                          + r2 + block('v9.2', '513120', '港股创新药ETF')
+                          + block('V9.2+', status='计算失败，本次无有效建议') + block('V10-H'))
+        card, _ = build_markdown(fresh, now=NOW)
+        rows = [line for line in card.splitlines()
+                if line.startswith('| ') and '版本' not in line and '---' not in line]
+        self.assertEqual(len(rows), 4)
+        self.assertIn('| **V12-R2(主)** | 持有 | **513100 纳指ETF** | 主版原因 |', rows)
+        self.assertTrue(rows[1].startswith('| V9.2 | 持有 | **513120 港股创新药ETF** |'))
+        self.assertEqual(rows[2], '| V9.2+ | — | — | 本次无有效建议，计算失败 |')
+        self.assertTrue(rows[3].startswith('| V10-H | 持有 | **513100 纳指ETF** |'))
+        # 失败版本的行不得把残留文本里的旧目标带进表格。
+        self.assertNotIn('513100', rows[2])
+        stale, _ = build_markdown(fresh, now=datetime(2026, 9, 29, 9, 0))
+        stale_rows = [line for line in stale.splitlines()
+                      if line.startswith('| ') and '版本' not in line and '---' not in line]
+        self.assertTrue(all('| 历史 |' in line and '非当前操作指令' in line for line in stale_rows
+                            if '—' not in line))
+        self.assertNotIn('买入 **', stale)
+        legacy_card, _ = build_markdown('\n'.join(LEGACY + block('v9.2')), now=NOW)
+        self.assertIn('| **V12-R2(主)** | — | — | 尚无有效信号；等待首次生成 |',
+                      legacy_card.splitlines())
+
     def test_legacy_card_hides_primary_rank_and_0906_in_both_modes(self):
         signal = '\n'.join(LEGACY + block('v9.1-0906', '512400', '有色金属ETF', reason='旧0906原因')
                            + block('v9.2', '513120', '港股创新药ETF') + block('V10-H'))

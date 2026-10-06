@@ -208,6 +208,46 @@ def _section_markdown(version, section, info, now):
     return result
 
 
+def _summary_rows(sections, info, now):
+    """At-a-glance table rows derived from the SAME allowlist-parsed sections.
+
+    Display only: rows never promote a stale/failed version into an actionable
+    target — unavailable versions show dashes, historical ones are labeled and
+    keep their original reason, mirroring the detailed cards below.
+    """
+    rows = []
+    for version in VERSIONS:
+        label = "**V12-R2(主)**" if version == PRIMARY_VERSION else version
+        section = sections.get(version)
+        state = _section_state(version, section, info, now)
+        lines = section["lines"] if section else []
+        advice = next((a for _h, a in (_shadow_advice(line) for line in lines) if a), None)
+        if state["unavailable"]:
+            rows.append((label, "—", "—", "本次无有效建议，计算失败" if state["failed"]
+                         else "尚无有效信号；等待首次生成"))
+            continue
+        target = _target_asset(advice) if advice else None
+        if not target:
+            rows.append((label, "—", "—", "尚无有效信号；等待首次生成"))
+            continue
+        parts = re.split(r"\s*\|\s*", advice, maxsplit=1)
+        reason = (parts[1] if len(parts) == 2 else "").replace("|", "/").replace("\n", " ").strip()
+        reason = reason[:27] + "…" if len(reason) > 28 else reason
+        if state["historical"]:
+            rows.append((label, "历史", "**" + target + "**",
+                         (reason + "；" if reason else "") + "历史记录，非当前操作指令"))
+            continue
+        first = parts[0]
+        if any(line.startswith("换仓动作:") for line in lines):
+            action = "换仓"
+        elif re.search(r"(?:买入|建仓)\s+" + ASSET_PATTERN, first):
+            action = "买入"
+        else:
+            action = "持有"
+        rows.append((label, action, "**" + target + "**", reason))
+    return rows
+
+
 def build_markdown(text, query=False, now=None, notices=None):
     """Main V12-R2 and comparison cards; no model/account work on query."""
     now = now or store.now_local()
@@ -237,6 +277,10 @@ def build_markdown(text, query=False, now=None, notices=None):
         md += ["", "⚠️ " + notice]
     for item in prem:
         md += ["", item if item.startswith("QDII ") else "QDII " + item]
+    md += ["", "| 版本 | 建议 | 目标 | 原因 |", "|---|---|---|---|"]
+    for label, action, target, reason in _summary_rows(sections, info, now):
+        md.append("| %s | %s | %s | %s |" % (label, action, target, reason or "—"))
+    md += ["", "详细状态见下方各版本卡片"]
     for version in VERSIONS:
         md += _section_markdown(version, sections.get(version), info, now)
     md += ["", "---"]
