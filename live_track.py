@@ -20,6 +20,7 @@ sys.path.insert(0, BASE)
 
 import backtest
 import slippage
+import signal_store as store
 from market_data import UNIVERSE, CASH, fetch_history
 
 MODEL_START_FALLBACK = "2026-08-13"          # 系统建成日
@@ -82,6 +83,10 @@ def live_nav_series(trades, close_of, calendar):
 
 
 def main():
+    # 休市日没有新报价，追加的只是上一交易日的陈旧行，直接跳过。
+    if store.trading_day(time.strftime("%Y-%m-%d")) is False:
+        print("休市日跳过: 不追加陈旧跟踪行")
+        return
     histories = {c: fetch_history(c) for c in UNIVERSE}
     calendar = [r[0] for r in histories["510300"]]
     close_of = {c: {r[0]: r[2] for r in rows} for c, rows in histories.items()}

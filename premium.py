@@ -11,6 +11,7 @@ import json
 import os
 import sys
 import urllib.request
+from datetime import date as _date
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, BASE)
@@ -57,6 +58,17 @@ def get_premium(code, quote=None):
             "premium": prem, "warn": prem is not None and prem > WARN_THR}
 
 
+def _nav_lag_note(nav_date):
+    """净值滞后 ≥3 个自然日(长假/停牌)时, 溢价读数包含期间指数涨跌, 必须标注防误读。"""
+    try:
+        lag = (_date.today() - _date(*map(int, nav_date.split("-")))).days
+    except Exception:
+        return ""
+    if lag >= 3:
+        return " [净值滞后%d天, 溢价含期间指数涨跌]" % lag
+    return ""
+
+
 def signal_block(codes=None, quotes=None):
     """信号卡片文本行(list); 全部失败返回 []。绝不抛异常(主链路保护)。"""
     out = []
@@ -67,9 +79,9 @@ def signal_block(codes=None, quotes=None):
                 out.append("  %s %s 溢价: 获取失败(不影响信号)" % (code, p["name"]))
             else:
                 flag = " ⚠️ >2% 勿追!" if p["warn"] else ""
-                out.append("  %s %s 溢价 %+.2f%% (现价 %.3f / 净值 %.4f@%s)%s"
+                out.append("  %s %s 溢价 %+.2f%% (现价 %.3f / 净值 %.4f@%s)%s%s"
                            % (code, p["name"], p["premium"] * 100, p["price"],
-                              p["nav"], p["nav_date"], flag))
+                              p["nav"], p["nav_date"], _nav_lag_note(p["nav_date"]), flag))
         except Exception:
             continue
     return out

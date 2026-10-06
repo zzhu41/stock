@@ -135,14 +135,18 @@ class WatchdogDeliveryTests(unittest.TestCase):
         self.assertEqual(result['status'], 'DEGRADED')
         self.assertEqual(result['source_comparison']['compared_dates'], [])
         self.assertNotIn(' OK', self.log())
-        self.alarm.assert_called_once()
+        # Flaky probes get one retry and degrade to log-only notes, never a page.
+        self.assertEqual(self.probe.call_count, 2)
+        self.alarm.assert_not_called()
+        self.assertTrue(any('探测失败' in n for n in result['notes']))
 
     def test_zero_completed_common_dates_is_explicitly_degraded(self):
         self.success()
         self.probe.return_value = [(TODAY, 103.)]
         result = watchdog.main(now=NOW)
         self.assertEqual(result['status'], 'DEGRADED')
-        self.assertTrue(any('对比为0' in a for a in result['alerts']))
+        self.assertTrue(any('对比为0' in n for n in result['notes']))
+        self.alarm.assert_not_called()
 
     def test_alarm_transport_failure_does_not_erase_monitor_failure(self):
         self.alarm.side_effect = OSError('mock alarm unavailable')
@@ -185,6 +189,45 @@ class WatchdogDeliveryTests(unittest.TestCase):
         self.assertTrue(result['observed_open'])
         self.assertEqual(result['status'], 'DEGRADED')
         self.assertTrue(any('已凭当日信号' in a for a in result['alerts']))
+
+    def success_with_holding(self, code='513100', close=2.0):
+        """Schema-2 journal (pre-PRIMARY_START_DATE) carrying one held asset."""
+        journal, receipt = self.success()
+        accounts = {'shadow_v92.json': dict(last_date=TODAY, holding=code)}
+        journal.update(schema=2, account_states=accounts,
+                       updated_accounts=['shadow_v92.json'])
+        journal.pop('primary_version', None)
+        journal['checksum'] = watchdog.store.record_digest(journal)
+        self.write('daily_state.json', journal)
+        (self.root / ('data/%s.csv' % code)).write_text(PREVIOUS + ',%s,%s,10\n' % (close, close))
+        return journal
+
+    def test_held_asset_close_is_cross_checked_and_divergence_pages(self):
+        self.success_with_holding(close=2.0)
+        with patch.object(watchdog, '_probe', return_value=[(PREVIOUS, 2.10)]) as held_probe:
+            result = watchdog.main(now=NOW)
+        held_probe.assert_called_once_with('513100', TODAY)
+        self.assertEqual(result['status'], 'FAILED')
+        self.assertTrue(any('持仓513100' in a and '偏差' in a for a in result['alerts']))
+        self.alarm.assert_called_once()
+
+    def test_held_asset_matching_closes_keep_the_day_ok(self):
+        self.success_with_holding(close=2.0)
+        with patch.object(watchdog, '_probe', return_value=[(PREVIOUS, 2.0)]):
+            result = watchdog.main(now=NOW)
+        self.assertEqual(result['status'], 'OK')
+        self.assertEqual(result['source_comparison']['assets']['513100']['status'], 'OK')
+        self.alarm.assert_not_called()
+
+    def test_held_asset_probe_failure_is_a_note_not_a_page(self):
+        self.success_with_holding(close=2.0)
+        with patch.object(watchdog, '_probe',
+                          side_effect=subprocess.TimeoutExpired('probe', 6)) as held_probe:
+            result = watchdog.main(now=NOW)
+        self.assertEqual(held_probe.call_count, 2)  # one retry, then degrade
+        self.assertEqual(result['status'], 'OK')
+        self.assertTrue(any('持仓513100' in n for n in result['notes']))
+        self.alarm.assert_not_called()
 
     def test_probe_has_one_process_deadline_not_eleven_serial_network_timeouts(self):
         # Bypass the normal mocked probe only while subprocess itself is mocked.
