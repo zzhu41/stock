@@ -4,7 +4,7 @@
 
 ## 定时链路
 
-`stock_daily.cron` 保存本仓库两条任务，其它已有定时任务保留：14:47只预热缓存；14:50/52/54执行 `daily_job.py`。交易所休市日跳过；2026年日历来源为[上交所全年休市公告](https://www.sse.com.cn/disclosure/announcement/general/c/c_20251222_10802507.shtml)，保存在 `calendars/sse.json`。未覆盖年份不能猜为休市，监控会要求更新；当日新鲜行情仍是生成的必要条件。
+`stock_daily.cron` 保存本仓库三条任务，其它已有定时任务保留：14:30预推送（`daily_preview.py`，复用`momentum_live`只读估算，卡片注明以14:50为准）；14:47只预热缓存；14:50/52/54执行 `daily_job.py`。预推送不写`generation_status.json`/`daily_state.json`/`delivery.json`、不推进任何账户，状态只记`preview_status.json`——监控与哨兵交叉心跳只评判14:50正式链路，预览成功不能掩盖正式链路失败。交易所休市日全部跳过；2026年日历来源为[上交所全年休市公告](https://www.sse.com.cn/disclosure/announcement/general/c/c_20251222_10802507.shtml)，保存在 `calendars/sse.json`。未覆盖年份不能猜为休市，监控会要求更新；当日新鲜行情仍是生成的必要条件。
 
 每次生成最多90秒，且不得跨14:54:30的新生成截止线；策略准备进程最多60秒。其内部数据准备改为三个可终止子进程，共用45秒总截止，溢价/QVIX/价格视图分别最多18/22/45秒，均从同一起点计时；超时任务强制回收，不让残留网络线程拖住整轮退出。每轮推送进程另设10秒硬时限且不得跨14:55，超时终止整个子进程组并保留uncertain回执。四个策略共用已验证的总回报、原始价格和公司行动视图。V12-R2不使用QVIX；旧三个对照需要QVIX时只读本轮同一临时快照，失败时关闭该通道。
 
