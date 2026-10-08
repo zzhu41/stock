@@ -63,6 +63,80 @@ def build_v10_only():
     print("V10-H及同口径v9.2已追加，旧版本曲线保持不变", flush=True)
 
 
+def _read_closes(code):
+    """date -> 原始收盘价, 来自 data/<code>.csv (date,open,close,volume 无表头)。"""
+    closes = {}
+    with open(os.path.join(BASE, "data", code + ".csv"), encoding="utf-8") as stream:
+        for line in stream:
+            parts = line.strip().split(",")
+            if len(parts) >= 3 and parts[0][:1].isdigit():
+                closes[parts[0]] = float(parts[2])
+    return closes
+
+
+def graft_v12_forward(payload):
+    """冻结研究段之后拼接独立前向账户(signals/shadow_v12_r2.json)净值。
+
+    冻结段本身一字节不动, 仅向网页载荷追加延伸行:
+      gap 段(研究末日→账户起算日之间的交易日)按持仓标的原始收盘价比值
+      延伸(持有期无换仓费), 账户段以 events 净值(起算日复位 1.0)锚定乘法
+      衔接; 基准(买入持有)按同一日历延伸。任一输入缺失保留冻结段原样。
+    """
+    ver = payload.get("versions", {}).get("v12-r2")
+    if not ver or not ver.get("daily"):
+        return
+    md = ver.setdefault("metadata", {})
+    try:
+        with open(os.path.join(BASE, "signals", "shadow_v12_r2.json"), encoding="utf-8") as stream:
+            state = json.load(stream)
+        daily = ver["daily"]
+        end_date, end_nav, hold_code = daily[-1][0], float(daily[-1][1]), daily[-1][2]
+        by_date = {}  # 每日取最后一条事件, 只要研究末日之后的
+        for event in state.get("events") or []:
+            day = event.get("date")
+            if day and day > end_date and event.get("nav"):
+                by_date[day] = event
+        if not by_date:
+            return
+        days = sorted(by_date)
+        account_start = days[0]
+        anchor = end_nav
+        closes = _read_closes(hold_code) if hold_code else {}
+        gap_days = []
+        if end_date in closes:
+            gap_days = [d for d in sorted(closes) if end_date < d < account_start]
+            for day in gap_days:
+                daily.append([day, anchor * closes[day] / closes[end_date], hold_code])
+            if gap_days:
+                anchor = daily[-1][1]
+        for day in days:  # 账户段锚定衔接; 账户内真实换仓追加到换仓记录
+            event = by_date[day]
+            grafted = anchor * float(event["nav"])
+            daily.append([day, grafted, event.get("to") or hold_code])
+            if event.get("from") and event["from"] != event.get("to"):
+                ver.setdefault("trades", []).append([day, event["from"], event.get("to"), grafted])
+        last_day = days[-1]
+        for code, bench in (ver.get("benchmarks") or {}).items():  # 基准同历延伸
+            bdaily = bench.get("daily") or []
+            b_closes = _read_closes(code)
+            if not bdaily or bdaily[-1][0] not in b_closes:
+                continue
+            b_end_date, b_end_nav = bdaily[-1][0], float(bdaily[-1][1])
+            for day in sorted(b_closes):
+                if b_end_date < day <= last_day:
+                    bdaily.append([day, b_end_nav * b_closes[day] / b_closes[b_end_date]])
+        md["warnings"] = [w for w in md.get("warnings", []) if "不含前向账户净值" not in w]
+        md["warnings"].append(
+            "%s 之后为独立前向账户实时延伸(%s 起算, 14:50 观察价口径), 与冻结研究段口径不同。"
+            % (end_date, account_start))
+        md["forward"] = {"from": account_start, "through": last_day,
+                         "source": "shadow_v12_r2", "gap_days": gap_days}
+        md["data_as_of"] = last_day
+    except Exception as exc:
+        md["forward_error"] = type(exc).__name__
+        print("V12前向嫁接失败: %s" % type(exc).__name__, flush=True)
+
+
 def append_v12(payload):
     """Append the user's frozen R2 choice without altering research selection."""
     from web_v12 import export_versions
@@ -70,6 +144,7 @@ def append_v12(payload):
     payload["default_version"] = "v12-r2"
     payload["v12_updated_at"] = time.strftime("%Y-%m-%d %H:%M:%S")
     payload.pop("v12_error", None)
+    graft_v12_forward(payload)
     return payload
 
 

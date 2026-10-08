@@ -269,3 +269,38 @@ def signal_info(text, now=None):
         return result
     result.update(actionable=True, note="当日有效信号；按所示行情时间判断执行")
     return result
+
+
+def momentum_detail(state, names):
+    """Per-asset momentum table lines from a saved decision's diagnostics.
+
+    Read-only display derived from the same committed account state; missing
+    or unverifiable diagnostics yield None, never an inferred ranking.
+    """
+    if not isinstance(state, dict):
+        return None
+    diag = (state.get("last_decision") or {}).get("diagnostics") or {}
+    ranking = diag.get("ranking") or []
+    indicators = diag.get("indicators") or {}
+    rows = []
+    for code in ranking:
+        feat = indicators.get(code) or {}
+        try:
+            score = float(feat.get("score"))
+        except (TypeError, ValueError):
+            continue
+        rows.append((code, score, feat))
+    if not rows:
+        return None
+    holding = state.get("holding")
+    date = state.get("last_date") or "未知"
+    lines = ["**各 ETF 动量分**（WLS25平滑 · 截至 %s）" % date, "",
+             "| # | 标的 | 动量分 | 20日 | 60日 | MA180 |", "|---|---|---|---|---|---|"]
+    for idx, (code, score, feat) in enumerate(rows, 1):
+        mark = " ◀持有" if code == holding else ""
+        lines.append("| %d | %s %s%s | %.1f | %+.1f%% | %+.1f%% | %+.1f%% |" % (
+            idx, code, names.get(code, code), mark, score,
+            float(feat.get("mom20") or 0.) * 100,
+            float(feat.get("mom60") or 0.) * 100,
+            float(feat.get("ma180") or 0.) * 100))
+    return lines

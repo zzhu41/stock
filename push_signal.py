@@ -30,13 +30,46 @@ _diagnostic_spec = importlib.util.spec_from_file_location(
     "_stock_daily_diagnostics", os.path.join(BASE, "daily_diagnostics.py"))
 diagnostics = importlib.util.module_from_spec(_diagnostic_spec)
 _diagnostic_spec.loader.exec_module(diagnostics)
+try:
+    from market_data import UNIVERSE
+except Exception:  # importlib-loaded from the bot process without /root/stock on sys.path
+    UNIVERSE = {}
 LATEST = os.path.join(BASE, "signals", "latest.txt")
 SIGNAL_DIR = os.path.join(BASE, "signals")
 SECRET_FILE = os.path.join(BASE, "data", "dingtalk.secret")
 WEBHOOK_FILE = os.path.join(BASE, "data", "dingtalk.webhook")
 ASSET_PATTERN = r"(\d{6}\s+[^\s|()（）,，;；/]+)"
 PRIMARY_VERSION = "V12-R2"
-VERSIONS = (PRIMARY_VERSION, "V9.2", "V9.2+", "V10-H")
+VERSIONS = (PRIMARY_VERSION,)  # 推送与查询只展示主推送版本
+
+
+def _headline(sections, info, now):
+    """One-glance action headline from the SAME allowlist-parsed primary row.
+
+    Historical/unavailable rows never render as a headline instruction;
+    they keep an explicit muted status instead.
+    """
+    rows = _summary_rows(sections, info, now)
+    if not rows:
+        return []
+    _label, action, target, reason = rows[0]
+    if action in ("买入", "建仓"):
+        lines = ["## 🟧 %s %s" % (action, target)]
+    elif action == "换仓":
+        lines = ["## 🔄 换仓 → %s" % target]
+    elif action == "持有":
+        lines = ["## 🟦 持有 %s" % target]
+    elif action == "历史":
+        return ["## ⏸ 暂无当前指令", "", "> （下方为历史记录，非当前操作指令）"]
+    else:
+        lines = ["## ⏸ 暂无有效信号"]
+    if action not in ("历史",) and reason:
+        lines += ["", "> " + reason]
+    return lines
+
+
+def _names():
+    return {c: UNIVERSE[c][0] for c in UNIVERSE} if UNIVERSE else {}
 
 
 def load_file(path):
@@ -248,8 +281,8 @@ def _summary_rows(sections, info, now):
     return rows
 
 
-def build_markdown(text, query=False, now=None, notices=None):
-    """Main V12-R2 and comparison cards; no model/account work on query."""
+def build_markdown(text, query=False, now=None, notices=None, detail=None):
+    """Main V12-R2 card only; no model/account work on query."""
     now = now or store.now_local()
     lines = text.splitlines()
     title = next((l.strip() for l in lines if "动量轮动信号" in l), "动量轮动信号")
@@ -262,29 +295,27 @@ def build_markdown(text, query=False, now=None, notices=None):
             or l.strip().startswith("QDII 溢价:")]
     status_note = (("⚠️ **%s**" if historical else "✅ %s") % info["note"])
     if not historical and primary['unavailable']:
-        status_note = "⚠️ **主推送本次无有效建议**；对照版本状态见下方"
+        status_note = "⚠️ **主推送本次无有效建议**"
     elif not historical and primary['historical']:
         status_note = "⚠️ **主推送未通过当前时效核验**；仅查看历史记录"
     md = ["### 📊 %s" % title, "",
-          status_note, "",
-          "**主推送：V12-R2（R2提高年化）**", "",
-          "行情时间: %s" % (info["quote_time"] or "未记录")]
+          status_note, ""]
+    md += _headline(sections, info, now)
+    md += ["", "行情时间: %s" % (info["quote_time"] or "未记录")]
     if primary['unavailable']:
-        md += ["", "⚠️ **主推送本次无有效建议**；下方旧版本仅为对照，不替代主版本。"]
+        md += ["", "⚠️ **主推送本次无有效建议**；详见下方卡片。"]
     elif primary['historical']:
         md += ["", "⚠️ 主版本当前仅可查看历史记录，非当前操作指令。"]
     for notice in notices or []:
         md += ["", "⚠️ " + notice]
     for item in prem:
         md += ["", item if item.startswith("QDII ") else "QDII " + item]
-    md += ["", "| 版本 | 建议 | 目标 | 原因 |", "|---|---|---|---|"]
-    for label, action, target, reason in _summary_rows(sections, info, now):
-        md.append("| %s | %s | %s | %s |" % (label, action, target, reason or "—"))
-    md += ["", "详细状态见下方各版本卡片"]
+    if detail:
+        md += [""] + detail
     for version in VERSIONS:
         md += _section_markdown(version, sections.get(version), info, now)
     md += ["", "---"]
-    versions = "主推送 V12-R2 · 对照 V9.2 / V9.2+ / V10-H"
+    versions = "主推送 V12-R2"
     if query:
         md += ["最近保存信号 · 14:50开始生成，须同时核对行情时间与信号状态",
                "_行情日期 %s · %s_" % (date or "未知", versions),
@@ -361,7 +392,9 @@ def render_saved_query(path=LATEST, now=None):
                 notices.append("这份信号的自动推送尚未确认送达（%s）" % receipt.get("status", "未知"))
         elif store.signal_info(text, now)["actionable"]:
             notices.append("这份信号尚无自动推送成功记录")
-        return build_markdown(text, query=True, now=now, notices=notices)[0]
+        state = ((journal or {}).get("account_states") or {}).get(store.PRIMARY_ACCOUNT)
+        detail = store.momentum_detail(state, _names())
+        return build_markdown(text, query=True, now=now, notices=notices, detail=detail)[0]
     except Exception:
         return "\n\n".join(["⚠️ 信号记录缺失或校验失败，当前没有可用操作建议，请检查生成任务。"]
                            + ["⚠️ " + notice for notice in notices])
@@ -410,7 +443,9 @@ def main(directory=None, now=None, attempts=3, sleeper=None, max_per_run=1):
                 if remaining < 10:
                     receipt["status"] = "expired"
                     break
-                md, date = build_markdown(text, now=current_time())
+                state = ((journal or {}).get("account_states") or {}).get(store.PRIMARY_ACCOUNT)
+                md, date = build_markdown(text, now=current_time(),
+                                          detail=store.momentum_detail(state, _names()))
                 if receipt["attempts"]:
                     md = "⚠️ 同一信号补发；如已操作，请勿重复下单。\n\n" + md
                 attempt = dict(started_at=current_time().isoformat(), status="sending")

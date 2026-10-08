@@ -223,8 +223,11 @@ def range_summary(ver, daily):
     metrics = dict(nav=daily[-1][1] / base, total_ret=total * 100, ann=ann * 100,
                    max_dd=drawdown * 100, sharpe=mean / deviation * TRADING_DAYS ** .5 if deviation else 0.,
                    calmar=ann / abs(drawdown) if drawdown else None, days=len(daily))
-    if begin == 0 and len(daily) == len(ver["daily"]):
+    if begin == 0 and len(daily) == len(ver["daily"]) \
+            and not ver.get("metadata", {}).get("forward"):
         # Match the pinned full-path published statistics exactly.
+        # Forward-grafted versions fall through to live computation instead:
+        # pinned metrics describe only the frozen segment.
         metrics.update(ver.get("metrics", {}))
     return metrics, annual, base
 

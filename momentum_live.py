@@ -33,10 +33,7 @@ from market_data import UNIVERSE, fetch_realtime
 SIGNAL_DIR = Path(BASE) / "signals"
 
 VERSION_ROWS = (
-    ("shadow_v12_r2.json", "V12-R2(主)"),
-    ("shadow_v92.json", "V9.2"),
-    ("shadow_v92_plus.json", "V9.2+"),
-    ("shadow_v10.json", "V10-H"),
+    ("shadow_v12_r2.json", "V12-R2"),
 )
 
 # A chat answer cannot wait for the 14:50 defaults (view 45s / qvix 22s / premium 18s).
@@ -98,15 +95,25 @@ def _failure_note(label, diagnostics):
     return "本次无有效估算"
 
 
-def render_table(rows, mode, date, quote_label):
+def render_answer(rows, mode, date, quote_label, detail=None):
+    """Single-version reply: the action headline is the biggest element."""
     title = "📊 动量实时估算" if mode == "live" else "📊 动量最新信号"
-    lines = ["%s | 数据 %s | %s" % (title, date, quote_label), "",
-             "| 版本 | 建议 | 买什么 | 原因 |", "|---|---|---|---|"]
-    for label, action, target, reason in rows:
-        if action is None:
-            lines.append("| %s | — | — | %s |" % (label, _cell(reason)))
+    lines = ["%s | 数据 %s | %s" % (title, date, quote_label), ""]
+    _label, action, target, reason = rows[0] if rows else ("V12-R2", None, None, "无数据")
+    if action is None:
+        lines += ["## ⏸ 暂无信号", "", "> %s" % _cell(reason)]
+    else:
+        if action.startswith("换仓"):
+            head = "## 🔄 %s → **%s**" % (action, target)
+        elif action == "建仓":
+            head = "## 🟧 建仓 **%s**" % target
         else:
-            lines.append("| %s | %s | %s | %s |" % (label, action, target, reason or "—"))
+            head = "## 🟦 %s **%s**" % (action, target)
+        lines.append(head)
+        if reason:
+            lines += ["", "> %s" % reason]
+    if detail:
+        lines += [""] + detail
     if mode == "live":
         lines += ["", "⚠️ 按所示行情时点实时估算，不写入任何账户；正式信号以 14:50 推送为准"]
     return "\n".join(lines)
@@ -165,8 +172,11 @@ def _current_state(journal, name):
 
 def saved_payload(journal):
     date = _saved_date(journal) or "未知"
-    rows = [_row(label, _current_state(journal, name) or {}) for name, label in VERSION_ROWS]
-    markdown = render_table(rows, "saved", date, "14:50收盘信号")
+    names = {c: UNIVERSE[c][0] for c in UNIVERSE}
+    state = _current_state(journal, VERSION_ROWS[0][0]) or {}
+    rows = [_row(VERSION_ROWS[0][1], state)]
+    markdown = render_answer(rows, "saved", date, "14:50收盘信号",
+                             detail=signal_store.momentum_detail(state, names))
     brief = _premium_brief(_saved_text(journal).splitlines())
     if brief:
         markdown += "\n\n" + brief
@@ -208,6 +218,7 @@ def live_payload(journal, now):
         successful = set(result.get("successful_accounts") or [])
         diagnostics = result.get("diagnostics") or []
         rows = []
+        live_state = None
         for name, label in VERSION_ROWS:
             new_state = None
             path = stage / name
@@ -218,10 +229,15 @@ def live_payload(journal, now):
                     new_state = None
             if isinstance(new_state, dict) and new_state.get("holding"):
                 rows.append(_row(label, new_state, _current_state(journal, name)))
+                live_state = new_state
             else:
                 rows.append((label, None, None, _failure_note(label, diagnostics)))
         quote_time = max(q["timestamp"] for q in quotes.values())
-        markdown = render_table(rows, "live", quote_date, "行情 " + quote_time)
+        detail = None
+        if live_state is not None:
+            names = {c: UNIVERSE[c][0] for c in UNIVERSE}
+            detail = signal_store.momentum_detail(live_state, names)
+        markdown = render_answer(rows, "live", quote_date, "行情 " + quote_time, detail=detail)
         brief = _premium_brief(result.get("lines"))
         if brief:
             markdown += "\n\n" + brief
