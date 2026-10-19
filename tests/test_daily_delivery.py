@@ -211,3 +211,97 @@ class DailyDeliveryTests(unittest.TestCase):
         with redirect_stdout(io.StringIO()):
             self.assertEqual(daily_job.run_job(self.directory, now=datetime(2026, 9, 25, 14, 50),
                 generate=lambda: self.fail("holiday generation"), deliver=lambda: self.fail("holiday send")), 0)
+
+
+class MultiGroupDeliveryTests(unittest.TestCase):
+    """Multi-webhook fan-out: primary signed group plus keyword-mode extra groups."""
+    PRIMARY_URL = "https://example.invalid/send?access_token=primary"
+    EXTRA_URL = "https://example.invalid/send?access_token=extra"
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.directory = Path(self.temp.name)
+
+    def publish(self):
+        return store.publish(TEXT, DATE, "513120", {"code": "513120", "trigger_date": DATE}, self.directory)[0]
+
+    def config(self, path):
+        if path == push_signal.WEBHOOK_FILE:
+            return self.PRIMARY_URL
+        if path == push_signal.SECRET_FILE:
+            return "SEC-primary"
+        if path == push_signal.EXTRA_WEBHOOKS_FILE:
+            return self.EXTRA_URL
+        return ""
+
+    def by_url(self, codes):
+        def respond(req, timeout=None):
+            return Response(codes[req.full_url.split("access_token=")[-1].split("&")[0]])
+        return respond
+
+    def test_all_groups_fanned_out_with_per_group_auth_and_receipt(self):
+        self.publish()
+        with patch.object(push_signal, "load_file", side_effect=self.config), \
+                patch.object(push_signal.urllib.request, "urlopen",
+                             side_effect=self.by_url({"primary": 0, "extra": 0})) as send, \
+                redirect_stdout(io.StringIO()):
+            self.assertEqual(push_signal.main(str(self.directory), now=NOW), 0)
+        self.assertEqual(send.call_count, 2)
+        calls = {("primary" if "primary" in c.args[0].full_url else "extra"): c.args[0]
+                 for c in send.call_args_list}
+        self.assertIn("&sign=", calls["primary"].full_url)  # 主群加签
+        self.assertNotIn("&sign=", calls["extra"].full_url)  # 额外群不加签
+        primary_text = json.loads(calls["primary"].data)["markdown"]["text"]
+        extra_text = json.loads(calls["extra"].data)["markdown"]["text"]
+        self.assertFalse(primary_text.startswith("股票"))  # 加签群保持原有格式
+        self.assertTrue(extra_text.startswith("股票\n\n"))  # 关键词群兜底前缀
+        receipt = store.read_json(self.directory / "delivery.json")
+        self.assertEqual(receipt["status"], "sent")
+        self.assertEqual(receipt["targets_total"], 2)
+        self.assertEqual([a["target"] for a in receipt["attempts"]], [1, 2])
+        self.assertTrue(all(a["status"] == "sent" and a["errcode"] == 0 for a in receipt["attempts"]))
+
+    def test_failed_group_is_retried_alone_until_all_confirmed(self):
+        record = self.publish()
+        with patch.object(push_signal, "load_file", side_effect=self.config), \
+                patch.object(push_signal.urllib.request, "urlopen",
+                             side_effect=self.by_url({"primary": 0, "extra": 310000})) as send, \
+                redirect_stdout(io.StringIO()):
+            self.assertEqual(push_signal.main(str(self.directory), now=NOW), 1)
+        receipt = store.read_json(self.directory / "delivery.json")
+        self.assertEqual(receipt["status"], "failed")
+        self.assertEqual({a["target"] for a in receipt["attempts"]}, {1, 2})
+        card = push_signal.render_saved_query(str(self.directory / "latest.txt"), now=NOW)
+        self.assertIn("尚未确认送达", card)
+        self.assertIn("推送目标共 2 个群，已确认送达 1 个", card)
+        with patch.object(push_signal, "load_file", side_effect=self.config), \
+                patch.object(push_signal.urllib.request, "urlopen",
+                             side_effect=self.by_url({"primary": 0, "extra": 0})) as send, \
+                redirect_stdout(io.StringIO()):
+            self.assertEqual(push_signal.main(str(self.directory), now=datetime(2026, 9, 28, 14, 52)), 0)
+        self.assertEqual(send.call_count, 1)
+        retried = send.call_args_list[0].args[0]
+        self.assertIn("extra", retried.full_url)
+        self.assertIn("请勿重复下单", json.loads(retried.data)["markdown"]["text"])
+        receipt = store.read_json(self.directory / "delivery.json")
+        self.assertEqual(receipt["status"], "sent")
+        self.assertEqual(receipt["signal_id"], record["signal_id"])
+        with patch.object(push_signal, "load_file", side_effect=self.config), \
+                patch.object(push_signal.urllib.request, "urlopen") as send, \
+                redirect_stdout(io.StringIO()):
+            self.assertEqual(push_signal.main(str(self.directory), now=datetime(2026, 9, 28, 14, 54)), 0)
+        send.assert_not_called()
+
+    def test_duplicate_extra_webhook_collapses_to_single_target(self):
+        self.publish()
+        def same(path):
+            return self.PRIMARY_URL if path in (push_signal.WEBHOOK_FILE,
+                                                push_signal.EXTRA_WEBHOOKS_FILE) else ""
+        with patch.object(push_signal, "load_file", side_effect=same), \
+                patch.object(push_signal.urllib.request, "urlopen", return_value=Response(0)) as send, \
+                redirect_stdout(io.StringIO()):
+            self.assertEqual(push_signal.main(str(self.directory), now=NOW), 0)
+        self.assertEqual(send.call_count, 1)
+        receipt = store.read_json(self.directory / "delivery.json")
+        self.assertEqual(receipt["targets_total"], 1)

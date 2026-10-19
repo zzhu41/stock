@@ -2,8 +2,10 @@
 """钉钉推送: 读取 signals/latest.txt, 组装 markdown 推到钉钉群。
 
 配置(均不入库):
-  data/dingtalk.webhook  完整 webhook URL(含 access_token), 必填
-  data/dingtalk.secret   加签密钥(SEC...), 可选; 无文件则空(仅关键词模式可用)
+  data/dingtalk.webhook   主群完整 webhook URL(含 access_token), 必填
+  data/dingtalk.secret    主群加签密钥(SEC...), 可选; 无文件则空(仅关键词模式可用)
+  data/dingtalk.webhooks  额外群 webhook URL, 一行一个, 可选; 额外群走关键词模式
+  data/dingtalk.keyword   额外群关键词, 可选; 默认"股票"(与盯盘 bot 一致)
 
 用法: python3.8 push_signal.py
 信号生成后发送；记录送达状态、限次重试、成功后去重，失败返回非零。
@@ -38,6 +40,9 @@ LATEST = os.path.join(BASE, "signals", "latest.txt")
 SIGNAL_DIR = os.path.join(BASE, "signals")
 SECRET_FILE = os.path.join(BASE, "data", "dingtalk.secret")
 WEBHOOK_FILE = os.path.join(BASE, "data", "dingtalk.webhook")
+EXTRA_WEBHOOKS_FILE = os.path.join(BASE, "data", "dingtalk.webhooks")
+KEYWORD_FILE = os.path.join(BASE, "data", "dingtalk.keyword")
+DEFAULT_KEYWORD = "股票"  # 与盯盘 bot 的 config.DINGTALK_KEYWORD 默认值一致
 ASSET_PATTERN = r"(\d{6}\s+[^\s|()（）,，;；/]+)"
 PRIMARY_VERSION = "V12-R2"
 VERSIONS = (PRIMARY_VERSION,)  # 推送与查询只展示主推送版本
@@ -87,6 +92,29 @@ def signed_url(webhook, secret):
                  digestmod=hashlib.sha256).digest()
     sign = urllib.parse.quote_plus(base64.b64encode(s))
     return "%s&timestamp=%s&sign=%s" % (webhook, ts, sign)
+
+
+def load_targets():
+    """全部推送目标: [(webhook, secret_or_None), ...], 列表序号即群编号(1起)。
+
+    主群(webhook/secret 文件)走加签; dingtalk.webhooks 里的额外群无 secret,
+    走关键词模式 —— 与盯盘 bot 的"主 webhook + DINGTALK_WEBHOOK_URLS"群发语义一致。
+    """
+    primary = load_file(WEBHOOK_FILE)
+    if not primary:
+        return []
+    targets = [(primary, load_file(SECRET_FILE) or None)]
+    for line in load_file(EXTRA_WEBHOOKS_FILE).splitlines():
+        url = line.strip()
+        if url and all(url != existing for existing, _secret in targets):
+            targets.append((url, None))
+    return targets
+
+
+def _ensure_keyword(text):
+    """未加签的群靠关键词安全设置放行; 关键词缺省与盯盘 bot 相同。"""
+    keyword = load_file(KEYWORD_FILE) or DEFAULT_KEYWORD
+    return text if keyword in text else keyword + "\n\n" + text
 
 
 def highlight_advice(advice):
@@ -364,6 +392,16 @@ def _query_status(directory, filename, notices):
         return None
 
 
+def _target_attempts(receipt, index):
+    """某群的全部尝试记录; 旧格式回执的 attempt 没有 target 字段, 归属主群(1)。"""
+    return [a for a in receipt.get("attempts", []) if a.get("target", 1) == index]
+
+
+def _target_delivered(receipt, index):
+    return any(a.get("status") == "sent" and a.get("errcode") == 0
+               for a in _target_attempts(receipt, index))
+
+
 def render_saved_query(path=LATEST, now=None):
     """Read-only query with explicit freshness and delivery/generation status."""
     now = now or store.now_local()
@@ -390,6 +428,11 @@ def render_saved_query(path=LATEST, now=None):
         elif receipt.get("signal_id") == signal_id:
             if receipt.get("status") != "sent":
                 notices.append("这份信号的自动推送尚未确认送达（%s）" % receipt.get("status", "未知"))
+                total = receipt.get("targets_total")
+                if isinstance(total, int) and total > 1:
+                    confirmed = len({a.get("target") for a in receipt.get("attempts", [])
+                                     if a.get("status") == "sent" and a.get("errcode") == 0} - {None})
+                    notices.append("推送目标共 %d 个群，已确认送达 %d 个" % (total, confirmed))
         elif store.signal_info(text, now)["actionable"]:
             notices.append("这份信号尚无自动推送成功记录")
         state = ((journal or {}).get("account_states") or {}).get(store.PRIMARY_ACCOUNT)
@@ -423,9 +466,8 @@ def main(directory=None, now=None, attempts=3, sleeper=None, max_per_run=1):
                 print("钉钉推送停止: 当前没有有效执行窗口内的新鲜信号")
                 return 1
             try:
-                webhook = load_file(WEBHOOK_FILE)
-                secret = load_file(SECRET_FILE)
-                if not webhook:
+                targets = load_targets()
+                if not targets:
                     raise ValueError("WebhookNotConfigured")
             except Exception as exc:
                 receipt.update(status="failed", error="LocalDeliveryConfigurationUnavailable",
@@ -433,8 +475,21 @@ def main(directory=None, now=None, attempts=3, sleeper=None, max_per_run=1):
                 store.atomic_json(receipt_path, receipt)
                 print("钉钉推送失败: 本机发送配置缺失或不可读（%s）" % type(exc).__name__)
                 return 1
+            receipt["targets_total"] = len(targets)
             sent_this_run = 0
-            while len(receipt["attempts"]) < attempts and sent_this_run < max_per_run:
+            while sent_this_run < max_per_run:
+                pending = [i for i in range(1, len(targets) + 1)
+                           if not _target_delivered(receipt, i)
+                           and len(_target_attempts(receipt, i)) < attempts]
+                if not pending:
+                    # 状态曾中断(如进程被杀)但逐群记录显示已全部送达: 补记汇总状态。
+                    if all(_target_delivered(receipt, i) for i in range(1, len(targets) + 1)):
+                        receipt.update(status="sent", confirmed_at=current_time().isoformat(),
+                                       updated_at=current_time().isoformat())
+                        store.atomic_json(receipt_path, receipt)
+                        print("钉钉推送: 成功（已记录送达状态，%d 个群）" % len(targets))
+                        return 0
+                    break
                 if not store.signal_info(text, current_time())["actionable"]:
                     receipt["status"] = "expired"
                     break
@@ -448,39 +503,51 @@ def main(directory=None, now=None, attempts=3, sleeper=None, max_per_run=1):
                                           detail=store.momentum_detail(state, _names()))
                 if receipt["attempts"]:
                     md = "⚠️ 同一信号补发；如已操作，请勿重复下单。\n\n" + md
-                attempt = dict(started_at=current_time().isoformat(), status="sending")
-                receipt["attempts"].append(attempt)
-                sent_this_run += 1
-                receipt.update(status="sending", updated_at=attempt["started_at"])
-                store.atomic_json(receipt_path, receipt)
-                url = signed_url(webhook, secret) if secret else webhook
                 primary = _section_state(PRIMARY_VERSION, _version_sections(text.splitlines()).get(PRIMARY_VERSION),
                                          store.signal_info(text,current_time()),current_time())
                 title = ("动量主推 V12-R2 %s" if not primary['unavailable'] and not primary['historical']
                          else "动量 V12-R2待核验 %s") % date
-                body = json.dumps({"msgtype": "markdown", "markdown": {
-                    "title": title, "text": md}}, ensure_ascii=False).encode("utf-8")
-                req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
-                try:
-                    with urllib.request.urlopen(req, timeout=min(8, remaining - 1)) as response:
-                        payload = json.loads(response.read(65537).decode("utf-8"))
-                    code = payload.get("errcode")
-                    if type(code) is int and code == 0:
-                        attempt.update(status="sent", errcode=0)
-                        receipt.update(status="sent", confirmed_at=current_time().isoformat())
-                        store.atomic_json(receipt_path, receipt)
-                        print("钉钉推送: 成功（已记录送达状态）")
-                        return 0
-                    attempt.update(status="rejected", errcode=code if type(code) is int else None)
-                    receipt["status"] = "failed"
-                except Exception as exc:
-                    # A lost HTTP reply cannot prove whether the service sent it.
-                    attempt.update(status="uncertain", error=type(exc).__name__)
-                    receipt["status"] = "uncertain"
-                receipt["updated_at"] = current_time().isoformat()
+                # 一次运行最多一批: 同一信号群发到所有未送达群, 单群失败不阻断其他群
+                # (与盯盘 bot 的 _post_to_all 语义一致)。
+                sent_this_run += 1
+                receipt.update(status="sending", updated_at=current_time().isoformat())
                 store.atomic_json(receipt_path, receipt)
-                if len(receipt["attempts"]) < attempts and sent_this_run < max_per_run:
-                    sleeper(2 * len(receipt["attempts"]))
+                for index in pending:
+                    webhook, secret = targets[index - 1]
+                    attempt = dict(started_at=current_time().isoformat(), status="sending", target=index)
+                    receipt["attempts"].append(attempt)
+                    store.atomic_json(receipt_path, receipt)
+                    url = signed_url(webhook, secret) if secret else webhook
+                    body = json.dumps({"msgtype": "markdown", "markdown": {
+                        "title": title, "text": md if secret else _ensure_keyword(md)}},
+                        ensure_ascii=False).encode("utf-8")
+                    req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
+                    try:
+                        left = (deadline - current_time()).total_seconds()
+                        with urllib.request.urlopen(req, timeout=min(8, max(1, left - 1))) as response:
+                            payload = json.loads(response.read(65537).decode("utf-8"))
+                        code = payload.get("errcode")
+                        if type(code) is int and code == 0:
+                            attempt.update(status="sent", errcode=0)
+                        else:
+                            attempt.update(status="rejected", errcode=code if type(code) is int else None)
+                    except Exception as exc:
+                        # A lost HTTP reply cannot prove whether the service sent it.
+                        attempt.update(status="uncertain", error=type(exc).__name__)
+                    receipt["updated_at"] = current_time().isoformat()
+                    store.atomic_json(receipt_path, receipt)
+                if all(_target_delivered(receipt, i) for i in range(1, len(targets) + 1)):
+                    receipt.update(status="sent", confirmed_at=current_time().isoformat())
+                    store.atomic_json(receipt_path, receipt)
+                    print("钉钉推送: 成功（已记录送达状态，%d 个群）" % len(targets))
+                    return 0
+                receipt["status"] = ("uncertain" if any(a.get("status") == "uncertain"
+                                                        for a in receipt["attempts"]) else "failed")
+                store.atomic_json(receipt_path, receipt)
+                if sent_this_run < max_per_run and any(
+                        not _target_delivered(receipt, i) and len(_target_attempts(receipt, i)) < attempts
+                        for i in range(1, len(targets) + 1)):
+                    sleeper(2 * max(len(_target_attempts(receipt, i)) for i in range(1, len(targets) + 1)))
             store.atomic_json(receipt_path, receipt)
             print("钉钉推送未确认成功（%s）；已保存失败记录" % receipt["status"])
             return 1

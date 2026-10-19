@@ -15,26 +15,33 @@ import push_signal  # 复用 load_file/signed_url/WEBHOOK_FILE/SECRET_FILE(纯�
 
 
 def send_dingtalk(text, title="动量系统运维"):
-    """发送 markdown 告警到钉钉群; 无 webhook 配置或发送失败时打印到 stdout。"""
-    webhook = push_signal.load_file(push_signal.WEBHOOK_FILE)
-    if not webhook:
+    """发送 markdown 告警到全部配置群(主群加签 + 额外群关键词, 与每日推送同目标)。
+
+    单群失败不阻断其他群; 全部送达才返回 True, 部分失败由调用方按未确认处理。
+    无 webhook 配置或发送失败时打印到 stdout。
+    """
+    targets = push_signal.load_targets()
+    if not targets:
         print("[dingtalk 未配置] %s\n%s" % (title, text))
         return False
-    secret = push_signal.load_file(push_signal.SECRET_FILE)
-    url = push_signal.signed_url(webhook, secret) if secret else webhook
-    body = json.dumps({"msgtype": "markdown",
-                       "markdown": {"title": title, "text": text}},
-                      ensure_ascii=False).encode("utf-8")
-    req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
-    try:
-        with urllib.request.urlopen(req, timeout=15) as r:
-            resp = json.loads(r.read().decode("utf-8"))
-        ok = resp.get("errcode") == 0
-        print("钉钉告警: %s (errcode=%s)" % ("成功" if ok else "失败", resp.get("errcode")))
-        return ok
-    except Exception as e:
-        print("钉钉告警异常(不阻断): %s" % e)
-        return False
+    ok = True
+    for webhook, secret in targets:
+        url = push_signal.signed_url(webhook, secret) if secret else webhook
+        body = json.dumps({"msgtype": "markdown",
+                           "markdown": {"title": title,
+                                        "text": text if secret else push_signal._ensure_keyword(text)}},
+                          ensure_ascii=False).encode("utf-8")
+        req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=15) as r:
+                resp = json.loads(r.read().decode("utf-8"))
+            sent = resp.get("errcode") == 0
+            ok = ok and sent
+            print("钉钉告警: %s (errcode=%s)" % ("成功" if sent else "失败", resp.get("errcode")))
+        except Exception as e:
+            ok = False
+            print("钉钉告警异常(不阻断): %s" % e)
+    return ok
 
 
 def atomic_write(path, text):
