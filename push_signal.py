@@ -77,6 +77,24 @@ def _names():
     return {c: UNIVERSE[c][0] for c in UNIVERSE} if UNIVERSE else {}
 
 
+def _big_action(sections, info, now):
+    """第二条极简推送: (title, markdown)。一行大字只回答"买什么/当前操作"。
+
+    与完整版卡片头部共用 _summary_rows 同一解析结果(同一 allowlist 与同一时效核验),
+    历史/不可用状态绝不显示行动大字。
+    """
+    rows = _summary_rows(sections, info, now)
+    action, target = (rows[0][1], rows[0][2]) if rows else ("—", "—")
+    plain = target.replace("**", "")
+    if action == "买入":
+        return "今日操作: 买入 %s" % plain, "# 🟧 买入 %s" % target
+    if action == "换仓":
+        return "今日操作: 换仓 → %s" % plain, "# 🔄 换仓 → %s" % target
+    if action == "持有":
+        return "今日操作: 持有 %s" % plain, "# 🟦 持有 %s" % target
+    return "今日操作: 暂无有效信号", "# ⏸ 暂无有效信号"
+
+
 def load_file(path):
     """读取单行配置; 无文件返回空串。"""
     if os.path.exists(path):
@@ -499,16 +517,22 @@ def main(directory=None, now=None, attempts=3, sleeper=None, max_per_run=1):
                     receipt["status"] = "expired"
                     break
                 state = ((journal or {}).get("account_states") or {}).get(store.PRIMARY_ACCOUNT)
+                info = store.signal_info(text, current_time())
+                sections = _version_sections(text.splitlines())
                 md, date = build_markdown(text, now=current_time(),
                                           detail=store.momentum_detail(state, _names()))
+                big_title, big_md = _big_action(sections, info, current_time())
                 if receipt["attempts"]:
-                    md = "⚠️ 同一信号补发；如已操作，请勿重复下单。\n\n" + md
-                primary = _section_state(PRIMARY_VERSION, _version_sections(text.splitlines()).get(PRIMARY_VERSION),
-                                         store.signal_info(text,current_time()),current_time())
+                    notice = "⚠️ 同一信号补发；如已操作，请勿重复下单。"
+                    md = notice + "\n\n" + md
+                    big_md = notice + "\n\n" + big_md
+                primary = _section_state(PRIMARY_VERSION, sections.get(PRIMARY_VERSION),
+                                         info, current_time())
                 title = ("动量主推 V12-R2 %s" if not primary['unavailable'] and not primary['historical']
                          else "动量 V12-R2待核验 %s") % date
-                # 一次运行最多一批: 同一信号群发到所有未送达群, 单群失败不阻断其他群
-                # (与盯盘 bot 的 _post_to_all 语义一致)。
+                # 每次推送发两条: 完整版 + 极简大字版(只回答买什么)。
+                # 一次运行最多一批, 同一批群发到所有未送达群, 单群失败不阻断其他群。
+                payloads = [(title, md), (big_title, big_md)]
                 sent_this_run += 1
                 receipt.update(status="sending", updated_at=current_time().isoformat())
                 store.atomic_json(receipt_path, receipt)
@@ -518,22 +542,37 @@ def main(directory=None, now=None, attempts=3, sleeper=None, max_per_run=1):
                     receipt["attempts"].append(attempt)
                     store.atomic_json(receipt_path, receipt)
                     url = signed_url(webhook, secret) if secret else webhook
-                    body = json.dumps({"msgtype": "markdown", "markdown": {
-                        "title": title, "text": md if secret else _ensure_keyword(md)}},
-                        ensure_ascii=False).encode("utf-8")
-                    req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
-                    try:
-                        left = (deadline - current_time()).total_seconds()
-                        with urllib.request.urlopen(req, timeout=min(8, max(1, left - 1))) as response:
-                            payload = json.loads(response.read(65537).decode("utf-8"))
-                        code = payload.get("errcode")
-                        if type(code) is int and code == 0:
-                            attempt.update(status="sent", errcode=0)
-                        else:
-                            attempt.update(status="rejected", errcode=code if type(code) is int else None)
-                    except Exception as exc:
-                        # A lost HTTP reply cannot prove whether the service sent it.
-                        attempt.update(status="uncertain", error=type(exc).__name__)
+                    parts = []
+                    for part_index, (part_title, part_md) in enumerate(payloads):
+                        if part_index:
+                            # 钉钉服务端分发不保证同毫秒到达顺序, 客户端可能错位;
+                            # 两条消息间固定留 5 秒间隔, 保证完整版先展示、大字版压轴。
+                            # 临近 14:55 截止时间隔自动缩短: 送达优先于顺序。
+                            left = (deadline - current_time()).total_seconds()
+                            sleeper(min(5, max(0, left - 8)))
+                        body = json.dumps({"msgtype": "markdown", "markdown": {
+                            "title": part_title,
+                            "text": part_md if secret else _ensure_keyword(part_md)}},
+                            ensure_ascii=False).encode("utf-8")
+                        req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
+                        try:
+                            left = (deadline - current_time()).total_seconds()
+                            with urllib.request.urlopen(req, timeout=min(8, max(1, left - 1))) as response:
+                                payload = json.loads(response.read(65537).decode("utf-8"))
+                            code = payload.get("errcode")
+                            parts.append(dict(errcode=code if type(code) is int else None))
+                        except Exception as exc:
+                            # A lost HTTP reply cannot prove whether the service sent it.
+                            parts.append(dict(error=type(exc).__name__))
+                    # 群送达 = 两条消息全部 errcode=0; 任一传输异常按不确定处理(可能已发出)。
+                    if all(part.get("errcode") == 0 for part in parts):
+                        attempt.update(status="sent", errcode=0)
+                    elif any("error" in part for part in parts):
+                        attempt.update(status="uncertain")
+                    else:
+                        attempt.update(status="rejected", errcode=next(
+                            (part["errcode"] for part in parts if part.get("errcode")), None))
+                    attempt["parts"] = parts
                     receipt["updated_at"] = current_time().isoformat()
                     store.atomic_json(receipt_path, receipt)
                 if all(_target_delivered(receipt, i) for i in range(1, len(targets) + 1)):

@@ -14,6 +14,7 @@ signals/cron.log
 signals/crash_lock.json
 signals/shadow_0906.json
 signals/watchdog.log
+signals/laoguo_state.json
 signals/drift.log
 v10/data_extra/
 
