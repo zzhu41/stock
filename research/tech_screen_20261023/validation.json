@@ -1,0 +1,42 @@
+{
+  "positive_pe_comparisons": 1771,
+  "pe_within_1pct_of_tencent": 1756,
+  "pe_median_relative_difference": 6.198630425013896e-05,
+  "exact_deduct_missing": 0,
+  "exact_cash_missing": 0,
+  "manual_beta_checks": [
+    {
+      "code": "300604",
+      "beta_delta": 2.220446049250313e-16
+    },
+    {
+      "code": "300223",
+      "beta_delta": 2.220446049250313e-16
+    },
+    {
+      "code": "688019",
+      "beta_delta": 0.0
+    },
+    {
+      "code": "688183",
+      "beta_delta": 1.1102230246251565e-16
+    },
+    {
+      "code": "688766",
+      "beta_delta": 2.220446049250313e-16
+    },
+    {
+      "code": "002436",
+      "beta_delta": 2.220446049250313e-16
+    },
+    {
+      "code": "603186",
+      "beta_delta": 3.3306690738754696e-16
+    }
+  ],
+  "quotes_all_date": true,
+  "source_code_unique": true,
+  "star_volume_multiplier_counts": {
+    "1.0": 395
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "basis": "Q2=H1-Q1; Q3=9M-H1. Forecast intervals remain intervals; nonpositive Q2 denominators reviewed separately.",
+  "original_quant_pool": 199,
+  "counts": {
+    "等待核实：不能视作通过": 169,
+    "归母及扣非均不降：通过本项": 20,
+    "至少一项环比下降：暂移出严格主名单": 10
+  },
+  "guidance_checked_codes": [
+    "300604",
+    "688183",
+    "001389",
+    "300054",
+    "002436",
+    "300458"
+  ],
+  "unknown_note": "Unverified does not prove no disclosure; six guidance issuers were explicitly checked, not all guidance issuers across the market.",
+  "date": "2026-10-23"
+}

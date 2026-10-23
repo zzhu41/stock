@@ -1,0 +1,17 @@
+{
+  "quote_count": 5579,
+  "stock_count": 5576,
+  "date_counts_all": {
+    "2026-10-23": 5579
+  },
+  "stock_date_counts": {
+    "2026-10-23": 5576
+  },
+  "price_diff_over_1cent_count": 3,
+  "cap_rel_diff_over_0_1pct_count": 5,
+  "missing_quotes": 0,
+  "field_counts": {
+    "88": 5226,
+    "87": 353
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "source": "https://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/",
+  "node": "hs_a",
+  "expected_count": 5576,
+  "fetched_count": 5576,
+  "unique_codes": 5576,
+  "errors": [],
+  "retrieved_at": "2026-10-23T16:34:49",
+  "price_note": "Sina response gives ticktime but no date; trading_date deliberately blank until quote cross-validation.",
+  "pe_note": "Sina per field basis not separately verified; do not assume forward or TTM.",
+  "market_cap_original_unit": "CNY 10,000, converted to CNY 100m"
+}

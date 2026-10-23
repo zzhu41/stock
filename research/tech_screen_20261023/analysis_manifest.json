@@ -1,0 +1,39 @@
+{
+  "history_end": "2026-10-22",
+  "quote_date": "2026-10-23",
+  "pool": 2434,
+  "history_success": 2229,
+  "same_cutoff_histories": 2229,
+  "data_eligible": 2031,
+  "profitable_floor": 876,
+  "primary_quant_gate": 199,
+  "core_primary": 149,
+  "adjacent_primary": 50,
+  "growth_cash_primary": 57,
+  "exact_deduct_missing": 0,
+  "exact_cash_missing": 0,
+  "benchmark_events": {
+    "star50": {
+      "2024-09-23_2024-10-08": 0.5923892759392886,
+      "2025-04-08_2025-05-09": 0.07045070152857713
+    },
+    "chinext": {
+      "2024-09-23_2024-10-08": 0.666294241788685,
+      "2025-04-08_2025-05-09": 0.09316908564317972
+    },
+    "csi300": {
+      "2024-09-23_2024-10-08": 0.32474881410376133,
+      "2025-04-08_2025-05-09": 0.05352310203902744
+    }
+  },
+  "definitions": {
+    "beta": "OLS covariance(stock,benchmark)/variance(benchmark); same benchmark dates, no missing-price filling",
+    "capture": "ratio of geometric mean daily returns on benchmark up/down days; descriptive, not a forecast",
+    "ttm_profit": "latest actual 2026 YTD + actual 2025 FY - corresponding actual 2025 YTD; forecasts excluded. Market cap is A-price times all shares, not combined A/H market value.",
+    "cash_proxy": "Legacy per-share approximations are retained for audit only, not used in gates or scores. Exact cash and deducted profits fetched from RPT_F10_FINANCE_MAINFINADATA replace them.",
+    "score": "35% quality (TTM margin, exact TTM cash/profit, exact TTM deducted ratio) + 30% sector-relative growth + 20% sector-relative trailing valuation + 15% beta; prioritisation only. Missing exact deducted profit is unknown, not a loss; requires manual verification.",
+    "drawdown": "Close-based, adjusted, at most N benchmark trading days. Use observations_N to distinguish shorter listed histories.",
+    "liquidity": "Median raw daily volume over 20 days * inferred shares-per-volume-unit * current price; approximate RMB turnover, not exact historical turnover. STAR generally uses shares; other A shares generally lots.",
+    "latest_return": "Not used as a gate or score; 20-day run-up is a risk flag only"
+  }
+}
