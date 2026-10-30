@@ -42,3 +42,4 @@
 {"ts": "2026-10-27 15:10:04", "date": "2026-10-26", "model_start": "2026-08-12", "model_cum_pct": -5.28, "model_holding": "513100", "n_trades": 0}
 {"ts": "2026-10-28 15:10:05", "date": "2026-10-27", "model_start": "2026-08-12", "model_cum_pct": -4.73, "model_holding": "513100", "n_trades": 0}
 {"ts": "2026-10-29 15:10:04", "date": "2026-10-28", "model_start": "2026-08-12", "model_cum_pct": -1.94, "model_holding": "513100", "n_trades": 0}
+{"ts": "2026-10-30 15:10:04", "date": "2026-10-29", "model_start": "2026-08-12", "model_cum_pct": -3.0, "model_holding": "513100", "n_trades": 0}
