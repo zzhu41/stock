@@ -70,6 +70,15 @@ NE_BULL_ONLY = False    # True=永不空仓仅牛市生效, 熊市回到货币�
 EXIT_MOM_FLOOR = 0.0    # 离场动量阈值: MOM20<=此值离场(默认0=转负); 正值=提前离场
 MOM_DECAY = 9.9         # 动量衰减止损: 近20日MOM20峰值-当前MOM20>此值离场; 9.9=关闭
 DONCHIAN_N = 0          # 唐奇安低点止损: 收盘跌破近N日最低收盘离场; 0=关闭
+# --- mom20 斜率门(默认关闭) ---
+# 语义: MOM20 仍为正, 但变化率(slope = MOM20(t) - MOM20(t-SLOPE_WIN))已连续
+# SLOPE_PERSIST 日为负 -> 判定动量衰竭并离场。与 MOM_DECAY 的区别: MOM_DECAY 用
+# "近20日峰值-当前", 本项用"t 与 t-win 之差", 不会因曾到过峰值而永久触发。
+# 默认全关(SLOPE_GATE_CODES=None) -> 决策与未打补丁版本逐值一致。
+SLOPE_GATE_CODES = None  # 启用本项的标的代码集合; None=关闭整项
+SLOPE_GATE_WIN = 12      # slope = MOM20(t) - MOM20(t-WIN)
+SLOPE_GATE_PERSIST = 5   # 斜率须连续 PERSIST 日为负; 1=不要求持续性(易抖动)
+SLOPE_GATE_MOM_MIN = 0.0  # 仅当 MOM20 >= 此值(小数)才生效
 # --- v8 方向参数(默认关闭, 第九轮 2026-08-21) ---
 ER_BUFFER_ON = False    # 震荡市自适应缓冲: 持仓ER20<KAUFMAN_THR时缓冲x2
 KAUFMAN_THR = 0.30      # 效率系数阈值(|净位移|/路径长度, 低于=震荡)
@@ -205,6 +214,20 @@ def indicators(closes, volumes=None):
     else:
         donchian_low = 0.0
     above_donchian = closes[-1] >= donchian_low
+    # mom20 斜率门: 连续 SLOPE_PERSIST 日 MOM20 均 >= MOM_MIN 且斜率均为负。
+    # 全部只用 t 及之前的价格, 无前视。关闭时恒为 False, 不产生任何决策影响。
+    slope_hit = False
+    if SLOPE_GATE_CODES:
+        _W = int(SLOPE_GATE_WIN)
+        _P = max(int(SLOPE_GATE_PERSIST), 1)
+        if len(closes) > _W + MOM_MAIN + _P:
+            slope_hit = True
+            for _k in range(_P):
+                _now = closes[-1 - _k] / closes[-1 - _k - MOM_MAIN] - 1.0
+                _old = closes[-1 - _k - _W] / closes[-1 - _k - _W - MOM_MAIN] - 1.0
+                if not (_now >= SLOPE_GATE_MOM_MIN and _now - _old < 0):
+                    slope_hit = False
+                    break
     er20 = 1.0
     rets_tail = None
     if ER_BUFFER_ON or REL_BUFFER_ON:
@@ -373,7 +396,8 @@ def indicators(closes, volumes=None):
             "hist_pct": hist_pct, "mom20_peak20": mom20_peak20, "donchian_low": donchian_low,
             "above_donchian": above_donchian, "er20": er20, "rets_tail": rets_tail,
             "vol_ratio": vol_ratio, "vol_in_ratio": vol_in_ratio, "dist_ma250": dist_ma250,
-            "mom10_z": mom10_z, "slope_pos_days": slope_pos_days}
+            "mom10_z": mom10_z, "slope_pos_days": slope_pos_days,
+            "slope_hit": slope_hit}
 
 
 def rank(histories, on_date=None, live_prices=None):
@@ -496,6 +520,9 @@ def _exit_hit(ind):
         return "RSI 跌破 50"
     if ZSCORE_ACCEL and ind["mom10_z"] > 3.0:
         return "加速止盈(mom10 z=%.1f)" % ind["mom10_z"]
+    if SLOPE_GATE_CODES and ind.get("slope_hit"):
+        return "动量斜率转负(MOM20 %+.1f%%, 连续%d日下滑)" % (
+            ind["mom20"] * 100, int(SLOPE_GATE_PERSIST))
     return None
 
 
@@ -601,6 +628,10 @@ def decide(table, holding, holding_days=99):
             # 制度性离场(A股池), 优先于滞回缓冲
             return target, "熊市体制确立, A股持仓无条件离场 -> %s" % UNIVERSE[target][0]
         exit_why = _exit_hit(h)
+        if exit_why and exit_why.startswith("动量斜率"):
+            # 斜率门只对 SLOPE_GATE_CODES 内的标的生效
+            if SLOPE_GATE_CODES is not None and holding not in SLOPE_GATE_CODES:
+                exit_why = None
         if exit_why:
             return target, "%s, 离场 -> %s" % (exit_why, UNIVERSE[target][0])
         if MIN_HOLD and holding_days < MIN_HOLD and holding != CASH:
