@@ -1,0 +1,33 @@
+{
+  "cutoff": "2026-10-30",
+  "universe_source": "Eastmoney RPT_F10_FINANCE_MAINFINADATA 2026Q3",
+  "requested_stocks": 2030,
+  "returned": 2027,
+  "errors": [
+    {
+      "symbol": "sz300064",
+      "error": "501 Server Error: Not Implemented for url: https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz300064%2Cday%2C2025-01-01%2C2026-10-30%2C640%2Cqfq"
+    },
+    {
+      "symbol": "sz300090",
+      "error": "501 Server Error: Not Implemented for url: https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz300090%2Cday%2C2025-01-01%2C2026-10-30%2C640%2Cqfq"
+    },
+    {
+      "symbol": "sz300114",
+      "error": "501 Server Error: Not Implemented for url: https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz300114%2Cday%2C2025-01-01%2C2026-10-30%2C640%2Cqfq"
+    },
+    {
+      "symbol": "sz300104",
+      "error": "501 Server Error: Not Implemented for url: https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz300104%2Cday%2C2025-01-01%2C2026-10-30%2C640%2Cqfq"
+    },
+    {
+      "symbol": "sz300216",
+      "error": "501 Server Error: Not Implemented for url: https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz300216%2Cday%2C2025-01-01%2C2026-10-30%2C640%2Cqfq"
+    },
+    {
+      "symbol": "sz300367",
+      "error": "501 Server Error: Not Implemented for url: https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz300367%2Cday%2C2025-01-01%2C2026-10-30%2C640%2Cqfq"
+    }
+  ],
+  "basis": "Tencent forward-adjusted OHLC; 250-session closing peak; Beta against own-board benchmark; quote snapshots separately dated. Cutoff capitalization inferred from snapshot capitalization and price ratio; A-equivalent total cap may differ from A+H market cap. Liquidity is an estimated median turnover proxy."
+}

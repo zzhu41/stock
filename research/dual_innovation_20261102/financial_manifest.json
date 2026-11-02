@@ -1,0 +1,110 @@
+{
+  "retrieved_at": "2026-11-02T13:37:30.083011",
+  "source": "https://datacenter-web.eastmoney.com/api/data/v1/get",
+  "report": "RPT_F10_FINANCE_MAINFINADATA",
+  "disclosure_cutoff_exclusive": "2026-11-03",
+  "period_coverage": [
+    {
+      "date": "2026-03-31",
+      "unique_codes": 2038,
+      "raw_rows": 2038,
+      "source": "this_run_cached_fresh_2026-11-02_download",
+      "raw_file": "/root/stock/research/dual_innovation_20261102/financial_raw/raw_exact_2026-03-31.json",
+      "retained_file_modified_at": "2026-11-02T13:35:21.766437"
+    },
+    {
+      "date": "2026-06-30",
+      "unique_codes": 2048,
+      "raw_rows": 2048,
+      "source": "this_run_cached_fresh_2026-11-02_download",
+      "raw_file": "/root/stock/research/dual_innovation_20261102/financial_raw/raw_exact_2026-06-30.json",
+      "retained_file_modified_at": "2026-11-02T13:35:26.456625"
+    },
+    {
+      "date": "2026-09-30",
+      "unique_codes": 2030,
+      "raw_rows": 2030,
+      "source": "this_run_cached_fresh_2026-11-02_download",
+      "raw_file": "/root/stock/research/dual_innovation_20261102/financial_raw/raw_exact_2026-09-30.json",
+      "retained_file_modified_at": "2026-11-02T13:35:31.043809"
+    },
+    {
+      "date": "2025-09-30",
+      "unique_codes": 2030,
+      "raw_rows": 2030,
+      "source": "reused_2026-10-23_download:/tmp/tech_screen_financial/raw_exact_2025-09-30.json",
+      "raw_file": "/root/stock/research/dual_innovation_20261102/financial_raw/raw_exact_2025-09-30.json",
+      "retained_file_modified_at": "2026-11-02T13:35:32.246858"
+    },
+    {
+      "date": "2025-12-31",
+      "unique_codes": 2050,
+      "raw_rows": 2050,
+      "source": "reused_2026-10-23_download:/tmp/tech_screen_financial/raw_exact_2025-12-31.json",
+      "raw_file": "/root/stock/research/dual_innovation_20261102/financial_raw/raw_exact_2025-12-31.json",
+      "retained_file_modified_at": "2026-11-02T13:35:33.512909"
+    }
+  ],
+  "q3_dual_board_count": 2030,
+  "complete_q1_h1_q3": 2029,
+  "strict_pass": 161,
+  "relaxed_pass": 298,
+  "quality_focus_pass": 65,
+  "quality_focus_extra_rules": "9M cash/profit >=0.5; debt <60%; 9M deduct >=100m CNY; Q3 profit and deduct QoQ >=10%; no flagged working-capital deterioration or vendor discrepancy. Missing turnover values do not themselves trigger a flag.",
+  "vendor_qoq_comparison": {
+    "profit_pairs": 1399,
+    "deduct_pairs": 1293,
+    "discrepancy_above_0_1_percentage_points": 10,
+    "codes_to_review": [
+      "300106",
+      "300457",
+      "300489",
+      "300549",
+      "300774",
+      "301265",
+      "301281",
+      "301556",
+      "301587",
+      "688248"
+    ],
+    "note": "Use cumulative subtraction consistently. Discrepancies can reflect restatements or vendor basis; review original reports before final selection."
+  },
+  "gate_pass_counts": {
+    "clean_name": 1972,
+    "quarter_profits_positive": 1089,
+    "revenue_qoq_positive": 1089,
+    "profit_qoq_positive": 567,
+    "deduct_qoq_positive": 557,
+    "revenue_yoy_gt10": 991,
+    "deduct_yoy_gt10": 838,
+    "cashflow_positive": 1182,
+    "deduct_ratio_gt70": 1049
+  },
+  "q3_notices": {
+    "2026-10-30": 444,
+    "2026-10-29": 370,
+    "2026-10-28": 350,
+    "2026-10-27": 305,
+    "2026-10-31": 159,
+    "2026-10-23": 138,
+    "2026-10-24": 104,
+    "2026-10-26": 70,
+    "2026-10-22": 47,
+    "2026-10-20": 16,
+    "2026-10-21": 12,
+    "2026-10-17": 6,
+    "2026-10-16": 5,
+    "2026-10-14": 1,
+    "2026-10-19": 1,
+    "2026-10-13": 1,
+    "2026-10-15": 1
+  },
+  "definitions": {
+    "q2": "H1-Q1",
+    "q3": "9M-H1",
+    "TTM": "2026 9M + 2025 FY - 2025 9M",
+    "quarter_qoq": "100 * (Q3/Q2 - 1); NaN where Q2 <= 0",
+    "universe": "All financial API records starting 30, 688, or 689; not an independent listing census",
+    "screen_limits": "Accounting metrics only; no audit of sanctions, litigation, future demand, delisting or reporting integrity. Prior-period comparatives are not automatically reconciled for restatements."
+  }
+}

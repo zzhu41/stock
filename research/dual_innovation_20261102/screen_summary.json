@@ -1,0 +1,19 @@
+{
+  "financial_records": 2030,
+  "history_records": 2024,
+  "strict_financial": 161,
+  "financial_and_price": 54,
+  "combined": 29,
+  "unmatched_financial_codes": [
+    "300064",
+    "300090",
+    "300104",
+    "300114",
+    "300216",
+    "300367"
+  ],
+  "research_date": "2026-11-02",
+  "price_cutoff": "2026-10-30",
+  "not_backtest": true,
+  "warning": "Heuristic research filters; not optimized or validated return predictions. Cash flow is consolidated, while profit is attributable to parent. A+H total capitalization is A-price-equivalent."
+}
