@@ -1,0 +1,54 @@
+{
+  "research_date": "2026-11-09",
+  "candidate_id": "v12r2_08b522c2e1aa291f054d",
+  "period": [
+    "2014-01-02",
+    "2026-09-24"
+  ],
+  "observations": 3097,
+  "annualization_sessions": 244,
+  "records": 866,
+  "selectable_records": 862,
+  "strict_selection": null,
+  "balanced_selection": null,
+  "release_files_verified": 53,
+  "frozen_inputs_verified": 67,
+  "scenarios": {
+    "close_1bp": {
+      "cagr": 0.5526937725744602,
+      "max_drawdown": -0.2055529108380264,
+      "final_nav": 266.3055100968753,
+      "switches": 310
+    },
+    "close_11bp": {
+      "cagr": 0.47858472777299094,
+      "max_drawdown": -0.21974190545906414,
+      "final_nav": 143.15086621620028,
+      "switches": 310
+    },
+    "lag1_1bp": {
+      "cagr": 0.39718422205293424,
+      "max_drawdown": -0.28304212076913804,
+      "final_nav": 69.76700811733572,
+      "switches": 312
+    },
+    "lag1_11bp": {
+      "cagr": 0.33007780945907833,
+      "max_drawdown": -0.3098068917027367,
+      "final_nav": 37.35292891446325,
+      "switches": 312
+    }
+  },
+  "artifact_sha256": {
+    "release_receipt.json": "f05425fd1e4f599f780d89d785ce93074e1d3af2fe7ea4c8832ad7e9058582eb",
+    "results/paths.npz": "14e043b61d868bdcdf8e4fdca0dde18a03a1bf0eaa8e227a77edeb2db629914b",
+    "results/selection.json": "a8496918bc0a28aafe155b1ba019aad195cc12619f8a7ca5c8e32920654a53a1"
+  },
+  "scope": "Independent recomputation of stored historical paths, not a new strategy backtest.",
+  "limitations": [
+    "All historical observations were exposed to earlier research.",
+    "lag1 means next close, not next open or the live 14:50 clock.",
+    "Historical research qualification and later user-directed deployment are distinct.",
+    "No new candidate was searched or promoted by this script."
+  ]
+}
