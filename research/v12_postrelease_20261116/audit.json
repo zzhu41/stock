@@ -1,0 +1,551 @@
+{
+  "scope": "Committed signal-time shadow ledger, raw-price units, virtual reinvestment; not actual fills or close NAV",
+  "cutoff": "2026-11-16",
+  "canonical_date_at_audit": "2026-11-16",
+  "candidate_id": "v12r2_08b522c2e1aa291f054d",
+  "start": "2026-09-29",
+  "metrics": {
+    "observations": 30,
+    "return_intervals": 29,
+    "end_nav": 0.9416179168404583,
+    "total_return": -0.05838208315954174,
+    "max_drawdown": -0.1119470954435492,
+    "max_drawdown_peak_trough_dates": [
+      "2026-10-09",
+      "2026-11-03"
+    ],
+    "current_drawdown": -0.08898466545685657,
+    "switches": 5,
+    "positive_intervals": 11,
+    "negative_intervals": 18,
+    "best_interval": {
+      "date": "2026-11-04",
+      "nav": 0.9997828922263525,
+      "daily_return": 0.08922558922558932,
+      "drawdown": -0.032710051771003834,
+      "return_holding": "588080",
+      "closing_holding": "588080",
+      "fee_fraction": 0,
+      "mark_raw_price": 1.294,
+      "reason": "抄底锁仓：实际入场2026-10-30，第5个后续交易日恢复决策"
+    },
+    "worst_interval": {
+      "date": "2026-10-22",
+      "nav": 0.9356726695414692,
+      "daily_return": -0.03454850387883268,
+      "drawdown": -0.09473669221862846,
+      "return_holding": "159915",
+      "closing_holding": "513100",
+      "fee_fraction": 0.0002,
+      "mark_raw_price": 2.261,
+      "reason": "波动急跌退出（阈值3.09%）；调仓；WLS25四报价平滑 / MA180 / 健康轮动最短2日"
+    },
+    "estimated_nav_without_booked_fees_same_holdings": 0.9425600999918072,
+    "booked_fee_drag_nav_points": 0.0009421831513489742
+  },
+  "segments": [
+    {
+      "entry_date": "2026-09-29",
+      "exit_or_mark_date": "2026-10-15",
+      "holding": "513100",
+      "completed": true,
+      "return_intervals": 7,
+      "entry_reason": "首次建仓；WLS25四报价平滑 / MA180 / 健康轮动最短2日",
+      "return_including_exit_fee": 0.0006611541774332874,
+      "asset_return_excluding_exit_fee": 0.0008613264427217437,
+      "nav_contribution": 0.0006611541774332874
+    },
+    {
+      "entry_date": "2026-10-15",
+      "exit_or_mark_date": "2026-10-22",
+      "holding": "159915",
+      "completed": true,
+      "return_intervals": 5,
+      "entry_reason": "抄底(量能恐慌)，实际虚拟入场后保留5日锁仓",
+      "return_including_exit_fee": -0.06494554561717358,
+      "asset_return_excluding_exit_fee": -0.06475849731663685,
+      "nav_contribution": -0.06498848463596407
+    },
+    {
+      "entry_date": "2026-10-22",
+      "exit_or_mark_date": "2026-10-30",
+      "holding": "513100",
+      "completed": true,
+      "return_intervals": 6,
+      "entry_reason": "波动急跌退出（阈值3.09%）；调仓；WLS25四报价平滑 / MA180 / 健康轮动最短2日",
+      "return_including_exit_fee": -0.009928261831048335,
+      "asset_return_excluding_exit_fee": -0.009730207872622909,
+      "nav_contribution": -0.009289603251363632
+    },
+    {
+      "entry_date": "2026-10-30",
+      "exit_or_mark_date": "2026-11-06",
+      "holding": "588080",
+      "completed": true,
+      "return_intervals": 5,
+      "entry_reason": "抄底(深跌)，实际虚拟入场后保留5日锁仓",
+      "return_including_exit_fee": 0.06567506255212696,
+      "asset_return_excluding_exit_fee": 0.06588824020016681,
+      "nav_contribution": 0.060840265825833795
+    },
+    {
+      "entry_date": "2026-11-06",
+      "exit_or_mark_date": "2026-11-16",
+      "holding": "513120",
+      "completed": true,
+      "return_intervals": 6,
+      "entry_reason": "调仓；WLS25四报价平滑 / MA180 / 健康轮动最短2日",
+      "return_including_exit_fee": -0.04619564164648937,
+      "asset_return_excluding_exit_fee": -0.046004842615012476,
+      "nav_contribution": -0.04560541527548112
+    },
+    {
+      "entry_date": "2026-11-16",
+      "exit_or_mark_date": "2026-11-16",
+      "holding": "512400",
+      "completed": false,
+      "return_intervals": 0,
+      "entry_reason": "抄底(深跌)，实际虚拟入场后保留5日锁仓",
+      "return_including_exit_fee": 0.0,
+      "asset_return_excluding_exit_fee": 0.0,
+      "nav_contribution": 0.0
+    }
+  ],
+  "comparison": {
+    "shadow_v12_r2.json": {
+      "observations": 30,
+      "same_dates_targets_nav": true,
+      "return": -0.05838208315954174
+    },
+    "shadow_v92.json": {
+      "observations": 30,
+      "same_dates_targets_nav": true,
+      "return": -0.05838208315954174
+    },
+    "shadow_v92_plus.json": {
+      "observations": 30,
+      "same_dates_targets_nav": true,
+      "return": -0.05838208315954174
+    },
+    "shadow_v10.json": {
+      "observations": 30,
+      "same_dates_targets_nav": true,
+      "return": -0.05838208315954174
+    }
+  },
+  "integrity": {
+    "canonical_signal_hash_valid": true,
+    "canonical_checksum_valid": true,
+    "shadow_projection_equals_canonical": {
+      "shadow_v12_r2.json": true,
+      "shadow_v92.json": true,
+      "shadow_v92_plus.json": true,
+      "shadow_v10.json": true
+    },
+    "expected_trading_dates": [
+      "2026-09-29",
+      "2026-09-30",
+      "2026-10-08",
+      "2026-10-09",
+      "2026-10-12",
+      "2026-10-13",
+      "2026-10-14",
+      "2026-10-15",
+      "2026-10-16",
+      "2026-10-19",
+      "2026-10-20",
+      "2026-10-21",
+      "2026-10-22",
+      "2026-10-23",
+      "2026-10-26",
+      "2026-10-27",
+      "2026-10-28",
+      "2026-10-29",
+      "2026-10-30",
+      "2026-11-02",
+      "2026-11-03",
+      "2026-11-04",
+      "2026-11-05",
+      "2026-11-06",
+      "2026-11-09",
+      "2026-11-10",
+      "2026-11-11",
+      "2026-11-12",
+      "2026-11-13",
+      "2026-11-16"
+    ],
+    "all_expected_dates_recorded": true,
+    "all_dated_texts_date_target_rounded_nav_match": true,
+    "all_events_have_no_corporate_actions": true
+  },
+  "operations": {
+    "watchdog_trading_day_records": 30,
+    "failed_records": [],
+    "zero_dual_source_comparison_dates": [
+      "2026-09-30",
+      "2026-10-09",
+      "2026-10-12",
+      "2026-10-15",
+      "2026-10-20",
+      "2026-10-23",
+      "2026-10-27",
+      "2026-10-28",
+      "2026-10-29",
+      "2026-11-02",
+      "2026-11-03",
+      "2026-11-04",
+      "2026-11-05"
+    ],
+    "qvix_warning_dates": [
+      "2026-09-29",
+      "2026-09-30",
+      "2026-10-08",
+      "2026-10-09",
+      "2026-10-12",
+      "2026-10-13",
+      "2026-10-14",
+      "2026-10-15",
+      "2026-10-16",
+      "2026-10-19",
+      "2026-10-20",
+      "2026-10-21",
+      "2026-10-22",
+      "2026-10-23",
+      "2026-10-26",
+      "2026-10-27",
+      "2026-10-28",
+      "2026-10-29",
+      "2026-10-30",
+      "2026-11-02",
+      "2026-11-03",
+      "2026-11-04",
+      "2026-11-05",
+      "2026-11-06",
+      "2026-11-09",
+      "2026-11-10",
+      "2026-11-11",
+      "2026-11-12",
+      "2026-11-13",
+      "2026-11-16"
+    ],
+    "note": "QVIX channel is disabled by V12-R2 design. Dual-source warnings limit independent data verification, not proof of wrong quotes."
+  },
+  "events": [
+    {
+      "date": "2026-09-29",
+      "from": null,
+      "to": "513100",
+      "nav": 1.0,
+      "mark_raw_price": 2.322,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-09-30",
+      "from": "513100",
+      "to": "513100",
+      "nav": 1.0111972437553831,
+      "mark_raw_price": 2.348,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-10-08",
+      "from": "513100",
+      "to": "513100",
+      "nav": 1.020241171403962,
+      "mark_raw_price": 2.369,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-10-09",
+      "from": "513100",
+      "to": "513100",
+      "nav": 1.0335917312661498,
+      "mark_raw_price": 2.4,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-10-12",
+      "from": "513100",
+      "to": "513100",
+      "nav": 1.033161068044789,
+      "mark_raw_price": 2.399,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-10-13",
+      "from": "513100",
+      "to": "513100",
+      "nav": 1.024978466838932,
+      "mark_raw_price": 2.38,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-10-14",
+      "from": "513100",
+      "to": "513100",
+      "nav": 1.0314384151593454,
+      "mark_raw_price": 2.395,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-10-15",
+      "from": "513100",
+      "to": "159915",
+      "nav": 1.0006611541774333,
+      "mark_raw_price": 2.795,
+      "fee_fraction": 0.0002,
+      "actions": []
+    },
+    {
+      "date": "2026-10-16",
+      "from": "159915",
+      "to": "159915",
+      "nav": 0.9931427698347763,
+      "mark_raw_price": 2.774,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-10-19",
+      "from": "159915",
+      "to": "159915",
+      "nav": 0.9902786234185261,
+      "mark_raw_price": 2.766,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-10-20",
+      "from": "159915",
+      "to": "159915",
+      "nav": 0.9856243854921195,
+      "mark_raw_price": 2.753,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-10-21",
+      "from": "159915",
+      "to": "159915",
+      "nav": 0.9691555435986804,
+      "mark_raw_price": 2.707,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-10-22",
+      "from": "159915",
+      "to": "513100",
+      "nav": 0.9356726695414692,
+      "mark_raw_price": 2.261,
+      "fee_fraction": 0.0002,
+      "actions": []
+    },
+    {
+      "date": "2026-10-23",
+      "from": "513100",
+      "to": "513100",
+      "nav": 0.9273960426547689,
+      "mark_raw_price": 2.241,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-10-26",
+      "from": "513100",
+      "to": "513100",
+      "nav": 0.9269822113104339,
+      "mark_raw_price": 2.24,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-10-27",
+      "from": "513100",
+      "to": "513100",
+      "nav": 0.931534356098119,
+      "mark_raw_price": 2.251,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-10-28",
+      "from": "513100",
+      "to": "513100",
+      "nav": 0.9547089113808799,
+      "mark_raw_price": 2.307,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-10-29",
+      "from": "513100",
+      "to": "513100",
+      "nav": 0.9476737785271846,
+      "mark_raw_price": 2.29,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-10-30",
+      "from": "513100",
+      "to": "588080",
+      "nav": 0.9263830662901056,
+      "mark_raw_price": 1.199,
+      "fee_fraction": 0.0002,
+      "actions": []
+    },
+    {
+      "date": "2026-11-02",
+      "from": "588080",
+      "to": "588080",
+      "nav": 0.9464714397042364,
+      "mark_raw_price": 1.225,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-11-03",
+      "from": "588080",
+      "to": "588080",
+      "nav": 0.9178841390764348,
+      "mark_raw_price": 1.188,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-11-04",
+      "from": "588080",
+      "to": "588080",
+      "nav": 0.9997828922263525,
+      "mark_raw_price": 1.294,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-11-05",
+      "from": "588080",
+      "to": "588080",
+      "nav": 1.0175533764003912,
+      "mark_raw_price": 1.317,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-11-06",
+      "from": "588080",
+      "to": "513120",
+      "nav": 0.9872233321159394,
+      "mark_raw_price": 1.239,
+      "fee_fraction": 0.0002,
+      "actions": []
+    },
+    {
+      "date": "2026-11-09",
+      "from": "513120",
+      "to": "513120",
+      "nav": 1.0031591405439608,
+      "mark_raw_price": 1.259,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-11-10",
+      "from": "513120",
+      "to": "513120",
+      "nav": 1.0127206256007737,
+      "mark_raw_price": 1.271,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-11-11",
+      "from": "513120",
+      "to": "513120",
+      "nav": 0.9983783980155542,
+      "mark_raw_price": 1.253,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-11-12",
+      "from": "513120",
+      "to": "513120",
+      "nav": 0.99519123632995,
+      "mark_raw_price": 1.249,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-11-13",
+      "from": "513120",
+      "to": "513120",
+      "nav": 0.966506781159511,
+      "mark_raw_price": 1.213,
+      "fee_fraction": 0,
+      "actions": []
+    },
+    {
+      "date": "2026-11-16",
+      "from": "513120",
+      "to": "512400",
+      "nav": 0.9416179168404583,
+      "mark_raw_price": 1.329,
+      "fee_fraction": 0.0002,
+      "actions": []
+    }
+  ],
+  "sources_sha256": {
+    "signals/daily_state.json": "bee5f13fad58a1a17bf59adb3eb996796d06855aede5bdb632f170b71e0457d2",
+    "signals/shadow_v12_r2.json": "bf66a7a9b93dd7f61d94a92e9125d8916f90a038ee5d9321422ad7064e00efb7",
+    "signals/shadow_v92.json": "47cac04123a371d7f93dda784e04d35caa90edaf2766b975f9ab382e6f56c0b8",
+    "signals/shadow_v92_plus.json": "31d4cfbc3aa6f4db8011cc054eed187f95152987f8227a769d3786686ab18450",
+    "signals/shadow_v10.json": "bcf70c1e03920e5a36ce71d83f56f3818bc71d025eded9e71d79d52612ddb61b",
+    "calendars/sse.json": "fdde8f7fe8297477c73d5a970ae4a68aece70e5b4ef1e500993bfe0c8604b616",
+    "signals/2026-09-29.txt": "1e707273516dc8ffaed0c68dd55b9bd06e3ca110e21e7afe1a6383e17d62d6b5",
+    "signals/2026-09-30.txt": "bea5092b0abb3ff8a5f0618c47501e2f156ea530764bef9014d4356553b5ba40",
+    "signals/2026-10-08.txt": "129593e9654f5d0e28b58e487219c2dc1f7d519a264ee35c596a32069e4faae8",
+    "signals/2026-10-09.txt": "d9e2fce21692dde9fa3083de6b09810147b9d39543b95aa037015b4fcfe7ba42",
+    "signals/2026-10-12.txt": "548923ff2eb6c3113b34d74b9574cc7bb644846f867354f3bea674012ac522bd",
+    "signals/2026-10-13.txt": "dbdbd7e61a5e208b73631920cd74c6941b7a1aec51f55a346e2c34a5ab30123a",
+    "signals/2026-10-14.txt": "301b1f39c850c226d1c140480ca7a896ef3bf40fb0892ef1da0712309604c3cd",
+    "signals/2026-10-15.txt": "644559c5ec38f306580298f8bc36b409e63c1ee9d516869b3ed52fe14cbb84c2",
+    "signals/2026-10-16.txt": "ea41427b662a2c3439ece3de284b9bf6eef60793a0e46c751e5cda8b2dfa1011",
+    "signals/2026-10-19.txt": "991fd5632ba51db2f62b34e07f10528aa11053bb77a5d43c9264d6f9e4017162",
+    "signals/2026-10-20.txt": "40e27b6fa6c90c2193d39bbf787561dfadb6bf0be901a7e7316e860bfca6dfdb",
+    "signals/2026-10-21.txt": "5c84b68d6251ba22e317509a298da54632c4f762480857e464180407b8182cc9",
+    "signals/2026-10-22.txt": "4e18742bba85dce34829fca344efda446c8d23175fe66d80143d8f85197ca904",
+    "signals/2026-10-23.txt": "6a6bd8e8cf6fdf747e968d727609d9d59e23f2d084efef43350ea1419ac0836c",
+    "signals/2026-10-26.txt": "fb68c03d1c22fb7ceb40a8ee29c0d73907c80a768164220355639409664d2ee6",
+    "signals/2026-10-27.txt": "931c065786d3972fd62ec3aa26c4181989a5caf64d2586bd861ce4344c91f06f",
+    "signals/2026-10-28.txt": "52062218b6b538ba83f94e081fc0046c1211da15cc7e9eb95c42171f50ebd85d",
+    "signals/2026-10-29.txt": "b7abf4abd2fa92a134e333d89558a6c530e3d82c3d211a301ccd4ef62a06c12f",
+    "signals/2026-10-30.txt": "4d2b3dac17fd319c53fdbaa224f019e4b958dd4a09defc3ec600cf6ea9bb0a30",
+    "signals/2026-11-02.txt": "8381cb8b34a1cf0cb313a6f8048168f5b7c41e19af8b61e65ee7e897794e9c9f",
+    "signals/2026-11-03.txt": "bb512da30c9088da0f83daee484f52e14f88f7cbc15de8e10ae277536c5a3d07",
+    "signals/2026-11-04.txt": "23f3bf2cfffbfc6d60fe43b5cf816884aa67deb2b1e0ad1ccc146b5b829427f5",
+    "signals/2026-11-05.txt": "5124a38231c9002476456ba144cb491a9dc479b960b9604e6c25bbf5c44258b1",
+    "signals/2026-11-06.txt": "572ed171bfdc07f8220e8ae0f980afc3307d9dcc583feffa960210dc2b6f3390",
+    "signals/2026-11-09.txt": "a5d9fe78c1ab9f08f88cbc57829b9f9a5d85ac8f0183d280c917a0d0e9acf51b",
+    "signals/2026-11-10.txt": "df1b9bd83ed945b31e5c43de8b7a09ca3e80b8d4741993c62c6f24b8618dfcfa",
+    "signals/2026-11-11.txt": "11a8a5f5881e9308cb1b73f27ff3c76c7d9d2072a361a5c6fcb0ed8a22ba8fa3",
+    "signals/2026-11-12.txt": "235d8c79eb9741613fde6ea7caf7f7d8c38e80e23b71eb5bb04285dec1ea9424",
+    "signals/2026-11-13.txt": "264bbd55d8266785de0bea89bae5c7de3dd8e5386ff52322da7380e8acc00352",
+    "signals/2026-11-16.txt": "a9d81789a3458cb90ebd8ee0b1efb6a8fcd6ca505b7829169d24c9c6132b0251",
+    "signals/watchdog.log": "c5711a5f67e78b8c04439bf2718eb33d09473e059799506ce2447e68d8216934"
+  },
+  "limitations": [
+    "30 signal marks, 29 return intervals and 5 completed holding segments are a small sample.",
+    "Daily mark drawdown does not measure intraday drawdown.",
+    "Canonical retains current account plus events; historical decision diagnostics are not all retained there.",
+    "Source hashes record this audit input; live source files continue to evolve.",
+    "Exit fee is charged to the ending holding segment; first entry has no modeled fee."
+  ]
+}
