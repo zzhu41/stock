@@ -1,0 +1,297 @@
+{
+  "review_asof": "2026-11-17",
+  "reviewer": "independent_llm_evidence_review",
+  "prior_report_read": "research/rsi_20261109/REPORT.md",
+  "scope": "文献、作者代码和评估协议的只读审阅；没有复现收益、部署框架或修改旧文件。RSI指Recursive Self Improvement。",
+  "interpretation_rules": [
+    "下列数值均为作者报告，未独立重现实验。",
+    "我方关于递归层次、泄漏和金融可迁移性的判断单独标注。",
+    "新发现指旧报告未覆盖或本轮新增审计，不一定是11月9日后发表。",
+    "未核实到作者代码不等于代码绝对不存在；不将同名第三方仓库当作者实现。"
+  ],
+  "papers": [
+    {
+      "id": "evoquant",
+      "title": "EVOQUANT: Self-Evolving Verifier-Guided Strategy Optimization for Robust Quantitative Trading",
+      "version": {
+        "first_submitted": "2026-07-14",
+        "reviewed": "v4",
+        "revised": "2026-11-06",
+        "url": "https://arxiv.org/abs/2607.12455"
+      },
+      "paper": "https://arxiv.org/html/2607.12455v4",
+      "sections": [
+        "3.2 EvidencePack",
+        "3.3 OOS-Aware Verification, Promotion, and Memory",
+        "4 Experimental Protocol",
+        "Tables1-3"
+      ],
+      "mechanism": "DeepSeek-R1对既有策略做20轮受控程序编辑，保存诊断、拒绝原因与经验；没有展示优化器代码自身递归改写。",
+      "experiment": "2020—2025日频数据；四类A股策略各优化30只股票后等权组合，另测三类比特币策略。作者报告多数指标改善，但部分回撤增加，比特币ATR策略仍为负Sharpe。",
+      "audit_inference": "关键问题：3.2把train/val/test表现都放入诊断包；3.3晋级分数直接含OOS Sharpe与收益，硬门槛含OOS回撤，结果回流记忆。因此按公开公式，所谓OOS参与了适应性选型；未见另外完全隔离的最终测试层，不能把最终test成绩当独立泛化证据。",
+      "cost_and_repro": "报告2倍费用/滑点与滚动区间，但审阅正文未找到足够精确的基础费率、完整样本名单、冻结全轨迹及作者代码链接。未报告发布后真实交易。",
+      "use": "可借鉴类型化改动与拒绝档案；验证规则需要重做，不能照搬其OOS命名。",
+      "code_verified": null
+    },
+    {
+      "id": "rd_agent_quant",
+      "title": "R&D-Agent-Quant: A Multi-Agent Framework for Data-Centric Factors and Model Joint Optimization",
+      "version": {
+        "first_submitted": "2025-05-21",
+        "reviewed": "v2",
+        "revised": "2025-09-25",
+        "url": "https://arxiv.org/abs/2505.15155"
+      },
+      "paper": "https://arxiv.org/html/2505.15155v2",
+      "sections": [
+        "2.1-2.5",
+        "3",
+        "C.4.2",
+        "D.1",
+        "D.5-D.6"
+      ],
+      "mechanism": "因子与模型联合迭代，知识库、Co-STEER编码和bandit分配研究方向；属于带经验的自动研究，论文未证明研究框架递归改写后持续加速。",
+      "experiment": "主CSI300：训练2008—2014、验证2015—2016、测试2017—2020/8。新增CSI500/NASDAQ100：训练至2021、验证2022—2023、测试2024—2025/6。",
+      "audit_inference": "隐藏精确日期能缓解某些历史先验暴露，不能证明消除污染。C.4.2同时描述次日开盘操作与收盘价成交，执行时钟需以实际配置核实；不能直接称真实次开盘收益。",
+      "cost_and_repro": "论文买费5bp、卖费15bp、每笔至少5元；低于10美元指模型token成本，服务器计算另计。量化竞赛是波动预测，非实盘盈利。",
+      "use": "参考实验编排与失败记忆；不必替换本仓库已核验的执行状态机。",
+      "code_verified": "https://github.com/microsoft/RD-Agent",
+      "code_observation": "作者仓库存在fin_quant/fin_factor/fin_model入口；当前仓库还包括2026非量化研究，不应把所有更新等同量化盈利证据。",
+      "current_code_audit": {
+        "version_scope": "浏览器于2026-11-17取得的main分支文本，未固定commit；不能据此断言论文当年全部实验使用完全相同实现。",
+        "inference": "当前默认代码把test/backtest区间的表现返回研究反馈，随后影响候选与SOTA替换。因此采用开源框架时必须另设研究过程不可接触的最终确认集；字段名test不能代表统计独立。",
+        "chain": [
+          {
+            "url": "https://raw.githubusercontent.com/microsoft/RD-Agent/main/rdagent/scenarios/qlib/experiment/factor_template/conf_baseline.yaml",
+            "lines": "47-57,80-98",
+            "finding": "backtest起止读取test_start/test_end；成交价close，top50/drop5；该配置不支持照字面理解论文次开盘撮合。"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/microsoft/RD-Agent/main/rdagent/scenarios/qlib/experiment/factor_template/read_exp_res.py",
+            "lines": "43-51",
+            "finding": "导出recorder所有metrics及回测收益路径。"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/microsoft/RD-Agent/main/rdagent/scenarios/qlib/experiment/workspace.py",
+            "lines": "24-50",
+            "finding": "执行qrun后读取qlib_res.csv作为experiment.result返回。"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/microsoft/RD-Agent/main/rdagent/scenarios/qlib/developer/feedback.py",
+            "lines": "15-19,64-99,133-167",
+            "finding": "筛选IC、扣费年化、最大回撤交给LLM，并由反馈决定是否替换最好结果。"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/microsoft/RD-Agent/main/rdagent/scenarios/qlib/proposal/quant_proposal.py",
+            "lines": "46-74,90-146",
+            "finding": "后续提案读取上轮表现、反馈和SOTA记录；形成回测指标到下一轮研究的回路。"
+          }
+        ],
+        "other_code_issue": {
+          "url": "https://raw.githubusercontent.com/microsoft/RD-Agent/main/rdagent/scenarios/qlib/proposal/bandit.py",
+          "lines": "33-45",
+          "finding": "年化读取键含尾空格，而feedback模块正常键无空格，疑似导致该分量默认0；arr/-mdd实为Calmar式比值却命名sharpe。未运行验证，作为需复核的实现疑点，不推断论文数值必错。"
+        }
+      }
+    },
+    {
+      "id": "aqua",
+      "title": "AQuA: Recursively Self-Improving Quantitative Trading Research Agents",
+      "version": {
+        "first_submitted": "2026-08-13",
+        "reviewed": "v3",
+        "revised": "2026-09-28",
+        "url": "https://arxiv.org/abs/2608.12841"
+      },
+      "paper": "https://arxiv.org/html/2608.12841v3",
+      "sections": [
+        "3.1",
+        "4.4-4.5",
+        "5.2-5.6",
+        "7",
+        "AppendixB"
+      ],
+      "mechanism": "固定沙箱内，以DSL因子或配置差异产生候选，用实验记忆指导下一轮；固定评估器和研究器框架，不等于开放式递归重写。",
+      "experiment": "五分钟加密因子只报告搜索用validation IC；三十分钟美股模型报告2021—2025持出Sharpe2.50、严格滚动约2.0，均为双腿2bp成本模拟。",
+      "audit_inference": "作者明确：无实盘验证；最终测试隔离依赖治理纪律，非硬技术边界；缺少等预算memory-off比较，因此不能把收益进步全部归于记忆。附录记载全天成交量分母前视通过了另一LLM审查。",
+      "cost_and_repro": "因子表达式明确保密，精确卷积配置未说明；完整复现受限。正文及定向检索未核实作者完整代码。",
+      "use": "最有价值的是把允许变动限制为已审计因果算子，并把数据与评估器独立控制。",
+      "code_verified": null,
+      "delta_from_old_report": "旧报告链接v1；本轮核实v3及其明确披露的记忆归因/复现限制。"
+    },
+    {
+      "id": "aide2",
+      "title": "Recursive self-improvement of AI research agents",
+      "version": {
+        "first_submitted": "2026-09-22",
+        "reviewed": "v1",
+        "url": "https://arxiv.org/abs/2609.26457"
+      },
+      "paper": "https://arxiv.org/html/2609.26457v1",
+      "sections": [
+        "2.1",
+        "3.2-3.6",
+        "AppendicesA-C"
+      ],
+      "mechanism": "外层改写内层研究agent的搜索、上下文、选择逻辑；主实验外层改进者与外层选择规则固定。另做把改进后agent放入外层的ignition实验。",
+      "experiment": "作者报告8天接受7次修改，向4个未参与选择的任务集迁移；固定预算评价研究效率，无金融交易任务。",
+      "audit_inference": "更强递归证据主要受ignition样本限制：每组3种子、50步，终点均值0.780与0.782；作者明确不能断言新改进者更有效。隐藏选择集仍用于外层选型，独立迁移集才是对应确认层。",
+      "cost_and_repro": "论文未给我方核实到的完整AIDE2复现仓库；旧AIDE开源不等于本实验全部公开。",
+      "use": "把研究员自身能力单独测：相同预算、相同起点、未参与研究员改造的任务。",
+      "code_verified": null
+    },
+    {
+      "id": "trust",
+      "title": "Trustworthy Recursive Self-Improvement with Statistical Guarantees",
+      "version": {
+        "first_submitted": "2026-11-07",
+        "reviewed": "v1",
+        "url": "https://arxiv.org/abs/2611.10787"
+      },
+      "paper": "https://arxiv.org/html/2611.10787v1",
+      "sections": [
+        "3",
+        "4.2",
+        "Assumption1",
+        "Theorems1-4",
+        "6.1",
+        "7",
+        "AppendixA.1"
+      ],
+      "mechanism": "固定proposer下研究跨轮晋级门：非劣性检验、复用偏差修正、e-value和在线错误预算；不是基础模型自升级。",
+      "experiment": "HotpotQA/DROP/APPS，两个模型、30轮、5种子；作者报告接受劣化更新比例由45.59%降至2.78%。实验q=.30、epsilon=.10、beta=.01。",
+      "audit_inference": "保证是允许epsilon损失后的错误晋级比例控制，不是每代变好。要求有界任务分数、初始信息独立验证池及条件复用偏差被beta覆盖；作者承认尚不能从数据确定准确beta。金融收益的相关性、非平稳性及路径型Sharpe/回撤不自动满足这些条件。",
+      "cost_and_repro": "未核实作者完整实现链接，未在金融策略上验证。",
+      "use": "启发预先固定晋级证据预算；不能把定理直接包装为本策略亏损或过拟合保证。",
+      "code_verified": null,
+      "delta_from_old_report": "旧报告未覆盖的近期直接相关证据；首投11/7，并非11/10后新作。"
+    },
+    {
+      "id": "flex_rsi",
+      "title": "Flex-RSI: Benchmarking Recursive Self-Improvement of Frontier Agents",
+      "version": {
+        "first_submitted": "2026-11-06",
+        "reviewed": "v1",
+        "url": "https://arxiv.org/abs/2611.08946"
+      },
+      "paper": "https://arxiv.org/html/2611.08946v1",
+      "sections": [
+        "3.1-3.3",
+        "5.4/Table8",
+        "AppendixB.4-B.6"
+      ],
+      "mechanism": "执行者改解法，改进者改执行者与自身；评估器、数据分割、预算由外部固定。公式明确下一代改进者接续改写，有实际递归结构。",
+      "experiment": "视觉/机器人等任务；7组同模型、任务、预算、种子配对中6组test提升，一组持平。机器人配对子任务每个split只有5个episode；作者另报同设置重复成绩明显不同。",
+      "audit_inference": "支持有限流程自改进，但少量配对不是稳定跨域或金融盈利证明。允许改进者修改晋级噪声阈值；迁到交易系统时不宜把风险晋级规则也开放。",
+      "cost_and_repro": "外部test末次评价，代码沙箱不读验证/测试；预算包括多资源上限，但评估器额外模型调用不计入预算。作者仓库公开，README许可证尚待补充。",
+      "use": "本项目最应借鉴的是固定流程与自改流程等预算配对，以及独立最终test。",
+      "code_verified": "https://github.com/flex-rsi/rsi-bench",
+      "project": "https://flex-rsi.github.io/",
+      "delta_from_old_report": "旧报告未覆盖；实际首投11/6，不能误写为11/10。",
+      "code_document_audit": {
+        "url": "https://raw.githubusercontent.com/flex-rsi/rsi-bench/main/docs/harness.md",
+        "sections": [
+          "Architecture",
+          "Scopes",
+          "Rounds"
+        ],
+        "finding": "文档进一步区分base/fixed-i/full；只给executor开发集入口，验证分数写入历史，test在运行结束后产生。说明还支持结束后给历代accepted版本评分，必须保持posthoc结果不回流选择。",
+        "limit": "文档也支持未启用文件系统沙箱的运行；事后撤销越界修改不等于运行时隔离。若借鉴，应确认沙箱实际启用。部分底层源码URL浏览未取到，未声称完成安全实现审计。"
+      }
+    },
+    {
+      "id": "ace_rl",
+      "title": "Experience-Handoff Reinforcement Learning for Recursive Self-Improvement",
+      "version": {
+        "first_submitted": "2026-11-12",
+        "reviewed": "v1",
+        "url": "https://arxiv.org/abs/2611.16409"
+      },
+      "paper": "https://arxiv.org/pdf/2611.16409",
+      "sections": [
+        "1-2",
+        "4.2",
+        "AppendicesE/F.1/H"
+      ],
+      "mechanism": "固定ACE框架，训练同一模型的行动、反思和经验编辑行为，用经验对后续尝试的作用分配奖励；文中RSI明确指固定权重下的任务内上下文迭代。",
+      "experiment": "Mastermind/MBPP/AppWorld/MiniSWEBench，0.6B/4B模型；作者报告持出任务改善，但每方法主要只有一次训练。",
+      "audit_inference": "经验局限于同一任务，不研究跨任务转移；预算只按更新FLOPs匹配，反思/编辑额外生成未全覆盖。MBPP可见assert就是计分assert，并有硬编码与早期评测器修复记录，不能当通用程序泛化证明。",
+      "cost_and_repro": "正文详列实现和提示，但未核实完整作者代码链接；无金融实验。",
+      "use": "经验库要用对未来任务的实际帮助评分，而不是因为记录很多就认定研究员在进步。",
+      "code_verified": null,
+      "delta_from_old_report": "明确晚于11/9的新作，适合作经验质量与预算边界补充。"
+    }
+  ],
+  "additional_primary_lead_not_deep_reviewed": {
+    "title": "Hyperagents",
+    "paper": "https://arxiv.org/abs/2603.19461",
+    "first_submitted": "2026-03-19",
+    "reviewed_metadata_version": "v2,2026-11-01",
+    "code": "https://github.com/facebookresearch/Hyperagents",
+    "status": "核实摘要、版本、作者代码和实验日志链接；HTML不可得，未完成全文深读，不算上述深读篇数。",
+    "meaning": "DGM后续把任务agent和meta-agent放进同一可编辑程序，是比固定外层策略搜索更明确的递归设计。不得据摘要推断金融效果。"
+  },
+  "synthesis_inference": [
+    "当前证据支持用LLM提高提出机制、实现实验、记录失败与修复研究流程的效率；尚不支持对V12-R2自动改策略就能提高未来净收益。",
+    "策略学习市场状态、策略程序搜索、研究员流程进化是三个不同实验对象。需要分别定义基线和代价，避免以策略回测提高替代研究员能力证据。",
+    "研究员版本应在等预算配对任务上评价：识别泄漏/会计错误的能力、实验完成率、重复失败率、未见任务产出的合格候选率；真实投资价值另经冻结前向验证。",
+    "已有历史已被查看，发布后最近亏损也已影响研究方向；用这些数据自适应只能称开发，不能通过重新命名OOS恢复独立性。",
+    "采用EVOQUANT式受控变动、AQuA式因果算子边界、Flex式研究员配对、TRUST式错误晋级预算思想；不要直接照搬各自金融指标、预算值或统计保证。"
+  ],
+  "code_sources_inspected": [
+    {
+      "url": "https://github.com/microsoft/RD-Agent",
+      "status": "作者主仓库及README已读，未下载运行。"
+    },
+    {
+      "url": "https://github.com/flex-rsi/rsi-bench",
+      "status": "作者项目链接确认；README/目录可见executor/improver/orchestrator分离，未运行。"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/flex-rsi/rsi-bench/main/README.md",
+      "status": "明确最终test只用一次、外部orchestrator固定，许可证待补。"
+    },
+    {
+      "url": "https://github.com/facebookresearch/Hyperagents",
+      "status": "作者摘要链接确认，含meta_agent/task_agent/generate_loop及日志链接，未运行。"
+    },
+    {
+      "url": "https://github.com/microsoft/qlib/blob/main/qlib/workflow/record_temp.py",
+      "status": "Qlib官方默认成交价close、费率配置可核对；不是RD-Agent论文逐次实验复现证据。"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/RD-Agent/main/rdagent/scenarios/qlib/experiment/factor_template/conf_baseline.yaml",
+      "status": "直接阅读原始实现文本；未执行。"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/RD-Agent/main/rdagent/scenarios/qlib/experiment/factor_template/read_exp_res.py",
+      "status": "直接阅读原始实现文本；未执行。"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/RD-Agent/main/rdagent/scenarios/qlib/experiment/workspace.py",
+      "status": "直接阅读原始实现文本；未执行。"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/RD-Agent/main/rdagent/scenarios/qlib/developer/feedback.py",
+      "status": "直接阅读原始实现文本；未执行。"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/RD-Agent/main/rdagent/scenarios/qlib/proposal/quant_proposal.py",
+      "status": "直接阅读原始实现文本；未执行。"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/RD-Agent/main/rdagent/scenarios/qlib/proposal/bandit.py",
+      "status": "直接阅读bandit指标读取与reward逻辑。"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/flex-rsi/rsi-bench/main/docs/harness.md",
+      "status": "作者详细接口/隔离文档，未完整审计底层sandbox实现。"
+    }
+  ],
+  "search_notes": [
+    "通过arXiv摘要、对应指定版本全文和作者链接逐一核查；不依赖第三方简报判定日期/结论。",
+    "EVOQUANT全文PDF因浏览工具大小限制未打开，全文HTML方法、表格、附录已读。",
+    "未引用论坛或营销摘要作为技术证据。",
+    "AlphaEvolve/DGM旧报告已有深入覆盖，本轮按主代理分工优先补EVOQUANT评估流、AQuA新版本、TRUST/Flex/ACE-RL；没有声称本轮重新完整审计AlphaEvolve/DGM。"
+  ]
+}

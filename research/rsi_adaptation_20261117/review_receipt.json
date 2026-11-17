@@ -1,0 +1,15 @@
+{
+  "as_of": "2026-11-17",
+  "completed_at_utc": "2026-11-17T09:08:05.420315+00:00",
+  "type": "literature_and_public_code_review",
+  "new_backtests": false,
+  "original_source_files_verified": 377,
+  "original_source_files_changed": [],
+  "evidence_boundary": "Author-reported results and observed code were reviewed, not independently replicated. Detailed source limitations are in evidence files.",
+  "artifacts_sha256": {
+    "REPORT.md": "26acd515ab771fcf66b1cc74452a4e8c3043d5dc2e339e45dd7cdaa25d252b60",
+    "llm_evidence.json": "aa21b2be4edd746d6e12612df518c3b371dcacdc79b90ad58908cb16662a5243",
+    "online_evidence.json": "8268675f1cc882d13d6ad88a331f7979de32e4ab4f8664ce58b592ce9fe55079",
+    "validation_practice_evidence.json": "0c8cd57be384a027f253839ae079ad7d631aac00da6c78c1058404cadfdb8e88"
+  }
+}

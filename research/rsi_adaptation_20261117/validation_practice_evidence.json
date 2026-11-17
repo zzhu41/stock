@@ -1,0 +1,173 @@
+{
+  "as_of": "2026-11-17",
+  "scope": "RSI发布后自适应系统的验证、序贯统计和部署实践；只读文献与公开代码，不运行新策略或回测。",
+  "prior_report_read": "research/rsi_20261109/REPORT.md",
+  "evidence": [
+    {
+      "id": "promote_2026",
+      "title": "Can We Stop the Backtest Yet? Anytime-Valid Promotion Tests for Adaptive Financial Research Agents",
+      "urls": ["https://arxiv.org/abs/2611.03384", "https://arxiv.org/html/2611.03384v1"],
+      "sections": ["2", "3.1-3.5", "4.1-4.4", "5.1-5.4", "6.1", "7.1"],
+      "evidence_level": "2026-11-02作者预印本；arXiv comments自报ICAIF 2026 accepted；本次未独立核验会议录。",
+      "mechanism": "新候选出生时分配可预测检验份额pi，终身总和不超过1；只用出生后、有界裁剪的成本后分数更新e-process，越过1/(alpha*pi)才获得历史统计证据。",
+      "verified_results": "固定24假设、3000共享符号零假设路径：反复普通p<.05全族越界94.5%，PROMOTE为0；另3000个自适应出生的精确零均值程序越界1.77%。真实市场回溯路径零晋级。15bp分量扰动实验的检出率70.1%，已检出路径中位越界2327/2868日；15bp对应该实验目标年化毛alpha14.4%，不是组合每天稳赚15bp。",
+      "limits": "零假设要求每期条件均值始终非正；裁剪改变估计对象。先有优势后衰退不在该零假设中。市场实验是事后设计的固定族pseudo-OOS，自适应出生只在合成独立未来增量下验证。多候选可相关，不要求跨候选独立。历史越界不能证明当前或未来盈利。",
+      "operational_takeaway": "证据账与经济账分离；下一可执行区间才算部署收益；重启/续期重新付检验份额，不回收失败者预算。",
+      "code_status": "论文描述实现和artifacts，但本次在正文/作者链接/搜索未定位可公开检查的作者代码仓库；未独立复现。"
+    },
+    {
+      "id": "hard_to_fool_paper",
+      "title": "Hard to Fool: A Bounded LLM Research Loop for Quantitative Finance, and What Two Dozen Campaigns Found",
+      "urls": ["https://arxiv.org/abs/2611.06607", "https://arxiv.org/html/2611.06607v1"],
+      "sections": ["2.1-2.4", "3.1 Table 2", "4", "5"],
+      "evidence_level": "2026-11-04独立研究者预印本；作者自报市场研究结果，非独立审计实盘业绩。",
+      "mechanism": "声明式JSON候选、冻结评估器、发现/验证/一次holdout、并列硬门槛、完整失败账本。",
+      "verified_results": "QQQ期权候选发现/验证/holdout净Sharpe分别2.94/3.34/0.26，交易数221/43/72；holdout虽8/9门槛通过仍被否决。",
+      "limits": "样本与市场有限；部分价格建模、部分成本未实测；完整campaign记录需向作者索取。不能把多数失败视为全部交易机制无效。",
+      "practical_lessons": "先实测成本再花最终验证；同窗口成交量等字段可穿透统计门槛形成前视；合约必须持久化。"
+    },
+    {
+      "id": "hard_to_fool_public_repo",
+      "title": "autonomous-quant-researcher reference implementation",
+      "urls": ["https://github.com/henryzhangpku/autonomous-quant-researcher", "https://raw.githubusercontent.com/henryzhangpku/autonomous-quant-researcher/main/README.md"],
+      "sections": ["README首段", "What it demonstrates", "What is deliberately not here"],
+      "verified": "README明确公开的是参考实现，生产研究引擎私有；不发布实时业绩、客户记录、账户、部署细节或生产策略。浏览器demo是合成行情与脚本提议者。",
+      "classification": "可借用的工程模式和可运行骨架；不是完整可复现的论文所有campaign、不是成熟实盘成功案例。"
+    },
+    {
+      "id": "hard_to_fool_code",
+      "title": "CampaignCoordinator source inspection",
+      "urls": ["https://raw.githubusercontent.com/henryzhangpku/autonomous-quant-researcher/main/research/v3/campaign.py"],
+      "sections": ["_initial_state", "run_validation", "run_holdout", "record_post_holdout"],
+      "verified": "源码逐步冻结至多3名shortlist，再从验证合格者选择finalist。run_holdout在解析敏感stage access前持久写receipt；执行崩溃也记为已消费；事件哈希及候选/合约身份核验。",
+      "inference": "Coordinator以单campaign目录和状态为边界，不能据此推断跨campaign全局holdout不可重复。复制新campaign再用已看数据仍需全局曝光登记。应用级capability接口也不等于同一OS账户中的强权限隔离。",
+      "inspection_scope": "只读源码，未安装或执行。读取的是main当前内容，实施前须锁commit及内容hash。"
+    },
+    {
+      "id": "qlib_online",
+      "title": "Qlib OnlineManager / RollingStrategy",
+      "urls": ["https://qlib.readthedocs.io/en/latest/component/online.html", "https://raw.githubusercontent.com/microsoft/qlib/main/qlib/workflow/online/manager.py", "https://raw.githubusercontent.com/microsoft/qlib/main/qlib/workflow/online/strategy.py"],
+      "sections": ["OnlineManager.simulate", "routine", "delay_prepare", "RollingStrategy"],
+      "verified": "官方框架按时间调用准备任务、训练、选择在线模型、更新预测；simulate逐日期调用routine。示例RollingStrategy使用最新rolling模型，不自带统计显著性晋级。Simulation+DelayTrainer只适用于模型无时间依赖；delay_prepare源码标出未来预测污染风险。",
+      "inference": "适合借其时间调度与任务注册接口；本项目前轮结果会决定后轮候选，必须逐期完成研究、选择与状态更新，不能先看完整历史后补画滚动曲线，也不能盲用延后训练优化。",
+      "limits": "框架支持在线推理与历史模拟，不是交易超额或自主策略升级已验证的证据；券商执行与本地状态机仍需单独处理。"
+    },
+    {
+      "id": "finrl_pipeline",
+      "title": "FinRL/FinRL-Meta official environments and pipeline",
+      "urls": ["https://finrl.readthedocs.io/en/latest/start/three_layer/environments.html", "https://arxiv.org/abs/2111.09395"],
+      "verified": "官方明确区分训练、验证调参、历史测试、paper/live部署；市场环境基于历史行情模拟。",
+      "assessment": "可借DataOps和阶段分离；文档称pipeline解决泄漏，不能据此替代每个特征可得时点、反复测试曝光及成交建模审计。对当前已验证ETF状态机，Qlib调度模式比迁移整套DRL环境更直接。"
+    },
+    {
+      "id": "alpaca_paper_limit",
+      "title": "Alpaca Paper Trading official documentation",
+      "urls": ["https://docs.alpaca.markets/us/docs/paper-trading"],
+      "sections": ["Paper vs Live"],
+      "verified": "paper订单不送真实交易所，而根据实时报价模拟成交；官方列明不能覆盖订单冲击、信息泄漏、延迟滑点和限价队列位置等。",
+      "inference": "paper证明时钟、订单及账务流程能运行，不证明该成本下可成交。ETF项目应另记决策到可执行报价的延迟、买卖价差、部分成交和单位冲击；本例是边界类比，未建议用Alpaca交易A股ETF。"
+    },
+    {
+      "id": "quantopian_888",
+      "title": "All that Glitters Is Not Gold: Comparing Backtest and Out-of-Sample Performance on a Large Cohort of Trading Algorithms",
+      "urls": ["https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2745220", "https://doi.org/10.3905/joi.2016.25.3.069", "https://community.portfolio123.com/uploads/short-url/3WHpAUOzhCG8QAUez71HpoWnA62.pdf"],
+      "sections": ["Introduction", "Methods: Data set"],
+      "verification": "SSRN摘要可检索，直接页面403；阅读全文为第三方托管的作者原论文PDF，首页标SSRN2745220和作者机构。",
+      "verified": "2016研究从7152过滤到888美国股票策略，代码在2015年1-6月形成并有数据库时戳；Zipline按分钟行情模拟2010-2015，代码形成后的至少6个月为真正未参与编写的OOS。该OOS仍是模拟表现，不是888个实盘账户。常见单项回测指标预测OOS弱（R²<.025）；行为/组合特征并非全无预测力。",
+      "limits": "经筛选的异质策略、单一较短市场时期、非因果随机实验；不能推断V12未来收益，也不能把回测次数关联当作多做一次实验必然降低收益的因果律。"
+    },
+    {
+      "id": "confidence_sequences",
+      "title": "Time-uniform, nonparametric, nonasymptotic confidence sequences",
+      "urls": ["https://arxiv.org/abs/1810.08240"],
+      "verified": "Howard、Ramdas、McAuliffe、Sekhon提出时间一致置信序列：在适用模型假设下允许任意停止时点观察。",
+      "limits": "不同构造需要相应有界、条件矩母函数、方差等假设；不是普通t检验加一个e-value名称，也不自动给原始重尾收益或任意非平稳过程的未来均值保证。"
+    },
+    {
+      "id": "sequential_forecasters",
+      "title": "Comparing Sequential Forecasters",
+      "urls": ["https://arxiv.org/html/2110.00115v4", "https://pubsonline.informs.org/doi/10.1287/opre.2021.0792", "https://github.com/yjchoe/ComparingForecasters"],
+      "sections": ["4.1-4.4", "6", "Appendix E-F"],
+      "verified": "Choe/Ramdas的有界score差方法可比较随时间变化的平均预测表现；允许依赖和非平稳，前提是预测在结果前形成、信息集合与边界满足定理。作者comparecast代码公开。",
+      "interpretation": "有希望用于冻结champion/challenger的配对有界效用差，而不是假定收益IID。CS针对已观察区间的平均条件表现；对将来或当下瞬时edge仍无保证。使用真实未裁剪收益另报经济结果，不能把截断score显著直接说成净利润显著。"
+    },
+    {
+      "id": "smcs",
+      "title": "Sequential model confidence sets",
+      "urls": ["https://arxiv.org/html/2404.18678v3", "https://academic.oup.com/jrsssb/article/88/5/1662/8676743", "https://github.com/GGavrilos/SMCS"],
+      "sections": ["2", "3.2-3.4", "Data and replication material"],
+      "verified": "Arnold等将模型置信集扩展到序贯观察；区分始终强优、各前缀平均优与时变平均优；通常需要有界/条件有界或合适sub-Gaussian/sub-exponential损失差。R代码公开。",
+      "limits": "留下尚不能排除的一组模型，不保证选到未来冠军；不是不限次数、随意增加候选或重置检验都自动有效。候选家族变化须与所用定理及分配规则匹配。"
+    },
+    {
+      "id": "adwin",
+      "title": "Learning from Time-Changing Data with Adaptive Windowing; River implementation",
+      "urls": ["https://www.cs.upc.edu/~gavalda/papers/adwin06.pdf", "https://epubs.siam.org/doi/10.1137/1.9781611972771.42", "https://github.com/online-ml/river/blob/main/river/drift/adwin.py"],
+      "sections": ["3.1", "Theorem 3.1", "River ADWIN parameters"],
+      "verified": "原论文设每期独立、已知有界输入；自动比较窗口均值并丢弃旧片段。其false-positive界按每个时点表述，不能将delta直接当整个无限运行期的全族错误概率。River实现ADWIN2，clock与最小窗口等影响延迟/误报。",
+      "inference": "可用于运营漂移报警，但原始收益自相关、波动簇、跨资产关联与多监控器会破坏直接套用的含义。输入分布变化不等于条件预测关系变坏，更不等于换策略会获利。建议报警触发诊断或已预算研究，不触发即时生产调参。"
+    },
+    {
+      "id": "dsr",
+      "title": "The Deflated Sharpe Ratio",
+      "urls": ["https://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf"],
+      "sections": ["The Deflated Sharpe Ratio", "Appendix A.3"],
+      "verified": "利用样本长度、偏度峰度、候选Sharpe方差与有效独立尝试数修正选优偏差。论文自己警告相关性仅线性依赖，短样本下相关矩阵及有效试验数估计可失真。",
+      "limits": "用于历史搜索诊断；不修复前视、不完整实验族、策略更改后的测试泄漏或漂移，也不授权每天重复检验到通过。跨代试验数不是原始格点简单相加。"
+    },
+    {
+      "id": "pbo",
+      "title": "The Probability of Backtest Overfitting",
+      "urls": ["https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf"],
+      "sections": ["Definitions 2.1-2.2", "2.2 CSCV"],
+      "verified": "PBO描述候选族中IS最优者在互补OOS中的排名跌至中位以下的比例/概率对象。",
+      "limits": "不是策略未来亏损概率。CSCV组合分片可将时间上更晚片段用于选择较早片段表现，不等同真实滚动上线；要保持完整候选族与横截面配对，另外模拟整个自适应决策过程。"
+    },
+    {
+      "id": "white_reality_check",
+      "title": "A Reality Check for Data Snooping",
+      "urls": ["https://doi.org/10.1111/1468-0262.00152", "https://users.ssc.wisc.edu/~behansen/718/White2000.pdf"],
+      "sections": ["Introduction", "Section 3 stationary bootstrap", "Appendix Theorem A.2"],
+      "verified": "检验搜索中最佳模型是否优于指定基准，并对完整搜索族校正。原平稳bootstrap依赖相应平稳、mixing、矩条件与区块长度渐近条件；所有候选共用相同重采样日期。",
+      "limits": "不适用于只留下赢家的事后修饰；任意非平稳和未登记的人为探索不自动纳入；终点检验不是无限peek和扩族的序贯许可。"
+    }
+  ],
+  "proposed_protocol": {
+    "status": "以下是针对本项目的设计建议和推论，并非上述论文已验证的完整交易系统。",
+    "unit_of_evaluation": "整个自适应算法A：包含研究记忆、触发器、预算、候选生成、选择、晋级、退役和订单状态迁移；最终选中的单一参数并不是待验证对象的全部。",
+    "two_clocks": "每天运行冻结交易规则与只读监控；预定低频研究评审（可先按月，待事前确定）才允许生成少量挑战者。报警可提前召集诊断，但不重写已有证据或自动重新开始盈利统计。",
+    "roll_forward": [
+      "每个模拟决策时点只挂载当时可得数据、已经发布的公司行为和当时的实验记忆；训练/选型必须在下一可交易时点前完成。",
+      "真实执行当期研究触发、有限提案、评分、选择、拒绝与晋级逻辑；没有合格者就保持champion。研究耗时、切换费和数据延迟计入。",
+      "将选择结果用于下一段新数据，连续继承份额、现金、锁仓、入场年龄、订单及研究器状态，不在每折重新从NAV1/空仓开始。",
+      "候选代码/更新算法可预先固定并在线使用新反馈，但变更更新方法本身需新版本。回溯LLM研究记忆需隔离未来报告；历史已曝光不能恢复为真正未见。",
+      "并列保留固定V12、固定最近挑战者、简单定期重训规则和自适应算法；比较净收益、风险、切换成本及失败/误晋级率。所有变体共享同日市场路径。"
+    ],
+    "challenger_birth": "冻结候选语义、祖先、数据可得时钟、成本、预期收益对象、研究/检验预算和对照；出生前历史只能用于开发，出生后的新观测才累计独立确认。",
+    "parallel_accounts": "champion和每个已登记challenger使用同一时钟报价，但独立份额账和成本；不拿换仓后的新ETF解释当天旧持仓损益，不抹去拒绝者或重置亏损起点。",
+    "monitoring_layers": [
+      "数据/执行：报价陈旧、跨源偏差、分红核验、决策延迟、价差、成交偏离、拒单与部分成交。",
+      "策略机制：风险暴露、后备现金占比、抄底事件簇、排名差、真实费用与同口径基准差；分布漂移先解释，不直接当edge失效。",
+      "经济与统计：配对净效用差及不确定性、尾部损失、回撤和盈亏集中度；序贯检验与生产风险上限分别管理。"
+    ],
+    "statistical_design": [
+      "先固定一至数个比较和经济最低改善delta，明确比较的是原始净收益、裁剪效用还是预测分数；如使用裁剪，原始P&L必须单独报告。",
+      "选预定终点+跨轮alpha支出，或使用与有界差/条件矩假设相符的CS/e-process；不能用普通滚动t检验每天看至显著。",
+      "例如对按时间出生的比较j，事前采用alpha_j=alpha/[j(j+1)]，总和不超alpha；候选停止、失败或续期不返还支出。此为保守可审计设计示例，不是已校准最优方案。",
+      "若声明使用PROMOTE式检验，要承认其强条件零假设与缓慢功效；若目标是时变平均差，应采用匹配该对象的CS，而不能偷换为最新市场瞬时alpha。",
+      "遇到多期重叠标签，不把重叠结果当独立样本；选与完整信息集合相符的延迟/子序列构造。简单按周聚合可减依赖，但不证明独立性。",
+      "数据或评估器纠错应版本化、隔离受影响证据；不要拿修正后的更好历史追溯补发晋级。可随时作风险止损，但风险退出不等于统计否证或预算重置。"
+    ],
+    "promotion": "工程和因果检查通过；成本后经济改善及风险门槛满足；证据在事前统计规则下足够；授权从下一可执行区间开始并单记部署期。统计通过仅一项，不能替代现时流动性/费用与业务资格。",
+    "sample_size_warning": "30日前向且仅5次换仓不足以决定稳定alpha。不能指定观察3个月就保证有结论；报告有效事件数、置信宽度和预先定义的最小可检出改善。允许长期结果为证据不足。",
+    "implementation_priority": "先补全不可变前向报价/事件账及候选出生登记，再做一条冻结挑战者的整流程paper比较；统计模块可先离线验证性质，待设计明确再接入授权。避免为了自适应而替换已验证的执行账本。"
+  },
+  "do_not_claim": [
+    "PROMOTE零次越界意味着市场策略零假设已被证实，或真实盈利候选一定会及时晋级。",
+    "Hard to Fool所有市场campaign已公开代码数据、并已证明实盘部署收益。",
+    "888个Quantopian策略是888个实盘账户或能代表A股ETF当前收益。",
+    "ADWIN默认delta给无限期金融收益监控提供同样的全族误报保证。",
+    "Qlib或FinRL使用了rolling/online接口就已解决研究器跨期前视、重复测试或实际成交成本。",
+    "显著性、PBO低值或高DSR保证下一阶段收益。"
+  ]
+}

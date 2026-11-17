@@ -1,0 +1,201 @@
+{
+  "status": "independent_pre_result_review_proposal_not_final_registration",
+  "review_date": "2026-11-17",
+  "scope": "Only this new directory may be written. Existing code, frozen evidence, data and live accounts remain read-only.",
+  "evidence_boundary": {
+    "history_through_2026_09_24": "Repeatedly searched development history; not clean OOS.",
+    "post_release_through_2026_11_16": "Observed before mechanism design, therefore contaminated development diagnostic for this iteration; remains valid forward evidence of the original frozen R2 only.",
+    "current_day_2026_11_17": "If data or returns viewed before final registration, label seen; otherwise use explicitly frozen cutoff. A timestamp alone cannot unsee data.",
+    "future": "Only subsequent dates after final code/data/specification freeze add unseen evidence for this candidate family.",
+    "multiple_testing": "Disclose prior 9558 V10 single-asset searches, V11, V12 1807, R2 864-grid, pool experiments, and all present proposals. Small present-family bootstrap p-values do not correct the entire adaptive history."
+  },
+  "prior_evidence": [
+    {
+      "mechanism": "fallback_absolute_momentum",
+      "source": "v10_deep/registry.py:72",
+      "result_source": "v10_deep/results/mechanisms/evaluation.json",
+      "anchor": "old WLS25 V9.2, not present R2",
+      "cases": [
+        {
+          "mode": "rank",
+          "floor": -9.9,
+          "cagr": 0.4631748938609171,
+          "max_dd_abs": 0.24164829045993053
+        },
+        {
+          "mode": "rank",
+          "floor": 0.0,
+          "cagr_display_pct": 42.583,
+          "max_dd_abs_display_pct": 20.623
+        },
+        {
+          "mode": "rank",
+          "floor": 0.02,
+          "cagr_display_pct": 41.805,
+          "max_dd_abs_display_pct": 20.623
+        },
+        {
+          "mode": "cash",
+          "cagr_display_pct": 35.915,
+          "max_dd_abs_display_pct": 20.623
+        }
+      ],
+      "interpretation": "Strong prior evidence of growth/risk tradeoff. Not a refutation under the R2 anchor and not a novel mechanism. Each retained 26 crash events."
+    },
+    {
+      "mechanism": "ban_all_negative_momentum",
+      "source": "v12_pool_test/DYNAMIC_POOL_V2.md:32",
+      "cagr_display_pct": 41.72,
+      "max_dd_abs_display_pct": 24.56,
+      "baseline_cagr_display_pct": 55.27,
+      "baseline_max_dd_abs_display_pct": 20.56,
+      "interpretation": "Jointly removed crash eligibility (27 to 2 events) and negative-momentum fallback. Does not isolate fallback-only cash floor. Do not reuse its universal claims that every possible universe rule is refuted."
+    },
+    {
+      "mechanism": "risk_sizing",
+      "source": "v12/REPORT.md:47",
+      "interpretation": "Prior allocation families already reduced risk; lowest-DD archived model had CAGR36.52%, DD13.10%, 2026 return21.05%. Crash-only sizing differs from sizing all normal risk exposure; include simple 50/75% exposure controls to identify mechanical de-risking."
+    },
+    {
+      "mechanism": "dividend_bear_defense",
+      "source": "v10_deep/DATA_REVIEW.md:44",
+      "interpretation": "No exact prior 512890 bear-exemption test located in inspected registrations/reports. Existing dividend universe expansion and leave-one-out are different hypotheses. 512890 first date 2019-01-18, 270-bar maturity 2020-03-03; do not invent pre-2020 eligibility."
+    }
+  ],
+  "fixed_candidate_set_proposal": [
+    {
+      "id": "base_r2",
+      "role": "nonselectable_control"
+    },
+    {
+      "id": "fixed50",
+      "role": "nonselectable_deleveraging_control",
+      "risk_fraction_all_entries": 0.5
+    },
+    {
+      "id": "fixed75",
+      "role": "nonselectable_deleveraging_control",
+      "risk_fraction_all_entries": 0.75
+    },
+    {
+      "id": "crash50",
+      "crash_entry_fraction": 0.5
+    },
+    {
+      "id": "crash75",
+      "crash_entry_fraction": 0.75
+    },
+    {
+      "id": "cash0",
+      "fallback_exit_floor": 0.0,
+      "fallback_reentry_floor": 0.0,
+      "role": "mechanism_ablation"
+    },
+    {
+      "id": "cash_hyst2",
+      "fallback_exit_floor": 0.0,
+      "fallback_reentry_floor": 0.02
+    },
+    {
+      "id": "dividend_defense",
+      "dividend_bear_exception": "512890"
+    },
+    {
+      "id": "crash50_cash_hyst2",
+      "crash_entry_fraction": 0.5,
+      "fallback_exit_floor": 0.0,
+      "fallback_reentry_floor": 0.02
+    },
+    {
+      "id": "crash75_cash_hyst2",
+      "crash_entry_fraction": 0.75,
+      "fallback_exit_floor": 0.0,
+      "fallback_reentry_floor": 0.02
+    },
+    {
+      "id": "cash_hyst2_dividend",
+      "fallback_exit_floor": 0.0,
+      "fallback_reentry_floor": 0.02,
+      "dividend_bear_exception": "512890"
+    },
+    {
+      "id": "crash50_cash_hyst2_dividend",
+      "crash_entry_fraction": 0.5,
+      "fallback_exit_floor": 0.0,
+      "fallback_reentry_floor": 0.02,
+      "dividend_bear_exception": "512890"
+    },
+    {
+      "id": "crash75_cash_hyst2_dividend",
+      "crash_entry_fraction": 0.75,
+      "fallback_exit_floor": 0.0,
+      "fallback_reentry_floor": 0.02,
+      "dividend_bear_exception": "512890"
+    }
+  ],
+  "candidate_scope_notes": [
+    "13 total records, 3 nonselectable controls, 10 proposed selectable records including single-mechanism ablations. Freeze all before first new return calculation; do not add combinations after seeing results.",
+    "If runtime budget requires smaller set, eliminate declared interactions before running, not after seeing which single mechanisms win.",
+    "WLS25/smooth4, MA180, panic1.4/prior-max20-60, crash channels/thresholds, 5-session lock and original buffers remain fixed."
+  ],
+  "semantics_that_must_be_frozen": {
+    "crash_fraction": "Recommended simple definition: allocate 50% or 75% on actual crash entry, residual in 511880; hold both actual units with drift throughout that crash-origin position, until next successful target change. No automatic full-risk top-up on lock expiry. This distinguishes persistent crash-entry sizing from a separate lock-only sizing model. Choose ONE before running.",
+    "alternative_crash_fraction": "If intended design instead restores 100% at first unlocked ordinary decision, state it explicitly, charge the resize, save the event, and do not add the persistent variant after results. Identical target with changed allocation is a real rebalance.",
+    "cash_floor_scope": "Apply exclusively inside ordinary fallback selection; do not filter ranked crash candidates or globally ban assets with negative momentum. A fallback risk holding with mom20<=0 requests cash; entry from actual cash through fallback requires mom20>0.02. Regular qualified entrants keep original gates. Specify whether to select first among eligible fallback assets or test only the top-ranked asset; recommended filter then rank, frozen as new behavior.",
+    "cash_hysteresis": "Use actual account state, not yesterday desired target. Missing quote or blocked trade does not change hysteresis state. Floor exit is not blocked by healthy min_hold or momentum switch buffer; existing crash lock priority remains unless explicitly a separate mechanism.",
+    "dividend": "Add 512890 to bear defensive competition without changing its stock ranking, 270-bar maturity or ordinary domestic 2% target buffer. Explicitly exempt it from the bear excluded_stock forced-exit condition; preserve failed_trend/overheat/panic exits. Do not merely put it in globals, which would accidentally change buffers/classification. It remains equity risk, not cash.",
+    "signal_control": "Use actual held risk asset plus actual allocation ledger. If a separate all-in shadow controller is chosen, disclose it as a new two-layer policy and validate missed/partial fills do not silently count as actual entries.",
+    "delay": "For lag1 use signal information through t-1, execution at t close, actual entry age and lock index from t; never shift an already delayed tape again. Trigger-day returns belong to the asset held before execution."
+  },
+  "qualification_proposal": {
+    "main_history": "2014-01-02 through frozen 2026-09-24 only; latest post-release interval reported separately and never used as a winner tie-break.",
+    "primary_clock": "same close, single-side 1bp, 244-session annualization, only first evaluation session free",
+    "strong_upgrade": {
+      "full_cagr_min": "same-run base_r2 CAGR",
+      "max_dd_abs_max": "same-run base_r2 absDD minus 0.01",
+      "label": "historical growth/risk upgrade only, not proven future stronger"
+    },
+    "risk_efficiency_candidate": {
+      "full_cagr_min": "0.95 * same-run base_r2 CAGR",
+      "max_dd_abs_max": "0.90 * same-run base_r2 absDD",
+      "calmar_min": "1.05 * same-run base_r2 Calmar",
+      "label": "risk tradeoff, explicitly disclose CAGR concession; must not silently replace strong_upgrade"
+    },
+    "both_tiers_common": {
+      "close11_and_lag1_11": "Each full CAGR >=95% of same-scenario base; each absDD <= same-scenario base. Also report lag1_1 and fee21 stress; do not choose the most favorable clock.",
+      "era_blocks": [
+        "2014-2017",
+        "2018-2021",
+        "2022-2025"
+      ],
+      "era_growth": "In close1, close11 and lag1_11, each era CAGR >= same-era base CAGR minus 0.05; at least two of three eras have equal-or-better Calmar in close11, to reject all improvement coming from one era.",
+      "era_risk": "Each era absDD <= same-era base absDD +0.02 for close1, close11, lag1_11.",
+      "pre2026": "Report full 2014-2025 separately; risk-efficiency CAGR retention and DD-improvement condition should also hold there to reject 2026-only rescue.",
+      "2026": "Report cumulative through09-24 and 09-29 through current separately; no short-window annualization and no recent-winner selection.",
+      "empty_set": "Report no qualified upgrade; never relax gates after seeing results or promote the best recent performer."
+    },
+    "deterministic_ranking": "Among eligible candidates within each tier maximize minimum relative Calmar gain across close11/lag1_11 x three eras; then median era relative CAGR, fewer new mechanisms, lower realized turnover, lexicographic semantic ID. Do not use recent 09/29 onward performance as tie-break.",
+    "notes": "These numerical tolerances are pre-result research preferences, not statistical significance. Parent must accept/freeze one final specification before performance runs."
+  },
+  "accounting_validation": [
+    "The 100%-exposure control must reproduce original R2 daily target, panic/crash flags, fees, returns, locks and summary under all four main clock/fee scenarios, within stated floating-point tolerance. A same-engine baseline is mandatory if fee accounting differs.",
+    "Residual is tradable 511880 with its actual total-return path, not idle zero-interest cash. Store per-asset units; if 511880 quote is unavailable, never fabricate a purchase or its interest.",
+    "Revalue existing units before target calculation, let fractional weights drift between events, and charge each real buy/sell/rebalance. Do not simulate crash sizing by multiplying already-net base returns by a constant or freely reset 50/50 every day.",
+    "Specify fee model: exact self-financing buy/sell settlement or existing fee*L1 approximation. If using approximation, disclose it and run base in same model; all costs are portfolio-based realized traded notional, no double-count of full switches.",
+    "Corporate actions: raw price and split/cash entitlement require prior-holder units; do not apply raw cash dividend on top of a TR price return. TR-index-unit studies are theoretical reinvestment models, not broker share accounting.",
+    "If cash precision uncertainty scenarios are available, rebuild both signals and account returns for lower/upper dividend amounts; do not label them mathematical return bounds. Real payout delay and purchase costs remain unmodelled unless explicitly simulated.",
+    "Missing any held/requested positive security quote blocks the entire rebalance; retain units and lock/state, next date redecides. No sale-less purchase or temporary leverage.",
+    "Validate crash entry, lock expiry, target unchanged but allocation changes, delayed entry, missing risk/cash quote, split/dividend during partial exposure, first-day-free vs later-first-fill fees, and prior signal drop ownership.",
+    "All balances nonnegative, total marked NAV equals units*prices+idle cash, weights sum to one, no leverage, fee-inclusive conservation at each transaction.",
+    "Calendar and maturity remain actual-observation based; 512890 not tradable before listed and mature. Frozen open fields are close placeholders and cannot support next-open or intraday-stop claims."
+  ],
+  "robustness_and_reporting": [
+    "Save all candidates and zero-effect/failed candidates, full daily matrix and final registration/source/input hashes before selection.",
+    "Compare crash-specific sizing with all-risk fixed50/fixed75 controls using CAGR, absDD, Calmar, risk exposure and cash share. A reduced-DD result alone proves no superior timing.",
+    "Report all crash events and clusters, including wins lost by sizing down. Original H/A/B/C had 27 events across 19 overlapping clusters; new clusters should be counted from own path, not called independent trades.",
+    "Run future-unseen period only after final freeze; all current comparisons are research evidence, not clean OOS for the new family.",
+    "If using bootstrap, use synchronized paired log-return time blocks (20 and60 sessions) across full family and family maximum statistic; never single-winner bootstrap as selection-adjusted proof.",
+    "Best-day/event exclusions are attribution only, not executable strategies. Do not reselect from sensitivity neighbors.",
+    "A passed historical gate justifies an isolated paper/forward candidate, not automatic replacement of live strategy. Preserve user instruction not to modify existing code."
+  ]
+}

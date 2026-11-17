@@ -1,0 +1,12 @@
+{
+  "started_at": "2026-11-17T08:33:54.785623+00:00",
+  "input_sha256": {
+    "protocol.json": "e21321bd61a37a981680bd67bff10593f2759393a46638af2af25a425e1a0a4c",
+    "dataset.npz": "ad114564255ca23b775b0982d53861478e0339c1757286ca8ec3b6d41da7410f",
+    "dataset_metadata.json": "0d5b2a7718b99e04a752108d3a856aabc9f37857fc6b13f2ef156b71eef77756",
+    "study.py": "73f56694ac09c117dcde525fb0cd40fefef0857edfa38738a8ffd02ac1af372c",
+    "engine.py": "f88ad88fe9d42984cfec26f8211290467c94a85c9c88606d16508e31398dcb41",
+    "data_bundle.py": "f88d74505127fbd3b3f5b1154eaf4e107be94be16e482d056a2c5b39800d750c"
+  },
+  "completed_through": "2026-11-16"
+}

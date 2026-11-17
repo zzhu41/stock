@@ -1,0 +1,175 @@
+{
+  "registered_at": "2026-11-17T08:31:42.270685+00:00",
+  "definition": {
+    "candidate_specs": [
+      {
+        "name": "baseline",
+        "spec": {},
+        "selectable": false
+      },
+      {
+        "name": "no_crash_control",
+        "spec": {
+          "config_changes": {
+            "crash_mask": 0
+          }
+        },
+        "selectable": false
+      },
+      {
+        "name": "crash_half",
+        "spec": {
+          "crash_weight": 0.5
+        },
+        "selectable": true
+      },
+      {
+        "name": "crash_75",
+        "spec": {
+          "crash_weight": 0.75
+        },
+        "selectable": true
+      },
+      {
+        "name": "cash_buffer",
+        "spec": {
+          "fallback_hysteresis": 0.02
+        },
+        "selectable": true
+      },
+      {
+        "name": "defensive_lowvol",
+        "spec": {
+          "defensive_lowvol": true
+        },
+        "selectable": true
+      },
+      {
+        "name": "half_cash",
+        "spec": {
+          "crash_weight": 0.5,
+          "fallback_hysteresis": 0.02
+        },
+        "selectable": true
+      },
+      {
+        "name": "half_defensive",
+        "spec": {
+          "crash_weight": 0.5,
+          "defensive_lowvol": true
+        },
+        "selectable": true
+      },
+      {
+        "name": "cash_defensive",
+        "spec": {
+          "fallback_hysteresis": 0.02,
+          "defensive_lowvol": true
+        },
+        "selectable": true
+      },
+      {
+        "name": "half_cash_defensive",
+        "spec": {
+          "crash_weight": 0.5,
+          "fallback_hysteresis": 0.02,
+          "defensive_lowvol": true
+        },
+        "selectable": true
+      },
+      {
+        "name": "three_quarter_defensive",
+        "spec": {
+          "crash_weight": 0.75,
+          "defensive_lowvol": true
+        },
+        "selectable": true
+      },
+      {
+        "name": "three_quarter_cash_defensive",
+        "spec": {
+          "crash_weight": 0.75,
+          "fallback_hysteresis": 0.02,
+          "defensive_lowvol": true
+        },
+        "selectable": true
+      }
+    ],
+    "development": [
+      "2014-01-02",
+      "2023-12-31"
+    ],
+    "historical_validation": [
+      "2024-01-01",
+      "2025-12-31"
+    ],
+    "report_only_2026": [
+      "2026-01-01",
+      "latest_completed"
+    ],
+    "postrelease_cold_start": "2026-09-29",
+    "scenarios": [
+      [
+        "close_1bp",
+        0,
+        0.0001
+      ],
+      [
+        "close_11bp",
+        0,
+        0.0011
+      ],
+      [
+        "lag1_1bp",
+        1,
+        0.0001
+      ],
+      [
+        "lag1_11bp",
+        1,
+        0.0011
+      ]
+    ],
+    "blocks": [
+      [
+        "2014_2017",
+        "2014-01-02",
+        "2017-12-31"
+      ],
+      [
+        "2018_2020",
+        "2018-01-01",
+        "2020-12-31"
+      ],
+      [
+        "2021_2023",
+        "2021-01-01",
+        "2023-12-31"
+      ]
+    ],
+    "qualification": {
+      "broad_upgrade": "Development close CAGR >= baseline, drawdown at least 1pp smaller; all common stress/block gates pass.",
+      "risk_efficiency": "Development close CAGR >= 95% baseline and drawdown <= 90% baseline; all common stress/block gates pass.",
+      "common": "Each close11bp and lag1_11bp CAGR >= 95% baseline and drawdown <= baseline; each of three development block CAGRs >= baseline minus 5pp in both stresses.",
+      "validation": "2024-25 close and both stress CAGRs >= baseline minus 3pp, drawdown <= baseline plus 2pp. Validation can veto frozen nomination, never replace it.",
+      "nomination": "Prefer broad_upgrade, then risk_efficiency. Rank passing candidates by worst stress-block CAGR excess, then close CAGR, then fewer switches. No passing candidate means no qualified upgrade.",
+      "diagnostic": "If no qualification, separately show highest relative close Calmar among selectable candidates; never call it qualified."
+    },
+    "semantics": {
+      "crash_weight": "Fixed risk/cash units from crash entry until next target change; no daily rebalance.",
+      "cash_buffer": "Fallback only: existing risk asset eligible at MOM20 >= 0; new one requires MOM20 > 2%; else cash. Regular entrants/crash rules retained.",
+      "defensive": "512890 may participate in bearish normal competition and fallback; retain original stock classification for crash logic.",
+      "costs": "Legacy-compatible turnover at pre-fee NAV, not exact post-fee self-financing transaction costs."
+    },
+    "constraints": [
+      "No original source/config/account changes.",
+      "No parameter search beyond these twelve predefined specifications.",
+      "All historical periods have previously been seen/researched; no clean out-of-sample claim.",
+      "Postrelease behavior informed hypotheses; its replay is diagnostic, not independent validation.",
+      "Latest completed closes only; no synthetic 14:50 fills or opening-price claim.",
+      "No new universe members, leverage, or short positions."
+    ],
+    "clean_oos": false,
+    "deployed": false
+  }
+}

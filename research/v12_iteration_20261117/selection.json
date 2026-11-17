@@ -1,0 +1,374 @@
+{
+  "nominee": null,
+  "qualified": {
+    "broad_upgrade": [],
+    "risk_efficiency": []
+  },
+  "checks": {
+    "crash_half": {
+      "broad_upgrade": {
+        "close_11bp_cagr": false,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": true,
+        "close_11bp_2021_2023": true,
+        "lag1_11bp_cagr": true,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": true,
+        "lag1_11bp_2021_2023": true,
+        "nominal_cagr": false,
+        "nominal_dd": false
+      },
+      "risk_efficiency": {
+        "close_11bp_cagr": false,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": true,
+        "close_11bp_2021_2023": true,
+        "lag1_11bp_cagr": true,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": true,
+        "lag1_11bp_2021_2023": true,
+        "nominal_cagr": false,
+        "nominal_dd": false
+      }
+    },
+    "crash_75": {
+      "broad_upgrade": {
+        "close_11bp_cagr": true,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": true,
+        "close_11bp_2021_2023": true,
+        "lag1_11bp_cagr": true,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": true,
+        "lag1_11bp_2021_2023": true,
+        "nominal_cagr": false,
+        "nominal_dd": false
+      },
+      "risk_efficiency": {
+        "close_11bp_cagr": true,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": true,
+        "close_11bp_2021_2023": true,
+        "lag1_11bp_cagr": true,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": true,
+        "lag1_11bp_2021_2023": true,
+        "nominal_cagr": true,
+        "nominal_dd": false
+      }
+    },
+    "cash_buffer": {
+      "broad_upgrade": {
+        "close_11bp_cagr": false,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": false,
+        "close_11bp_2021_2023": false,
+        "lag1_11bp_cagr": false,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": false,
+        "lag1_11bp_2021_2023": false,
+        "nominal_cagr": false,
+        "nominal_dd": true
+      },
+      "risk_efficiency": {
+        "close_11bp_cagr": false,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": false,
+        "close_11bp_2021_2023": false,
+        "lag1_11bp_cagr": false,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": false,
+        "lag1_11bp_2021_2023": false,
+        "nominal_cagr": false,
+        "nominal_dd": true
+      }
+    },
+    "defensive_lowvol": {
+      "broad_upgrade": {
+        "close_11bp_cagr": true,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": true,
+        "close_11bp_2021_2023": true,
+        "lag1_11bp_cagr": true,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": true,
+        "lag1_11bp_2021_2023": true,
+        "nominal_cagr": false,
+        "nominal_dd": false
+      },
+      "risk_efficiency": {
+        "close_11bp_cagr": true,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": true,
+        "close_11bp_2021_2023": true,
+        "lag1_11bp_cagr": true,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": true,
+        "lag1_11bp_2021_2023": true,
+        "nominal_cagr": true,
+        "nominal_dd": false
+      }
+    },
+    "half_cash": {
+      "broad_upgrade": {
+        "close_11bp_cagr": false,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": false,
+        "close_11bp_2021_2023": false,
+        "lag1_11bp_cagr": false,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": false,
+        "lag1_11bp_2021_2023": false,
+        "nominal_cagr": false,
+        "nominal_dd": true
+      },
+      "risk_efficiency": {
+        "close_11bp_cagr": false,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": false,
+        "close_11bp_2021_2023": false,
+        "lag1_11bp_cagr": false,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": false,
+        "lag1_11bp_2021_2023": false,
+        "nominal_cagr": false,
+        "nominal_dd": true
+      }
+    },
+    "half_defensive": {
+      "broad_upgrade": {
+        "close_11bp_cagr": false,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": true,
+        "close_11bp_2021_2023": true,
+        "lag1_11bp_cagr": true,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": true,
+        "lag1_11bp_2021_2023": true,
+        "nominal_cagr": false,
+        "nominal_dd": false
+      },
+      "risk_efficiency": {
+        "close_11bp_cagr": false,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": true,
+        "close_11bp_2021_2023": true,
+        "lag1_11bp_cagr": true,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": true,
+        "lag1_11bp_2021_2023": true,
+        "nominal_cagr": false,
+        "nominal_dd": false
+      }
+    },
+    "cash_defensive": {
+      "broad_upgrade": {
+        "close_11bp_cagr": false,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": false,
+        "close_11bp_2021_2023": true,
+        "lag1_11bp_cagr": false,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": false,
+        "lag1_11bp_2021_2023": true,
+        "nominal_cagr": false,
+        "nominal_dd": true
+      },
+      "risk_efficiency": {
+        "close_11bp_cagr": false,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": false,
+        "close_11bp_2021_2023": true,
+        "lag1_11bp_cagr": false,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": false,
+        "lag1_11bp_2021_2023": true,
+        "nominal_cagr": false,
+        "nominal_dd": true
+      }
+    },
+    "half_cash_defensive": {
+      "broad_upgrade": {
+        "close_11bp_cagr": false,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": false,
+        "close_11bp_2021_2023": false,
+        "lag1_11bp_cagr": false,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": false,
+        "lag1_11bp_2021_2023": false,
+        "nominal_cagr": false,
+        "nominal_dd": true
+      },
+      "risk_efficiency": {
+        "close_11bp_cagr": false,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": false,
+        "close_11bp_2021_2023": false,
+        "lag1_11bp_cagr": false,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": false,
+        "lag1_11bp_2021_2023": false,
+        "nominal_cagr": false,
+        "nominal_dd": true
+      }
+    },
+    "three_quarter_defensive": {
+      "broad_upgrade": {
+        "close_11bp_cagr": true,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": true,
+        "close_11bp_2021_2023": true,
+        "lag1_11bp_cagr": true,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": true,
+        "lag1_11bp_2021_2023": true,
+        "nominal_cagr": false,
+        "nominal_dd": false
+      },
+      "risk_efficiency": {
+        "close_11bp_cagr": true,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": true,
+        "close_11bp_2021_2023": true,
+        "lag1_11bp_cagr": true,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": true,
+        "lag1_11bp_2021_2023": true,
+        "nominal_cagr": true,
+        "nominal_dd": false
+      }
+    },
+    "three_quarter_cash_defensive": {
+      "broad_upgrade": {
+        "close_11bp_cagr": false,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": false,
+        "close_11bp_2021_2023": false,
+        "lag1_11bp_cagr": false,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": false,
+        "lag1_11bp_2021_2023": true,
+        "nominal_cagr": false,
+        "nominal_dd": true
+      },
+      "risk_efficiency": {
+        "close_11bp_cagr": false,
+        "close_11bp_dd": true,
+        "close_11bp_2014_2017": true,
+        "close_11bp_2018_2020": false,
+        "close_11bp_2021_2023": false,
+        "lag1_11bp_cagr": false,
+        "lag1_11bp_dd": true,
+        "lag1_11bp_2014_2017": true,
+        "lag1_11bp_2018_2020": false,
+        "lag1_11bp_2021_2023": true,
+        "nominal_cagr": false,
+        "nominal_dd": true
+      }
+    }
+  },
+  "ranks": {
+    "crash_half": {
+      "worst_stress_block_gap": -0.03573626443489311,
+      "cagr": 0.42070495197455426,
+      "calmar": 2.0863685016640368,
+      "switches": 223
+    },
+    "crash_75": {
+      "worst_stress_block_gap": -0.017806037663858132,
+      "cagr": 0.4374944707105102,
+      "calmar": 2.156844239239701,
+      "switches": 223
+    },
+    "cash_buffer": {
+      "worst_stress_block_gap": -0.14050837364340452,
+      "cagr": 0.38848350910369905,
+      "calmar": 2.41253321279762,
+      "switches": 251
+    },
+    "defensive_lowvol": {
+      "worst_stress_block_gap": -0.012049223213010163,
+      "cagr": 0.4537342066394945,
+      "calmar": 2.2501678490283608,
+      "switches": 226
+    },
+    "half_cash": {
+      "worst_stress_block_gap": -0.1647034613203095,
+      "cagr": 0.3569114339426681,
+      "calmar": 2.0703215510264745,
+      "switches": 251
+    },
+    "half_defensive": {
+      "worst_stress_block_gap": -0.04122669288574421,
+      "cagr": 0.4205381067299621,
+      "calmar": 2.085541079354564,
+      "switches": 226
+    },
+    "cash_defensive": {
+      "worst_stress_block_gap": -0.14050837364340452,
+      "cagr": 0.39950182105666737,
+      "calmar": 2.4505292723548626,
+      "switches": 255
+    },
+    "half_cash_defensive": {
+      "worst_stress_block_gap": -0.1647034613203095,
+      "cagr": 0.36767920566894646,
+      "calmar": 2.102336703628437,
+      "switches": 255
+    },
+    "three_quarter_defensive": {
+      "worst_stress_block_gap": -0.026586106909061824,
+      "cagr": 0.43732565373255006,
+      "calmar": 2.168794221781379,
+      "switches": 226
+    },
+    "three_quarter_cash_defensive": {
+      "worst_stress_block_gap": -0.15255091789509045,
+      "cagr": 0.3837732731608504,
+      "calmar": 2.2843929151372055,
+      "switches": 255
+    }
+  },
+  "diagnostic_only": "cash_defensive",
+  "clean_oos": false,
+  "frozen_at": "2026-11-17T08:34:07.427918+00:00"
+}

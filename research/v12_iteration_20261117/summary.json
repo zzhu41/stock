@@ -1,0 +1,328 @@
+{
+  "status": "no_qualified_upgrade",
+  "nominee": null,
+  "validated_nominee": null,
+  "independent_validation": {
+    "engine_sha256": "f88ad88fe9d42984cfec26f8211290467c94a85c9c88606d16508e31398dcb41",
+    "dataset_sha256": "ad114564255ca23b775b0982d53861478e0339c1757286ca8ec3b6d41da7410f",
+    "dataset_end": "2026-11-16",
+    "baseline_scenarios": {
+      "close_1bp": {
+        "passed": true,
+        "identical_holdings": true,
+        "identical_decision_trace": true,
+        "return_max_abs_error": 4.440892098500626e-16,
+        "final_nav_abs_error": 1.9326762412674725e-12
+      },
+      "close_11bp": {
+        "passed": true,
+        "identical_holdings": true,
+        "identical_decision_trace": true,
+        "return_max_abs_error": 3.3306690738754696e-16,
+        "final_nav_abs_error": 9.379164112033322e-13
+      },
+      "lag1_1bp": {
+        "passed": true,
+        "identical_holdings": true,
+        "identical_decision_trace": true,
+        "return_max_abs_error": 4.440892098500626e-16,
+        "final_nav_abs_error": 4.405364961712621e-13
+      },
+      "lag1_11bp": {
+        "passed": true,
+        "identical_holdings": true,
+        "identical_decision_trace": true,
+        "return_max_abs_error": 4.440892098500626e-16,
+        "final_nav_abs_error": 4.476419235288631e-13
+      }
+    },
+    "prefix_checks": [
+      {
+        "spec": "baseline",
+        "lag": 0,
+        "truncated_after": "2020-12-31",
+        "observations": 1707,
+        "bit_exact": true
+      },
+      {
+        "spec": "baseline",
+        "lag": 0,
+        "truncated_after": "2023-12-29",
+        "observations": 2434,
+        "bit_exact": true
+      },
+      {
+        "spec": "baseline",
+        "lag": 0,
+        "truncated_after": "2026-09-24",
+        "observations": 3097,
+        "bit_exact": true
+      },
+      {
+        "spec": "baseline",
+        "lag": 1,
+        "truncated_after": "2020-12-31",
+        "observations": 1707,
+        "bit_exact": true
+      },
+      {
+        "spec": "baseline",
+        "lag": 1,
+        "truncated_after": "2023-12-29",
+        "observations": 2434,
+        "bit_exact": true
+      },
+      {
+        "spec": "baseline",
+        "lag": 1,
+        "truncated_after": "2026-09-24",
+        "observations": 3097,
+        "bit_exact": true
+      },
+      {
+        "spec": "half",
+        "lag": 0,
+        "truncated_after": "2020-12-31",
+        "observations": 1707,
+        "bit_exact": true
+      },
+      {
+        "spec": "half",
+        "lag": 0,
+        "truncated_after": "2023-12-29",
+        "observations": 2434,
+        "bit_exact": true
+      },
+      {
+        "spec": "half",
+        "lag": 0,
+        "truncated_after": "2026-09-24",
+        "observations": 3097,
+        "bit_exact": true
+      },
+      {
+        "spec": "half",
+        "lag": 1,
+        "truncated_after": "2020-12-31",
+        "observations": 1707,
+        "bit_exact": true
+      },
+      {
+        "spec": "half",
+        "lag": 1,
+        "truncated_after": "2023-12-29",
+        "observations": 2434,
+        "bit_exact": true
+      },
+      {
+        "spec": "half",
+        "lag": 1,
+        "truncated_after": "2026-09-24",
+        "observations": 3097,
+        "bit_exact": true
+      },
+      {
+        "spec": "half_cash_defensive",
+        "lag": 0,
+        "truncated_after": "2020-12-31",
+        "observations": 1707,
+        "bit_exact": true
+      },
+      {
+        "spec": "half_cash_defensive",
+        "lag": 0,
+        "truncated_after": "2023-12-29",
+        "observations": 2434,
+        "bit_exact": true
+      },
+      {
+        "spec": "half_cash_defensive",
+        "lag": 0,
+        "truncated_after": "2026-09-24",
+        "observations": 3097,
+        "bit_exact": true
+      },
+      {
+        "spec": "half_cash_defensive",
+        "lag": 1,
+        "truncated_after": "2020-12-31",
+        "observations": 1707,
+        "bit_exact": true
+      },
+      {
+        "spec": "half_cash_defensive",
+        "lag": 1,
+        "truncated_after": "2023-12-29",
+        "observations": 2434,
+        "bit_exact": true
+      },
+      {
+        "spec": "half_cash_defensive",
+        "lag": 1,
+        "truncated_after": "2026-09-24",
+        "observations": 3097,
+        "bit_exact": true
+      }
+    ],
+    "fixed_unit_checks": [
+      {
+        "spec": "baseline",
+        "lag": 0,
+        "unchanged_unit_days": 2812,
+        "passed": true
+      },
+      {
+        "spec": "baseline",
+        "lag": 1,
+        "unchanged_unit_days": 2811,
+        "passed": true
+      },
+      {
+        "spec": "half",
+        "lag": 0,
+        "unchanged_unit_days": 2812,
+        "passed": true
+      },
+      {
+        "spec": "half",
+        "lag": 1,
+        "unchanged_unit_days": 2811,
+        "passed": true
+      },
+      {
+        "spec": "half_cash_defensive",
+        "lag": 0,
+        "unchanged_unit_days": 2773,
+        "passed": true
+      },
+      {
+        "spec": "half_cash_defensive",
+        "lag": 1,
+        "unchanged_unit_days": 2772,
+        "passed": true
+      }
+    ],
+    "synthetic_half_units": {
+      "passed": true,
+      "missing_cash": false,
+      "nav": [
+        1.0,
+        1.0550000000000002,
+        0.96,
+        0.9142,
+        0.9230757281553399
+      ],
+      "risk_weights": [
+        0.5,
+        0.5213270142180094,
+        0.46875000000000006,
+        0.0,
+        0.0
+      ],
+      "fees": [
+        0.0,
+        0.0,
+        0.0,
+        0.0008,
+        0.0
+      ],
+      "units": [
+        [
+          0.05,
+          0.005,
+          0.0
+        ],
+        [
+          0.05,
+          0.005,
+          0.0
+        ],
+        [
+          0.05,
+          0.005,
+          0.0
+        ],
+        [
+          0.0,
+          0.008875728155339806,
+          0.0
+        ],
+        [
+          0.0,
+          0.008875728155339806,
+          0.0
+        ]
+      ]
+    },
+    "synthetic_missing_cash": {
+      "passed": true,
+      "missing_cash": true,
+      "nav": [
+        1.0,
+        1.05,
+        0.9591,
+        0.9685029411764705,
+        0.9779058823529412
+      ],
+      "risk_weights": [
+        0.5,
+        0.5238095238095238,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fees": [
+        0.0,
+        0.0,
+        0.0009,
+        0.0,
+        0.0
+      ],
+      "units": [
+        [
+          0.05,
+          0.005,
+          0.0
+        ],
+        [
+          0.05,
+          0.005,
+          0.0
+        ],
+        [
+          0.0,
+          0.009402941176470588,
+          0.0
+        ],
+        [
+          0.0,
+          0.009402941176470588,
+          0.0
+        ],
+        [
+          0.0,
+          0.009402941176470588,
+          0.0
+        ]
+      ]
+    },
+    "passed": true,
+    "limitations": [
+      "Engine NAV uses unit accounting, so baseline P&L is numerically equivalent, not bit-exact; targets and decision traces are exact.",
+      "Prefix tests cover baseline, half-weight, and combined half/cash/defensive specifications at lag0 and lag1.",
+      "Dataset itself preserves frozen effective feature prefix bit-exact and constructs extension from own-quote prefixes.",
+      "Fee tests validate documented legacy pre-fee turnover approximation, not exact brokerage self-financing costs.",
+      "TR index cash units model virtual reinvestment; they are not literal broker cash balances or lot-sized holdings."
+    ]
+  },
+  "interpretation": [
+    "Only recent-period results favor bearish low-vol defensive access; 2024-2025 validation materially deteriorates.",
+    "Lower dip allocation reduces historical CAGR substantially while the overall maximum drawdown improves little.",
+    "Cash entry/exit buffers improve some drawdowns but lose too much return under the registered criteria.",
+    "No expanded parameter search was performed after failure; no production upgrade is authorized by these results."
+  ],
+  "research_cli": "python3.8 -B research/v12_iteration_20261117/candidate.py --variant defensive_lowvol --start 2026-09-29",
+  "methodological_reference": "https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf",
+  "clean_oos": false,
+  "production_modified": false
+}

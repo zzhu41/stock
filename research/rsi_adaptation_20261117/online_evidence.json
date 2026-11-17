@@ -1,0 +1,131 @@
+{
+  "as_of": "2026-11-17",
+  "scope": "Online adaptation, expert aggregation, meta-learning and continual portfolio learning; not the Relative Strength Index indicator, and not autonomous recursive researcher modification.",
+  "previous_report_read": "research/rsi_20261109/REPORT.md",
+  "new_contribution": "The earlier report emphasizes researcher evolution. These sources address the separate question of adapting a deployed investment rule to nonstationary observations, with its update rule fixed and testable.",
+  "work_performed": "Primary-source literature inspection only. No new backtest, package installation, network market-data refresh, or changes to existing files.",
+  "papers": [
+    {
+      "id": "saoftrl_2024",
+      "title": "SAOFTRL: A Novel Adaptive Algorithmic Framework for Enhancing Online Portfolio Selection",
+      "authors": ["Runhao Shi", "Daniel P. Palomar"],
+      "publication": "IEEE Transactions on Signal Processing 72, 5291–5305; published 2024-11-11",
+      "doi": "10.1109/TSP.2024.3495696",
+      "primary_urls": [
+        "https://palomar.home.ece.ust.hk/papers/2024/ShiPalomar-TSP2024.pdf",
+        "https://researchportal.hkust.edu.hk/en/publications/saoftrl-a-novel-adaptive-algorithmic-framework-for-enhancing-onli/"
+      ],
+      "read_coverage": "Author-hosted PDF indexed sections: Algorithm 1, assumptions, Theorems 1–2, SCA approximation, Section V and Section VI-A. Direct PDF opening repeatedly timed out; not represented as a successful full-PDF download.",
+      "verified_summary": "Geometric covering intervals maintain O(log t) active OFTRL portfolios, aggregated by CBCE weights. Optimistic gradients and regularization stabilize short-window estimates. Under bounded gradients/domain, the underlying OFTRL bound is O(N log(Q_T + log T)); this is not the complete strongly-adaptive meta bound. Section V relates the method to shrinkage mean–variance estimation and adaptive lookbacks. Experiments sample 80 one-year, 40-asset datasets per S&P500/NASDAQ100 list from 2010-01-01 through 2023-01-01.",
+      "transaction_cost_evidence": "No verified transaction-cost sensitivity or net-profit guarantee was located in the inspected primary passages; do not claim that one exists.",
+      "official_code_status": "No paper-specific author code repository verified from the paper, author pages and targeted search. This means unverified, not proof of nonexistence.",
+      "evidence_locators": ["Algorithm 1 and assumptions, p.5294", "Theorems 1–2, p.5295", "Section V and VI-A, pp.5297–5298"],
+      "assessment": "Strong mechanism reference for multiple learning horizons; deployment evidence remains incomplete. BCRP-relative regret cannot imply positive absolute returns or preservation after arbitrary cost penalties."
+    },
+    {
+      "id": "adaptive_robust_2025",
+      "title": "Adaptive Robust Online Portfolio Selection",
+      "authors": ["Man Yiu Tsang", "Tony Sit", "Hoi Ying Wong"],
+      "publication": "European Journal of Operational Research 321(1), 214–230, 2025-02-16; accessible author preprint submitted 2022-06-02",
+      "doi": "10.1016/j.ejor.2024.09.002",
+      "primary_urls": [
+        "https://www.sciencedirect.com/science/article/pii/S0377221724006933",
+        "https://arxiv.org/abs/2206.01064",
+        "https://arxiv.org/pdf/2206.01064"
+      ],
+      "read_coverage": "Publisher publication record plus author preprint Sections 3–5, Tables 1–2/9 and Appendix E. Preprint numerical details are not silently equated with an unseen final typeset revision.",
+      "verified_summary": "Ellipsoidal robust optimization explicitly penalizes trading. Parameter experts are updated sequentially. The selection-of-best scheme uses an incumbent-relative performance band and an indifference zone; another scheme averages top-K robustness parameters. Six legacy datasets and three additional US/HK/China stock datasets are tested. Additional datasets end 2021-08-30: SP500-21 starts 2016-01-04; HSI starts 2012-01-03; CSI starts 2012-01-04. Preprint costs include 0.2% and 0.5%. Results are not universally superior: on CSI at 0.2%, UBAH wealth 2.7323 exceeds RELP-Adap-1 2.0788 and RELP-Adap-2 0.5751.",
+      "official_code_status": "No author implementation verified; the paper references the general OLPS toolbox, which is not evidence that this method itself is implemented there.",
+      "evidence_locators": ["Preprint Section 4, pp.10–12", "Tables 1–2, pp.12–13", "Table 9, p.23", "Appendix E.3–E.4"],
+      "assessment": "Most directly useful cost-aware adaptation mechanism here. The 2025 publication date does not mean a 2025-market test; cumulative-wealth expert selection can still lag or chase risk."
+    },
+    {
+      "id": "meta_mixture_2025",
+      "title": "Meta-Learning the Optimal Mixture of Strategies for Online Portfolio Selection",
+      "authors": ["Jiayu Shen", "Jia Liu", "Zhiping Chen"],
+      "publication": "arXiv:2505.03659v1, 2025-05-06; no independently verified journal acceptance in this inspection",
+      "primary_urls": [
+        "https://arxiv.org/abs/2505.03659",
+        "https://arxiv.org/html/2505.03659v1"
+      ],
+      "read_coverage": "Full HTML, especially Sections 3.1–3.2, Algorithm 1, Section 4 and Tables 3–7.",
+      "verified_summary": "Clusters historical strategy-return paths, selects four diverse candidate policies, and uses MAML to initialize quickly adaptable mixture weights. Training occurs across short tasks; online weights use preceding strategy returns. The cost model approximates proportional turnover against drifted previous asset weights; buy/sell rate is 0.0005. Six daily legacy datasets are used; single-market split is first 75% versus last 25%. Cross-market training uses NYSE(O), NYSE(N), DJIA and SP500; testing uses TSE/MSCI. Therefore the abstract's high-frequency suitability is not a high-frequency execution experiment. Table 4 reports DJIA Sharpe 208.71; metric scaling/implementation needs independent verification before comparison.",
+      "experiment_dates": "Paper Table 3 supplies counts, not calendar ranges. The named datasets are legacy OLPS datasets, not a verified 2025 trading sample.",
+      "official_code_status": "No author method code verified. The linked GitHub repository is the source OLPS toolbox/data, not LMPS implementation.",
+      "code_or_data_url": "https://github.com/OLPS/OLPS",
+      "assessment": "Useful strategy-level representation and diversity idea, but return magnitudes, cost approximation, calendar transfer and reproducibility make this a research reference rather than a ready allocator."
+    },
+    {
+      "id": "recap_2026",
+      "title": "Regime-Adaptive Continual Learning for Portfolio Management",
+      "authors": ["Chaofan Pan", "Lingfei Ren", "Linbo Xiong", "Yonghao Li", "Wei Wei", "Xin Yang"],
+      "publication": "arXiv:2606.00143v1 submitted 2026-05-29; title/authors independently verified in official KDD 2026 paper list",
+      "doi": "10.1145/3770855.3817620",
+      "primary_urls": [
+        "https://arxiv.org/html/2606.00143v1",
+        "https://arxiv.org/abs/2606.00143",
+        "https://kdd2026.kdd.org/papers/"
+      ],
+      "read_coverage": "Full HTML: Sections 4–5, Algorithm 2, Appendix B, plus official conference list and author repository README.",
+      "verified_summary": "CUSUM regime detection triggers adaptation on completed segments. A frozen base actor plus stored parameter-difference vectors and a learned gate reuse regimes; merge/discard operations limit the library. Training is 2008-05-01–2020-04-30; evaluation is 2020-05-01–2025-04-29 over five datasets including seven commodity ETFs. Main experiments use 10 seeds, 10bp costs; NAS100 appendix adds 5/10bp stress. The paper explicitly retains continuously listed/data-available constituents over the whole period, creating survivorship concerns. NAS100 reports cumulative return 164.89%, Sharpe 1.14, MDD 23.86%; this is a historical result, not a live or A-share ETF finding.",
+      "official_code_status": "Verified author repository exists, but explicitly offers a minimum runnable implementation, not full reproduction; training steps are substantially reduced and missing VIX/turbulence invokes fallback features.",
+      "code_urls": [
+        "https://github.com/Dumail/ReCAP",
+        "https://raw.githubusercontent.com/Dumail/ReCAP/main/README.md"
+      ],
+      "evidence_locators": ["Sections 4.1–4.4 and Algorithm 2", "Table 1; Sections 5.1–5.2", "Appendix B Tables 6 and 9", "README Notes"],
+      "assessment": "Strongest recent direct analogue for regime-library reuse, but it mixes neural-network parameters, not arbitrary rule-based ETF strategy code. No universal regret or future-profit guarantee follows."
+    },
+    {
+      "id": "strongly_adaptive_2015",
+      "title": "Strongly Adaptive Online Learning",
+      "authors": ["Amit Daniely", "Alon Gonen", "Shai Shalev-Shwartz"],
+      "publication": "ICML 2015, PMLR 37:1405–1411",
+      "primary_urls": [
+        "https://proceedings.mlr.press/v37/daniely15.html",
+        "https://proceedings.mlr.press/v37/daniely15.pdf",
+        "https://proceedings.mlr.press/v37/daniely15-supp.pdf"
+      ],
+      "read_coverage": "Main paper Sections 1–4 and supplement theorem proof excerpts.",
+      "verified_summary": "A reduction combines interval-started learners to compete on every interval with that interval's best comparator, with logarithmic computational overhead. Theorem 1 includes both the base learner's interval regret and a square-root interval/meta overhead. Theorem 3 gives an impossibility result for the stated strong-adaptivity criterion under adversarial bandit-only feedback. This is a comparator-relative theorem under specified feedback/loss assumptions, not a financial profit experiment or a guarantee of instant regime recognition.",
+      "official_code_status": "Paper/supplement verified; no implementation audited.",
+      "assessment": "Explains why retaining learners at several ages is principled, and why a claimed guarantee must state comparator, interval length, feedback assumptions and costs."
+    }
+  ],
+  "synthesis_our_inferences_not_paper_claims": {
+    "recommended_order": [
+      "First: a small, frozen set of economically different strategy experts and a cost-aware, slowly changing allocation rule. Compare against static equal weighting and the frozen incumbent.",
+      "Second: several fixed learning ages / restart schedules, inspired by strongly adaptive learning, to avoid choosing one recent window after seeing its result.",
+      "Third: regime-conditioned expert reuse, with trigger timing and all post-trigger learning delays explicit. Preserve old regime experts instead of blindly overwriting them.",
+      "Later: MAML or neural parameter-vector continual learning only if simpler mixture controls have established a reproducible benefit."
+    ],
+    "minimum_state_contract": [
+      "Expert holdings, lock periods and units evolve continuously even when allocation is zero; an expert must not receive a free favorable restart.",
+      "At decision t, the allocator may use only feedback whose economic outcome was already observable before that decision; update after next-period realized returns.",
+      "Record current portfolio weights after market drift. Form the aggregate asset target from expert actions, then charge actual aggregate turnover, spreads and execution delay; weighted averages of individual expert net returns are not the same portfolio.",
+      "Keep learning-rate, forgetting/restart rules, expert admission, weight bounds and turnover budget inside the frozen candidate definition. Changing the updater is a new model version.",
+      "An expert introduced after deployment has a birth time and a distinct forward record. Retroactive good performance does not become contemporaneous evidence.",
+      "A change alarm can trigger diagnosis or lower risk. It does not by itself identify the replacement strategy or prove a regime label."
+    ],
+    "regret_interpretation": "For negative log-wealth loss, a regret bound R implies log(W_best/W_algorithm) <= R for its stated comparator/model. The comparator may itself lose money; R can be large over short intervals. Adding turnover penalties, stateful locks, changing expert pools or uncertain fills requires checking the theorem again, not retaining the old guarantee by analogy.",
+    "a_share_etf_boundaries": [
+      "These papers mostly allocate continuously across many stocks. Applying them to 11 ETFs with discrete holdings, minimum lots, cash sleeves and lock states changes the action and cost model.",
+      "QDII asynchronous prices/NAV, ETF premium changes, actual quote availability and execution windows require local point-in-time evidence; none of the inspected papers validates this repository's 14:50 clock.",
+      "A small ETF pool offers limited independent regime episodes. Many near-identical parameter variants create redundant experts and can amplify noise rather than add useful diversity.",
+      "For this repository, observed legacy versions have often shared the same holdings. Expert diversity must be measured by actual action and net-return differences, not version labels.",
+      "Online allocation adapts a strategy state under a fixed learning law. It becomes recursive research improvement only if the research/learning law itself is modified and independently evaluated across generations."
+    ],
+    "what_would_falsify_the_proposal": [
+      "Adaptive allocation fails to beat the same experts under static weights after aggregate execution costs.",
+      "Apparent benefit disappears when every expert uses only its birth-time-available data and continuous state.",
+      "Benefit concentrates in one crisis/rebound or depends on arbitrary update-day choice.",
+      "Weights become winner-take-all on a handful of observations, or regime triggers repeatedly reverse before costs can be recovered."
+    ]
+  },
+  "unresolved_checks": [
+    "SAOFTRL direct PDF fetch failed; indexed author-PDF passages were inspected but full cost discussion could not be verified.",
+    "Adaptive Robust detailed tests refer to its accessible 2022 preprint; final EJOR full-text differences are not certified.",
+    "Meta-mixture has no verified author code and unusually large reported Sharpe values; no claim of implementation correctness is made.",
+    "ReCAP's public code is intentionally reduced. Its main-paper numbers were not reproduced, and the full experimental data/universe handling still require an audit."
+  ]
+}
